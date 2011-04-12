@@ -1,0 +1,18 @@
+<!--
+ * Author    : Maximilian Narr
+ * Homepage  : http://maxesstuff.de
+ * Email     : maxe@maxesstuff.de
+ * License   : See license-folder
+ * Version   : See changelog.txt
+-->
+<!DOCTYPE root PUBLIC '-//W3C//DTD HTML 3.2 Final//EN' 'null'>
+<config>
+    <author>maxesstuff</author>
+    <version>1.0</version>
+    <!-- If this is setted to true, the user can join a username before connecting to the server -->
+    <prompt_username>true</prompt_username>
+    <!-- If your server has a password, set this to true -->
+    <have_server_pass>false</have_server_pass>
+    <!-- If you have entered 127.0.0.1 or localhost as host into the config file, enter the external IP or host here -->
+    <connect_host>none</connect_host>
+</config>

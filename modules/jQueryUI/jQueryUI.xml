@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : jQueryUI.xml
+    Created on : 18. März 2011, 20:40
+    Author     : drak3
+    Description:
+        Purpose of the document follows.
+-->
+
+<config>
+<abstract>true</abstract>
+<css_path>http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css</css_path>
+<js_path>http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.js</js_path>
+</config>

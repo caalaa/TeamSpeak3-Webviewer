@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : jQuery.xml.xml
+    Created on : 18. März 2011, 20:39
+    Author     : drak3
+    Description:
+        Purpose of the document follows.
+-->
+
+<config>
+<abstract>true</abstract>
+<jQuery_path>http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js</jQuery_path>
+</config>

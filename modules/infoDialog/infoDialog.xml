@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+ * Author    : Maximilian Narr
+ * Homepage  : http://maxesstuff.de
+ * Email     : maxe@maxesstuff.de
+ * License   : See license-folder
+ * Version   : See changelog.txt
+-->
+<config>
+    <abstract>false</abstract>
+    <!-- Will be supported in later version -->
+    <usefor>clients</usefor>
+    <!-- Enter here the values you want have shown in the info-dialog. Order them as you want to have them shown -->
+    <!--
+        Values:
+        -nickname
+        -country
+        -version
+        -connections
+        -servergroup
+        -channelgroup
+        -description
+    -->
+    <show_html_for_client>nickname,country,version,connections,servergroup,channelgroup,description</show_html_for_client>
+    <!-- If true the dialog will close if the mouse is out of the dialog, else you have to close them manually -->
+    <close_by_mouseout>true</close_by_mouseout>
+    <!-- width of the dialog in pixels, if none standard will be used -->
+    <width>none</width>
+    <!-- height of the dialog in pixels, if none standard will be used -->
+    <height>none</height>
+</config>
+
+        

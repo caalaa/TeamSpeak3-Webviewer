@@ -1,0 +1,27 @@
+p
+{
+    font-size: 14px;
+}
+
+div#password, div#language, div#selection
+{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    width: 400px;
+}
+
+div#alert
+{
+    width: 100%;
+}
+
+input
+{
+    font-size: 14px;
+}
+
+button
+{
+    font-size: 14px;
+}

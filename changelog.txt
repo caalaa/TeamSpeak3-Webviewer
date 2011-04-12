@@ -1,0 +1,89 @@
++Changelog
+* fix
++ Add
+! Major Change
+~ Minor Change
+
+v 0.7
++ language can be switched by appending lang=<language> as get parameter (example: your.domain.tld/webviewer/?config=teamspeak1&lang=en)
++ Welcome Screen which shows up if you are running the viewer for the first time
+! Updated Installscript to new XML-Specification
+! Updated code to valide HTML (checked with validator.w3.org)
+~ Swapped the arrows, that they are like in TS Client
+~ The Country-Flag of clients will now shown in the infoDialog
+~ Legende-Module shows now all server- and channelgroups
+~ Legende-Module: Shows now a grey icon if a group has no icon
+* Module: Serverinfo: Fixed Bug if the server has now welcome-message
+* Fixed connection bugs with loginButton and js_login
++ Translation of module 'serverinfo'
++ Translation of module 'js_login'
++ Translation of module 'loginButton'
+! Changed config and language files from plaintext to xml
+    * But kept support for .conf files and old viewer.conf
++ Module infoDialog: Added some more possible information which can be shown.
+    + Countryflags
+    + Countrynames (English only at the moment)
+* Added missing escaping to some fields
+! Support for multiple config files. configs can be selected by appending config=<configname> as a get parameter (example: your.domain.tld/webviewer/?config=teamspeak1)
+~ some minor tweaks for higher speed
+* changed id attribute of channels/clients to channel_<channel_id> respectively client_<client_id> so colissions are avoided
+
+
+v 0.6
++ Module: ServerInfo which shows a detailed serverinfo
++ Module: InfoTab which shows several modules as tabs
++ Module: userBar which shows a progessbar how many clients are on the Server
++ Module: LoginButton which shows a button to login to the server
+! The installscript has been updated completly
+* bugfixes 
+
+v 0.5.3
+* important bugfixes
+
+v 0.5.2
+* channel whith equal names should be rendered now
+* arrows has now a transparent background
+* changed error handling in /modules/infoDialog/getHTML.php
+* put permissions to open in install txt (thx to sTimulated) 
+
+v 0.5.1
+* fixed syntax failure (thx to optimatez)
+* added arrows with transparency
+* installer shows now if writing to configfile failed (thx to baraan)
+
+
+v 0.5
++ added a module architecture
++ rewrite of the legend and the direct login as a module
++ added the abstract modules Htmlframe, style, js, jQuery and jQueryUI
+  look at the configfiles in modules/<modulename>/<modulename>.conf for further informantions
++ added a easy to use installscript
++ full spacer support
+
+* fixed bug that spacer is parsed if it's a subchannel (thanks to optimatez for report)
+* fixed bug with broken images if iconid is 0 (patch by baaran was implemented false, my fault)
++ added the attribut ID to channels and clients id="<name_of_the_client/channel>"
++ added the Module channelHiding which hides and shows a channel by clicking on it like in TS-Client
++ added module infoDialog which shows a dialog with important info about the client
+* changed closing of image tags, should be valid html now
++ added arrow to non empty channel
+* display bug in MS Internet explorer and opera and Iceweasel (thx to JohnnyBrusevold for report and fix)
++ added a autoRefresh module (thx to JohnnyBrusevold for idea) 
+* now tested in newest versions of Firefox, Safari, Chrome and Opera
++ added support for channelicons
+* fixed many display bugs
+* rewrite of configfiles to .conf for easier use
+
+
+v 0.2:
++ added better error handling
++ added the moderated icon
++ full channels are now shown correctly
++ added a legend which can be switched on/off
++ added basic language switching (german and english)
+* fixed a bug with broken images if iconid of a group is equals 0 (thx to Baraan)	
+* fixed a bug with broken images of standard icons when use_serverimages is enabled
+* made some changes on the TSQuery class
+* made some changes on the caching times
+* changed error reporting
+ 
