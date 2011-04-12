@@ -1,0 +1,12 @@
+<!--
+ * Author    : Maximilian Narr
+ * Homepage  : http://maxesstuff.de
+ * Email     : maxe@maxesstuff.de
+ * License   : See license-folder
+ * Version   : See changelog.txt
+-->
+<!DOCTYPE root PUBLIC '-//W3C//DTD HTML 3.2 Final//EN' 'null'>
+<language>
+    <prompt_serverpass>Bitte Serverpasswort eingeben</prompt_serverpass>
+    <prompt_nickname>Bitte einen Nickname angeben</prompt_nickname>
+</language>

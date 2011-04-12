@@ -1,0 +1,16 @@
+<!--
+ * Author    : Maximilian Narr
+ * Homepage  : http://maxesstuff.de
+ * Email     : maxe@maxesstuff.de
+ * License   : See license-folder
+ * Version   : See changelog.txt
+-->
+<!DOCTYPE root PUBLIC '-//W3C//DTD HTML 3.2 Final//EN' 'null'>
+<config>
+    <author>maxesstuff</author>
+    <version>1.0</version>
+    <abstract>false</abstract>
+    <!-- If a tab should used for the module or if it should be shown alone -->
+    <use_tab>true</use_tab>
+</config>
+

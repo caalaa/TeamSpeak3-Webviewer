@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : en.i18n.xml
+    Created on : 18. März 2011, 20:43
+    Author     : drak3
+    Description:
+        Purpose of the document follows.
+-->
+
+<language>
+<legend>Legend</legend>
+<channelgroup>Channelgroup</channelgroup>
+<servergroup>Servergroup</servergroup>
+<no_image>no image</no_image>
+<style_not_found>style not found</style_not_found>
+</language>

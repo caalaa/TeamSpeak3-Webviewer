@@ -1,0 +1,153 @@
+	/* TeamSpeak3 Webviewer
+ * 
+ *    Autor: Max Rath
+ *    Style: Maximilian Narr
+ *  License: GPL3
+ * Homepage: http://maxesstuff.bplaced.net
+ *  Support: http://support.maxesstuff.bplaced.net
+ */
+
+p,div
+{
+	margin-top:0px;
+	margin-bottom:0px;
+}
+
+body
+{
+	margin-top:5px;
+	margin-bottom:0px;
+	white-space:nowrap;
+	background-color:transparent;
+}
+
+
+.servername
+{
+	font-family:sans-serif;
+	font-size: small;
+	text-decoration:underline;
+}
+
+.rechtegruppe
+{
+	margin-top:5px;
+	font-family:sans-serif;
+	font-size:small;
+	text-decoration:capitalize;
+}
+
+.server
+{
+	font-family:sans-serif;
+	font-size:medium;
+	margin-left:0px;
+	margin-top:5px;
+	margin-bottom:0px;
+}
+
+.channel 
+{
+	font-family:sans-serif;
+	font-size:small;
+	margin-top:0px;
+	/*margin-left: 32px;*/
+	margin-bottom:0px;
+}
+
+.channel_arr
+{
+margin-left: 16px;
+}
+
+.channel_norm
+{
+margin-left: 32px;
+}
+
+/* Spacer */
+.spacer
+{
+	font-family:sans-serif;
+	font-size:small;
+	margin-top:0px;
+	margin-bottom:0px;
+	/*delete this if you want the original letter spacing */
+	letter-spacing:1px;
+}
+
+.spacer_arr
+{
+margin-left: 20px;
+}
+
+.spacer_norm
+{
+	margin-left: 20px;
+}
+
+
+.right
+{
+	text-align: right;
+}
+
+.left
+{
+	text-align: left;
+}
+
+.center
+{
+	text-align: center;
+}
+
+.linie
+{
+	background: url(linie.gif) repeat-x;
+}
+
+.bs
+{
+	background: url(bs.gif) repeat-x;
+}
+
+.bspunkt
+{
+	background: url(bspunkt.gif) repeat-x;
+}
+
+.bsdpunkt
+{
+	background: url(bsdpunkt.gif) repeat-x;
+}
+
+.punkt
+{
+	background: url(punkt.gif) repeat-x;
+}
+
+.client
+{
+	font-family:sans-serif;
+	font-size:small;
+	font-weight: bold;
+	margin-left:32px;
+	margin-top:0px;
+	margin-bottom:0px;
+}
+
+.spacer_con .arrow {
+	margin-left:-12px;
+}	
+
+.img_r
+{
+	float:right;
+}
+
+.img_l
+{
+	margin-right:4px;
+	float:left;
+}

@@ -1,0 +1,21 @@
+<!--
+ * Author    : Maximilian Narr
+ * Homepage  : http://maxesstuff.de
+ * Email     : maxe@maxesstuff.de
+ * License   : See license-folder
+ * Version   : See changelog.txt
+-->
+<!DOCTYPE root PUBLIC '-//W3C//DTD HTML 3.2 Final//EN' 'null'>
+<config>
+    <abstract>false</abstract>
+
+    <!-- Time in miliseconds to fade in channels -->
+    <fadeIn_time>400</fadeIn_time>
+    <!-- Time in miliseconds to fade out channels -->
+    <fadeOut_time>400</fadeOut_time>
+    <!-- If hidden channels should be remembered on clien side -->
+    <remember_hidden_chans>true</remember_hidden_chans>
+    <!-- If emtpy channels should be hided -->
+    <hide_empty_chans>false</hide_empty_chans>
+</config>
+

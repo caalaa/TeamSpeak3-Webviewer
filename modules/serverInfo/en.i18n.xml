@@ -1,0 +1,20 @@
+<!--
+ * Author    : Maximilian Narr
+ * Homepage  : http://maxesstuff.de
+ * Email     : maxe@maxesstuff.de
+ * License   : See license-folder
+ * Version   : See changelog.txt
+-->
+<!DOCTYPE root PUBLIC '-//W3C//DTD HTML 3.2 Final//EN' 'null'>
+<language>
+    <welcome_msg>Welcome-Message:</welcome_msg>
+    <channels>Channels:</channels>
+    <serverinfo>Serverinfo:</serverinfo>
+    <version>Version:</version>
+    <server_os>ServerOS:</server_os>
+    <connection_info>Connectioninfo:</connection_info>
+    <total_sent>Total sent:</total_sent>
+    <total_received>Total received:</total_received>
+    <no_welcome>No Welcome-Message</no_welcome>
+    <serverinfo_tab_title>Serverinfo</serverinfo_tab_title>
+</language>

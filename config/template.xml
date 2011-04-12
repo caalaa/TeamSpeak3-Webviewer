@@ -1,0 +1,106 @@
+<!--
+ * Author    : Maximilian Narr
+ * Homepage  : http://maxesstuff.de
+ * Email     : maxe@maxesstuff.de
+ * License   : See license-folder
+ * Version   : See changelog.txt
+-->
+<!DOCTYPE root PUBLIC '-//W3C//DTD HTML 3.2 Final//EN' 'null'>
+<config>
+    <!-- Main configuration -->
+
+    <!-- IP Adress or DNS Name to your server -->
+    <host></host>
+    <!-- Queryport of your server (Default: 10011) -->
+    <queryport></queryport>
+    <!-- Port of the server over which you are connecting to it via client (Default: 9987) -->
+    <vserverport></vserverport>
+    <!-- Downloadport of your server (Default: 30033) -->
+    <downloadport></downloadport>
+
+
+    <!-- Credentials -->
+
+    <!-- 
+    If credentials are required to log into the server via query
+    if a username is needet set it to true
+    a login is just needed if the standard user hasn't the following permissions:
+      b_virtualserver_select (use)
+      b_virtualserver_info_view (serverinfo)
+      b_virtualserver_channel_list (channellist)
+      b_virtualserver_client_list (clientlist)
+      b_serverinstance_modify_querygroup
+      b_serverinstance_modify_templates
+      b_virtualserver_servergroup_list (servergrouplist)
+      b_virtualserver_channelgroup_list (channelgrouplist)
+    -->
+    <login_needed></login_needed>
+    <!-- Username of the Query-User -->
+    <username></username>
+    <!-- Password of the Query-User -->
+    <password></password>
+
+
+    <!-- Language -->
+
+    <!-- Language of the Viewer (de or en) -->
+    <language></language>
+    <!-- DONT CHANGE ANYTHING HERE -->
+    <prefix>none</prefix>
+
+
+    <!-- Images -->
+
+    <!--
+    if this option is settted to true, the Channel and Servergroup Icons are downloaded and stored localy on the webspace
+    if it's setted to false the images of the imagepack are used
+    -->
+    <use_serverimages></use_serverimages>
+    <!--
+    if you use the script in a iframe and you want that the script works for user who aren't accepting third party cookies
+    -->
+    <use_sid_in_url>false</use_sid_in_url>
+
+    <!--
+    if use_serverimages is setted to false fill in the name of the server and channelgroupicons
+    (The number in brackets is the group-id)
+    Letting this on default is recommended
+    -->
+    <!-- Serveradmin -->
+    <servergrp_images_6>group_300</servergrp_images_6>
+    <!-- Channeladmin -->
+    <channelgrp_images_5>group_100</channelgrp_images_5>
+    <!-- Operator -->
+    <channelgrp_images_6>group_200</channelgrp_images_6>
+    <!-- Voice -->
+    <channelgrp_images_7>group_600</channelgrp_images_7>
+
+
+    <!-- Styling Options -->
+
+    <!-- Stylepack (DONT CHANGE ANYTHING HERE) -->
+    <style>iframe</style>
+    <!-- Imagepack -->
+    <imagepack></imagepack>
+    <!-- Image-Type of the images (DONT CHANGE ANYTHING HERE) -->
+    <image_type>png</image_type>
+    <!-- Wheter arrows should shown like in the TS-Client (true or false) -->
+    <show_arrows></show_arrows>
+
+    
+    <!-- Caching -->
+
+    <!-- Whether caching should be enabled (true or false) -->
+    <enable_caching></enable_caching>
+    <!-- minimal time in seconds between two connections to the server -->
+    <standard_cachetime></standard_cachetime>
+    <!-- Cachtime for several commands (default: 60) -->
+    <cachetime_channellist_voice_flags_icon_limits></cachetime_channellist_voice_flags_icon_limits>
+    <cachetime_serverinfo></cachetime_serverinfo>
+    <cachetime_clientlist_away_voice_groups_info_times></cachetime_clientlist_away_voice_groups_info_times>
+    <cachetime_servergrouplist></cachetime_servergrouplist>
+    <cachetime_channelgrouplist></cachetime_channelgrouplist>
+
+    <!-- Enabled Modules (seperate with comma) -->
+    <modules></modules>
+</config>

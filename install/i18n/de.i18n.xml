@@ -1,0 +1,54 @@
+<!DOCTYPE root PUBLIC '-//W3C//DTD HTML 3.2 Final//EN' 'null'>
+<language>
+    <!-- Misc -->
+    <no>Nein</no>
+    <yes>Ja</yes>
+    <back>Zurück zur Auswahl</back>
+
+    <!-- SET_PASSWORD.html -->
+    <setpw>Bitte setzen sie einmalig ein Passwort:</setpw>
+    <setpwsubmit>Passwort setzen</setpwsubmit>
+
+    <!-- ENTER_PW.html -->
+    <submitpw>Absenden</submitpw>
+    <enterpw>Bitte Passwort eingeben:</enterpw>
+
+    <!-- SELECT_CONFIG.html -->
+    <select_config_descr>Bitte wählen sie eine bestehende Konfigurationsdatei aus:</select_config_descr>
+    <select_new_config>Oder erstellen sie eine neue Konfigurationsdatei (Sollte keine Konfigurationsdatei vorhanden sein, so nennen Sie die neue Datei bitte "config":</select_new_config>
+    <configname>Name der neuen Datei</configname>
+    <submit_config>Datei erstellen</submit_config>
+
+    <!-- CONFIG.html -->
+    <basesettings>Haupteinstellungen</basesettings>
+    <modules>Module</modules>
+    <style>Aussehen</style>
+    <caching>Caching</caching>
+    <stuff>Anderes</stuff>
+
+    <serveradress>Serveradresse</serveradress>
+    <queryport>Queryport</queryport>
+    <serverport>Virtualserverport</serverport>
+    <downloadport>Downloadport</downloadport>
+    <login>Login benötigt?</login>
+    <username>Benutzername</username>
+    <password>Passwort</password>
+
+    <servericons>Servericons automatisch herunterladen?</servericons>
+    <appear>Style</appear>
+    <imagepack>Bildpaket</imagepack>
+    <arrow>Pfeile anzeigen?</arrow>
+
+    <caching_enable>Caching aktivieren</caching_enable>
+    <standard_cachetime>Cachezeit</standard_cachetime>
+    <lang>Sprache des Viewers</lang>
+
+    <submit_config_file>Konfiguration speichern</submit_config_file>
+    <module_edit_info>Um die Konfigurationsdatei eines Modules zu editieren, klicken Sie auf das jeweilige Modul.</module_edit_info>
+    <german>Deutsch</german>
+    <english>Englisch</english>
+    
+    <!-- XMLEDIT.html -->
+    <edit_xml>Sie können hier die Konfigurationsdatei des Modules ändern. Wenn Sie fertig sind, klicken Sie auf den Button.</edit_xml>
+    <submit_xml_edit>Konfiguration speichern</submit_xml_edit>
+</language>

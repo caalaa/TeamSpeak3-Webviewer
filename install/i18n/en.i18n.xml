@@ -1,0 +1,73 @@
+<!DOCTYPE root PUBLIC '-//W3C//DTD HTML 3.2 Final//EN' 'null'>
+<language>    
+    <!-- Misc -->
+    <no>No</no>
+    <yes>Yes</yes>
+    <back>Back to Configfiles</back>
+    
+    <!-- Tooltip-->
+    <tt_tip>Tip: Hover over the labels to get more information about the requested data.</tt_tip>
+    
+    <tt_serveradress>The adress with which you are connecting to the server (Can be an IP-Adress or hostname).</tt_serveradress>
+    <tt_queryport>The Queryport of your server (Default: 10011).</tt_queryport>
+    <tt_serverport>The port through which you are connecting to your server via the client (Default: 9987).</tt_serverport>
+    <tt_downloadport>The filetransferport of your server (Default: 30033). Be sure that you opened it in your firewall (If you have access to the server).</tt_downloadport>
+    <tt_login>If a login is required that the viewer can get the needed information (Default: yes).</tt_login>
+    <tt_username>The username of the query-user.</tt_username>
+    <tt_password>Password corresponding to the username above.</tt_password>
+    <tt_servericons>If you set this on true, custom icons will be downloaded automatically.</tt_servericons>
+    <tt_imagepack>If the setting above is FALSE, the viewer will use the imagepack provided here.</tt_imagepack>
+    <tt_arrow>If you set that on TRUE, the viewer will show arrows next to the channel similar as in the client.</tt_arrow>
+    <tt_caching>If this on true the viewer will buffer the data it received. It is strongly recommended to enable caching due to stability reasons.</tt_caching>
+    <tt_standard_cachetime>The time in seconds the viewer should buffer the serverdata (Recommended: 60).</tt_standard_cachetime>
+    <tt_lang>Language of the viewer</tt_lang>
+    
+    <!-- SET_PASSWORD.html -->
+    <setpw>Please insert a new password for the interface once:</setpw>
+    <setpwsubmit>Set password</setpwsubmit>
+    
+    <!-- ENTER_PW.html -->
+    <submitpw>Submit</submitpw>
+    <enterpw>Please enter the Password for the Interface:</enterpw>
+    
+    <!-- SELECT_CONFIG.html -->
+    <select_config_descr>Please select one of this existing configfiles:</select_config_descr>
+    <select_new_config>Or create a new configfile (If no configfile is available please name the new one "config"):</select_new_config>
+    <configname>Name of the new file</configname>
+    <submit_config>Create file</submit_config>
+    
+    <!-- CONFIG.html -->
+    <basesettings>Mainsettings</basesettings>
+    <modules>Modules</modules>
+    <style>Style</style>
+    <caching>Caching</caching>
+    <stuff>Misc</stuff>
+    
+    <serveradress>Serveradress</serveradress>
+    <queryport>Queryport</queryport>
+    <serverport>Serverport</serverport>
+    <downloadport>Downloadport</downloadport>
+    <login>Login required?</login>
+    <username>Username</username>
+    <password>Password</password>
+    
+    <servericons>Download servericons automatically?</servericons>
+    <appear>Style</appear>
+    <imagepack>Imagepack</imagepack>
+    <arrow>Show arrows?</arrow>
+    
+    <caching_enable>Enable caching?</caching_enable>
+    <standard_cachetime>Standard cachetime</standard_cachetime>
+    <lang>Language of the Viewer</lang>
+    
+    <submit_config_file>Save Configfile</submit_config_file>
+    <module_edit_info>Click on a module to edit the modules configfile</module_edit_info>
+    <german>German</german>
+    <english>English</english>
+   
+    <!-- XMLEDIT.html -->
+    <edit_xml>You can edit the configfile of the module here. If you have finished just press the button</edit_xml>
+    <submit_xml_edit>Save configfile</submit_xml_edit>
+
+    
+</language>

@@ -1,0 +1,11 @@
+# Deny showing of xml-files
+<Files *.xml >
+    Order deny,allow
+    deny from all
+</Files>
+
+# Deny showing of txt-files
+<Files *.txt >
+    Order deny,allow
+    deny from all
+</Files>
