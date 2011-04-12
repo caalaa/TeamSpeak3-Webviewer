@@ -4,6 +4,9 @@
 ! Major Change
 ~ Minor Change
 
+v 0.8
++ Added tooltips to the installscript for better explanation
+
 v 0.7
 + language can be switched by appending lang=<language> as get parameter (example: your.domain.tld/webviewer/?config=teamspeak1&lang=en)
 + Welcome Screen which shows up if you are running the viewer for the first time
