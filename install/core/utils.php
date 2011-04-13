@@ -77,7 +77,7 @@ function moduleIsAbstract($module)
 {
     $xml = simplexml_load_file("../modules/$module/$module.xml");
 
-    if ($xml->abstract == "true")
+    if ($xml->info->abstract == "true")
         return true;
     return false;
 
@@ -100,6 +100,7 @@ function getImagePacks()
 
 }
 
+// Throws an visual Alert
 function throwAlert($message)
 {
     $html = '<div class="alert">
@@ -114,6 +115,7 @@ function throwAlert($message)
 
 }
 
+// Throws a visual warning
 function throwWarning($message)
 {
     $html = '<div class="alert">
