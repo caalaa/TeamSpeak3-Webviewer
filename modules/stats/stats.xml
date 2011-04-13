@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ * Author    : Maximilian Narr
+ * Homepage  : http://maxesstuff.de
+ * Email     : maxe@maxesstuff.de
+-->
+
+<config>
+    <!-- Information -->
+    <info>
+        <author>Maximilian Narr</author>
+        <homepage>http://maxesstuff.de</homepage>
+        <description_en>Shows statistics of the TeamSpeak3 Server</description_en>    
+        <description_de>Zeigt Statistiken des Servers an</description_de>
+        
+        <!-- Don't change anything here -->
+        <!-- Ändern Sie hier nichts! -->
+        <abstract>false</abstract>    
+    </info> 
+</config>
