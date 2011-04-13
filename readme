@@ -3,4 +3,5 @@ A powerfull, easy to customize, module based Webviewer with many new features li
     intelligent caching to reduce loading time
     Automatic icon download
     easy to use installscript
+    support for multiple config files
     many modules like: direct login to server, legend, serverinfo, clientinfo channelhidning like ts3-client and much more!
