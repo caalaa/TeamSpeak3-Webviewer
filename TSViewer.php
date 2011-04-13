@@ -131,7 +131,16 @@ catch (Exception $e)
 {
     die($e->getMessage());
 }
-$query->set_caching($config['enable_caching'], $config['standard_cachetime'], $config['cachetime']);
+
+if(isset($_GET['flush_cache'])) {
+    $query->set_caching(true, 0);
+}
+elseif(isset($_GET['fc'])) {
+    $query->set_caching(true, 0);
+}
+else {
+    $query->set_caching($config['enable_caching'], $config['standard_cachetime'], $config['cachetime']);
+}
 
 ts3_check($query->use_by_port($config['vserverport']), 'use');
 if ($config['login_needed'])
