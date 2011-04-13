@@ -9,8 +9,19 @@
 -->
 
 <config>
-
-<abstract>false</abstract>
-<refresh_time>45</refresh_time>
-
+    <!-- Information -->
+    <info>
+        <author>Max Rath</author>
+        <homepage>http://maxesstuff.de</homepage>
+        <description_en>Provides a module that the viewer will refresh itself after a specific time</description_en>    
+        <description_de>Dieses Modul bewirkt, dass der Viewer nach eine bestimmten Zeit automatisch neu geladen wird</description_de>
+        
+        <!-- Don't change anything here -->
+        <!-- Ändern Sie hier nichts! -->
+        <abstract>false</abstract>
+    </info>
+    
+    <!-- Time in seconds when the viewer should refresh itself -->
+    <!-- Zeit nach der sich der Viewer neu laden soll -->
+    <refresh_time>45</refresh_time>
 </config>

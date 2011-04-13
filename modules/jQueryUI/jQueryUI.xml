@@ -9,7 +9,23 @@
 -->
 
 <config>
-<abstract>true</abstract>
-<css_path>http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css</css_path>
-<js_path>http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.js</js_path>
+    <!-- Information -->
+    <info>
+        <author>Max Rath</author>
+        <homepage>http://maxesstuff.de</homepage>
+        <description_en></description_en>    
+        <description_de></description_de>
+        
+        <!-- Don't change anything here -->
+        <!-- Ändern Sie hier nichts! -->
+        <abstract>true</abstract>
+    </info>
+    
+    <!-- CSS Path of jQuery UI -->
+    <!-- CSS Pfad von jQuery UI -->
+    <css_path>http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/themes/base/jquery-ui.css</css_path>
+    
+    <!-- JS Path of jQuery -->
+    <!-- JS Pfad von jQuery -->
+    <js_path>http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.js</js_path>
 </config>

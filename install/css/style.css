@@ -3,6 +3,11 @@ p
     font-size: 14px;
 }
 
+.tooltip
+{
+    font-size: 14px;
+}
+
 div#password, div#language, div#selection
 {
     margin-left: auto;

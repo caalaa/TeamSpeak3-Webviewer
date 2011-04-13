@@ -9,6 +9,15 @@
 -->
 
 <config>
-<abstract>true</abstract>
-<author>maxesstuff</author>
+    <!-- Information -->
+    <info>
+        <author>Max Rath and Maximilian Narr</author>
+        <homepage>http://maxesstuff.de</homepage>
+        <description_en></description_en>    
+        <description_de></description_de>
+        
+        <!-- Don't change anything here -->
+        <!-- Ändern Sie hier nichts! -->
+        <abstract>true</abstract>
+    </info>
 </config>

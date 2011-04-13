@@ -7,15 +7,31 @@
 -->
 <!DOCTYPE root PUBLIC '-//W3C//DTD HTML 3.2 Final//EN' 'null'>
 <config>
-    <abstract>false</abstract>
-    <author>maxesstuff</author>
-    <version>1.0</version>
+    <!-- Information -->
+    <info>
+        <author>Max Rath</author>
+        <homepage>http://maxesstuff.de</homepage>
+        <description_en>Shows a loginbutton over the servername</description_en>    
+        <description_de>Zeigt einen Login-Button über dem Servername an</description_de>
+        
+        <!-- Don't change anything here -->
+        <!-- Ändern Sie hier nichts! -->
+        <abstract>false</abstract>
+    </info>
+    
     <!-- If this is setted to true, the user can join a username before connecting to the server -->
+    <!-- Wenn true, kann der Benutzer einen Benutzernamen vor dem Verbinden wählen -->
     <prompt_username>true</prompt_username>
+    
     <!-- If your server has a password, set this to true -->
+    <!-- Wenn der Server ein Password hat, setzen Sie dies auf true, sonst auf false -->
     <have_server_pass>false</have_server_pass>
+    
     <!-- If you have entered 127.0.0.1 or localhost as host into the config file, enter the external IP or host here -->
+    <!-- Wenn Sie in der Konfigurationsdatei 127.0.0.1 oder localhost eingetragen haben, so tragen Sie hier die externe IP des Servers ein -->
     <connect_host>none</connect_host>
+    
     <!-- Text of the Button -->
+    <!-- Text des Buttons -->
     <button_text>Join Now!</button_text>
 </config>

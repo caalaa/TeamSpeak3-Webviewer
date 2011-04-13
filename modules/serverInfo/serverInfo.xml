@@ -7,9 +7,19 @@
 -->
 <!DOCTYPE root PUBLIC '-//W3C//DTD HTML 3.2 Final//EN' 'null'>
 <config>
-    <author>maxesstuff</author>
-    <version>1.0</version>
-    <abstract>false</abstract>
+    <!-- Information -->
+    <info>
+        <author>Maximilian Narr</author>
+        <homepage>http://maxesstuff.de</homepage>
+        <description_en>Shows informations of the server like welcome message, traffic, OS, ...</description_en>    
+        <description_de>Zeigt Serverinformationen wie Willkommensnachricht, Traffic und Betriebssystem an</description_de>
+        
+        <!-- Don't change anything here -->
+        <!-- Ändern Sie hier nichts! -->
+        <abstract>false</abstract>
+    </info>
+    
     <!-- If a tab should used for the module or if it should be shown alone -->
+    <!-- Wenn die Serverinformation in einem Tab angezeigt werden soll, setzen Sie dies auf true, sonst auf false -->
     <use_tab>true</use_tab>
 </config>

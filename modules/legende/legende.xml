@@ -7,10 +7,19 @@
 -->
 <!DOCTYPE root PUBLIC '-//W3C//DTD HTML 3.2 Final//EN' 'null'>
 <config>
-    <author>maxesstuff</author>
-    <version>1.0</version>
-    <abstract>false</abstract>
+    <!-- Information -->
+    <info>
+        <author>Max Rath</author>
+        <homepage>http://maxesstuff.de</homepage>
+        <description_en>Shows servergroups and channelgroups and their icons</description_en>    
+        <description_de>Zeigt Server- und Channelgruppen sowie deren Icons an</description_de>
+        
+        <!-- Don't change anything here -->
+        <!-- Ändern Sie hier nichts! -->
+        <abstract>false</abstract>
+    </info>
     <!-- If a tab should used for the module or if it should be shown alone -->
+    <!-- Wenn true, wird die Legende in einem Tab angezeigt -->
     <use_tab>true</use_tab>
 </config>
 
