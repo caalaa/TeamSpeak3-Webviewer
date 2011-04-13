@@ -10,6 +10,7 @@ else
 }
 
 $start = microtime(true);
+
 //own session for avoiding collisions with other scripts
 session_name('ms_ts3Viewer');
 session_start();
@@ -50,7 +51,7 @@ foreach ($paths as $path)
     } //file_exists($path)
 } //$paths as $path
 
-if(!$config_available)
+if (!$config_available)
 {
     echo(file_get_contents("html/welcome/welcome.html"));
     exit;
@@ -81,24 +82,30 @@ foreach ($config as $key => $value)
 
 $config['modules'] = explode(',', $config['modules']);
 
-if( isset($_GET['lang'] ) ) {
-    $lang = str_replace(".","",$_GET['lang']);
-    $lang = str_replace("/","", $lang);
+if (isset($_GET['lang']))
+{
+    $lang = str_replace(".", "", $_GET['lang']);
+    $lang = str_replace("/", "", $lang);
     $config['language'] = $lang;
 }
+
+// Writes language into the sesssion
+$_SESSION['language'] = $config['language'];
 
 
 $config['image_type2'] = $config['image_type'];
 $config['imagepath'] = "images/serverimages/";
-if ($config['use_serverimages'] == true) {
-    if(isset($_GET['config'])) {
+if ($config['use_serverimages'] == true)
+{
+    if (isset($_GET['config']))
+    {
         $config['serverimages'] = "get_server_icon.php?config=" . $_GET['config'] . "&id=";
     }
-    else  {
+    else
+    {
         $config['serverimages'] = "get_server_icon.php?id=";
     }
 }
-    
 else
 {
     $config['serverimages'] = "images/" . $config['imagepack'] . "/";

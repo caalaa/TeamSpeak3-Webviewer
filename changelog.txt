@@ -5,6 +5,7 @@
 ~ Minor Change
 
 v 0.8
+* Fixed translation of infoDialog if language has been added via &lang=
 + Added tooltips to the installscript for better explanation
 
 v 0.7
