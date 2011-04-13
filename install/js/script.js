@@ -1,13 +1,14 @@
 $(document).ready(function(){
     $("button, input:submit, input:button").button();  
     $('form.jqform').jqTransform();
+    
     $('.color').colorbox({innerWidth:"1025px",
                         height:"600px", 
                         iframe:true,
                         scrolling: false,
                         fastIframe: false});
-    $('td[title]').qtip({
-        style:{classes: 'ui-state-highlight ui-corner-all'},
+    $('td[title], a[title]').qtip({
+        style:{classes: 'ui-state-highlight ui-corner-all tooltip'},
         position:{my: 'left-top', at: 'bottom-center'}
     });
 });

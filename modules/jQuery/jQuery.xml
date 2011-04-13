@@ -9,6 +9,19 @@
 -->
 
 <config>
-<abstract>true</abstract>
-<jQuery_path>http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js</jQuery_path>
+    <!-- Information -->
+    <info>
+        <author>Max Rath</author>
+        <homepage>http://maxesstuff.de</homepage>
+        <description_en></description_en>    
+        <description_de></description_de>
+        
+        <!-- Don't change anything here -->
+        <!-- Ändern Sie hier nichts! -->
+        <abstract>true</abstract>
+    </info>
+    
+    <!-- Path to jQuery -->
+    <!-- Pfad zu jQuery -->
+    <jQuery_path>http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js</jQuery_path>
 </config>

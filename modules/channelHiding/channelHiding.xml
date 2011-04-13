@@ -7,15 +7,32 @@
 -->
 <!DOCTYPE root PUBLIC '-//W3C//DTD HTML 3.2 Final//EN' 'null'>
 <config>
-    <abstract>false</abstract>
+    <!-- Information -->
+    <info>
+        <author>Max Rath</author>
+        <homepage>http://maxesstuff.de</homepage>
+        <description_en>Provides fading in and fading out of channels</description_en>    
+        <description_de>Fügt dem Viewer die Funktion hinzu, bestimmte Channel ein und auszuklappen</description_de>
+        
+        <!-- Don't change anything here -->
+        <!-- Ändern Sie hier nichts! -->
+        <abstract>false</abstract>
+    </info>
 
     <!-- Time in miliseconds to fade in channels -->
+    <!-- Dauer des Einblendens von Channeln in Millisekunden -->
     <fadeIn_time>400</fadeIn_time>
+    
     <!-- Time in miliseconds to fade out channels -->
+    <!-- Dauer des Ausblendens von Channeln in Millisekunden -->
     <fadeOut_time>400</fadeOut_time>
-    <!-- If hidden channels should be remembered on clien side -->
+    
+    <!-- If hidden channels should be remembered on client side -->
+    <!-- Legt fest, ob das Ausblenden von bestimmten Stellen beim Client gespeichert werden soll -->
     <remember_hidden_chans>true</remember_hidden_chans>
+    
     <!-- If emtpy channels should be hided -->
+    <!-- Legt fest, ob leere channel von Anfang an versteckt sein sollen -->
     <hide_empty_chans>false</hide_empty_chans>
 </config>
 

@@ -7,12 +7,25 @@
  * Version   : See changelog.txt
 -->
 <config>
-    <abstract>false</abstract>
+    <!-- Information -->
+    <info>
+        <author>Max Rath and Maximilian Narr</author>
+        <homepage>http://maxesstuff.de</homepage>
+        <description_en>This module shows an infodialog if you hover with the mouse about any client.</description_en>    
+        <description_de>Zeigt ein Infofenster über den Client an, wenn Sie die Maus über einen Client bewegen.</description_de>
+        
+        <!-- Don't change anything here -->
+        <!-- Ändern Sie hier nichts! -->
+        <abstract>false</abstract>
+    </info>
+    
     <!-- Will be supported in later version -->
+    <!-- Wird in späteren Versionen implementiert -->
     <usefor>clients</usefor>
+    
     <!-- Enter here the values you want have shown in the info-dialog. Order them as you want to have them shown -->
-    <!--
-        Values:
+    <!-- Geben Sie hier die Werte ein, die Sie im Infodialog anzeigen lassen möchten. Ordnen Sie sie nach der gewünschten Reihenfolge
+        Values/ Werte:
         -nickname
         -country
         -version
@@ -22,11 +35,17 @@
         -description
     -->
     <show_html_for_client>nickname,country,version,connections,servergroup,channelgroup,description</show_html_for_client>
+    
     <!-- If true the dialog will close if the mouse is out of the dialog, else you have to close them manually -->
+    <!-- Wenn true, schließt sich der Dialog wenn die Maus von Client geht, sonst muss er automatisch geschlossen werden -->
     <close_by_mouseout>true</close_by_mouseout>
+    
     <!-- width of the dialog in pixels, if none standard will be used -->
+    <!-- Breite des Dialoges in Pixeln, wenn Sie none setzen, wird der Standardwert verwendet -->
     <width>none</width>
+    
     <!-- height of the dialog in pixels, if none standard will be used -->
+    <!-- Höhe des Dialoges in Pixeln, wenn Sie none setzen, wird der Standardwert verwendet -->
     <height>none</height>
 </config>
 

@@ -7,6 +7,15 @@
         Purpose of the document follows.
 -->
 <config>
-<abstract>false</abstract>
-<author>maxesstuff</author>
+    <!-- Information -->
+    <info>
+        <author>Maximilian Narr</author>
+        <homepage>http://maxesstuff.de</homepage>
+        <description_en>Shows a progessbar with the amount of clients connected over the viewer</description_en>    
+        <description_de>Zeigt einen Fortschrittsbalken über dem Viewer an. Der Balken zeigt die prozentuale Slotausnutzung des Servers.</description_de>
+        
+        <!-- Don't change anything here -->
+        <!-- Ändern Sie hier nichts! -->
+        <abstract>false</abstract>
+    </info>
 </config>
