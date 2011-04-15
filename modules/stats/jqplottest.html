@@ -1,0 +1,40 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+        <script type="text/javascript" src="http://developing.maxesstuff.de/tswebviewer/libraries/jqplot/jquery.jqplot.min.js"></script>
+        <link href="http://developing.maxesstuff.de/tswebviewer/libraries/jqplot/jquery.jqplot.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="http://developing.maxesstuff.de/tswebviewer/libraries/jqplot/plugins/jqplot.dateAxisRenderer.min.js"></script>
+
+    </head>
+    <body>
+        <script type="text/javascript">
+            $.jqplot.config.enablePlugins = true;
+        </script>
+        <div id="chart2" style="width: 400px; height: 400px;"></div>
+        <script type="text/javascript">
+
+            
+            line1=[['2008-06-30',4], ['2008-7-30',6.5], ['2008-8-30',5.7], ['2008-9-30',9], ['2008-10-30',8.2]];
+            plot10 = $.jqplot('chart2', [line1], {
+                title:'Customized Date Axis', 
+                gridPadding:{right:35},
+                axes:{
+                    xaxis:{
+                        renderer:$.jqplot.DateAxisRenderer, 
+                        tickOptions:{formatString:'%b %#d, %y'},
+                        min:'May 30, 2008', 
+                        tickInterval:'1 month'
+                    }
+                },
+                series:[{lineWidth:4, markerOptions:{style:'square'}}]
+            });
+        </script>
+    </body>
+</html>

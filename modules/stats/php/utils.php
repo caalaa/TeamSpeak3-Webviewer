@@ -10,7 +10,7 @@ function needNewEntry()
 {
     $xml = simplexml_load_file("modules/stats/cache/data.xml");
 
-    if ($xml->updated == "" | time() - $xml->updated >= 60)
+    if ($xml->updated == "" | time() - $xml->updated >= 500)
     {
         return true;
     }
@@ -38,13 +38,13 @@ function addEntry($clients_online)
 // Returns a javascript 'array' of the clienthistory
 function createJS($name, $xml)
 {
-    $js = $name.='=[';
+    $js = $name.'=[';
 
     $values = array();
     foreach ($xml->entry as $entry)
     {
         $timestamp = $entry->timestamp;
-        $values[] = '[\'' . date("o-d-m", $timestamp) . '\',' . $entry->clients . ']';
+        $values[] = '[\'' . date("Y-m-d H:i", (int)$timestamp) . '\',' . $entry->clients . ']';
     }
 
     array_reverse($values);
