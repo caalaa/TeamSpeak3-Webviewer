@@ -30,17 +30,14 @@ class stats extends ms_Module
         $this->mManager->loadModule("style")->loadStyle('libraries/jqplot/jquery.jqplot.css');
         $this->mManager->loadModule("js")->loadJS('libraries/jqplot/plugins/jqplot.dateAxisRenderer.min.js');
         $this->mManager->loadModule("js")->loadJS(createJS("line1", $xml), 'text');
+        $this->mManager->loadModule("js")->loadJS('$.jqplot.config.enablePlugins = true;', "text");
+        $this->mManager->loadModule("js")->loadJS('modules/stats/js/script.js');
 
     }
 
     public function getFooter()
     {
-        return('<script type="text/javascript">
-                $.jqplot.config.enablePlugins = true;
-                
-                </script>
-                <div class="jqplot" id="stats" style="height:400px;width:300px; "></div>
-                <script type="text/javascript" src="modules/stats/js/script.js"></script>');
+        return('<div class="jqplot" id="stats" style="height:400px;width:600px; "></div>');
 
     }
 

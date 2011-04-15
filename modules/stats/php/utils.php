@@ -41,14 +41,19 @@ function createJS($name, $xml)
     $js = $name.'=[';
 
     $values = array();
+    
+    setlocale(LC_ALL, "de_DE.UTF8");
+    
     foreach ($xml->entry as $entry)
     {
         $timestamp = $entry->timestamp;
-        $values[] = '[\'' . date("Y-m-d H:i", (int)$timestamp) . '\',' . $entry->clients . ']';
+        $values[] = '[\'' . strftime("%Y-%m-%d %H:%M", (int)$timestamp) . '\',' . $entry->clients . ']';
     }
 
     array_reverse($values);
 
+    $values = array_slice($values, 0, 5);
+    
     $js .= implode(",", $values) . '];';
 
     return $js;
