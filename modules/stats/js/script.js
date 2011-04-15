@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 
+// Jqplot
 $(document).ready(function(){
     
     plot = $.jqplot('stats', [line1], {
@@ -34,7 +35,10 @@ $(document).ready(function(){
                 style:'filledCircle'
             }
         }]
-    });  
+    }); 
+    
+    // JQuery UI Tabs workaround
+    $( "#mstabs" ).bind( "tabsshow", function(event, ui) {
+        plot.replot();
+    });
 });
-
-

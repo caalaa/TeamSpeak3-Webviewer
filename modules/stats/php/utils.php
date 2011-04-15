@@ -38,25 +38,27 @@ function addEntry($clients_online)
 // Returns a javascript 'array' of the clienthistory
 function createJS($name, $xml)
 {
-    $js = $name.'=[';
+    $js = $name . '=[';
 
     $values = array();
-    
+
     setlocale(LC_ALL, "de_DE.UTF8");
-    
+
     foreach ($xml->entry as $entry)
     {
         $timestamp = $entry->timestamp;
-        $values[] = '[\'' . strftime("%Y-%m-%d %H:%M", (int)$timestamp) . '\',' . $entry->clients . ']';
+        $values[] = '[\'' . strftime("%Y-%m-%d %H:%M", (int) $timestamp) . '\',' . $entry->clients . ']';
     }
 
-    array_reverse($values);
 
-    $values = array_slice($values, 0, 5);
-    
+    $values = array_reverse($values);
+    $values = array_slice($values, 0, 10);
+
+
     $js .= implode(",", $values) . '];';
 
     return $js;
+
 }
 
 ?>

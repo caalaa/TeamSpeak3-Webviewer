@@ -9,6 +9,7 @@ class stats extends ms_Module
 {
 
     public $infos;
+    private $html;
 
     function __construct($config, $info, $lang, $mManager)
     {
@@ -33,12 +34,18 @@ class stats extends ms_Module
         $this->mManager->loadModule("js")->loadJS('$.jqplot.config.enablePlugins = true;', "text");
         $this->mManager->loadModule("js")->loadJS('modules/stats/js/script.js');
 
+        $this->html = '<div class="jqplot" id="stats" style="height:400px;width:600px; "></div>';
+        
+        // If chart should be shown in Tab
+        if($this->config['use_tab'] == true)
+                $this->mManager->loadModule("infoTab")->addTab("Statistics", $this->html);
     }
 
     public function getFooter()
     {
-        return('<div class="jqplot" id="stats" style="height:400px;width:600px; "></div>');
-
+        // If chart should be shown in Tab
+        if($this->config['use_tab'] == FALSE)
+                return $this->html;
     }
 
     // Returns the number of clients online (without queryclients)
