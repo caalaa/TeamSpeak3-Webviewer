@@ -5,6 +5,7 @@
 ~ Minor Change
 
 v 0.8
++ Module: stats - shows the history of clients online in a chart
 * Fixed translation of infoDialog if language has been added via &lang=
 + Added tooltips to the installscript for better explanation
 
