@@ -327,18 +327,17 @@ class TSQuery {
                 if(preg_match("/[\r\n]/", $cmd))
                         return false;
                 if($caching == true && file_exists($this->cachepath."query/".$cmd) && !$this->cache_expired($cmd) && $this->caching == true) {
-                       echo "returned cache<br>";
+                       
                       return $this->parse_ts3_response(file_get_contents($this->cachepath."query/".$cmd));
                 }
 
-                var_dump($caching, $this->caching);
-                echo "<br>";
+               
                 $response = $this->send_raw($cmd."\n");
                 if($response === false) {
                         return false;
                 }
                 if($caching == true && $this->caching == true) {
-                    echo "refreshed cache<br>";
+                    
                     file_put_contents($this->cachepath."query/time/$cmd", time());
                     file_put_contents($this->cachepath."query/$cmd", $response);
                 }
