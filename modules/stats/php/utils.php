@@ -6,7 +6,7 @@
  */
 
 // Checks if data.xml needs a new entry
-function needNewEntry()
+function needNewEntry($configfile)
 {
     $xml = simplexml_load_file("modules/stats/cache/data.xml");
 

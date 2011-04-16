@@ -91,4 +91,3 @@ v 0.2:
 * made some changes on the TSQuery class
 * made some changes on the caching times
 * changed error reporting
- 
