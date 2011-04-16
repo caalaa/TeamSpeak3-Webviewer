@@ -3,11 +3,12 @@
  * and open the template in the editor.
  */
 
+
 // Jqplot
 $(document).ready(function(){
     
     plot = $.jqplot('stats', [line1], {
-        title:'User History',
+        title: plotoptions.title,
         axesDefaults:{
             tickSpacing: 20
         },
@@ -16,29 +17,32 @@ $(document).ready(function(){
                 autoscale: true,
                 renderer:$.jqplot.DateAxisRenderer,
                 tickOptions:{
-                    formatString: '%#H:%M'
+                    formatString: plotoptions.x_formatString
                 }
             },
             yaxis:{
                 tickInterval: 1,
                 autoscale: true,
                 tickOptions:{
-                    formatString: '%d'
+                    formatString: plotoptions.y_formatString
                 }
                 
             }
         
         },
         series:[{
-            lineWidth:4, 
+            lineWidth:plotoptions.lineWidth,
             markerOptions:{
-                style:'filledCircle'
+                style:plotoptions.style
             }
         }]
     }); 
     
     // JQuery UI Tabs workaround
-    $( "#mstabs" ).bind( "tabsshow", function(event, ui) {
-        plot.replot();
-    });
+    if(plotoptions.tab == true)
+    {
+        $( "#mstabs" ).bind( "tabsshow", function(event, ui) {
+            plot.replot();
+        });
+    }
 });

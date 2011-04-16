@@ -36,13 +36,16 @@ function addEntry($clients_online)
 }
 
 // Returns a javascript 'array' of the clienthistory
-function createJS($name, $xml)
+function createJS($name, $xml, $locale)
 {
     $js = $name . '=[';
 
     $values = array();
 
-    setlocale(LC_ALL, "de_DE.UTF8");
+    if ($locale == NULL)
+        $locale = "de_DE.UTF-8";
+
+    setlocale(LC_ALL, $locale);
 
     foreach ($xml->entry as $entry)
     {
@@ -56,6 +59,39 @@ function createJS($name, $xml)
 
 
     $js .= implode(",", $values) . '];';
+
+    return $js;
+
+}
+
+// returns the Plotoptions
+function createPlotOptions($config, $lang)
+{
+    $js = '';
+
+    $tab = "false";
+
+    if ($config['x_formatString'] == NULL)
+        $config['x_formatString'] = "%#H:%M";
+
+    if ($config['y_formatString'] == NULL)
+        $config['y_formatString'] = "%d";
+
+    if ($config['l_style'] == NULL)
+        $config['l_style'] = "filledCircle";
+
+    if ($config['use_tab'])
+        $tab = "true";
+    else
+        $tab = "false";
+
+    $js .= '    var plotoptions = {
+        "title": "' . $lang['title'] . '", 
+        "x_formatString":"' . $config['x_formatString'] . '", 
+        "y_formatString": "' . $config['y_formatString'] . '", 
+        "style": "' . $config['l_style'] . '", 
+        "tab": ' . $tab . '
+    };';
 
     return $js;
 

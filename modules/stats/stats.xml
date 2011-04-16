@@ -22,4 +22,35 @@
     <!-- If the chart should be shown in a tab -->
     <!-- Legt fest, ob das Diagramm in einem Tab angezeigt werden soll -->
     <use_tab>true</use_tab>
+    
+        
+    <!-- Height of the chart in pixels. If none the default value will be used -->
+    <!-- Höhe des Diagrammes in Pixeln. Wenn none angegeben ist wird der Standardwert verwendet -->
+    <height>none</height>
+    
+    <!-- Width of the chart in pixels. If none the default value will be used -->
+    <!-- Breite des Diagrammes in Pixeln. Wenn none angegeben ist wird der Standardwert verwendet -->
+    <width>none</width>
+    
+    <!-- How the labels at the x axes should be formatted. If none, default value will be used-->
+    <!-- Legt fest wie die Beschriftungen an der X-Achse formatiert werden sollen. Bei none wird der Standard-Wert benutzt -->
+    <!-- http://www.jqplot.com/docs/files/plugins/jqplot-dateAxisRenderer-js.html -->
+    <x_formatString>none</x_formatString>
+    
+    <!-- How the labels at the y axes should be formatted. If none, default value will be used-->
+    <!-- Legt fest wie die Beschriftungen an der Y-Achse formatiert werden sollen. Bei none wird der Standard-Wert benutzt -->
+    <!-- http://php.net/manual/en/function.sprintf.php -->
+    <y_formatString>none</y_formatString>
+    
+    <!-- Style of values in the chart. If none, default will be used -->
+    <!-- Stil von Markierungen im Diagramm. Bei none wird der Standard-Wert gesetzt -->
+    <!-- diamond, circle, square, x, plus, dash, filledDiamond, filledCircle, filledSquare -->
+    <l_style>none</l_style>
+    
+    <!-- The locale for formattin the times. If none Germany will be used -->
+    <!-- Localcode der benutzt werden soll, um die Zeiten zu berechnen. Bei none wird Deutschland benutzt -->
+    <!-- de_DE.UTF-8 -->
+    <!-- en_EN.UTF-8 -->
+    <!-- http://php.net/manual/de/function.setlocale.php -->
+    <locale>none</locale>
 </config>
