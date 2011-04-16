@@ -8,9 +8,15 @@
 // Checks if data.xml needs a new entry
 function needNewEntry($configfile)
 {
-    $xml = simplexml_load_file("modules/stats/cache/data.xml");
+    if (!file_exists("modules/stats/cache/$configfile.xml"))
+    {
+        file_put_contents("modules/stats/cache/$configfile.xml", file_get_contents("modules/stats/cache/template.xml"));
+        return true;
+    }
 
-    if ($xml->updated == "" | time() - $xml->updated >= 500)
+    $xml = simplexml_load_file("modules/stats/cache/$configfile.xml");
+
+    if ($xml->updated == '' || time() - $xml->updated >= 500)
     {
         return true;
     }
@@ -19,9 +25,9 @@ function needNewEntry($configfile)
 }
 
 // Adds an entry to the DOM
-function addEntry($clients_online)
+function addEntry($clients_online, $configfile)
 {
-    $xml = simplexml_load_file("modules/stats/cache/data.xml");
+    $xml = simplexml_load_file("modules/stats/cache/$configfile.xml");
 
     $xml->updated = (string) time();
 
@@ -29,7 +35,7 @@ function addEntry($clients_online)
     $entry->addChild('clients', $clients_online);
     $entry->addChild('timestamp', (string) time());
 
-    $handle = fopen("modules/stats/cache/data.xml", "w");
+    $handle = fopen("modules/stats/cache/$clients_online.xml", "w");
     fwrite($handle, $xml->asXML());
     fclose($handle);
 
