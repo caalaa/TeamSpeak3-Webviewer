@@ -35,7 +35,7 @@ function addEntry($clients_online, $configfile)
     $entry->addChild('clients', $clients_online);
     $entry->addChild('timestamp', (string) time());
 
-    $handle = fopen("modules/stats/cache/$clients_online.xml", "w");
+    $handle = fopen("modules/stats/cache/$configfile.xml", "w");
     fwrite($handle, $xml->asXML());
     fclose($handle);
 
