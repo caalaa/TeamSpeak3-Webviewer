@@ -1,4 +1,7 @@
-+Changelog
+#############
+# Changelog #
+#############
+
 * fix
 + Add
 ! Major Change
@@ -33,7 +36,6 @@ v 0.7
 ~ some minor tweaks for higher speed
 * changed id attribute of channels/clients to channel_<channel_id> respectively client_<client_id> so colissions are avoided
 
-
 v 0.6
 + Module: ServerInfo which shows a detailed serverinfo
 + Module: InfoTab which shows several modules as tabs
@@ -56,7 +58,6 @@ v 0.5.1
 * added arrows with transparency
 * installer shows now if writing to configfile failed (thx to baraan)
 
-
 v 0.5
 + added a module architecture
 + rewrite of the legend and the direct login as a module
@@ -64,10 +65,9 @@ v 0.5
   look at the configfiles in modules/<modulename>/<modulename>.conf for further informantions
 + added a easy to use installscript
 + full spacer support
-
 * fixed bug that spacer is parsed if it's a subchannel (thanks to optimatez for report)
 * fixed bug with broken images if iconid is 0 (patch by baaran was implemented false, my fault)
-+ added the attribut ID to channels and clients id="<name_of_the_client/channel>"
++ added the attribute ID to channels and clients id="<name_of_the_client/channel>"
 + added the Module channelHiding which hides and shows a channel by clicking on it like in TS-Client
 + added module infoDialog which shows a dialog with important info about the client
 * changed closing of image tags, should be valid html now
@@ -78,7 +78,6 @@ v 0.5
 + added support for channelicons
 * fixed many display bugs
 * rewrite of configfiles to .conf for easier use
-
 
 v 0.2:
 + added better error handling
@@ -91,4 +90,3 @@ v 0.2:
 * made some changes on the TSQuery class
 * made some changes on the caching times
 * changed error reporting
- 
