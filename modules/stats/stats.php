@@ -17,14 +17,24 @@ class stats extends ms_Module
 
         require_once 'modules/stats/php/utils.php';
 
+        
+        $configfile = '';
+
+        if (!isset($_GET['config']) || $_GET['config'] == "")
+            $configfile = "config";
+        else
+            $configfile = $_GET['config'];
+
+        
         $this->infos = $this->info;
 
-        if (needNewEntry())
+        if (needNewEntry($configfile))
         {
-            addEntry($this->getClients());
+            addEntry($this->getClients(), $configfile);
         }
 
-        $xml = simplexml_load_file("modules/stats/cache/data.xml");
+        $xml = simplexml_load_file("modules/stats/cache/$configfile.xml");
+
         // Load jQuery
         $this->mManager->loadModule("jQueryUI");
 
