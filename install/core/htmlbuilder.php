@@ -41,6 +41,8 @@ function createConfigHtml()
 {
     $html = array();
 
+    $html['selector'] = '';
+    
     if (count(getConfigFiles("../config")) == 0)
     {
         $html['selector'] = '-';
@@ -91,7 +93,9 @@ function createEditHtml()
 
     // Modules
     $modules = getModules();
-
+    
+    $html['module_html'] = '';
+    
     natcasesort($modules);
 
     foreach ($modules as $module)
@@ -123,7 +127,9 @@ function createEditHtml()
     $imagepacks = getImagePacks();
 
     natcasesort($imagepacks);
-
+    
+    $html['imagepack_html'] = '';
+    
     foreach ($imagepacks as $pack)
     {
         if ((string) $configfile->imagepack == $pack)

@@ -11,6 +11,8 @@ v 0.8
 + Module: stats - shows the history of clients online in a chart
 * Fixed translation of infoDialog if language has been added via &lang=
 + Added tooltips to the installscript for better explanation
+! The viewer can be included not via include or require (Path directivs adapted)
+* Fixed notices in the installscript. Thanks to sTimulated (http://forum.teamspeak.com)
 
 v 0.7
 + language can be switched by appending lang=<language> as get parameter (example: your.domain.tld/webviewer/?config=teamspeak1&lang=en)

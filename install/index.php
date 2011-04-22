@@ -2,6 +2,7 @@
 
 session_name("tswv");
 session_start();
+error_reporting(E_ALL);
 
 /* Author    : Maximilian Narr
  * Homepage  : http://maxesstuff.de
@@ -18,20 +19,20 @@ echo(file_get_contents("html/header.html"));
 
 // START NON OUTPUT FUCTIONS \\
 // Unsets $_SESSION['config'] and $_SESSION['config_xml']
-if ($_REQUEST['action'] == "return" && $_SESSION['validated'] == true)
+if (isset($_REQUEST['action']) && $_REQUEST['action'] == "return" && isset($_SESSION['validated']) && $_SESSION['validated'] == true)
 {
     unset($_SESSION['config']);
     unset($_SESSION['config_xml']);
 }
 
 // Sets Language
-if ($_REQUEST['action'] == "setlang" && isset($_GET['lang']))
+if (isset($_REQUEST['action']) && $_REQUEST['action'] == "setlang" && isset($_GET['lang']))
 {
     $_SESSION['lang'] = $_GET['lang'];
 }
 
 // Sets password
-if ($_REQUEST['action'] == 'setpw' && isset($_POST['password']))
+if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'setpw' && isset($_POST['password']))
 {
     // Set Password
     setPassword($_POST['password']);
@@ -39,21 +40,21 @@ if ($_REQUEST['action'] == 'setpw' && isset($_POST['password']))
 }
 
 // Creates new config-file
-if ($_REQUEST['action'] == "new_config")
+if (isset($_REQUEST['action']) && $_REQUEST['action'] == "new_config")
 {
     $_SESSION['config'] = $_REQUEST['configname'];
     $_SESSION['config_xml'] = simplexml_load_file("../config/template.xml")->asXML();
 }
 
 // Sets Configfile
-if ($_REQUEST['action'] == "set_config" && isset($_GET['configname']))
+if (isset($_REQUEST['action']) && $_REQUEST['action'] == "set_config" && isset($_GET['configname']))
 {
     $_SESSION['config'] = $_GET['configname'];
     $_SESSION['config_xml'] = simplexml_load_file("../config/" . $_SESSION['config'] . ".xml")->asXML();
 }
 
 // If password needs to be validated
-if ($_REQUEST['action'] == 'validate' && isset($_POST['password']) && passwordSetted())
+if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'validate' && isset($_POST['password']) && passwordSetted())
 {
 
     $pw = file_get_contents("pw.xml");
