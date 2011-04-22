@@ -64,6 +64,7 @@ foreach ($paths as $path)
     } //file_exists($path)
 } //$paths as $path
 
+// If no configfile is available or default.xml is not available
 if (!$config_available)
 {
     echo(file_get_contents(s_root . "html/welcome/welcome.html"));
@@ -78,23 +79,24 @@ foreach ($config as $key => $value)
         $temp = explode('_', $key, 2);
         $temp[1] = str_replace('_', ' -', $temp[1]);
         $config['cachetime'][$temp[1]] = $value;
-    } //preg_match("/^cachetime_/", $key)
+    } 
     if (preg_match("/^servergrp_images_/", $key))
     {
         $temp = explode('_', $key);
         $temp = array_pop($temp);
         $config['servergrp_images'][$temp] = $value;
-    } //preg_match("/^servergrp_images_/", $key)
+    } 
     if (preg_match("/^channelgrp_images_/", $key))
     {
         $temp = explode('_', $key);
         $temp = array_pop($temp);
         $config['channelgrp_images'][$temp] = $value;
-    } //preg_match("/^channelgrp_images_/", $key)
-} //$config as $key => $value
+    } 
+} 
 
 $config['modules'] = explode(',', $config['modules']);
 
+// Checks if the language as been submitted over the URL
 if (isset($_GET['lang']))
 {
     $lang = str_replace(".", "", $_GET['lang']);
@@ -164,8 +166,8 @@ ts3_check($query->use_by_port($config['vserverport']), 'use');
 if ($config['login_needed'])
 {
     ts3_check($query->login($config['username'], $config['password']), 'login');
-} //$config['login_needed']
-//get all needed informations
+} 
+
 $query->send_cmd("clientupdate client_nickname=" . $query->ts3query_escape($config['client_name']));
 
 $serverinfo = $query->serverinfo();
