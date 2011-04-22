@@ -97,13 +97,13 @@ class channelHiding extends ms_Module
 												$(this).siblings().fadeIn(" . $this->config['fadeIn_time'] . ");
 												$(this).children('.arrow').attr('src','" . $this->config['imagepath'] . 'arrow_normal' . $this->config['image_type'] . "');
 												$(this).attr('is_hidden','false');
-												$.get('" . msBASEDIR . "/data_manager.php',{action: 'delete', field: 'channelHiding', id: ms_id ".$append_config."});
+												$.get('" . s_http . "data_manager.php',{action: 'delete', field: 'channelHiding', id: ms_id ".$append_config."});
 											}
 											else{
 												$(this).siblings().fadeOut(" . $this->config['fadeOut_time'] . ");
 												$(this).children('.arrow').attr('src','" . $this->config['imagepath'] . 'arrow_hidden' . $this->config['image_type'] . "');
 												$(this).attr('is_hidden','true');
-												$.get('" . msBASEDIR . "/data_manager.php',{action: 'save', field: 'channelHiding', id: ms_id, data: 'true' ".$append_config."});
+												$.get('" . s_http . "data_manager.php',{action: 'save', field: 'channelHiding', id: ms_id, data: 'true' ".$append_config."});
 											}
 										});
 										$('.spacer_con').click(function() {
@@ -112,13 +112,13 @@ class channelHiding extends ms_Module
 												$(this).siblings().fadeIn(" . $this->config['fadeIn_time'] . ");
 												$(this).children('.arrow').attr('src','" . $this->config['imagepath'] . 'arrow_normal' . $this->config['image_type'] . "');
 												$(this).attr('is_hidden','false');
-												$.get('" . msBASEDIR . "/data_manager.php',{action: 'delete', field: 'channelHiding', id: ms_id ".$append_config."});
+												$.get('" . s_http . "data_manager.php',{action: 'delete', field: 'channelHiding', id: ms_id ".$append_config."});
 											}
 											else{
 												$(this).siblings().fadeOut(" . $this->config['fadeOut_time'] . ");
 												$(this).children('.arrow').attr('src','" . $this->config['imagepath'] . 'arrow_hidden' . $this->config['image_type'] . "');
 												$(this).attr('is_hidden','true');
-												$.get('" . msBASEDIR . "/data_manager.php',{action: 'save', field: 'channelHiding', id: ms_id, data: 'true' ".$append_config."});
+												$.get('" . s_http . "data_manager.php',{action: 'save', field: 'channelHiding', id: ms_id, data: 'true' ".$append_config."});
 											}
 										});
 });", 'text');

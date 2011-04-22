@@ -8,7 +8,7 @@ class js_login extends ms_Module {
         $pass_n = bool2text($this->config['have_server_pass']);
 
         $this->mManager->loadModule('jQuery');
-        $this->mManager->loadModule('js')->loadJS(msBASEDIR.'/modules/js_login/ts3_connect.js');
+        $this->mManager->loadModule('js')->loadJS(s_http.'/modules/js_login/ts3_connect.js');
 
         $prompt_serverpass = $this->lang['prompt_serverpass'];
         $prompt_nickname = $this->lang['prompt_nickname'];

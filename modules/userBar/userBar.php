@@ -15,7 +15,7 @@ class userBar extends ms_Module
         $this->mManager->loadModule("js")->loadJS('$(document).ready(function() {
                                                    $("#userBar").progressbar({
                                                    value: '.$per_cent.'
-                                                   })
+                                                   });
                                                   });',"text");
     }
 

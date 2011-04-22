@@ -102,8 +102,10 @@ if (isset($_GET['lang']))
     $config['language'] = $lang;
 }
 
-// Writes language into the sesssion
+// Writes language and pathes into the sesssion
 $_SESSION['language'] = $config['language'];
+$_SESSION['s_root'] = s_root;
+$_SESSION['s_http'] = s_http;
 
 
 $config['image_type2'] = $config['image_type'];
@@ -276,9 +278,9 @@ function render_channel_start($channel, $clientlist)
         {
             $channelimage .= 'channel';
         }
-        
+
         $channelimage .= $config['image_type'];
-        
+
         if (($channel->has_childs() || $channel->has_clients($clientlist)) && $config['show_arrows'])
         {
             $output .= '<div class="channel channel_arr" id="' . $config['prefix'] . "channel_" . htmlspecialchars($channel['cid'], ENT_QUOTES) . "\">\r\n";

@@ -4,18 +4,21 @@ error_reporting(E_ERROR);
 session_name('ms_ts3Viewer');
 session_start();
 
-require_once('../../utils.func.php');
-require_once('../../TSQuery.class.php');
+define("s_root", $_SESSION['s_root']);
+define("s_http", $_SESSION['s_http']);
+
+require_once(s_root . 'utils.func.php');
+require_once(s_root . 'TSQuery.class.php');
 
 define('msBASEDIR', dirname($_SERVER['PHP_SELF']));
 $config_name = isset($_GET['config']) ? $_GET['config'] : '';
 str_replace('/', '', $config_name);
 str_replace('.', '', $config_name);
-$paths[] = "../../config/" . $config_name . ".xml";
-$paths[] = '../../config/' . $config_name . ".conf";
-$paths[] = '../../config/config.xml';
-$paths[] = '../../config/config.conf';
-$paths[] = '../../viewer.conf';
+$paths[] = s_root . "config/" . $config_name . ".xml";
+$paths[] = s_root . 'config/' . $config_name . ".conf";
+$paths[] = s_root . 'config/config.xml';
+$paths[] = s_root . 'config/config.conf';
+$paths[] = s_root . 'viewer.conf';
 
 foreach ($paths as $path)
 {
@@ -34,11 +37,11 @@ foreach ($paths as $path)
 }
 
 // Sets the language new to be sure that the language is right
-if(isset($_SESSION['language']) && $_SESSION['language'] != "")
+if (isset($_SESSION['language']) && $_SESSION['language'] != "")
 {
     $viewer_conf['language'] = $_SESSION['language'];
 }
-        
+
 
 foreach ($viewer_conf as $key => $value)
 {
@@ -62,15 +65,15 @@ foreach ($viewer_conf as $key => $value)
     }
 }
 if ($viewer_conf['use_serverimages'] == true)
-    $viewer_conf['serverimages'] = "get_server_icon.php?config=" . $_GET['config'] . "&id=";
+    $viewer_conf['serverimages'] = s_http . "get_server_icon.php?config=" . $_GET['config'] . "&id=";
 else
-    $viewer_conf['serverimages'] = "images/" . $viewer_conf['imagepack'] . "/";
+    $viewer_conf['serverimages'] = s_http . "images/" . $viewer_conf['imagepack'] . "/";
 
 $query = new TSQuery($viewer_conf['host'], $viewer_conf['queryport'], $viewer_conf['downloadport']);
 $query->set_caching(true, 20);
 $query->use_by_port($viewer_conf['vserverport']);
-$config = parseConfigFile('./infoDialog.xml', true);
-$lang = parseLanguageFile('./' . $viewer_conf['language'] . '.i18n.xml', true);
+$config = parseConfigFile(s_root . 'modules/infoDialog/infoDialog.xml', true);
+$lang = parseLanguageFile(s_root . 'modules/infoDialog/' . $viewer_conf['language'] . '.i18n.xml', true);
 $info = $_SESSION['infoDialog']['info'];
 
 global $lang;
@@ -132,7 +135,7 @@ if ($_GET['type'] == 'client')
                 {
                     if ($image == 0)
                     {
-                        $out .= '<img src="images/serverimages/na.png" alt=""/>';
+                        $out .= '<img src="' . s_http . 'images/serverimages/na.png" alt=""/>';
                     }
                     else
                     {
@@ -152,7 +155,7 @@ if ($_GET['type'] == 'client')
                 }
                 else
                 {
-                    $out .= '<img src="images/serverimages/na.png" alt="" />';
+                    $out .= '<img src="' . s_http . 'images/serverimages/na.png" alt="" />';
                 }
                 $out .= '</td></tr>';
                 break;
@@ -182,11 +185,10 @@ if ($_GET['type'] == 'client')
 // Returns the path of the countryicons
 function getCountryIcon($country)
 {
-    $path = "modules/infoDialog/flags/";
+    $path = s_http . "modules/infoDialog/flags/";
     $country = strtolower($country);
 
     return '<img src="' . $path . $country . '.png" alt="" />';
-
 }
 
 // Returns the countryname of a two-letter countrycode
@@ -440,7 +442,6 @@ function twolettertocountry($code)
             return $value;
     }
     return $lang['no_country'];
-
 }
 
 ?>
