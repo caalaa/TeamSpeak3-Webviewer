@@ -15,7 +15,7 @@ class stats extends ms_Module
     {
         parent::__construct($config, $info, $lang, $mManager);
 
-        require_once 'modules/stats/php/utils.php';
+        require_once s_root.'modules/stats/php/utils.php';
 
         
         $configfile = '';
@@ -33,19 +33,19 @@ class stats extends ms_Module
             addEntry($this->getClients(), $configfile);
         }
 
-        $xml = simplexml_load_file("modules/stats/cache/$configfile.xml");
+        $xml = simplexml_load_file(s_root."modules/stats/cache/$configfile.xml");
 
         // Load jQuery
         $this->mManager->loadModule("jQueryUI");
 
         // Load jqplot 
-        $this->mManager->loadModule("js")->loadJS('libraries/jqplot/jquery.jqplot.min.js');
-        $this->mManager->loadModule("style")->loadStyle('libraries/jqplot/jquery.jqplot.css');
-        $this->mManager->loadModule("js")->loadJS('libraries/jqplot/plugins/jqplot.dateAxisRenderer.min.js');
+        $this->mManager->loadModule("js")->loadJS(s_http.'libraries/jqplot/jquery.jqplot.min.js');
+        $this->mManager->loadModule("style")->loadStyle(s_http.'libraries/jqplot/jquery.jqplot.css');
+        $this->mManager->loadModule("js")->loadJS(s_http.'libraries/jqplot/plugins/jqplot.dateAxisRenderer.min.js');
         $this->mManager->loadModule("js")->loadJS(createJS("line1", $xml, $this->config['locale']), 'text');
         $this->mManager->loadModule("js")->loadJS('$.jqplot.config.enablePlugins = true;', "text");
         $this->mManager->loadModule("js")->loadJs(createPlotOptions($this->config, $this->lang), "text");
-        $this->mManager->loadModule("js")->loadJS('modules/stats/js/script.js');
+        $this->mManager->loadModule("js")->loadJS(s_http.'modules/stats/js/script.js');
 
         // Height and Width
         if ($this->config['height'] == NULL)

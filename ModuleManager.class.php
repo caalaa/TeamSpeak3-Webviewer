@@ -14,7 +14,6 @@ class ms_ModuleManager
         $this->info = $info;
         $this->viewerConfig = $viewerConfig;
         $this->debug = $debug;
-
     }
 
     public function loadModule($name)
@@ -34,14 +33,14 @@ class ms_ModuleManager
 
         if ($this->moduleExists($name))
         {
-            require_once('modules/' . $name . '/' . $name . '.php');
+            require_once(s_root . 'modules/' . $name . '/' . $name . '.php');
 
             // Reading Config File \\
             // BEGIN \\
-            if (file_exists('modules/' . $name . '/' . $name . '.xml'))
-                $config_modul = parseConfigFile('modules/' . $name . '/' . $name . '.xml', true);
-            else if (file_exists('modules/' . $name . '/' . $name . '.conf'))
-                $config_modul = parseConfigFile('modules/' . $name . '/' . $name . '.conf');
+            if (file_exists(s_root . 'modules/' . $name . '/' . $name . '.xml'))
+                $config_modul = parseConfigFile(s_root . 'modules/' . $name . '/' . $name . '.xml', true);
+            else if (file_exists(s_root . 'modules/' . $name . '/' . $name . '.conf'))
+                $config_modul = parseConfigFile(s_root . 'modules/' . $name . '/' . $name . '.conf');
 
             $config = Array();
             foreach ($this->viewerConfig as $key => $value)
@@ -62,19 +61,19 @@ class ms_ModuleManager
             // Reading Language Files \\
             // START \\
             $lang = Array();
-            if (file_exists('modules/' . $name . '/' . $config['language'] . '.lang') | file_exists("modules/" . $name . "/" . $config['language'] . ".i18n.xml"))
+            if (file_exists(s_root . 'modules/' . $name . '/' . $config['language'] . '.lang') | file_exists(s_root . "modules/" . $name . "/" . $config['language'] . ".i18n.xml"))
             {
                 $languagepath = '';
                 $xml = false;
 
-                if (file_exists("modules/" . $name . "/" . $config['language'] . ".lang"))
+                if (file_exists(s_root . "modules/" . $name . "/" . $config['language'] . ".lang"))
                 {
-                    $languagepath = "modules/" . $name . "/" . $config['language'] . ".lang";
+                    $languagepath = s_root . "modules/" . $name . "/" . $config['language'] . ".lang";
                     $xml = false;
                 }
                 else
                 {
-                    $languagepath = "modules/" . $name . "/" . $config['language'] . ".i18n.xml";
+                    $languagepath = s_root . "modules/" . $name . "/" . $config['language'] . ".i18n.xml";
                     $xml = true;
                 }
 
@@ -105,25 +104,21 @@ class ms_ModuleManager
             }
             return false;
         }
-
     }
 
     public function moduleExists($name)
     {
-        return ((file_exists('modules/' . $name . '/' . $name . '.conf') | file_exists('modules/' . $name . '/' . $name . '.xml')) && file_exists('modules/' . $name . '/' . $name . '.php'));
-
+        return ((file_exists(s_root . 'modules/' . $name . '/' . $name . '.conf') | file_exists(s_root . 'modules/' . $name . '/' . $name . '.xml')) && file_exists(s_root . 'modules/' . $name . '/' . $name . '.php'));
     }
 
     public function moduleIsLoaded($name)
     {
         return (array_key_exists($name, $this->loadedModules));
-
     }
 
     public function getModule($name)
     {
         return $this->loadedModules[$name];
-
     }
 
     public function getHeaders()
@@ -134,7 +129,6 @@ class ms_ModuleManager
             $head .= $module->getHeader();
         }
         return $head;
-
     }
 
     public function getFooters()
@@ -145,7 +139,6 @@ class ms_ModuleManager
             $foot .= $module->getFooter();
         }
         return $foot;
-
     }
 
     public function triggerEvent($e)
@@ -156,7 +149,6 @@ class ms_ModuleManager
             $out .= $mod->onEvent($e);
         }
         return $out;
-
     }
 
 }

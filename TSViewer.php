@@ -1,5 +1,21 @@
 <?php
 
+// **************************************************************** \\
+// STARTING EDITABLE CONTENT                                        \\
+// **************************************************************** \\
+
+define('msBASEDIR', dirname(__FILE__) . "/");
+define("s_root", dirname(__FILE__) . "/");
+
+// Enter here the HTTP-Path of your viewer (with ending slash)
+// Geben Sie hier den HTTP-Pfad zum Viewer ein (mit Schrägstrich am Ende)
+// Example/ Beispiel: define("s_http", "http://yourdomain.com/software/viewer/ts3viewer/");
+
+define("s_http", "http://developing.maxesstuff.de/tswebviewer/maxe/inc-req/");
+
+// **************************************************************** \\
+// END EDITABLE CONTENT                                             \\
+// **************************************************************** \\
 //Debug flag causes printing more detailed information in ms_ModuleManager and TSQuery.class.php
 $debug = true;
 if ($debug)
@@ -20,17 +36,14 @@ require_once("utils.func.php");
 
 unregister_globals('_POST', '_GET', '_COOKIE', '_REQUEST', '_SERVER', '_ENV', '_FILES', '_SESSION');
 
-
-
-define('msBASEDIR', dirname($_SERVER['PHP_SELF']));
 $config_name = isset($_GET['config']) ? $_GET['config'] : '';
 str_replace('/', '', $config_name);
 str_replace('.', '', $config_name);
-$paths[] = "config/" . $config_name . ".xml";
-$paths[] = 'config/' . $config_name . ".conf";
-$paths[] = 'config/config.xml';
-$paths[] = 'config/config.conf';
-$paths[] = 'viewer.conf';
+$paths[] = s_root . "config/" . $config_name . ".xml";
+$paths[] = s_root . 'config/' . $config_name . ".conf";
+$paths[] = s_root . 'config/config.xml';
+$paths[] = s_root . 'config/config.conf';
+$paths[] = s_root . 'viewer.conf';
 
 $config_available = false;
 
@@ -53,7 +66,7 @@ foreach ($paths as $path)
 
 if (!$config_available)
 {
-    echo(file_get_contents("html/welcome/welcome.html"));
+    echo(file_get_contents(s_root . "html/welcome/welcome.html"));
     exit;
 }
 
@@ -94,21 +107,21 @@ $_SESSION['language'] = $config['language'];
 
 
 $config['image_type2'] = $config['image_type'];
-$config['imagepath'] = "images/serverimages/";
+$config['imagepath'] = s_http . "images/serverimages/";
 if ($config['use_serverimages'] == true)
 {
     if (isset($_GET['config']))
     {
-        $config['serverimages'] = "get_server_icon.php?config=" . $_GET['config'] . "&id=";
+        $config['serverimages'] = s_http . "get_server_icon.php?config=" . $_GET['config'] . "&id=";
     }
     else
     {
-        $config['serverimages'] = "get_server_icon.php?id=";
+        $config['serverimages'] = s_http . "get_server_icon.php?id=";
     }
 }
 else
 {
-    $config['serverimages'] = "images/" . $config['imagepack'] . "/";
+    $config['serverimages'] = s_http . "images/" . $config['imagepack'] . "/";
 }
 
 $config['image_type'] = '.' . $config['image_type'];
@@ -116,10 +129,10 @@ $config['client_name'] = "Maxesstuff TS3 Webviewer";
 
 
 //get all needed classes
-require_once("TSQuery.class.php");
-require_once("TSChannel.class.php");
-require_once("Module.class.php");
-require_once("ModuleManager.class.php");
+require_once(s_root . "TSQuery.class.php");
+require_once(s_root . "TSChannel.class.php");
+require_once(s_root . "Module.class.php");
+require_once(s_root . "ModuleManager.class.php");
 
 
 $output = '';
@@ -132,13 +145,16 @@ catch (Exception $e)
     die($e->getMessage());
 }
 
-if(isset($_GET['flush_cache'])) {
+if (isset($_GET['flush_cache']))
+{
     $query->set_caching(true, 0);
 }
-elseif(isset($_GET['fc'])) {
+elseif (isset($_GET['fc']))
+{
     $query->set_caching(true, 0);
 }
-else {
+else
+{
     $query->set_caching($config['enable_caching'], $config['standard_cachetime'], $config['cachetime']);
 }
 
@@ -211,7 +227,6 @@ function render_server($serverinfo, $imagepath)
 {
     global $config;
     return "<div class=\"server\"> \n <p  class=\"servername\"> <img alt=\"\" src=\"" . $imagepath . "server.png\" />" . escape_name($serverinfo['virtualserver_name']) . "</p>\r\n";
-
 }
 
 function render_client($clientinfo, $servergrouplist, $channelgrouplist)
@@ -227,18 +242,17 @@ function render_client($clientinfo, $servergrouplist, $channelgrouplist)
     {
         if ($image == 0)
             continue;
-        $rendered .= "<img alt=\"\" class=\"img_r\" src=\"" . msBASEDIR . '/' . $config['serverimages'] . $image . "\"/>";
+        $rendered .= "<img alt=\"\" class=\"img_r\" src=\"" . $config['serverimages'] . $image . "\"/>";
     } //get_servergroup_images($clientinfo, $servergrouplist, $config['use_serverimages'], $config['servergrp_images']) as $image
     $channelgroup_icon = get_channelgroup_image($clientinfo, $channelgrouplist, $config['use_serverimages'], $config['channelgrp_images']);
     if ($channelgroup_icon != 0)
     {
-        $rendered .= "<img alt=\"\" class=\"img_r\" src=\"" . msBASEDIR . '/' . $config['serverimages'] . $channelgroup_icon . "\"/>";
+        $rendered .= "<img alt=\"\" class=\"img_r\" src=\"" . $config['serverimages'] . $channelgroup_icon . "\"/>";
     } //$channelgroup_icon != 0
     $rendered .= '<img alt="" style="margin-right:4px;" src="' . $config['imagepath'] . get_client_image($clientinfo) . $config['image_type'];
     $rendered .= '"/>' . escape_name($clientinfo['client_nickname']);
     $rendered .= "\r\n</p>";
     return $rendered;
-
 }
 
 function render_channel_start($channel, $clientlist)
@@ -262,7 +276,9 @@ function render_channel_start($channel, $clientlist)
         {
             $channelimage .= 'channel';
         }
+        
         $channelimage .= $config['image_type'];
+        
         if (($channel->has_childs() || $channel->has_clients($clientlist)) && $config['show_arrows'])
         {
             $output .= '<div class="channel channel_arr" id="' . $config['prefix'] . "channel_" . htmlspecialchars($channel['cid'], ENT_QUOTES) . "\">\r\n";
@@ -357,7 +373,6 @@ function render_channel_start($channel, $clientlist)
     }
 
     return $output;
-
 }
 
 // Renders the Channels
@@ -402,5 +417,4 @@ function render_channellist($channellist, $clientlist, $servergroups, $channelgr
     } //$channellist as $channel
 
     return $output;
-
 }

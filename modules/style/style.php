@@ -6,9 +6,9 @@ class style extends ms_Module {
 	function __construct($config,$info,$lang,$mManager) {
 		parent::__construct($config,$info,$lang,$mManager);
 		$this->styles_sent = false;
-		if(!file_exists('styles/'.$config['style'].'.css'))
+		if(!file_exists(s_root.'styles/'.$config['style'].'.css'))
 			die('style_not_found');
-		$this->config['style'] = msBASEDIR.'/styles/'.$config['style'].'.css';
+		$this->config['style'] = s_http.'styles/'.$config['style'].'.css';
 		$this->text = "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$this->config['style']."\" >\r\n";
 	}
 
