@@ -4,4 +4,5 @@
 /config/config.xml
 /config/maxesstuff.xml
 /config/ghs.xml
-/nbproject/private/
+/nbproject/
+/test/

@@ -1,8 +1,6 @@
 <?php
-
 session_name("tswv");
 session_start();
-error_reporting(E_ALL);
 
 /* Author    : Maximilian Narr
  * Homepage  : http://maxesstuff.de

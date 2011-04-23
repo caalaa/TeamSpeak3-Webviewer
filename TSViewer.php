@@ -1,4 +1,7 @@
 <?php
+// Start Session
+session_name('ms_ts3Viewer');
+session_start();
 
 // **************************************************************** \\
 // STARTING EDITABLE CONTENT                                        \\
@@ -10,12 +13,32 @@ define("s_root", dirname(__FILE__) . "/");
 // Enter here the HTTP-Path of your viewer (with ending slash)
 // Geben Sie hier den HTTP-Pfad zum Viewer ein (mit Schrägstrich am Ende)
 // Example/ Beispiel: define("s_http", "http://yourdomain.com/software/viewer/ts3viewer/");
-
-define("s_http", "http://developing.maxesstuff.de/tswebviewer/maxe/inc-req/");
+// It it strongly recommended to set the path, else the viewer may nor work properly
+// Wir empfehlen dringend, diesesn Pfad zu setzen, da der Viewer sonst eventuell nicht funktionieren wird
+$serveradress = "";
 
 // **************************************************************** \\
 // END EDITABLE CONTENT                                             \\
 // **************************************************************** \\
+ 
+// If s_http is not defined or empty, $_SERVER['HTTP_REFERER'] will be used (not 100% secure)
+// http://php.net/manual/de/reserved.variables.server.php
+
+if(!isset($serveradress) || $serveradress == "")
+{
+    $url = str_replace($_SERVER['DOCUMENT_ROOT'], "", __FILE__);   
+    $url_full = "http://".$_SERVER['SERVER_NAME'].$url;
+    
+    $url_full = str_replace("TSViewer.php", "", $url_full);
+    $url_full = str_replace("index.php", "", $url_full);
+    
+    define("s_http", $url_full);
+}
+else
+{
+    define("s_http", $serveradress);
+}
+
 //Debug flag causes printing more detailed information in ms_ModuleManager and TSQuery.class.php
 $debug = true;
 if ($debug)
@@ -26,11 +49,6 @@ else
 }
 
 $start = microtime(true);
-
-//own session for avoiding collisions with other scripts
-session_name('ms_ts3Viewer');
-session_start();
-
 
 require_once("utils.func.php");
 
