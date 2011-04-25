@@ -15,8 +15,7 @@
     <queryport></queryport>
     <!-- Port of the server over which you are connecting to it via client (Default: 9987) -->
     <vserverport></vserverport>
-    <!-- Downloadport of your server (Default: 30033) -->
-    <downloadport></downloadport>
+    
 
 
     <!-- Credentials -->
