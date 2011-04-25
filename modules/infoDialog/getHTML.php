@@ -69,7 +69,7 @@ if ($viewer_conf['use_serverimages'] == true)
 else
     $viewer_conf['serverimages'] = s_http . "images/" . $viewer_conf['imagepack'] . "/";
 
-$query = new TSQuery($viewer_conf['host'], $viewer_conf['queryport'], $viewer_conf['downloadport']);
+$query = new TSQuery($viewer_conf['host'], $viewer_conf['queryport']);
 $query->set_caching(true, 20);
 $query->use_by_port($viewer_conf['vserverport']);
 $config = parseConfigFile(s_root . 'modules/infoDialog/infoDialog.xml', true);
@@ -131,6 +131,7 @@ if ($_GET['type'] == 'client')
                 $out .= '<tr>';
                 $out .= '<td class="label">' . $lang['Servergroup'] . ':</td>';
                 $out .= '<td>';
+                
                 foreach (get_servergroup_images($user, $info['servergroups'], $viewer_conf['use_serverimages'], $viewer_conf['servergrp_images']) as $image)
                 {
                     if ($image == 0)
