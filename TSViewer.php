@@ -167,11 +167,12 @@ catch (Exception $e)
     die($e->getMessage());
 }
 
-if (isset($_GET['flush_cache']))
+
+if (isset($_GET['flush_cache']) && isset($config['enable_cache_flushing']) && $config['enable_cache_flushing'] === true )
 {
     $query->set_caching(true, 0);
 }
-elseif (isset($_GET['fc']))
+elseif (isset($_GET['fc']) && isset($config['enable_cache_flushing']) && $config['enable_cache_flushing'] === true)
 {
     $query->set_caching(true, 0);
 }
