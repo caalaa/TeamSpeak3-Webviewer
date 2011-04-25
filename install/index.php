@@ -115,7 +115,6 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
     $xml->host = $_POST['serveradress'];
     $xml->queryport = $_POST['queryport'];
     $xml->vserverport = $_POST['serverport'];
-    $xml->downloadport = $_POST['downloadport'];
     $xml->login_needed = $_POST['login_needed'];
     $xml->username = $_POST['username'];
     $xml->password = $_POST['password'];
