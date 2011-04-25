@@ -163,6 +163,7 @@ class TSQuery {
             $ret = $this->ts3_to_hash($ret['return']);
             $key = $this->ts3query_unescape($ret['ftkey']);
             $size = $ret['size'];
+            $this->ftport = $ret['port'];
             if($this->ftconn == NULL)
                     $this->ftconn = fsockopen($this->ip, $this->ftport);
             if($this->ftconn == false)
