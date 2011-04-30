@@ -181,11 +181,13 @@ else
     $query->set_caching($config['enable_caching'], $config['standard_cachetime'], $config['cachetime']);
 }
 
-ts3_check($query->use_by_port($config['vserverport']), 'use');
 if ($config['login_needed'])
 {
     ts3_check($query->login($config['username'], $config['password']), 'login');
 } 
+
+ts3_check($query->use_by_port($config['vserverport']), 'use');
+
 
 $query->send_cmd("clientupdate client_nickname=" . $query->ts3query_escape($config['client_name']));
 
