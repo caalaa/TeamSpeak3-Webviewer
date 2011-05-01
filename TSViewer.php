@@ -223,8 +223,8 @@ catch (Exception $e)
 
 
 
+// Flush caches | Caching
 if (isset($_GET['flush_cache']) && isset($config['enable_cache_flushing']) && $config['enable_cache_flushing'] === true )
-
 {
     $query->set_caching(true, 0);
 }
