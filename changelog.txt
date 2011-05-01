@@ -13,6 +13,7 @@ v 0.8
 + Added tooltips to the installscript for better explanation
 ! The viewer can be included not via include or require (Path directivs adapted)
 * Fixed notices in the installscript. Thanks to sTimulated (http://forum.teamspeak.com)
+* Downloadport is now automaticaly detected
 
 v 0.7
 + language can be switched by appending lang=<language> as get parameter (example: your.domain.tld/webviewer/?config=teamspeak1&lang=en)
