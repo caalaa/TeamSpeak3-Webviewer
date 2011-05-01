@@ -106,7 +106,7 @@ if (!isset($_SESSION['config']) || $_SESSION['config'] == "")
 }
 
 // If password is setted and has been entered and Configfile and Language is setted and Configfile should be written
-if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['config']) && isset($_SESSION['lang']) && $_REQUEST['action'] == "submit")
+if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['config']) && isset($_SESSION['lang']) && isset($_REQUEST['action']) && $_REQUEST['action'] == "submit")
 {
     str_replace(".xml", "", $_SESSION['config_xml']);
 
