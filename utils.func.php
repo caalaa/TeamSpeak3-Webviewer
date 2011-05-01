@@ -165,8 +165,10 @@ function get_servergroup_images($client, $servergroups, $use_serverimages = fals
         }
         else
         {
+           
             foreach ($servergroups as $sgroup)
             {
+               
                 if ((int) $sgroup['sgid'] == (int) $group)
                 {
 

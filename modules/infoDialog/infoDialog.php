@@ -12,6 +12,7 @@ class infoDialog extends ms_Module
         $this->mManager->loadModule('jQueryUI');
         $this->mManager->loadModule('js')->loadJS(s_http . 'modules/infoDialog/utils.js');
         $_SESSION['infoDialog']['info']['clientlist'] = $this->info['clientlist'];
+        $_SESSION['infoDialog']['info']['servergroups'] = $this->info['servergroups'];
         $dialog_conf = "{
 				autoOpen: false,
 				title: ms_title,

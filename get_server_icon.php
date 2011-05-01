@@ -34,7 +34,7 @@ else {
 
 include "./TSQuery.class.php";
 
-    $query = new TSQuery($config['host'], $config['queryport'], $config['downloadport']);
+    $query = new TSQuery($config['host'], $config['queryport']);
     $query->use_by_port($config['vserverport']);
     
     $img =  $query->download("/icon_".$_GET['id'],0);
