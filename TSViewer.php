@@ -71,7 +71,7 @@ foreach ($paths as $path)
         if (substr($path, -4) == ".xml")
         {
             $config = parseConfigFile($path, true);
-        } //substr($path, -4) == ".xml"
+        } 
         else
         {
             $config = parseConfigFile($path, false);
@@ -83,7 +83,7 @@ foreach ($paths as $path)
 
 // WELCOME SCREEN START \\
 // If no configfile is available
-if(!isset($_GET['config']) || isset($_GET['fc']) || isset($_GET['flush_cache']) || $config_available == false)
+if((!isset($_GET['config']) || isset($_GET['fc']) || isset($_GET['flush_cache'])) && $config_available == false)
 {
     require_once s_root . 'install/core/xml.php';
 

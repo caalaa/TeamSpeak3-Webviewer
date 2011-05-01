@@ -9,7 +9,9 @@ class style extends ms_Module {
 		if(!file_exists(s_root.'styles/'.$config['style'].'.css'))
 			die('style_not_found');
 		$this->config['style'] = s_http.'styles/'.$config['style'].'.css';
+                $this->config['style_ie'] = s_http .'styles/'.$config['style'].'_ie.css';
 		$this->text = "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$this->config['style']."\" >\r\n";
+                $this->text .= '<!--[if IE]><link rel="stylesheet" type="text/css" href="'.$this->config['style_ie'].'"><![endif]-->';
 	}
 
 	public function loadStyle($text,$type='file') {
