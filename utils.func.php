@@ -1,6 +1,7 @@
 <?php
 
-function sort_clients($l) {
+function sort_clients($l)
+{
     return $l;
 }
 
@@ -23,7 +24,6 @@ function ts3_check($response, $cmd='')
             die('Error code ' . $response['error']['id'] . ' while executing command "' . $cmd . "\"<br> Error Message:  \"" . $response['error']['msg'] . '"');
         }
     }
-
 }
 
 function parse_spacer($channel)
@@ -59,13 +59,11 @@ function parse_spacer($channel)
 
         return $ret;
     }
-
 }
 
 function escape_name($name)
 {
     return utf8tohtml($name, true);
-
 }
 
 //function from php.net
@@ -120,7 +118,6 @@ function utf8tohtml($utf8, $encodeTags=true)
         }
     }
     return $result;
-
 }
 
 function get_client_image($client)
@@ -148,7 +145,6 @@ function get_client_image($client)
         return "client_cm_talking";
 
     return "normal_client";
-
 }
 
 function get_servergroup_images($client, $servergroups, $use_serverimages = false, $servergrpimages = FALSE)
@@ -182,7 +178,6 @@ function get_servergroup_images($client, $servergroups, $use_serverimages = fals
         }
     }
     return $ret;
-
 }
 
 function get_channelgroup_image($client, $channelgroups, $use_serverimages = false, $channelgrpimages = NULL)
@@ -205,7 +200,6 @@ function get_channelgroup_image($client, $channelgroups, $use_serverimages = fal
             }
         }
     }
-
 }
 
 function del_by_cid($channellist, $cid)
@@ -216,7 +210,6 @@ function del_by_cid($channellist, $cid)
             unset($channellist[$key]);
     }
     return $channellist;
-
 }
 
 // Parses a Config-File: Either a *.txt or a *.xml
@@ -226,7 +219,6 @@ function parseConfigFile($file, $xml=false)
         return parseConfigFileText($file);
     else
         return parseConfigFileXML($file);
-
 }
 
 // Parses a Text-Config-File and returns its values as an array
@@ -260,7 +252,6 @@ function parseConfigFileText($file)
     }
     fclose($fp);
     return $array;
-
 }
 
 // Parses a XML-Config-File and returns its values as an array
@@ -290,7 +281,6 @@ function parseConfigFileXML($file)
         $config[$key] = $value;
     }
     return $config;
-
 }
 
 // Parses a Config-File: Either a *.txt or a *.xml
@@ -300,7 +290,6 @@ function parseLanguageFile($file, $xml=false)
         return parseLanguageFileText($file);
     else
         return parseConfigFileXML($file);
-
 }
 
 // Parses a text-language-file and returns its values as an array
@@ -323,7 +312,6 @@ function parseLanguageFileText($file)
     }
     fclose($fp);
     return $array;
-
 }
 
 // Parses a xml-language-file and returns its values as an array
@@ -338,7 +326,6 @@ function parseLanguageFileXML($file)
         $config[$key] = $value;
     }
     return $config;
-
 }
 
 // function from php.net thanks to bohwaz
@@ -357,7 +344,6 @@ function unregister_globals()
                 unset($GLOBALS[$key]);
         }
     }
-
 }
 
 // Converts boolean to text
@@ -371,7 +357,6 @@ function bool2text($var)
     {
         return 'false';
     }
-
 }
 
 function getUserByName($clientlist, $name)
@@ -384,7 +369,6 @@ function getUserByName($clientlist, $name)
         }
     }
     return NULL;
-
 }
 
 function getUserByID($clientlist, $id)
@@ -397,14 +381,50 @@ function getUserByID($clientlist, $id)
         }
     }
     return NULL;
-
 }
 
-// Outputs an Altert
+// Outputs an Alert
 // @todo Add Code
 function throwAlert($message)
 {
     
+}
+
+// Outputs a Warning
+// @todo Add Code
+function throwWarning($message)
+{
+    
+}
+
+// Replaces {} in the Code with the given data
+function replaceValues($file, $values, $languagefile)
+{
+    $data = array();
+    $lang = simplexml_load_file($languagefile);
+
+    if ($values != NULL)
+    {
+        (array) $data = array_merge((array) $lang, (array) $values);
+    }
+    else
+    {
+        $data = (array) $lang;
+    }
+
+    $html = file_get_contents($file);
+
+    $matches = array();
+    preg_match_all("/{.*?}/", $html, $matches);
+
+    foreach ($matches[0] as $match)
+    {
+        $match_raw = $match;
+        $match_norm = preg_replace("/[{}]/", "", strtolower($match_raw));
+
+        $html = str_replace($match_raw, (string) $data[$match_norm], $html);
+    }
+    return $html;
 }
 
 ?>

@@ -1,4 +1,5 @@
 <?php
+
 // Start Session
 session_name('ms_ts3Viewer');
 session_start();
@@ -12,7 +13,7 @@ define("s_root", dirname(__FILE__) . "/");
 
 // Enter here the HTTP-Path of your viewer (with ending slash)
 // Geben Sie hier den HTTP-Pfad zum Viewer ein (mit Schrägstrich am Ende)
-// Example/ Beispiel: define("s_http", "http://yourdomain.com/software/viewer/ts3viewer/");
+// Example/ Beispiel: $serveradress = "http://yourdomain.com/software/viewer/ts3viewer/";
 // It it strongly recommended to set the path, else the viewer may nor work properly
 // Wir empfehlen dringend, diesesn Pfad zu setzen, da der Viewer sonst eventuell nicht funktionieren wird
 $serveradress = "";
@@ -20,18 +21,17 @@ $serveradress = "";
 // **************************************************************** \\
 // END EDITABLE CONTENT                                             \\
 // **************************************************************** \\
- 
 // If s_http is not defined or empty, $_SERVER['HTTP_REFERER'] will be used (not 100% secure)
 // http://php.net/manual/de/reserved.variables.server.php
 
-if(!isset($serveradress) || $serveradress == "")
+if (!isset($serveradress) || $serveradress == "")
 {
-    $url = str_replace($_SERVER['DOCUMENT_ROOT'], "", __FILE__);   
-    $url_full = "http://".$_SERVER['SERVER_NAME'].$url;
-    
+    $url = str_replace($_SERVER['DOCUMENT_ROOT'], "", __FILE__);
+    $url_full = "http://" . $_SERVER['SERVER_NAME'] . $url;
+
     $url_full = str_replace("TSViewer.php", "", $url_full);
     $url_full = str_replace("index.php", "", $url_full);
-    
+
     define("s_http", $url_full);
 }
 else
@@ -63,8 +63,6 @@ $paths[] = s_root . 'config/config.xml';
 $paths[] = s_root . 'config/config.conf';
 $paths[] = s_root . 'viewer.conf';
 
-$config_available = false;
-
 foreach ($paths as $path)
 {
     if (file_exists($path))
@@ -77,18 +75,74 @@ foreach ($paths as $path)
         {
             $config = parseConfigFile($path, false);
         }
-        $config_available = true;
         break;
-    } //file_exists($path)
-} //$paths as $path
-
-// If no configfile is available or default.xml is not available
-if (!$config_available)
-{
-    echo(file_get_contents(s_root . "html/welcome/welcome.html"));
-    exit;
+    }
 }
 
+// WELCOME SCREEN START \\
+// If no configfile is available
+if(!isset($_GET['config']) || isset($_GET['fc']) || isset($_GET['flush_cache']))
+{
+    require_once s_root . 'install/core/xml.php';
+
+    if (count(getConfigFiles(s_root . 'config')) == 0)
+    {
+        require_once (s_root . "utils.func.php");
+
+        if (isset($_GET['lang']) && $_GET['lang'] = "de")
+        {
+            $values['set_status'] = 'Anscheinend haben Sie den Viewer noch nicht konfiguriert. Bitte führen Sie die <a href="' . s_http . 'install/index.php">Installationsroutine</a> aus.';
+            $values['config'] = 'Keine Konfigurationsdateien verfügbar.';
+            echo(replaceValues(s_root . "html/welcome/welcome.html", $values, s_root . "html/welcome/de.i18n.xml"));
+        }
+        else
+        {
+            $values['set_status'] = 'Apparently you didn\'t set up the Viewer yet. Please run the <a href="' . s_http . 'install/index.php">Installscript</a>.';
+            $values['configs'] = 'No Configfiles available.';
+            echo(replaceValues(s_root . "html/welcome/welcome.html", $values, s_root . "html/welcome/en.i18n.xml"));
+        }
+
+        exit;
+    }
+    else
+    {
+        $configfiles = getConfigFiles(s_root . 'config');
+
+        if (isset($_GET['lang']) && $_GET['lang'] = "de")
+        {
+            $values['set_status'] = 'Unten können Sie eine Liste Ihrer Konfigurationsdateien sehen. Sollten Sie weiter hinzufügen wollen, führen Sie die <a href="' . s_http . 'install/index.php">Installationsroutine</a> aus.';
+
+            $html = '<ul>';
+
+            foreach ($configfiles as $file)
+            {
+                $html .= '<li><a href="' . s_http . 'TSViewer.php?config=' . $file . '">' . $file . '</a></li>';
+            }
+
+            $html .= '</ul>';
+
+            $values['configs'] = $html;
+            echo(replaceValues(s_root . "html/welcome/welcome.html", $values, s_root . "html/welcome/de.i18n.xml"));
+        }
+        else
+        {
+            $values['set_status'] = 'You can see a list of your config files below. If you want to add more, run the <a href="' . s_http . 'install/index.php">install script</a>.';
+
+            $html = '<ul>';
+
+            foreach ($configfiles as $file)
+            {
+                $html .= '<li><a href="' . s_http . 'TSViewer.php?config=' . $file . '">' . $file . '</a></li>';
+            }
+
+            $html .= '</ul>';
+
+            $values['configs'] = $html;
+            echo(replaceValues(s_root . "html/welcome/welcome.html", $values, s_root . "html/welcome/en.i18n.xml"));
+        }
+    }
+}
+// WELCOME SCREEN END \\
 //postparsing of configfile 
 foreach ($config as $key => $value)
 {
@@ -97,20 +151,20 @@ foreach ($config as $key => $value)
         $temp = explode('_', $key, 2);
         $temp[1] = str_replace('_', ' -', $temp[1]);
         $config['cachetime'][$temp[1]] = $value;
-    } 
+    }
     if (preg_match("/^servergrp_images_/", $key))
     {
         $temp = explode('_', $key);
         $temp = array_pop($temp);
         $config['servergrp_images'][$temp] = $value;
-    } 
+    }
     if (preg_match("/^channelgrp_images_/", $key))
     {
         $temp = explode('_', $key);
         $temp = array_pop($temp);
         $config['channelgrp_images'][$temp] = $value;
-    } 
-} 
+    }
+}
 
 $config['modules'] = explode(',', $config['modules']);
 
@@ -168,7 +222,9 @@ catch (Exception $e)
 }
 
 
+
 if (isset($_GET['flush_cache']) && isset($config['enable_cache_flushing']) && $config['enable_cache_flushing'] === true )
+
 {
     $query->set_caching(true, 0);
 }
@@ -181,10 +237,11 @@ else
     $query->set_caching($config['enable_caching'], $config['standard_cachetime'], $config['cachetime']);
 }
 
+
 if ($config['login_needed'])
 {
     ts3_check($query->login($config['username'], $config['password']), 'login');
-} 
+}
 
 ts3_check($query->use_by_port($config['vserverport']), 'use');
 
@@ -213,7 +270,7 @@ $query->quit();
 foreach ($channellist['return'] as $key => $channel)
 {
     $channellist_obj[$key] = new TSChannel($channellist['return'], $channel['cid']);
-} //$channellist['return'] as $key => $channel
+}
 $info = Array(
     'serverinfo' => $serverinfo['return'],
     'channellist' => $channellist_obj,

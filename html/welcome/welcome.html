@@ -7,7 +7,7 @@
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
         <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/redmond/jquery-ui.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.js"></script>
-        
+
         <style type="text/css">
             div
             {
@@ -20,47 +20,62 @@
                 text-align: center;
                 margin-bottom: 8px;
             }
-            
+
             p
             {
-                font-size: 16px;
+                font-size: 12px;
             }
-            
+
             .ui-widget
             {
-                width:600px;
+                width: 1000px;
+                height: 1000px;
+            }
+
+            #wrapper
+            {
+                height: 500px;
+                padding: 5px;
+                padding-right: 10px;
+            }
+            
+            #facebook
+            {
+                float:left;
+                margin-right: 5px;
+                width: 310px;
+            }
+            
+            iframe
+            {
+                background-color: white;
             }
         </style>
     </head>
     <body>
         <div class="ui-widget">
             <div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;"> 
-                <p class="header">Welcome to the Maxesstuff TeamSpeak3 Webviewer</p>
-                <p>It seems that you didn't set up the viewer yet. To do that please run the installscript first:</p>
-                <p><a href="install/index.php">Run Installscript</a></p>
-                <br>
-                <p>If you need more help, feel free to contact us <a href="http://support.maxesstuff.de">here</a> 
-                    or take a look for our <a href="http://maxesstuff.de">FAQ-Section.</a></p>
-                <p>The Viewer has been realized with the help of:</p>
-                <p><a href="http://jquery.com"><img src="html/welcome/jquery.png" alt="" /></a> <a href="http://jqueryui.com"><img src="html/welcome/jqueryui.png" alt="" /></a></p>
-                <br>
-                <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fmaxesstuff&amp;width=300&amp;colorscheme=light&amp;show_faces=false&amp;stream=false&amp;header=false&amp;height=62" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:62px;" allowTransparency="true"></iframe>
+                <div id="wrapper">
+                    <div id="facebook">
+                        <p>{FACEBOOK}</p>
+                        <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fmaxesstuff&amp;width=292&amp;colorscheme=light&amp;show_faces=true&amp;stream=true&amp;header=true&amp;height=427" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:427px;"></iframe>
+                    </div>
+                    <p class="header">{HEADER}</p>
+                    <br>
+                    <p><a href="?lang=en">English</a></p>
+                    <p><a href="?lang=de">Deutsch</a></p>
+                    <br>
+                    <p>{SET_STATUS}</p>
+                    <p></p>
+                    <p>{CONFIG_STATUS}</p>
+                    <p>{CONFIGS}</p>
+                    <br>
+                    <p>{HELP}</p>
+                    <p><a href="http://support.maxesstuff.de">Livesupport</a></p>
+                    <p><a href="http://de.maxesstuff.de/teamspeak3-webviewer/faq">FAQ</a></p>
+                </div>
             </div>
         </div>
         <br>
-        <div class="ui-widget">
-            <div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;"> 
-                                <p class="header">Willkommen zum Maxesstuff TeamSpeak3 Webviewer</p>
-                <p>Anscheinend haben Sie den Viewer noch nicht installiert. Bitte führen Sie dazu die Installationsroutine aus:</p>
-                <p><a href="install/index.php">Installationsroutine ausführen</a></p>
-                <br>
-                <p>Sollen Sie weitere Hilfe benötigen, so kontaktieren Sie uns <a href="http://support.maxesstuff.de">hier</a> 
-                    oder sehen Sie sich unseren <a href="http://maxesstuff.de">FAQ-Bereich</a> an.</p>
-                <p>Der Viewer wurde unter Anderem realisiert mit:</p>
-                <p><a href="http://jquery.com"><img src="html/welcome/jquery.png" alt="" /></a> <a href="http://jqueryui.com"><img src="html/welcome/jqueryui.png" alt="" /></a></p>
-                <br>
-                <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fmaxesstuff&amp;width=300&amp;colorscheme=light&amp;show_faces=false&amp;stream=false&amp;header=false&amp;height=62" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:62px;" allowTransparency="true"></iframe>
-            </div>
-        </div>
     </body>
 </html>
