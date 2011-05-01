@@ -63,6 +63,7 @@ $paths[] = s_root . 'config/config.xml';
 $paths[] = s_root . 'config/config.conf';
 $paths[] = s_root . 'viewer.conf';
 
+$config_available = false;
 foreach ($paths as $path)
 {
     if (file_exists($path))
@@ -76,12 +77,13 @@ foreach ($paths as $path)
             $config = parseConfigFile($path, false);
         }
         break;
+        $config_available = true;
     }
 }
 
 // WELCOME SCREEN START \\
 // If no configfile is available
-if(!isset($_GET['config']) || isset($_GET['fc']) || isset($_GET['flush_cache']))
+if(!isset($_GET['config']) || isset($_GET['fc']) || isset($_GET['flush_cache']) || $config_available == false)
 {
     require_once s_root . 'install/core/xml.php';
 
@@ -236,8 +238,6 @@ else
     $query->set_caching($config['enable_caching'], $config['standard_cachetime'], $config['cachetime']);
 }
 
-
-ts3_check($query->use_by_port($config['vserverport']), 'use');
 if ($config['login_needed'])
 {
     ts3_check($query->login($config['username'], $config['password']), 'login');
