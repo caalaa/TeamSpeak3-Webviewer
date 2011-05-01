@@ -81,62 +81,65 @@ foreach ($paths as $path)
 
 // WELCOME SCREEN START \\
 // If no configfile is available
-require_once s_root . 'install/core/xml.php';
-
-if (count(getConfigFiles(s_root . 'config')) == 0)
+if(!isset($_GET['config']) || isset($_GET['fc']) || isset($_GET['flush_cache']))
 {
-    require_once (s_root . "utils.func.php");
+    require_once s_root . 'install/core/xml.php';
 
-    if (isset($_GET['lang']) && $_GET['lang'] = "de")
+    if (count(getConfigFiles(s_root . 'config')) == 0)
     {
-        $values['set_status'] = 'Anscheinend haben Sie den Viewer noch nicht konfiguriert. Bitte führen Sie die <a href="' . s_http . 'install/index.php">Installationsroutine</a> aus.';
-        $values['config'] = 'Keine Konfigurationsdateien verfügbar.';
-        echo(replaceValues(s_root . "html/welcome/welcome.html", $values, s_root . "html/welcome/de.i18n.xml"));
+        require_once (s_root . "utils.func.php");
+
+        if (isset($_GET['lang']) && $_GET['lang'] = "de")
+        {
+            $values['set_status'] = 'Anscheinend haben Sie den Viewer noch nicht konfiguriert. Bitte führen Sie die <a href="' . s_http . 'install/index.php">Installationsroutine</a> aus.';
+            $values['config'] = 'Keine Konfigurationsdateien verfügbar.';
+            echo(replaceValues(s_root . "html/welcome/welcome.html", $values, s_root . "html/welcome/de.i18n.xml"));
+        }
+        else
+        {
+            $values['set_status'] = 'Apparently you didn\'t set up the Viewer yet. Please run the <a href="' . s_http . 'install/index.php">Installscript</a>.';
+            $values['configs'] = 'No Configfiles available.';
+            echo(replaceValues(s_root . "html/welcome/welcome.html", $values, s_root . "html/welcome/en.i18n.xml"));
+        }
+
+        exit;
     }
     else
     {
-        $values['set_status'] = 'Apparently you didn\'t set up the Viewer yet. Please run the <a href="' . s_http . 'install/index.php">Installscript</a>.';
-        $values['configs'] = 'No Configfiles available.';
-        echo(replaceValues(s_root . "html/welcome/welcome.html", $values, s_root . "html/welcome/en.i18n.xml"));
-    }
+        $configfiles = getConfigFiles(s_root . 'config');
 
-    exit;
-}
-else
-{
-    $configfiles = getConfigFiles(s_root . 'config');
-
-    if (isset($_GET['lang']) && $_GET['lang'] = "de")
-    {
-        $values['set_status'] = 'Unten können Sie eine Liste Ihrer Konfigurationsdateien sehen. Sollten Sie weiter hinzufügen wollen, führen Sie die <a href="' . s_http . 'install/index.php">Installationsroutine</a> aus.';
-
-        $html = '<ul>';
-
-        foreach ($configfiles as $file)
+        if (isset($_GET['lang']) && $_GET['lang'] = "de")
         {
-            $html .= '<li><a href="' . s_http . 'TSViewer.php?config=' . $file . '">' . $file . '</a></li>';
+            $values['set_status'] = 'Unten können Sie eine Liste Ihrer Konfigurationsdateien sehen. Sollten Sie weiter hinzufügen wollen, führen Sie die <a href="' . s_http . 'install/index.php">Installationsroutine</a> aus.';
+
+            $html = '<ul>';
+
+            foreach ($configfiles as $file)
+            {
+                $html .= '<li><a href="' . s_http . 'TSViewer.php?config=' . $file . '">' . $file . '</a></li>';
+            }
+
+            $html .= '</ul>';
+
+            $values['configs'] = $html;
+            echo(replaceValues(s_root . "html/welcome/welcome.html", $values, s_root . "html/welcome/de.i18n.xml"));
         }
-
-        $html .= '</ul>';
-
-        $values['configs'] = $html;
-        echo(replaceValues(s_root . "html/welcome/welcome.html", $values, s_root . "html/welcome/de.i18n.xml"));
-    }
-    else
-    {
-        $values['set_status'] = 'You can see a list of your config files below. If you want to add more, run the <a href="' . s_http . 'install/index.php">install script</a>.';
-
-        $html = '<ul>';
-
-        foreach ($configfiles as $file)
+        else
         {
-            $html .= '<li><a href="' . s_http . 'TSViewer.php?config=' . $file . '">' . $file . '</a></li>';
+            $values['set_status'] = 'You can see a list of your config files below. If you want to add more, run the <a href="' . s_http . 'install/index.php">install script</a>.';
+
+            $html = '<ul>';
+
+            foreach ($configfiles as $file)
+            {
+                $html .= '<li><a href="' . s_http . 'TSViewer.php?config=' . $file . '">' . $file . '</a></li>';
+            }
+
+            $html .= '</ul>';
+
+            $values['configs'] = $html;
+            echo(replaceValues(s_root . "html/welcome/welcome.html", $values, s_root . "html/welcome/en.i18n.xml"));
         }
-
-        $html .= '</ul>';
-
-        $values['configs'] = $html;
-        echo(replaceValues(s_root . "html/welcome/welcome.html", $values, s_root . "html/welcome/en.i18n.xml"));
     }
 }
 // WELCOME SCREEN END \\
