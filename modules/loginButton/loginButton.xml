@@ -23,9 +23,13 @@
     <!-- Wenn true, kann der Benutzer einen Benutzernamen vor dem Verbinden wählen -->
     <prompt_username>true</prompt_username>
     
-    <!-- If your server has a password, set this to true -->
-    <!-- Wenn der Server ein Password hat, setzen Sie dies auf true, sonst auf false -->
-    <have_server_pass>false</have_server_pass>
+    <!-- If your server has a password and the user should be asked for it, set this to true -->
+    <!-- Wenn der Server ein Passwort hat und der Benutzer danach gefragt werden soll, setzen Sie dies auf true -->
+    <prompt_pass>false</prompt_pass>
+    
+    <!-- If the server has a password and it should be automatically added to the login, enter the password here-->
+    <!-- Wenn der Server ein Passwort hat und dieses direkt beim Login übergeben werden soll, geben Sie das Passwort hier ein -->
+    <server_password>none</server_password>
     
     <!-- If you have entered 127.0.0.1 or localhost as host into the config file, enter the external IP or host here -->
     <!-- Wenn Sie in der Konfigurationsdatei 127.0.0.1 oder localhost eingetragen haben, so tragen Sie hier die externe IP des Servers ein -->
