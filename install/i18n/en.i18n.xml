@@ -61,9 +61,12 @@
     <lang>Language of the Viewer</lang>
     
     <submit_config_file>Save Configfile</submit_config_file>
-    <module_edit_info>Click on a module to edit the modules configfile</module_edit_info>
+    <module_edit_info>Click on a module to edit the modules configfile. Sort the modules in the order how you want them getting outputted.</module_edit_info>
     <german>German</german>
     <english>English</english>
+   
+    <mod_sort_enabled_lang>Activated modules:</mod_sort_enabled_lang>
+    <mod_sort_disabled_lang>Disabled modules:</mod_sort_disabled_lang>
    
     <!-- XMLEDIT.html -->
     <edit_xml>You can edit the configfile of the module here. If you have finished just press the button</edit_xml>

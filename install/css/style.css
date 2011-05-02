@@ -30,3 +30,17 @@ button
 {
     font-size: 14px;
 }
+
+.sortable
+{
+    background-color: #eee;
+    padding: 15px;
+    width: 200px;
+    height: 400px;
+}
+
+li
+{
+    list-style-type: none;
+    padding: 5px;
+}
