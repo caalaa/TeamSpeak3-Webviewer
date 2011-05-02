@@ -1,16 +1,40 @@
 $(document).ready(function(){
+    
+    var modules = new Array();
+    
     $("button, input:submit, input:button").button();  
     $('form.jqform').jqTransform();
     
-    $('.color').colorbox({innerWidth:"1025px",
-                        height:"600px", 
-                        iframe:true,
-                        scrolling: false,
-                        fastIframe: false});
-    $('td[title], a[title]').qtip({
-        style:{classes: 'ui-state-highlight ui-corner-all tooltip'},
-        position:{my: 'left-top', at: 'bottom-center'}
+    $('.color').colorbox({
+        innerWidth:"1025px",
+        height:"600px", 
+        iframe:true,
+        scrolling: false,
+        fastIframe: false
     });
+    $('td[title], a[title]').qtip({
+        style:{
+            classes: 'ui-state-highlight ui-corner-all tooltip'
+        },
+        position:{
+            my: 'left-top', 
+            at: 'bottom-center'
+        }
+    });
+    
+    $( "#sort1, #sort2" ).sortable({
+        connectWith: ".sortable"
+    }).disableSelection();
+ 
+    
+    $('#sort1').bind("sortstop sortremove sortreceive", function(event,ui){
+            modules = null;
+            modules = new Array();
+            
+            modules = $('#sort1').sortable('toArray');
+            
+            document.getElementById("modules_hidden").value = modules;
+        });
 });
 
 function de()

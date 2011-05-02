@@ -96,6 +96,8 @@ function createEditHtml()
     
     $html['module_html'] = '';
     
+    $mod_sort_enabled = '<ul id="sort1" class="sortable">';
+    $mod_sort_disabled = '<ul id="sort2" class="sortable">';
     natcasesort($modules);
 
     foreach ($modules as $module)
@@ -105,11 +107,18 @@ function createEditHtml()
         $description = $xml->info->{'description_'.$_SESSION['lang']};
 
         $configmods = explode(",", $configfile->modules);
+        
         if (in_array($module, $configmods))
-            $html['module_html'] .= '<p><input type="checkbox" name="module[]" checked="checked" value="' . $module . '"/><a href="core/xmledit.php?module=' . $module . '" id="tt" class="color" title="' . $description . '">' . $module . '</a></p>';
+            $mod_sort_enabled .= '<li id="'.$module.'" class="ui-state-highlight"><a href="core/xmledit.php?module=' . $module . '" id="tt" class="color" title="' . $description . '">' . $module . '</a></li>';
         else
-            $html['module_html'] .= '<p><input type="checkbox" name="module[]" value="' . $module . '"/><a href="core/xmledit.php?module=' . $module . '" id="tt" class="color" title="' . $description . '">' . $module . '</a></p>';
+            $mod_sort_disabled .= '<li id="'.$module.'" class="ui-state-default"><a href="core/xmledit.php?module=' . $module . '" id="tt" class="color" title="' . $description . '">' . $module . '</a></li>';
     }
+    
+    $mod_sort_enabled .= '</ul>';
+    $mod_sort_disabled .= '</ul>';
+    
+    $html['mod_sort_enabled'] = $mod_sort_enabled;
+    $html['mod_sort_disabled'] = $mod_sort_disabled;
 
     // Servericons
     if ($configfile->use_serverimages == "true" || (string) $configfile->use_serverimages == '')
