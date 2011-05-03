@@ -47,7 +47,7 @@ class TSQuery {
 
 
         */
-        function __construct($host,$port,$downloadport=30033) {
+        function __construct($host,$port) {
 
                 //open Connection and check for errors
                 $this->cachepath = "./cache/".$host.$port."/";
@@ -55,7 +55,7 @@ class TSQuery {
                 $this->query_port = $port;
                 $this->timeout = 5;
                 $this->actual_vserver = NULL;
-                $this->ftport = $downloadport;
+               
                 $this->open_new_connection();
                 $this->ftconn = NULL;
                 $this->caching = false;
@@ -163,8 +163,9 @@ class TSQuery {
             $ret = $this->ts3_to_hash($ret['return']);
             $key = $this->ts3query_unescape($ret['ftkey']);
             $size = $ret['size'];
+            
             if($this->ftconn == NULL)
-                    $this->ftconn = fsockopen($this->ip, $this->ftport);
+                    $this->ftconn = fsockopen($this->ip, $ret['port']);
             if($this->ftconn == false)
                 return false;
 

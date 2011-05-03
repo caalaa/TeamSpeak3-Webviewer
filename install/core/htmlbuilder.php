@@ -72,7 +72,7 @@ function createEditHtml()
     $html['serveradress_value'] = $configfile->host;
     $html['queryport_value'] = $configfile->queryport;
     $html['serverport_value'] = $configfile->vserverport;
-    $html['downloadport_value'] = $configfile->downloadport;
+    
 
     // Login
     if ($configfile->login_needed == "true" || $configfile->login_needed == '')

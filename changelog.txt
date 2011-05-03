@@ -18,7 +18,7 @@ v 0.8
 ~ Updated welcomescreen
 ! Fixed all bugs which occured with Internet Explorer
 + Added sorting of modules in the installscript to allow to customize the output-order of the modules
-
+* Downloadport is now automaticaly detected
 
 v 0.7
 + language can be switched by appending lang=<language> as get parameter (example: your.domain.tld/webviewer/?config=teamspeak1&lang=en)
