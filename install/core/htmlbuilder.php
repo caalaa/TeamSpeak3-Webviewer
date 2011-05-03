@@ -34,7 +34,6 @@ function replaceValues($file, $vals=NULL, $loc=FALSE)
         $html = str_replace($match_raw, (string) $data[$match_norm], $html);
     }
     return $html;
-
 }
 
 function createConfigHtml()
@@ -42,7 +41,7 @@ function createConfigHtml()
     $html = array();
 
     $html['selector'] = '';
-    
+
     if (count(getConfigFiles("../config")) == 0)
     {
         $html['selector'] = '-';
@@ -57,7 +56,6 @@ function createConfigHtml()
         $html['selector'] .= '<p><button onclick="javascript: setconfig(\'' . $file . '\')">' . $file . '</button></p>';
     }
     return $html;
-
 }
 
 function createEditHtml()
@@ -77,7 +75,7 @@ function createEditHtml()
     $html['downloadport_value'] = $configfile->downloadport;
 
     // Login
-    if ((bool) $configfile->login_needed)
+    if ($configfile->login_needed == "true" || $configfile->login_needed == '')
     {
         $html['login_html'] = '<input type="radio" name="login_needed" value="true" checked="checked"> ' . (string) $lang->yes . '<br>
             <input type="radio" name="login_needed" value="false"> ' . (string) $lang->no;
@@ -93,30 +91,38 @@ function createEditHtml()
 
     // Modules
     $modules = getModules();
-    
+
     $html['module_html'] = '';
-    
+
     $mod_sort_enabled = '<ul id="sort1" class="sortable">';
     $mod_sort_disabled = '<ul id="sort2" class="sortable">';
     natcasesort($modules);
 
+    $enabled_modules = explode(",", $configfile->modules);
+    unset($enabled_modules[array_search("htmlframe", $enabled_modules)]);
+    unset($enabled_modules[array_search("style", $enabled_modules)]);
+
+    // Enabled Modules
+    foreach ($enabled_modules as $module)
+    {
+        unset($modules[array_search($module, $modules)]);
+
+        $xml = getXmlFile("../modules/$module/$module.xml");
+        $description = $xml->info->{'description_' . $_SESSION['lang']};
+        $mod_sort_enabled .= '<li id="' . $module . '" class="ui-state-highlight"><a href="core/xmledit.php?module=' . $module . '" id="tt" class="color" title="' . $description . '">' . $module . '</a></li>';
+    }
+
+    // Disabled Modules
     foreach ($modules as $module)
     {
         $xml = getXmlFile("../modules/$module/$module.xml");
-
-        $description = $xml->info->{'description_'.$_SESSION['lang']};
-
-        $configmods = explode(",", $configfile->modules);
-        
-        if (in_array($module, $configmods))
-            $mod_sort_enabled .= '<li id="'.$module.'" class="ui-state-highlight"><a href="core/xmledit.php?module=' . $module . '" id="tt" class="color" title="' . $description . '">' . $module . '</a></li>';
-        else
-            $mod_sort_disabled .= '<li id="'.$module.'" class="ui-state-default"><a href="core/xmledit.php?module=' . $module . '" id="tt" class="color" title="' . $description . '">' . $module . '</a></li>';
+        $description = $xml->info->{'description_' . $_SESSION['lang']};
+        $mod_sort_disabled .= '<li id="' . $module . '" class="ui-state-default"><a href="core/xmledit.php?module=' . $module . '" id="tt" class="color" title="' . $description . '">' . $module . '</a></li>';
     }
-    
+
     $mod_sort_enabled .= '</ul>';
     $mod_sort_disabled .= '</ul>';
-    
+
     $html['mod_sort_enabled'] = $mod_sort_enabled;
     $html['mod_sort_disabled'] = $mod_sort_disabled;
 
@@ -136,15 +142,15 @@ function createEditHtml()
     $imagepacks = getImagePacks();
 
     natcasesort($imagepacks);
-    
+
     $html['imagepack_html'] = '';
-    
+
     foreach ($imagepacks as $pack)
     {
         if ((string) $configfile->imagepack == $pack)
-            $html['imagepack_html'] .= '<input type="radio" name="imagepack" value="' . $pack . '" checked="checked"> ' . $pack . '<br>';
+                $html['imagepack_html'] .= '<input type="radio" name="imagepack" value="' . $pack . '" checked="checked"> ' . $pack . '<br>';
         else
-            $html['imagepack_html'] .= '<input type="radio" name="imagepack" value="' . $pack . '"> ' . $pack . '<br>';
+                $html['imagepack_html'] .= '<input type="radio" name="imagepack" value="' . $pack . '"> ' . $pack . '<br>';
     }
 
     // Arrows
@@ -160,7 +166,6 @@ function createEditHtml()
     }
 
     // Caching
-
     if ($configfile->enable_caching == "true" || $configfile->enable_caching = '')
     {
         $html['caching_html'] = '<input type="radio" name="caching" value="true" checked="checked"> ' . (string) $lang->yes . '<br>
@@ -188,7 +193,6 @@ function createEditHtml()
     }
 
     return $html;
-
 }
 
 function getLanguageFile($loc)
@@ -197,19 +201,14 @@ function getLanguageFile($loc)
 
     if (!$loc)
     {
-        if ($lang == "en")
-            return simplexml_load_file("i18n/en.i18n.xml");
-        else
-            return simplexml_load_file("i18n/de.i18n.xml");
+        if ($lang == "en") return simplexml_load_file("i18n/en.i18n.xml");
+        else return simplexml_load_file("i18n/de.i18n.xml");
     }
     else
     {
-        if ($lang == "en")
-            return simplexml_load_file("../i18n/en.i18n.xml");
-        else
-            return simplexml_load_file("../i18n/de.i18n.xml");
+        if ($lang == "en") return simplexml_load_file("../i18n/en.i18n.xml");
+        else return simplexml_load_file("../i18n/de.i18n.xml");
     }
-
 }
 
 ?>

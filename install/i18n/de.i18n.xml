@@ -44,7 +44,7 @@
     <lang>Sprache des Viewers</lang>
 
     <submit_config_file>Konfiguration speichern</submit_config_file>
-    <module_edit_info>Um die Konfigurationsdatei eines Modules zu editieren, klicken Sie auf das jeweilige Modul. Sortieren Sie die Module so, wie sie ausgegeben werden sollen.</module_edit_info>
+    <module_edit_info>Um die Konfigurationsdatei eines Modules zu editieren, klicken Sie auf das jeweilige Modul. Sortieren und Verschieben Sie die Module so, wie sie ausgegeben werden sollen.</module_edit_info>
     <german>Deutsch</german>
     <english>Englisch</english>
     
