@@ -235,6 +235,7 @@ catch (Exception $e)
 }
 
 
+
 // Flush caches | Caching
 if (isset($_GET['flush_cache']) && isset($config['enable_cache_flushing']) && $config['enable_cache_flushing'] === true)
 {
@@ -249,6 +250,7 @@ else
     $query->set_caching($config['enable_caching'],
             $config['standard_cachetime'], $config['cachetime']);
 }
+
 
 if ($config['login_needed'])
 {

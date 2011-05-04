@@ -19,6 +19,23 @@
     <configname>Name der neuen Datei</configname>
     <submit_config>Datei erstellen</submit_config>
 
+    <!-- Tooltip-->
+    <tt_tip>Tip: fahren sie über die Beschriftungen um genauere Informationen zu erhalten</tt_tip>
+    
+    <tt_serveradress>Die Adresse unter der sie zum Server verbinden (Kann eine IP oder ein hostname sein)</tt_serveradress>
+    <tt_queryport>Der Queryport des Servers (Standard: 10011)</tt_queryport>
+    <tt_serverport>Der port über den sie im Client auf den Server verbinden</tt_serverport>
+    <tt_downloadport>The filetransferport of your server (Default: 30033). Be sure that you opened it in your firewall (If you have access to the server).</tt_downloadport>
+    <tt_login>Ist ein Login benötigt um an alle informationen für den Viewer zu kommen? (Standard: ja).</tt_login>
+    <tt_username>Der name des Queryusers</tt_username>
+    <tt_password>Das Password für den obigen Benutzer</tt_password>
+    <tt_servericons>Sollen die Servericons automatisch heruntergeladen werden?</tt_servericons>
+    <tt_imagepack>Werden die icons nicht automatisch heruntergeladen, wird der hier gesetzte imagepack verwendet</tt_imagepack>
+    <tt_arrow>Ist diese einstellung gesetzt werden neben den channeln Pfeile angezeigt (ähnlich wie im Client)</tt_arrow>
+    <tt_caching>Wenn diese Einstellung auf ja gesetzt ist, werden die informationen nur alle n sekunden abgerufen</tt_caching>
+    <tt_standard_cachetime>Zeitraum in dem die Informationen gepuffert werden</tt_standard_cachetime>
+    <tt_lang>Sprache des Viewers</tt_lang>
+
     <!-- CONFIG.html -->
     <basesettings>Haupteinstellungen</basesettings>
     <modules>Module</modules>
