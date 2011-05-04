@@ -2,58 +2,58 @@
 # Changelog #
 #############
 
-* fix
-+ Add
 ! Major Change
++ Add
 ~ Minor Change
+* Fix
 
 v 0.8
-+ Module: stats - shows the history of clients online in a chart
-* Fixed translation of infoDialog if language has been added via &lang=
-+ Added tooltips to the installscript for better explanation
+! Fixed all bugs which occured with Internet Explorer and other browsers
 ! The viewer can be included not via include or require (Path directivs adapted)
-* Fixed notices in the installscript. Thanks to sTimulated (http://forum.teamspeak.com)
-* Fixed bug in installscript (login required has been shown always as true)
++ Module: stats - shows the history of clients online in a chart
++ Added tooltips to the installscript for better explanation
++ Added sorting of modules in the installscript to allow to customize the output-order of the modules
++ Module: about - shows information about the viewer
 ~ Deleted unnecessary files which decreased the size of the viewer
 ~ Updated welcomescreen
-! Fixed all bugs which occured with Internet Explorer and other browsers
-+ Added sorting of modules in the installscript to allow to customize the output-order of the modules
-* Downloadport is now automaticaly detected
 ~ Modules: js_login and loginButton: the Password can now provided in the configfile that the user doesn't has to enter it
 ~ Module: serverInfo: increased data format from MiB to GiB
-+ Module: about - shows information about the viewer
 ~ Modules: loginButton and userBar: increased space between the modules and other content
+* Fixed translation of infoDialog if language has been added via &lang=
+* Fixed notices in the installscript. Thanks to sTimulated (http://forum.teamspeak.com)
+* Fixed bug in installscript (login required has been shown always as true)
+* Downloadport is now automaticaly detected
 
 v 0.7
-+ language can be switched by appending lang=<language> as get parameter (example: your.domain.tld/webviewer/?config=teamspeak1&lang=en)
-+ Welcome Screen which shows up if you are running the viewer for the first time
 ! Updated Installscript to new XML-Specification
 ! Updated code to valide HTML (checked with validator.w3.org)
+! Changed config and language files from plaintext to xml
+    * But kept support for .conf files and old viewer.conf
+! Support for multiple config files. configs can be selected by appending config=<configname> as a get parameter (example: your.domain.tld/webviewer/?config=teamspeak1)
++ language can be switched by appending lang=<language> as get parameter (example: your.domain.tld/webviewer/?config=teamspeak1&lang=en)
++ Welcome Screen which shows up if you are running the viewer for the first time
++ Module infoDialog: Added some more possible information which can be shown.
+    + Countryflags
+    + Countrynames (English only at the moment)
++ Translation of module 'serverinfo'
++ Translation of module 'js_login'
++ Translation of module 'loginButton'
 ~ Swapped the arrows, that they are like in TS Client
 ~ The Country-Flag of clients will now shown in the infoDialog
 ~ Legende-Module shows now all server- and channelgroups
 ~ Legende-Module: Shows now a grey icon if a group has no icon
+~ some minor tweaks for higher speed
 * Module: Serverinfo: Fixed Bug if the server has now welcome-message
 * Fixed connection bugs with loginButton and js_login
-+ Translation of module 'serverinfo'
-+ Translation of module 'js_login'
-+ Translation of module 'loginButton'
-! Changed config and language files from plaintext to xml
-    * But kept support for .conf files and old viewer.conf
-+ Module infoDialog: Added some more possible information which can be shown.
-    + Countryflags
-    + Countrynames (English only at the moment)
 * Added missing escaping to some fields
-! Support for multiple config files. configs can be selected by appending config=<configname> as a get parameter (example: your.domain.tld/webviewer/?config=teamspeak1)
-~ some minor tweaks for higher speed
 * changed id attribute of channels/clients to channel_<channel_id> respectively client_<client_id> so colissions are avoided
 
 v 0.6
+! The installscript has been updated completly
 + Module: ServerInfo which shows a detailed serverinfo
 + Module: InfoTab which shows several modules as tabs
 + Module: userBar which shows a progessbar how many clients are on the Server
 + Module: LoginButton which shows a button to login to the server
-! The installscript has been updated completly
 * bugfixes 
 
 v 0.5.3
@@ -77,17 +77,17 @@ v 0.5
   look at the configfiles in modules/<modulename>/<modulename>.conf for further informantions
 + added a easy to use installscript
 + full spacer support
-* fixed bug that spacer is parsed if it's a subchannel (thanks to optimatez for report)
-* fixed bug with broken images if iconid is 0 (patch by baaran was implemented false, my fault)
++ added a autoRefresh module (thx to JohnnyBrusevold for idea) 
++ added support for channelicons
 + added the attribute ID to channels and clients id="<name_of_the_client/channel>"
 + added the Module channelHiding which hides and shows a channel by clicking on it like in TS-Client
 + added module infoDialog which shows a dialog with important info about the client
-* changed closing of image tags, should be valid html now
 + added arrow to non empty channel
+* fixed bug that spacer is parsed if it's a subchannel (thanks to optimatez for report)
+* fixed bug with broken images if iconid is 0 (patch by baaran was implemented false, my fault)
+* changed closing of image tags, should be valid html now
 * display bug in MS Internet explorer and opera and Iceweasel (thx to JohnnyBrusevold for report and fix)
-+ added a autoRefresh module (thx to JohnnyBrusevold for idea) 
 * now tested in newest versions of Firefox, Safari, Chrome and Opera
-+ added support for channelicons
 * fixed many display bugs
 * rewrite of configfiles to .conf for easier use
 
