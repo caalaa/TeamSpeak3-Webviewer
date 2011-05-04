@@ -9,6 +9,10 @@ class loginButton extends ms_Module
         $this->mManager->loadModule('jQueryUI');
         $this->mManager->loadModule('js')->loadJS(s_http . '/modules/js_login/ts3_connect.js');
         $this->mManager->loadModule('js')->loadJS("$(document).ready(function() { $('#LoginButton').button(); } );", "text");
+        $this->mManager->loadModule('style')->loadStyle('#LoginButton
+            {
+                margin-bottom: 5px;
+            }', 'text');
     }
 
     function getHeader()

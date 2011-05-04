@@ -16,9 +16,13 @@ v 0.8
 * Fixed bug in installscript (login required has been shown always as true)
 ~ Deleted unnecessary files which decreased the size of the viewer
 ~ Updated welcomescreen
-! Fixed all bugs which occured with Internet Explorer
+! Fixed all bugs which occured with Internet Explorer and other browsers
 + Added sorting of modules in the installscript to allow to customize the output-order of the modules
 * Downloadport is now automaticaly detected
+~ Modules: js_login and loginButton: the Password can now provided in the configfile that the user doesn't has to enter it
+~ Module: serverInfo: increased data format from MiB to GiB
++ Module: about - shows information about the viewer
+~ Modules: loginButton and userBar: increased space between the modules and other content
 
 v 0.7
 + language can be switched by appending lang=<language> as get parameter (example: your.domain.tld/webviewer/?config=teamspeak1&lang=en)

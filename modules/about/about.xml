@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ * Author    : Maximilian Narr
+ * Homepage  : http://maxesstuff.de
+ * Email     : maxe@maxesstuff.de
+-->
+
+<config>
+    <!-- Information -->
+    <info>
+        <author>Maximilian Narr</author>
+        <homepage>http://maxesstuff.de</homepage>
+        <description_en>Shows link to the Webviewer. We would like you to activate this module.</description_en>    
+        <description_de>Zeigt einen Link zum Webviewer an. Wir wären Ihnen dankbar, wenn sie dieses Modul aktivieren würden.</description_de>
+        
+        <!-- Don't change anything here -->
+        <!-- Ändern Sie hier nichts! -->
+        <abstract>false</abstract>    
+    </info>
+</config>
+

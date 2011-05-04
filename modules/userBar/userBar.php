@@ -17,11 +17,16 @@ class userBar extends ms_Module
                                                    value: '.$per_cent.'
                                                    });
                                                   });',"text");
+        
+        $this->mManager->loadModule("style")->loadStyle('#userBar
+            {
+                margin-bottom:5px;
+            }', "text");
     }
 
     public function getHeader()
     {
-        return('<p style="font-family: sans-serif; font-size: small; margin-top:10px;">'.$this->clients_online.' '.$this->lang['max'].' '.$this->max_clients.' '.$this->lang['status'].'</p>
+        return('<p style="font-family: sans-serif; font-size: small;">'.$this->clients_online.' '.$this->lang['max'].' '.$this->max_clients.' '.$this->lang['status'].'</p>
                 <div id="userBar" style="height:15px; width:100%; margin-top:10px;"></div>');
     }
 }
