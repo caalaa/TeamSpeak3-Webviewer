@@ -82,7 +82,6 @@ class serverInfo extends ms_Module
     //Konvertiert Byte zu Mebibyte
     function get_mb($input)
     {
-        var_dump($input);
         return number_format($input/(1024*1024*1024), 1);
     }
 
