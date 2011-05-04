@@ -11,7 +11,6 @@
     <tt_serveradress>The adress with which you are connecting to the server (Can be an IP-Adress or hostname).</tt_serveradress>
     <tt_queryport>The Queryport of your server (Default: 10011).</tt_queryport>
     <tt_serverport>The port through which you are connecting to your server via the client (Default: 9987).</tt_serverport>
-    <tt_downloadport>The filetransferport of your server (Default: 30033). Be sure that you opened it in your firewall (If you have access to the server).</tt_downloadport>
     <tt_login>If a login is required that the viewer can get the needed information (Default: yes).</tt_login>
     <tt_username>The username of the query-user.</tt_username>
     <tt_password>Password corresponding to the username above.</tt_password>
