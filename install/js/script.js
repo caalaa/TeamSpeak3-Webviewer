@@ -35,6 +35,15 @@ $(document).ready(function(){
             
         document.getElementById("modules_hidden").value = modules;
     });
+    
+    $("#sort1, #sort2").bind("sortstart", function(event, ui){
+        $("td[title], a[title]").qtip('disable');  
+    });
+    
+    $("#sort1, #sort2").bind("sortstop", function(event, ui){
+        $("td[title], a[title]").qtip('enable');  
+    });
+    
 });
 
 function de()
