@@ -11,44 +11,35 @@ function getLang()
     $data = $_SERVER['HTTP_USER_AGENT'];
     $lang = '';
 
-    if (preg_match("/en-US/", $data))
-        $lang = 'en';
-    else if (preg_match("/de-DE/", $data))
-        $lang = 'de';
+    if (preg_match("/en-US/", $data)) $lang = 'en';
+    else if (preg_match("/de-DE/", $data)) $lang = 'de';
 
-    if ($lang == '')
-        $lang = 'en';
+    if ($lang == '') $lang = 'en';
 
     return $lang;
-
 }
 
 // Checks if a password is setted
 function passwordSetted()
 {
-    if (!file_exists("pw.xml"))
-        return false;
+    if (!file_exists("pw.xml")) return false;
 
     $file = file_get_contents("pw.xml");
 
-    if ($file == '')
-        return false;
+    if ($file == '') return false;
 
     return true;
-
 }
 
 // Sets a new password to the password-file
 function setPassword($password)
 {
-    if (file_exists("pw.xml"))
-        unlink("pw.xml");
+    if (file_exists("pw.xml")) unlink("pw.xml");
 
     $password = sha1(md5($password));
 
     file_put_contents("pw.xml", $password);
     return true;
-
 }
 
 // Returns all modules in an array
@@ -69,7 +60,6 @@ function getModules()
     }
 
     return $modules;
-
 }
 
 // Returns true of Module is abstract else false
@@ -77,10 +67,8 @@ function moduleIsAbstract($module)
 {
     $xml = simplexml_load_file("../modules/$module/$module.xml");
 
-    if ($xml->info->abstract == "true")
-        return true;
+    if ($xml->info->abstract == "true") return true;
     return false;
-
 }
 
 // Returns all imagepacks in an array
@@ -93,11 +81,60 @@ function getImagePacks()
     while ($imagepack = readdir($dir))
     {
         if ($imagepack != '..' && $imagepack != '.' && $imagepack != 'serverimages')
-            $packs[] = $imagepack;
+                $packs[] = $imagepack;
     }
 
     return $packs;
+}
 
+// Flushs the cache
+function flushCache($config)
+{
+    $lang = simplexml_load_file("i18n/" . $_SESSION['lang'] . ".i18n.xml");
+
+
+    if (!file_exists("../config/" . $config))
+    {
+        return throwAlert($lang->not_exist);
+    }
+    else
+    {
+        $config = simplexml_load_file("../config/" . $config);
+
+        if ((string) $config->host == "" || (string) $config->host == NULL || (string) $config->queryport == "" || (string) $config->queryport == NULL || (string) $config->vserverport == "" || (string) $config->vserverport == NULL)
+        {
+            return throwAlert($lang->no_info);
+        }
+        else
+        {
+            $path = "../cache/" . (string) $config->host . (string) $config->queryport . "/" . (string) $config->vserverport . "/";
+           
+            
+            // query
+            $dir = opendir($path."query");   
+            while($file = readdir($dir))
+            {
+                if ($file != ".." && $file != "." && $file != "time") unlink($path . "query/".$file);            
+            }
+            
+            // query/time
+            $dir = opendir($path."query/time");   
+            while($file = readdir($dir))
+            {
+                if ($file != ".." && $file != ".") unlink($path . "query/time/".$file);
+               
+            }
+            
+            // server/images
+            $dir = opendir($path."server/images");   
+            while($file = readdir($dir))
+            {
+                if ($file != ".." && $file != "." && $file != "time") unlink($path . "server/images/".$file);
+               
+            }
+            return throwWarning($lang->fc_success);
+        }
+    }
 }
 
 // Throws an visual Alert
@@ -112,7 +149,6 @@ function throwAlert($message)
             </div>
             </div>';
     return $html;
-
 }
 
 // Throws a visual warning
@@ -126,7 +162,6 @@ function throwWarning($message)
 			</div>
                         </div>';
     return $html;
-
 }
 
 ?>

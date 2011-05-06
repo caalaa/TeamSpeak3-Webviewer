@@ -18,6 +18,12 @@
     <select_new_config>Oder erstellen sie eine neue Konfigurationsdatei (Sollte keine Konfigurationsdatei vorhanden sein, so nennen Sie die neue Datei bitte "config":</select_new_config>
     <configname>Name der neuen Datei</configname>
     <submit_config>Datei erstellen</submit_config>
+    <show_config>Viewer anzeigen</show_config>
+    <edit>Editieren</edit>
+    <fc>Cache löschen</fc>
+    <not_exist>Die Konfigurationsdatei existiert nicht.</not_exist>
+    <no_info>Es sind nich alle nötigen Informationen in der Konfigurationsdatei vorhanden, um den Cache zu löschen!</no_info>
+    <fc_success>Cache gelöscht.</fc_success>
 
     <!-- Tooltip-->
     <tt_tip>Tip: fahren sie über die Beschriftungen um genauere Informationen zu erhalten</tt_tip>

@@ -14,6 +14,8 @@ v 0.8
 + Added tooltips to the installscript for better explanation
 + Added sorting of modules in the installscript to allow to customize the output-order of the modules
 + Module: about - shows information about the viewer
++ Added possibility to flush the cache in the installscript
++ Added possibility to open the viewer directly from the installscript
 ~ Deleted unnecessary files which decreased the size of the viewer
 ~ Updated welcomescreen
 ~ Modules: js_login and loginButton: the Password can now provided in the configfile that the user doesn't has to enter it

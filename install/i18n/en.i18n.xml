@@ -34,6 +34,12 @@
     <select_new_config>Or create a new configfile (If no configfile is available please name the new one "config"):</select_new_config>
     <configname>Name of the new file</configname>
     <submit_config>Create file</submit_config>
+    <show_config>Show viewer</show_config>
+    <edit>edit</edit>
+    <fc>flush cache</fc>
+    <not_exist>The configfile does not exist!</not_exist>
+    <no_info>Not all necessary information is given in the config file to flush the cache!</no_info>
+    <fc_success>Cache deleted.</fc_success>
     
     <!-- CONFIG.html -->
     <basesettings>Mainsettings</basesettings>

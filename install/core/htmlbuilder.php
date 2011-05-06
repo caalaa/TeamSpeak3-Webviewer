@@ -38,6 +38,7 @@ function replaceValues($file, $vals=NULL, $loc=FALSE)
 
 function createConfigHtml()
 {
+    $lang = simplexml_load_file("i18n/" . $_SESSION['lang'] . '.i18n.xml');
     $html = array();
 
     $html['selector'] = '';
@@ -53,7 +54,7 @@ function createConfigHtml()
 
     foreach ($files as $file)
     {
-        $html['selector'] .= '<p><button onclick="javascript: setconfig(\'' . $file . '\')">' . $file . '</button></p>';
+        $html['selector'] .= '<p><fieldset><button style="width:200px;" onclick="javascript: setconfig(\'' . $file . '\')">' . $file . ' ('.(string)$lang->edit.')</button><span onclick="javascript: showViewer(\'' . $file . '\');"style="padding:4px; margin-left:15px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . (string) $lang->show_config . '</span><span onclick="javascript: flushCache(\'' . $file .'.xml\');"style="padding:4px; margin-left:10px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . (string) $lang->fc . '</span></fieldset></p>';
     }
     return $html;
 }
@@ -72,7 +73,7 @@ function createEditHtml()
     $html['serveradress_value'] = $configfile->host;
     $html['queryport_value'] = $configfile->queryport;
     $html['serverport_value'] = $configfile->vserverport;
-    
+
 
     // Login
     if ($configfile->login_needed == "true" || $configfile->login_needed == '')

@@ -28,13 +28,13 @@ $(document).ready(function(){
  
     
     $('#sort1').bind("sortstop sortremove sortreceive", function(event,ui){
-            modules = null;
-            modules = new Array();
+        modules = null;
+        modules = new Array();
             
-            modules = $('#sort1').sortable('toArray');
+        modules = $('#sort1').sortable('toArray');
             
-            document.getElementById("modules_hidden").value = modules;
-        });
+        document.getElementById("modules_hidden").value = modules;
+    });
 });
 
 function de()
@@ -55,6 +55,17 @@ function setconfig(file)
     window.location.href = href;
 }
 
+function showViewer(config)
+{
+    var href="../index.php?config=" + config
+    window.location.href= href;
+}
+
+function flushCache(config)
+{
+    var href="?action=fc&config="+config
+    window.location.href=href;
+}
 function redirect()
 {
     var href = "index.php?action=return";

@@ -51,6 +51,16 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == "set_config" && isset($
     $_SESSION['config_xml'] = simplexml_load_file("../config/" . $_SESSION['config'] . ".xml")->asXML();
 }
 
+// Flushes caches
+if(isset($_SESSION['validated']) && $_SESSION['validated'] == true && isset($_REQUEST['action']) && $_REQUEST['action'] == 'fc' && isset($_REQUEST['config']))
+{
+    $data = createConfigHtml();
+    
+    echo(flushCache($_REQUEST['config']));
+    echo(replaceValues("html/select_config.html", $data));
+    exit;
+}    
+
 // If password needs to be validated
 if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'validate' && isset($_POST['password']) && passwordSetted())
 {
