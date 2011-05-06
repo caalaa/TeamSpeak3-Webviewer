@@ -36,7 +36,7 @@ $(document).ready(function(){
         document.getElementById("modules_hidden").value = modules;
     });
     
-    $("#sort1, #sort2").bind("sortstart", function(event, ui){
+    $("#sort1, #sort2").bind("sortstart sortremove sortreceive sort", function(event, ui){
         $("td[title], a[title]").qtip('disable');  
     });
     
