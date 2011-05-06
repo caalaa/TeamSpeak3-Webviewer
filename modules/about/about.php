@@ -21,7 +21,7 @@ class about extends ms_Module
         // Insert Code
         $this->mManager->loadModule("js")->loadJS('$(document).ready(function(){
             
-                $(".servername").before(\'<p class="ui-state-highlight" style="padding:5px; font-size:10px; margin-bottom:5px; float:right;" target="_blank">Powered by <a href="http://en.maxesstuff.de/software/teamspeak3-webviewer">Maxesstuff Webviewer</a></p>\');
+                $(".servername").before(\'<p class="ui-state-highlight" style="padding:5px; font-size:10px; margin-bottom:5px; float:right;">Powered by <a href="http://en.maxesstuff.de/software/teamspeak3-webviewer"  target="_blank">Maxesstuff Webviewer</a></p>\');
                         });',
                 "text");
     }

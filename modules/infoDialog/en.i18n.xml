@@ -16,4 +16,5 @@
     <description>Description</description>
     <Country>Country</Country>
     <no_country>locally connected</no_country>
+    <loading>Loading...</loading>
 </language>

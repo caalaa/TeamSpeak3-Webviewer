@@ -23,5 +23,5 @@
     
     <!-- Path to jQuery -->
     <!-- Pfad zu jQuery -->
-    <jQuery_path>http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js</jQuery_path>
+    <jQuery_path>http://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js</jQuery_path>
 </config>

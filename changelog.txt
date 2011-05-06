@@ -19,6 +19,8 @@ v 0.8
 ~ Modules: js_login and loginButton: the Password can now provided in the configfile that the user doesn't has to enter it
 ~ Module: serverInfo: increased data format from MiB to GiB
 ~ Modules: loginButton and userBar: increased space between the modules and other content
+~ Updated jQuery to 1.6.0
+~ Style enhancements for the infoDialog module
 * Fixed translation of infoDialog if language has been added via &lang=
 * Fixed notices in the installscript. Thanks to sTimulated (http://forum.teamspeak.com)
 * Fixed bug in installscript (login required has been shown always as true)

@@ -65,15 +65,15 @@ foreach ($viewer_conf as $key => $value)
     }
 }
 if ($viewer_conf['use_serverimages'] == true)
-    $viewer_conf['serverimages'] = s_http . "get_server_icon.php?config=" . $_GET['config'] . "&id=";
-else
-    $viewer_conf['serverimages'] = s_http . "images/" . $viewer_conf['imagepack'] . "/";
+        $viewer_conf['serverimages'] = s_http . "get_server_icon.php?config=" . $_GET['config'] . "&id=";
+else $viewer_conf['serverimages'] = s_http . "images/" . $viewer_conf['imagepack'] . "/";
 
 $query = new TSQuery($viewer_conf['host'], $viewer_conf['queryport']);
 $query->set_caching(true, 20);
 $query->use_by_port($viewer_conf['vserverport']);
 $config = parseConfigFile(s_root . 'modules/infoDialog/infoDialog.xml', true);
-$lang = parseLanguageFile(s_root . 'modules/infoDialog/' . $viewer_conf['language'] . '.i18n.xml', true);
+$lang = parseLanguageFile(s_root . 'modules/infoDialog/' . $viewer_conf['language'] . '.i18n.xml',
+        true);
 $info = $_SESSION['infoDialog']['info'];
 
 global $lang;
@@ -89,7 +89,8 @@ if ($_GET['type'] == 'client' && $_GET['title'] == "true")
 
 if ($_GET['type'] == 'client')
 {
-    $config['show_html_for_client'] = explode(",", $config['show_html_for_client']);
+    $config['show_html_for_client'] = explode(",",
+            $config['show_html_for_client']);
 
     $out = '
     <style type="text/css">
@@ -97,14 +98,18 @@ if ($_GET['type'] == 'client')
         {
             font-size: small; !important
         }
+        
+        .label
+        {
+            font-weight: bold;
+        }
     </style>
     <table style="margin:0" width="100%" height="100%" class="infodialog">';
 
     $matches = Array();
     preg_match("/^.*?([0-9]*)$/", $_GET['id'], $matches);
     $user = getUserByID($info['clientlist'], $matches[1]);
-    if ($user == NULL)
-        die();
+    if ($user == NULL) die();
     $clientinfo = $query->clientinfo($user['clid']);
     foreach ($config['show_html_for_client'] as $to_show)
     {
@@ -131,16 +136,18 @@ if ($_GET['type'] == 'client')
                 $out .= '<tr>';
                 $out .= '<td class="label">' . $lang['Servergroup'] . ':</td>';
                 $out .= '<td>';
-                
-                foreach (get_servergroup_images($user, $info['servergroups'], $viewer_conf['use_serverimages'], $viewer_conf['servergrp_images']) as $image)
+
+                foreach (get_servergroup_images($user, $info['servergroups'],
+                        $viewer_conf['use_serverimages'],
+                        $viewer_conf['servergrp_images']) as $image)
                 {
                     if ($image == 0)
                     {
-                        $out .= '<img src="' . s_http . 'images/serverimages/na.png" alt=""/>';
+                        $out .= '<img src="' . s_http . 'images/serverimages/na.png" alt="" style="margin-right:2px;"/>';
                     }
                     else
                     {
-                        $out .= "<img src=\"" . $viewer_conf['serverimages'] . $image . "\"/>";
+                        $out .= '<img src="' . $viewer_conf['serverimages'] . $image . '" alt="" style="margin-right:2px;" />';
                     }
                 }
                 $out .= '</td></tr>';
@@ -149,14 +156,17 @@ if ($_GET['type'] == 'client')
                 $out .= '<tr>';
                 $out .= '<td class="label">' . $lang['Channelgroup'] . ':</td>';
                 $out .= '<td>';
-                $channelgroup_icon = get_channelgroup_image($user, $info['channelgroups'], $viewer_conf['use_serverimages'], $viewer_conf['channelgrp_images']);
+                $channelgroup_icon = get_channelgroup_image($user,
+                        $info['channelgroups'],
+                        $viewer_conf['use_serverimages'],
+                        $viewer_conf['channelgrp_images']);
                 if ($channelgroup_icon != 0)
                 {
-                    $out .= "<img  src=\"" . $viewer_conf['serverimages'] . $channelgroup_icon . "\"/>";
+                    $out .= '<img  src="' . $viewer_conf['serverimages'] . $channelgroup_icon . '" alt="" style="margin-right:2px;"/>';
                 }
                 else
                 {
-                    $out .= '<img src="' . s_http . 'images/serverimages/na.png" alt="" />';
+                    $out .= '<img src="' . s_http . 'images/serverimages/na.png" alt="" style="margin-right:2px;" />';
                 }
                 $out .= '</td></tr>';
                 break;
@@ -439,8 +449,7 @@ function twolettertocountry($code)
 
     foreach ($countries as $key => $value)
     {
-        if ($key == strtoupper($code))
-            return $value;
+        if ($key == strtoupper($code)) return $value;
     }
     return $lang['no_country'];
 }
