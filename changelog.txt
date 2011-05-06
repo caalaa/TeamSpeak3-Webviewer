@@ -21,6 +21,7 @@ v 0.8
 ~ Modules: loginButton and userBar: increased space between the modules and other content
 ~ Updated jQuery to 1.6.0
 ~ Style enhancements for the infoDialog module
+~ enhanced space between clienticons
 * Fixed translation of infoDialog if language has been added via &lang=
 * Fixed notices in the installscript. Thanks to sTimulated (http://forum.teamspeak.com)
 * Fixed bug in installscript (login required has been shown always as true)

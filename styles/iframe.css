@@ -139,6 +139,7 @@ body
 .img_r
 {
     float:right;
+    margin-left: 2px;
 }
 
 .img_l
