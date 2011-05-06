@@ -302,6 +302,7 @@ $output .= $mManager->getHeaders();
 
 //render the server
 $output .= render_server($serverinfo['return'], $config['imagepath']);
+$output .= $mManager->triggerEvent("serverRendered");
 
 // render the channels
 $output .= render_channellist($channellist_obj, $clientlist['return'],
@@ -322,8 +323,8 @@ $duration = microtime(true) - $start;
 //** Rendering Functions **\\
 function render_server($serverinfo, $imagepath)
 {
-    global $config;
-    return "<div class=\"server\"> \n <p  class=\"servername\"> <img alt=\"\" src=\"" . $imagepath . "server.png\" />" . escape_name($serverinfo['virtualserver_name']) . "</p>\r\n";
+    global $config, $mManager;
+    return "<div class=\"server\">".$mManager->triggerEvent("InServer")." \n <p  class=\"servername\"> <img alt=\"\" src=\"" . $imagepath . "server.png\" />" . escape_name($serverinfo['virtualserver_name']) . "</p>\r\n";
 }
 
 function render_client($clientinfo, $servergrouplist, $channelgrouplist)
