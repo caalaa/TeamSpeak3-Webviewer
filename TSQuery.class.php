@@ -27,7 +27,9 @@ class TSQuery {
         private $timeout;
         private $ftid;
         private $ftconn;
-
+        
+        private $cmds;
+        private $cmd_sent;
 
         //In the constructor will be created a new socket and login stuff will be done.
 
@@ -114,6 +116,10 @@ class TSQuery {
                         return $this->send_cmd("use sid=".$id);
                 }
                 return false;
+        }
+        
+        public function logout() {
+            $this->send_cmd("logout");
         }
 
         public function quit() {
@@ -328,17 +334,23 @@ class TSQuery {
                 if(preg_match("/[\r\n]/", $cmd))
                         return false;
                 if($caching == true && file_exists($this->cachepath."query/".$cmd) && !$this->cache_expired($cmd) && $this->caching == true) {
-                       
                       return $this->parse_ts3_response(file_get_contents($this->cachepath."query/".$cmd));
                 }
-
-               
+                if($this->caching == TRUE && $caching == FALSE && !$this->cmd_sent) {
+                    $this->cmds[] = $cmd;
+                    return $this->parse_ts3_response("error id=0 msg=ok");
+                }
+                foreach($this->cmds as $key=>$command) {
+                    $this->send_raw($cmd."\n");
+                    ts3_check($this->send_raw($command."\n"), $command);
+                    unset ($this->cmds[$key]);
+                }
+                $this->cmd_sent = TRUE;
                 $response = $this->send_raw($cmd."\n");
                 if($response === false) {
                         return false;
                 }
                 if($caching == true && $this->caching == true) {
-                    
                     file_put_contents($this->cachepath."query/time/$cmd", time());
                     file_put_contents($this->cachepath."query/$cmd", $response);
                 }
