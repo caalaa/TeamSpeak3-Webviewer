@@ -52,7 +52,7 @@ class TSQuery {
         function __construct($host,$port) {
 
                 //open Connection and check for errors
-                $this->cachepath = "./cache/".$host.$port."/";
+                $this->cachepath = s_root."/cache/".$host.$port."/";
                 $this->ip = gethostbyname($host);
                 $this->query_port = $port;
                 $this->timeout = 5;
@@ -231,7 +231,7 @@ class TSQuery {
                 return $ret;
         }
 
-        public function clientinfo($clid) {
+        public function clientinfo($clid,$caching=TRUE) {
 
                 $ret = $this->send_cmd("clientinfo clid=".$clid,$caching);
                 $ret['return'] = $this->ts3_to_hash($ret['return']);
@@ -333,6 +333,7 @@ class TSQuery {
 
                 if(preg_match("/[\r\n]/", $cmd))
                         return false;
+               
                 if($caching == true && file_exists($this->cachepath."query/".$cmd) && !$this->cache_expired($cmd) && $this->caching == true) {
                       return $this->parse_ts3_response(file_get_contents($this->cachepath."query/".$cmd));
                 }

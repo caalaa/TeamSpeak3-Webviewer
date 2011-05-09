@@ -67,10 +67,8 @@ foreach ($viewer_conf as $key => $value)
 if ($viewer_conf['use_serverimages'] == true)
         $viewer_conf['serverimages'] = s_http . "get_server_icon.php?config=" . $_GET['config'] . "&id=";
 else $viewer_conf['serverimages'] = s_http . "images/" . $viewer_conf['imagepack'] . "/";
+$viewer_conf['client_name'] = "Maxesstuff TS3 Webviewer";
 
-$query = new TSQuery($viewer_conf['host'], $viewer_conf['queryport']);
-$query->set_caching(true, 20);
-$query->use_by_port($viewer_conf['vserverport']);
 $config = parseConfigFile(s_root . 'modules/infoDialog/infoDialog.xml', true);
 $lang = parseLanguageFile(s_root . 'modules/infoDialog/' . $viewer_conf['language'] . '.i18n.xml',
         true);
@@ -110,6 +108,14 @@ if ($_GET['type'] == 'client')
     preg_match("/^.*?([0-9]*)$/", $_GET['id'], $matches);
     $user = getUserByID($info['clientlist'], $matches[1]);
     if ($user == NULL) die();
+    $query = new TSQuery($viewer_conf['host'], $viewer_conf['queryport']);
+    $query->set_caching((int)$viewer_conf['enable_caching'], (int)$viewer_conf['standard_cachetime'],(int) $viewer_conf['cachetime']);
+    if($viewer_conf['login_needed']) {
+        ts3_check($query->login($viewer_conf['username'], $viewer_conf['password']), 'login');
+    }
+    
+    $query->use_by_port($viewer_conf['vserverport']);
+    $query->send_cmd("clientupdate client_nickname=" . $query->ts3query_escape($viewer_conf['client_name']));
     $clientinfo = $query->clientinfo($user['clid']);
     foreach ($config['show_html_for_client'] as $to_show)
     {
