@@ -160,13 +160,14 @@ if ($_GET['type'] == 'client')
                         $info['channelgroups'],
                         $viewer_conf['use_serverimages'],
                         $viewer_conf['channelgrp_images']);
-                if ($channelgroup_icon != 0)
+                
+                if ($channelgroup_icon == 0)
                 {
-                    $out .= '<img  src="' . $viewer_conf['serverimages'] . $channelgroup_icon . '" alt="" style="margin-right:2px;"/>';
+                    $out .= '<img src="' . s_http . 'images/serverimages/na.png" alt="" style="margin-right:2px;" />';
                 }
                 else
                 {
-                    $out .= '<img src="' . s_http . 'images/serverimages/na.png" alt="" style="margin-right:2px;" />';
+                    $out .= '<img  src="' . $viewer_conf['serverimages'] . $channelgroup_icon . '" alt="" style="margin-right:2px;"/>';
                 }
                 $out .= '</td></tr>';
                 break;

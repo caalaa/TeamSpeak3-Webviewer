@@ -18,7 +18,7 @@ function ts3_check($response, $cmd='')
     elseif ($response['error']['id'] != 0)
     {
         if ($cmd == '')
-            die('Query Error, please check whitelist and permissions');
+                die('Query Error, please check whitelist and permissions');
         else
         {
             die('Error code ' . $response['error']['id'] . ' while executing command "' . $cmd . "\"<br> Error Message:  \"" . $response['error']['msg'] . '"');
@@ -30,9 +30,9 @@ function parse_spacer($channel)
 {
     $ret = Array();
     //---,...,-.-,___,-..
-    if ($channel['pid'] != 0)
-        return false;
-    $spacer2 = preg_match("#^\[([rcl*]?)spacer(.*?)\](.*)#", $channel['channel_name'], $spacer);
+    if ($channel['pid'] != 0) return false;
+    $spacer2 = preg_match("#^\[([rcl*]?)spacer(.*?)\](.*)#",
+            $channel['channel_name'], $spacer);
     if ($spacer2 == 0)
     {
         return false;
@@ -124,30 +124,25 @@ function get_client_image($client)
 {
     global $config;
 
-    if ($client['client_away'] == 1)
-        return "away";
-    if ($client['client_output_muted'] == 1)
-        return "output_muted";
+    if ($client['client_away'] == 1) return "away";
+    if ($client['client_output_muted'] == 1) return "output_muted";
 
-    if ($client['client_input_hardware'] == 0)
-        return "mic_deactivated";
+    if ($client['client_input_hardware'] == 0) return "mic_deactivated";
 
-    if ($client['client_input_muted'] == 1)
-        return "mic_muted";
+    if ($client['client_input_muted'] == 1) return "mic_muted";
 
-    if ($client['client_is_channel_commander'] == 1)
-        return "channel_commander";
+    if ($client['client_is_channel_commander'] == 1) return "channel_commander";
 
-    if ($client['client_is_talker'] == 1)
-        return "client_talking";
+    if ($client['client_is_talker'] == 1) return "client_talking";
 
     if ($client['client_is_channel_commander'] == 1 && $client['client_is_talker'] == 1)
-        return "client_cm_talking";
+            return "client_cm_talking";
 
     return "normal_client";
 }
 
-function get_servergroup_images($client, $servergroups, $use_serverimages = false, $servergrpimages = FALSE)
+function get_servergroup_images($client, $servergroups,
+        $use_serverimages = false, $servergrpimages = FALSE)
 {
     $ret = Array();
     global $config;
@@ -165,10 +160,10 @@ function get_servergroup_images($client, $servergroups, $use_serverimages = fals
         }
         else
         {
-           
+
             foreach ($servergroups as $sgroup)
             {
-               
+
                 if ((int) $sgroup['sgid'] == (int) $group)
                 {
 
@@ -180,9 +175,11 @@ function get_servergroup_images($client, $servergroups, $use_serverimages = fals
     return $ret;
 }
 
-function get_channelgroup_image($client, $channelgroups, $use_serverimages = false, $channelgrpimages = NULL)
+function get_channelgroup_image($client, $channelgroups,
+        $use_serverimages = false, $channelgrpimages = NULL)
 {
     global $config;
+
     foreach ($channelgroups as $group)
     {
         if ($client['client_channel_group_id'] == $group['cgid'])
@@ -206,8 +203,7 @@ function del_by_cid($channellist, $cid)
 {
     foreach ($channellist as $key => $channel)
     {
-        if (intval($channel['cid']) == intval($cid))
-            unset($channellist[$key]);
+        if (intval($channel['cid']) == intval($cid)) unset($channellist[$key]);
     }
     return $channellist;
 }
@@ -215,17 +211,14 @@ function del_by_cid($channellist, $cid)
 // Parses a Config-File: Either a *.txt or a *.xml
 function parseConfigFile($file, $xml=false)
 {
-    if (!$xml)
-        return parseConfigFileText($file);
-    else
-        return parseConfigFileXML($file);
+    if (!$xml) return parseConfigFileText($file);
+    else return parseConfigFileXML($file);
 }
 
 // Parses a Text-Config-File and returns its values as an array
 function parseConfigFileText($file)
 {
-    if (!file_exists($file))
-        return false;
+    if (!file_exists($file)) return false;
 
     $array = array();
     $fp = fopen($file, "r");
@@ -286,17 +279,14 @@ function parseConfigFileXML($file)
 // Parses a Config-File: Either a *.txt or a *.xml
 function parseLanguageFile($file, $xml=false)
 {
-    if (!$xml)
-        return parseLanguageFileText($file);
-    else
-        return parseConfigFileXML($file);
+    if (!$xml) return parseLanguageFileText($file);
+    else return parseConfigFileXML($file);
 }
 
 // Parses a text-language-file and returns its values as an array
 function parseLanguageFileText($file)
 {
-    if (!file_exists($file))
-        return false;
+    if (!file_exists($file)) return false;
 
     $array = array();
     $fp = fopen($file, "r");
@@ -340,8 +330,7 @@ function unregister_globals()
     {
         foreach ($GLOBALS[$name] as $key => $value)
         {
-            if (isset($GLOBALS[$key]))
-                unset($GLOBALS[$key]);
+            if (isset($GLOBALS[$key])) unset($GLOBALS[$key]);
         }
     }
 }
@@ -387,14 +376,14 @@ function getUserByID($clientlist, $id)
 // @todo Add Code
 function throwAlert($message)
 {
-    
+    return;
 }
 
 // Outputs a Warning
 // @todo Add Code
 function throwWarning($message)
 {
-    
+    return;
 }
 
 // Replaces {} in the Code with the given data
