@@ -9,7 +9,7 @@
 
 v 0.8
 ! Fixed all bugs which occured with Internet Explorer and other browsers
-! The viewer can be included not via include or require (Path directivs adapted) (experimental only!)
+! The viewer can be included now via include or require (Path directivs adapted) (experimental only!)
 + Module: stats - shows the history of clients online in a chart
 + Added tooltips to the installscript for better explanation
 + Added sorting of modules in the installscript to allow to customize the output-order of the modules
@@ -28,6 +28,8 @@ v 0.8
 * Fixed notices in the installscript. Thanks to sTimulated (http://forum.teamspeak.com)
 * Fixed bug in installscript (login required has been shown always as true)
 * Downloadport is now automaticaly detected
+* Fixed bug in the infoDialog that channelgroups weren't shown
+* Fixed caching: viewer is connecting only every x seconds as setted in the config file
 
 v 0.7
 ! Updated Installscript to new XML-Specification
