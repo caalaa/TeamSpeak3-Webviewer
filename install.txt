@@ -1,14 +1,5 @@
-==INSTALL==
+### English ###
+Please follow our installation instructions here: http://en.maxesstuff.de/software/teamspeak3-webviewer/installation
 
-1. Upload all files to your webspace
-2. run the installscript at http://yourdomain.xy/path/to/viewer/install/index.php
-4. make sure that the following rights are given to the viewer-query login:
-	b_virtualserver_select (use)
-	b_virtualserver_info_view (serverinfo)
-	b_virtualserver_channel_list (channellist)
-	b_virtualserver_client_list (clientlist)
-	b_virtualserver_servergroup_list (servergrouplist)
-	b_virtualserver_channelgroup_list (channelgrouplist)
-	if you use the module infoDialog you have to open this right too:
-	b_client_info_view
-3. Follow these instructions: http://maxesstuff.de/software/teamspeak3-webviewer/installation
+### German ###
+Bitte folgen Sie unserer Schritt-für-Schritt-Anleitung im Internet: http://de.maxesstuff.de/software/teamspeak3-webviewer/installation
