@@ -8,7 +8,7 @@
 * Fix
 
 v 0.9
-
+~ Module: serverinfo: added option in the config which defines which numberformat should be used for traffic (MiB, GiB, ...)
 
 v 0.8
 ! Fixed all bugs which occured with Internet Explorer and other browsers
