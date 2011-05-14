@@ -1,6 +1,6 @@
-#############
-# Changelog #
-#############
+###############
+## Changelog ##
+###############
 
 ! Major Change
 + Add
@@ -24,8 +24,9 @@ v 0.8
 ~ Updated jQuery to 1.6.0
 ~ Style enhancements for the infoDialog module
 ~ enhanced space between clienticons
+~ Updated install.txt (Thanks to sTimulated (http://forum.teamspeak.com)).
 * Fixed translation of infoDialog if language has been added via &lang=
-* Fixed notices in the installscript. Thanks to sTimulated (http://forum.teamspeak.com)
+* Fixed notices in the installscript (Thanks to sTimulated (http://forum.teamspeak.com)).
 * Fixed bug in installscript (login required has been shown always as true)
 * Downloadport is now automaticaly detected
 * Fixed bug in the infoDialog that channelgroups weren't shown
