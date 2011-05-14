@@ -7,6 +7,9 @@
 ~ Minor Change
 * Fix
 
+v 0.9
+
+
 v 0.8
 ! Fixed all bugs which occured with Internet Explorer and other browsers
 ! The viewer can be included now via include or require (Path directivs adapted) (experimental only!)
