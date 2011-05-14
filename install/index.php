@@ -100,7 +100,7 @@ if (!passwordSetted())
 }
 
 // If password is setted but has not been entered yet
-if (passwordSetted() && $_SESSION['validated'] != true || !isset($_SESSION['validated']))
+if (passwordSetted() && !isset($_SESSION['validated']) || $_SESSION['validated'] != true )
 {
     echo(replaceValues("html/enter_pw.html"));
     exit;
