@@ -40,6 +40,9 @@
     <not_exist>The configfile does not exist!</not_exist>
     <no_info>Not all necessary information is given in the config file to flush the cache!</no_info>
     <fc_success>Cache deleted.</fc_success>
+    <delete_config>delete configfile</delete_config>
+    <config_not_exist>Could not delete the configfile because it does not exist</config_not_exist>
+    <config_deleted>Configfile successfully deleted.</config_deleted>
     
     <!-- CONFIG.html -->
     <basesettings>Mainsettings</basesettings>

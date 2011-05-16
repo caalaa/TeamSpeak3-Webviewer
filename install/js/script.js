@@ -67,14 +67,21 @@ function setconfig(file)
 function showViewer(config)
 {
     var href="../index.php?config=" + config
-    window.location.href= href;
+    window.location.href = href;
 }
 
 function flushCache(config)
 {
     var href="?action=fc&config="+config
-    window.location.href=href;
+    window.location.href = href;
 }
+
+function deleteConfig(config)
+{
+    var href="?action=delete&config="+config
+    window.location.href = href;
+}
+
 function redirect()
 {
     var href = "index.php?action=return";

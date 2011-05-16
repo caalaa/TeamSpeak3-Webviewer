@@ -54,7 +54,7 @@ function createConfigHtml()
 
     foreach ($files as $file)
     {
-        $html['selector'] .= '<p><fieldset><button style="width:200px;" onclick="javascript: setconfig(\'' . $file . '\')">' . $file . ' ('.(string)$lang->edit.')</button><span onclick="javascript: showViewer(\'' . $file . '\');"style="padding:4px; margin-left:15px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . (string) $lang->show_config . '</span><span onclick="javascript: flushCache(\'' . $file .'.xml\');"style="padding:4px; margin-left:10px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . (string) $lang->fc . '</span></fieldset></p>';
+        $html['selector'] .= '<p><fieldset><button style="width:200px;" onclick="javascript: setconfig(\'' . $file . '\')">' . $file . ' ('.(string)$lang->edit.')</button><span onclick="javascript: showViewer(\'' . $file . '\');"style="padding:4px; margin-left:15px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . (string) $lang->show_config . '</span><span onclick="javascript: flushCache(\'' . $file .'.xml\');"style="padding:4px; margin-left:10px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . (string) $lang->fc . '</span><span onclick="javascript: deleteConfig(\'' . $file .'.xml\');"style="padding:4px; margin-left:10px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . (string) $lang->delete_config . '</span></fieldset></p>';
     }
     return $html;
 }

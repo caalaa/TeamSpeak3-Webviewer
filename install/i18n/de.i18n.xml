@@ -24,6 +24,9 @@
     <not_exist>Die Konfigurationsdatei existiert nicht.</not_exist>
     <no_info>Es sind nich alle nötigen Informationen in der Konfigurationsdatei vorhanden, um den Cache zu löschen!</no_info>
     <fc_success>Cache gelöscht.</fc_success>
+    <delete_config>Datei löschen</delete_config>
+    <config_not_exist>Die Konfigurationsdatei konnte nicht gelöscht werden, da sie nicht existiert.</config_not_exist>
+    <config_deleted>Konfigurationsdatei gelöscht.</config_deleted>
 
     <!-- Tooltip-->
     <tt_tip>Tip: fahren sie über die Beschriftungen um genauere Informationen zu erhalten</tt_tip>

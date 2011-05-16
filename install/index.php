@@ -1,4 +1,5 @@
 <?php
+
 session_name("tswv");
 session_start();
 
@@ -52,14 +53,24 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == "set_config" && isset($
 }
 
 // Flushes caches
-if(isset($_SESSION['validated']) && $_SESSION['validated'] == true && isset($_REQUEST['action']) && $_REQUEST['action'] == 'fc' && isset($_REQUEST['config']))
+if (isset($_SESSION['validated']) && $_SESSION['validated'] == true && isset($_REQUEST['action']) && $_REQUEST['action'] == 'fc' && isset($_REQUEST['config']))
 {
     $data = createConfigHtml();
-    
+
     echo(flushCache($_REQUEST['config']));
     echo(replaceValues("html/select_config.html", $data));
     exit;
-}    
+}
+
+// Deletes caches
+if (isset($_SESSION['validated']) && $_SESSION['validated'] == true && isset($_REQUEST['action']) && $_REQUEST['action'] == "delete" && isset($_REQUEST['config']))
+{
+    echo(deleteConfigfile($_REQUEST['config']));
+    
+    $data = createConfigHtml();
+    echo(replaceValues("html/select_config.html", $data));
+    exit;
+}
 
 // If password needs to be validated
 if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'validate' && isset($_POST['password']) && passwordSetted())
@@ -78,9 +89,9 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'validate' && isset($_P
         $_SESSION['validated'] = false;
 
         if ($_SESSION['lang'] == "en")
-            echo(throwAlert("The Password you provided was not correct!"));
+                echo(throwAlert("The Password you provided was not correct!"));
         else
-            echo(throwAlert("Das Passwort ist nich korrekt. Bitte versuchen Sie es erneut!"));
+                echo(throwAlert("Das Passwort ist nich korrekt. Bitte versuchen Sie es erneut!"));
     }
 }
 
@@ -100,7 +111,7 @@ if (!passwordSetted())
 }
 
 // If password is setted but has not been entered yet
-if (passwordSetted() && !isset($_SESSION['validated']) || $_SESSION['validated'] != true )
+if (passwordSetted() && !isset($_SESSION['validated']) || $_SESSION['validated'] != true)
 {
     echo(replaceValues("html/enter_pw.html"));
     exit;
@@ -129,14 +140,16 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
     $xml->username = $_POST['username'];
     $xml->password = $_POST['password'];
 
-    if(empty($_POST['module'])) {
+    if (empty($_POST['module']))
+    {
         $pre = "htmlframe,style";
     }
-    else {
+    else
+    {
         $pre = "htmlframe,style,";
     }
 
-    $xml->modules = $pre.implode(",", $_POST['module']);
+    $xml->modules = $pre . implode(",", $_POST['module']);
 
     $xml->use_serverimages = $_POST['servericons'];
     $xml->imagepack = $_POST['imagepack'];
@@ -157,7 +170,8 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
 
     if (!is_dir("../cache/" . $_POST['serveradress'] . $_POST['queryport'] . "/" . $_POST['serverport'] . "/query/time/"))
     {
-        mkdir("../cache/" . $_POST['serveradress'] . $_POST['queryport'] . "/" . $_POST['serverport'] . "/query/time/", 0777, true);
+        mkdir("../cache/" . $_POST['serveradress'] . $_POST['queryport'] . "/" . $_POST['serverport'] . "/query/time/",
+                0777, true);
     }
 
 
@@ -171,27 +185,26 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
     if (!file_exists("../config/" . $_SESSION['config'] . ".xml"))
     {
         if ($_SESSION['lang'] == "en")
-            echo(throwAlert("Configfile not writeable! Please set chmod for the 'config' directory to 775"));
+                echo(throwAlert("Configfile not writeable! Please set chmod for the 'config' directory to 775"));
         else
-            echo(throwAlert("Konfigdatei kann nicht geschrieben werden! Bitte setzen Sie die Berechtigungen für das Verzeichnis 'Config' auf 775!"));
+                echo(throwAlert("Konfigdatei kann nicht geschrieben werden! Bitte setzen Sie die Berechtigungen für das Verzeichnis 'Config' auf 775!"));
         exit;
     }
 
     $data = createEditHtml();
 
     if ($_SESSION['lang'] == "en")
-        echo(throwWarning("Configfile successfully written!"));
-    else
-        echo(throwWarning("Configfile erfolgreich gespeichert!"));
+            echo(throwWarning("Configfile successfully written!"));
+    else echo(throwWarning("Configfile erfolgreich gespeichert!"));
 
     echo(replaceValues("html/config.html", $data));
-    
+
     echo('<script type="text/javascript">
             $(document).ready(function(){
                 setTimeout(redirect(), 3000);
             });
           </script>');
-    
+
     exit;
 }
 
@@ -203,5 +216,4 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
     echo(replaceValues("html/config.html", $data));
     exit;
 }
-
 ?>
