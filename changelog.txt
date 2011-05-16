@@ -9,6 +9,7 @@
 
 v 0.9
 ~ Module: serverinfo: added option in the config which defines which numberformat should be used for traffic (MiB, GiB, ...)
+* Fixed bug in installscript that the module-edit-popout wasn't shown correctly in internetexplorer (Thanks to sTimulated (http://forum.teamspeak.com)).
 
 v 0.8
 ! Fixed all bugs which occured with Internet Explorer and other browsers
