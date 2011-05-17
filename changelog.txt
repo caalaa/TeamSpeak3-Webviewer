@@ -8,8 +8,10 @@
 * Fix
 
 v 0.9
+~ Deleted legacy support of *.txt configfiles
+~ Installscript shows now an error if some neccessary functions are not available on the webspace
 ~ Module: serverinfo: added option in the config which defines which numberformat should be used for traffic (MiB, GiB, ...)
-* Fixed bug in installscript that the module-edit-popout wasn't shown correctly in internetexplorer (Thanks to sTimulated (http://forum.teamspeak.com)).
+* Fixed bug in installscript that the module-edit-popup wasn't shown correctly in internetexplorer (Thanks to sTimulated (http://forum.teamspeak.com)).
 
 v 0.8
 ! Fixed all bugs which occured with Internet Explorer and other browsers
