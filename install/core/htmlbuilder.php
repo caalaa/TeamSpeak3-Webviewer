@@ -110,7 +110,7 @@ function createEditHtml()
 
         $xml = getXmlFile("../modules/$module/$module.xml");
         $description = $xml->info->{'description_' . $_SESSION['lang']};
-        $mod_sort_enabled .= '<li id="' . $module . '" class="ui-state-highlight"><a href="core/xmledit.php?module=' . $module . '" id="tt" class="color" title="' . $description . '">' . $module . '</a></li>';
+        $mod_sort_enabled .= '<li id="' . $module . '" class="ui-state-highlight"><a href="core/xmledit.php?module=' . $module . '" class="color" >' . $module . '</a><span title="'.$description.'" style="float:right; margin-top:auto; margin-bottom:auto;" class="ui-icon ui-icon-info" id="tt"></span></li>';
     }
 
     // Disabled Modules
@@ -118,7 +118,7 @@ function createEditHtml()
     {
         $xml = getXmlFile("../modules/$module/$module.xml");
         $description = $xml->info->{'description_' . $_SESSION['lang']};
-        $mod_sort_disabled .= '<li id="' . $module . '" class="ui-state-default"><a href="core/xmledit.php?module=' . $module . '" id="tt" class="color" title="' . $description . '">' . $module . '</a></li>';
+        $mod_sort_disabled .= '<li id="' . $module . '" class="ui-state-default"><a href="core/xmledit.php?module=' . $module . '" class="color">' . $module . '</a><span title="'.$description.'" style="float:right; margin-top:auto; margin-bottom:auto;" class="ui-icon ui-icon-info" id="tt"></span></li>';
     }
 
     $mod_sort_enabled .= '</ul>';

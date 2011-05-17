@@ -12,7 +12,7 @@ $(document).ready(function(){
         scrolling: false,
         fastIframe: false
     });
-    $('td[title], a[title]').qtip({
+    $('td[title], a[title], span[title]').qtip({
         style:{
             classes: 'ui-state-highlight ui-corner-all tooltip'
         },
@@ -34,16 +34,7 @@ $(document).ready(function(){
         modules = $('#sort1').sortable('toArray');
             
         document.getElementById("modules_hidden").value = modules;
-    });
-    
-    $("#sort1, #sort2").bind("sortstart sortremove sortreceive sort", function(event, ui){
-        $("td[title], a[title]").qtip('disable');  
-    });
-    
-    $("#sort1, #sort2").bind("sortstop", function(event, ui){
-        $("td[title], a[title]").qtip('enable');  
-    });
-    
+    });    
 });
 
 function de()
