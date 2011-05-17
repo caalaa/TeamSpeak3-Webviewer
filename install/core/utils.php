@@ -153,6 +153,26 @@ function deleteConfigfile($file)
     }
 }
 
+// Checks, if all needed functions are available for the viewer
+function checkFunctions()
+{
+    $html = '';
+    $functions = Array("fsockopen");
+    
+    $lang = simplexml_load_file("i18n/".$_SESSION['lang'].".i18n.xml");
+    
+    foreach ($functions as $value)
+    {
+        if(!function_exists($value))
+        {
+            // Create Warnings
+            $html .= throwAlert($lang->{$value."_not_available"});
+        }
+    }
+    
+    return $html;
+}
+
 // Throws an visual Alert
 function throwAlert($message)
 {

@@ -4,6 +4,25 @@
     <no>Nein</no>
     <yes>Ja</yes>
     <back>Zurück zur Auswahl</back>
+    
+    <!-- Tooltip-->
+    <tt_tip>Tip: fahren sie über die Beschriftungen um genauere Informationen zu erhalten</tt_tip>
+    
+    <tt_serveradress>Die Adresse unter der sie zum Server verbinden (Kann eine IP-Adresse oder ein Hostname sein)</tt_serveradress>
+    <tt_queryport>Der Queryport des Servers (Standard: 10011)</tt_queryport>
+    <tt_serverport>Der Port über den Sie im Client auf den Server verbinden</tt_serverport>
+    <tt_login>Wird ein Login benötigt um an alle Informationen für den Viewer zu kommen? (Standard: Ja).</tt_login>
+    <tt_username>Der Name des Query-Benutzers</tt_username>
+    <tt_password>Das Password für den obigen Benutzer</tt_password>
+    <tt_servericons>Sollen die Servericons automatisch heruntergeladen werden?</tt_servericons>
+    <tt_imagepack>Werden die Icons nicht automatisch heruntergeladen, wird der hier gesetzte Imagepack verwendet</tt_imagepack>
+    <tt_arrow>Ist diese Einstellung gesetzt werden neben den Channeln Pfeile angezeigt (ähnlich wie im Client)</tt_arrow>
+    <tt_caching>Wenn diese Einstellung auf Ja gesetzt ist, werden die Informationen nur alle n Sekunden abgerufen</tt_caching>
+    <tt_standard_cachetime>Zeitraum, in dem die Informationen gepuffert werden</tt_standard_cachetime>
+    <tt_lang>Sprache des Viewers</tt_lang>
+    
+    <!-- Functions -->
+    <fsockopen_not_available>Die benötigte Funktion fsockopen (http://php.net/manual/de/function.fsockopen.php) ist bei Ihrem Webspace nicht verfügbar. Bitte kontaktieren Sie Ihren Hoster.</fsockopen_not_available>
 
     <!-- SET_PASSWORD.html -->
     <setpw>Bitte setzen sie einmalig ein Passwort:</setpw>
@@ -27,22 +46,6 @@
     <delete_config>Datei löschen</delete_config>
     <config_not_exist>Die Konfigurationsdatei konnte nicht gelöscht werden, da sie nicht existiert.</config_not_exist>
     <config_deleted>Konfigurationsdatei gelöscht.</config_deleted>
-
-    <!-- Tooltip-->
-    <tt_tip>Tip: fahren sie über die Beschriftungen um genauere Informationen zu erhalten</tt_tip>
-    
-    <tt_serveradress>Die Adresse unter der sie zum Server verbinden (Kann eine IP-Adresse oder ein Hostname sein)</tt_serveradress>
-    <tt_queryport>Der Queryport des Servers (Standard: 10011)</tt_queryport>
-    <tt_serverport>Der Port über den Sie im Client auf den Server verbinden</tt_serverport>
-    <tt_login>Wird ein Login benötigt um an alle Informationen für den Viewer zu kommen? (Standard: Ja).</tt_login>
-    <tt_username>Der Name des Query-Benutzers</tt_username>
-    <tt_password>Das Password für den obigen Benutzer</tt_password>
-    <tt_servericons>Sollen die Servericons automatisch heruntergeladen werden?</tt_servericons>
-    <tt_imagepack>Werden die Icons nicht automatisch heruntergeladen, wird der hier gesetzte Imagepack verwendet</tt_imagepack>
-    <tt_arrow>Ist diese Einstellung gesetzt werden neben den Channeln Pfeile angezeigt (ähnlich wie im Client)</tt_arrow>
-    <tt_caching>Wenn diese Einstellung auf Ja gesetzt ist, werden die Informationen nur alle n Sekunden abgerufen</tt_caching>
-    <tt_standard_cachetime>Zeitraum, in dem die Informationen gepuffert werden</tt_standard_cachetime>
-    <tt_lang>Sprache des Viewers</tt_lang>
 
     <!-- CONFIG.html -->
     <basesettings>Haupteinstellungen</basesettings>

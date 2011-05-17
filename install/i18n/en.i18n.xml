@@ -21,6 +21,9 @@
     <tt_standard_cachetime>The time in seconds the viewer should buffer the serverdata (Recommended: 60).</tt_standard_cachetime>
     <tt_lang>Language of the viewer</tt_lang>
     
+    <!-- Functions -->
+    <fsockopen_not_available>The neccessary function fsockopen (http://php.net/manual/de/function.fsockopen.php) is not available at your webspace. Please contact your service-provider.</fsockopen_not_available>
+    
     <!-- SET_PASSWORD.html -->
     <setpw>Please insert a new password for the interface once:</setpw>
     <setpwsubmit>Set password</setpwsubmit>
@@ -78,7 +81,5 @@
    
     <!-- XMLEDIT.html -->
     <edit_xml>You can edit the configfile of the module here. If you have finished just press the button</edit_xml>
-    <submit_xml_edit>Save configfile</submit_xml_edit>
-
-    
+    <submit_xml_edit>Save configfile</submit_xml_edit>   
 </language>

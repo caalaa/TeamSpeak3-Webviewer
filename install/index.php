@@ -121,7 +121,10 @@ if (passwordSetted() && !isset($_SESSION['validated']) || $_SESSION['validated']
 if (!isset($_SESSION['config']) || $_SESSION['config'] == "")
 {
     $data = createConfigHtml();
-
+    
+    // Check Functions
+    $data['err_warn'] = checkFunctions();
+    
     echo(replaceValues("html/select_config.html", $data));
     exit;
 }
