@@ -1,8 +1,9 @@
-/*
- *    Author: Maximilian Narr
-*/
+/* Author    : Maximilian Narr
+ * Homepage  : http://maxesstuff.de
+ * Email     : maxe@maxesstuff.de
+ */
 
-p,div
+p, div
 {
     margin-top:0px;
     margin-bottom:0px;
@@ -15,7 +16,6 @@ body
     white-space:nowrap;
     background-color:transparent;
 }
-
 
 .servername
 {
@@ -41,11 +41,11 @@ body
     margin-bottom:0px;
 }
 
-.channel 
+.channel
 {
     font-family:sans-serif;
     font-size:small;
-    margin: 1pt 0 0 0;
+    margin: 1px 0 0 0;
 }
 
 .channel_arr
@@ -55,7 +55,7 @@ body
 
 .channel_norm
 {
-    margin-left: 32px;   
+    margin-left: 32px;
 }
 
 /* Spacer */
@@ -65,7 +65,7 @@ body
     font-size:small;
     margin-top:0px;
     margin-bottom:0px;
-
+    
     /*delete this if you want the original letter spacing */
     letter-spacing:1px;
 }
@@ -79,7 +79,6 @@ body
 {
     margin-left: 20px;
 }
-
 
 .right
 {
@@ -127,14 +126,14 @@ body
     font-size:small;
     font-weight: bold;
     margin-left:32px;
-    margin-top:0px;
+    margin-top:1px;
     margin-bottom:0px;
 }
 
-.spacer_con .arrow 
+.spacer_con .arrow
 {
     margin-left:-12px;
-}	
+}
 
 .img_r
 {
