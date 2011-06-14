@@ -29,7 +29,6 @@ body
     margin-top:5px;
     font-family:sans-serif;
     font-size:small;
-    text-decoration: capitalize;
 }
 
 .server
@@ -65,8 +64,6 @@ body
     font-size:small;
     margin-top:0px;
     margin-bottom:0px;
-    
-    /*delete this if you want the original letter spacing */
     letter-spacing:1px;
 }
 
@@ -97,27 +94,27 @@ body
 
 .linie
 {
-    background: url(linie.gif) repeat-x;
+    background: url(img/linie.png) repeat-x;
 }
 
 .bs
 {
-    background: url(bs.gif) repeat-x;
+    background: url(img/bs.png) repeat-x;
 }
 
 .bspunkt
 {
-    background: url(bspunkt.gif) repeat-x;
+    background: url(img/bspunkt.png) repeat-x;
 }
 
 .bsdpunkt
 {
-    background: url(bsdpunkt.gif) repeat-x;
+    background: url(img/bsdpunkt.png) repeat-x;
 }
 
 .punkt
 {
-    background: url(punkt.gif) repeat-x;
+    background: url(img/punkt.png) repeat-x;
 }
 
 .client

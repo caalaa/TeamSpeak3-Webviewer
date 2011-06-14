@@ -25,6 +25,9 @@ $(document).ready(function(){
     $( "#sort1, #sort2" ).sortable({
         connectWith: ".sortable"
     }).disableSelection();
+    
+    modules = $('#sort1').sortable('toArray');
+    document.getElementById("modules_hidden").value = modules;
  
     
     $('#sort1').bind("sortstop sortremove sortreceive", function(event,ui){
