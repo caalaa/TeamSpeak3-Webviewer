@@ -9,11 +9,16 @@ class style extends ms_Module
     function __construct($config, $info, $lang, $mManager)
     {
         parent::__construct($config, $info, $lang, $mManager);
+
         $this->styles_sent = false;
-        if (!file_exists(s_root . 'styles/' . $config['style'] . '.css'))
+
+        $filepath = s_root . 'styles/' . $config['style'] . '/' . $config['style'] . '.css';
+        
+        if (!file_exists($filepath))
                 die('style_not_found');
-        $this->config['style'] = s_http . 'styles/' . $config['style'] . '.css';
-        $this->config['style_ie'] = s_http . 'styles/' . $config['style'] . '_ie.css';
+
+        $this->config['style'] = s_http . 'styles/' . $config['style'] . '/' . $config['style'] . '.css';
+        $this->config['style_ie'] = s_http . 'styles/' . $config['style'] . '/' . $config['style'] . '_ie.css';
         $this->text = "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $this->config['style'] . "\" >\r\n";
         $this->text .= '<!--[if IE]><link rel="stylesheet" type="text/css" href="' . $this->config['style_ie'] . '"><![endif]-->';
     }
@@ -28,7 +33,7 @@ class style extends ms_Module
                     $this->text .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $text . "\" >\r\n";
                     break;
                 case 'cc':
-                    $this->text .= '<!--[if '.$cc.']><style type="text/css">'.$text.'</style><![endif]-->';
+                    $this->text .= '<!--[if ' . $cc . ']><style type="text/css">' . $text . '</style><![endif]-->';
                     break;
                 default:
                     $this->text .= "<style type=\"text/css\">

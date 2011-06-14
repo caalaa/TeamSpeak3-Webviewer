@@ -27,16 +27,19 @@ class ms_Module
         
     }
 
-    //events thrown by viewer:
-    //onStartup  after loading the modules;
-    //onShutdown after all regular output;
-    //events thrown by standard modules
-    //HTMLframe Module:
-    //onHead   after outputting the <HEAD> tag 
-    //onHtml   after outputting the <HTML> tag;
-    //onBody   after outputting the <BODY> tag; (normally the same as getHeader())
-    //style Module:
-    //onStyle<name_of_the_style> if trigger_style in config is setted to true;
+    /*
+     * Events thrown by viewer:
+        onStartup:  after loading the modules;
+        onShutdown: after all regular output;
+    
+     * Events thrown by standard modules
+        HTMLframe Module:
+            onHead   after outputting the <HEAD> tag 
+            onHtml   after outputting the <HTML> tag;
+            onBody   after outputting the <BODY> tag; (normally the same as getHeader())
+        style Module:
+            onStyle<name_of_the_style> if trigger_style in config is setted to true;
+     */
 
     public function onEvent($e)
     {

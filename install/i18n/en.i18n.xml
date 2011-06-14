@@ -20,6 +20,7 @@
     <tt_caching>If this on true the viewer will buffer the data it received. It is strongly recommended to enable caching due to stability reasons.</tt_caching>
     <tt_standard_cachetime>The time in seconds the viewer should buffer the serverdata (Recommended: 60).</tt_standard_cachetime>
     <tt_lang>Language of the viewer</tt_lang>
+    <tt_style>The stylesheet which should be used for the viewer</tt_style>
     
     <!-- Functions -->
     <fsockopen_not_available>The neccessary function fsockopen (http://php.net/manual/de/function.fsockopen.php) is not available at your webspace. Please contact your service-provider.</fsockopen_not_available>
@@ -65,6 +66,7 @@
     <servericons>Download servericons automatically?</servericons>
     <appear>Style</appear>
     <imagepack>Imagepack</imagepack>
+    <stylesheet>Stylesheet</stylesheet>
     <arrow>Show arrows?</arrow>
     
     <caching_enable>Enable caching?</caching_enable>

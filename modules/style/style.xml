@@ -1,13 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-    Document   : style.xml
-    Created on : 18. März 2011, 20:46
-    Author     : drak3
-    Description:
-        Purpose of the document follows.
--->
-
 <config>
     <info>
         <author>Max Rath</author>
@@ -18,7 +9,5 @@
         <!-- Don't change anything here -->
         <!-- Ändern Sie hier nichts! -->
         <abstract>true</abstract>
-    </info>
-    
-    <style>iframe</style>
+    </info>    
 </config>

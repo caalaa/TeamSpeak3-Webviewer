@@ -153,6 +153,19 @@ function createEditHtml()
         else
                 $html['imagepack_html'] .= '<input type="radio" name="imagepack" value="' . $pack . '"> ' . $pack . '<br>';
     }
+    
+    // Style
+    $styles = getStyles();
+    
+    $html['style_html'] = '';
+    
+    foreach($styles as $style)
+    {
+        if((string)$configfile->style == $style)
+                $html['style_html'] .= '<input type="radio" name="style" value="' . $style . '" checked="checked"> ' . $style . '<br>';
+        else
+                $html['style_html'] .= '<input type="radio" name="style" value="' . $style . '"> ' . $style . '<br>';
+    }
 
     // Arrows
     if ($configfile->show_arrows == "true" || $configfile->show_arrows == '')

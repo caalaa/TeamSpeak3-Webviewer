@@ -20,6 +20,7 @@
     <tt_caching>Wenn diese Einstellung auf Ja gesetzt ist, werden die Informationen nur alle n Sekunden abgerufen</tt_caching>
     <tt_standard_cachetime>Zeitraum, in dem die Informationen gepuffert werden</tt_standard_cachetime>
     <tt_lang>Sprache des Viewers</tt_lang>
+    <tt_style>Stylesheet das für den Viewer benutzt werden soll.</tt_style>
     
     <!-- Functions -->
     <fsockopen_not_available>Die benötigte Funktion fsockopen (http://php.net/manual/de/function.fsockopen.php) ist bei Ihrem Webspace nicht verfügbar. Bitte kontaktieren Sie Ihren Hoster.</fsockopen_not_available>
@@ -65,6 +66,7 @@
     <servericons>Servericons automatisch herunterladen?</servericons>
     <appear>Style</appear>
     <imagepack>Bildpaket</imagepack>
+    <stylesheet>Stylesheet</stylesheet>
     <arrow>Pfeile anzeigen?</arrow>
 
     <caching_enable>Caching aktivieren</caching_enable>

@@ -87,6 +87,24 @@ function getImagePacks()
     return $packs;
 }
 
+// Returns all styles in an array
+function getStyles()
+{
+    $styles = array();
+    
+    $dir = opendir("../styles");
+    
+    while($style = readdir($dir))
+    {
+        if($style != ".." && $style != "." && file_exists("../styles/$style/$style.css"))
+        {
+            $styles[] = $style;
+        }
+    }
+    
+    return $styles;
+}
+
 // Flushs the cache
 function flushCache($config)
 {

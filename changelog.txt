@@ -4,13 +4,16 @@
 
 ! Major Change
 + Add
+- Removal
 ~ Minor Change
 * Fix
 
 v 0.9
-~ Deleted legacy support of *.txt configfiles
++ HTML-Tidyup, if http://php.net/manual/en/book.tidy.php is installed on the server
+- Support of *.txt and *.conf configfiles
 ~ Installscript shows now an error if some neccessary functions are not available on the webspace
 ~ Module: serverinfo: added option in the config which defines which numberformat should be used for traffic (MiB, GiB, ...)
+~ handling of styles
 * Fixed bug in installscript that the module-edit-popup wasn't shown correctly in internetexplorer (Thanks to sTimulated (http://forum.teamspeak.com))
 * Added workaround in installscript: The tooltips of modules will be shown only if you hover over the i (Thanks to sTimulated (http://forum.teamspeak.com))
 * Fixed bug in css file that the icons weren't shown at the right position
@@ -24,7 +27,7 @@ v 0.8
 + Module: about - shows information about the viewer
 + Added possibility to flush the cache in the installscript
 + Added possibility to open the viewer directly from the installscript
-~ Deleted unnecessary files which decreased the size of the viewer
+- Deleted unnecessary files which decreased the size of the viewer
 ~ Updated welcomescreen
 ~ Modules: js_login and loginButton: the Password can now provided in the configfile that the user doesn't has to enter it
 ~ Module: serverInfo: increased data format from MiB to GiB

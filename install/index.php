@@ -156,6 +156,7 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
 
     $xml->use_serverimages = $_POST['servericons'];
     $xml->imagepack = $_POST['imagepack'];
+    $xml->style = $_POST['style'];
     $xml->show_arrows = $_POST['arrows'];
     $xml->enable_caching = $_POST['caching'];
     $xml->standard_cachetime = $_POST['standard_caching'];
