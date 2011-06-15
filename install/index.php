@@ -66,7 +66,7 @@ if (isset($_SESSION['validated']) && $_SESSION['validated'] == true && isset($_R
 if (isset($_SESSION['validated']) && $_SESSION['validated'] == true && isset($_REQUEST['action']) && $_REQUEST['action'] == "delete" && isset($_REQUEST['config']))
 {
     echo(deleteConfigfile($_REQUEST['config']));
-    
+
     $data = createConfigHtml();
     echo(replaceValues("html/select_config.html", $data));
     exit;
@@ -121,10 +121,10 @@ if (passwordSetted() && !isset($_SESSION['validated']) || $_SESSION['validated']
 if (!isset($_SESSION['config']) || $_SESSION['config'] == "")
 {
     $data = createConfigHtml();
-    
+
     // Check Functions
     $data['err_warn'] = checkFunctions();
-    
+
     echo(replaceValues("html/select_config.html", $data));
     exit;
 }
@@ -132,9 +132,33 @@ if (!isset($_SESSION['config']) || $_SESSION['config'] == "")
 // If password is setted and has been entered and Configfile and Language is setted and Configfile should be written
 if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['config']) && isset($_SESSION['lang']) && isset($_REQUEST['action']) && $_REQUEST['action'] == "submit")
 {
+    $lang = simplexml_load_file("i18n/" . $_SESSION['lang'] . ".i18n.xml");
+
     str_replace(".xml", "", $_SESSION['config_xml']);
 
     $xml = simplexml_load_string($_SESSION['config_xml']);
+
+    $necessary_vars = array("serveradress", "queryport", "serverport", "login_needed", "servericons", "imagepack", "style", "arrows", "caching", "language");
+    $vars_unavailable = false;
+
+    // START VAR CHECKING \\
+    // Check if necessary vars are full
+    foreach ($necessary_vars as $var)
+    {
+        if (empty($_POST[$var]) || $_POST[$var] == NULL || $_POST[$var] == "")
+        {
+            $vars_unavailable = true;
+            echo throwAlert($var . " " . $lang->not_setted);
+        }
+    }
+
+    if ($vars_unavailable)
+    {
+        $data = createEditHtml();
+        echo(replaceValues("html/config.html", $data));
+        exit;
+    }
+    // END VAR CHECKING \\
 
     $xml->host = $_POST['serveradress'];
     $xml->queryport = $_POST['queryport'];
@@ -175,14 +199,14 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
     if (!is_dir("../cache/" . $_POST['serveradress'] . $_POST['queryport'] . "/" . $_POST['serverport'] . "/query/time/"))
     {
         mkdir("../cache/" . $_POST['serveradress'] . $_POST['queryport'] . "/" . $_POST['serverport'] . "/query/time/",
-                0777, true);
+                0775, true);
     }
 
 
     $imagepath = "../cache/" . $_POST['serveradress'] . $_POST['queryport'] . "/" . $_POST['serverport'] . "/server/images";
     if (!is_dir($imagepath))
     {
-        mkdir($imagepath, 0777, true);
+        mkdir($imagepath, 0775, true);
     }
 
 

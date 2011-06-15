@@ -81,6 +81,7 @@
     <mod_sort_enabled_lang>Activated modules:</mod_sort_enabled_lang>
     <mod_sort_disabled_lang>Disabled modules:</mod_sort_disabled_lang>
    
+    <not_setted>is not set. Please check if you filled out all blanks.</not_setted>
     <!-- XMLEDIT.html -->
     <edit_xml>You can edit the configfile of the module here. If you have finished just press the button</edit_xml>
     <submit_xml_edit>Save configfile</submit_xml_edit>   
