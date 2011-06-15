@@ -4,6 +4,9 @@
 session_name('ms_ts3Viewer');
 session_start();
 
+// Define Current Version
+define('version', "0.9");
+
 // **************************************************************** \\
 // STARTING EDITABLE CONTENT                                        \\
 // **************************************************************** \\
