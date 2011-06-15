@@ -11,9 +11,10 @@
 v 0.9
 + HTML-Tidyup, if http://php.net/manual/en/book.tidy.php is installed on the server
 - Support of *.txt and *.conf configfiles
+- unnecessary images
 ~ Installscript shows now an error if some neccessary functions are not available on the webspace
 ~ Module: serverinfo: added option in the config which defines which numberformat should be used for traffic (MiB, GiB, ...)
-~ handling of styles
+~ handling of styles: images are now embedded via css and not via <img>
 ~ Added warning in installscript if some blanks weren't filled out
 ~ Swapped arrows that they are like in the ts client now
 ~ changed channelicon

@@ -125,20 +125,20 @@ function get_client_image($client)
     global $config;
 
     if ($client['client_away'] == 1) return "away";
-    if ($client['client_output_muted'] == 1) return "output_muted";
+    if ($client['client_output_muted'] == 1) return "output-muted";
 
-    if ($client['client_input_hardware'] == 0) return "mic_deactivated";
+    if ($client['client_input_hardware'] == 0) return "mic-deactivated";
 
-    if ($client['client_input_muted'] == 1) return "mic_muted";
+    if ($client['client_input_muted'] == 1) return "mic-muted";
 
-    if ($client['client_is_channel_commander'] == 1) return "channel_commander";
+    if ($client['client_is_channel_commander'] == 1) return "channel-commander";
 
-    if ($client['client_is_talker'] == 1) return "client_talking";
+    if ($client['client_is_talker'] == 1) return "client-talking";
 
     if ($client['client_is_channel_commander'] == 1 && $client['client_is_talker'] == 1)
-            return "client_cm_talking";
+            return "client-cm-talking";
 
-    return "normal_client";
+    return "normal-client";
 }
 
 function get_servergroup_images($client, $servergroups,

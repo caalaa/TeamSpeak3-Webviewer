@@ -161,6 +161,7 @@ if ($config_available == false)
     exit;
 }
 // WELCOME SCREEN END \\
+// 
 //postparsing of configfile 
 foreach ($config as $key => $value)
 {
@@ -344,7 +345,7 @@ $duration = microtime(true) - $start;
 function render_server($serverinfo, $imagepath)
 {
     global $config, $mManager;
-    return "<div class=\"server\">" . $mManager->triggerEvent("InServer") . " \n <p  class=\"servername\"> <img alt=\"\" src=\"" . $imagepath . "server.png\" />" . escape_name($serverinfo['virtualserver_name']) . "</p>\r\n";
+    return "<div class=\"server\">" . $mManager->triggerEvent("InServer") . " \n <p  class=\"servername\">".'<span class="serverimage image">&nbsp;</span>' . escape_name($serverinfo['virtualserver_name']) . "</p>\r\n";
 }
 
 function render_client($clientinfo, $servergrouplist, $channelgrouplist)
@@ -361,19 +362,19 @@ function render_client($clientinfo, $servergrouplist, $channelgrouplist)
     {
         if ($image == 0) continue;
         $rendered .= "<img alt=\"\" class=\"img_r\" src=\"" . $config['serverimages'] . $image . "\"/>";
-    } //get_servergroup_images($clientinfo, $servergrouplist, $config['use_serverimages'], $config['servergrp_images']) as $image
+    } 
     $channelgroup_icon = get_channelgroup_image($clientinfo, $channelgrouplist,
             $config['use_serverimages'], $config['channelgrp_images']);
     if ($channelgroup_icon != 0)
     {
         $rendered .= "<img alt=\"\" class=\"img_r\" src=\"" . $config['serverimages'] . $channelgroup_icon . "\"/>";
-    } //$channelgroup_icon != 0
-    $rendered .= '<img alt="" style="margin-right:4px;" src="' . $config['imagepath'] . get_client_image($clientinfo) . $config['image_type'];
-    $rendered .= '"/>' . escape_name($clientinfo['client_nickname']);
+    }
+    $rendered .= '<span class="clientimage ' . get_client_image($clientinfo) . '">&nbsp;</span>' . escape_name($clientinfo['client_nickname']);
     $rendered .= "\r\n</p>";
     return $rendered;
 }
 
+// Renders channels
 function render_channel_start($channel, $clientlist)
 {
     global $config;
@@ -382,27 +383,22 @@ function render_channel_start($channel, $clientlist)
 
     if (!is_array($channel['channel_name']))
     {
-        $channelimage = $config['imagepath'];
+        $channelimage = 'normal-channel';
+
         if ($channel['channel_maxclients'] != -1 && $channel['channel_maxclients'] <= $channel['total_clients'])
         {
-            $channelimage .= 'channel_full';
-        } //$channel['channel_maxclients'] != -1 && $channel['channel_maxclients'] <= $channel['total_clients']
+            $channelimage = 'full';
+        }
         elseif ($channel['channel_flag_password'] == 1)
         {
-            $channelimage .= 'channel_locked';
-        } //$channel['channel_flag_password'] == 1
-        else
-        {
-            $channelimage .= 'channel';
+            $channelimage = 'locked';
         }
-
-        $channelimage .= $config['image_type'];
 
         if (($channel->has_childs() || $channel->has_clients($clientlist)) && $config['show_arrows'])
         {
             $output .= '<div class="channel channel_arr" id="' . $config['prefix'] . "channel_" . htmlspecialchars($channel['cid'],
                             ENT_QUOTES) . "\">\r\n";
-        } //($channel->has_childs() || $channel->has_clients($clientlist)) && $config['show_arrows']
+        }
         else
         {
             $output .= '<div class="channel channel_norm" id="' . $config['prefix'] . "channel_" . htmlspecialchars($channel['cid'],
@@ -412,32 +408,32 @@ function render_channel_start($channel, $clientlist)
         if ($channel['channel_icon_id'] != 0 && $config['use_serverimages'] == true)
         {
             $output .= '<img alt="" class="img_r" src="' . $config['serverimages'] . $channel['channel_icon_id'] . '"/>';
-        } //$channel['channel_icon_id'] != 0 && $config['use_serverimages'] == true
+        }
+        // If channel is moderated
         if ($channel['channel_needed_talk_power'] > 0)
         {
-            $output .= '<img alt="" src="' . $config['imagepath'] . 'moderated' . $config['image_type'] . '" class="img_r" />';
-        } //$channel['channel_needed_talk_power'] > 0
+            $output .= '<span class="channelimage moderated img_r">&nbsp;</span>';
+        }
+        // If channel has password
         if ($channel['channel_flag_password'] == '1')
         {
-            $output .= '<img alt="" src="' . $config['imagepath'] . 'pw' . $config['image_type'] . '" class="img_r"	/>';
-        } //$channel['channel_flag_password'] == '1'
+            $output .= '<span class="channelimage password img_r">&nbsp;</span>';
+        }
         if (($channel->has_childs() || $channel->has_clients($clientlist)) && $config['show_arrows'])
         {
             $output .= '<img alt="" class="img_l arrow" src="' . $config['imagepath'] . 'arrow_normal' . $config['image_type'] . '"/>';
-        } //($channel->has_childs() || $channel->has_clients($clientlist)) && $config['show_arrows']
-        $output .= ' <img alt="" class="img_l" src="' . $channelimage . '" />' . escape_name($channel['channel_name']);
+        }
 
-
-
+        $output .= '<span class="channelimage ' . $channelimage . '">&nbsp;</span>' . escape_name($channel['channel_name']);
         $output .= "</p>\r\n";
-    } //!is_array($channel['channel_name'])
+    }
     else
     {
         if (($channel->has_childs() || $channel->has_clients($clientlist)) && $config['show_arrows'])
         {
             $output .= '<div class="spacer spacer_arr" id="' . $config['prefix'] . "channel_" . htmlspecialchars($channel['cid'],
                             ENT_QUOTES) . '">';
-        } //($channel->has_childs() || $channel->has_clients($clientlist)) && $config['show_arrows']
+        }
         else
         {
             $output .= '<div class="spacer spacer_norm" id="' . $config['prefix'] . "channel_" . htmlspecialchars($channel['cid'],
@@ -462,15 +458,15 @@ function render_channel_start($channel, $clientlist)
                 case '-..':
                     $output .= '<p class="bsdpunkt spacer_con">';
                     break;
-            } //$channel['channel_name']['spacer_name']
+            }
             if (($channel->has_childs() || $channel->has_clients($clientlist)) && $config['show_arrows'])
             {
                 $output .= '<img alt="" class="img_l arrow" src="' . $config['imagepath'] . 'arrow_normal' . $config['image_type'] . '"/>';
-            } //($channel->has_childs() || $channel->has_clients($clientlist)) && $config['show_arrows']
+            }
             $output .= '&nbsp';
 
             $output .= '</p>';
-        } //$channel['channel_name']['is_special_spacer']
+        }
         else
         {
             switch ($channel['channel_name']['spacer_alignment'])
@@ -485,11 +481,11 @@ function render_channel_start($channel, $clientlist)
                 case 'l':
                 case '*':
                     $output .= '<p class="left spacer_con">';
-            } //$channel['channel_name']['spacer_alignment']
+            }
             if (($channel->has_childs() || $channel->has_clients($clientlist)) && $config['show_arrows'])
             {
                 $output .= '<img alt="" class="img_l arrow" src="' . $config['imagepath'] . 'arrow_normal' . $config['image_type'] . '"/>';
-            } //($channel->has_childs() || $channel->has_clients($clientlist)) && $config['show_arrows']
+            }
 
             $output .= ( $channel['channel_name']['spacer_alignment'] == '*' ? str_repeat(escape_name($channel['channel_name']['spacer_name']),
                                     200) : escape_name($channel['channel_name']['spacer_name'])) . "</p>\r\n";
@@ -522,24 +518,24 @@ function render_channellist($channellist, $clientlist, $servergroups,
             if ($client['cid'] == $channel['cid'])
             {
                 $clients_to_render[] = $client;
-            } //$client['cid'] == $channel['cid']
-        } //$clientlist as $client
+            }
+        }
 
         $clients_to_render = sort_clients($clients_to_render);
         foreach ($clients_to_render as $client)
         {
             $output .= render_client($client, $servergroups, $channelgroups);
-        } //$clients_to_render as $client
+        }
 
 
         if ($channel->has_childs())
         {
             $output .= render_channellist($channel->get_childs(), $clientlist,
                     $servergroups, $channelgroups);
-        } //$channel->has_childs()
+        }
 
         $output .= "</div>\r\n";
-    } //$channellist as $channel
+    }
 
     return $output;
 }
