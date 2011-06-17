@@ -67,6 +67,11 @@ body
     margin: 1px 0 0 0;
 }
 
+.chan_content
+{
+    margin-bottom: 2px;
+}
+
 .channel_arr
 {
     margin-left: 16px;
@@ -79,20 +84,27 @@ body
 
 /* START CHANNEL IMAGES */
 /* Classes: 
-    - channelimage  : Is used for each channel
-        - normal    : Is used for standard channel
-        - locked    : Is used for a locked channel
-        - full      : Is used for a full channel
-        - moderated : Is used for moderated channel
-        - password  : Is used for channel with password
+    - channelimage           : Is used for each channel
+        - normal             : Is used for standard channel
+        - locked             : Is used for a locked channel
+        - full               : Is used for a full channel
+        - moderated          : Is used for moderated channel
+        - password           : Is used for channel with password
+        - channel-perm-image : Is used for channel images set in the teamspeak3 client
 */
+.channel-perm-image
+{
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
 
 .channelimage
 {
     width: 16px;
     height: 16px;
     display: inline-block;
-    margin-right: 2px;
+    margin-right: 4px;
 }
 
 .normal-channel
@@ -122,8 +134,19 @@ body
 /* END CHANNEL IMAGES */
 /* END CHANNEL */
 
+/* START GROUP IMAGES */
+/* Classes:
+    - group-image : used for each group image
+*/
+.group-image
+{
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
+/* END GROUP IMAGES */
 
-/* Spacer */
+/* START SPACER */
 .spacer
 {
     font-family:sans-serif;
@@ -139,7 +162,7 @@ body
 
 .spacer_norm
 {
-    margin-left: 20px;
+    margin-left: 32px;
 }
 
 .right
@@ -186,6 +209,7 @@ body
 {
     margin-left:-12px;
 }
+/* END SPACER */
 
 .img_r
 {
@@ -227,7 +251,7 @@ body
     width: 16px;
     height: 16px;
     display: inline-block;
-    margin-right: 2px;
+    margin-right: 4px;
 }
 
 .normal-client

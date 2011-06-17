@@ -345,7 +345,7 @@ $duration = microtime(true) - $start;
 function render_server($serverinfo, $imagepath)
 {
     global $config, $mManager;
-    return "<div class=\"server\">" . $mManager->triggerEvent("InServer") . " \n <p  class=\"servername\">".'<span class="serverimage image">&nbsp;</span>' . escape_name($serverinfo['virtualserver_name']) . "</p>\r\n";
+    return "<div class=\"server\">\r\n<p  class=\"servername\">" . $mManager->triggerEvent("InServer") . " <span>" . '<span class="serverimage image">&nbsp;</span>' . escape_name($serverinfo['virtualserver_name']) . "</span></p>\r\n";
 }
 
 function render_client($clientinfo, $servergrouplist, $channelgrouplist)
@@ -361,15 +361,15 @@ function render_client($clientinfo, $servergrouplist, $channelgrouplist)
             $config['use_serverimages'], $config['servergrp_images']) as $image)
     {
         if ($image == 0) continue;
-        $rendered .= "<img alt=\"\" class=\"img_r\" src=\"" . $config['serverimages'] . $image . "\"/>";
-    } 
+        $rendered .= '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $image . '\') no-repeat transparent;">&nbsp;</span>';
+    }
     $channelgroup_icon = get_channelgroup_image($clientinfo, $channelgrouplist,
             $config['use_serverimages'], $config['channelgrp_images']);
     if ($channelgroup_icon != 0)
     {
-        $rendered .= "<img alt=\"\" class=\"img_r\" src=\"" . $config['serverimages'] . $channelgroup_icon . "\"/>";
+        $rendered .= '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $channelgroup_icon . '\') no-repeat transparent;">&nbsp;</span>';
     }
-    $rendered .= '<span class="clientimage ' . get_client_image($clientinfo) . '">&nbsp;</span>' . escape_name($clientinfo['client_nickname']);
+    $rendered .= '<span class="clientimage ' . get_client_image($clientinfo) . '"></span>' . escape_name($clientinfo['client_nickname']);
     $rendered .= "\r\n</p>";
     return $rendered;
 }
@@ -405,20 +405,26 @@ function render_channel_start($channel, $clientlist)
                             ENT_QUOTES) . "\">\r\n";
         }
         $output .= '<p class="chan_content">';
+
+        // If channel has a channel icon
         if ($channel['channel_icon_id'] != 0 && $config['use_serverimages'] == true)
         {
-            $output .= '<img alt="" class="img_r" src="' . $config['serverimages'] . $channel['channel_icon_id'] . '"/>';
+            $output .= '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $channel['channel_icon_id'] . '\') no-repeat transparent;">&nbsp;</span>';
         }
+
         // If channel is moderated
         if ($channel['channel_needed_talk_power'] > 0)
         {
-            $output .= '<span class="channelimage moderated img_r">&nbsp;</span>';
+            $output .= '<span class="channel-perm-image moderated img_r">&nbsp;</span>';
         }
+
         // If channel has password
         if ($channel['channel_flag_password'] == '1')
         {
-            $output .= '<span class="channelimage password img_r">&nbsp;</span>';
+            $output .= '<span class="channel-perm-image password img_r">&nbsp;</span>';
         }
+
+        // If arrow needs to be displayed
         if (($channel->has_childs() || $channel->has_clients($clientlist)) && $config['show_arrows'])
         {
             $output .= '<img alt="" class="img_l arrow" src="' . $config['imagepath'] . 'arrow_normal' . $config['image_type'] . '"/>';
