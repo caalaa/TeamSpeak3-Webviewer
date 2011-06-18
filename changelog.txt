@@ -9,6 +9,7 @@
 * Fix
 
 v 0.9
+! CSS and HTML Code enhancements for optimal display
 + HTML-Tidyup, if http://php.net/manual/en/book.tidy.php is installed on the server
 - Support of *.txt and *.conf configfiles
 - unnecessary images

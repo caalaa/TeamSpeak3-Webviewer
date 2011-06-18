@@ -14,11 +14,13 @@ class legende extends ms_Module
                                                                     margin-left:0px;
                                                                     margin-right:0px;
                                                                     margin-bottom:0px;
-                                                            }', 'text');
+                                                            }',
+                'text');
 
         if ($this->config['use_tab'] == true)
         {
-            $this->mManager->loadModule("infoTab")->addTab($this->lang['legend'], $this->getText());
+            $this->mManager->loadModule("infoTab")->addTab($this->lang['legend'],
+                    $this->getText());
             $this->content_sent = true;
         }
     }
@@ -46,19 +48,19 @@ class legende extends ms_Module
         {
             if ($sgroup['type'] == 1)
             {
-                $output .= '<div class="rechtegruppe"><p>';
+                $output .= '<div class="rechtegruppe">';
                 if ($this->config['use_serverimages'] == true)
                 {
                     if ($sgroup['iconid'] != 0)
-                        $output .= '<p><img alt="" src="' . $this->config['serverimages'] . $sgroup['iconid'] . '" title="' . $sgroup['name'] . '" />';
+                            $output .= '<p><span class="channelimage" style="background: url(\'' . $this->config['serverimages'] . $sgroup['iconid'] . '\') no-repeat transparent;" title="' . $sgroup['name'] . '">&nbsp;</span>';
                     else
-                        $output .= '<p><img alt="" src="'.s_http.'images/serverimages/na.png" title="' . $this->lang['no_image'] . '" />';
+                            $output .= '<p><span class="channelimage" style="background: url(\'' . s_http . 'images/serverimages/na.png" title="' . $this->lang['no_image'] . '\') no-repeat transparent;">&nbsp;</span>';
                 }
                 else
                 {
                     if (isset($this->config['servergrp_images'][$sgroup['sgid']]))
                     {
-                        $output .= '<p><img alt="" src="' . $this->config['serverimages'] . $this->config['servergrp_images'][$sgroup['sgid']] . $this->config['image_type'] . '" />';
+                        $output .= '<p><span class="channelimage" style="background: url(\'' . $this->config['serverimages'] . $this->config['servergrp_images'][$sgroup['sgid']] . $this->config['image_type'] . '\') no-repeat transparent;">&nbsp;</span>';
                     }
                     else
                     {
@@ -72,25 +74,26 @@ class legende extends ms_Module
 
         $output .= '<h5>' . $this->lang['channelgroup'] . '</h5>';
 
-        $output .= '<div class="rechtegruppe"><p>';
+
 
         foreach ($this->info['channelgroups'] as $cgroup)
         {
             if ($cgroup['type'] == 1)
             {
 
+                $output .= '<div class="rechtegruppe">';
                 if ($this->config['use_serverimages'] == true)
                 {
                     if ($cgroup['iconid'] != 0)
-                        $output .= '<p><img alt="" src="' . $this->config['serverimages'] . $cgroup['iconid'] . '" title="' . $cgroup['name'] . '" />';
+                            $output .= '<p><span class="channelimage" style="background: url(\'' . $this->config['serverimages'] . $cgroup['iconid'] . '\') no-repeat transparent;" title="' . $cgroup['name'] . '">&nbsp;</span>';
                     else
-                        $output .= '<p><img alt="" src="'.s_http.'images/serverimages/na.png" title="' . $this->lang['no_image'] . '" />';
+                            $output .= '<p><span class="channelimage" style="background: url(\'' . s_http . 'images/serverimages/na.png"\') no-repeat transparent;" title="' . $this->lang['no_image'] . '">&nbsp;</span>';
                 }
                 else
                 {
                     if (isset($this->config['channelgrp_images'][$cgroup['cgid']]))
                     {
-                        $output .= '<p><img alt="" src="' . $this->config['serverimages'] . $this->config['channelgrp_images'][$cgroup['cgid']] . $this->config['image_type'] . '"></img>';
+                        $output .= '<p><span class="channelimage" style="background: url(\'' . $this->config['serverimages'] . $this->config['channelgrp_images'][$cgroup['cgid']] . $this->config['image_type'] . '\') no-repeat transparent;">&nbsp;</span>';
                     }
                     else
                     {
@@ -98,11 +101,9 @@ class legende extends ms_Module
                     }
                 }
                 $output .= ' ' . $cgroup['name'] . ' (' . $cgroup['cgid'] . ')</p>';
+                $output .= '</div>';
             }
         }
-        $output .= '</div>';
-
-
         $output .= $this->mManager->triggerEvent('after_legende');
         return $output;
     }
