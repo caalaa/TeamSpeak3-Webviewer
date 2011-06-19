@@ -15,10 +15,11 @@ v 0.9
 - unnecessary images
 ~ Installscript shows now an error if some neccessary functions are not available on the webspace
 ~ Module: serverinfo: added option in the config which defines which numberformat should be used for traffic (MiB, GiB, ...)
-~ handling of styles: images are now embedded via css and not via <img>
+~ handling of styles: images are now embedded via css and not via <img>. Should fix display issues.
 ~ Added warning in installscript if some blanks weren't filled out
 ~ Swapped arrows that they are like in the ts client now
 ~ changed channelicon
+~ deleted icon in legend if a group has no servericon
 * Fixed bug in installscript that the module-edit-popup wasn't shown correctly in internetexplorer (Thanks to sTimulated (http://forum.teamspeak.com))
 * Added workaround in installscript: The tooltips of modules will be shown only if you hover over the i (Thanks to sTimulated (http://forum.teamspeak.com))
 * Fixed bug in css file that the icons weren't shown at the right position

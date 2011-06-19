@@ -54,7 +54,7 @@ class legende extends ms_Module
                     if ($sgroup['iconid'] != 0)
                             $output .= '<p><span class="channelimage" style="background: url(\'' . $this->config['serverimages'] . $sgroup['iconid'] . '\') no-repeat transparent;" title="' . $sgroup['name'] . '">&nbsp;</span>';
                     else
-                            $output .= '<p><span class="channelimage" style="background: url(\'' . s_http . 'images/serverimages/na.png" title="' . $this->lang['no_image'] . '\') no-repeat transparent;">&nbsp;</span>';
+                            $output .= '<p><span class="channelimage" title="' . $this->lang['no_image'] . '">&nbsp;</span>';
                 }
                 else
                 {
@@ -64,7 +64,7 @@ class legende extends ms_Module
                     }
                     else
                     {
-                        $output .= '<p> (' . $this->lang['no_image'] . ') ';
+                        $output .= '<p><span class="channelimage" title="' . $this->lang['no_image'] . '">&nbsp;</span>';
                     }
                 }
                 $output .= ' ' . $sgroup['name'] . ' (' . $sgroup['sgid'] . ')</p>';
@@ -87,7 +87,7 @@ class legende extends ms_Module
                     if ($cgroup['iconid'] != 0)
                             $output .= '<p><span class="channelimage" style="background: url(\'' . $this->config['serverimages'] . $cgroup['iconid'] . '\') no-repeat transparent;" title="' . $cgroup['name'] . '">&nbsp;</span>';
                     else
-                            $output .= '<p><span class="channelimage" style="background: url(\'' . s_http . 'images/serverimages/na.png"\') no-repeat transparent;" title="' . $this->lang['no_image'] . '">&nbsp;</span>';
+                            $output .= '<p><span class="channelimage" title="' . $this->lang['no_image'] . '">&nbsp;</span>';
                 }
                 else
                 {
@@ -97,16 +97,14 @@ class legende extends ms_Module
                     }
                     else
                     {
-                        $output .= '<p>(' . $this->lang['no_image'] . ') ';
+                        $output .= '<p><span class="channelimage" title="' . $this->lang['no_image'] . '">&nbsp;</span>';
                     }
                 }
                 $output .= ' ' . $cgroup['name'] . ' (' . $cgroup['cgid'] . ')</p>';
                 $output .= '</div>';
             }
         }
-        $output .= $this->mManager->triggerEvent('after_legende');
+        $output .= $this->mManager->triggerEvent('AfterLegend');
         return $output;
     }
-
 }
-

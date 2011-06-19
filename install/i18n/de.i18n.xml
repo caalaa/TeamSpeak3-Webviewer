@@ -6,9 +6,9 @@
     <back>Zurück zur Auswahl</back>
     
     <!-- Tooltip-->
-    <tt_tip>Tip: fahren sie über die Beschriftungen um genauere Informationen zu erhalten</tt_tip>
+    <tt_tip>Tipp: fahren Sie über die Beschriftungen um genauere Informationen zu erhalten</tt_tip>
     
-    <tt_serveradress>Die Adresse unter der sie zum Server verbinden (Kann eine IP-Adresse oder ein Hostname sein)</tt_serveradress>
+    <tt_serveradress>Die Adresse unter der Sie zum Server verbinden (Kann eine IP-Adresse oder ein Hostname sein)</tt_serveradress>
     <tt_queryport>Der Queryport des Servers (Standard: 10011)</tt_queryport>
     <tt_serverport>Der Port über den Sie im Client auf den Server verbinden</tt_serverport>
     <tt_login>Wird ein Login benötigt um an alle Informationen für den Viewer zu kommen? (Standard: Ja).</tt_login>

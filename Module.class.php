@@ -39,6 +39,8 @@ class ms_Module
             onBody   after outputting the <BODY> tag; (normally the same as getHeader())
         style Module:
             onStyle<name_of_the_style> if trigger_style in config is setted to true;
+        legende Module:
+            onAfterLegend   after the legend has been outputted
      */
 
     public function onEvent($e)
