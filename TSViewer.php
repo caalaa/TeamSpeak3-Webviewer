@@ -427,7 +427,7 @@ function render_channel_start($channel, $clientlist)
         // If arrow needs to be displayed
         if (($channel->has_childs() || $channel->has_clients($clientlist)) && $config['show_arrows'])
         {
-            $output .= '<img alt="" class="img_l arrow" src="' . $config['imagepath'] . 'arrow_normal' . $config['image_type'] . '"/>';
+            $output .= '<span class="img_l arrow arrow-normal"></span>';
         }
 
         $output .= '<span class="channelimage ' . $channelimage . '">&nbsp;</span>' . escape_name($channel['channel_name']);

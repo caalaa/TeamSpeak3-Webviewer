@@ -131,6 +131,22 @@ body
 {
     background: url("img/pw.png") no-repeat transparent;
 }
+
+.arrow-normal
+{
+    background: url("img/arrow_normal.png") no-repeat transparent;
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+}
+
+.arrow-hidden
+{
+    background: url("img/arrow_hidden.png") no-repeat transparent;
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+}
 /* END CHANNEL IMAGES */
 /* END CHANNEL */
 
