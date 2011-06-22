@@ -8,9 +8,13 @@ session_start();
  * Email     : maxe@maxesstuff.de
  */
 
+define("PROJECTPATH", realpath("./")."/i18n");
+define("ENCODING", "UTF-8");
+
 require_once 'core/utils.php';
 require_once 'core/htmlbuilder.php';
 require_once 'core/xml.php';
+require_once '../libraries/php-gettext/gettext.inc';
 
 // Outputs the header
 echo(file_get_contents("html/header.html"));
@@ -26,7 +30,12 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == "return" && isset($_SES
 
 // Sets Language
 if (isset($_REQUEST['action']) && $_REQUEST['action'] == "setlang" && isset($_GET['lang']))
-{
+{   
+    setlocale(LC_MESSAGES, $_GET['lang']);
+    putenv("LANGUAGE=".$_GET['lang']);
+    
+    bind_textdomain_codeset("msts-inst", ENCODING);
+    
     $_SESSION['lang'] = $_GET['lang'];
 }
 
@@ -58,7 +67,8 @@ if (isset($_SESSION['validated']) && $_SESSION['validated'] == true && isset($_R
     $data = createConfigHtml();
 
     echo(flushCache($_REQUEST['config']));
-    echo(replaceValues("html/select_config.html", $data));
+    
+    require_once 'html/select_config.php';
     exit;
 }
 
@@ -68,7 +78,8 @@ if (isset($_SESSION['validated']) && $_SESSION['validated'] == true && isset($_R
     echo(deleteConfigfile($_REQUEST['config']));
 
     $data = createConfigHtml();
-    echo(replaceValues("html/select_config.html", $data));
+    
+    require_once 'html/select_config.php';
     exit;
 }
 
@@ -88,10 +99,7 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'validate' && isset($_P
         // If password is wrong
         $_SESSION['validated'] = false;
 
-        if ($_SESSION['lang'] == "en")
-                echo(throwAlert("The Password you provided was not correct!"));
-        else
-                echo(throwAlert("Das Passwort ist nich korrekt. Bitte versuchen Sie es erneut!"));
+        echo(_("The password you provided was not correct. Please try again"));
     }
 }
 
@@ -106,14 +114,14 @@ if (!isset($_SESSION['lang']))
 // If the password has not been setted
 if (!passwordSetted())
 {
-    echo(replaceValues("html/set_password.html"));
+    require_once 'html/set_password.php';
     exit;
 }
 
 // If password is setted but has not been entered yet
 if (passwordSetted() && !isset($_SESSION['validated']) || $_SESSION['validated'] != true)
 {
-    echo(replaceValues("html/enter_pw.html"));
+    require_once 'html/enter_pw.php';
     exit;
 }
 
@@ -125,15 +133,13 @@ if (!isset($_SESSION['config']) || $_SESSION['config'] == "")
     // Check Functions
     $data['err_warn'] = checkFunctions();
 
-    echo(replaceValues("html/select_config.html", $data));
+    require_once 'html/select_config.php';
     exit;
 }
 
 // If password is setted and has been entered and Configfile and Language is setted and Configfile should be written
 if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['config']) && isset($_SESSION['lang']) && isset($_REQUEST['action']) && $_REQUEST['action'] == "submit")
 {
-    $lang = simplexml_load_file("i18n/" . $_SESSION['lang'] . ".i18n.xml");
-
     str_replace(".xml", "", $_SESSION['config_xml']);
 
     $xml = simplexml_load_string($_SESSION['config_xml']);
@@ -148,14 +154,15 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
         if (empty($_POST[$var]) || $_POST[$var] == NULL || $_POST[$var] == "")
         {
             $vars_unavailable = true;
-            echo throwAlert($var . " " . $lang->not_setted);
+            echo throwAlert($var . " " . _('is not set. Please check if you filled out all blanks.'));
         }
     }
 
     if ($vars_unavailable)
     {
         $data = createEditHtml();
-        echo(replaceValues("html/config.html", $data));
+        
+        require_once 'html/config.php';
         exit;
     }
     // END VAR CHECKING \\
@@ -212,21 +219,16 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
 
     if (!file_exists("../config/" . $_SESSION['config'] . ".xml"))
     {
-        if ($_SESSION['lang'] == "en")
-                echo(throwAlert("Configfile not writeable! Please set chmod for the 'config' directory to 775"));
-        else
-                echo(throwAlert("Konfigdatei kann nicht geschrieben werden! Bitte setzen Sie die Berechtigungen für das Verzeichnis 'Config' auf 775!"));
+        echo (throwAlert(_('Configfile is not writable. Please check if the required permissions are given to write the file. We recomment setting the file to CHMOD 775')));
         exit;
     }
 
     $data = createEditHtml();
 
-    if ($_SESSION['lang'] == "en")
-            echo(throwWarning("Configfile successfully written!"));
-    else echo(throwWarning("Configfile erfolgreich gespeichert!"));
+    echo(throwWarning(_('Configfile successfully saved.')));
 
-    echo(replaceValues("html/config.html", $data));
-
+    require_once 'html/config.php';
+    
     echo('<script type="text/javascript">
             $(document).ready(function(){
                 setTimeout(redirect(), 3000);
@@ -241,7 +243,7 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
 {
     $data = createEditHtml();
 
-    echo(replaceValues("html/config.html", $data));
+    require_once 'html/config.php';
     exit;
 }
 ?>

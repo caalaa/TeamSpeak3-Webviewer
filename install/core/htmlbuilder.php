@@ -5,6 +5,14 @@
  * Email     : maxe@maxesstuff.de
  */
 
+/**
+ * Replaces a html file with its values
+ * @deprecated gettext implementation
+ * @param type $file
+ * @param type $vals
+ * @param type $loc
+ * @return html code of the replaced file
+ */
 function replaceValues($file, $vals=NULL, $loc=FALSE)
 {
     $lang = (array) getLanguageFile($loc);
@@ -36,9 +44,14 @@ function replaceValues($file, $vals=NULL, $loc=FALSE)
     return $html;
 }
 
+
+/**
+ * Returns the $data array for select_config.php
+ * @todo include directly in file
+ * @return string 
+ */
 function createConfigHtml()
 {
-    $lang = simplexml_load_file("i18n/" . $_SESSION['lang'] . '.i18n.xml');
     $html = array();
 
     $html['selector'] = '';
@@ -54,16 +67,20 @@ function createConfigHtml()
 
     foreach ($files as $file)
     {
-        $html['selector'] .= '<p><fieldset><button style="width:200px;" onclick="javascript: setconfig(\'' . $file . '\')">' . $file . ' ('.(string)$lang->edit.')</button><span onclick="javascript: showViewer(\'' . $file . '\');"style="padding:4px; margin-left:15px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . (string) $lang->show_config . '</span><span onclick="javascript: flushCache(\'' . $file .'.xml\');"style="padding:4px; margin-left:10px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . (string) $lang->fc . '</span><span onclick="javascript: deleteConfig(\'' . $file .'.xml\');"style="padding:4px; margin-left:10px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . (string) $lang->delete_config . '</span></fieldset></p>';
+        $html['selector'] .= '<p><fieldset><button style="width:200px;" onclick="javascript: setconfig(\'' . $file . '\')">' . $file . ' ('._('edit').')</button><span onclick="javascript: showViewer(\'' . $file . '\');"style="padding:4px; margin-left:15px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . _('Show Viewer') . '</span><span onclick="javascript: flushCache(\'' . $file .'.xml\');"style="padding:4px; margin-left:10px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . _('Flush cache') . '</span><span onclick="javascript: deleteConfig(\'' . $file .'.xml\');"style="padding:4px; margin-left:10px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . _('delete configfile') . '</span></fieldset></p>';
     }
     return $html;
 }
 
+/**
+ * Returns the $data for the config-editing
+ * @todo include directly in file
+ * @todo Adapt Language-section to new i18n
+ * @return string 
+ */
 function createEditHtml()
 {
     $html = array();
-
-    $lang = simplexml_load_file("i18n/" . $_SESSION['lang'] . '.i18n.xml');
 
     $config = $_SESSION['config'];
     $configfile = simplexml_load_string($_SESSION['config_xml']);
@@ -78,13 +95,13 @@ function createEditHtml()
     // Login
     if ($configfile->login_needed == "true" || $configfile->login_needed == '')
     {
-        $html['login_html'] = '<input type="radio" name="login_needed" value="true" checked="checked"> ' . (string) $lang->yes . '<br>
-            <input type="radio" name="login_needed" value="false"> ' . (string) $lang->no;
+        $html['login_html'] = '<input type="radio" name="login_needed" value="true" checked="checked"> ' . _('Yes') . '<br>
+            <input type="radio" name="login_needed" value="false"> ' . _('No');
     }
     else
     {
-        $html['login_html'] = '<input type="radio" name="login_needed" value="true"> ' . (string) $lang->yes . '<br>
-            <input type="radio" name="login_needed" value="false" checked="checked"> ' . (string) $lang->no;
+        $html['login_html'] = '<input type="radio" name="login_needed" value="true"> ' . _('Yes') . '<br>
+            <input type="radio" name="login_needed" value="false" checked="checked"> ' . _('No');
     }
 
     $html['username_value'] = (string) $configfile->username;
@@ -130,13 +147,13 @@ function createEditHtml()
     // Servericons
     if ($configfile->use_serverimages == "true" || (string) $configfile->use_serverimages == '')
     {
-        $html['servericons_radio'] = '<input type="radio" name="servericons" value="true" checked="checked"> ' . (string) $lang->yes . '<br>
-            <input type="radio" name="servericons" value="false"> ' . (string) $lang->no;
+        $html['servericons_radio'] = '<input type="radio" name="servericons" value="true" checked="checked"> ' . _('Yes') . '<br>
+            <input type="radio" name="servericons" value="false"> ' . _('No');
     }
     else
     {
-        $html['servericons_radio'] = '<input type="radio" name="servericons" value="true"> ' . (string) $lang->yes . '<br>
-            <input type="radio" name="servericons" value="false"  checked="checked"> ' . (string) $lang->no;
+        $html['servericons_radio'] = '<input type="radio" name="servericons" value="true"> ' . _('Yes') . '<br>
+            <input type="radio" name="servericons" value="false"  checked="checked"> ' . _('No');
     }
 
     // Imagepack
@@ -170,25 +187,25 @@ function createEditHtml()
     // Arrows
     if ($configfile->show_arrows == "true" || $configfile->show_arrows == '')
     {
-        $html['arrow_html'] = '<input type="radio" name="arrows" value="true" checked="checked"> ' . (string) $lang->yes . '<br>
-            <input type="radio" name="arrows" value="false"  > ' . (string) $lang->no;
+        $html['arrow_html'] = '<input type="radio" name="arrows" value="true" checked="checked"> ' . _('Yes') . '<br>
+            <input type="radio" name="arrows" value="false"  > ' . _('No');
     }
     else
     {
-        $html['arrow_html'] = '<input type="radio" name="arrows" value="true" > ' . (string) $lang->yes . '<br>
-            <input type="radio" name="arrows" value="false" checked="checked"> ' . (string) $lang->no;
+        $html['arrow_html'] = '<input type="radio" name="arrows" value="true" > ' . _('Yes') . '<br>
+            <input type="radio" name="arrows" value="false" checked="checked"> ' . _('No');
     }
 
     // Caching
     if ($configfile->enable_caching == "true" || $configfile->enable_caching = '')
     {
-        $html['caching_html'] = '<input type="radio" name="caching" value="true" checked="checked"> ' . (string) $lang->yes . '<br>
-            <input type="radio" name="caching" value="false"  > ' . (string) $lang->no;
+        $html['caching_html'] = '<input type="radio" name="caching" value="true" checked="checked"> ' . _('Yes') . '<br>
+            <input type="radio" name="caching" value="false"  > ' . _('No');
     }
     else
     {
-        $html['caching_html'] = '<input type="radio" name="caching" value="true" > ' . (string) $lang->yes . '<br>
-            <input type="radio" name="caching" value="false" checked="checked" > ' . (string) $lang->no;
+        $html['caching_html'] = '<input type="radio" name="caching" value="true" > ' . _('Yes') . '<br>
+            <input type="radio" name="caching" value="false" checked="checked" > ' . _('No');
     }
 
     // Standard Cachetime
@@ -197,13 +214,13 @@ function createEditHtml()
     // Language
     if ((string) $configfile->language == "de" || ( (string) $configfile->language == '' && $_SESSION['lang'] == 'de'))
     {
-        $html['language_html'] = '<input type="radio" name="language" value="de" checked="checked" > ' . (string) $lang->german . '<br>
-            <input type="radio" name="language" value="en"  > ' . (string) $lang->english;
+        $html['language_html'] = '<input type="radio" name="language" value="de" checked="checked" > ' . _('German') . '<br>
+            <input type="radio" name="language" value="en"  > ' . _('English');
     }
     else
     {
-        $html['language_html'] = '<input type="radio" name="language" value="de" > ' . (string) $lang->german . '<br>
-            <input type="radio" name="language" value="en" checked="checked" > ' . (string) $lang->english;
+        $html['language_html'] = '<input type="radio" name="language" value="de" > ' . _('German') . '<br>
+            <input type="radio" name="language" value="en" checked="checked" > ' . _('English');
     }
 
     return $html;

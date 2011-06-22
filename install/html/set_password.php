@@ -1,10 +1,11 @@
 <div id="password">
     <div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em; margin-bottom: 10px;"> 
         <p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
-        {ENTERPW}</p>
+            <?php _e('Please insert a password for the interface once: ');?></p>
     </div>
-    <form class="jqform" method="post" action="index.php?action=validate">
+
+    <form class="jqform" action="index.php?action=setpw" method="post">
         <input type="password" name="password" />
-        <input type="submit" value="{SUBMITPW}" />
+        <input type="submit" value="<?php _e('Set password');?>" />
     </form>
 </div>

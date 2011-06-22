@@ -105,12 +105,13 @@ function getStyles()
     return $styles;
 }
 
-// Flushs the cache
+/**
+ * Flushs the cache of a given configfile
+ * @param type $config
+ * @return type 
+ */
 function flushCache($config)
 {
-    $lang = simplexml_load_file("i18n/" . $_SESSION['lang'] . ".i18n.xml");
-
-
     if (!file_exists("../config/" . $config))
     {
         return throwAlert($lang->not_exist);
@@ -121,7 +122,7 @@ function flushCache($config)
 
         if ((string) $config->host == "" || (string) $config->host == NULL || (string) $config->queryport == "" || (string) $config->queryport == NULL || (string) $config->vserverport == "" || (string) $config->vserverport == NULL)
         {
-            return throwAlert($lang->no_info);
+            return throwAlert(_e('Not all necessary information is given in the configfile to flush the cache.'));
         }
         else
         {
@@ -150,7 +151,7 @@ function flushCache($config)
                 if ($file != ".." && $file != "." && $file != "time") unlink($path . "server/images/".$file);
                
             }
-            return throwWarning($lang->fc_success);
+            return throwWarning(_('Cache flushed.'));
         }
     }
 }
@@ -171,24 +172,30 @@ function deleteConfigfile($file)
     }
 }
 
-// Checks, if all needed functions are available for the viewer
+/**
+ * Returns warnings if some necessary functions are not available
+ * @return warning
+ */
 function checkFunctions()
 {
     $html = '';
-    $functions = Array("fsockopen");
-    
-    $lang = simplexml_load_file("i18n/".$_SESSION['lang'].".i18n.xml");
-    
+    $functions = Array("fsockopen");        
     foreach ($functions as $value)
     {
         if(!function_exists($value))
         {
             // Create Warnings
-            $html .= throwAlert($lang->{$value."_not_available"});
+            $html .= throwAlert(_('The necessary function') .' '.$value.' '._('is not available on your webspace. Please contact your service provider'));
         }
     }
     
     return $html;
+}
+
+// Echos gettext message
+function _e($message)
+{
+    echo(_($message));
 }
 
 // Throws an visual Alert

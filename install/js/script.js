@@ -12,7 +12,7 @@ $(document).ready(function(){
         scrolling: false,
         fastIframe: false
     });
-    $('td[title], a[title], span[title]').qtip({
+    $('td[title], a[title], span[title], p[title]').qtip({
         style:{
             classes: 'ui-state-highlight ui-corner-all tooltip'
         },
@@ -42,13 +42,13 @@ $(document).ready(function(){
 
 function de()
 {
-    var lang = "index.php?action=setlang&lang=de"
+    var lang = "index.php?action=setlang&lang=de_DE.UTF-8"
     window.location.href = lang;
 }
 
 function en()
 {
-    var lang = "index.php?action=setlang&lang=en"
+    var lang = "index.php?action=setlang&lang=en_US.UTF-8"
     window.location.href = lang;
 }
 
