@@ -5,7 +5,11 @@
  * Email     : maxe@maxesstuff.de
  */
 
-// Returns the language of the browser
+/**
+ * Returns the language of the browser
+ * @deprecated gettext implementation
+ * @return string 
+ */
 function getLang()
 {
     $data = $_SERVER['HTTP_USER_AGENT'];
@@ -19,7 +23,10 @@ function getLang()
     return $lang;
 }
 
-// Checks if a password is setted
+/**
+ * Checks if a password is setted
+ * @return type 
+ */
 function passwordSetted()
 {
     if (!file_exists("pw.xml")) return false;
@@ -31,18 +38,24 @@ function passwordSetted()
     return true;
 }
 
-// Sets a new password to the password-file
+/**
+ * Sets a new password
+ * @param type $password
+ * @return type 
+ */
 function setPassword($password)
 {
-    if (file_exists("pw.xml")) unlink("pw.xml");
-
     $password = sha1(md5($password));
 
-    file_put_contents("pw.xml", $password);
+    if (!file_put_contents("pw.xml", $password)) ;
+        return false;
     return true;
 }
 
-// Returns all modules in an array
+/**
+ * Returns all modules in an array
+ * @return type 
+ */
 function getModules()
 {
     $modules = array();
@@ -62,7 +75,11 @@ function getModules()
     return $modules;
 }
 
-// Returns true of Module is abstract else false
+/**
+ * Checks if a module is abstract or no
+ * @param type $module modulename
+ * @return type true if abstract else false
+ */
 function moduleIsAbstract($module)
 {
     $xml = simplexml_load_file("../modules/$module/$module.xml");
@@ -91,17 +108,17 @@ function getImagePacks()
 function getStyles()
 {
     $styles = array();
-    
+
     $dir = opendir("../styles");
-    
-    while($style = readdir($dir))
+
+    while ($style = readdir($dir))
     {
-        if($style != ".." && $style != "." && file_exists("../styles/$style/$style.css"))
+        if ($style != ".." && $style != "." && file_exists("../styles/$style/$style.css"))
         {
             $styles[] = $style;
         }
     }
-    
+
     return $styles;
 }
 
@@ -127,29 +144,30 @@ function flushCache($config)
         else
         {
             $path = "../cache/" . (string) $config->host . (string) $config->queryport . "/" . (string) $config->vserverport . "/";
-           
-            
+
+
             // query
-            $dir = opendir($path."query");   
-            while($file = readdir($dir))
+            $dir = opendir($path . "query");
+            while ($file = readdir($dir))
             {
-                if ($file != ".." && $file != "." && $file != "time") unlink($path . "query/".$file);            
+                if ($file != ".." && $file != "." && $file != "time")
+                        unlink($path . "query/" . $file);
             }
-            
+
             // query/time
-            $dir = opendir($path."query/time");   
-            while($file = readdir($dir))
+            $dir = opendir($path . "query/time");
+            while ($file = readdir($dir))
             {
-                if ($file != ".." && $file != ".") unlink($path . "query/time/".$file);
-               
+                if ($file != ".." && $file != ".")
+                        unlink($path . "query/time/" . $file);
             }
-            
+
             // server/images
-            $dir = opendir($path."server/images");   
-            while($file = readdir($dir))
+            $dir = opendir($path . "server/images");
+            while ($file = readdir($dir))
             {
-                if ($file != ".." && $file != "." && $file != "time") unlink($path . "server/images/".$file);
-               
+                if ($file != ".." && $file != "." && $file != "time")
+                        unlink($path . "server/images/" . $file);
             }
             return throwWarning(_('Cache flushed.'));
         }
@@ -160,14 +178,14 @@ function flushCache($config)
 function deleteConfigfile($file)
 {
     $lang = simplexml_load_file("i18n/" . $_SESSION['lang'] . ".i18n.xml");
-    
-    if(!file_exists("../config/".$file))
+
+    if (!file_exists("../config/" . $file))
     {
         return throwAlert($lang->config_not_exist);
     }
     else
     {
-        unlink("../config/".$file);
+        unlink("../config/" . $file);
         return throwWarning($lang->config_deleted);
     }
 }
@@ -179,16 +197,16 @@ function deleteConfigfile($file)
 function checkFunctions()
 {
     $html = '';
-    $functions = Array("fsockopen");        
+    $functions = Array("fsockopen");
     foreach ($functions as $value)
     {
-        if(!function_exists($value))
+        if (!function_exists($value))
         {
             // Create Warnings
-            $html .= throwAlert(_('The necessary function') .' '.$value.' '._('is not available on your webspace. Please contact your service provider'));
+            $html .= throwAlert(_('The necessary function') . ' ' . $value . ' ' . _('is not available on your webspace. Please contact your service provider'));
         }
     }
-    
+
     return $html;
 }
 

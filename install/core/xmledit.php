@@ -8,7 +8,7 @@
 session_name("tswv");
 session_start();
 
-define("PROJECTPATH", realpath("./../") . "/i18n");
+define("PROJECTPATH", realpath("./../") . "/l18n");
 define("ENCODING", "UTF-8");
 
 
@@ -18,11 +18,17 @@ require_once '../../libraries/php-gettext/gettext.inc';
 require_once '../core/htmlbuilder.php';
 require_once 'utils.php';
 
-// i18n
-setlocale(LC_MESSAGES, $_GET['lang']);
-putenv("LANGUAGE=" . $_GET['lang']);
+// l18n
+$lang = $_SESSION['lang'];
 
-bind_textdomain_codeset("msts-inst", ENCODING);
+setlocale(LC_MESSAGES, $lang . ".utf8", $lang . ".UTF8", $lang . ".utf-8",
+        $lang . "UTF-8", $lang);
+
+$domain = "ms-tsv-install";
+
+bindtextdomain($domain, PROJECTPATH);
+textdomain($domain);
+bind_textdomain_codeset($domain, ENCODING);
 
 // Outputs header
 echo(file_get_contents("../html/header_xmledit.html"));

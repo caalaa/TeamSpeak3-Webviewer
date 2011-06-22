@@ -8,7 +8,7 @@ session_start();
  * Email     : maxe@maxesstuff.de
  */
 
-define("PROJECTPATH", realpath("./") . "/i18n");
+define("PROJECTPATH", realpath("./") . "/l18n");
 define("ENCODING", "UTF-8");
 
 require_once 'core/utils.php';
@@ -63,7 +63,15 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == "setlang" && isset($_GE
 if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'setpw' && isset($_POST['password']))
 {
     // Set Password
-    setPassword($_POST['password']);
+    $result = setPassword($_POST['password']);
+    
+    if($result == TRUE)
+    {
+        echo(throwAlert(_('The password could not be safed. Be sure that writing permissions are set to pw.xml')));
+        require_once 'html/set_password.php';
+        exit;
+    }
+    
     $_SESSION['validated'] = true;
 }
 
