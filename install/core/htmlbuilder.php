@@ -147,13 +147,13 @@ function createEditHtml()
     // Servericons
     if ($configfile->use_serverimages == "true" || (string) $configfile->use_serverimages == '')
     {
-        $html['servericons_radio'] = '<input type="radio" name="servericons" value="true" checked="checked"> ' . _('Yes') . '<br>
-            <input type="radio" name="servericons" value="false"> ' . _('No');
+        $html['servericons_radio'] = '<input type="radio" name="servericons" value="true" checked="checked"> ' . _('Enabled') . '<br>
+            <input type="radio" name="servericons" value="false"> ' . _('Disabled');
     }
     else
     {
-        $html['servericons_radio'] = '<input type="radio" name="servericons" value="true"> ' . _('Yes') . '<br>
-            <input type="radio" name="servericons" value="false"  checked="checked"> ' . _('No');
+        $html['servericons_radio'] = '<input type="radio" name="servericons" value="true"> ' . _('Enabled') . '<br>
+            <input type="radio" name="servericons" value="false"  checked="checked"> ' . _('Disabled');
     }
 
     // Imagepack
@@ -187,13 +187,13 @@ function createEditHtml()
     // Arrows
     if ($configfile->show_arrows == "true" || $configfile->show_arrows == '')
     {
-        $html['arrow_html'] = '<input type="radio" name="arrows" value="true" checked="checked"> ' . _('Yes') . '<br>
-            <input type="radio" name="arrows" value="false"  > ' . _('No');
+        $html['arrow_html'] = '<input type="radio" name="arrows" value="true" checked="checked"> ' . _('Enabled') . '<br>
+            <input type="radio" name="arrows" value="false"  > ' . _('Disabled');
     }
     else
     {
-        $html['arrow_html'] = '<input type="radio" name="arrows" value="true" > ' . _('Yes') . '<br>
-            <input type="radio" name="arrows" value="false" checked="checked"> ' . _('No');
+        $html['arrow_html'] = '<input type="radio" name="arrows" value="true" > ' . _('Enabled') . '<br>
+            <input type="radio" name="arrows" value="false" checked="checked"> ' . _('Disabled');
     }
 
     // Caching
@@ -226,6 +226,12 @@ function createEditHtml()
     return $html;
 }
 
+/**
+ * Returns the language file as an XML-Object
+ * @deprecated gettext implementation
+ * @param type $loc
+ * @return type 
+ */
 function getLanguageFile($loc)
 {
     $lang = $_SESSION['lang'];

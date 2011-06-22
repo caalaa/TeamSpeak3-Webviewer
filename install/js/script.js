@@ -42,13 +42,13 @@ $(document).ready(function(){
 
 function de()
 {
-    var lang = "index.php?action=setlang&lang=de_DE.UTF-8"
+    var lang = "index.php?action=setlang&lang=de_DE"
     window.location.href = lang;
 }
 
 function en()
 {
-    var lang = "index.php?action=setlang&lang=en_US.UTF-8"
+    var lang = "index.php?action=setlang&lang=en_US"
     window.location.href = lang;
 }
 

@@ -73,7 +73,7 @@
             <!-- Style -->
             <div id="tab3">
                 <div>
-                    <p title="<?php _e('If you set this on true, custom icons will be downloaded automatically.')?>"><?php _e('Download servericons automatically?')?></p>
+                    <p title="<?php _e('If you set this on true, custom icons will be downloaded automatically.')?>"><?php _e('download servericons automatically')?></p>
                     <fieldset><?php echo($data['servericons_radio'])?></fieldset>
                 </div>
                 <div>
@@ -85,7 +85,7 @@
                     <fieldset><?php echo($data['style_html'])?></fieldset>
                 </div>
                 <div>
-                    <p title="<?php _e('If you set that on TRUE, the viewer will show arrows next to the channel similar as in the client.')?>"><?php _e('Show arrows?')?></p>
+                    <p title="<?php _e('If you set that on TRUE, the viewer will show arrows next to the channel similar as in the client.')?>"><?php _e('display arrows')?></p>
                     <fieldset><?php echo($data['arrow_html'])?></fieldset>
                 </div>
             </div>

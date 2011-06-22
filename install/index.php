@@ -8,7 +8,7 @@ session_start();
  * Email     : maxe@maxesstuff.de
  */
 
-define("PROJECTPATH", realpath("./")."/i18n");
+define("PROJECTPATH", realpath("./") . "/i18n");
 define("ENCODING", "UTF-8");
 
 require_once 'core/utils.php';
@@ -28,14 +28,34 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == "return" && isset($_SES
     unset($_SESSION['config_xml']);
 }
 
+// Sets Locale
+if (isset($_SESSION['lang']) && $_SESSION['lang'] !== "")
+{
+    $lang = $_SESSION['lang'];
+
+    setlocale(LC_MESSAGES, $lang . ".utf8", $lang . ".UTF8", $lang . ".utf-8",
+            $lang . "UTF-8", $lang);
+
+    $domain = "ms-tsv-install";
+
+    bindtextdomain($domain, PROJECTPATH);
+    textdomain($domain);
+    bind_textdomain_codeset($domain, ENCODING);
+}
+
 // Sets Language
 if (isset($_REQUEST['action']) && $_REQUEST['action'] == "setlang" && isset($_GET['lang']))
-{   
-    setlocale(LC_MESSAGES, $_GET['lang']);
-    putenv("LANGUAGE=".$_GET['lang']);
-    
-    bind_textdomain_codeset("msts-inst", ENCODING);
-    
+{
+    $lang = $_GET['lang'];
+    setlocale(LC_MESSAGES, $lang . ".utf8", $lang . ".UTF8", $lang . ".utf-8",
+            $lang . "UTF-8", $lang);
+
+    $domain = "ms-tsv-install";
+
+    bindtextdomain($domain, PROJECTPATH);
+    textdomain($domain);
+    bind_textdomain_codeset($domain, ENCODING);
+
     $_SESSION['lang'] = $_GET['lang'];
 }
 
@@ -67,7 +87,7 @@ if (isset($_SESSION['validated']) && $_SESSION['validated'] == true && isset($_R
     $data = createConfigHtml();
 
     echo(flushCache($_REQUEST['config']));
-    
+
     require_once 'html/select_config.php';
     exit;
 }
@@ -78,7 +98,7 @@ if (isset($_SESSION['validated']) && $_SESSION['validated'] == true && isset($_R
     echo(deleteConfigfile($_REQUEST['config']));
 
     $data = createConfigHtml();
-    
+
     require_once 'html/select_config.php';
     exit;
 }
@@ -161,7 +181,7 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
     if ($vars_unavailable)
     {
         $data = createEditHtml();
-        
+
         require_once 'html/config.php';
         exit;
     }
@@ -228,7 +248,7 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
     echo(throwWarning(_('Configfile successfully saved.')));
 
     require_once 'html/config.php';
-    
+
     echo('<script type="text/javascript">
             $(document).ready(function(){
                 setTimeout(redirect(), 3000);
