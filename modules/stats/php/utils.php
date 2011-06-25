@@ -51,7 +51,7 @@ function createJS($name, $xml, $locale)
     if ($locale == NULL)
         $locale = "de_DE.UTF-8";
 
-    setlocale(LC_ALL, $locale);
+    setlocale(LC_TIME, $locale);
 
     foreach ($xml->entry as $entry)
     {
@@ -71,7 +71,7 @@ function createJS($name, $xml, $locale)
 }
 
 // returns the Plotoptions
-function createPlotOptions($config, $lang)
+function createPlotOptions($config)
 {
     $js = '';
 
@@ -92,7 +92,7 @@ function createPlotOptions($config, $lang)
         $tab = "false";
 
     $js .= '    var plotoptions = {
-        "title": "' . $lang['title'] . '", 
+        "title": "' . _('User history') . '", 
         "x_formatString":"' . $config['x_formatString'] . '", 
         "y_formatString": "' . $config['y_formatString'] . '", 
         "style": "' . $config['l_style'] . '", 

@@ -4,7 +4,7 @@
 session_name('ms_ts3Viewer');
 session_start();
 
-// Define Current Version
+// Defines Current Version
 define('version', "0.9");
 
 // **************************************************************** \\
@@ -12,7 +12,8 @@ define('version', "0.9");
 // **************************************************************** \\
 
 define('msBASEDIR', dirname(__FILE__) . "/");
-define("s_root", dirname(__FILE__) . "/");
+define('s_root', dirname(__FILE__) . "/");
+define('l10nDir', msBASEDIR. "l10n");
 
 // Enter here the HTTP-Path of your viewer (with ending slash)
 // Geben Sie hier den HTTP-Pfad zum Viewer ein (mit Schrägstrich am Ende)
@@ -48,7 +49,7 @@ else
 }
 
 //Debug flag causes printing more detailed information in ms_ModuleManager and TSQuery.class.php
-$debug = true;
+$debug = false;
 if ($debug) error_reporting(E_ALL);
 else
 {
@@ -228,6 +229,7 @@ require_once(s_root . "TSQuery.class.php");
 require_once(s_root . "TSChannel.class.php");
 require_once(s_root . "Module.class.php");
 require_once(s_root . "ModuleManager.class.php");
+require_once(s_root . "libraries/php-gettext/gettext.inc");
 
 
 $output = '';
@@ -354,7 +356,8 @@ function render_client($clientinfo, $servergrouplist, $channelgrouplist)
 
     if ($clientinfo['client_type'] == 1) return '';
 
-    $rendered = '<div class="client" id="'.$config['prefix'].'client_'. htmlspecialchars($clientinfo['clid'], ENT_QUOTES).'"><p class="client-content" id="' . $config['prefix'] . "client_" . htmlspecialchars($clientinfo['clid'],
+    $rendered = '<div class="client" id="' . $config['prefix'] . 'client_' . htmlspecialchars($clientinfo['clid'],
+                    ENT_QUOTES) . '"><p class="client-content" id="' . $config['prefix'] . "client_" . htmlspecialchars($clientinfo['clid'],
                     ENT_QUOTES) . '">';
 
     foreach (get_servergroup_images($clientinfo, $servergrouplist,

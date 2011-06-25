@@ -15,6 +15,9 @@ class stats extends ms_Module
     {
         parent::__construct($config, $info, $lang, $mManager);
 
+        //L10N
+        setL10n($this->config['language'], "ms-tsv-stats");
+        
         require_once s_root . 'modules/stats/php/utils.php';
 
 
@@ -46,8 +49,7 @@ class stats extends ms_Module
         $this->mManager->loadModule("js")->loadJS(createJS("line1", $xml,
                         $this->config['locale']), 'text');
         $this->mManager->loadModule("js")->loadJS('$.jqplot.config.enablePlugins = true;', "text");
-        $this->mManager->loadModule("js")->loadJs(createPlotOptions($this->config,
-                        $this->lang), "text");
+        $this->mManager->loadModule("js")->loadJs(createPlotOptions($this->config), "text");
         $this->mManager->loadModule("js")->loadJS(s_http . 'modules/stats/js/script.js');
 
         // Height and Width
@@ -59,7 +61,7 @@ class stats extends ms_Module
 
         // If chart should be shown in Tab
         if ($this->config['use_tab'] == true)
-                $this->mManager->loadModule("infoTab")->addTab($this->lang['stats'],
+                $this->mManager->loadModule("infoTab")->addTab(_('Statistics'),
                     $this->html);
     }
 

@@ -9,7 +9,7 @@
 * Fix
 
 v 0.9
-! Added GNU gettext for i18n/ l10n instead of xml config files
+! Added GNU gettext for i18n/ l10n instead of xml config files for easy translation on other languages
 ! CSS and HTML Code enhancements for optimal display
 + HTML-Tidyup, if http://php.net/manual/en/book.tidy.php is installed on the server
 - Support of *.txt and *.conf configfiles

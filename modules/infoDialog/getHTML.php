@@ -42,6 +42,8 @@ if (isset($_SESSION['language']) && $_SESSION['language'] != "")
     $viewer_conf['language'] = $_SESSION['language'];
 }
 
+setL10n($viewer_conf['language'], "ms-tsv-infoDialog", s_root . "l10n");
+
 
 foreach ($viewer_conf as $key => $value)
 {
@@ -70,11 +72,9 @@ else $viewer_conf['serverimages'] = s_http . "images/" . $viewer_conf['imagepack
 $viewer_conf['client_name'] = "Maxesstuff TS3 Webviewer";
 
 $config = parseConfigFile(s_root . 'modules/infoDialog/infoDialog.xml', true);
-$lang = parseLanguageFile(s_root . 'modules/infoDialog/' . $viewer_conf['language'] . '.i18n.xml',
-        true);
+
 $info = $_SESSION['infoDialog']['info'];
 
-global $lang;
 
 if ($_GET['type'] == 'client' && $_GET['title'] == "true")
 {
@@ -109,11 +109,15 @@ if ($_GET['type'] == 'client')
     $user = getUserByID($info['clientlist'], $matches[1]);
     if ($user == NULL) die();
     $query = new TSQuery($viewer_conf['host'], $viewer_conf['queryport']);
-    $query->set_caching((int)$viewer_conf['enable_caching'], (int)$viewer_conf['standard_cachetime'],(int) $viewer_conf['cachetime']);
-    if($viewer_conf['login_needed']) {
-        ts3_check($query->login($viewer_conf['username'], $viewer_conf['password']), 'login');
+    $query->set_caching((int) $viewer_conf['enable_caching'],
+            (int) $viewer_conf['standard_cachetime'],
+            (int) $viewer_conf['cachetime']);
+    if ($viewer_conf['login_needed'])
+    {
+        ts3_check($query->login($viewer_conf['username'],
+                        $viewer_conf['password']), 'login');
     }
-    
+
     $query->use_by_port($viewer_conf['vserverport']);
     $query->send_cmd("clientupdate client_nickname=" . $query->ts3query_escape($viewer_conf['client_name']));
     $clientinfo = $query->clientinfo($user['clid']);
@@ -124,23 +128,23 @@ if ($_GET['type'] == 'client')
         {
             case 'nickname':
                 $out .= '<tr>';
-                $out .= '<td class="label">' . $lang['Nickname'] . ':</td>';
+                $out .= '<td class="label">' . _('Nickname') . ':</td>';
                 $out .= '<td>' . escape_name($user['client_nickname']) . '</td></tr>';
                 break;
             case 'country':
                 $out .= '<tr>';
-                $out .= '<td class="label">' . $lang['Country'] . ":</td>";
+                $out .= '<td class="label">' . _('Country') . ":</td>";
                 $out .= '<td><span style="margin-right:10px;">' . getCountryIcon($clientinfo['return']['client_country']) . '</span>' . twolettertocountry($clientinfo['return']['client_country']) . '</td></tr>';
                 $out .= '</tr>';
                 break;
             case 'version':
                 $out .= '<tr>';
-                $out .= '<td class="label">' . $lang['Version'] . ':</td>';
+                $out .= '<td class="label">' . _('Version') . ':</td>';
                 $out .= '<td>' . $user['client_version'] . '</td></tr>';
                 break;
             case 'servergroup':
                 $out .= '<tr>';
-                $out .= '<td class="label">' . $lang['Servergroup'] . ':</td>';
+                $out .= '<td class="label">' . _('Servergroup(s)') . ':</td>';
                 $out .= '<td>';
 
                 foreach (get_servergroup_images($user, $info['servergroups'],
@@ -160,13 +164,13 @@ if ($_GET['type'] == 'client')
                 break;
             case 'channelgroup':
                 $out .= '<tr>';
-                $out .= '<td class="label">' . $lang['Channelgroup'] . ':</td>';
+                $out .= '<td class="label">' . _('Channelgroup(s)') . ':</td>';
                 $out .= '<td>';
                 $channelgroup_icon = get_channelgroup_image($user,
                         $info['channelgroups'],
                         $viewer_conf['use_serverimages'],
                         $viewer_conf['channelgrp_images']);
-                
+
                 if ($channelgroup_icon == 0)
                 {
                     $out .= '<img src="' . s_http . 'images/serverimages/na.png" alt="" style="margin-right:2px;" />';
@@ -179,7 +183,7 @@ if ($_GET['type'] == 'client')
                 break;
             case 'connections':
                 $out .= '<tr>';
-                $out .= '<td class="label">' . $lang['connections'] . ':</td>';
+                $out .= '<td class="label">' . _('Connections') . ':</td>';
                 $out .= '<td>' . $clientinfo['return']['client_totalconnections'];
                 $out .= '</td></tr>';
                 break;
@@ -187,7 +191,7 @@ if ($_GET['type'] == 'client')
                 if (!empty($clientinfo['return']['client_description']))
                 {
                     $out .= '<tr>';
-                    $out .= '<td class="label">' . $lang['description'] . ':</td>';
+                    $out .= '<td class="label">' . _('Description') . ':</td>';
                     $out .= '<td>' . escape_name($clientinfo['return']['client_description']);
                     $out .= '</td></tr>';
                 }
@@ -458,7 +462,7 @@ function twolettertocountry($code)
     {
         if ($key == strtoupper($code)) return $value;
     }
-    return $lang['no_country'];
+    return _('none');
 }
 
 ?>

@@ -214,13 +214,13 @@ function createEditHtml()
     // Language
     if ((string) $configfile->language == "de" || ( (string) $configfile->language == '' && $_SESSION['lang'] == 'de'))
     {
-        $html['language_html'] = '<input type="radio" name="language" value="de" checked="checked" > ' . _('German') . '<br>
-            <input type="radio" name="language" value="en"  > ' . _('English');
+        $html['language_html'] = '<input type="radio" name="language" value="de_DE" checked="checked" > ' . _('German') . '<br>
+            <input type="radio" name="language" value="en_US"  > ' . _('English');
     }
     else
     {
-        $html['language_html'] = '<input type="radio" name="language" value="de" > ' . _('German') . '<br>
-            <input type="radio" name="language" value="en" checked="checked" > ' . _('English');
+        $html['language_html'] = '<input type="radio" name="language" value="de_DE" > ' . _('German') . '<br>
+            <input type="radio" name="language" value="en_US" checked="checked" > ' . _('English');
     }
 
     return $html;

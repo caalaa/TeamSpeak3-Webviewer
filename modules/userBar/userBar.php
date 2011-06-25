@@ -7,6 +7,10 @@ class userBar extends ms_Module
     function __construct($info,$config,$lang,$mm)
     {
         parent::__construct($info,$config,$lang,$mm);
+        
+        //L10N
+        setL10n($this->config['language'], "ms-tsv-userBar");
+        
         $this->mManager->loadModule("jQueryUI");
         $this->max_clients = $this->info['serverinfo']['virtualserver_maxclients'];
         $this->clients_online = $this->info['serverinfo']['virtualserver_clientsonline'] - $this->info['serverinfo']['virtualserver_queryclientsonline'];
@@ -26,7 +30,7 @@ class userBar extends ms_Module
 
     public function getHeader()
     {
-        return('<p style="font-family: sans-serif; font-size: small;">'.$this->clients_online.' '.$this->lang['max'].' '.$this->max_clients.' '.$this->lang['status'].'</p>
+        return('<p style="font-family: sans-serif; font-size: small;">'.$this->clients_online.' '._('of').' '.$this->max_clients.' '._('are currently online').'</p>
                 <div id="userBar" style="height:15px; width:100%; margin-top:10px;"></div>');
     }
 }

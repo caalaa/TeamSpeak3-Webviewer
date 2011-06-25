@@ -8,7 +8,7 @@ session_start();
  * Email     : maxe@maxesstuff.de
  */
 
-define("PROJECTPATH", realpath("./") . "/l18n");
+define("PROJECTPATH", realpath("../") . "/l10n");
 define("ENCODING", "UTF-8");
 
 require_once 'core/utils.php';
@@ -29,7 +29,7 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == "return" && isset($_SES
 }
 
 // Sets Locale
-if (isset($_SESSION['lang']) && $_SESSION['lang'] !== "")
+if (isset($_SESSION['lang']) && $_SESSION['lang'] != "")
 {
     $lang = $_SESSION['lang'];
 

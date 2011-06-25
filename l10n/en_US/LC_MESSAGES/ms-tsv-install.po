@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TeamSpeak3 Webviewer Installscript\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-22 18:40+0100\n"
-"PO-Revision-Date: 2011-06-22 19:05+0100\n"
+"POT-Creation-Date: 2011-06-25 15:40+0100\n"
+"PO-Revision-Date: 2011-06-25 15:40+0100\n"
 "Last-Translator: Maximilian Narr <maxesstuff@live.de>\n"
 "Language-Team: Maxesstuff | Maximilian Narr <info@maxesstuff.de>\n"
 "MIME-Version: 1.0\n"
@@ -18,25 +18,31 @@ msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/index.php:102
+#: Webviewer\install/index.php:70
+msgid "The password could not be safed. Be sure that writing permissions are set to pw.xml"
+msgstr "The password could not be safed. Be sure that writing permissions are set to pw.xml"
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\install/index.php:130
 msgid "The password you provided was not correct. Please try again"
 msgstr "The password you provided was not correct. Please try again"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/index.php:157
+#: Webviewer\install/index.php:185
 msgid "is not set. Please check if you filled out all blanks."
 msgstr "is not set. Please check if you filled out all blanks."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/index.php:222
+#: Webviewer\install/index.php:250
 msgid "Configfile is not writable. Please check if the required permissions are given to write the file. We recomment setting the file to CHMOD 775"
 msgstr "Configfile is not writable. Please check if the required permissions are given to write the file. We recomment setting the file to CHMOD 775"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/index.php:228
+#: Webviewer\install/index.php:256
 msgid "Configfile successfully saved."
 msgstr "Configfile successfully saved."
 
@@ -116,31 +122,31 @@ msgstr "English"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/core/utils.php:125
+#: Webviewer\install/core/utils.php:142
 msgid "Not all necessary information is given in the configfile to flush the cache."
 msgstr "Not all necessary information is given in the configfile to flush the cache."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/core/utils.php:154
+#: Webviewer\install/core/utils.php:172
 msgid "Cache flushed."
 msgstr "Cache flushed."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/core/utils.php:188
+#: Webviewer\install/core/utils.php:206
 msgid "The necessary function"
 msgstr "The necessary function"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/core/utils.php:188
+#: Webviewer\install/core/utils.php:206
 msgid "is not available on your webspace. Please contact your service provider"
 msgstr "is not available on your webspace. Please contact your service provider"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/core/xmledit.php:39
+#: Webviewer\install/core/xmledit.php:45
 msgid "Configfile successfully saved!"
 msgstr "Configfile successfully saved!"
 

@@ -208,14 +208,24 @@ function del_by_cid($channellist, $cid)
     return $channellist;
 }
 
-// Parses a Config-File: Either a *.txt or a *.xml
+/**
+ * Parses either a text or a xml configfile
+ * @param type $file
+ * @param type $xml
+ * @return type 
+ */
 function parseConfigFile($file, $xml=false)
 {
     if (!$xml) return parseConfigFileText($file);
     else return parseConfigFileXML($file);
 }
 
-// Parses a Text-Config-File and returns its values as an array
+/**
+ * Parses a Text-Config-File and returns its values as an array
+ * @deprecated new xml configfiles
+ * @param type $file
+ * @return boolean 
+ */
 function parseConfigFileText($file)
 {
     if (!file_exists($file)) return false;
@@ -276,14 +286,25 @@ function parseConfigFileXML($file)
     return $config;
 }
 
-// Parses a Config-File: Either a *.txt or a *.xml
+/**
+ * Pardses a text or a xml languagefile
+ * @deprecated new gettext l10n
+ * @param type $file
+ * @param type $xml
+ * @return type 
+ */
 function parseLanguageFile($file, $xml=false)
 {
     if (!$xml) return parseLanguageFileText($file);
     else return parseConfigFileXML($file);
 }
 
-// Parses a text-language-file and returns its values as an array
+/**
+ * Parses a text-language-file and returns its values as an array
+ * @deprecated new gettext l10n
+ * @param type $file
+ * @return type 
+ */
 function parseLanguageFileText($file)
 {
     if (!file_exists($file)) return false;
@@ -386,7 +407,14 @@ function throwWarning($message)
     return;
 }
 
-// Replaces {} in the Code with the given data
+/**
+ * Replaces {} in the Code with the given data
+ * @deprecated new MVC
+ * @param type $file
+ * @param type $values
+ * @param type $languagefile
+ * @return type 
+ */
 function replaceValues($file, $values, $languagefile)
 {
     $data = array();
@@ -414,6 +442,35 @@ function replaceValues($file, $values, $languagefile)
         $html = str_replace($match_raw, (string) $data[$match_norm], $html);
     }
     return $html;
+}
+
+/**
+ * Echos gettext message
+ * @since 0.9
+ * @param type $message 
+ */
+function _e($message)
+{
+    echo(_($message));
+}
+
+/**
+ * Sets the locale
+ * @since 0.9
+ * @param type $locale
+ * @param type $domain
+ * @param type $newPath 
+ */
+function setL10n($locale, $domain, $newPath=NULL)
+{
+    setlocale(LC_MESSAGES, $locale . ".utf8", $locale . ".UTF8",
+            $locale . ".utf-8", $locale . "UTF-8", $locale);
+
+    if ($newPath == NULL) bindtextdomain($domain, l10nDir);
+    else bindtextdomain($domain, $newPath);
+
+    textdomain($domain);
+    bind_textdomain_codeset($domain, "UTF-8");
 }
 
 ?>

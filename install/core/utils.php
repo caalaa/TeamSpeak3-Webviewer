@@ -48,7 +48,7 @@ function setPassword($password)
     $password = sha1(md5($password));
 
     if (!file_put_contents("pw.xml", $password)) ;
-        return false;
+    return false;
     return true;
 }
 
@@ -210,7 +210,11 @@ function checkFunctions()
     return $html;
 }
 
-// Echos gettext message
+/**
+ * Echos gettext message
+ * @since 0.9
+ * @param type $message 
+ */
 function _e($message)
 {
     echo(_($message));

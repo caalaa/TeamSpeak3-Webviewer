@@ -10,6 +10,9 @@ class serverInfo extends ms_Module
     {
         parent::__construct($info, $config, $lang, $mm);
 
+        //L10N
+        setL10n($this->config['language'], "ms-tsv-serverInfo");
+        
         require_once s_root . 'modules/serverInfo/nbbc/nbbc.php';
 
         $this->use_tab = $this->config['use_tab'];
@@ -23,22 +26,22 @@ class serverInfo extends ms_Module
 
 
         $bbparser = new BBCode();
-        $serverinfo = $this->info['serverinfo'];
+        $serverinfo = _('Serverinformation');
 
 
         $welcomemsg = '';
 
         if ($serverinfo['virtualserver_welcomemessage'] == '')
-                $welcomemsg = $this->lang['no_welcome'];
+                $welcomemsg = _('no welcomemessage');
         else $welcomemsg = $bbparser->Parse($serverinfo['virtualserver_welcomemessage']);
 
         $this->html.='<!--- START Serverinfo -->
             <div class="serverinfo"><table width="100%">
             <tr>
-            <td width="33%"><h5>' . $this->lang['welcome_msg'] . '</h5><p style="border-width:1px;border-style:dotted; padding: 2px;">' . $welcomemsg . '</p><h5>' . $this->lang['channels'] . '</h5><p><span class="channelimage normal-channel">&nbsp;</span>' . $serverinfo['virtualserver_channelsonline'] . '</p></td>
-            <td width="33%"><h5>' . $this->lang['version'] . '</h5><p>' . $serverinfo['virtualserver_version'] . '</p><h5>' . $this->lang['server_os'] . '</h5><p>' . $serverinfo['virtualserver_platform'] . '</p></td>
-            <td width="33%"><h5>' . $this->lang['connection_info'] . '</h5><h6>' . $this->lang['total_sent'] . '</h6><p>' . $this->get_value($serverinfo['connection_bytes_sent_total'],
-                        $value_format) . '</p><h6>' . $this->lang['total_received'] . '</h6><p>' . $this->get_value($serverinfo['connection_bytes_received_total'],
+            <td width="33%"><h5>' . _('Welcomemessage') . '</h5><p style="border-width:1px;border-style:dotted; padding: 2px;">' . $welcomemsg . '</p><h5>' . _('Channels') . '</h5><p><span class="channelimage normal-channel">&nbsp;</span>' . $serverinfo['virtualserver_channelsonline'] . '</p></td>
+            <td width="33%"><h5>' . _('Version') . '</h5><p>' . $serverinfo['virtualserver_version'] . '</p><h5>' . _('Server OS') . '</h5><p>' . $serverinfo['virtualserver_platform'] . '</p></td>
+            <td width="33%"><h5>' . _('Connectiondetails') . '</h5><h6>' . _('total sent') . '</h6><p>' . $this->get_value($serverinfo['connection_bytes_sent_total'],
+                        $value_format) . '</p><h6>' . _('total received') . '</h6><p>' . $this->get_value($serverinfo['connection_bytes_received_total'],
                         $value_format) . '</td>
             </tr>
             </table>

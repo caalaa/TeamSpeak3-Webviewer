@@ -39,8 +39,6 @@ class ms_ModuleManager
             // BEGIN \\
             if (file_exists(s_root . 'modules/' . $name . '/' . $name . '.xml'))
                 $config_modul = parseConfigFile(s_root . 'modules/' . $name . '/' . $name . '.xml', true);
-            else if (file_exists(s_root . 'modules/' . $name . '/' . $name . '.conf'))
-                $config_modul = parseConfigFile(s_root . 'modules/' . $name . '/' . $name . '.conf');
 
             $config = Array();
             foreach ($this->viewerConfig as $key => $value)
@@ -108,7 +106,7 @@ class ms_ModuleManager
 
     public function moduleExists($name)
     {
-        return ((file_exists(s_root . 'modules/' . $name . '/' . $name . '.conf') | file_exists(s_root . 'modules/' . $name . '/' . $name . '.xml')) && file_exists(s_root . 'modules/' . $name . '/' . $name . '.php'));
+        return ((file_exists(s_root . 'modules/' . $name . '/' . $name . '.xml')) && file_exists(s_root . 'modules/' . $name . '/' . $name . '.php'));
     }
 
     public function moduleIsLoaded($name)

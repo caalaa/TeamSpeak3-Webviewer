@@ -6,6 +6,10 @@ class loginButton extends ms_Module
     function __construct($info, $config, $lang, $mm)
     {
         parent::__construct($info, $config, $lang, $mm);
+        
+        //L10N
+        setL10n($this->config['language'], "ms-tsv-loginButton");
+        
         $this->mManager->loadModule('jQueryUI');
         $this->mManager->loadModule('js')->loadJS(s_http . '/modules/js_login/ts3_connect.js');
         $this->mManager->loadModule('js')->loadJS("$(document).ready(function() { $('#LoginButton').button(); } );", "text");
@@ -31,8 +35,8 @@ class loginButton extends ms_Module
             $serverpassword = 0;
         }
 
-        $prompt_serverpass = $this->lang['prompt_serverpass'];
-        $prompt_nickname = $this->lang['prompt_nickname'];
+        $prompt_serverpass = _('Please insert the serverpassword');
+        $prompt_nickname = _('Please insert a nickname of your choice');
 
         if (isset($this->config['connect_host']))
             $this->config['host'] = $this->config['connect_host'];

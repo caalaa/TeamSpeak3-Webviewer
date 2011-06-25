@@ -7,6 +7,9 @@ class js_login extends ms_Module
     {
         parent::__construct($info, $config, $lang, $mm);
 
+        // L10N
+        setL10n($this->config['language'], "ms-tsv-js_login");
+        
         $prompt = bool2text($this->config['prompt_username']);
         $pass_n = bool2text($this->config['prompt_pass']);
         $serverpassword = $this->config['server_password'];
@@ -23,8 +26,8 @@ class js_login extends ms_Module
         $this->mManager->loadModule('jQuery');
         $this->mManager->loadModule('js')->loadJS(s_http . '/modules/js_login/ts3_connect.js');
 
-        $prompt_serverpass = $this->lang['prompt_serverpass'];
-        $prompt_nickname = $this->lang['prompt_nickname'];
+        $prompt_serverpass = _('Please insert the serverpassword');
+        $prompt_nickname = _('Please insert a nickname of your choice');
 
         if (isset($this->config['connect_host']) && $this->config['connect_host'] != $this->config['host'])
             $this->config['host'] = $this->config['connect_host'];
