@@ -11,8 +11,6 @@
 /install/pw.xml
 /install/i18n/template.mo
 /config/tsn.xml
-/install/l10n/template.mo
-/install/l10n/ms-tsv-install.mo
 /l10n/de_DE/LC_MESSAGES/ms-tsv-userBar.po
 /l10n/de_DE/LC_MESSAGES/ms-tsv-js_login.po
 /l10n/de_DE/LC_MESSAGES/ms-tsv-serverInfo.po
