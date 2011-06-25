@@ -26,7 +26,7 @@ class serverInfo extends ms_Module
 
 
         $bbparser = new BBCode();
-        $serverinfo = _('Serverinformation');
+        $serverinfo = $this->info['serverinfo'];
 
 
         $welcomemsg = '';
@@ -53,7 +53,7 @@ class serverInfo extends ms_Module
         if ($this->use_tab == true)
         {
 
-            $this->mManager->loadModule("infoTab")->addTab($this->lang['serverinfo_tab_title'],
+            $this->mManager->loadModule("infoTab")->addTab(_('Serverinformation'),
                     $this->html);
         }
     }

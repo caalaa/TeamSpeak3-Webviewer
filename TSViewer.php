@@ -49,7 +49,7 @@ else
 }
 
 //Debug flag causes printing more detailed information in ms_ModuleManager and TSQuery.class.php
-$debug = false;
+$debug = true;
 if ($debug) error_reporting(E_ALL);
 else
 {
