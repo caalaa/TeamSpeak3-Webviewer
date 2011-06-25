@@ -56,40 +56,7 @@ class ms_ModuleManager
             }
 
             // END \\
-            // Reading Language Files \\
-            // START \\
-            $lang = Array();
-            if (file_exists(s_root . 'modules/' . $name . '/' . $config['language'] . '.lang') | file_exists(s_root . "modules/" . $name . "/" . $config['language'] . ".i18n.xml"))
-            {
-                $languagepath = '';
-                $xml = false;
-
-                if (file_exists(s_root . "modules/" . $name . "/" . $config['language'] . ".lang"))
-                {
-                    $languagepath = s_root . "modules/" . $name . "/" . $config['language'] . ".lang";
-                    $xml = false;
-                }
-                else
-                {
-                    $languagepath = s_root . "modules/" . $name . "/" . $config['language'] . ".i18n.xml";
-                    $xml = true;
-                }
-
-                if ($xml)
-                    $lang_module = parseLanguageFile($languagepath, true);
-                else
-                    $lang_module = parseLanguageFile($languagepath);
-
-                foreach ($lang_module as $key => $value)
-                {
-                    if (isset($lang[$key]))
-                        continue;
-                    $lang[$key] = $value;
-                }
-            }
-
-            // END \\
-
+            $lang = NULL;
             $module = new $name($config, $this->info, $lang, $this);
             $this->loadedModules[$name] = $module;
             return $module;
