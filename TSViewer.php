@@ -92,33 +92,7 @@ foreach ($paths as $path)
 if ($config_available == false)
 {
     require_once s_root . 'install/core/xml.php';
-
-    if (count(getConfigFiles(s_root . 'config')) == 0)
-    {
-        require_once (s_root . "utils.func.php");
-
-
-        $data['set_status'] = _('Apparently you didn\'t set up the Viewer yet. Please run the') . ' <a href="' . s_http . 'install/index.php">' . _('Installscript') . '</a>.';
-        $data['configs'] = _('No Configfiles available.');
-
-        require_once s_root . "html/welcome/welcome.php";
-    }
-    else
-    {
-        $configfiles = getConfigFiles(s_root . 'config');
-
-        $data['set_status'] = _('You can see a list of your config files below. If you want to add more, run the') . ' <a href="' . s_http . 'install/index.php">' . _('Installscript') . '</a>.';
-        $html = '<ul style="list-style-image:url(\''.s_http.'html/welcome/tools.png\');">';
-
-        foreach ($configfiles as $file)
-        {
-            $html .= '<li><a href="' . s_http . 'TSViewer.php?config=' . $file . '">' . $file . '</a></li>';
-        }
-        $html .= '</ul>';
-        $data['configs'] = $html;
-
-        require_once 'html/welcome/welcome.php';
-    }
+    require_once s_root . "html/welcome/welcome.php";
     exit;
 }
 // WELCOME SCREEN END \\
