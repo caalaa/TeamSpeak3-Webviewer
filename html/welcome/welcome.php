@@ -1,3 +1,13 @@
+<?php
+require_once 'utils.func.php';
+require_once 'libraries/php-gettext/gettext.inc';
+
+$lang = "en_US";
+if (isset($_GET['lang']) && $_GET['lang'] != "") $lang = $_GET['lang'];
+
+//L10N
+setL10n($lang, "ms-tsv-welcome");
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
     <head>
@@ -23,7 +33,7 @@
 
             p
             {
-                font-size: 12px;
+                font-size: 14px;
             }
 
             .ui-widget
@@ -38,17 +48,29 @@
                 padding: 5px;
                 padding-right: 10px;
             }
-            
+
             #facebook
             {
                 float:left;
                 margin-right: 5px;
                 width: 310px;
             }
-            
+
             iframe
             {
                 background-color: white;
+            }
+            
+            span .lang
+            {
+                margin-left: 12px;
+                font-size: 14px;
+            }
+            
+            ul
+            {
+                font-size: 18px;
+                list-style-position: inside;
             }
         </style>
     </head>
@@ -57,21 +79,23 @@
             <div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;"> 
                 <div id="wrapper">
                     <div id="facebook">
-                        <p>{FACEBOOK}</p>
+                        <p><?php _e('Find us on facebook') ?></p>
                         <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fmaxesstuff&amp;width=292&amp;colorscheme=light&amp;show_faces=true&amp;stream=true&amp;header=true&amp;height=427" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:427px;"></iframe>
                     </div>
-                    <p class="header">{HEADER}</p>
+                    <p class="header"><?php _e('Welcome to the Maxesstuff TeamSpeak3 Webviewer') ?></p>
                     <br>
-                    <p><a href="?lang=en">English</a></p>
-                    <p><a href="?lang=de">Deutsch</a></p>
+                    <fieldset>
+                        <span class="lang"><a href="?lang=en_US"><?php _e('English') ?></a></span>
+                        <span class="lang"><a href="?lang=de_DE"><?php _e('German') ?></a></span>
+                    </fieldset>
                     <br>
-                    <p>{SET_STATUS}</p>
+                    <p><?php echo($data['set_status']) ?></p>
                     <p></p>
-                    <p>{CONFIG_STATUS}</p>
-                    <p>{CONFIGS}</p>
+                    <p><?php _e('The following configfiles are available') ?></p>
+                    <p><?php echo($data['configs']) ?></p>
                     <br>
-                    <p>{HELP}</p>
-                    <p><a href="http://support.maxesstuff.de">Livesupport</a></p>
+                    <p><?php _e('If you need help, you can take a look for our Livesupport or our FAQ') ?></p>
+                    <p><a href="http://support.maxesstuff.de/chat.php">Livesupport</a></p>
                     <p><a href="http://de.maxesstuff.de/teamspeak3-webviewer/faq">FAQ</a></p>
                 </div>
             </div>

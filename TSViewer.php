@@ -13,7 +13,7 @@ define('version', "0.9");
 
 define('msBASEDIR', dirname(__FILE__) . "/");
 define('s_root', dirname(__FILE__) . "/");
-define('l10nDir', msBASEDIR. "l10n");
+define('l10nDir', msBASEDIR . "l10n");
 
 // Enter here the HTTP-Path of your viewer (with ending slash)
 // Geben Sie hier den HTTP-Pfad zum Viewer ein (mit Schrägstrich am Ende)
@@ -93,71 +93,31 @@ if ($config_available == false)
 {
     require_once s_root . 'install/core/xml.php';
 
-    if (!isset($_GET['lang']))
-    {
-        $_GET['lang'] = 'en';
-    }
-
     if (count(getConfigFiles(s_root . 'config')) == 0)
     {
         require_once (s_root . "utils.func.php");
 
-        if (isset($_GET['lang']))
-        {
-            switch ($_GET['lang'])
-            {
-                case 'de':
-                    $values['set_status'] = 'Anscheinend haben Sie den Viewer noch nicht konfiguriert. Bitte führen Sie die <a href="' . s_http . 'install/index.php">Installationsroutine</a> aus.';
-                    $values['config'] = 'Keine Konfigurationsdateien verfügbar.';
-                    echo(replaceValues(s_root . "html/welcome/welcome.html",
-                            $values, s_root . "html/welcome/de.i18n.xml"));
-                    break;
-                case 'en':
-                    $values['set_status'] = 'Apparently you didn\'t set up the Viewer yet. Please run the <a href="' . s_http . 'install/index.php">Installscript</a>.';
-                    $values['configs'] = 'No Configfiles available.';
-                    echo(replaceValues(s_root . "html/welcome/welcome.html",
-                            $values, s_root . "html/welcome/en.i18n.xml"));
-                    break;
-            }
-        }
+
+        $data['set_status'] = _('Apparently you didn\'t set up the Viewer yet. Please run the') . ' <a href="' . s_http . 'install/index.php">' . _('Installscript') . '</a>.';
+        $data['configs'] = _('No Configfiles available.');
+
+        require_once s_root . "html/welcome/welcome.php";
     }
     else
     {
         $configfiles = getConfigFiles(s_root . 'config');
 
-        if (isset($_GET['lang']))
+        $data['set_status'] = _('You can see a list of your config files below. If you want to add more, run the') . ' <a href="' . s_http . 'install/index.php">' . _('Installscript') . '</a>.';
+        $html = '<ul style="list-style-image:url(\''.s_http.'html/welcome/tools.png\');">';
+
+        foreach ($configfiles as $file)
         {
-            switch ($_GET['lang'])
-            {
-                case 'de':
-                    $values['set_status'] = 'Unten können Sie eine Liste Ihrer Konfigurationsdateien sehen. Sollten Sie weiter hinzufügen wollen, führen Sie die <a href="' . s_http . 'install/index.php">Installationsroutine</a> aus.';
-                    $html = '<ul>';
-
-                    foreach ($configfiles as $file)
-                    {
-                        $html .= '<li><a href="' . s_http . 'TSViewer.php?config=' . $file . '">' . $file . '</a></li>';
-                    }
-                    $html .= '</ul>';
-                    $values['configs'] = $html;
-                    echo(replaceValues(s_root . "html/welcome/welcome.html",
-                            $values, s_root . "html/welcome/de.i18n.xml"));
-
-                    break;
-                case 'en':
-                    $values['set_status'] = 'You can see a list of your config files below. If you want to add more, run the <a href="' . s_http . 'install/index.php">install script</a>.';
-                    $html = '<ul>';
-
-                    foreach ($configfiles as $file)
-                    {
-                        $html .= '<li><a href="' . s_http . 'TSViewer.php?config=' . $file . '">' . $file . '</a></li>';
-                    }
-                    $html .= '</ul>';
-                    $values['configs'] = $html;
-                    echo(replaceValues(s_root . "html/welcome/welcome.html",
-                            $values, s_root . "html/welcome/en.i18n.xml"));
-                    break;
-            }
+            $html .= '<li><a href="' . s_http . 'TSViewer.php?config=' . $file . '">' . $file . '</a></li>';
         }
+        $html .= '</ul>';
+        $data['configs'] = $html;
+
+        require_once 'html/welcome/welcome.php';
     }
     exit;
 }

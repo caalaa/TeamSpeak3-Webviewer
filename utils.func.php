@@ -325,7 +325,12 @@ function parseLanguageFileText($file)
     return $array;
 }
 
-// Parses a xml-language-file and returns its values as an array
+/**
+ * Parses a xml-language-file and returns its values as an array
+ * @deprecated new gettext l10n
+ * @param type $file
+ * @return type 
+ */
 function parseLanguageFileXML($file)
 {
     $xml = simplexml_load_file($file);
@@ -393,15 +398,23 @@ function getUserByID($clientlist, $id)
     return NULL;
 }
 
-// Outputs an Alert
-// @todo Add Code
+/**
+ * Returns an Alert/ Error
+ * @todo add Code
+ * @param type $message
+ * @return type 
+ */
 function throwAlert($message)
 {
     return;
 }
 
-// Outputs a Warning
-// @todo Add Code
+/**
+ * Returns a Warning
+ * @todo add Code
+ * @param type $message
+ * @return type 
+ */
 function throwWarning($message)
 {
     return;
