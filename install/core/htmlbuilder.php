@@ -212,17 +212,17 @@ function createEditHtml()
     $html['standard_caching_html'] = '<input type="text" name="standard_caching" value="' . (string) $configfile->standard_cachetime . '" />';
 
     // Language
-    if ((string) $configfile->language == "de" || ( (string) $configfile->language == '' && $_SESSION['lang'] == 'de'))
+    $html['language_html'] = "";
+    $languages = tsv_getLanguages("../l10n");
+    $selected_lang = (string)$configfile->language;
+    
+    foreach($languages as $langCode => $langFull)
     {
-        $html['language_html'] = '<input type="radio" name="language" value="de_DE" checked="checked" > ' . _('German') . '<br>
-            <input type="radio" name="language" value="en_US"  > ' . _('English');
+        if($langCode == $selected_lang)
+            $html['language_html'] .= '<input type="radio" name="language" checked="checked" value="'.$langCode.'">'.$langFull.' <br>';
+        else
+            $html['language_html'] .= '<input type="radio" name="language"  value="'.$langCode.'">'.$langFull.' <br>';
     }
-    else
-    {
-        $html['language_html'] = '<input type="radio" name="language" value="de_DE" > ' . _('German') . '<br>
-            <input type="radio" name="language" value="en_US" checked="checked" > ' . _('English');
-    }
-
     return $html;
 }
 

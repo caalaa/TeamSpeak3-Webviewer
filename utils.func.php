@@ -287,7 +287,7 @@ function parseConfigFileXML($file)
 }
 
 /**
- * Pardses a text or a xml languagefile
+ * Parses a text or a xml languagefile
  * @deprecated new gettext l10n
  * @param type $file
  * @param type $xml
@@ -344,7 +344,10 @@ function parseLanguageFileXML($file)
     return $config;
 }
 
-// function from php.net thanks to bohwaz
+/**
+ * Unregisters globals thanks to bohwaz (http://php.net)
+ * @return type 
+ */
 function unregister_globals()
 {
     if (!ini_get('register_globals'))
@@ -361,7 +364,11 @@ function unregister_globals()
     }
 }
 
-// Converts boolean to text
+/**
+ * Simple bool to text converter
+ * @param type var
+ * @return type 
+ */
 function bool2text($var)
 {
     if ($var)
@@ -374,6 +381,12 @@ function bool2text($var)
     }
 }
 
+/**
+ * Gets a user by its name
+ * @param type $clientlist
+ * @param type $name
+ * @return type 
+ */
 function getUserByName($clientlist, $name)
 {
     foreach ($clientlist as $client)
@@ -386,6 +399,12 @@ function getUserByName($clientlist, $name)
     return NULL;
 }
 
+/**
+ * Gets a user by its id
+ * @param type $clientlist
+ * @param type $id
+ * @return type 
+ */
 function getUserByID($clientlist, $id)
 {
     foreach ($clientlist as $client)

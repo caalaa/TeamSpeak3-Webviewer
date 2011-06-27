@@ -174,7 +174,11 @@ function flushCache($config)
     }
 }
 
-// Deleted a configfile
+/**
+ * Deletes a configfile
+ * @param type $file
+ * @return type 
+ */
 function deleteConfigfile($file)
 {
     $lang = simplexml_load_file("i18n/" . $_SESSION['lang'] . ".i18n.xml");
@@ -220,7 +224,11 @@ function _e($message)
     echo(_($message));
 }
 
-// Throws an visual Alert
+/**
+ * Throws alert
+ * @param type $message
+ * @return string 
+ */
 function throwAlert($message)
 {
     $html = '<div class="alert" style="margin-bottom:5px;">
@@ -234,7 +242,11 @@ function throwAlert($message)
     return $html;
 }
 
-// Throws a visual warning
+/**
+ * Throws warning
+ * @param type $message
+ * @return string 
+ */
 function throwWarning($message)
 {
     $html = '<div class="alert" style="margin-bottom:5px;">

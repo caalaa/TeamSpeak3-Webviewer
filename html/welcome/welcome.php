@@ -2,6 +2,7 @@
 require_once s_root . 'utils.func.php';
 require_once s_root . 'libraries/php-gettext/gettext.inc';
 require_once s_root . 'install/core/xml.php';
+require_once s_root . 'core/tsv.func.php';
 
 $lang = "en_US";
 if (isset($_GET['lang']) && $_GET['lang'] != "") $lang = $_GET['lang'];
@@ -85,27 +86,37 @@ setL10n($lang, "ms-tsv-welcome");
                     </div>
                     <p class="header"><?php _e('Welcome to the Maxesstuff TeamSpeak3 Webviewer') ?></p>
                     <fieldset>
-                        <span class="lang"><a href="?lang=en_US"><?php _e('English') ?></a></span>
-                        <span class="lang"><a href="?lang=de_DE"><?php _e('German') ?></a></span>
+                        <?php $languages = tsv_getLanguages(); ?>
+                        <?php foreach ($languages as $langCode => $langFull)
+                        { ?>              
+                            <span class="lang"><a href="?lang=<?php echo($langCode); ?>"><?php echo($langFull) ?></a></span>
+<?php } ?>
                     </fieldset>
                     <br>
-                    <p><?php if (count(getConfigFiles(s_root . 'config')) == 0)
-                    {
-                        _e('Apparently you didn\'t set up the Viewer yet. Please run the') ?> <a href="<?php echo(s_http . 'install/index.php') ?>"><?php _e('Installscript') ?></a><?php }
-                    else
-                    {
-                        _e('You can see a list of your config files below. If you want to add more, run the'); ?> <a href="<?php echo(s_http . 'install/index.php') ?>"><?php _e('Installscript') ?></a><?php } ?></p>
-                    <p></p>
-                    <p><?php _e('The following configfiles are available') ?></p>
-                    <p><?php if (count(getConfigFiles(s_root . 'config')) == 0)
-                    {
-                        _e('No configfile available');
+                    <p><?php
+if (count(getConfigFiles(s_root . 'config')) == 0)
+{
+    _e('Apparently you didn\'t set up the Viewer yet. Please run the')
+    ?> <a href="<?php echo(s_http . 'install/index.php') ?>"><?php _e('Installscript') ?></a><?php
                     }
                     else
-                    { ?>
-                    <ul style="list-style-image:url('<?php echo(s_http.'html/welcome/tools.png'); ?>');"><?php $configfiles = getConfigFiles(s_root.'config'); 
-                    foreach($configfiles as $file) {?><li><a href="<?php echo(s_http . 'TSViewer.php?config=' . $file)?>"><?php echo($file)?></a></li><?php } ?></ul>   
-                    <?php } ?></p>
+                    {
+                        _e('You can see a list of your config files below. If you want to add more, run the');
+    ?> <a href="<?php echo(s_http . 'install/index.php') ?>"><?php _e('Installscript') ?></a><?php } ?></p>
+                    <p></p>
+                    <p><?php _e('The following configfiles are available') ?></p>
+                    <p><?php
+                        if (count(getConfigFiles(s_root . 'config')) == 0)
+                        {
+                            _e('No configfile available');
+                        }
+                        else
+                        {
+                            ?>
+                        <ul style="list-style-image:url('<?php echo(s_http . 'html/welcome/tools.png'); ?>');"><?php $configfiles = getConfigFiles(s_root . 'config');
+                            foreach ($configfiles as $file)
+                            { ?><li><a href="<?php echo(s_http . 'TSViewer.php?config=' . $file) ?>"><?php echo($file) ?></a></li><?php } ?></ul>   
+<?php } ?></p>
                     <br>
                     <p><?php _e('If you need help, you can take a look for our Livesupport or our FAQ') ?></p>
                     <p><a href="http://support.maxesstuff.de/chat.php">Livesupport</a></p>
