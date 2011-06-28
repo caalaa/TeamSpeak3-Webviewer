@@ -26,8 +26,8 @@ class js_login extends ms_Module
         $this->mManager->loadModule('jQuery');
         $this->mManager->loadModule('js')->loadJS(s_http . '/modules/js_login/ts3_connect.js');
 
-        $prompt_serverpass = _('Please insert the serverpassword');
-        $prompt_nickname = _('Please insert a nickname of your choice');
+        $prompt_serverpass = __('Please insert the serverpassword');
+        $prompt_nickname = __('Please insert a nickname of your choice');
 
         if (isset($this->config['connect_host']) && $this->config['connect_host'] != $this->config['host'])
             $this->config['host'] = $this->config['connect_host'];

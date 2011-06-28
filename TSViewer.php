@@ -165,7 +165,6 @@ require_once(s_root . "Module.class.php");
 require_once(s_root . "ModuleManager.class.php");
 require_once(s_root . "libraries/php-gettext/gettext.inc");
 
-
 $output = '';
 try
 {

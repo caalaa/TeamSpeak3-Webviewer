@@ -1,0 +1,47 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: TeamSpeak3 Webviewer legende\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-06-27 18:55+0100\n"
+"PO-Revision-Date: 2011-06-27 18:58+0100\n"
+"Last-Translator: Maximilian Narr <maxesstuff@live.de>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: B:\\Eigene Dokumente\\NetBeansProjects\\TeamSpeak3 Webviewer\\modules\\legende\n"
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\modules\legende/legende.php:26
+#: Webviewer\modules\legende/legende.php:47
+msgid "Legend"
+msgstr "Forklaring"
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\modules\legende/legende.php:50
+msgid "Servergroup(s)"
+msgstr "Servergruppe(r)"
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\modules\legende/legende.php:61
+#: Webviewer\modules\legende/legende.php:71
+msgid "No image"
+msgstr "Intet billede"
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\modules\legende/legende.php:79
+msgid "Channelgroup(s)"
+msgstr "Kanalgruppe(r)"
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\modules\legende/legende.php:94
+msgid "No Image"
+msgstr "Intet billede"
+

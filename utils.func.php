@@ -257,7 +257,11 @@ function parseConfigFileText($file)
     return $array;
 }
 
-// Parses a XML-Config-File and returns its values as an array
+/**
+ * Parses XML configfile
+ * @param type $file
+ * @return type 
+ */
 function parseConfigFileXML($file)
 {
     $xml = simplexml_load_file($file);
@@ -481,9 +485,9 @@ function replaceValues($file, $values, $languagefile)
  * @since 0.9
  * @param type $message 
  */
-function _e($message)
+function __e($message)
 {
-    echo(_($message));
+    echo(__($message));
 }
 
 /**
@@ -495,14 +499,13 @@ function _e($message)
  */
 function setL10n($locale, $domain, $newPath=NULL)
 {
-    setlocale(LC_MESSAGES, $locale . ".utf8", $locale . ".UTF8",
-            $locale . ".utf-8", $locale . "UTF-8", $locale);
+    (T_setlocale(LC_MESSAGES, $locale));
 
-    if ($newPath == NULL) bindtextdomain($domain, l10nDir);
-    else bindtextdomain($domain, $newPath);
+    if ($newPath == NULL) T_bindtextdomain($domain, l10nDir);
+    else T_bindtextdomain($domain, $newPath);
 
-    textdomain($domain);
-    bind_textdomain_codeset($domain, "UTF-8");
+    T_textdomain($domain);
+    T_bind_textdomain_codeset($domain, "UTF-8");
 }
 
 ?>

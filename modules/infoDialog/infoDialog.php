@@ -64,7 +64,7 @@ class infoDialog extends ms_Module
 									ms_client = this;
                                                                         ms_id = $(this).attr('id');
 						
-                                                                        ms_title = '" . _('loading...') . "';
+                                                                        ms_title = '" . __('loading...') . "';
                                                                         ms_pos = ms_getPosition(ms_client);
                                                                         ms_dialogs[ms_id] = $('#dialog').html('<img  style=\" margin-left: 50%; margin-right:50%; margin-top: 25px;\" src=\"" . s_http . "modules/infoDialog/img/ajax-loader.gif\" alt=\"\"></img>').dialog(" . $dialog_conf . ");
                                                                                 

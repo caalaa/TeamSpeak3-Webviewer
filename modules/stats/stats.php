@@ -61,7 +61,7 @@ class stats extends ms_Module
 
         // If chart should be shown in Tab
         if ($this->config['use_tab'] == true)
-                $this->mManager->loadModule("infoTab")->addTab(_('Statistics'),
+                $this->mManager->loadModule("infoTab")->addTab(__('Statistics'),
                     $this->html);
     }
 

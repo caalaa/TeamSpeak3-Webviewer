@@ -32,16 +32,16 @@ class serverInfo extends ms_Module
         $welcomemsg = '';
 
         if ($serverinfo['virtualserver_welcomemessage'] == '')
-                $welcomemsg = _('no welcomemessage');
+                $welcomemsg = __('no welcomemessage');
         else $welcomemsg = $bbparser->Parse($serverinfo['virtualserver_welcomemessage']);
 
         $this->html.='<!--- START Serverinfo -->
             <div class="serverinfo"><table width="100%">
             <tr>
-            <td width="33%"><h5>' . _('Welcomemessage') . '</h5><p style="border-width:1px;border-style:dotted; padding: 2px;">' . $welcomemsg . '</p><h5>' . _('Channels') . '</h5><p><span class="channelimage normal-channel">&nbsp;</span>' . $serverinfo['virtualserver_channelsonline'] . '</p></td>
-            <td width="33%"><h5>' . _('Version') . '</h5><p>' . $serverinfo['virtualserver_version'] . '</p><h5>' . _('Server OS') . '</h5><p>' . $serverinfo['virtualserver_platform'] . '</p></td>
-            <td width="33%"><h5>' . _('Connectiondetails') . '</h5><h6>' . _('total sent') . '</h6><p>' . $this->get_value($serverinfo['connection_bytes_sent_total'],
-                        $value_format) . '</p><h6>' . _('total received') . '</h6><p>' . $this->get_value($serverinfo['connection_bytes_received_total'],
+            <td width="33%"><h5>' . __('Welcomemessage') . '</h5><p style="border-width:1px;border-style:dotted; padding: 2px;">' . $welcomemsg . '</p><h5>' . __('Channels') . '</h5><p><span class="channelimage normal-channel">&nbsp;</span>' . $serverinfo['virtualserver_channelsonline'] . '</p></td>
+            <td width="33%"><h5>' . __('Version') . '</h5><p>' . $serverinfo['virtualserver_version'] . '</p><h5>' . __('Server OS') . '</h5><p>' . $serverinfo['virtualserver_platform'] . '</p></td>
+            <td width="33%"><h5>' . __('Connectiondetails') . '</h5><h6>' . __('total sent') . '</h6><p>' . $this->get_value($serverinfo['connection_bytes_sent_total'],
+                        $value_format) . '</p><h6>' . __('total received') . '</h6><p>' . $this->get_value($serverinfo['connection_bytes_received_total'],
                         $value_format) . '</td>
             </tr>
             </table>
@@ -53,7 +53,7 @@ class serverInfo extends ms_Module
         if ($this->use_tab == true)
         {
 
-            $this->mManager->loadModule("infoTab")->addTab(_('Serverinformation'),
+            $this->mManager->loadModule("infoTab")->addTab(__('Serverinformation'),
                     $this->html);
         }
     }

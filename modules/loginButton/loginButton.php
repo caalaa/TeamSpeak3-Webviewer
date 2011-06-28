@@ -35,8 +35,8 @@ class loginButton extends ms_Module
             $serverpassword = 0;
         }
 
-        $prompt_serverpass = _('Please insert the serverpassword');
-        $prompt_nickname = _('Please insert a nickname of your choice');
+        $prompt_serverpass = __('Please insert the serverpassword');
+        $prompt_nickname = __('Please insert a nickname of your choice');
 
         if (isset($this->config['connect_host']))
             $this->config['host'] = $this->config['connect_host'];

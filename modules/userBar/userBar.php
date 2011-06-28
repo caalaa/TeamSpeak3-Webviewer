@@ -30,7 +30,7 @@ class userBar extends ms_Module
 
     public function getHeader()
     {
-        return('<p style="font-family: sans-serif; font-size: small;">'.$this->clients_online.' '._('of').' '.$this->max_clients.' '._('are currently online').'</p>
+        return('<p style="font-family: sans-serif; font-size: small;">'.$this->clients_online.' '.__('of').' '.$this->max_clients.' '.__('are currently online').'</p>
                 <div id="userBar" style="height:15px; width:100%; margin-top:10px;"></div>');
     }
 }

@@ -23,7 +23,7 @@ class legende extends ms_Module
 
         if ($this->config['use_tab'] == true)
         {
-            $this->mManager->loadModule("infoTab")->addTab(_('Legend'),
+            $this->mManager->loadModule("infoTab")->addTab(__('Legend'),
                     $this->getText());
             $this->content_sent = true;
         }
@@ -44,10 +44,10 @@ class legende extends ms_Module
         $output .= $this->mManager->triggerEvent('before_legende');
         if (!$this->config['use_tab'])
         {
-            $output .= '<div class="legende"><h4>' . _('Legend') . ':</h4>';
+            $output .= '<div class="legende"><h4>' . __('Legend') . ':</h4>';
         }
 
-        $output .= '<h5>' . _('Servergroup(s)') . '</h5>';
+        $output .= '<h5>' . __('Servergroup(s)') . '</h5>';
         foreach ($this->info['servergroups'] as $sgroup)
         {
             if ($sgroup['type'] == 1)
@@ -58,7 +58,7 @@ class legende extends ms_Module
                     if ($sgroup['iconid'] != 0)
                             $output .= '<p><span class="channelimage" style="background: url(\'' . $this->config['serverimages'] . $sgroup['iconid'] . '\') no-repeat transparent;" title="' . $sgroup['name'] . '">&nbsp;</span>';
                     else
-                            $output .= '<p><span class="channelimage" title="' . _('No image') . '">&nbsp;</span>';
+                            $output .= '<p><span class="channelimage" title="' . __('No image') . '">&nbsp;</span>';
                 }
                 else
                 {
@@ -68,7 +68,7 @@ class legende extends ms_Module
                     }
                     else
                     {
-                        $output .= '<p><span class="channelimage" title="' . _('No image') . '">&nbsp;</span>';
+                        $output .= '<p><span class="channelimage" title="' . __('No image') . '">&nbsp;</span>';
                     }
                 }
                 $output .= ' ' . $sgroup['name'] . ' (' . $sgroup['sgid'] . ')</p>';
@@ -76,7 +76,7 @@ class legende extends ms_Module
             }
         }
 
-        $output .= '<h5>' . _('Channelgroup(s)') . '</h5>';
+        $output .= '<h5>' . __('Channelgroup(s)') . '</h5>';
 
 
 
@@ -91,7 +91,7 @@ class legende extends ms_Module
                     if ($cgroup['iconid'] != 0)
                             $output .= '<p><span class="channelimage" style="background: url(\'' . $this->config['serverimages'] . $cgroup['iconid'] . '\') no-repeat transparent;" title="' . $cgroup['name'] . '">&nbsp;</span>';
                     else
-                            $output .= '<p><span class="channelimage" title="' . _('No Image') . '">&nbsp;</span>';
+                            $output .= '<p><span class="channelimage" title="' . __('No Image') . '">&nbsp;</span>';
                 }
                 else
                 {

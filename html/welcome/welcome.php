@@ -81,10 +81,10 @@ setL10n($lang, "ms-tsv-welcome");
             <div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;"> 
                 <div id="wrapper">
                     <div id="facebook">
-                        <p><?php _e('Find us on facebook') ?></p>
+                        <p><?php __e('Find us on facebook') ?></p>
                         <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fmaxesstuff&amp;width=292&amp;colorscheme=light&amp;show_faces=true&amp;stream=true&amp;header=true&amp;height=427" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:427px;"></iframe>
                     </div>
-                    <p class="header"><?php _e('Welcome to the Maxesstuff TeamSpeak3 Webviewer') ?></p>
+                    <p class="header"><?php __e('Welcome to the Maxesstuff TeamSpeak3 Webviewer') ?></p>
                     <fieldset>
                         <?php $languages = tsv_getLanguages(); ?>
                         <?php foreach ($languages as $langCode => $langFull)
@@ -96,19 +96,19 @@ setL10n($lang, "ms-tsv-welcome");
                     <p><?php
 if (count(getConfigFiles(s_root . 'config')) == 0)
 {
-    _e('Apparently you didn\'t set up the Viewer yet. Please run the')
-    ?> <a href="<?php echo(s_http . 'install/index.php') ?>"><?php _e('Installscript') ?></a><?php
+    __e('Apparently you didn\'t set up the Viewer yet. Please run the')
+    ?> <a href="<?php echo(s_http . 'install/index.php') ?>"><?php __e('Installscript') ?></a><?php
                     }
                     else
                     {
-                        _e('You can see a list of your config files below. If you want to add more, run the');
-    ?> <a href="<?php echo(s_http . 'install/index.php') ?>"><?php _e('Installscript') ?></a><?php } ?></p>
+                        __e('You can see a list of your config files below. If you want to add more, run the');
+    ?> <a href="<?php echo(s_http . 'install/index.php') ?>"><?php __e('Installscript') ?></a><?php } ?></p>
                     <p></p>
-                    <p><?php _e('The following configfiles are available') ?></p>
+                    <p><?php __e('The following configfiles are available') ?></p>
                     <p><?php
                         if (count(getConfigFiles(s_root . 'config')) == 0)
                         {
-                            _e('No configfile available');
+                            __e('No configfile available');
                         }
                         else
                         {
@@ -118,7 +118,7 @@ if (count(getConfigFiles(s_root . 'config')) == 0)
                             { ?><li><a href="<?php echo(s_http . 'TSViewer.php?config=' . $file) ?>"><?php echo($file) ?></a></li><?php } ?></ul>   
 <?php } ?></p>
                     <br>
-                    <p><?php _e('If you need help, you can take a look for our Livesupport or our FAQ') ?></p>
+                    <p><?php __e('If you need help, you can take a look for our Livesupport or our FAQ') ?></p>
                     <p><a href="http://support.maxesstuff.de/chat.php">Livesupport</a></p>
                     <p><a href="http://de.maxesstuff.de/teamspeak3-webviewer/faq">FAQ</a></p>
                 </div>

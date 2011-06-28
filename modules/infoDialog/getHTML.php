@@ -8,6 +8,7 @@ define("s_root", $_SESSION['s_root']);
 define("s_http", $_SESSION['s_http']);
 
 require_once(s_root . 'utils.func.php');
+require_once (s_root . 'libraries/php-gettext/gettext.inc');
 require_once(s_root . 'TSQuery.class.php');
 
 define('msBASEDIR', dirname($_SERVER['PHP_SELF']));
@@ -128,23 +129,23 @@ if ($_GET['type'] == 'client')
         {
             case 'nickname':
                 $out .= '<tr>';
-                $out .= '<td class="label">' . _('Nickname') . ':</td>';
+                $out .= '<td class="label">' . __('Nickname') . ':</td>';
                 $out .= '<td>' . escape_name($user['client_nickname']) . '</td></tr>';
                 break;
             case 'country':
                 $out .= '<tr>';
-                $out .= '<td class="label">' . _('Country') . ":</td>";
+                $out .= '<td class="label">' . __('Country') . ":</td>";
                 $out .= '<td><span style="margin-right:10px;">' . getCountryIcon($clientinfo['return']['client_country']) . '</span>' . twolettertocountry($clientinfo['return']['client_country']) . '</td></tr>';
                 $out .= '</tr>';
                 break;
             case 'version':
                 $out .= '<tr>';
-                $out .= '<td class="label">' . _('Version') . ':</td>';
+                $out .= '<td class="label">' . __('Version') . ':</td>';
                 $out .= '<td>' . $user['client_version'] . '</td></tr>';
                 break;
             case 'servergroup':
                 $out .= '<tr>';
-                $out .= '<td class="label">' . _('Servergroup(s)') . ':</td>';
+                $out .= '<td class="label">' . __('Servergroup(s)') . ':</td>';
                 $out .= '<td>';
 
                 foreach (get_servergroup_images($user, $info['servergroups'],
@@ -164,7 +165,7 @@ if ($_GET['type'] == 'client')
                 break;
             case 'channelgroup':
                 $out .= '<tr>';
-                $out .= '<td class="label">' . _('Channelgroup(s)') . ':</td>';
+                $out .= '<td class="label">' . __('Channelgroup(s)') . ':</td>';
                 $out .= '<td>';
                 $channelgroup_icon = get_channelgroup_image($user,
                         $info['channelgroups'],
@@ -183,7 +184,7 @@ if ($_GET['type'] == 'client')
                 break;
             case 'connections':
                 $out .= '<tr>';
-                $out .= '<td class="label">' . _('Connections') . ':</td>';
+                $out .= '<td class="label">' . __('Connections') . ':</td>';
                 $out .= '<td>' . $clientinfo['return']['client_totalconnections'];
                 $out .= '</td></tr>';
                 break;
@@ -191,7 +192,7 @@ if ($_GET['type'] == 'client')
                 if (!empty($clientinfo['return']['client_description']))
                 {
                     $out .= '<tr>';
-                    $out .= '<td class="label">' . _('Description') . ':</td>';
+                    $out .= '<td class="label">' . __('Description') . ':</td>';
                     $out .= '<td>' . escape_name($clientinfo['return']['client_description']);
                     $out .= '</td></tr>';
                 }
@@ -462,7 +463,7 @@ function twolettertocountry($code)
     {
         if ($key == strtoupper($code)) return $value;
     }
-    return _('none');
+    return __('none');
 }
 
 ?>
