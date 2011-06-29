@@ -15,7 +15,7 @@ require_once 'core/utils.php';
 require_once 'core/htmlbuilder.php';
 require_once 'core/xml.php';
 require_once '../libraries/php-gettext/gettext.inc';
-require_once '../core/tsv.func.php';
+require_once '../core/tsv/tsv.func.php';
 
 // Outputs the header
 echo(file_get_contents("html/header.html"));
@@ -139,7 +139,6 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'validate' && isset($_P
 // If the language has not been setted
 if (!isset($_SESSION['lang']))
 {
-    require_once '../core/tsv.func.php';
     require_once 'html/select_language.php';
 
     exit;

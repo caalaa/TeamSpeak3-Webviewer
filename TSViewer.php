@@ -58,7 +58,8 @@ else
 
 $start = microtime(true);
 
-require_once("utils.func.php");
+require_once s_root . "core/utils.inc";
+require_once s_root . 'core/config.inc';
 
 unregister_globals('_POST', '_GET', '_COOKIE', '_REQUEST', '_SERVER', '_ENV',
         '_FILES', '_SESSION');
@@ -142,11 +143,11 @@ if ($config['use_serverimages'] == true)
 {
     if (isset($_GET['config']))
     {
-        $config['serverimages'] = s_http . "get_server_icon.php?config=" . $_GET['config'] . "&id=";
+        $config['serverimages'] = s_http . "core/teamspeak/get_server_icon.php?config=" . $_GET['config'] . "&id=";
     }
     else
     {
-        $config['serverimages'] = s_http . "get_server_icon.php?id=";
+        $config['serverimages'] = s_http . "core/teamspeak/get_server_icon.php?id=";
     }
 }
 else
@@ -159,12 +160,11 @@ $config['client_name'] = "Maxesstuff TS3 Webviewer";
 
 
 //get all needed classes
-require_once(s_root . "TSQuery.class.php");
-require_once(s_root . "TSChannel.class.php");
-require_once(s_root . "Module.class.php");
-require_once(s_root . "ModuleManager.class.php");
-require_once(s_root . "libraries/php-gettext/gettext.inc");
-require_once(s_root . "core/tsv.func.php");
+require_once s_root . 'core/teamspeak.inc';
+require_once s_root . 'core/module.inc';
+require_once s_root . 'core/tsv.inc';
+require_once s_root . 'core/i18n.inc';
+require_once s_root . "libraries/php-gettext/gettext.inc";
 
 $output = '';
 try

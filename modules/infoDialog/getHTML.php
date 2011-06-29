@@ -7,9 +7,11 @@ session_start();
 define("s_root", $_SESSION['s_root']);
 define("s_http", $_SESSION['s_http']);
 
-require_once(s_root . 'utils.func.php');
-require_once (s_root . 'libraries/php-gettext/gettext.inc');
-require_once(s_root . 'TSQuery.class.php');
+require_once s_root . 'core/utils.inc';
+require_once s_root . 'core/config.inc';
+require_once s_root . 'core/i18n.inc';
+require_once s_root . 'libraries/php-gettext/gettext.inc';
+require_once s_root . 'core/teamspeak.inc';
 
 define('msBASEDIR', dirname($_SERVER['PHP_SELF']));
 $config_name = isset($_GET['config']) ? $_GET['config'] : '';

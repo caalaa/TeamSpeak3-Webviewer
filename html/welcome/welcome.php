@@ -1,8 +1,9 @@
 <?php
-require_once s_root . 'utils.func.php';
+require_once s_root . 'core/utils.inc';
 require_once s_root . 'libraries/php-gettext/gettext.inc';
 require_once s_root . 'install/core/xml.php';
-require_once s_root . 'core/tsv.func.php';
+require_once s_root . 'core/tsv.inc';
+require_once s_root . 'core/i18n.inc';
 
 $lang = "en_US";
 if (isset($_GET['lang']) && $_GET['lang'] != "") $lang = $_GET['lang'];
