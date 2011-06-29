@@ -24,11 +24,11 @@
 <div id="xmledit">
     <div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em; margin-bottom: 10px;"> 
         <p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
-        <?php _e('You can edit the configfile of the module here. If you have finished just press the button')?></p>
+        <?php __e('You can edit the configfile of the module here. If you have finished just press the button')?></p>
     </div>
     <form method="POST" action="xmledit.php?action=submit&module=<?php echo($html['module_ed'])?>">
         <textarea id="code" name="xml"><?php echo($html['code'])?></textarea>
-        <p><input type="submit" value="<?php _e('save configfile')?>"/></p>
+        <p><input type="submit" value="<?php __e('save configfile')?>"/></p>
     </form>
     <script type="text/javascript">
             <?php echo($html['xml_script'])?>

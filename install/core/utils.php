@@ -139,7 +139,7 @@ function flushCache($config)
 
         if ((string) $config->host == "" || (string) $config->host == NULL || (string) $config->queryport == "" || (string) $config->queryport == NULL || (string) $config->vserverport == "" || (string) $config->vserverport == NULL)
         {
-            return throwAlert(_e('Not all necessary information is given in the configfile to flush the cache.'));
+            return throwAlert(__e('Not all necessary information is given in the configfile to flush the cache.'));
         }
         else
         {
@@ -169,7 +169,7 @@ function flushCache($config)
                 if ($file != ".." && $file != "." && $file != "time")
                         unlink($path . "server/images/" . $file);
             }
-            return throwWarning(_('Cache flushed.'));
+            return throwWarning(__('Cache flushed.'));
         }
     }
 }
@@ -207,7 +207,7 @@ function checkFunctions()
         if (!function_exists($value))
         {
             // Create Warnings
-            $html .= throwAlert(_('The necessary function') . ' ' . $value . ' ' . _('is not available on your webspace. Please contact your service provider'));
+            $html .= throwAlert(__('The necessary function') . ' ' . $value . ' ' . __('is not available on your webspace. Please contact your service provider'));
         }
     }
 

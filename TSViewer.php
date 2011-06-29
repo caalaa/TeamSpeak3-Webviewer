@@ -164,6 +164,7 @@ require_once(s_root . "TSChannel.class.php");
 require_once(s_root . "Module.class.php");
 require_once(s_root . "ModuleManager.class.php");
 require_once(s_root . "libraries/php-gettext/gettext.inc");
+require_once(s_root . "core/tsv.func.php");
 
 $output = '';
 try
@@ -254,22 +255,6 @@ $output .= render_channellist($channellist_obj, $clientlist['return'],
 $output .= $mManager->getFooters();
 $output .= "</div>";
 $output .= $mManager->triggerEvent('Shutdown');
-
-// Output the TS3 Viewer
-// START HTML-Tidy-Up \\
-if (function_exists("tidy_parse_string"))
-{
-    $config = array('indent' => TRUE,
-        'output-xhtml' => TRUE,
-        'wrap' => 200);
-
-    $tidy = tidy_parse_string($output, $config, "UTF-8");
-    $tidy->cleanRepair();
-    var_dump($tidy);
-    $output = $tidy;
-}
-
-// END HTML-Tidy-Up \\
 
 echo $output;
 

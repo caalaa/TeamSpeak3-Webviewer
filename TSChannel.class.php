@@ -167,6 +167,5 @@ class TSChannel implements arrayaccess, Iterator
         return isset($this->channel[$position]);
 
     }
-
 }
 

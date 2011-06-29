@@ -481,16 +481,6 @@ function replaceValues($file, $values, $languagefile)
 }
 
 /**
- * Echos gettext message
- * @since 0.9
- * @param type $message 
- */
-function __e($message)
-{
-    echo(__($message));
-}
-
-/**
  * Sets the locale
  * @since 0.9
  * @param type $locale
@@ -499,7 +489,7 @@ function __e($message)
  */
 function setL10n($locale, $domain, $newPath=NULL)
 {
-    (T_setlocale(LC_MESSAGES, $locale));
+    T_setlocale(LC_MESSAGES, $locale);
 
     if ($newPath == NULL) T_bindtextdomain($domain, l10nDir);
     else T_bindtextdomain($domain, $newPath);

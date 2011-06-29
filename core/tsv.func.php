@@ -6,6 +6,7 @@
 
 /**
  * Returns all available languages as an array
+ * @since 0.9
  * @param type $customPath
  * @return type 
  * @subpackage php-gettext
@@ -32,6 +33,17 @@ function tsv_getLanguages($customPath=NULL)
     }
 
     return $languages;
+}
+
+/**
+ * Echos given string
+ * @since 0.9
+ * @param type $string
+ * @return type 
+ */
+function __e($string) 
+{
+    echo __($string);
 }
 
 ?>

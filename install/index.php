@@ -34,28 +34,31 @@ if (isset($_SESSION['lang']) && $_SESSION['lang'] != "")
 {
     $lang = $_SESSION['lang'];
 
-    setlocale(LC_MESSAGES, $lang . ".utf8", $lang . ".UTF8", $lang . ".utf-8",
-            $lang . "UTF-8", $lang);
+    T_setlocale(LC_MESSAGES, $lang);
 
     $domain = "ms-tsv-install";
 
-    bindtextdomain($domain, PROJECTPATH);
-    textdomain($domain);
-    bind_textdomain_codeset($domain, ENCODING);
+    if ($newPath == NULL) T_bindtextdomain($domain, PROJECTPATH);
+    else T_bindtextdomain($domain, $newPath);
+
+    T_textdomain($domain);
+    T_bind_textdomain_codeset($domain, "UTF-8");
 }
 
 // Sets Language
 if (isset($_REQUEST['action']) && $_REQUEST['action'] == "setlang" && isset($_GET['lang']))
 {
     $lang = $_GET['lang'];
-    setlocale(LC_MESSAGES, $lang . ".utf8", $lang . ".UTF8", $lang . ".utf-8",
-            $lang . "UTF-8", $lang);
+
+    T_setlocale(LC_MESSAGES, $lang);
 
     $domain = "ms-tsv-install";
 
-    bindtextdomain($domain, PROJECTPATH);
-    textdomain($domain);
-    bind_textdomain_codeset($domain, ENCODING);
+    if ($newPath == NULL) T_bindtextdomain($domain, PROJECTPATH);
+    else T_bindtextdomain($domain, $newPath);
+
+    T_textdomain($domain);
+    T_bind_textdomain_codeset($domain, "UTF-8");
 
     $_SESSION['lang'] = $_GET['lang'];
 }
@@ -65,14 +68,14 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'setpw' && isset($_POST
 {
     // Set Password
     $result = setPassword($_POST['password']);
-    
-    if($result == TRUE)
+
+    if ($result == TRUE)
     {
-        echo(throwAlert(_('The password could not be safed. Be sure that writing permissions are set to pw.xml')));
+        echo(throwAlert(__('The password could not be safed. Be sure that writing permissions are set to pw.xml')));
         require_once 'html/set_password.php';
         exit;
     }
-    
+
     $_SESSION['validated'] = true;
 }
 
@@ -138,7 +141,7 @@ if (!isset($_SESSION['lang']))
 {
     require_once '../core/tsv.func.php';
     require_once 'html/select_language.php';
-    
+
     exit;
 }
 
@@ -185,7 +188,7 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
         if (empty($_POST[$var]) || $_POST[$var] == NULL || $_POST[$var] == "")
         {
             $vars_unavailable = true;
-            echo throwAlert($var . " " . _('is not set. Please check if you filled out all blanks.'));
+            echo throwAlert($var . " " . __('is not set. Please check if you filled out all blanks.'));
         }
     }
 
@@ -250,13 +253,13 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
 
     if (!file_exists("../config/" . $_SESSION['config'] . ".xml"))
     {
-        echo (throwAlert(_('Configfile is not writable. Please check if the required permissions are given to write the file. We recomment setting the file to CHMOD 775')));
+        echo (throwAlert(__('Configfile is not writable. Please check if the required permissions are given to write the file. We recomment setting the file to CHMOD 775')));
         exit;
     }
 
     $data = createEditHtml();
 
-    echo(throwWarning(_('Configfile successfully saved.')));
+    echo(throwWarning(__('Configfile successfully saved.')));
 
     require_once 'html/config.php';
 

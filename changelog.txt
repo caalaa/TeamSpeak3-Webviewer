@@ -11,7 +11,7 @@
 v 0.9
 ! Added GNU gettext for i18n/ l10n instead of xml config files for easy translation on other languages
 ! CSS and HTML Code enhancements for optimal display
-+ HTML-Tidyup, if http://php.net/manual/en/book.tidy.php is installed on the server
++ Danish translation (thanks to Naith (http://pl4yground.dk/))
 - Support of *.txt and *.conf configfiles
 - unnecessary images
 ~ Installscript shows now an error if some neccessary functions are not available on the webspace

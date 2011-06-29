@@ -42,7 +42,7 @@ if ($_REQUEST['action'] == "submit" && isset($_REQUEST['module']))
     fwrite($handle, str_replace('\\"', '"', $_POST['xml']));
     fclose($handle);
 
-    echo(throwWarning(_('Configfile successfully saved!')));
+    echo(throwWarning(__('Configfile successfully saved!')));
 }
 
 $xml = simplexml_load_file("../../modules/$module/$module.xml")->asXML();

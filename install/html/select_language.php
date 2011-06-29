@@ -7,9 +7,9 @@
         <?php 
         $languages = tsv_getLanguages("../l10n");
         
-        foreach($languages as $langCode => $langFull) { ?>
+        foreach($languages as $langCode => $langOptions) { ?>
 
-        <button onclick="javascript: setLang('<?php echo($langCode);?>');"><?php echo($langFull); ?></button>
+        <button onclick="javascript: setLang('<?php echo($langCode);?>');"><?php echo($langOptions['lang']); ?></button>
 
         <?php } ?>  
     </fieldset>

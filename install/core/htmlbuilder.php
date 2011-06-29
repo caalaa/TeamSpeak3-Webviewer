@@ -67,7 +67,7 @@ function createConfigHtml()
 
     foreach ($files as $file)
     {
-        $html['selector'] .= '<p><fieldset><button style="width:200px;" onclick="javascript: setconfig(\'' . $file . '\')">' . $file . ' ('._('edit').')</button><span onclick="javascript: showViewer(\'' . $file . '\');"style="padding:4px; margin-left:15px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . _('Show Viewer') . '</span><span onclick="javascript: flushCache(\'' . $file .'.xml\');"style="padding:4px; margin-left:10px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . _('Flush cache') . '</span><span onclick="javascript: deleteConfig(\'' . $file .'.xml\');"style="padding:4px; margin-left:10px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . _('delete configfile') . '</span></fieldset></p>';
+        $html['selector'] .= '<p><fieldset><button style="width:200px;" onclick="javascript: setconfig(\'' . $file . '\')">' . $file . ' ('.__('edit').')</button><span onclick="javascript: showViewer(\'' . $file . '\');"style="padding:4px; margin-left:15px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . __('Show Viewer') . '</span><span onclick="javascript: flushCache(\'' . $file .'.xml\');"style="padding:4px; margin-left:10px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . __('Flush cache') . '</span><span onclick="javascript: deleteConfig(\'' . $file .'.xml\');"style="padding:4px; margin-left:10px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . __('delete configfile') . '</span></fieldset></p>';
     }
     return $html;
 }
@@ -95,13 +95,13 @@ function createEditHtml()
     // Login
     if ($configfile->login_needed == "true" || $configfile->login_needed == '')
     {
-        $html['login_html'] = '<input type="radio" name="login_needed" value="true" checked="checked"> ' . _('Yes') . '<br>
-            <input type="radio" name="login_needed" value="false"> ' . _('No');
+        $html['login_html'] = '<input type="radio" name="login_needed" value="true" checked="checked"> ' . __('Yes') . '<br>
+            <input type="radio" name="login_needed" value="false"> ' . __('No');
     }
     else
     {
-        $html['login_html'] = '<input type="radio" name="login_needed" value="true"> ' . _('Yes') . '<br>
-            <input type="radio" name="login_needed" value="false" checked="checked"> ' . _('No');
+        $html['login_html'] = '<input type="radio" name="login_needed" value="true"> ' . __('Yes') . '<br>
+            <input type="radio" name="login_needed" value="false" checked="checked"> ' . __('No');
     }
 
     $html['username_value'] = (string) $configfile->username;
@@ -147,13 +147,13 @@ function createEditHtml()
     // Servericons
     if ($configfile->use_serverimages == "true" || (string) $configfile->use_serverimages == '')
     {
-        $html['servericons_radio'] = '<input type="radio" name="servericons" value="true" checked="checked"> ' . _('Enabled') . '<br>
-            <input type="radio" name="servericons" value="false"> ' . _('Disabled');
+        $html['servericons_radio'] = '<input type="radio" name="servericons" value="true" checked="checked"> ' . __('Enabled') . '<br>
+            <input type="radio" name="servericons" value="false"> ' . __('Disabled');
     }
     else
     {
-        $html['servericons_radio'] = '<input type="radio" name="servericons" value="true"> ' . _('Enabled') . '<br>
-            <input type="radio" name="servericons" value="false"  checked="checked"> ' . _('Disabled');
+        $html['servericons_radio'] = '<input type="radio" name="servericons" value="true"> ' . __('Enabled') . '<br>
+            <input type="radio" name="servericons" value="false"  checked="checked"> ' . __('Disabled');
     }
 
     // Imagepack
@@ -187,25 +187,25 @@ function createEditHtml()
     // Arrows
     if ($configfile->show_arrows == "true" || $configfile->show_arrows == '')
     {
-        $html['arrow_html'] = '<input type="radio" name="arrows" value="true" checked="checked"> ' . _('Enabled') . '<br>
-            <input type="radio" name="arrows" value="false"  > ' . _('Disabled');
+        $html['arrow_html'] = '<input type="radio" name="arrows" value="true" checked="checked"> ' . __('Enabled') . '<br>
+            <input type="radio" name="arrows" value="false"  > ' . __('Disabled');
     }
     else
     {
-        $html['arrow_html'] = '<input type="radio" name="arrows" value="true" > ' . _('Enabled') . '<br>
-            <input type="radio" name="arrows" value="false" checked="checked"> ' . _('Disabled');
+        $html['arrow_html'] = '<input type="radio" name="arrows" value="true" > ' . __('Enabled') . '<br>
+            <input type="radio" name="arrows" value="false" checked="checked"> ' . __('Disabled');
     }
 
     // Caching
     if ($configfile->enable_caching == "true" || $configfile->enable_caching = '')
     {
-        $html['caching_html'] = '<input type="radio" name="caching" value="true" checked="checked"> ' . _('Yes') . '<br>
-            <input type="radio" name="caching" value="false"  > ' . _('No');
+        $html['caching_html'] = '<input type="radio" name="caching" value="true" checked="checked"> ' . __('Yes') . '<br>
+            <input type="radio" name="caching" value="false"  > ' . __('No');
     }
     else
     {
-        $html['caching_html'] = '<input type="radio" name="caching" value="true" > ' . _('Yes') . '<br>
-            <input type="radio" name="caching" value="false" checked="checked" > ' . _('No');
+        $html['caching_html'] = '<input type="radio" name="caching" value="true" > ' . __('Yes') . '<br>
+            <input type="radio" name="caching" value="false" checked="checked" > ' . __('No');
     }
 
     // Standard Cachetime
@@ -216,12 +216,12 @@ function createEditHtml()
     $languages = tsv_getLanguages("../l10n");
     $selected_lang = (string)$configfile->language;
     
-    foreach($languages as $langCode => $langFull)
+    foreach($languages as $langCode => $langOptions)
     {
         if($langCode == $selected_lang)
-            $html['language_html'] .= '<input type="radio" name="language" checked="checked" value="'.$langCode.'">'.$langFull.' <br>';
+            $html['language_html'] .= '<input type="radio" name="language" checked="checked" value="'.$langCode.'">'.$langOptions['lang'].' <br>';
         else
-            $html['language_html'] .= '<input type="radio" name="language"  value="'.$langCode.'">'.$langFull.' <br>';
+            $html['language_html'] .= '<input type="radio" name="language"  value="'.$langCode.'">'.$langOptions['lang'].' <br>';
     }
     return $html;
 }
