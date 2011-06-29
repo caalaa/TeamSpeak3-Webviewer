@@ -92,7 +92,7 @@ function createPlotOptions($config)
         $tab = "false";
 
     $js .= '    var plotoptions = {
-        "title": "' . _('User history') . '", 
+        "title": "' . __('User history') . '", 
         "x_formatString":"' . $config['x_formatString'] . '", 
         "y_formatString": "' . $config['y_formatString'] . '", 
         "style": "' . $config['l_style'] . '", 
