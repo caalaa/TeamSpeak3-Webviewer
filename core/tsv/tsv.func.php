@@ -44,7 +44,6 @@ function tsv_getLanguages($customPath=NULL)
             $languages[$file] = $l10_lang;
         }
     }
-
     return $languages;
 }
 

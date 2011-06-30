@@ -12,6 +12,8 @@ v 0.9
 ! Added GNU gettext for i18n/ l10n instead of xml config files for easy translation on other languages
 ! CSS and HTML Code enhancements for optimal display
 + Danish translation (thanks to Naith (http://pl4yground.dk/))
++ Russian translation (thanks to crysea (http://vk.com/grustniy))
++ French translation (thanks to -AS- Draketornado (http://www.altesaecke.eu))
 - Support of *.txt and *.conf configfiles
 - unnecessary images
 ~ Installscript shows now an error if some neccessary functions are not available on the webspace
