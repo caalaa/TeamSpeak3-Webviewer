@@ -16,5 +16,5 @@
  *  You should have received a copy of the GNU General Public License
  *  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  */
-require_once s_root . 'core/tsv/tsv.func.php';
+require_once s_root . 'core/tsv/tsv.class.php';
 ?>

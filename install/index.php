@@ -15,8 +15,10 @@ require_once 'core/utils.php';
 require_once 'core/htmlbuilder.php';
 require_once 'core/xml.php';
 require_once '../libraries/php-gettext/gettext.inc';
-require_once '../core/tsv/tsv.func.php';
+require_once '../core/tsv/tsv.class.php';
 require_once '../core/i18n/i18n.func.php';
+
+$utils = new tsvUtils("../");
 
 // Outputs the header
 echo(file_get_contents("html/header.html"));
