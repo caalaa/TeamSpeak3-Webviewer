@@ -6,16 +6,20 @@ class infoTab extends ms_Module
     private $akt_tab;
     private $nav;
     private $tabs;
+    protected $jsModule;
 
-    function __construct($info, $config, $lang, $mm)
+    function init()
     {
-        parent::__construct($info, $config, $lang, $mm);
         $this->akt_tab = 0;
         $this->nav = "";
         $this->tabs = "";
         $this->have_tabs = false;
         $this->mManager->loadModule('jQueryUI');
-        $this->mManager->loadModule('js')->loadJS('$(document).ready(function() {
+        $this->jsModule = $this->mManager->loadModule('js');
+    }
+    
+    function onStartup() {
+        $this->jsModule->loadJS('$(document).ready(function() {
                  $( "#mstabs" ).tabs();
 		});',
                 "text");

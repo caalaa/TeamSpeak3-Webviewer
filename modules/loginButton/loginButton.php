@@ -2,18 +2,23 @@
 
 class loginButton extends ms_Module
 {
-
-    function __construct($info, $config, $lang, $mm)
-    {
-        parent::__construct($info, $config, $lang, $mm);
-        
-        //L10N
-        setL10n($this->config['language'], "ms-tsv-loginButton");
+    
+    protected $jsModule;
+    protected $styleModule;
+    
+    public function init() {
         
         $this->mManager->loadModule('jQueryUI');
-        $this->mManager->loadModule('js')->loadJS(s_http . '/modules/js_login/ts3_connect.js');
-        $this->mManager->loadModule('js')->loadJS("$(document).ready(function() { $('#LoginButton').button(); } );", "text");
-        $this->mManager->loadModule('style')->loadStyle('#LoginButton
+        $this->jsModule = $this->mManager->loadModule('js');
+        $this->styleModule = $this->mManager->loadModule('style');
+    }
+    
+    function onStartup()
+    {  
+         
+        $this->jsModule->loadJS(s_http . '/modules/js_login/ts3_connect.js');
+        $this->jsModule->loadJS("$(document).ready(function() { $('#LoginButton').button(); } );", "text");
+        $this->styleModule->loadStyle('#LoginButton
             {
                 margin-bottom: 5px;
             }', 'text');
@@ -21,6 +26,7 @@ class loginButton extends ms_Module
 
     function getHeader()
     {
+        setL10n($this->config['language'], "ms-tsv-loginButton");
         $prompt = bool2text($this->config['prompt_username']);
         $pass_n = bool2text($this->config['prompt_pass']);
 

@@ -2,15 +2,23 @@
 
 class infoDialog extends ms_Module
 {
-
-    function __construct($info, $config, $lang, $mm)
-    {
-        parent::__construct($info, $config, $lang, $mm);
-
-
+    
+    protected $jsModule;
+    
+    function init() {
         $this->config['usefor'] = explode(',', $this->config['usefor']);
         $this->mManager->loadModule('jQueryUI');
-        $this->mManager->loadModule('js')->loadJS(s_http . 'modules/infoDialog/utils.js');
+        $this->jsModule = $this->mManager->loadModule('js');
+    }
+    
+    function onStartup() {
+        $this->jsModule->loadJS(s_http . 'modules/infoDialog/utils.js');
+    }
+
+    function onInfoLoaded()
+    {
+        
+        
         $_SESSION['infoDialog']['info']['clientlist'] = $this->info['clientlist'];
         $_SESSION['infoDialog']['info']['servergroups'] = $this->info['servergroups'];
         $_SESSION['infoDialog']['info']['channelgroups'] = $this->info['channelgroups'];
@@ -52,7 +60,7 @@ class infoDialog extends ms_Module
 
         if (in_array('clients', $this->config['usefor']))
         {
-            $this->mManager->loadModule('js')->loadJS("$(document).ready(function() {
+            $this->jsModule->loadJS("$(document).ready(function() {
 								var ms_dialogs = new Array();
                                                                 
                                                                 $('body').append('<div id=\"dialog\" style=\"overflow:hidden;\"></div>');

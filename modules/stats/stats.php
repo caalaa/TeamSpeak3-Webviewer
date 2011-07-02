@@ -10,17 +10,28 @@ class stats extends ms_Module
 
     public $infos;
     private $html;
-
-    function __construct($config, $info, $lang, $mManager)
-    {
-        parent::__construct($config, $info, $lang, $mManager);
-
-        //L10N
-        setL10n($this->config['language'], "ms-tsv-stats");
+    
+    protected $jsModule;
+    protected $styleModule;
+    protected $tabModule;
+    
+    public function init() {
         
         require_once s_root . 'modules/stats/php/utils.php';
+        
+        $this->jsModule = $this->mManager->loadModule('js');
+        $this->styleModule = $this->mManager->loadModule('style');
+        if($this->config['use_tab']) {
+            $this->tabModule = $this->mManager->loadModule('infoTab');
+        }
+        // Load jQuery
+        $this->mManager->loadModule("jQueryUI");
+    }
+    
+    function onInfoLoaded()
+    {     
 
-
+        setL10n($this->config['language'], "ms-tsv-stats");
         $configfile = '';
 
         if (!isset($_GET['config']) || $_GET['config'] == "")
@@ -42,19 +53,18 @@ class stats extends ms_Module
         $this->config['min'] = (getMinClients($xml) - 1);
         
 
-        // Load jQuery
-        $this->mManager->loadModule("jQueryUI");
+        
 
         // Load jqplot 
         // IE workaround
-        $this->mManager->loadModule("js")->loadJS(s_http . 'libraries/jqplot/excanvas.min.js','file', 'lt IE 9');
-        $this->mManager->loadModule("js")->loadJS(s_http . 'libraries/jqplot/jquery.jqplot.min.js');
-        $this->mManager->loadModule("style")->loadStyle(s_http . 'libraries/jqplot/jquery.jqplot.min.css');
-        $this->mManager->loadModule("js")->loadJS(s_http . 'libraries/jqplot/plugins/jqplot.dateAxisRenderer.min.js');
-        $this->mManager->loadModule("js")->loadJS(createJS("line1", $xml, $this->config['locale']), 'text');
-        $this->mManager->loadModule("js")->loadJS('$.jqplot.config.enablePlugins = true;', "text");
-        $this->mManager->loadModule("js")->loadJs(createPlotOptions($this->config), "text");
-        $this->mManager->loadModule("js")->loadJS(s_http . 'modules/stats/js/script.js');
+        $this->jsModule->loadJS(s_http . 'libraries/jqplot/excanvas.min.js','file', 'lt IE 9');
+        $this->jsModule->loadJS(s_http . 'libraries/jqplot/jquery.jqplot.min.js');
+        $this->styleModule->loadStyle(s_http . 'libraries/jqplot/jquery.jqplot.min.css');
+        $this->jsModule->loadJS(s_http . 'libraries/jqplot/plugins/jqplot.dateAxisRenderer.min.js');
+        $this->jsModule->loadJS(createJS("line1", $xml, $this->config['locale']), 'text');
+        $this->jsModule->loadJS('$.jqplot.config.enablePlugins = true;', "text");
+        $this->jsModule->loadJs(createPlotOptions($this->config), "text");
+        $this->jsModule->loadJS(s_http . 'modules/stats/js/script.js');
 
         // Height and Width
         if ($this->config['height'] == NULL) $this->config['height'] = "400";
@@ -65,7 +75,7 @@ class stats extends ms_Module
 
         // If chart should be shown in Tab
         if ($this->config['use_tab'] == true)
-                $this->mManager->loadModule("infoTab")->addTab(__('Statistics'),
+                $this->tabModule->addTab(__('Statistics'),
                     $this->html);
     }
 

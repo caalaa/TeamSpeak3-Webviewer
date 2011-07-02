@@ -8,13 +8,9 @@
 class about extends ms_Module
 {
 
-    function __construct($config, $info, $lang, $mManager)
+    function init()
     {
-        parent::__construct($config, $info, $lang, $mManager);
-
-        // Load jQueryUI
         $this->mManager->loadModule("jQueryUI");
-
     }
     
     function onInServer() {

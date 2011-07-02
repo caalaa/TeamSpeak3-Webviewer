@@ -5,21 +5,25 @@ class style extends ms_Module
 
     private $text;
     public $styles_sent;
-
-    function __construct($config, $info, $lang, $mManager)
-    {
-        parent::__construct($config, $info, $lang, $mManager);
-
+    
+    public function init() {
         $this->styles_sent = false;
+        $this->text = '';
+    }
 
-        $filepath = s_root . 'styles/' . $config['style'] . '/' . $config['style'] . '.css';
+    function onStartup()
+    {       
+
+        $filepath = s_root . 'styles/' . $this->config['style'] . '/' . $this->config['style'] . '.css';
         
         if (!file_exists($filepath))
                 die('style_not_found');
-
-        $this->config['style'] = s_http . 'styles/' . $config['style'] . '/' . $config['style'] . '.css';
-        $this->config['style_ie'] = s_http . 'styles/' . $config['style'] . '/' . $config['style'] . '_ie.css';
-        $this->text = "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $this->config['style'] . "\" >\r\n";
+        
+        $style = $this->config['style'];
+        
+        $this->config['style'] = s_http . 'styles/' . $this->config['style'] . '/' . $this->config['style'] . '.css';
+        $this->config['style_ie'] = s_http . 'styles/' . $style . '/' . $style . '_ie.css';
+        $this->text .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $this->config['style'] . "\" >\r\n";
         $this->text .= '<!--[if IE]><link rel="stylesheet" type="text/css" href="' . $this->config['style_ie'] . '"><![endif]-->';
     }
 
@@ -46,7 +50,7 @@ class style extends ms_Module
         }
     }
 
-    public function onStartup()
+    public function onHtmlStartup()
     {
         if (!$this->mManager->moduleIsLoaded('htmlframe') && !$this->styles_sent)
         {

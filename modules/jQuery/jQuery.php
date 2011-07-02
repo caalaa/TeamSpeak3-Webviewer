@@ -3,8 +3,7 @@
 
 		private $text;
 
-		function __construct($info,$config,$lang,$mm) {
-			parent::__construct($info,$config,$lang,$mm);
+		function init() {
 			$this->mManager->loadModule('js')->loadJS(stripslashes($this->config['jQuery_path']));
 		 }
 	}

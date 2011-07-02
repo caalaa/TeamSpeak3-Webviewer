@@ -76,6 +76,7 @@ class TSQuery
         // Read the TS3 sequence
         fread($this->connection, 6);
         $this->ftid = 0;
+        $this->cmds = array();
     }
 
     function set_caching($caching, $standard_cachetime=NULL, $cachetime=NULL)
@@ -351,12 +352,15 @@ class TSQuery
             $this->cmds[] = $cmd;
             return $this->parse_ts3_response("error id=0 msg=ok");
         }
-        foreach ($this->cmds as $key => $command)
-        {
-            $this->send_raw($cmd . "\n");
-            ts3_check($this->send_raw($command . "\n"), $command);
-            unset($this->cmds[$key]);
+        if(is_array($this->cmds)) {
+            foreach ($this->cmds as $key => $command)
+            {
+                $this->send_raw($cmd . "\n");
+                ts3_check($this->send_raw($command . "\n"), $command);
+                unset($this->cmds[$key]);
+            }
         }
+        
         $this->cmd_sent = TRUE;
         $response = $this->send_raw($cmd . "\n");
         if ($response === false)

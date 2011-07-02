@@ -8,13 +8,17 @@ class ms_Module
     protected $lang;
     protected $mManager;
 
-    function __construct($config, $info, $lang, $modulemanager)
+    function __construct($config, $lang, $modulemanager)
     {
-        $this->info = $info;
         $this->config = $config;
         $this->lang = $lang;
         $this->mManager = $modulemanager;
 
+    }
+    
+    //called after the module was created
+    public function init() {
+        
     }
 
     public function getHeader()
@@ -54,6 +58,21 @@ class ms_Module
         }
         return $ret;
 
+    }
+    
+    public function setInfo($info) {
+        $reload = false;
+        if(isset($this->info)) {
+            $reload = true;
+        }
+        $this->info = $info;
+        if($reload) {
+            $this->onEvent('infoReloaded');
+        }
+        else {
+            $this->onEvent('infoLoaded');
+        }
+        
     }
 
 }
