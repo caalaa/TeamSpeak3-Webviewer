@@ -181,16 +181,14 @@ function flushCache($config)
  */
 function deleteConfigfile($file)
 {
-    $lang = simplexml_load_file("i18n/" . $_SESSION['lang'] . ".i18n.xml");
-
     if (!file_exists("../config/" . $file))
     {
-        return throwAlert($lang->config_not_exist);
+        return throwAlert(__('The configfile you wanted to delete does not exist'));
     }
     else
     {
         unlink("../config/" . $file);
-        return throwWarning($lang->config_deleted);
+        return throwWarning(__('The configfile has been successfully deleted'));
     }
 }
 

@@ -15,6 +15,7 @@ define("ENCODING", "UTF-8");
 if (!$_SESSION['validated']) die("No Access");
 
 require_once '../../libraries/php-gettext/gettext.inc';
+require_once '../../core/i18n/i18n.func.php';
 require_once '../core/htmlbuilder.php';
 require_once 'utils.php';
 

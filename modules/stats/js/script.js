@@ -16,6 +16,7 @@ $(document).ready(function(){
             },
             yaxis:{
                 tickInterval: 1,
+                min: plotoptions.min,
                 autoscale: true,
                 tickOptions:{
                     formatString: plotoptions.y_formatString

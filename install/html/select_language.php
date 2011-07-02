@@ -5,7 +5,8 @@
     </div>
     <fieldset>
         <?php 
-        $languages = tsv_getLanguages("../l10n");
+        
+        $languages = $utils->getLanguages();
         
         foreach($languages as $langCode => $langOptions) { ?>
 

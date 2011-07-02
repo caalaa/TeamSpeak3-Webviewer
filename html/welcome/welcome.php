@@ -8,6 +8,8 @@ require_once s_root . 'core/i18n.inc';
 $lang = "en_US";
 if (isset($_GET['lang']) && $_GET['lang'] != "") $lang = $_GET['lang'];
 
+$utils = new tsvUtils();
+
 //L10N
 setL10n($lang, "ms-tsv-welcome");
 ?>
@@ -16,7 +18,7 @@ setL10n($lang, "ms-tsv-welcome");
     <head>
         <title>Maxesstuff TeamSpeak3 Webviewer</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+        <link rel="icon" href="<?php echo s_http; ?>html/welcome/tools.png" type="image/png">
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
         <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/redmond/jquery-ui.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.js"></script>
@@ -89,7 +91,7 @@ setL10n($lang, "ms-tsv-welcome");
                     <div id="content">
                         <p class="header"><?php __e('Welcome to the Maxesstuff TeamSpeak3 Webviewer') ?></p>
                         <fieldset>
-                            <?php $languages = tsv_getLanguages(); ?>
+                            <?php $languages = $utils->getLanguages(); ?>
                             <?php foreach ($languages as $langCode => $langOptions)
                             { ?>              
                                 <span class="lang" style="float:left; margin-right: 30px;"><p><a href="?lang=<?php echo($langCode); ?>"><?php echo($langOptions['lang']) ?></a></p>
@@ -124,10 +126,14 @@ setL10n($lang, "ms-tsv-welcome");
                             {
                                     ?><li><a href="<?php echo(s_http . 'TSViewer.php?config=' . $file) ?>"><?php echo($file) ?></a></li><?php } ?></ul>   
                         <?php } ?></p>
-                        <br>
-                        <p><?php __e('If you need help, you can take a look for our Livesupport or our FAQ') ?></p>
-                        <p><a href="http://support.maxesstuff.de/chat.php">Livesupport</a></p>
-                        <p><a href="http://de.maxesstuff.de/teamspeak3-webviewer/faq">FAQ</a></p>
+                        <div id="help" style="margin-top: 8px;">
+                            <img src="<?php echo(s_http . 'html/welcome/help.png') ?>" alt="" style="float:right;">
+                            <p><?php __e('If you need help, you can take a look for our Livesupport or our FAQ') ?></p>
+                            <ul style="list-style-image: url('<?php echo(s_http . 'html/welcome/arrow.png'); ?>');">
+                                <li><a href="http://support.maxesstuff.de/chat.php"><?php __e('Livesupport')?></a></li>
+                                <li><a href="http://de.maxesstuff.de/teamspeak3-webviewer/faq"><?php __e('FAQ')?></a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

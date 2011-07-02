@@ -44,7 +44,6 @@ function replaceValues($file, $vals=NULL, $loc=FALSE)
     return $html;
 }
 
-
 /**
  * Returns the $data array for select_config.php
  * @todo include directly in file
@@ -67,7 +66,7 @@ function createConfigHtml()
 
     foreach ($files as $file)
     {
-        $html['selector'] .= '<p><fieldset><button style="width:200px;" onclick="javascript: setconfig(\'' . $file . '\')">' . $file . ' ('.__('edit').')</button><span onclick="javascript: showViewer(\'' . $file . '\');"style="padding:4px; margin-left:15px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . __('Show Viewer') . '</span><span onclick="javascript: flushCache(\'' . $file .'.xml\');"style="padding:4px; margin-left:10px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . __('Flush cache') . '</span><span onclick="javascript: deleteConfig(\'' . $file .'.xml\');"style="padding:4px; margin-left:10px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . __('delete configfile') . '</span></fieldset></p>';
+        $html['selector'] .= '<p><fieldset><button style="width:200px;" onclick="javascript: setconfig(\'' . $file . '\')">' . $file . ' (' . __('edit') . ')</button><span onclick="javascript: showViewer(\'' . $file . '\');"style="padding:4px; margin-left:15px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . __('Show Viewer') . '</span><span onclick="javascript: flushCache(\'' . $file . '.xml\');"style="padding:4px; margin-left:10px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . __('Flush cache') . '</span><span onclick="javascript: deleteConfig(\'' . $file . '.xml\');"style="padding:4px; margin-left:10px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . __('delete configfile') . '</span></fieldset></p>';
     }
     return $html;
 }
@@ -80,12 +79,12 @@ function createConfigHtml()
  */
 function createEditHtml()
 {
+    global $utils;
+    
     $html = array();
 
     $config = $_SESSION['config'];
     $configfile = simplexml_load_string($_SESSION['config_xml']);
-
-
 
     $html['serveradress_value'] = $configfile->host;
     $html['queryport_value'] = $configfile->queryport;
@@ -124,18 +123,13 @@ function createEditHtml()
     foreach ($enabled_modules as $module)
     {
         unset($modules[array_search($module, $modules)]);
-
-        $xml = getXmlFile("../modules/$module/$module.xml");
-        $description = $xml->info->{'description_' . $_SESSION['lang']};
-        $mod_sort_enabled .= '<li id="' . $module . '" class="ui-state-highlight"><a href="core/xmledit.php?module=' . $module . '" class="color" >' . $module . '</a><span title="'.$description.'" style="float:right; margin-top:auto; margin-bottom:auto;" class="ui-icon ui-icon-info" id="tt"></span></li>';
+        $mod_sort_enabled .= '<li id="' . $module . '" class="ui-state-highlight"><a href="core/xmledit.php?module=' . $module . '" class="color" >' . $module . '</a></li>';
     }
 
     // Disabled Modules
     foreach ($modules as $module)
     {
-        $xml = getXmlFile("../modules/$module/$module.xml");
-        $description = $xml->info->{'description_' . $_SESSION['lang']};
-        $mod_sort_disabled .= '<li id="' . $module . '" class="ui-state-default"><a href="core/xmledit.php?module=' . $module . '" class="color">' . $module . '</a><span title="'.$description.'" style="float:right; margin-top:auto; margin-bottom:auto;" class="ui-icon ui-icon-info" id="tt"></span></li>';
+        $mod_sort_disabled .= '<li id="' . $module . '" class="ui-state-default"><a href="core/xmledit.php?module=' . $module . '" class="color">' . $module . '</a></li>';
     }
 
     $mod_sort_enabled .= '</ul>';
@@ -170,15 +164,15 @@ function createEditHtml()
         else
                 $html['imagepack_html'] .= '<input type="radio" name="imagepack" value="' . $pack . '"> ' . $pack . '<br>';
     }
-    
+
     // Style
     $styles = getStyles();
-    
+
     $html['style_html'] = '';
-    
-    foreach($styles as $style)
+
+    foreach ($styles as $style)
     {
-        if((string)$configfile->style == $style)
+        if ((string) $configfile->style == $style)
                 $html['style_html'] .= '<input type="radio" name="style" value="' . $style . '" checked="checked"> ' . $style . '<br>';
         else
                 $html['style_html'] .= '<input type="radio" name="style" value="' . $style . '"> ' . $style . '<br>';
@@ -213,15 +207,15 @@ function createEditHtml()
 
     // Language
     $html['language_html'] = "";
-    $languages = tsv_getLanguages("../l10n");
-    $selected_lang = (string)$configfile->language;
-    
-    foreach($languages as $langCode => $langOptions)
+    $languages = $utils->getLanguages();
+    $selected_lang = (string) $configfile->language;
+
+    foreach ($languages as $langCode => $langOptions)
     {
-        if($langCode == $selected_lang)
-            $html['language_html'] .= '<input type="radio" name="language" checked="checked" value="'.$langCode.'">'.$langOptions['lang'].' <br>';
+        if ($langCode == $selected_lang)
+                $html['language_html'] .= '<input type="radio" name="language" checked="checked" value="' . $langCode . '">' . $langOptions['lang'] . ' <br>';
         else
-            $html['language_html'] .= '<input type="radio" name="language"  value="'.$langCode.'">'.$langOptions['lang'].' <br>';
+                $html['language_html'] .= '<input type="radio" name="language"  value="' . $langCode . '">' . $langOptions['lang'] . ' <br>';
     }
     return $html;
 }
