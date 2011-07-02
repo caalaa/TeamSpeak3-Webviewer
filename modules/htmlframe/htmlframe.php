@@ -3,7 +3,7 @@
 class htmlframe extends ms_Module
 {
 
-    public function onStartup()
+    public function onHtmlStartup()
     {
         $html = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
                     "http://www.w3.org/TR/html4/loose.dtd">
@@ -26,7 +26,7 @@ class htmlframe extends ms_Module
         return $html;
     }
 
-    public function onShutdown()
+    public function onHtmlShutdown()
     {
         return "</body></html>";
     }

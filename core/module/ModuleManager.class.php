@@ -9,9 +9,8 @@ class ms_ModuleManager
     private $viewerConfig;
     private $debug;
 
-    function __construct($info, $viewerConfig, $debug=FALSE)
+    function __construct($viewerConfig, $debug=FALSE)
     {
-        $this->info = $info;
         $this->viewerConfig = $viewerConfig;
         $this->debug = $debug;
     }
@@ -57,8 +56,13 @@ class ms_ModuleManager
 
             // END \\
             $lang = NULL;
-            $module = new $name($config, $this->info, $lang, $this);
+            $module = new $name($config, $lang, $this);
             $this->loadedModules[$name] = $module;
+            $module->init();
+            if(isset($this->info)) {
+                $module->setInfo($this->info);
+            }
+            
             return $module;
         }
         else
@@ -84,6 +88,13 @@ class ms_ModuleManager
     public function getModule($name)
     {
         return $this->loadedModules[$name];
+    }
+    
+    public function setInfo($info) {
+        $this->info = $info;
+        foreach($this->loadedModules as $mod) {
+            $mod->setInfo($this->info);
+        }
     }
 
     public function getHeaders()
@@ -115,6 +126,8 @@ class ms_ModuleManager
         }
         return $out;
     }
+    
+    
 
 }
 

@@ -79,7 +79,7 @@ $config = parseConfigFile(s_root . 'modules/infoDialog/infoDialog.xml', true);
 $info = $_SESSION['infoDialog']['info'];
 
 
-if ($_GET['type'] == 'client' && $_GET['title'] == "true")
+if ($_GET['type'] == 'client' && isset( $_GET['title']) )
 {
     $matches = Array();
     preg_match("/^.*?([0-9]*)$/", $_GET['id'], $matches);
@@ -114,7 +114,7 @@ if ($_GET['type'] == 'client')
     $query = new TSQuery($viewer_conf['host'], $viewer_conf['queryport']);
     $query->set_caching((int) $viewer_conf['enable_caching'],
             (int) $viewer_conf['standard_cachetime'],
-            (int) $viewer_conf['cachetime']);
+             $viewer_conf['cachetime']);
     if ($viewer_conf['login_needed'])
     {
         ts3_check($query->login($viewer_conf['username'],

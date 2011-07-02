@@ -1,11 +1,18 @@
 <?php
 	class jQueryUI extends ms_Module {
-		private $text;
-		function __construct($info,$config,$lang,$modulmanager) {
-			parent::__construct($info,$config,$lang,$modulmanager);
+		
+                protected $styleModule;
+                protected $jsModule;
+            
+		function init() {
 			$this->mManager->loadModule('jQuery');
-			$this->mManager->loadModule('js')->loadJS(stripslashes($this->config['js_path']));
-			$this->mManager->loadModule('style')->loadStyle(stripslashes($this->config['css_path']));
+			$this->jsModule = $this->mManager->loadModule('js');
+			$this->styleModule = $this->mManager->loadModule('style');
 		}
+                
+                function onStartup() {
+                    $this->styleModule->loadStyle(stripslashes($this->config['css_path']));
+                    $this->jsModule->loadJS(stripslashes($this->config['js_path']));
+                }
 
 	}

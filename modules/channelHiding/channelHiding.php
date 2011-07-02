@@ -2,11 +2,16 @@
 
 class channelHiding extends ms_Module
 {
-
-    function __construct($info, $config, $lang, $mm)
-    {
-        parent::__construct($info, $config, $lang, $mm);
+    protected $jsModule;
+    
+    public function init() {
+        $this->jsModule = $this->mManager->loadModule('js');
         $this->mManager->loadModule('jQueryUI');
+    }
+
+    function onInfoLoaded()
+    {
+        
         $append_config = isset($_GET['config']) ? " , config: '".$_GET['config']."' " : "";
         $ops = "var channelHiding_ops = {\r\n";
         $managevars = false;
@@ -68,7 +73,7 @@ class channelHiding extends ms_Module
             {
                 $ops = rtrim($ops, ",");
             $ops .= "};\r\n";
-                $this->mManager->loadModule('js')->loadJS($ops . "$(document).ready(function() {
+                $this->jsModule->loadJS($ops . "$(document).ready(function() {
 
 										$('.channel').each( function() {
 
@@ -90,7 +95,7 @@ class channelHiding extends ms_Module
 										});});", 'text');
             }
             
-            $this->mManager->loadModule('js')->loadJS("$(document).ready(function() { 
+            $this->jsModule->loadJS("$(document).ready(function() { 
 											$('.chan_content').click(function() {
 											var ms_id = $(this).parent().attr('id');
 											if($(this).attr('is_hidden') == 'true') {

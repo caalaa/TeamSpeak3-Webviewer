@@ -1,18 +1,27 @@
 <?php
 
-class legende extends ms_Module
+class legend extends ms_Module
 {
 
     protected $conent_sent = false;
+    
+    protected $styleModule;
+    
+    protected $infoTabModule;
+    
+    public function init() {
+        
+        $this->styleModule = $this->mManager->loadModule('style');
+        $this->infoTabModule = $this->mManager->loadModule('infoTab');
+    }
 
-    function __construct($info, $config, $lang, $mm)
+    function onInfoLoaded()
     {
-        parent::__construct($info, $config, $lang, $mm);
         
-        // L10N
-        setL10n($this->config['language'], "ms-tsv-legende");
+
+        setL10n($this->config['language'], "ms-tsv-legend");
         
-        $this->mManager->loadModule('style')->loadStyle('.legende
+        $this->styleModule->loadStyle('.legende
                                                             {
                                                                     margin-top:10px;
                                                                     margin-left:0px;
@@ -23,7 +32,7 @@ class legende extends ms_Module
 
         if ($this->config['use_tab'] == true)
         {
-            $this->mManager->loadModule("infoTab")->addTab(__('Legend'),
+            $this->infoTabModule->addTab(__('Legend'),
                     $this->getText());
             $this->content_sent = true;
         }

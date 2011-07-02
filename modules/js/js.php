@@ -6,9 +6,8 @@ class js extends ms_Module
     private $text;
     public $js_sent;
 
-    function __construct($config, $info, $lang, $mManager)
+    function init()
     {
-        parent::__construct($config, $info, $lang, $mManager);
         $this->js_sent = false;
         $this->text = '';
     }
@@ -40,7 +39,7 @@ class js extends ms_Module
         }
     }
 
-    public function onStartup()
+    public function onHtmlStartup()
     {
         if (!$this->mManager->moduleIsLoaded('htmlframe') && !$this->js_sent)
         {

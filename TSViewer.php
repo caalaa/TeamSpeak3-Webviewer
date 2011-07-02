@@ -1,5 +1,17 @@
 <?php
 
+/**
+ * Events thrown by the viewer:
+ * onStartup (no html) after loading the modules specified in the config
+ * onCacheFlushed (no html) when the viewers cache gets flushed
+ * onInfoLoaded (no html) when the data was loaded from the server
+ * onHtmlStartup (html) when the html output is started. the return of all events after this event is included into the final html
+ * onServerRendered (html) when the vServer heading was rendered
+ * onInServer (html) inside the vServer heading (atm a special hook for the about module)
+ * onHtmlShutdown (html) after the viewer is rendered
+ * onShutdown (no html) the last event triggered for final tidy up 
+ */
+
 // Start Session
 session_name('ms_ts3Viewer');
 session_start();
@@ -124,6 +136,9 @@ foreach ($config as $key => $value)
 $config['modules'] = explode(',', $config['modules']);
 
 // Checks if the language as been submitted over the URL
+
+
+
 if (isset($_GET['lang']))
 {
     $lang = str_replace(".", "", $_GET['lang']);
@@ -176,16 +191,22 @@ catch (Exception $e)
     die($e->getMessage());
 }
 
+$mManager = new ms_ModuleManager( $config, $debug);
+$mManager->loadModule($config['modules']);
+$mManager->triggerEvent('Startup');
+
 
 
 // Flush caches | Caching
 if (isset($_GET['flush_cache']) && isset($config['enable_cache_flushing']) && $config['enable_cache_flushing'] === true)
 {
     $query->set_caching(true, 0);
+    $mManager->triggerEvent('CacheFlush');
 }
 elseif (isset($_GET['fc']) && isset($config['enable_cache_flushing']) && $config['enable_cache_flushing'] === true)
 {
     $query->set_caching(true, 0);
+    $mManager->triggerEvent('CacheFlush');
 }
 else
 {
@@ -235,11 +256,13 @@ $info = Array(
     'channelgroups' => $channelgroups['return']
 );
 
+$mManager->setInfo($info);
+
 
 //load modules
-$mManager = new ms_ModuleManager($info, $config, $debug);
-$mManager->loadModule($config['modules']);
-$output .= $mManager->triggerEvent('Startup');
+
+$output .= $mManager->triggerEvent('HtmlStartup');
+
 $output .= $mManager->getHeaders();
 
 //render the server

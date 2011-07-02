@@ -5,18 +5,24 @@ class serverInfo extends ms_Module
 
     public $html = "";
     public $use_tab = false;
-
-    function __construct($info, $config, $lang, $mm)
-    {
-        parent::__construct($info, $config, $lang, $mm);
-
-        //L10N
-        setL10n($this->config['language'], "ms-tsv-serverInfo");
-        
+    
+    protected $styleModule;
+    protected $tabModule;
+    
+    public function init() {
+      
         require_once s_root . 'modules/serverInfo/nbbc/nbbc.php';
-
         $this->use_tab = $this->config['use_tab'];
+        $this->styleModule = $this->mManager->loadModule('style');
+        if($this->use_tab) {
+            $this->tabModule = $this->mManager->loadModule('infoTab');
+        }
+    }
 
+    function onInfoLoaded()
+    {
+       setL10n($this->config['language'], "ms-tsv-serverInfo");
+      
         $value_format = "mb";
 
         if ($this->config['value_format'] != NULL || $this->config['value_format'] != "")
@@ -30,7 +36,7 @@ class serverInfo extends ms_Module
 
 
         $welcomemsg = '';
-
+        
         if ($serverinfo['virtualserver_welcomemessage'] == '')
                 $welcomemsg = __('no welcomemessage');
         else $welcomemsg = $bbparser->Parse($serverinfo['virtualserver_welcomemessage']);
@@ -48,12 +54,12 @@ class serverInfo extends ms_Module
             </div>
             <!--- END Serverinfo -->';
 
-        $this->mManager->loadModule("style")->loadStyle(s_http . "modules/serverInfo/style.css");
+        $this->styleModule->loadStyle(s_http . "modules/serverInfo/style.css");
 
         if ($this->use_tab == true)
         {
 
-            $this->mManager->loadModule("infoTab")->addTab(__('Serverinformation'),
+            $this->tabModule->addTab(__('Serverinformation'),
                     $this->html);
         }
     }
