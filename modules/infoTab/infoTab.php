@@ -36,8 +36,10 @@ class infoTab extends ms_Module
     function getFooter()
     {
         $output = "";
+        
         if ($this->have_tabs)
         {
+            $output .= $this->mManager->triggerEvent('beforeTabs');
             $output .= '<br><br>';
             $output .= '<div id="mstabs">';
             $output .= '<ul>';
@@ -45,6 +47,7 @@ class infoTab extends ms_Module
             $output .= '</ul>';
             $output .= $this->tabs;
             $output .= '</div>';
+            $output .= $this->mManager->triggerEvent('afterTabs');
         }
         return $output;
     }
