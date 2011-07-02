@@ -28,6 +28,7 @@ class stats extends ms_Module
         else $configfile = $_GET['config'];
 
 
+        
         $this->infos = $this->info;
 
         if (needNewEntry($configfile))
@@ -36,6 +37,10 @@ class stats extends ms_Module
         }
 
         $xml = simplexml_load_file(s_root . "modules/stats/cache/$configfile.xml");
+        
+        // set min on y axes
+        $this->config['min'] = (getMinClients($xml) - 1);
+        
 
         // Load jQuery
         $this->mManager->loadModule("jQueryUI");

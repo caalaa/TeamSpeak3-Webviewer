@@ -9,7 +9,7 @@
 * Fix
 
 v 0.9
-! Added GNU gettext for i18n/ l10n instead of xml config files for easy translation on other languages
+! Added GNU gettext for i18n/ l10n instead of xml config files for easy translation in other languages
 ! CSS and HTML Code enhancements for optimal display
 + Danish translation (thanks to Naith (http://pl4yground.dk/))
 + Russian translation (thanks to crysea (http://vk.com/grustniy))
@@ -30,6 +30,7 @@ v 0.9
 * Fixed bug in css file that the icons weren't shown at the right position
 * Fixed bug in installscript that modules couldn't be loaded if you save the config and didn't change any modules
 * Fixed bug that flags weren't shown in the infoDialog
+* stats module shows no longer negative clients online
 
 v 0.8
 ! Fixed all bugs which occured with Internet Explorer and other browsers

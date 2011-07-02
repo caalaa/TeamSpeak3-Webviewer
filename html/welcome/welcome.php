@@ -127,11 +127,11 @@ setL10n($lang, "ms-tsv-welcome");
                                     ?><li><a href="<?php echo(s_http . 'TSViewer.php?config=' . $file) ?>"><?php echo($file) ?></a></li><?php } ?></ul>   
                         <?php } ?></p>
                         <div id="help" style="margin-top: 8px;">
-                            <img src="<?php echo(s_http.'html/welcome/help.png')?>" alt="" style="float:right;">
+                            <img src="<?php echo(s_http . 'html/welcome/help.png') ?>" alt="" style="float:right;">
                             <p><?php __e('If you need help, you can take a look for our Livesupport or our FAQ') ?></p>
-                            <ul style="list-style-image: url('<?php echo(s_http.'html/welcome/arrow.png');?>');">
-                                <li><a href="http://support.maxesstuff.de/chat.php">Livesupport</a></li>
-                                <li><a href="http://de.maxesstuff.de/teamspeak3-webviewer/faq">FAQ</a></li>
+                            <ul style="list-style-image: url('<?php echo(s_http . 'html/welcome/arrow.png'); ?>');">
+                                <li><a href="http://support.maxesstuff.de/chat.php"><?php __e('Livesupport')?></a></li>
+                                <li><a href="http://de.maxesstuff.de/teamspeak3-webviewer/faq"><?php __e('FAQ')?></a></li>
                             </ul>
                         </div>
                     </div>
