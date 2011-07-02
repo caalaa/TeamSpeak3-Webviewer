@@ -18,10 +18,8 @@ $config_name = isset($_GET['config']) ? $_GET['config'] : '';
 str_replace('/', '', $config_name);
 str_replace('.', '', $config_name);
 $paths[] = s_root . "config/" . $config_name . ".xml";
-$paths[] = s_root . 'config/' . $config_name . ".conf";
 $paths[] = s_root . 'config/config.xml';
-$paths[] = s_root . 'config/config.conf';
-$paths[] = s_root . 'viewer.conf';
+
 
 foreach ($paths as $path)
 {
