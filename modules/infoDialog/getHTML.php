@@ -68,7 +68,7 @@ foreach ($viewer_conf as $key => $value)
     }
 }
 if ($viewer_conf['use_serverimages'] == true)
-        $viewer_conf['serverimages'] = s_http . "get_server_icon.php?config=" . $_GET['config'] . "&id=";
+        $viewer_conf['serverimages'] = s_http . "core/teamspeak/get_server_icon.php?config=" . $_GET['config'] . "&id=";
 else $viewer_conf['serverimages'] = s_http . "images/" . $viewer_conf['imagepack'] . "/";
 $viewer_conf['client_name'] = "Maxesstuff TS3 Webviewer";
 
@@ -152,11 +152,8 @@ if ($_GET['type'] == 'client')
                         $viewer_conf['use_serverimages'],
                         $viewer_conf['servergrp_images']) as $image)
                 {
-                    if ($image == 0)
-                    {
-                        $out .= '<img src="' . s_http . 'images/serverimages/na.png" alt="" style="margin-right:2px;"/>';
-                    }
-                    else
+                    
+                    if($image !== 0)
                     {
                         $out .= '<img src="' . $viewer_conf['serverimages'] . $image . '" alt="" style="margin-right:2px;" />';
                     }
@@ -172,11 +169,7 @@ if ($_GET['type'] == 'client')
                         $viewer_conf['use_serverimages'],
                         $viewer_conf['channelgrp_images']);
 
-                if ($channelgroup_icon == 0)
-                {
-                    $out .= '<img src="' . s_http . 'images/serverimages/na.png" alt="" style="margin-right:2px;" />';
-                }
-                else
+                if($channelgroup_icon !== 0)
                 {
                     $out .= '<img  src="' . $viewer_conf['serverimages'] . $channelgroup_icon . '" alt="" style="margin-right:2px;"/>';
                 }
