@@ -31,6 +31,7 @@ v 0.9
 * Fixed bug in installscript that modules couldn't be loaded if you save the config and didn't change any modules
 * Fixed bug that flags weren't shown in the infoDialog
 * stats module shows no longer negative clients online
+* Display but of the about module if first channel in the tree is moderated
 
 v 0.8
 ! Fixed all bugs which occured with Internet Explorer and other browsers
