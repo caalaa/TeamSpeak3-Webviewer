@@ -1,5 +1,5 @@
-# Deny showing of xml-files
-<Files *.xml >
+# Deny showing of xml and po-files
+<FilesMatch "\.(xml|po)$">
     Order deny,allow
     deny from all
-</Files>
+</FilesMatch>
