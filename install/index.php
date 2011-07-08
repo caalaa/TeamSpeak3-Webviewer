@@ -41,8 +41,8 @@ if (isset($_SESSION['lang']) && $_SESSION['lang'] != "")
 
     $domain = "ms-tsv-install";
 
-    if ($newPath == NULL) T_bindtextdomain($domain, PROJECTPATH);
-    else T_bindtextdomain($domain, $newPath);
+    T_bindtextdomain($domain, PROJECTPATH);
+
 
     T_textdomain($domain);
     T_bind_textdomain_codeset($domain, "UTF-8");
