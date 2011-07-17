@@ -51,7 +51,14 @@ function setPassword($password)
     {
         $result = chmod(realpath("./"), 0775, true);
 
-        if (!$result) return false;
+        if ($result)
+        {
+            if (!file_put_contents("pw.xml", $password)) return false;
+        }
+        else
+        {
+            return false;
+        }
     }
     return true;
 }
