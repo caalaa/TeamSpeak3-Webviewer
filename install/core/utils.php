@@ -48,7 +48,7 @@ function setPassword($password)
     $password = sha1(md5($password));
 
     if (!file_put_contents("pw.xml", $password)) ;
-    return false;
+        return false;
     return true;
 }
 

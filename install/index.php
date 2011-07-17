@@ -72,9 +72,9 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'setpw' && isset($_POST
     // Set Password
     $result = setPassword($_POST['password']);
 
-    if ($result == TRUE)
+    if ($result == FALSE)
     {
-        echo(throwAlert(__('The password could not be safed. Be sure that writing permissions are set to pw.xml')));
+        echo(throwAlert(__('The password could not be safed. Please set chmod 775 to the "intall" directory.')));
         require_once 'html/set_password.php';
         exit;
     }
