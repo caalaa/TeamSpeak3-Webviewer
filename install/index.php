@@ -159,16 +159,20 @@ if (!passwordSetted())
         {
             setChmodRecursive(realpath($dir), 0775);
             $firstrun = false;
+
+            if (is_writable($dir)) continue;
         }
 
         if (!is_writable(realpath($dir)) && !$firstrun)
         {
             setChmodRecursive(realpath($dir), 0777);
+
+            if (is_writable($dir)) continue;
         }
 
         if (!is_writable(realpath($dir)))
         {
-            echo(throwAlert(__("Chmod 755 (777) could not be setted to") ." $dir.". __("Please set it manually.")));
+            echo(throwAlert(__("Chmod 755 (777) could not be automaticallz setted to") . " " . realpath($dir) . "." . __("Please set it manually.")));
         }
     }
 

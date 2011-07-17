@@ -16,9 +16,10 @@ div#password, div#language, div#selection
     width: 400px;
 }
 
-div#alert
+div#alert, div#warning, div#info
 {
     width: 100%;
+    font-size: 14px;
 }
 
 input
