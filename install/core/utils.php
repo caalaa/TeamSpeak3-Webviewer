@@ -49,16 +49,7 @@ function setPassword($password)
 
     if (!file_put_contents("pw.xml", $password))
     {
-        $result = chmod(realpath("./"), 0775, true);
-
-        if ($result)
-        {
-            if (!file_put_contents("pw.xml", $password)) return false;
-        }
-        else
-        {
-            return false;
-        }
+        return false;
     }
     return true;
 }
@@ -231,6 +222,22 @@ function checkFunctions()
 function _e($message)
 {
     echo(_($message));
+}
+
+/**
+ * sets chmod recursive to the directory
+ * @since 0.9
+ * @param type $directory
+ * @param type $chmod 
+ */
+function setChmodRecursive($directory, $chmod)
+{
+    $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory));
+
+    foreach ($iterator as $dir)
+    {
+        chmod($dir, $chmod);
+    }
 }
 
 /**

@@ -74,7 +74,7 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'setpw' && isset($_POST
 
     if ($result == FALSE)
     {
-        echo(throwAlert(__('The password could not be safed. Please set chmod 775 to the "intall" directory.')));
+        echo(throwAlert(__('The password could not be saved. Please set chmod 777 to the "install" directory.')));
         require_once 'html/set_password.php';
         exit;
     }
@@ -150,6 +150,28 @@ if (!isset($_SESSION['lang']))
 // If the password has not been setted
 if (!passwordSetted())
 {
+    $path = array("./", "../config", "../cache");
+
+    foreach ($path as $dir)
+    {
+        $firstrun = true;
+        if (!is_writable(realpath($dir)) && $firstrun)
+        {
+            setChmodRecursive(realpath($dir), 0775);
+            $firstrun = false;
+        }
+
+        if (!is_writable(realpath($dir)) && !$firstrun)
+        {
+            setChmodRecursive(realpath($dir), 0777);
+        }
+
+        if (!is_writable(realpath($dir)))
+        {
+            echo(throwAlert(__("Chmod 755 (777) could not be setted to") ." $dir.". __("Please set it manually.")));
+        }
+    }
+
     require_once 'html/set_password.php';
     exit;
 }
