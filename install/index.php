@@ -1,4 +1,5 @@
 <?php
+
 session_name("tswv");
 session_start();
 
@@ -238,17 +239,34 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
 
     saveXmlFile("../config/" . $_SESSION['config'] . ".xml", $xml);
 
-    if (!is_dir("../cache/" . $_POST['serveradress'] . $_POST['queryport'] . "/" . $_POST['serverport'] . "/query/time/"))
+
+    $querycachePath = "../cache/" . $_POST['serveradress'] . $_POST['queryport'] . "/" . $_POST['serverport'] . "/query/time/";
+    $imagecachePath = "../cache/" . $_POST['serveradress'] . $_POST['queryport'] . "/" . $_POST['serverport'] . "/server/images";
+
+    // create querycache directory
+    if (!is_dir($querycachePath))
     {
-        mkdir("../cache/" . $_POST['serveradress'] . $_POST['queryport'] . "/" . $_POST['serverport'] . "/query/time/",
-                0775, true);
+        $result = mkdir($querycachePath, 0775, true);
+
+        if ($result == 0)
+        {
+            echo(throwAlert(__("The directory for the query cache could not be created. Please create it manually and set chmod to 775.")));
+            echo(throwInfo(__("Query cache directory: " . str_replace("../", "",
+                                    $querycachePath))));
+        }
     }
 
-
-    $imagepath = "../cache/" . $_POST['serveradress'] . $_POST['queryport'] . "/" . $_POST['serverport'] . "/server/images";
-    if (!is_dir($imagepath))
+    // create imagecache directory
+    if (!is_dir($imagecachePath))
     {
-        mkdir($imagepath, 0775, true);
+        $result = mkdir($imagecachePath, 0775, true);
+
+        if ($result == 0)
+        {
+            echo(throwAlert(__("The directory for the query cache could not be created. Please create it manually and set chmod to 775.")));
+            echo(throwInfo(__("Image cache directory: " . str_replace("../", "",
+                                    $imagecachePath))));
+        }
     }
 
 
