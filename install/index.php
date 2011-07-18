@@ -172,7 +172,7 @@ if (!passwordSetted())
 
         if (!is_writable(realpath($dir)))
         {
-            echo(throwAlert(__("Chmod 755 (777) could not be automaticallz setted to") . " " . realpath($dir) . "." . __("Please set it manually.")));
+            echo(throwAlert(__("Chmod 755 (777) could not be automatically set to") . " " . realpath($dir) . "." . __("Please set it manually.")));
         }
     }
 
