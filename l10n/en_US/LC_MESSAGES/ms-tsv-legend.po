@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: TeamSpeak3 Webviewer legend\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-18 18:26+0100\n"
-"PO-Revision-Date: 2011-07-18 18:26+0100\n"
+"PO-Revision-Date: 2011-07-18 18:32+0100\n"
 "Last-Translator: Maximilian Narr <maxesstuff@live.de>\n"
 "Language-Team: Maxesstuff <info@maxesstuff.de>\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,6 @@ msgstr ""
 #: Dokumente\NetBeansProjects\TeamSpeak3
 #: Webviewer\modules\legend/legend.php:35
 #: Webviewer\modules\legend/legend.php:56
-#, fuzzy
 msgid "Legend"
 msgstr "Legend"
 
