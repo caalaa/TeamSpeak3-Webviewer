@@ -34,7 +34,41 @@ foreach ($paths as $path)
         break;
     }
 }
+
+
 $cachefile = s_root . "cache/" . $config['host'] . $config['queryport'] . "/" . $config['vserverport'] . "/server/images/" . $_GET['id'];
+$standardIconsPath = s_root . "images/" . $config['imagepack'] . "/";
+
+
+// Check if standard group icons are used
+switch ((int) $_GET['id'])
+{
+    // Channeladmin
+    case 100:
+        copy($standardIconsPath . "group_100" . $config['image_type'], $cachefile);
+        break;
+
+    // Operator
+    case 200:
+        copy($standardIconsPath . "group_200" . $config['image_type'], $cachefile);
+        break;
+
+    // Superadmin
+    case 300:
+        copy($standardIconsPath . "group_300" . $config['image_type'], $cachefile);
+        break;
+
+    // Superadmin Query
+    case 500:
+        copy($standardIconsPath . "group_500" . $config['image_type'], $cachefile);
+        break;
+
+    // Voice
+    case 600:
+        copy($standardIconsPath . "group_600" . $config['image_type'], $cachefile);
+        break;
+}
+
 
 if (file_exists($cachefile)) $img = file_get_contents($cachefile);
 else
