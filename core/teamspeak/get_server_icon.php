@@ -45,28 +45,36 @@ switch ((int) $_GET['id'])
 {
     // Channeladmin
     case 100:
-        copy($standardIconsPath . "group_100" . $config['image_type'], $cachefile);
+        $img = file_get_contents($standardIconsPath . "group_100." . $config['image_type']);
         break;
 
     // Operator
     case 200:
-        copy($standardIconsPath . "group_200" . $config['image_type'], $cachefile);
+        $img = file_get_contents($standardIconsPath . "group_200." . $config['image_type']);
         break;
 
     // Superadmin
     case 300:
-        copy($standardIconsPath . "group_300" . $config['image_type'], $cachefile);
+        $img = file_get_contents($standardIconsPath . "group_300." . $config['image_type']);
         break;
 
     // Superadmin Query
     case 500:
-        copy($standardIconsPath . "group_500" . $config['image_type'], $cachefile);
+        $img = file_get_contents($standardIconsPath . "group_500." . $config['image_type']);
         break;
 
     // Voice
     case 600:
-        copy($standardIconsPath . "group_600" . $config['image_type'], $cachefile);
+        $img = file_get_contents($standardIconsPath . "group_600." . $config['image_type']);
         break;
+}
+
+
+// If standardicon is used
+if (isset($img))
+{
+    header("Content-Type: image/" . $config['image_type']);
+    echo $img;
 }
 
 
