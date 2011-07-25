@@ -11,6 +11,7 @@
 v 0.9
 ! Added GNU gettext for i18n/ l10n instead of xml config files for easy translation in other languages
 ! CSS and HTML Code enhancements for optimal display
+! Fixed bug in viewer if you use the standard-group-icons and automatic download is enabled, the icons weren't shown (Thanks to sTimulated (http://forum.teamspeak.com))
 + Danish translation (thanks to Naith (http://pl4yground.dk/))
 + Russian translation (thanks to crysea (http://vk.com/grustniy))
 + French translation (thanks to -AS- Draketornado (http://www.altesaecke.eu))
