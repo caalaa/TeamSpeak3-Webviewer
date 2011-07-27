@@ -33,8 +33,7 @@ function ts3_check($response, $cmd='')
     }
     elseif ($response['error']['id'] != 0)
     {
-        if ($cmd == '')
-                die('Query Error, please check whitelist and permissions');
+        if ($cmd == '') die('Query Error, please check whitelist and permissions');
         else
         {
             die('Error code ' . $response['error']['id'] . ' while executing command "' . $cmd . "\"<br> Error Message:  \"" . $response['error']['msg'] . '"');
@@ -47,8 +46,7 @@ function parse_spacer($channel)
     $ret = Array();
     //---,...,-.-,___,-..
     if ($channel['pid'] != 0) return false;
-    $spacer2 = preg_match("#^\[([rcl*]?)spacer(.*?)\](.*)#",
-            $channel['channel_name'], $spacer);
+    $spacer2 = preg_match("#^\[([rcl*]?)spacer(.*?)\](.*)#", $channel['channel_name'], $spacer);
     if ($spacer2 == 0)
     {
         return false;
@@ -151,14 +149,12 @@ function get_client_image($client)
 
     if ($client['client_is_talker'] == 1) return "client-talking";
 
-    if ($client['client_is_channel_commander'] == 1 && $client['client_is_talker'] == 1)
-            return "client-cm-talking";
+    if ($client['client_is_channel_commander'] == 1 && $client['client_is_talker'] == 1) return "client-cm-talking";
 
     return "normal-client";
 }
 
-function get_servergroup_images($client, $servergroups,
-        $use_serverimages = false, $servergrpimages = FALSE)
+function get_servergroup_images($client, $servergroups, $use_serverimages = false, $servergrpimages = FALSE)
 {
     $ret = Array();
     global $config;
@@ -191,8 +187,7 @@ function get_servergroup_images($client, $servergroups,
     return $ret;
 }
 
-function get_channelgroup_image($client, $channelgroups,
-        $use_serverimages = false, $channelgrpimages = NULL)
+function get_channelgroup_image($client, $channelgroups, $use_serverimages = false, $channelgrpimages = NULL)
 {
     global $config;
 

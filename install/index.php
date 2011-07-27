@@ -43,7 +43,6 @@ if (isset($_SESSION['lang']) && $_SESSION['lang'] != "")
 
     T_bindtextdomain($domain, PROJECTPATH);
 
-
     T_textdomain($domain);
     T_bind_textdomain_codeset($domain, "UTF-8");
 }
@@ -57,8 +56,7 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == "setlang" && isset($_GE
 
     $domain = "ms-tsv-install";
 
-    if ($newPath == NULL) T_bindtextdomain($domain, PROJECTPATH);
-    else T_bindtextdomain($domain, $newPath);
+    T_bindtextdomain($domain, PROJECTPATH);
 
     T_textdomain($domain);
     T_bind_textdomain_codeset($domain, "UTF-8");
@@ -150,16 +148,10 @@ if (!isset($_SESSION['lang']))
 // If the password has not been setted
 if (!passwordSetted())
 {
-    $path = array(realpath("./"), realpath("../config"), realpath("../cache"));
+    $path = array("./", "../config", "../cache");
 
     foreach ($path as $dir)
     {
-        if ($dir == "" || $dir == NULL)
-        {
-            echo(throwAlert(__("Chmod 755 (777) could not be automatically set to") . " " . realpath($dir) . "." . __("Please set it manually.")));
-            continue;
-        }
-
         $firstrun = true;
         if (!is_writable($dir) && $firstrun)
         {
@@ -226,13 +218,6 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
         }
     }
 
-    if ($vars_unavailable)
-    {
-        $data = createEditHtml();
-
-        require_once 'html/config.php';
-        exit;
-    }
     // END VAR CHECKING \\
 
     $xml->host = $_POST['serveradress'];
@@ -267,7 +252,16 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
 
     $xml->language = $_POST['language'];
 
+    
+    // Not all necessary values were entered.
+    if ($vars_unavailable)
+    {
+        $_SESSION['config_xml'] = $xml->asXML();
+        $data = createEditHtml();
 
+        require_once 'html/config.php';
+        exit;
+    }
 
     saveXmlFile("../config/" . $_SESSION['config'] . ".xml", $xml);
 
