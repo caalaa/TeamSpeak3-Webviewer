@@ -151,9 +151,15 @@ if (!isset($_SESSION['lang']))
 if (!passwordSetted())
 {
     $path = array(realpath("./"), realpath("../config"), realpath("../cache"));
-    
+
     foreach ($path as $dir)
     {
+        if ($dir == "" || $dir == NULL)
+        {
+            echo(throwAlert(__("Chmod 755 (777) could not be automatically set to") . " " . realpath($dir) . "." . __("Please set it manually.")));
+            continue;
+        }
+
         $firstrun = true;
         if (!is_writable($dir) && $firstrun)
         {
@@ -277,8 +283,7 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
         if ($result == 0)
         {
             echo(throwAlert(__("The directory for the query cache could not be created. Please create it manually and set chmod to 775.")));
-            echo(throwInfo(__("Query cache directory: " . str_replace("../", "",
-                                    $querycachePath))));
+            echo(throwInfo(__("Query cache directory: " . str_replace("../", "", $querycachePath))));
         }
     }
 
@@ -290,8 +295,7 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
         if ($result == 0)
         {
             echo(throwAlert(__("The directory for the query cache could not be created. Please create it manually and set chmod to 775.")));
-            echo(throwInfo(__("Image cache directory: " . str_replace("../", "",
-                                    $imagecachePath))));
+            echo(throwInfo(__("Image cache directory: " . str_replace("../", "", $imagecachePath))));
         }
     }
 
