@@ -150,27 +150,29 @@ if (!isset($_SESSION['lang']))
 // If the password has not been setted
 if (!passwordSetted())
 {
-    $path = array("./", "../config", "../cache");
+    $path = array(realpath("./"), realpath("../config"), realpath("../cache"));
+    
+    print_r($path);
 
     foreach ($path as $dir)
     {
         $firstrun = true;
-        if (!is_writable(realpath($dir)) && $firstrun)
+        if (!is_writable($dir) && $firstrun)
         {
-            setChmodRecursive(realpath($dir), 0775);
+            setChmodRecursive($dir, 0775);
             $firstrun = false;
 
             if (is_writable($dir)) continue;
         }
 
-        if (!is_writable(realpath($dir)) && !$firstrun)
+        if (!is_writable($dir) && !$firstrun)
         {
-            setChmodRecursive(realpath($dir), 0777);
+            setChmodRecursive($dir, 0777);
 
             if (is_writable($dir)) continue;
         }
 
-        if (!is_writable(realpath($dir)))
+        if (!is_writable($dir))
         {
             echo(throwAlert(__("Chmod 755 (777) could not be automatically set to") . " " . realpath($dir) . "." . __("Please set it manually.")));
         }

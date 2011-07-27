@@ -50,7 +50,7 @@ class TSQuery
     {
 
         //open Connection and check for errors
-        $this->cachepath = s_root . "/cache/" . $host . $port . "/";
+        $this->cachepath = s_root . "cache/" . $host . $port . "/";
         $this->ip = gethostbyname($host);
         $this->query_port = $port;
         $this->timeout = 5;

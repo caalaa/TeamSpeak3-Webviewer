@@ -99,8 +99,7 @@ function getImagePacks()
 
     while ($imagepack = readdir($dir))
     {
-        if ($imagepack != '..' && $imagepack != '.' && $imagepack != 'serverimages')
-                $packs[] = $imagepack;
+        if ($imagepack != '..' && $imagepack != '.' && $imagepack != 'serverimages') $packs[] = $imagepack;
     }
 
     return $packs;
@@ -152,24 +151,21 @@ function flushCache($config)
             $dir = opendir($path . "query");
             while ($file = readdir($dir))
             {
-                if ($file != ".." && $file != "." && $file != "time")
-                        unlink($path . "query/" . $file);
+                if ($file != ".." && $file != "." && $file != "time") unlink($path . "query/" . $file);
             }
 
             // query/time
             $dir = opendir($path . "query/time");
             while ($file = readdir($dir))
             {
-                if ($file != ".." && $file != ".")
-                        unlink($path . "query/time/" . $file);
+                if ($file != ".." && $file != ".") unlink($path . "query/time/" . $file);
             }
 
             // server/images
             $dir = opendir($path . "server/images");
             while ($file = readdir($dir))
             {
-                if ($file != ".." && $file != "." && $file != "time")
-                        unlink($path . "server/images/" . $file);
+                if ($file != ".." && $file != "." && $file != "time") unlink($path . "server/images/" . $file);
             }
             return throwWarning(__('Cache flushed.'));
         }
@@ -230,13 +226,25 @@ function _e($message)
  * @param type $directory
  * @param type $chmod 
  */
-function setChmodRecursive($directory, $chmod)
+function setChmodRecursive($path, $chmod)
 {
-    $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory));
-
-    foreach ($iterator as $dir)
+    if (is_file($path))
     {
-        chmod($dir, $chmod);
+        chmod($path, $chmod);
+    }
+    elseif (is_dir($path))
+    {
+        $foldersAndFiles = scandir($path);
+
+        $entries = array_slice($foldersAndFiles, 2);
+
+        foreach ($entries as $entry)
+        {
+            if (substr($path, -1) !== "/") setChmodRecursive($path . "/" . $entry, $chmod);
+            else setChmodRecursive($path . $entry, $chmod);
+        }
+
+        chmod($path, $chmod);
     }
 }
 
