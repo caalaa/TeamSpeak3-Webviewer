@@ -152,8 +152,6 @@ if (!passwordSetted())
 {
     $path = array(realpath("./"), realpath("../config"), realpath("../cache"));
     
-    print_r($path);
-
     foreach ($path as $dir)
     {
         $firstrun = true;
