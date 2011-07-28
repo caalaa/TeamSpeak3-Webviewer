@@ -192,8 +192,9 @@ if ($_GET['type'] == 'client')
 function getCountryIcon($country)
 {
     $path = s_http . "modules/infoDialog/flags/" . strtolower($country) . ".png";
+    $localpath = s_root . "modules/infoDialog/flags/" . strtolower($country) . ".png";
 
-    if (!file_exists($path) || ($country == NULL || $country == "" || $country == 0)) return '';
+    if (!file_exists($localpath)) return '';
 
     return '<img src="' . $path . '" alt="" />';
 }
