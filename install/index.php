@@ -148,7 +148,7 @@ if (!isset($_SESSION['lang']))
 // If the password has not been setted
 if (!passwordSetted())
 {
-    $path = array("./", "../config", "../cache");
+    $path = array(realpath(""), "../config", "../cache");
 
     foreach ($path as $dir)
     {

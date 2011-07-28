@@ -67,8 +67,7 @@ foreach ($viewer_conf as $key => $value)
         $config['channelgrp_images'][$temp] = $value;
     }
 }
-if ($viewer_conf['use_serverimages'] == true)
-        $viewer_conf['serverimages'] = s_http . "core/teamspeak/get_server_icon.php?config=" . $_GET['config'] . "&id=";
+if ($viewer_conf['use_serverimages'] == true) $viewer_conf['serverimages'] = s_http . "core/teamspeak/get_server_icon.php?config=" . $_GET['config'] . "&id=";
 else $viewer_conf['serverimages'] = s_http . "images/" . $viewer_conf['imagepack'] . "/";
 $viewer_conf['client_name'] = "Maxesstuff TS3 Webviewer";
 
@@ -77,7 +76,7 @@ $config = parseConfigFile(s_root . 'modules/infoDialog/infoDialog.xml', true);
 $info = $_SESSION['infoDialog']['info'];
 
 
-if ($_GET['type'] == 'client' && isset( $_GET['title']) )
+if ($_GET['type'] == 'client' && isset($_GET['title']))
 {
     $matches = Array();
     preg_match("/^.*?([0-9]*)$/", $_GET['id'], $matches);
@@ -88,8 +87,7 @@ if ($_GET['type'] == 'client' && isset( $_GET['title']) )
 
 if ($_GET['type'] == 'client')
 {
-    $config['show_html_for_client'] = explode(",",
-            $config['show_html_for_client']);
+    $config['show_html_for_client'] = explode(",", $config['show_html_for_client']);
 
     $out = '
     <style type="text/css">
@@ -110,13 +108,10 @@ if ($_GET['type'] == 'client')
     $user = getUserByID($info['clientlist'], $matches[1]);
     if ($user == NULL) die();
     $query = new TSQuery($viewer_conf['host'], $viewer_conf['queryport']);
-    $query->set_caching((int) $viewer_conf['enable_caching'],
-            (int) $viewer_conf['standard_cachetime'],
-             $viewer_conf['cachetime']);
+    $query->set_caching((int) $viewer_conf['enable_caching'], (int) $viewer_conf['standard_cachetime'], $viewer_conf['cachetime']);
     if ($viewer_conf['login_needed'])
     {
-        ts3_check($query->login($viewer_conf['username'],
-                        $viewer_conf['password']), 'login');
+        ts3_check($query->login($viewer_conf['username'], $viewer_conf['password']), 'login');
     }
 
     $query->use_by_port($viewer_conf['vserverport']);
@@ -148,12 +143,10 @@ if ($_GET['type'] == 'client')
                 $out .= '<td class="label">' . __('Servergroup(s)') . ':</td>';
                 $out .= '<td>';
 
-                foreach (get_servergroup_images($user, $info['servergroups'],
-                        $viewer_conf['use_serverimages'],
-                        $viewer_conf['servergrp_images']) as $image)
+                foreach (get_servergroup_images($user, $info['servergroups'], $viewer_conf['use_serverimages'], $viewer_conf['servergrp_images']) as $image)
                 {
-                    
-                    if($image !== 0)
+
+                    if ($image !== 0)
                     {
                         $out .= '<img src="' . $viewer_conf['serverimages'] . $image . '" alt="" style="margin-right:2px;" />';
                     }
@@ -164,12 +157,9 @@ if ($_GET['type'] == 'client')
                 $out .= '<tr>';
                 $out .= '<td class="label">' . __('Channelgroup(s)') . ':</td>';
                 $out .= '<td>';
-                $channelgroup_icon = get_channelgroup_image($user,
-                        $info['channelgroups'],
-                        $viewer_conf['use_serverimages'],
-                        $viewer_conf['channelgrp_images']);
+                $channelgroup_icon = get_channelgroup_image($user, $info['channelgroups'], $viewer_conf['use_serverimages'], $viewer_conf['channelgrp_images']);
 
-                if($channelgroup_icon !== 0)
+                if ($channelgroup_icon !== 0)
                 {
                     $out .= '<img  src="' . $viewer_conf['serverimages'] . $channelgroup_icon . '" alt="" style="margin-right:2px;"/>';
                 }
@@ -201,10 +191,11 @@ if ($_GET['type'] == 'client')
 // Returns the path of the countryicons
 function getCountryIcon($country)
 {
-    $path = s_http . "modules/infoDialog/flags/";
-    $country = strtolower($country);
+    $path = s_http . "modules/infoDialog/flags/" . strtolower($country) . ".png";
 
-    return '<img src="' . $path . $country . '.png" alt="" />';
+    if (!file_exists($path) || ($country == NULL || $country == "" || $country == 0)) return '';
+
+    return '<img src="' . $path . '" alt="" />';
 }
 
 // Returns the countryname of a two-letter countrycode

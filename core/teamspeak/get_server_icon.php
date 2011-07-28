@@ -39,8 +39,10 @@ foreach ($paths as $path)
 $cachefile = s_root . "cache/" . $config['host'] . $config['queryport'] . "/" . $config['vserverport'] . "/server/images/" . $_GET['id'];
 $standardIconsPath = s_root . "images/" . $config['imagepack'] . "/";
 
+// Check if standard group icon exists
+if (!file_exists(($standardIconsPath . "group_" . (string) $_GET['id'] . "." . $config['image_type']) && in_array((int) $_GET['id'], array(100, 200, 300, 500, 600))) || (int) $_GET['id'] == 0) exit;
 
-// Check if standard group icons are used
+// Check if standard group icons are used switch ((int) $_GET['id'])
 switch ((int) $_GET['id'])
 {
     // Channeladmin
@@ -75,6 +77,7 @@ if (isset($img))
 {
     header("Content-Type: image/" . $config['image_type']);
     echo $img;
+    exit;
 }
 
 
