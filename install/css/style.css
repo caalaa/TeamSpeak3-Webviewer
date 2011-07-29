@@ -1,9 +1,4 @@
-p
-{
-    font-size: 14px;
-}
-
-.tooltip
+p, span,a, tr, td, button, input, .tooltip
 {
     font-size: 14px;
 }
@@ -19,16 +14,6 @@ div#password, div#language, div#selection
 div#alert, div#warning, div#info
 {
     width: 100%;
-    font-size: 14px;
-}
-
-input
-{
-    font-size: 14px;
-}
-
-button
-{
     font-size: 14px;
 }
 
@@ -48,12 +33,6 @@ li
 
 tr
 {
-    margin-bottom: 15px !important;;
+    margin-bottom: 15px !important;
     padding: 3px;
-}
-
-#tab3 p
-{
-    width: 400px;
-    font-size: 16px;
 }

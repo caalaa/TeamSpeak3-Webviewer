@@ -21,7 +21,7 @@
         <abstract>true</abstract>
     </info>
     
-    <!-- Path to jQuery -->
-    <!-- Pfad zu jQuery -->
-    <jQuery_path>http://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js</jQuery_path>
+    <!-- Path to jQuery: Can be a relative path to "modules/jQuery/" or a absolute "http://" path -->
+    <!-- Pfad zu jQuery: Kann entweder ein relativer Pfad zu "modules/jQuery/" sein oder aber ein absoluter "http://" Pfad -->
+    <jQuery_path>js/jquery-1.6.2.js</jQuery_path>
 </config>

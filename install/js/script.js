@@ -37,40 +37,47 @@ $(document).ready(function(){
         modules = $('#sort1').sortable('toArray');
             
         document.getElementById("modules_hidden").value = modules;
-    });    
+    });  
+    
+    $(".warning, .info, .alert").delay(500).fadeIn(500);
 });
 
+// Sets the requested language
 function setLang(language)
 {
     var lang = "index.php?action=setlang&lang=" + language;
     window.location.href = lang;
 }
 
-
+// Sets the requested configfile to edit
 function setconfig(file)
 {
     var href = "index.php?action=set_config&configname=" + file;
     window.location.href = href;
 }
 
+// Shows the viewer of the requested configfile
 function showViewer(config)
 {
     var href="../index.php?config=" + config
     window.location.href = href;
 }
 
+// Flushs the cache of the requested configfile
 function flushCache(config)
 {
     var href="?action=fc&config="+config
     window.location.href = href;
 }
 
+// Deletes the requested configfile
 function deleteConfig(config)
 {
     var href="?action=delete&config="+config
     window.location.href = href;
 }
 
+// Goes back to the configfile selection
 function redirect()
 {
     var href = "index.php?action=return";

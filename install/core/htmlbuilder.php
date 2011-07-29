@@ -80,7 +80,7 @@ function createConfigHtml()
 function createEditHtml()
 {
     global $utils;
-    
+
     $html = array();
 
     $configfile = simplexml_load_string($_SESSION['config_xml']);
@@ -140,13 +140,13 @@ function createEditHtml()
     // Servericons
     if ($configfile->use_serverimages == "true" || (string) $configfile->use_serverimages == '')
     {
-        $html['servericons_radio'] = '<input type="radio" name="servericons" value="true" checked="checked"> ' . __('Enabled') . '<br>
-            <input type="radio" name="servericons" value="false"> ' . __('Disabled');
+        $html['servericons_radio'] = '<input type="radio" name="servericons" value="true" checked="checked"><span> ' . __('Enabled') . '</span><br>
+            <input type="radio" name="servericons" value="false"><span> ' . __('Disabled') . '</span>';
     }
     else
     {
-        $html['servericons_radio'] = '<input type="radio" name="servericons" value="true"> ' . __('Enabled') . '<br>
-            <input type="radio" name="servericons" value="false"  checked="checked"> ' . __('Disabled');
+        $html['servericons_radio'] = '<input type="radio" name="servericons" value="true"><span> ' . __('Enabled') . '<br>
+            <input type="radio" name="servericons" value="false"  checked="checked"><span> ' . __('Disabled') . '</span>';
     }
 
     // Imagepack
@@ -158,10 +158,8 @@ function createEditHtml()
 
     foreach ($imagepacks as $pack)
     {
-        if ((string) $configfile->imagepack == $pack)
-                $html['imagepack_html'] .= '<input type="radio" name="imagepack" value="' . $pack . '" checked="checked"> ' . $pack . '<br>';
-        else
-                $html['imagepack_html'] .= '<input type="radio" name="imagepack" value="' . $pack . '"> ' . $pack . '<br>';
+        if ((string) $configfile->imagepack == $pack) $html['imagepack_html'] .= '<input type="radio" name="imagepack" value="' . $pack . '" checked="checked"><span> ' . $pack . '</span><br>';
+        else $html['imagepack_html'] .= '<input type="radio" name="imagepack" value="' . $pack . '"><span> ' . $pack . '</span><br>';
     }
 
     // Style
@@ -171,22 +169,20 @@ function createEditHtml()
 
     foreach ($styles as $style)
     {
-        if ((string) $configfile->style == $style)
-                $html['style_html'] .= '<input type="radio" name="style" value="' . $style . '" checked="checked"> ' . $style . '<br>';
-        else
-                $html['style_html'] .= '<input type="radio" name="style" value="' . $style . '"> ' . $style . '<br>';
+        if ((string) $configfile->style == $style) $html['style_html'] .= '<input type="radio" name="style" value="' . $style . '" checked="checked"><span> ' . $style . '</span><br>';
+        else $html['style_html'] .= '<input type="radio" name="style" value="' . $style . '"><span> ' . $style . '</span><br>';
     }
 
     // Arrows
     if ($configfile->show_arrows == "true" || $configfile->show_arrows == '')
     {
-        $html['arrow_html'] = '<input type="radio" name="arrows" value="true" checked="checked"> ' . __('Enabled') . '<br>
-            <input type="radio" name="arrows" value="false"  > ' . __('Disabled');
+        $html['arrow_html'] = '<input type="radio" name="arrows" value="true" checked="checked"><span> ' . __('Enabled') . '<br>
+            <input type="radio" name="arrows" value="false"  ><span> ' . __('Disabled') . '</span>';
     }
     else
     {
         $html['arrow_html'] = '<input type="radio" name="arrows" value="true" > ' . __('Enabled') . '<br>
-            <input type="radio" name="arrows" value="false" checked="checked"> ' . __('Disabled');
+            <input type="radio" name="arrows" value="false" checked="checked"> ' . __('Disabled') . '</span>';
     }
 
     // Caching
@@ -211,10 +207,8 @@ function createEditHtml()
 
     foreach ($languages as $langCode => $langOptions)
     {
-        if ($langCode == $selected_lang)
-                $html['language_html'] .= '<input type="radio" name="language" checked="checked" value="' . $langCode . '">' . $langOptions['lang'] . ' <br>';
-        else
-                $html['language_html'] .= '<input type="radio" name="language"  value="' . $langCode . '">' . $langOptions['lang'] . ' <br>';
+        if ($langCode == $selected_lang) $html['language_html'] .= '<input type="radio" name="language" checked="checked" value="' . $langCode . '">' . $langOptions['lang'] . ' <br>';
+        else $html['language_html'] .= '<input type="radio" name="language"  value="' . $langCode . '">' . $langOptions['lang'] . ' <br>';
     }
     return $html;
 }

@@ -2,7 +2,7 @@
     <script type="text/javascript">
         $(document).ready(function()
         {
-            $('#tabs').tabs();
+            $('#tabs').tabs({fx: { height: "toggle", duration: "slow" }});
         });
     </script>   
     <form action="index.php?action=submit" method="post" >
