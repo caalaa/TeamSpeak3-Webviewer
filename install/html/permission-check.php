@@ -37,9 +37,10 @@
                 </tr>
             <?php }
         } ?>
+                
     </table>
 
-    <div class="ui-state-error ui-corner-all">
+    <div class="ui-state-error ui-corner-all" id="permission-warning">
         <p style="padding: 3px;"><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span><?php __e("If the status of one of those directories is FAILED, please make this directory writable manually! Otherwise the viewer may not work.") ?></p>
     </div>
 </div>

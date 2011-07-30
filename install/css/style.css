@@ -24,6 +24,13 @@ div#permission-check
     padding: 5px;
 }
 
+div#permission-warning
+{
+    padding: 3px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 div#alert, div#warning, div#info
 {
     width: 100%;

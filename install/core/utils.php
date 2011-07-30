@@ -294,11 +294,14 @@ function setChmodRecursive($path, $chmod)
 /**
  * Throws alert
  * @param type $message
+ * @param type $code error code
  * @return string 
  */
-function throwAlert($message)
+function throwAlert($message, $code=NULL)
 {
-    $html = '<div class="alert" style="margin-bottom:5px; display:none;">
+    if ($code == NULL)
+    {
+        $html = '<div class="alert" style="margin-bottom:5px; display:none;">
             <div class="ui-widget">
                     <div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
                             <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>' . $message . '</p>
@@ -306,7 +309,21 @@ function throwAlert($message)
                     </div>
             </div>
             </div>';
-    return $html;
+        return $html;
+    }
+    else
+    {
+        $html = '<div class="alert" style="margin-bottom:5px; display:none;">
+            <div class="ui-widget">
+                    <div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+                            <p style="margin-left:auto; margin-right:auto; font-weight:bold;"><a href="http://maxesstuff.de/software/teamspeak3-webviewer/haufige-fragen">' . __('Error') . ' ' . (string) $code . '</a></p>
+                            <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>' . $message . '</p>
+
+                    </div>
+            </div>
+            </div>';
+        return $html;
+    }
 }
 
 /**

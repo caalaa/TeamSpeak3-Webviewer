@@ -74,7 +74,6 @@ function createConfigHtml()
 /**
  * Returns the $data for the config-editing
  * @todo include directly in file
- * @todo Adapt Language-section to new i18n
  * @return string 
  */
 function createEditHtml()

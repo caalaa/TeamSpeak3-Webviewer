@@ -72,7 +72,7 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'setpw' && isset($_POST
 
     if ($result == FALSE)
     {
-        echo(throwAlert(__('The password could not be saved. Please set chmod 777 to the "install" directory.')));
+        echo(throwAlert(__('The password could not be saved. Please set chmod 777 to the "install" directory.'), 21));
         require_once 'html/set_password.php';
         exit;
     }
@@ -132,7 +132,7 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'validate' && isset($_P
         // If password is wrong
         $_SESSION['validated'] = false;
 
-        echo(_("The password you provided was not correct. Please try again"));
+        echo(__("The password you provided was not correct. Please try again."));
     }
 }
 
@@ -226,7 +226,7 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
 
     $xml->language = $_POST['language'];
 
-    
+
     // Not all necessary values were entered.
     if ($vars_unavailable)
     {
