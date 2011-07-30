@@ -221,6 +221,49 @@ function _e($message)
 }
 
 /**
+ * Checks if the directories given are writeable
+ * @return array key = directoryname value = true, if writable, else false
+ * @since 1.0
+ * @param type $directories 
+ */
+function checkPermissions($directories)
+{
+    $results = array();
+
+    foreach ($directories as $dir)
+    {
+        $dir = realpath($dir);
+        if (is_writable($dir))
+        {
+            $results[$dir] = true;
+            continue;
+        }
+        else
+        {
+            setChmodRecursive($dir, 0775);
+
+            if (is_writable($dir))
+            {
+                $results[$dir] = true;
+                continue;
+            }
+            else
+            {
+                setChmodRecursive($dir, 0777);
+
+                if (is_writable($dir))
+                {
+                    $results[$dir] = true;
+                    continue;
+                }
+            }
+        }
+        $results[$dir] = false;
+    }
+    return $results;
+}
+
+/**
  * sets chmod recursive to the directory
  * @since 0.9
  * @param type $directory

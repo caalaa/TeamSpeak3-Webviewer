@@ -148,32 +148,6 @@ if (!isset($_SESSION['lang']))
 // If the password has not been setted
 if (!passwordSetted())
 {
-    $path = array(realpath(""), "../config", "../cache");
-
-    foreach ($path as $dir)
-    {
-        $firstrun = true;
-        if (!is_writable($dir) && $firstrun)
-        {
-            setChmodRecursive($dir, 0775);
-            $firstrun = false;
-
-            if (is_writable($dir)) continue;
-        }
-
-        if (!is_writable($dir) && !$firstrun)
-        {
-            setChmodRecursive($dir, 0777);
-
-            if (is_writable($dir)) continue;
-        }
-
-        if (!is_writable($dir))
-        {
-            echo(throwAlert(__("Chmod 755 (777) could not be automatically set to") . " " . realpath($dir) . "." . __("Please set it manually.")));
-        }
-    }
-
     require_once 'html/set_password.php';
     exit;
 }
