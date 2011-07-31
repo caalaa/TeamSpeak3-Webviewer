@@ -84,14 +84,14 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'setpw' && isset($_POST
 if (isset($_REQUEST['action']) && $_REQUEST['action'] == "new_config")
 {
     $_SESSION['config'] = $_REQUEST['configname'];
-    $_SESSION['config_xml'] = simplexml_load_file("../config/template.xml")->asXML();
+    $_SESSION['config_xml'] = addModuleConfigParameter(simplexml_load_file("../config/template.xml"))->asXML();
 }
 
 // Sets Configfile
 if (isset($_REQUEST['action']) && $_REQUEST['action'] == "set_config" && isset($_GET['configname']))
 {
     $_SESSION['config'] = $_GET['configname'];
-    $_SESSION['config_xml'] = simplexml_load_file("../config/" . $_SESSION['config'] . ".xml")->asXML();
+    $_SESSION['config_xml'] = addModuleConfigParameter(simplexml_load_file("../config/" . $_SESSION['config'] . ".xml"))->asXML();
 }
 
 // Flushes caches

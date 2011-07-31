@@ -63,7 +63,7 @@ class ms_ModuleManager
             }
 
             $config = Array();
-            
+
             // Write Webviewer-Config in array
             foreach ($this->viewerConfig as $key => $value)
             {
@@ -87,6 +87,22 @@ class ms_ModuleManager
                     {
                         foreach ($module as $key => $value)
                         {
+                            switch ($value)
+                            {
+                                case "true":
+                                    (boolean) $value = (boolean) TRUE;
+                                    break;
+                                case "false":
+                                    (boolean) $value = (boolean) FALSE;
+                                    break;
+                                case "none":
+                                    $value = NULL;
+                                    break;
+                                default:
+                                    (string) $value = (string) $value;
+                                    break;
+                            }
+
                             $config[$key] = $value;
                         }
                     }

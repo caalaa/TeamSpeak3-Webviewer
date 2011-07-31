@@ -27,7 +27,7 @@ class serverInfo extends ms_Module
 
         if ($this->config['value_format'] != NULL || $this->config['value_format'] != "")
         {
-            $value_format = $this->config['value_config'];
+            $value_format = $this->config['value_format'];
         }
 
 
