@@ -103,4 +103,7 @@
 
     <!-- Enabled Modules (seperate with comma) -->
     <modules></modules>
+    
+    <!-- Module configuration -->
+    <module name="template"></module>
 </config>

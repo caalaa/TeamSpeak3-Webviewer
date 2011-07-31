@@ -17,7 +17,7 @@ session_name('ms_ts3Viewer');
 session_start();
 
 // Defines Current Version
-define('version', "0.9");
+define('version', "1.0");
 
 // **************************************************************** \\
 // STARTING EDITABLE CONTENT                                        \\
@@ -191,7 +191,7 @@ catch (Exception $e)
     die($e->getMessage());
 }
 
-$mManager = new ms_ModuleManager( $config, $debug);
+$mManager = new ms_ModuleManager($config, $config_name, $debug);
 $mManager->loadModule($config['modules']);
 $mManager->triggerEvent('Startup');
 

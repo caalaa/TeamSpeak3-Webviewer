@@ -72,7 +72,7 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'setpw' && isset($_POST
 
     if ($result == FALSE)
     {
-        echo(throwAlert(__('The password could not be saved. Please set chmod 777 to the "install" directory.'), 21));
+        echo(throwAlert(__('The password could not be saved. Please make the "install" directory writable.'), 21));
         require_once 'html/set_password.php';
         exit;
     }
@@ -250,7 +250,7 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
 
         if ($result == 0)
         {
-            echo(throwAlert(__("The directory for the query cache could not be created. Please create it manually and set chmod to 775.")));
+            echo(throwAlert(__("The directory for the query data-cache could not be created. Please make it writable manually."), 22));
             echo(throwInfo(__("Query cache directory: " . str_replace("../", "", $querycachePath))));
         }
     }
@@ -262,7 +262,7 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
 
         if ($result == 0)
         {
-            echo(throwAlert(__("The directory for the query cache could not be created. Please create it manually and set chmod to 775.")));
+            echo(throwAlert(__("The directory for the query image-cache could not be created. Please make it writable manually."), 23));
             echo(throwInfo(__("Image cache directory: " . str_replace("../", "", $imagecachePath))));
         }
     }
@@ -270,7 +270,7 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
 
     if (!file_exists("../config/" . $_SESSION['config'] . ".xml"))
     {
-        echo (throwAlert(__('Configfile is not writable. Please check if the required permissions are given to write the file. We recomment setting the file to CHMOD 775')));
+        echo (throwAlert(__('The configfile is not writable. Please check if the required permissions are given to write the file.'), 24));
         exit;
     }
 
