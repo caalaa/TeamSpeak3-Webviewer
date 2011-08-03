@@ -1,0 +1,39 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: TeamSpeak3 Webviewer infoDialog\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-07-18 18:26+0100\n"
+"PO-Revision-Date: 2011-07-18 18:26+0100\n"
+"Last-Translator: Chriss <chriss@rbl.lu>\n"
+"Language-Team: -AS- Draketornado <chriss@rbl.lu>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SearchPath-0: B:\\Eigene Dokumente\\NetBeansProjects\\TeamSpeak3 Webviewer\\modules\\infoDialog\n"
+
+#~ msgid "Nickname"
+#~ msgstr "Pseudo"
+
+#~ msgid "Country"
+#~ msgstr "Pays"
+
+#~ msgid "Version"
+#~ msgstr "Version"
+
+#~ msgid "Servergroup(s)"
+#~ msgstr "Groupe(s) de serveur"
+
+#~ msgid "Channelgroup(s)"
+#~ msgstr "groupe(s) de chaîne"
+
+#~ msgid "Connections"
+#~ msgstr "connections"
+
+#~ msgid "Description"
+#~ msgstr "description"
+
+#~ msgid "none"
+#~ msgstr "aucun"
+
+#~ msgid "loading..."
+#~ msgstr "chargement..."

@@ -1,0 +1,313 @@
+/* Author    : Maximilian Narr
+ * Homepage  : http://maxesstuff.de
+ * Email     : maxe@maxesstuff.de
+*/
+
+p, div
+{
+    margin-top:0px;
+    margin-bottom:0px;
+}
+
+body
+{
+    margin-top:5px;
+    margin-bottom:0px;
+    white-space:nowrap;
+    background-color:transparent;
+}
+
+/* SERVER START */
+.servername
+{
+    font-family:sans-serif;
+    font-size: small;
+}
+
+/* START SERVER IMAGES */
+/* Classes:
+    - serverimage  : Used for each serverimage
+        - image : Used for each serverimage
+*/
+.serverimage
+{
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    margin-right: 2px;
+}
+
+.image
+{
+    background: url("img/server.png") no-repeat transparent;
+}
+/* SERVER END */
+
+.rechtegruppe
+{
+    margin-top:5px;
+    font-family:sans-serif;
+    font-size:small;
+}
+
+.server
+{
+    font-family:sans-serif;
+    font-size:medium;
+    margin-left:0px;
+    margin-top:5px;
+    margin-bottom:0px;
+}
+
+/* START CHANNEL */
+.channel
+{
+    font-family:sans-serif;
+    font-size:small;
+    margin: 1px 0 0 0;
+}
+
+.chan_content
+{
+    margin-bottom: 2px;
+}
+
+.channel_arr
+{
+    margin-left: 16px;
+}
+
+.channel_norm
+{
+    margin-left: 32px;
+}
+
+/* START CHANNEL IMAGES */
+/* Classes: 
+    - channelimage           : Is used for each channel
+        - normal             : Is used for standard channel
+        - locked             : Is used for a locked channel
+        - full               : Is used for a full channel
+        - moderated          : Is used for moderated channel
+        - password           : Is used for channel with password
+        - channel-perm-image : Is used for channel images set in the teamspeak3 client
+*/
+.channel-perm-image
+{
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
+
+.channelimage
+{
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    margin-right: 4px;
+}
+
+.normal-channel
+{
+    background: url("img/channel.png") no-repeat transparent;
+}
+
+.locked
+{
+    background: url("img/channel_locked.png") no-repeat transparent;
+}
+
+.full
+{
+    background: url("img/channel_full.png") no-repeat transparent;
+}
+
+.moderated
+{
+    background: url("img/moderated.png") no-repeat transparent;
+}
+
+.password
+{
+    background: url("img/pw.png") no-repeat transparent;
+}
+
+.arrow-normal
+{
+    background: url("img/arrow_normal.png") no-repeat transparent;
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+}
+
+.arrow-hidden
+{
+    background: url("img/arrow_hidden.png") no-repeat transparent;
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+}
+/* END CHANNEL IMAGES */
+/* END CHANNEL */
+
+/* START GROUP IMAGES */
+/* Classes:
+    - group-image : used for each group image
+*/
+.group-image
+{
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
+/* END GROUP IMAGES */
+
+/* START SPACER */
+.spacer
+{
+    font-family:sans-serif;
+    font-size:small;
+    margin-top:0px;
+    margin-bottom:0px;
+}
+
+.spacer_arr
+{
+    margin-left: 20px;
+}
+
+.spacer_norm
+{
+    margin-left: 32px;
+}
+
+.right
+{
+    text-align: right;
+}
+
+.left
+{
+    text-align: left;
+}
+
+.center
+{
+    text-align: center;
+}
+
+.linie
+{
+    background: url(img/linie.png) repeat-x;
+}
+
+.bs
+{
+    background: url(img/bs.png) repeat-x;
+}
+
+.bspunkt
+{
+    background: url(img/bspunkt.png) repeat-x;
+}
+
+.bsdpunkt
+{
+    background: url(img/bsdpunkt.png) repeat-x;
+}
+
+.punkt
+{
+    background: url(img/punkt.png) repeat-x;
+}
+
+.spacer_con .arrow
+{
+    margin-left:-12px;
+}
+/* END SPACER */
+
+.img_r
+{
+    float:right;
+    margin-left: 2px;
+}
+
+.img_l
+{
+    margin-right:4px;
+    float:left;
+}
+
+/* START CLIENT */
+.client
+{
+    font-family:sans-serif;
+    font-size:small;
+    font-weight: bold;
+    margin-left:32px;
+    margin-top:1px;
+    margin-bottom:0px;
+}
+
+/* START CLIENT IMAGE */
+/* Classes:
+    - clientimage: Used for each client
+        - normal-client     : used for a normal client
+        - away              : used for a client which is away
+        - output-muted      : used for a client with speakers muted
+        - mic-deactivated   : used for a client with deactivated microphone
+        - mic-muted         : used for a client with muted mic
+        - channel-commander : used for a client which is channelcommander
+        - client-cm-talking : same as above but client is speaking
+        - client-talking    : a normal client which is talking
+*/
+.clientimage
+{
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    margin-right: 4px;
+}
+
+.normal-client
+{
+    background: url("img/normal_client.png") no-repeat transparent;
+}
+
+.away
+{
+    background: url("img/away.png") no-repeat transparent;
+}
+
+.output-muted
+{
+    background: url("img/output_muted.png") no-repeat transparent;
+}
+
+.mic-deactivated
+{
+    background: url("img/mic_deactivated.png") no-repeat transparent;
+}
+
+.mic-muted
+{
+    background: url("img/mic_muted.png") no-repeat transparent;
+}
+
+.channel-commander
+{
+    background: url("img/channel_commander.png") no-repeat transparent;
+}
+
+.client-talking
+{
+    background: url("img/client_talking.png") no-repeat transparent;
+}
+
+.client-cm-talking
+{
+    background: url("img/client_cm_talking.png") no-repeat transparent;
+}
+/* END CLIENT IMAGE */
+/* END CLIENT */

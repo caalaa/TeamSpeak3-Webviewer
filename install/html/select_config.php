@@ -2,7 +2,7 @@
     <script type="text/javascript">
         $('#selector').button();
     </script>
-    <?php echo($data['err_warn'])?>
+    <?php if(isset($data['err_warn'])) echo($data['err_warn'])?>
     <div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em; margin-bottom: 10px;"> 
         <p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
         <?php __e('Please select one of those existing configfiles:')?></p>

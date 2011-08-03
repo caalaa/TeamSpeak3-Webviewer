@@ -9,10 +9,12 @@
 * Fix
 
 v 1.0
++ style 'modern-dark'
 + permission check in installscript
 ~ added possibility to use a relative path in the jquery and jqueryui module.
 ~ Layout changes in installscript
 * Fixed bug in installscript that 'no.png' has been shown as an imagepack
+* notice in installscript
 
 v 0.9
 ! Added GNU gettext for i18n/ l10n instead of xml config files for easy translation in other languages
