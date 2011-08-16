@@ -1,4 +1,20 @@
 <?php
+/**
+ *  This file is part of TeamSpeak3 Webviewer.
+ *
+ *  TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  TeamSpeak3 Webviewer is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
 /**
  * Events thrown by the viewer:
@@ -11,7 +27,6 @@
  * onHtmlShutdown (html) after the viewer is rendered
  * onShutdown (no html) the last event triggered for final tidy up 
  */
-
 // Start Session
 session_name('ms_ts3Viewer');
 session_start();
@@ -73,8 +88,7 @@ $start = microtime(true);
 require_once s_root . "core/utils.inc";
 require_once s_root . 'core/config.inc';
 
-unregister_globals('_POST', '_GET', '_COOKIE', '_REQUEST', '_SERVER', '_ENV',
-        '_FILES', '_SESSION');
+unregister_globals('_POST', '_GET', '_COOKIE', '_REQUEST', '_SERVER', '_ENV', '_FILES', '_SESSION');
 
 $config_name = isset($_GET['config']) ? $_GET['config'] : '';
 str_replace('/', '', $config_name);
@@ -174,12 +188,15 @@ $config['image_type'] = '.' . $config['image_type'];
 $config['client_name'] = "Maxesstuff TS3 Webviewer";
 
 
-//get all needed classes
+// get all needed classes
 require_once s_root . 'core/teamspeak.inc';
 require_once s_root . 'core/module.inc';
 require_once s_root . 'core/tsv.inc';
 require_once s_root . 'core/i18n.inc';
 require_once s_root . "libraries/php-gettext/gettext.inc";
+
+// define cachepath
+define("cacheDir", s_root . 'cache/' . $config['host'] . $config['queryport'] . '/' . $config['vserverport'] . '/');
 
 $output = '';
 try
@@ -210,8 +227,7 @@ elseif (isset($_GET['fc']) && isset($config['enable_cache_flushing']) && $config
 }
 else
 {
-    $query->set_caching($config['enable_caching'],
-            $config['standard_cachetime'], $config['cachetime']);
+    $query->set_caching($config['enable_caching'], $config['standard_cachetime'], $config['cachetime']);
 }
 
 
@@ -270,8 +286,7 @@ $output .= render_server($serverinfo['return'], $config['imagepath']);
 $output .= $mManager->triggerEvent("serverRendered");
 
 // render the channels
-$output .= render_channellist($channellist_obj, $clientlist['return'],
-        $servergroups['return'], $channelgroups['return']);
+$output .= render_channellist($channellist_obj, $clientlist['return'], $servergroups['return'], $channelgroups['return']);
 
 
 
@@ -297,18 +312,14 @@ function render_client($clientinfo, $servergrouplist, $channelgrouplist)
 
     if ($clientinfo['client_type'] == 1) return '';
 
-    $rendered = '<div class="client" id="' . $config['prefix'] . 'client_' . htmlspecialchars($clientinfo['clid'],
-                    ENT_QUOTES) . '"><p class="client-content" id="' . $config['prefix'] . "client_" . htmlspecialchars($clientinfo['clid'],
-                    ENT_QUOTES) . '">';
+    $rendered = '<div class="client" id="' . $config['prefix'] . 'client_' . htmlspecialchars($clientinfo['clid'], ENT_QUOTES) . '"><p class="client-content" id="' . $config['prefix'] . "client_" . htmlspecialchars($clientinfo['clid'], ENT_QUOTES) . '">';
 
-    foreach (get_servergroup_images($clientinfo, $servergrouplist,
-            $config['use_serverimages'], $config['servergrp_images']) as $image)
+    foreach (get_servergroup_images($clientinfo, $servergrouplist, $config['use_serverimages'], $config['servergrp_images']) as $image)
     {
         if ($image == 0) continue;
         $rendered .= '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $image . '\') no-repeat transparent;">&nbsp;</span>';
     }
-    $channelgroup_icon = get_channelgroup_image($clientinfo, $channelgrouplist,
-            $config['use_serverimages'], $config['channelgrp_images']);
+    $channelgroup_icon = get_channelgroup_image($clientinfo, $channelgrouplist, $config['use_serverimages'], $config['channelgrp_images']);
     if ($channelgroup_icon != 0)
     {
         $rendered .= '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $channelgroup_icon . '\') no-repeat transparent;">&nbsp;</span>';
@@ -340,13 +351,11 @@ function render_channel_start($channel, $clientlist)
 
         if (($channel->has_childs() || $channel->has_clients($clientlist)) && $config['show_arrows'])
         {
-            $output .= '<div class="channel channel_arr" id="' . $config['prefix'] . "channel_" . htmlspecialchars($channel['cid'],
-                            ENT_QUOTES) . "\">\r\n";
+            $output .= '<div class="channel channel_arr" id="' . $config['prefix'] . "channel_" . htmlspecialchars($channel['cid'], ENT_QUOTES) . "\">\r\n";
         }
         else
         {
-            $output .= '<div class="channel channel_norm" id="' . $config['prefix'] . "channel_" . htmlspecialchars($channel['cid'],
-                            ENT_QUOTES) . "\">\r\n";
+            $output .= '<div class="channel channel_norm" id="' . $config['prefix'] . "channel_" . htmlspecialchars($channel['cid'], ENT_QUOTES) . "\">\r\n";
         }
         $output .= '<p class="chan_content">';
 
@@ -381,13 +390,11 @@ function render_channel_start($channel, $clientlist)
     {
         if (($channel->has_childs() || $channel->has_clients($clientlist)) && $config['show_arrows'])
         {
-            $output .= '<div class="spacer spacer_arr" id="' . $config['prefix'] . "channel_" . htmlspecialchars($channel['cid'],
-                            ENT_QUOTES) . '">';
+            $output .= '<div class="spacer spacer_arr" id="' . $config['prefix'] . "channel_" . htmlspecialchars($channel['cid'], ENT_QUOTES) . '">';
         }
         else
         {
-            $output .= '<div class="spacer spacer_norm" id="' . $config['prefix'] . "channel_" . htmlspecialchars($channel['cid'],
-                            ENT_QUOTES) . '">';
+            $output .= '<div class="spacer spacer_norm" id="' . $config['prefix'] . "channel_" . htmlspecialchars($channel['cid'], ENT_QUOTES) . '">';
         }
         if ($channel['channel_name']['is_special_spacer'])
         {
@@ -437,8 +444,7 @@ function render_channel_start($channel, $clientlist)
                 $output .= '<img alt="" class="img_l arrow" src="' . $config['imagepath'] . 'arrow_normal' . $config['image_type'] . '"/>';
             }
 
-            $output .= ( $channel['channel_name']['spacer_alignment'] == '*' ? str_repeat(escape_name($channel['channel_name']['spacer_name']),
-                                    200) : escape_name($channel['channel_name']['spacer_name'])) . "</p>\r\n";
+            $output .= ( $channel['channel_name']['spacer_alignment'] == '*' ? str_repeat(escape_name($channel['channel_name']['spacer_name']), 200) : escape_name($channel['channel_name']['spacer_name'])) . "</p>\r\n";
         }
     }
 
@@ -446,8 +452,7 @@ function render_channel_start($channel, $clientlist)
 }
 
 // Renders the Channels
-function render_channellist($channellist, $clientlist, $servergroups,
-        $channelgroups)
+function render_channellist($channellist, $clientlist, $servergroups, $channelgroups)
 {
     static $is_rendered;
 
@@ -480,8 +485,7 @@ function render_channellist($channellist, $clientlist, $servergroups,
 
         if ($channel->has_childs())
         {
-            $output .= render_channellist($channel->get_childs(), $clientlist,
-                    $servergroups, $channelgroups);
+            $output .= render_channellist($channel->get_childs(), $clientlist, $servergroups, $channelgroups);
         }
 
         $output .= "</div>\r\n";

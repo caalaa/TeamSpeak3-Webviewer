@@ -1,8 +1,20 @@
 <?php
 
-/* Author    : Maximilian Narr
- * Homepage  : http://maxesstuff.de
- * Email     : maxe@maxesstuff.de
+/**
+ *  This file is part of TeamSpeak3 Webviewer.
+ *
+ *  TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  TeamSpeak3 Webviewer is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 /**
@@ -12,14 +24,19 @@
  */
 function needNewEntry($configfile)
 {
-    if (!file_exists(s_root . "modules/stats/cache/$configfile.xml"))
+    $fileDir = cacheDir . "stats/$configfile.xml";
+    if (!file_exists($fileDir))
     {
-        file_put_contents(s_root . "modules/stats/cache/$configfile.xml",
-                file_get_contents(s_root . "modules/stats/cache/template.xml"));
+        if (!is_dir(cacheDir . "stats"))
+        {
+            mkdir(cacheDir . "stats", 0, true);
+        }
+
+        file_put_contents($fileDir, file_get_contents(s_root . "modules/stats/cache/template.xml"));
         return true;
     }
 
-    $xml = simplexml_load_file(s_root . "modules/stats/cache/$configfile.xml");
+    $xml = simplexml_load_file($fileDir);
 
     if ($xml->updated == '' || time() - $xml->updated >= 500)
     {
@@ -35,7 +52,9 @@ function needNewEntry($configfile)
  */
 function addEntry($clients_online, $configfile)
 {
-    $xml = simplexml_load_file(s_root . "modules/stats/cache/$configfile.xml");
+    $fileDir = cacheDir . "stats/$configfile.xml";
+
+    $xml = simplexml_load_file($fileDir);
 
     $xml->updated = (string) time();
 
@@ -43,7 +62,7 @@ function addEntry($clients_online, $configfile)
     $entry->addChild('clients', $clients_online);
     $entry->addChild('timestamp', (string) time());
 
-    $handle = fopen(s_root . "modules/stats/cache/$configfile.xml", "w");
+    $handle = fopen($fileDir, "w");
     fwrite($handle, $xml->asXML());
     fclose($handle);
 }
