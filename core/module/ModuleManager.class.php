@@ -99,10 +99,10 @@ class ms_ModuleManager
             {
                 foreach ($module->attributes() as $key => $value)
                 {
-                    if ((string) $key == "name" && (string) $value = $name)
+                    if ((string) $key == "name" && (string) $value == $name)
                     {
                         foreach ($module as $key => $value)
-                        {
+                        {                          
                             switch ($value)
                             {
                                 case "true":
@@ -119,7 +119,8 @@ class ms_ModuleManager
                                     break;
                             }
 
-                            $config[$key] = $value;
+                            if(!$value == NULL)
+                                $config[$key] = $value;
                         }
                     }
                 }

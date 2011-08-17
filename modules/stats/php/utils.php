@@ -29,7 +29,7 @@ function needNewEntry($configfile)
     {
         if (!is_dir(cacheDir . "stats"))
         {
-            mkdir(cacheDir . "stats", 0, true);
+            mkdir(cacheDir . "stats", 0775);
         }
 
         file_put_contents($fileDir, file_get_contents(s_root . "modules/stats/cache/template.xml"));

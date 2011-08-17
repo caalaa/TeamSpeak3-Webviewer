@@ -22,8 +22,7 @@ require_once 'utils.php';
 // l18n
 $lang = $_SESSION['lang'];
 
-setlocale(LC_MESSAGES, $lang . ".utf8", $lang . ".UTF8", $lang . ".utf-8",
-        $lang . "UTF-8", $lang);
+setlocale(LC_MESSAGES, $lang . ".utf8", $lang . ".UTF8", $lang . ".utf-8", $lang . "UTF-8", $lang);
 
 $domain = "ms-tsv-install";
 
@@ -31,33 +30,78 @@ bindtextdomain($domain, PROJECTPATH);
 textdomain($domain);
 bind_textdomain_codeset($domain, ENCODING);
 
-// Outputs header
-echo(file_get_contents("../html/header_xmledit.html"));
 
 $module = $_GET['module'];
+
+$xml = simplexml_load_string($_SESSION['config_xml']);
+
+// Errors and warnings
+$msERRWAR = "";
 
 // If File should be saved
 if ($_REQUEST['action'] == "submit" && isset($_REQUEST['module']))
 {
-    $handle = fopen("../../modules/$module/$module.xml", "w");
-    fwrite($handle, str_replace('\\"', '"', $_POST['xml']));
-    fclose($handle);
+    // global config
+    if ($_REQUEST['type'] == 'global')
+    {
+        $handle = fopen("../../modules/$module/$module.xml", "w");
+        fwrite($handle, str_replace('\\"', '"', $_REQUEST['xml']));
+        fclose($handle);
 
-    echo(throwWarning(__('Configfile successfully saved!')));
+        $msERRWAR .= throwWarning((__('Configfile successfully saved!')));
+    }
+    // local config
+    else if ($_REQUEST['type'] == 'local')
+    {
+        foreach ($xml->module as $mod)
+        {
+            foreach ($mod->attributes() as $key => $value)
+            {
+                if ((string) $key == "name" && (string) $value == $module)
+                {
+                    $newXML = simplexml_load_string(str_replace('\\"', '"', $_REQUEST['xml']));
+
+                    $dom = dom_import_simplexml($mod);
+                    $dom->parentNode->removeChild($dom);
+
+                    $newChild = $xml->addChild('module');
+                    $newChild->addAttribute('name', $module);
+
+                    foreach ($newXML as $key => $value)
+                    {
+                        $newChild->addChild($key, $value);
+                    }
+
+                    $dom = new DOMDocument('1.0');
+                    $dom->preserveWhiteSpace = false;
+                    $dom->formatOutput = true;
+                    $dom->loadXML($xml->asXML());
+                    $xml = simplexml_load_string($dom->saveXML());
+                }
+            }
+        }
+        $msERRWAR .= throwWarning((__('The changes have been added to the queue. They will be saved if you save the configfile of the viewer for the next time.')));
+        $_SESSION['config_xml'] = $xml->asXML();
+    }
 }
 
-$xml = simplexml_load_file("../../modules/$module/$module.xml")->asXML();
+// Local config
+$localConfig = "";
 
-$html = array();
-$html['code'] = $xml;
-$html['module_edit'] = $module;
-$html['xml_script'] = 'var editor = CodeMirror.fromTextArea(document.getElementById("code"), {mode: {name: "xml", alignCDATA: true}});';
+foreach ($xml->module as $mod)
+{
+    foreach ($mod->attributes() as $key => $value)
+    {
+        if ((string) $key == "name" && (string) $value == $module)
+        {
+            $localConfig = $mod->asXML();
+            break 2;
+        }
+    }
+}
+
+// Global config
+$globalConfig = simplexml_load_file("../../modules/$module/$module.xml")->asXML();
 
 require_once '../html/xmledit.php';
-
-// Outputs Editor
-echo($out);
-
-// Outputs Footer
-echo(file_get_contents("../html/footer.html"));
 ?>

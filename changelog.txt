@@ -9,6 +9,9 @@
 * Fix
 
 v 1.0
+! There are two module configfiles now:
+    - one global one for all viewer-configfiles
+    - one for each viewer-configfile. All options of this configfile will override the global ones
 + style 'modern-dark'
 + permission check in installscript
 ~ added possibility to use a relative path in the jquery and jqueryui module.

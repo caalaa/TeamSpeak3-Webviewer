@@ -87,7 +87,7 @@ function addModuleConfigParameter($xml)
         {
             if ((string) $option !== "info")
             {
-                $newSection->addChild($option, $value);
+                $newSection->addChild($option, "none");
             }
         }
     }
