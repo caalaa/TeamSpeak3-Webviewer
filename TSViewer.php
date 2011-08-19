@@ -1,4 +1,5 @@
 <?php
+
 /**
  *  This file is part of TeamSpeak3 Webviewer.
  *
@@ -15,7 +16,6 @@
  *  You should have received a copy of the GNU General Public License
  *  along with TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 /**
  * Events thrown by the viewer:
  * onStartup (no html) after loading the modules specified in the config
@@ -193,19 +193,22 @@ require_once s_root . 'core/teamspeak.inc';
 require_once s_root . 'core/module.inc';
 require_once s_root . 'core/tsv.inc';
 require_once s_root . 'core/i18n.inc';
+require_once s_root . 'core/utils.inc';
 require_once s_root . "libraries/php-gettext/gettext.inc";
 
 // define cachepath
 define("cacheDir", s_root . 'cache/' . $config['host'] . $config['queryport'] . '/' . $config['vserverport'] . '/');
 
 $output = '';
+
 try
 {
     $query = new TSQuery($config['host'], $config['queryport']);
 }
-catch (Exception $e)
+catch (Exception $ex)
 {
-    die($e->getMessage());
+    echo(throwAlert($ex->getMessage(), null, true));
+    exit;
 }
 
 $mManager = new ms_ModuleManager($config, $config_name, $debug);
@@ -230,32 +233,38 @@ else
     $query->set_caching($config['enable_caching'], $config['standard_cachetime'], $config['cachetime']);
 }
 
-
-if ($config['login_needed'])
+try
 {
-    ts3_check($query->login($config['username'], $config['password']), 'login');
+    if ($config['login_needed'])
+    {
+        ts3_check($query->login($config['username'], $config['password']), 'login');
+    }
+
+    ts3_check($query->use_by_port($config['vserverport']), 'use');
+
+    $query->send_cmd("clientupdate client_nickname=" . $query->ts3query_escape($config['client_name']));
+
+    $serverinfo = $query->serverinfo();
+    ts3_check($serverinfo, 'serverinfo');
+
+    $channellist = $query->channellist("-voice -flags -icon -limits");
+    ts3_check($channellist, 'channellist');
+
+    $clientlist = $query->clientlist("-away -voice -groups -info -times");
+    ts3_check($clientlist, 'clientlist');
+
+    $servergroups = $query->servergrouplist();
+    ts3_check($servergroups, 'servergroups');
+
+    $channelgroups = $query->channelgrouplist();
+    ts3_check($channelgroups, 'channelgroups');
 }
-
-ts3_check($query->use_by_port($config['vserverport']), 'use');
-
-
-$query->send_cmd("clientupdate client_nickname=" . $query->ts3query_escape($config['client_name']));
-
-$serverinfo = $query->serverinfo();
-ts3_check($serverinfo, 'serverinfo');
-
-$channellist = $query->channellist("-voice -flags -icon -limits");
-ts3_check($channellist, 'channellist');
-
-$clientlist = $query->clientlist("-away -voice -groups -info -times");
-ts3_check($clientlist, 'clientlist');
-
-$servergroups = $query->servergrouplist();
-ts3_check($servergroups, 'servergroups');
-
-$channelgroups = $query->channelgrouplist();
-ts3_check($channelgroups, 'channelgroups');
-
+catch (Exception $ex)
+{
+    echo(throwAlert($ex->getMessage(), null, true)); 
+    $query->quit();
+    exit;
+}
 $query->quit();
 
 

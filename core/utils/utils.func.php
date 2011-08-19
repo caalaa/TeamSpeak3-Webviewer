@@ -91,4 +91,86 @@ function replaceValues($file, $values, $languagefile)
     return $html;
 }
 
+/**
+ * Throws alert
+ * @param type $message
+ * @param type $code error code
+ * @return string 
+ */
+function throwAlert($message, $code=NULL, $display=false)
+{
+    if ($display == true)
+    {
+        $html = '<div class="alert" style="margin-bottom:5px;">';
+    }
+    else
+    {
+        $html = '<div class="alert" style="margin-bottom:5px; display:none;">';
+    }
+
+    $html .= '<div class="ui-widget">
+                    <div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">';
+
+    if ($code != NULL) $html .= '<p><a href="http://de.maxesstuff.de/software/teamspeak3-webviewer/faq" target="_blank">' . __('Error') . ' ' . $code . '</a></p>';
+
+    $html .= '<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>' . $message . '</p>                       
+                    </div>
+            </div>
+            </div>';
+    return $html;
+}
+
+/**
+ * Throws warning
+ * @param type $message
+ * @return string 
+ */
+function throwWarning($message, $display=false)
+{
+    if ($display == true)
+    {
+        $html = '<div class="warning" style="margin-bottom:5px;">';
+    }
+    else
+    {
+        $html = '<div class="warning" style="margin-bottom:5px; display:none;">';
+    }
+
+
+    $html .= '<div class="ui-widget">
+				<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;"> 
+					<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>' . $message . '</p>
+				</div>
+			</div>
+                        </div>';
+    return $html;
+}
+
+/**
+ * Throws info
+ * @since 0.9
+ * @param type $message
+ * @return string 
+ */
+function throwInfo($message, $display=false)
+{
+    if ($display == true)
+    {
+        $html = '<div class="info" style="margin-bottom:5px;">';
+    }
+    else
+    {
+        $html = '<div class="info" style="margin-bottom:5px; display:none;">';
+    }
+
+
+    $hml .= '<div class="ui-widget">
+				<div class="ui-state-default ui-corner-all" style="margin-top: 20px; padding: 0 .7em;"> 
+					<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>' . $message . '</p>
+				</div>
+			</div>
+                        </div>';
+    return $html;
+}
+
 ?>

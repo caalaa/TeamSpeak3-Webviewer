@@ -206,12 +206,13 @@ function checkFunctions()
             $html .= throwAlert(__('The necessary function') . ' ' . $value . ' ' . __('is not available on your webspace. Please contact your service provider.'), 25);
         }
     }
-
+    
     return $html;
 }
 
 /**
  * Echos gettext message
+ * @deprecated due to gettext implementation change
  * @since 0.9
  * @param type $message 
  */
@@ -289,62 +290,6 @@ function setChmodRecursive($path, $chmod)
 
         chmod($path, $chmod);
     }
-}
-
-/**
- * Throws alert
- * @param type $message
- * @param type $code error code
- * @return string 
- */
-function throwAlert($message, $code=NULL)
-{
-    $html = '<div class="alert" style="margin-bottom:5px; display:none;">
-            <div class="ui-widget">
-                    <div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">';
-
-    if ($code != NULL) $html .= '<p><a href="http://de.maxesstuff.de/software/teamspeak3-webviewer/faq" target="_blank">' . __('Error') . ' ' . $code . '</a></p>';
-
-    $html .= '<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>' . $message . '</p>                       
-                    </div>
-            </div>
-            </div>';
-    return $html;
-}
-
-/**
- * Throws warning
- * @param type $message
- * @return string 
- */
-function throwWarning($message)
-{
-    $html = '<div class="warning" style="margin-bottom:5px; display:none;">
-            <div class="ui-widget">
-				<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;"> 
-					<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>' . $message . '</p>
-				</div>
-			</div>
-                        </div>';
-    return $html;
-}
-
-/**
- * Throws info
- * @since 0.9
- * @param type $message
- * @return string 
- */
-function throwInfo($message)
-{
-    $html = '<div class="info" style="margin-bottom:5px; display:none;">
-            <div class="ui-widget">
-				<div class="ui-state-default ui-corner-all" style="margin-top: 20px; padding: 0 .7em;"> 
-					<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>' . $message . '</p>
-				</div>
-			</div>
-                        </div>';
-    return $html;
 }
 
 ?>

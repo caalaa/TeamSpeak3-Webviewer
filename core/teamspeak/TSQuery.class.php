@@ -1,12 +1,21 @@
 <?php
 
-/* Author    : Max Rath
- * Homepage  : http://maxesstuff.de
- * Email     : drak3@maxesstuff.de
- * License   : See license-folder
- * Version   : See changelog.txt
+/**
+ *  This file is part of TeamSpeak3 Webviewer.
+ *
+ *  TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  TeamSpeak3 Webviewer is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 class TSQuery
 {
 
@@ -28,23 +37,15 @@ class TSQuery
     private $cmds;
     private $cmd_sent;
 
-    //In the constructor will be created a new socket and login stuff will be done.
-
     /**
       The consructor opens a new Connection to the host and logs in with name and password
 
-
-
       @throws Exception throws if connection or login failed.
-
       @param	string	$host: the hostname or the ip-adress e.g. "localhost" or "127.0.0.1"
       @param	int		$port: the server query port e.g. 10011 (standart query port)
       @param 	int 	$vserver: the virtual server to login e.g. 0
       @param 	string	$loginname: with this name you will be logged in (make sure that if you're no logged in with serveradmin some functions don't work)
       @param	string	$password: a valid Password connected to the loginname
-
-
-
      */
     function __construct($host, $port)
     {
@@ -65,11 +66,11 @@ class TSQuery
         {
             if (false)
             {
-                throw new Exception("Connection to Server $this->ip on port $this->port");
+                throw new QueryNoResponseException(sprintf("Establishing a connection on the server at %s:%s failed.", (string) $this->ip, (string) $this->query_port));
             }
             else
             {
-                throw new Exception("Server is Offline at the Moment");
+                throw new QueryNotAvailableException(sprintf("The server at %s:%s is currently offline", (string) $this->ip, (string) $this->query_port));
             }
         }
 
@@ -82,14 +83,13 @@ class TSQuery
     function set_caching($caching, $standard_cachetime=NULL, $cachetime=NULL)
     {
         $this->caching = $caching;
-        if ($standard_cachetime != NULL)
-                $this->standard_cachetime = $standard_cachetime;
+        if ($standard_cachetime != NULL) $this->standard_cachetime = $standard_cachetime;
         if (is_array($cachetime)) $this->cachetime = $cachetime;
     }
 
     //WRAPPER\\
     /**
-      Wrapper for the Querycommand use with port=$port i had to choos another name
+      Wrapper for the Querycommand use with port=$port i had to choose another name
       so the function is called use_vserver
       @acces public
 
@@ -175,8 +175,7 @@ class TSQuery
         $key = $this->ts3query_unescape($ret['ftkey']);
         $size = $ret['size'];
 
-        if ($this->ftconn == NULL)
-                $this->ftconn = fsockopen($this->ip, $ret['port']);
+        if ($this->ftconn == NULL) $this->ftconn = fsockopen($this->ip, $ret['port']);
         if ($this->ftconn == false) return false;
 
         fputs($this->ftconn, $key);
@@ -261,8 +260,7 @@ class TSQuery
 
     protected function parse_ts3_response($response)
     {
-        $result = preg_match("#.*error id=([[:digit:]]{1,4}) msg=(.*)$#Ds",
-                $response, $buff);
+        $result = preg_match("#.*error id=([[:digit:]]{1,4}) msg=(.*)$#Ds", $response, $buff);
         if ($result == 0)
         {
             $ret['return'] = $response;
@@ -270,8 +268,7 @@ class TSQuery
         }
         else
         {
-            $ret['return'] = preg_replace("#error id=[[:digit:]]{1,4} msg=.*$#Ds",
-                    '', $response);
+            $ret['return'] = preg_replace("#error id=[[:digit:]]{1,4} msg=.*$#Ds", '', $response);
             $ret['error']['id'] = (int) $buff[1];
             $ret['error']['msg'] = $this->ts3query_unescape($buff[2]);
         }
@@ -352,7 +349,8 @@ class TSQuery
             $this->cmds[] = $cmd;
             return $this->parse_ts3_response("error id=0 msg=ok");
         }
-        if(is_array($this->cmds)) {
+        if (is_array($this->cmds))
+        {
             foreach ($this->cmds as $key => $command)
             {
                 $this->send_raw($cmd . "\n");
@@ -360,7 +358,7 @@ class TSQuery
                 unset($this->cmds[$key]);
             }
         }
-        
+
         $this->cmd_sent = TRUE;
         $response = $this->send_raw($cmd . "\n");
         if ($response === false)
@@ -382,14 +380,12 @@ class TSQuery
         if (!file_exists($this->cachepath . "query/time/$cmd")) return true;
         if (!empty($this->last_cached[$cmd]))
         {
-            if (time() - $this->last_cached[$cmd] < ( isset($this->cachetime[$cmd]) ? $this->cachetime[$cmd] : $this->standard_cachetime ))
-                    return false;
+            if (time() - $this->last_cached[$cmd] < ( isset($this->cachetime[$cmd]) ? $this->cachetime[$cmd] : $this->standard_cachetime )) return false;
         }
         else
         {
             $this->last_cached[$cmd] = file_get_contents($this->cachepath . "query/time/$cmd");
-            if (time() - $this->last_cached[$cmd] < ( isset($this->cachetime[$cmd]) ? $this->cachetime[$cmd] : $this->standard_cachetime ))
-                    return false;
+            if (time() - $this->last_cached[$cmd] < ( isset($this->cachetime[$cmd]) ? $this->cachetime[$cmd] : $this->standard_cachetime )) return false;
         }
         return true;
     }
@@ -417,11 +413,10 @@ class TSQuery
     private function open_new_connection()
     {
 
-        $this->connection = fsockopen($this->ip, $this->query_port,
-                $this->sock_error, $this->sock_error_string, $this->timeout);
+        $this->connection = fsockopen($this->ip, $this->query_port, $this->sock_error, $this->sock_error_string, $this->timeout);
         if ($this->sock_error != 0)
         {
-            die("Can't open connection");
+            throw new QueryNoResponseException(sprintf("Can't open connection to the server at %s:%s. It might be offline at the moment.", $this->ip, $this->query_port));
         }
     }
 

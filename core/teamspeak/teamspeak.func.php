@@ -21,22 +21,31 @@ function sort_clients($l)
     return $l;
 }
 
+/**
+ * Checks a response by the query for any errors
+ * @param type $response
+ * @param type $cmd
+ * @return type 
+ */
 function ts3_check($response, $cmd='')
-{
+{  
     if ($response == true)
     {
         return;
     }
     elseif (!is_array($response))
     {
-        die('no response while fetching command ' . $cmd);
+        throw new QueryNoResponseException("No response while fetching command " . $cmd);
     }
     elseif ($response['error']['id'] != 0)
     {
-        if ($cmd == '') die('Query Error, please check whitelist and permissions');
+        if ($cmd == '')
+        {
+            throw new QueryCommunicationException("An error occured while executing on the query: " .$response['error']['msg']);
+        }
         else
         {
-            die('Error code ' . $response['error']['id'] . ' while executing command "' . $cmd . "\"<br> Error Message:  \"" . $response['error']['msg'] . '"');
+            throw new QueryCommunicationException("An error occured while executing $cmd on the query: ".$response['error']['id']. " ".$response['error']['msg']);
         }
     }
 }

@@ -16,8 +16,21 @@
  *  You should have received a copy of the GNU General Public License
  *  along with TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
  */
-require_once s_root . "core/teamspeak/TSChannel.class.php";
-require_once s_root . "core/teamspeak/TSQuery.class.php";
-require_once s_root . "core/teamspeak/teamspeak.func.php";
-require_once s_root . "core/teamspeak/Exceptions.php";
+
+/**
+ * Exception of no response by the server query received
+ */
+class QueryNoResponseException extends Exception { }
+
+/**
+ * Used if a connection could not established
+ */
+class QueryNotAvailableException extends Exception { }
+
+/**
+ * Used for a command-executing failues
+ */
+class QueryCommunicationException extends Exception { }
+
+
 ?>

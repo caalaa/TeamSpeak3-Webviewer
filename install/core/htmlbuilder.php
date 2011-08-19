@@ -1,48 +1,20 @@
 <?php
-
-/* Author    : Maximilian Narr
- * Homepage  : http://maxesstuff.de
- * Email     : maxe@maxesstuff.de
- */
-
 /**
- * Replaces a html file with its values
- * @deprecated gettext implementation
- * @param type $file
- * @param type $vals
- * @param type $loc
- * @return html code of the replaced file
+ *  This file is part of TeamSpeak3 Webviewer.
+ *
+ *  TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  TeamSpeak3 Webviewer is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
  */
-function replaceValues($file, $vals=NULL, $loc=FALSE)
-{
-    $lang = (array) getLanguageFile($loc);
-
-
-    $data = array();
-
-    if ($vals != NULL)
-    {
-        (array) $data = array_merge((array) $lang, (array) $vals);
-    }
-    else
-    {
-        $data = $lang;
-    }
-
-    $html = file_get_contents($file);
-
-    $matches = array();
-    preg_match_all("/{.*?}/", $html, $matches);
-
-    foreach ($matches[0] as $match)
-    {
-        $match_raw = $match;
-        $match_norm = preg_replace("/[{}]/", "", strtolower($match_raw));
-
-        $html = str_replace($match_raw, (string) $data[$match_norm], $html);
-    }
-    return $html;
-}
 
 /**
  * Returns the $data array for select_config.php
@@ -210,28 +182,6 @@ function createEditHtml()
         else $html['language_html'] .= '<input type="radio" name="language"  value="' . $langCode . '">' . $langOptions['lang'] . ' <br>';
     }
     return $html;
-}
-
-/**
- * Returns the language file as an XML-Object
- * @deprecated gettext implementation
- * @param type $loc
- * @return type 
- */
-function getLanguageFile($loc)
-{
-    $lang = $_SESSION['lang'];
-
-    if (!$loc)
-    {
-        if ($lang == "en") return simplexml_load_file("i18n/en.i18n.xml");
-        else return simplexml_load_file("i18n/de.i18n.xml");
-    }
-    else
-    {
-        if ($lang == "en") return simplexml_load_file("../i18n/en.i18n.xml");
-        else return simplexml_load_file("../i18n/de.i18n.xml");
-    }
 }
 
 ?>

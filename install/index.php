@@ -17,6 +17,7 @@ require_once 'core/xml.php';
 require_once '../libraries/php-gettext/gettext.inc';
 require_once '../core/tsv/tsv.class.php';
 require_once '../core/i18n/i18n.func.php';
+require_once '../core/utils/utils.func.php';
 
 $utils = new tsvUtils("../");
 
