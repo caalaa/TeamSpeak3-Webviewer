@@ -1,4 +1,20 @@
 <?php
+/**
+ *  This file is part of TeamSpeak3 Webviewer.
+ *
+ *  TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  TeamSpeak3 Webviewer is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
+ */
 require_once s_root . 'core/utils.inc';
 require_once s_root . 'libraries/php-gettext/gettext.inc';
 require_once s_root . 'install/core/xml.php';
@@ -125,13 +141,13 @@ setL10n($lang, "ms-tsv-welcome");
                             foreach ($configfiles as $file)
                             {
                                     ?><li><a href="<?php echo(s_http . 'TSViewer.php?config=' . $file) ?>"><?php echo($file) ?></a></li><?php } ?></ul>   
-                        <?php } ?></p>
+                            <?php } ?></p>
                         <div id="help" style="margin-top: 8px;">
                             <img src="<?php echo(s_http . 'html/welcome/help.png') ?>" alt="" style="float:right;">
                             <p><?php __e('If you need help, you can take a look for our Livesupport or our FAQ') ?></p>
                             <ul style="list-style-image: url('<?php echo(s_http . 'html/welcome/arrow.png'); ?>');">
-                                <li><a href="http://support.maxesstuff.de/chat.php"><?php __e('Livesupport')?></a></li>
-                                <li><a href="http://de.maxesstuff.de/teamspeak3-webviewer/faq"><?php __e('FAQ')?></a></li>
+                                <li><a href="http://support.maxesstuff.de/chat.php"><?php __e('Livesupport') ?></a></li>
+                                <li><a href="http://de.maxesstuff.de/teamspeak3-webviewer/faq"><?php __e('FAQ') ?></a></li>
                             </ul>
                         </div>
                     </div>

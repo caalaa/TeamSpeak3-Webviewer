@@ -207,7 +207,9 @@ try
 }
 catch (Exception $ex)
 {
-    echo(throwAlert($ex->getMessage(), null, true));
+    $msERRWAR = throwAlert($ex->getMessage(), null, true);
+
+    require_once s_root . 'html/error/error.php';
     exit;
 }
 
@@ -261,8 +263,10 @@ try
 }
 catch (Exception $ex)
 {
-    echo(throwAlert($ex->getMessage(), null, true)); 
+    $msERRWAR = throwAlert($ex->getMessage(), null, true);
     $query->quit();
+
+    require_once s_root . 'html/error/error.php';
     exit;
 }
 $query->quit();
