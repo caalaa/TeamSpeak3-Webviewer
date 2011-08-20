@@ -1,6 +1,4 @@
-###############
-## Changelog ##
-###############
+== Changelog ==
 
 ! Major Change
 + Add
@@ -8,7 +6,7 @@
 ~ Minor Change
 * Fix
 
-v 1.0
+=== v 1.0 ===
 ! There are two module configfiles now:
     - one global one for all viewer-configfiles
     - one for each viewer-configfile. All options of this configfile will override the global ones
@@ -20,7 +18,7 @@ v 1.0
 * Fixed bug in installscript that 'no.png' has been shown as an imagepack
 * notice in installscript
 
-v 0.9
+=== v 0.9 ===
 ! Added GNU gettext for i18n/ l10n instead of xml config files for easy translation in other languages
 ! CSS and HTML Code enhancements for optimal display
 ! Fixed bug in viewer if you use the standard-group-icons and automatic download is enabled, the icons weren't shown (Thanks to sTimulated (http://forum.teamspeak.com))
@@ -47,7 +45,7 @@ v 0.9
 * stats module shows no longer negative clients online
 * Display but of the about module if first channel in the tree is moderated
 
-v 0.8
+=== v 0.8 ===
 ! Fixed all bugs which occured with Internet Explorer and other browsers
 ! The viewer can be included now via include or require (Path directivs adapted) (experimental only!)
 + Module: stats - shows the history of clients online in a chart
@@ -72,7 +70,7 @@ v 0.8
 * Fixed bug in the infoDialog that channelgroups weren't shown
 * Fixed caching: viewer is connecting only every x seconds as setted in the config file
 
-v 0.7
+=== v 0.7 ===
 ! Updated Installscript to new XML-Specification
 ! Updated code to valide HTML (checked with validator.w3.org)
 ! Changed config and language files from plaintext to xml
@@ -96,7 +94,7 @@ v 0.7
 * Added missing escaping to some fields
 * changed id attribute of channels/clients to channel_<channel_id> respectively client_<client_id> so colissions are avoided
 
-v 0.6
+=== v 0.6 ===
 ! The installscript has been updated completly
 + Module: ServerInfo which shows a detailed serverinfo
 + Module: InfoTab which shows several modules as tabs
@@ -104,21 +102,21 @@ v 0.6
 + Module: LoginButton which shows a button to login to the server
 * bugfixes 
 
-v 0.5.3
+=== v 0.5.3 ===
 * important bugfixes
 
-v 0.5.2
+=== v 0.5.2 ===
 * channel whith equal names should be rendered now
 * arrows has now a transparent background
 * changed error handling in /modules/infoDialog/getHTML.php
 * put permissions to open in install txt (thx to sTimulated) 
 
-v 0.5.1
+=== v 0.5.1 ===
 * fixed syntax failure (thx to optimatez)
 * added arrows with transparency
 * installer shows now if writing to configfile failed (thx to baraan)
 
-v 0.5
+=== v 0.5 ===
 + added a module architecture
 + rewrite of the legend and the direct login as a module
 + added the abstract modules Htmlframe, style, js, jQuery and jQueryUI
@@ -138,8 +136,8 @@ v 0.5
 * now tested in newest versions of Firefox, Safari, Chrome and Opera
 * fixed many display bugs
 * rewrite of configfiles to .conf for easier use
-
-v 0.2:
+ 
+=== v 0.2 ===
 + added better error handling
 + added the moderated icon
 + full channels are now shown correctly
@@ -150,3 +148,6 @@ v 0.2:
 * made some changes on the TSQuery class
 * made some changes on the caching times
 * changed error reporting
+
+=== v 0.1 ===
+! initial release
