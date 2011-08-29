@@ -1,3 +1,8 @@
+<!-- Logout Button -->
+<span style="position: absolute; right: 10px; top: 10px;" >
+    <a href="index.php?action=return" class="button"><?php __e('Back to configfiles')?></a>
+    <a href="index.php?action=logout" class="button"><?php __e('Logout') ?></a>
+</span>
 <div id="config">
     <script type="text/javascript">
         $(document).ready(function()
@@ -125,6 +130,6 @@
             <p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em; "></span>
                 <?php __e('Tip: Hover over the labels to get more information about the requested data.')?></p>
         </div>
-        <input type="submit" value="<?php __e('Save configfile')?>" /> <input type="button" onclick="javascript: redirect();" value="<?php __e('Back to configfiles')?>" />
+        <input type="submit" value="<?php __e('Save configfile')?>" />
     </form>
 </div>

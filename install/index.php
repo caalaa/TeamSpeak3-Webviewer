@@ -24,11 +24,19 @@ require_once '../core/utils/utils.func.php';
 $utils = new tsvUtils("../");
 
 // Outputs the header
-echo(file_get_contents("html/header.html"));
+echo(file_get_contents("html/header.php"));
 
 
 // START NON OUTPUT FUCTIONS \\
-// Unsets $_SESSION['config'] and $_SESSION['config_xml']
+// destroys the session. Loggs out of the installation script
+if(isset($_REQUEST['action']) && $_REQUEST['action'] == "logout")
+{
+    session_destroy();
+    require_once 'html/select_language.php';
+    exit;
+}
+
+// Unsets $_SESSION['config'] and $_SESSION['config_xml'] to return to the config file selection
 if (isset($_REQUEST['action']) && $_REQUEST['action'] == "return" && isset($_SESSION['validated']) && $_SESSION['validated'] == true)
 {
     unset($_SESSION['config']);

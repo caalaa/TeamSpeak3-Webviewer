@@ -2,7 +2,7 @@ $(document).ready(function(){
     
     var modules = new Array();
     
-    $("button, input:submit, input:button").button();  
+    $("button, input:submit, input:button, .button").button();  
     $('form.jqform').jqTransform();
     
     $('.color').colorbox({
@@ -74,13 +74,6 @@ function flushCache(config)
 function deleteConfig(config)
 {
     var href="?action=delete&config="+config
-    window.location.href = href;
-}
-
-// Goes back to the configfile selection
-function redirect()
-{
-    var href = "index.php?action=return";
     window.location.href = href;
 }
 
