@@ -71,7 +71,6 @@ class ms_ModuleManager
             }
 
             $viewerConfigPath = s_root . 'config/' . $this->configname . '.xml';
-
             // Loads viewer-config as simplexml-object
             if (file_exists($viewerConfigPath))
             {
@@ -93,7 +92,7 @@ class ms_ModuleManager
                 if (isset($config[$key])) continue;
                 $config[$key] = $value;
             }
-
+            
             // Write local Module-Config in array
             foreach ($xmlconfig->module as $module)
             {
