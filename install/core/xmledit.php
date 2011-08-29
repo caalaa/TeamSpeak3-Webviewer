@@ -1,12 +1,25 @@
 <?php
 
-/* Author    : Maximilian Narr
- * Homepage  : http://maxesstuff.de
- * Email     : maxe@maxesstuff.de
+/**
+ *  This file is part of TeamSpeak3 Webviewer.
+ *
+ *  TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  TeamSpeak3 Webviewer is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 session_name("tswv");
 session_start();
+
+error_reporting(E_ALL);
 
 define("PROJECTPATH", realpath("./../") . "/l18n");
 define("ENCODING", "UTF-8");
@@ -17,6 +30,7 @@ if (!$_SESSION['validated']) die("No Access");
 require_once '../../libraries/php-gettext/gettext.inc';
 require_once '../../core/i18n/i18n.func.php';
 require_once '../core/htmlbuilder.php';
+require_once '../../core/utils/utils.func.php';
 require_once 'utils.php';
 
 // l18n
@@ -39,19 +53,18 @@ $xml = simplexml_load_string($_SESSION['config_xml']);
 $msERRWAR = "";
 
 // If File should be saved
-if ($_REQUEST['action'] == "submit" && isset($_REQUEST['module']))
+if (isset($_REQUEST['action']) && $_REQUEST['action'] == "submit" && isset($_REQUEST['module']))
 {
     // global config
-    if ($_REQUEST['type'] == 'global')
+    if (isset($_REQUEST['type']) && $_REQUEST['type'] == 'global')
     {
-        $handle = fopen("../../modules/$module/$module.xml", "w");
-        fwrite($handle, str_replace('\\"', '"', $_REQUEST['xml']));
-        fclose($handle);
+        $result = file_put_contents("../../modules/$module/$module.xml", str_replace('\\\"', '"', $_REQUEST['xml']));
 
-        $msERRWAR .= throwWarning((__('Configfile successfully saved!')));
+        if ($result == FALSE) $msERRWAR .= throwWarning(__('The configfile could not be written. Please check the permissions for the file.'));
+        else $msERRWAR .= throwWarning((__('Configfile successfully saved!')));
     }
     // local config
-    else if ($_REQUEST['type'] == 'local')
+    else if (isset($_REQUEST['type']) && $_REQUEST['type'] == 'local')
     {
         foreach ($xml->module as $mod)
         {
