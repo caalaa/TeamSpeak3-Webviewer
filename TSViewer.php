@@ -90,11 +90,11 @@ require_once s_root . 'core/config.inc';
 
 unregister_globals('_POST', '_GET', '_COOKIE', '_REQUEST', '_SERVER', '_ENV', '_FILES', '_SESSION');
 
-$config_name = isset($_GET['config']) ? $_GET['config'] : '';
+$config_name = isset($_GET['config']) ? $_GET['config'] : 'config';
 str_replace('/', '', $config_name);
 str_replace('.', '', $config_name);
 $paths[] = s_root . "config/" . $config_name . ".xml";
-$paths[] = s_root . 'config/config.xml';
+
 
 $config_available = false;
 foreach ($paths as $path)
