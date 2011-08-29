@@ -21,6 +21,7 @@ v 1.0
 * notice in installscript
 * Issue #5: Installscript module-config save failure
 * Issue #6: Notices in installscript at module config
+* Issue #7: Channelhiding module not working
 
 v 0.9
 ! Added GNU gettext for i18n/ l10n instead of xml config files for easy translation in other languages
