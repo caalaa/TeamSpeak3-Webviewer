@@ -1,4 +1,4 @@
-<div id="selection" style="width: 800px !important;">
+<div id="selection">
     <script type="text/javascript">
         $('#selector').button();
     </script>

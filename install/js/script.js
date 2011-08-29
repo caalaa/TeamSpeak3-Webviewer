@@ -7,7 +7,7 @@ $(document).ready(function(){
     
     $('.color').colorbox({
         innerWidth:"1025px",
-        height:"600px", 
+        height:"650px", 
         iframe:true,
         scrolling: false,
         fastIframe: false

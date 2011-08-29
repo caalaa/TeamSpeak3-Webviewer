@@ -1,0 +1,22 @@
+p, span,a, tr, td, button, input
+{
+    font-size: 14px;
+}
+
+
+textarea
+{
+    height: 350px;
+    border: 2px black solid;
+}
+
+body
+{
+    height:650px;
+    width:1000px;
+}
+
+#xmledit
+{
+    height: 550px;
+}
