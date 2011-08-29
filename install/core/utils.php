@@ -90,31 +90,42 @@ function moduleIsAbstract($module)
     return false;
 }
 
-// Returns all imagepacks in an array
+/**
+ * Returns all available imagepacks as an array
+ * @return type array if imagepacks
+ */
 function getImagePacks()
 {
     $packs = array();
+    $blacklist = array('..', '.', 'serverimages', 'no.png');
 
     $dir = opendir("../images");
 
     while ($imagepack = readdir($dir))
     {
-        if ($imagepack != '..' && $imagepack != '.' && $imagepack != 'serverimages' && $imagepack != 'no.png') $packs[] = $imagepack;
+        if (!in_array($imagepack, $blacklist))
+        {
+            $packs[] = $imagepack;
+        }
     }
 
     return $packs;
 }
 
-// Returns all styles in an array
+/**
+ * Returns all available styles as an array
+ * @return type array of styles
+ */
 function getStyles()
 {
     $styles = array();
+    $blacklist = array('..', '.', 'template');
 
     $dir = opendir("../styles");
 
     while ($style = readdir($dir))
     {
-        if ($style != ".." && $style != "." && file_exists("../styles/$style/$style.css"))
+        if (!in_array($style, $blacklist) && file_exists("../styles/$style/$style.css"))
         {
             $styles[] = $style;
         }
@@ -206,7 +217,7 @@ function checkFunctions()
             $html .= throwAlert(__('The necessary function') . ' ' . $value . ' ' . __('is not available on your webspace. Please contact your service provider.'), 25);
         }
     }
-    
+
     return $html;
 }
 

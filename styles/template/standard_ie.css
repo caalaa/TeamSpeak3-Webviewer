@@ -15,8 +15,6 @@
  *  along with TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
  */
 
- /* All options in this file will override those ones of the standard style file */
- 
 .client
 {
     margin-left: 36px;
