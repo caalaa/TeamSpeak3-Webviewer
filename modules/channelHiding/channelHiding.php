@@ -10,11 +10,12 @@ class channelHiding extends ms_Module
     }
 
     function onInfoLoaded()
-    {
+    {   
         
         $append_config = isset($_GET['config']) ? " , config: '".$_GET['config']."' " : "";
         $ops = "var channelHiding_ops = {\r\n";
         $managevars = false;
+        $hidden = Array();
         if ($this->config['remember_hidden_chans'])
         {
             if (isset($_GET['config']))
@@ -48,14 +49,14 @@ class channelHiding extends ms_Module
             foreach ($this->info['channellist'] as $key => $channel)
             {
                 $parent = $channel->getParent();
-                if (!empty($hidden) && in_array($parent['channel_name'], $hidden))
+                if (!empty($hidden) && $parent !== Null && in_array($parent['cid'], $hidden))
                 {
-                    $hidden[] = $channel['channel_name'];
+                    $hidden[] = $channel['cid'];
                 }
-                if ($channel->isEmpty() and $channel->has_childs() && (!empty($hidden) && !(in_array($channel['channel_name'], $hidden))))
+                if ($channel->isEmpty() && $channel->has_childs() && !(!empty($hidden) && !(in_array($channel['cid'], $hidden))))
                 {
                     $ops .= "'" . htmlspecialchars("channel_".$channel['cid'], ENT_QUOTES) . "': true,";
-                    $hidden[] = $channel['channel_name'];
+                    $hidden[] = $channel['cid'];
                 }
             }
             
