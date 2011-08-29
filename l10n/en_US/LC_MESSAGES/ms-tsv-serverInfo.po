@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TeamSpeak3 Webviewer serverInfo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-18 18:26+0100\n"
-"PO-Revision-Date: 2011-07-18 18:26+0100\n"
+"POT-Creation-Date: 2011-08-29 23:04+0100\n"
+"PO-Revision-Date: 2011-08-29 23:04+0100\n"
 "Last-Translator: Maximilian Narr <maxesstuff@live.de>\n"
 "Language-Team: Maxesstuff <info@maxesstuff.de>\n"
 "MIME-Version: 1.0\n"
@@ -17,55 +17,55 @@ msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\serverInfo/serverInfo.php:41
+#: Webviewer\modules\serverInfo/serverInfo.php:58
 msgid "no welcomemessage"
 msgstr "no welcomemessage"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\serverInfo/serverInfo.php:47
+#: Webviewer\modules\serverInfo/serverInfo.php:64
 msgid "Welcomemessage"
 msgstr "Welcomemessage"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\serverInfo/serverInfo.php:47
+#: Webviewer\modules\serverInfo/serverInfo.php:64
 msgid "Channels"
 msgstr "Channels"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\serverInfo/serverInfo.php:48
+#: Webviewer\modules\serverInfo/serverInfo.php:65
 msgid "Version"
 msgstr "Version"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\serverInfo/serverInfo.php:48
+#: Webviewer\modules\serverInfo/serverInfo.php:65
 msgid "Server OS"
 msgstr "Server OS"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\serverInfo/serverInfo.php:49
+#: Webviewer\modules\serverInfo/serverInfo.php:66
 msgid "Connectiondetails"
 msgstr "Connectiondetails"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\serverInfo/serverInfo.php:49
+#: Webviewer\modules\serverInfo/serverInfo.php:66
 msgid "total sent"
 msgstr "total sent"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\serverInfo/serverInfo.php:50
+#: Webviewer\modules\serverInfo/serverInfo.php:67
 msgid "total received"
 msgstr "total received"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\serverInfo/serverInfo.php:62
+#: Webviewer\modules\serverInfo/serverInfo.php:79
 msgid "Serverinformation"
 msgstr "Serverinformation"
 

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TeamSpeak3 Webviewer loginButton\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-18 18:26+0100\n"
-"PO-Revision-Date: 2011-07-18 18:26+0100\n"
+"POT-Creation-Date: 2011-08-29 23:03+0100\n"
+"PO-Revision-Date: 2011-08-29 23:03+0100\n"
 "Last-Translator: Maximilian Narr <maxesstuff@live.de>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,13 +15,13 @@ msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\loginButton/loginButton.php:44
+#: Webviewer\modules\loginButton/loginButton.php:61
 msgid "Please insert the serverpassword"
 msgstr "Indsæt serverkodeordet"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\loginButton/loginButton.php:45
+#: Webviewer\modules\loginButton/loginButton.php:62
 msgid "Please insert a nickname of your choice"
 msgstr "Indsæt nickname efter dit valg"
 

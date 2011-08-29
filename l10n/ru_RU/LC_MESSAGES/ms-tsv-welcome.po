@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TeamSpeak3 Webviewer welcome\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-18 18:26+0100\n"
-"PO-Revision-Date: 2011-07-18 18:26+0100\n"
+"POT-Creation-Date: 2011-08-29 23:04+0100\n"
+"PO-Revision-Date: 2011-08-29 23:04+0100\n"
 "Last-Translator: crysea <grustniy.by@gmail.com>\n"
 "Language-Team: crysea <grustniy.by@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -17,74 +17,74 @@ msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:88
+#: Webviewer\html\welcome/welcome.php:104
 msgid "Find us on facebook"
 msgstr "Мы на Facebook"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:92
+#: Webviewer\html\welcome/welcome.php:108
 msgid "Welcome to the Maxesstuff TeamSpeak3 Webviewer"
 msgstr "Добро пожаловать в Maxesstuff TeamSpeak3 Webviewer"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:98
+#: Webviewer\html\welcome/welcome.php:114
 msgid "by"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:99
+#: Webviewer\html\welcome/welcome.php:115
 msgid "Version"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:106
+#: Webviewer\html\welcome/welcome.php:122
 msgid "Apparently you didn't set up the Viewer yet. Please run the"
 msgstr "Вы еще не установили скрипт. Пожалуйста, запустите"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:107
-#: Webviewer\html\welcome/welcome.php:112
+#: Webviewer\html\welcome/welcome.php:123
+#: Webviewer\html\welcome/welcome.php:128
 msgid "Installscript"
 msgstr "файл установки"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:111
+#: Webviewer\html\welcome/welcome.php:127
 msgid "You can see a list of your config files below. If you want to add more, run the"
 msgstr "Вы можете увидеть список ваших конфигурационных файлов ниже. Если вы хотите добавить еще, запустите"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:114
+#: Webviewer\html\welcome/welcome.php:130
 msgid "The following configfiles are available"
 msgstr "Следующие конфигурационные файлы доступны"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:118
+#: Webviewer\html\welcome/welcome.php:134
 msgid "No configfile available"
 msgstr "Нет доступных конфигурационных файлов"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:131
+#: Webviewer\html\welcome/welcome.php:147
 msgid "If you need help, you can take a look for our Livesupport or our FAQ"
 msgstr "Если вам нужна помощь, вы можете обратиться в техподдержку или ознакомиться с FAQ"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:133
+#: Webviewer\html\welcome/welcome.php:149
 msgid "Livesupport"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:134
+#: Webviewer\html\welcome/welcome.php:150
 msgid "FAQ"
 msgstr ""
 
