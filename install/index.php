@@ -196,9 +196,10 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
     // Check if necessary vars are full
     foreach ($necessary_vars as $var)
     {
-        if (empty($_POST[$var]) || $_POST[$var] == NULL || $_POST[$var] == "")
+        if (!isset($var) || empty($_POST[$var]) || $_POST[$var] == NULL || $_POST[$var] == "")
         {
             $vars_unavailable = true;
+            $_POST[$var] = "";
             echo throwAlert($var . " " . __('is not set. Please check if you filled out all blanks.'));
         }
     }
