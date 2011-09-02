@@ -295,7 +295,7 @@ $output .= $mManager->triggerEvent('HtmlStartup');
 $output .= $mManager->getHeaders();
 
 //render the server
-$output .= render_server($serverinfo['return'], $config['imagepath']);
+$output .= render_server($serverinfo['return'], $config['imagepath'], $config);
 $output .= $mManager->triggerEvent("serverRendered");
 
 // render the channels
@@ -313,10 +313,19 @@ $duration = microtime(true) - $start;
 
 //echo $duration;
 //** Rendering Functions **\\
-function render_server($serverinfo, $imagepath)
+function render_server($serverinfo, $imagepath, $config)
 {
     global $config, $mManager;
-    return "<div class=\"server\">\r\n<p  class=\"servername\">" . $mManager->triggerEvent("InServer") . " <span>" . '<span class="serverimage image">&nbsp;</span>' . escape_name($serverinfo['virtualserver_name']) . "</span></p>\r\n";
+    return "<div class=\"server\">\r\n<p  class=\"servername\">" . $mManager->triggerEvent("InServer") . " <span>" . '<span class="serverimage image">&nbsp;</span>' . escape_name($serverinfo['virtualserver_name']) ."&nbsp;". getServerIcon($serverinfo, $config)."&nbsp;"."</span></p>\r\n";
+}
+
+function getServerIcon($serverinfo, $config) {
+    if($config['use_serverimages'] && isset($serverinfo['virtualserver_icon_id']) && $serverinfo['virtualserver_icon_id'] != 0) {
+        return '<img class="img_r" src="'.$config['serverimages'].$serverinfo['virtualserver_icon_id'].'"/>';
+    }
+    else {
+        return '';
+    }
 }
 
 function render_client($clientinfo, $servergrouplist, $channelgrouplist)
