@@ -380,12 +380,14 @@ function render_channel_start($channel, $clientlist)
             $output .= '<div class="channel channel_norm" id="' . $config['prefix'] . "channel_" . htmlspecialchars($channel['cid'], ENT_QUOTES) . "\">\r\n";
         }
         $output .= '<p class="chan_content">';
-
+        
         // If channel has a channel icon
         if ($channel['channel_icon_id'] != 0 && $config['use_serverimages'] == true)
         {
             $output .= '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $channel['channel_icon_id'] . '\') no-repeat transparent;">&nbsp;</span>';
         }
+        
+        $output .= getIsDefaultIcon($channel , $config);
 
         // If channel is moderated
         if ($channel['channel_needed_talk_power'] > 0)
@@ -471,6 +473,12 @@ function render_channel_start($channel, $clientlist)
     }
 
     return $output;
+}
+
+function getIsDefaultIcon($channel, $config) {
+    if(isset($channel['channel_flag_default']) && $channel['channel_flag_default'] == 1) {
+        return '<span class="image img_r home">&nobsp;</span>';
+    }
 }
 
 // Renders the Channels
