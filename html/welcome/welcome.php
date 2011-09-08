@@ -22,7 +22,13 @@ require_once s_root . 'core/tsv.inc';
 require_once s_root . 'core/i18n.inc';
 
 $lang = "en_US";
-if (isset($_GET['lang']) && $_GET['lang'] != "") $lang = $_GET['lang'];
+$newlang = '';
+
+if (isset($_GET['lang']) && $_GET['lang'] != "")
+{
+    $lang = $_GET['lang'];
+    $newlang = '?action=setlang&lang='.$lang;
+}
 
 $utils = new tsvUtils();
 
@@ -120,12 +126,12 @@ setL10n($lang, "ms-tsv-welcome");
                             if (count(getConfigFiles(s_root . 'config')) == 0)
                             {
                                 __e('Apparently you didn\'t set up the Viewer yet. Please run the')
-                                ?> <a href="<?php echo(s_http . 'install/index.php') ?>"><?php __e('Installscript') ?></a><?php
+                                ?> <a href="<?php echo(s_http . 'install/index.php&set_lang=' . $lang) ?>"><?php __e('Installscript') ?></a><?php
                         }
                         else
                         {
                             __e('You can see a list of your config files below. If you want to add more, run the');
-                                ?> <a href="<?php echo(s_http . 'install/index.php') ?>"><?php __e('Installscript') ?></a><?php } ?></p>
+                                ?> <a href="<?php echo(s_http . 'install/index.php'.$newlang) ?>"><?php __e('Installscript') ?></a><?php } ?></p>
                         <p></p>
                         <p><?php __e('The following configfiles are available') ?></p>
                         <p><?php

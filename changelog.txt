@@ -17,11 +17,12 @@ v 1.0
 ~ added possibility to use a relative path in the jquery and jqueryui module.
 ~ Layout changes in installscript
 ~ stats module uses now global cache of the viewer to prevent permission issues
+~ Issue #8: Installscript skipts language selection if the language has been selected in the welcome screen before
 * Fixed bug in installscript that 'no.png' has been shown as an imagepack
 * notice in installscript
-* Issue #5: Installscript module-config save failure
-* Issue #6: Notices in installscript at module config
-* Issue #7: Channelhiding module not working
+* Issue #3: Installscript module-config save failure
+* Issue #4: Notices in installscript at module config
+* Issue #12: Channelhiding module not working
 
 v 0.9
 ! Added GNU gettext for i18n/ l10n instead of xml config files for easy translation in other languages
