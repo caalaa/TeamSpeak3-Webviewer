@@ -38,12 +38,12 @@ setL10n($lang, "ms-tsv-welcome");
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
     <head>
-        <title>Maxesstuff TeamSpeak3 Webviewer</title>
+        <title>devMX TeamSpeak3 Webviewer</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="icon" href="<?php echo s_http; ?>html/welcome/tools.png" type="image/png">
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-        <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/redmond/jquery-ui.css" rel="stylesheet" type="text/css">
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+        <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/redmond/jquery-ui.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.js"></script>
 
         <style type="text/css">
             div
@@ -108,10 +108,10 @@ setL10n($lang, "ms-tsv-welcome");
                 <div id="wrapper">
                     <div id="facebook">
                         <p><?php __e('Find us on facebook') ?></p>
-                        <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fmaxesstuff&amp;width=292&amp;colorscheme=light&amp;show_faces=true&amp;stream=true&amp;header=true&amp;height=427" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:427px;"></iframe>
+                        <iframe src="https://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fmaxesstuff&amp;width=292&amp;colorscheme=light&amp;show_faces=true&amp;stream=true&amp;header=true&amp;height=427" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:427px;"></iframe>
                     </div>
                     <div id="content">
-                        <p class="header"><?php __e('Welcome to the Maxesstuff TeamSpeak3 Webviewer') ?></p>
+                        <p class="header"><?php __e('Welcome to the devMX TeamSpeak3 Webviewer') ?></p>
                         <fieldset>
                             <?php $languages = $utils->getLanguages(); ?>
                             <?php foreach ($languages as $langCode => $langOptions)
@@ -150,10 +150,10 @@ setL10n($lang, "ms-tsv-welcome");
                             <?php } ?></p>
                         <div id="help" style="margin-top: 8px;">
                             <img src="<?php echo(s_http . 'html/welcome/help.png') ?>" alt="" style="float:right;">
-                            <p><?php __e('If you need help, you can take a look for our Livesupport or our FAQ') ?></p>
+                            <p><?php __e('If you need help, you can take a look for our Support or our FAQ') ?></p>
                             <ul style="list-style-image: url('<?php echo(s_http . 'html/welcome/arrow.png'); ?>');">
-                                <li><a href="http://support.maxesstuff.de/chat.php"><?php __e('Livesupport') ?></a></li>
-                                <li><a href="http://de.maxesstuff.de/teamspeak3-webviewer/faq"><?php __e('FAQ') ?></a></li>
+                                <li><a target="_blank" href="http://en.devmx.de/emailsupport"><?php __e('Support') ?></a></li>
+                                <li><a target="_blank" href="http://en.devmx.de/teamspeak3-webviewer/faq"><?php __e('FAQ') ?></a></li>
                             </ul>
                         </div>
                     </div>
