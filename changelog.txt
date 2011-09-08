@@ -20,6 +20,7 @@ v 1.0
 ~ Issue #8: Installscript skips language selection if the language has been selected in the welcome screen before
 ~ Issue #10: Installscript preselects language set in the script if you create a new config file
 * Fixed bug in installscript that 'no.png' has been shown as an imagepack
+* Issue #7: Adapted jQuery and jQueryUI to secure connection that the viewer works with https too
 * notice in installscript
 * Issue #3: Installscript module-config save failure
 * Issue #4: Notices in installscript at module config

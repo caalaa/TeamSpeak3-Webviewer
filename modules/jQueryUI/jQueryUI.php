@@ -19,10 +19,10 @@ class jQueryUI extends ms_Module
         $cssFullPath = true;
         $jsFullPath = true;
         // Check if a full path is given in the configfile
-        if (!preg_match("/(http)(.*)(\.)(.*)/", $this->config['css_path'])) $cssFullPath = false;
+        if (!preg_match("/(http(s)?)(.*)(\.)(.*)/", $this->config['css_path'])) $cssFullPath = false;
 
         // Check if a full path is given in the configfile
-        if (!preg_match("/(http)(.*)(\.)(.*)/", $this->config['js_path'])) $jsFullPath = false;
+        if (!preg_match("/(http(s)?)(.*)(\.)(.*)/", $this->config['js_path'])) $jsFullPath = false;
 
         // CSS
         // relative path
