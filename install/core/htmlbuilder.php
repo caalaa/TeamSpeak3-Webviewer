@@ -175,7 +175,12 @@ function createEditHtml()
     // Language
     $html['language_html'] = "";
     $languages = $utils->getLanguages();
-    $selected_lang = (string) $configfile->language;
+    $selected_lang = (string)$_SESSION['lang'];
+    
+    if(isset($configfile->language) && (string)$configfile->language != "")
+    {
+        $selected_lang = (string) $configfile->language;
+    }
 
     foreach ($languages as $langCode => $langOptions)
     {

@@ -17,7 +17,8 @@ v 1.0
 ~ added possibility to use a relative path in the jquery and jqueryui module.
 ~ Layout changes in installscript
 ~ stats module uses now global cache of the viewer to prevent permission issues
-~ Issue #8: Installscript skipts language selection if the language has been selected in the welcome screen before
+~ Issue #8: Installscript skips language selection if the language has been selected in the welcome screen before
+~ Issue #10: Installscript preselects language set in the script if you create a new config file
 * Fixed bug in installscript that 'no.png' has been shown as an imagepack
 * notice in installscript
 * Issue #3: Installscript module-config save failure
