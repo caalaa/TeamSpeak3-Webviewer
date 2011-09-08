@@ -33,17 +33,11 @@ require_once '../core/htmlbuilder.php';
 require_once '../../core/utils/utils.func.php';
 require_once 'utils.php';
 
-// l18n
+// l10n
+if (isset($_GET['lang']) && $_GET['lang'] != "") $_SESSION['lang'] = $_GET['lang'];
+
 $lang = $_SESSION['lang'];
-
-setlocale(LC_MESSAGES, $lang . ".utf8", $lang . ".UTF8", $lang . ".utf-8", $lang . "UTF-8", $lang);
-
-$domain = "ms-tsv-install";
-
-bindtextdomain($domain, PROJECTPATH);
-textdomain($domain);
-bind_textdomain_codeset($domain, ENCODING);
-
+setL10n($lang, "ms-tsv-install", realpath("../../l10n"));
 
 $module = $_GET['module'];
 

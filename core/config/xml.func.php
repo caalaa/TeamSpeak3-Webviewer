@@ -30,43 +30,6 @@ function parseConfigFile($file, $xml=false)
 }
 
 /**
- * Parses a Text-Config-File and returns its values as an array
- * @deprecated new xml configfiles
- * @param type $file
- * @return boolean 
- */
-function parseConfigFileText($file)
-{
-    if (!file_exists($file)) return false;
-
-    $array = array();
-    $fp = fopen($file, "r");
-    while ($row = fgets($fp))
-    {
-        $row = trim($row);
-        if (preg_match('#^([A-Za-z0-9_]+)\s+=\s+(.+?)(//.*)?$#D', $row, $arr))
-        {
-            $arr[2] = trim($arr[2]);
-            $arr[1] = trim($arr[1]);
-            switch ($arr[2])
-            {
-                case 'none':
-                    $arr[2] = NULL;
-                    break;
-                case 'false':
-                    $arr[2] = false;
-                    break;
-                case 'true':
-                    $arr[2] = true;
-            }
-            $array[(string) $arr[1]] = $arr[2];
-        }
-    }
-    fclose($fp);
-    return $array;
-}
-
-/**
  * Parses XML configfile
  * @param type $file
  * @return type 
@@ -98,63 +61,4 @@ function parseConfigFileXML($file)
     }
     return $config;
 }
-
-/**
- * Parses a text or a xml languagefile
- * @deprecated new gettext l10n
- * @param type $file
- * @param type $xml
- * @return type 
- */
-function parseLanguageFile($file, $xml=false)
-{
-    if (!$xml) return parseLanguageFileText($file);
-    else return parseConfigFileXML($file);
-}
-
-/**
- * Parses a text-language-file and returns its values as an array
- * @deprecated new gettext l10n
- * @param type $file
- * @return type 
- */
-function parseLanguageFileText($file)
-{
-    if (!file_exists($file)) return false;
-
-    $array = array();
-    $fp = fopen($file, "r");
-    while ($row = fgets($fp))
-    {
-        $row = trim($row);
-        if (preg_match('#^([A-Za-z0-9_\s\t]+?)\s+=\s+(.*)(//.*)?$#', $row, $arr))
-        {
-            $arr[2] = trim($arr[2]);
-            $arr[1] = trim($arr[1]);
-            $array[(string) $arr[1]] = $arr[2];
-        }
-    }
-    fclose($fp);
-    return $array;
-}
-
-/**
- * Parses a xml-language-file and returns its values as an array
- * @deprecated new gettext l10n
- * @param type $file
- * @return type 
- */
-function parseLanguageFileXML($file)
-{
-    $xml = simplexml_load_file($file);
-    $config = array();
-
-    foreach ($xml->children() as $key => $value)
-    {
-        (string) $value = (string) $value;
-        $config[$key] = $value;
-    }
-    return $config;
-}
-
 ?>

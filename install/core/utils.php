@@ -18,24 +18,6 @@
  */
 
 /**
- * Returns the language of the browser
- * @deprecated gettext implementation
- * @return string 
- */
-function getLang()
-{
-    $data = $_SERVER['HTTP_USER_AGENT'];
-    $lang = '';
-
-    if (preg_match("/en-US/", $data)) $lang = 'en';
-    else if (preg_match("/de-DE/", $data)) $lang = 'de';
-
-    if ($lang == '') $lang = 'en';
-
-    return $lang;
-}
-
-/**
  * Checks if a password is setted
  * @return type 
  */
@@ -231,17 +213,6 @@ function checkFunctions()
     }
 
     return $html;
-}
-
-/**
- * Echos gettext message
- * @deprecated due to gettext implementation change
- * @since 0.9
- * @param type $message 
- */
-function _e($message)
-{
-    echo(_($message));
 }
 
 /**
