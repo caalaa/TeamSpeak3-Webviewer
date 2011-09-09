@@ -14,6 +14,7 @@ v 1.0
     - one for each viewer-configfile. All options of this configfile will override the global ones
 + style 'modern-dark'
 + permission check in installscript
++ Issue #2: Display of servericon and default channel icon
 ~ added possibility to use a relative path in the jquery and jqueryui module.
 ~ Layout changes in installscript
 ~ stats module uses now global cache of the viewer to prevent permission issues
