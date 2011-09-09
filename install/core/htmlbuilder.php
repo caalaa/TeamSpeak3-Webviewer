@@ -65,13 +65,13 @@ function createEditHtml()
     // Login
     if ($configfile->login_needed == "true" || $configfile->login_needed == '')
     {
-        $html['login_html'] = '<input type="radio" name="login_needed" value="true" checked="checked"> ' . __('Yes') . '<br>
-            <input type="radio" name="login_needed" value="false"> ' . __('No');
+        $html['login_html'] = '<input id="login-needed-true" type="radio" name="login_needed" value="true" checked="checked"> ' . __('Yes') . '<br>
+            <input id="login-needed-false" type="radio" name="login_needed" value="false"> ' . __('No');
     }
     else
     {
-        $html['login_html'] = '<input type="radio" name="login_needed" value="true"> ' . __('Yes') . '<br>
-            <input type="radio" name="login_needed" value="false" checked="checked"> ' . __('No');
+        $html['login_html'] = '<input id="login-needed-true" type="radio" name="login_needed" value="true"> ' . __('Yes') . '<br>
+            <input id="login-needed-false" type="radio" name="login_needed" value="false" checked="checked"> ' . __('No');
     }
 
     $html['username_value'] = (string) $configfile->username;
@@ -112,13 +112,13 @@ function createEditHtml()
     // Servericons
     if ($configfile->use_serverimages == "true" || (string) $configfile->use_serverimages == '')
     {
-        $html['servericons_radio'] = '<input type="radio" name="servericons" value="true" checked="checked"><span> ' . __('Enabled') . '</span><br>
-            <input type="radio" name="servericons" value="false"><span> ' . __('Disabled') . '</span>';
+        $html['servericons_radio'] = '<input id="servericons-true" type="radio" name="servericons" value="true" checked="checked"><span> ' . __('Enabled') . '</span><br>
+            <input id="servericons-false" type="radio" name="servericons" value="false"><span> ' . __('Disabled') . '</span>';
     }
     else
     {
-        $html['servericons_radio'] = '<input type="radio" name="servericons" value="true"><span> ' . __('Enabled') . '<br>
-            <input type="radio" name="servericons" value="false"  checked="checked"><span> ' . __('Disabled') . '</span>';
+        $html['servericons_radio'] = '<input id="servericons-true" type="radio" name="servericons" value="true"><span> ' . __('Enabled') . '<br>
+            <input id="servericons-false" type="radio" name="servericons" value="false"  checked="checked"><span> ' . __('Disabled') . '</span>';
     }
 
     // Imagepack

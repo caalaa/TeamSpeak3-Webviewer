@@ -41,11 +41,11 @@
                             <?php echo($data['login_html']);?>
                         </td>
                     </tr>
-                    <tr>
+                    <tr id="config-username">
                         <td title="<?php __e('The username of the query-user.')?>"><?php __e('Username')?></td>
                         <td><input type="text" value="<?php echo($data['username_value'])?>" name="username" /></td>                
                     </tr>
-                    <tr>
+                    <tr id="config-password">
                         <td title="<?php __e('Password corresponding to the username above.')?>"><?php __e('Password')?></td>
                         <td><input type="text" value="<?php echo($data['password_value'])?>" name="password" /></td>
                     </tr>
@@ -77,19 +77,19 @@
 
             <!-- Style -->
             <div id="tab3">
-                <div>
+                <div id="servericons-config">
                     <p title="<?php __e('If you set this on true, custom icons will be downloaded automatically.')?>"><?php __e('download servericons automatically')?></p>
                     <fieldset><?php echo($data['servericons_radio'])?></fieldset>
                 </div>
-                <div>
+                <div id="imagepack-config">
                     <p title="<?php __e('If the setting above is FALSE, the viewer will use the imagepack provided here.')?>"><?php __e('Group-Icons Imagepackage')?></p>
                     <fieldset><?php echo($data['imagepack_html'])?></fieldset>
                 </div>
-                <div>
+                <div id="stylesheet-config">
                     <p title="<?php __e('The stylesheet which should be used for the viewer')?>"><?php __e('Stylesheet')?></p>
                     <fieldset><?php echo($data['style_html'])?></fieldset>
                 </div>
-                <div>
+                <div id="arrow-config">
                     <p title="<?php __e('If you set that on TRUE, the viewer will show arrows next to the channel similar as in the client.')?>"><?php __e('display arrows')?></p>
                     <fieldset><?php echo($data['arrow_html'])?></fieldset>
                 </div>

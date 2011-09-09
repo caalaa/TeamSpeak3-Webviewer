@@ -286,4 +286,16 @@ function setChmodRecursive($path, $chmod)
     }
 }
 
+/**
+ * Checks if a variable is null or emtpy
+ * @since 1.0
+ * @param type $var 
+ */
+function isNullOrEmtpy($var)
+{
+    if(!isset($var) || empty ($var) || $var == null || $var = "")
+        return true;
+    return falsE;
+}
+
 ?>

@@ -40,6 +40,49 @@ $(document).ready(function(){
     });  
     
     $(".warning, .info, .alert").delay(500).fadeIn(500);
+    
+    // Hide username and password field if login needed = false
+    $("#login-needed-false").change(function(){
+        if($("#login-needed-false").attr("checked") == "checked")
+        {
+            $("#config-username, #config-password").fadeOut(500);
+        }  
+    });
+    
+    if($("#login-needed-false").attr("checked") == "checked")
+    {
+        $("#config-username, #config-password").fadeOut(500);
+    } 
+    
+    // Hide username and password field if login needed = false
+    $("#login-needed-true").change(function(){
+        if($("#login-needed-true").attr("checked") == "checked")
+        {
+            $("#config-username, #config-password").fadeIn(500);
+        }  
+    });
+    
+
+    // Hide imgaepack if servericons get automatically downloaded
+    $("#servericons-true").change(function(){
+        if($("#servericons-true").attr("checked") == "checked")
+        {
+            $("#imagepack-config").fadeOut(500);
+        }
+    });
+    
+    if($("#servericons-true").attr("checked") == "checked")
+    {
+        $("#imagepack-config").fadeOut(500);
+    }
+    
+    // Hide imgaepack if servericons get automatically downloaded
+    $("#servericons-false").change(function(){
+        if($("#servericons-false").attr("checked") == "checked")
+        {
+            $("#imagepack-config").fadeIn(500);
+        }
+    });
 });
 
 // Sets the requested language
@@ -59,14 +102,14 @@ function setconfig(file)
 // Shows the viewer of the requested configfile
 function showViewer(config)
 {
-    var href="../index.php?config=" + config
+    var href="../index.php?config=" + config;
     window.location.href = href;
 }
 
 // Flushs the cache of the requested configfile
 function flushCache(config)
 {
-    var href="?action=fc&config="+config
+    var href="?action=fc&config="+config;
     window.location.href = href;
 }
 

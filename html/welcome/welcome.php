@@ -58,7 +58,7 @@ setL10n($lang, "ms-tsv-welcome");
                 margin-bottom: 8px;
             }
 
-            p
+            p, span, a
             {
                 font-size: 14px;
             }
@@ -113,12 +113,10 @@ setL10n($lang, "ms-tsv-welcome");
                     <div id="content">
                         <p class="header"><?php __e('Welcome to the devMX TeamSpeak3 Webviewer') ?></p>
                         <fieldset>
-                            <?php $languages = $utils->getLanguages(); ?>
-                            <?php foreach ($languages as $langCode => $langOptions)
+                            <?php $languages = $utils->getLanguages(); 
+                            foreach ($languages as $langCode => $langOptions)
                             { ?>              
-                                <span class="lang" style="float:left; margin-right: 30px;"><p><a href="?lang=<?php echo($langCode); ?>"><?php echo($langOptions['lang']) ?></a></p>
-                                    <p style="font-size: 8px;"><span> <?php __e('by') ?> <a href="<?php echo($langOptions['url']) ?>" target="_blank"><?php echo($langOptions['author']); ?></a></span>
-                                        <br><span><?php __e('Version'); ?>: <?php echo($langOptions['version']) ?></span></p></span>
+                                <span class="lang" style="float:left; margin-right: 30px;"><a href="?lang=<?php echo($langCode); ?>"><?php echo($langOptions['lang']) ?></a>  <span class="ui-icon ui-icon-info"></span></span>
                             <?php } ?>
                         </fieldset>
                         <br>
@@ -161,5 +159,17 @@ setL10n($lang, "ms-tsv-welcome");
             </div>
         </div>
         <br>
+        <div style="display: none">
+            <?php foreach($languages as $langCode => $langOptions) : ?>
+            <div id="lang<?php echo($langCode);?>">
+                <p><?php __e('Translators')?></p>
+                <ul>
+                <?php foreach($langOptions['authors'] as $author => $homepage) : ?>
+                    <li><a href="<?php echo($homepage)?>"><?php echo($author)?></a></li>
+                <?php endforeach; ?>
+                </ul>
+            </div>   
+            <?php endforeach; ?>
+        </div>
     </body>
 </html>

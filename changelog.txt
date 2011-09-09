@@ -26,6 +26,7 @@ v 1.0
 * Issue #3: Installscript module-config save failure
 * Issue #4: Notices in installscript at module config
 * Issue #12: Channelhiding module not working
+* Issue #11: Installscript no longer requires imagepack to be set if servericons are getting downloaded automatically
 
 v 0.9
 ! Added GNU gettext for i18n/ l10n instead of xml config files for easy translation in other languages

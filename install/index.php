@@ -189,21 +189,30 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
 
     $xml = simplexml_load_string($_SESSION['config_xml']);
 
-    $necessary_vars = array("serveradress", "queryport", "serverport", "login_needed", "servericons", "imagepack", "style", "arrows", "caching", "language");
+    $necessary_vars = array("serveradress", "queryport", "serverport", "login_needed", "style", "arrows", "caching", "language");
     $vars_unavailable = false;
 
     // START VAR CHECKING \\
     // Check if necessary vars are full
     foreach ($necessary_vars as $var)
     {
-        if (!isset($var) || empty($_POST[$var]) || $_POST[$var] == NULL || $_POST[$var] == "")
+        if (isNullOrEmtpy($_POST[$var]))
         {
             $vars_unavailable = true;
             $_POST[$var] = "";
             echo throwAlert($var . " " . __('is not set. Please check if you filled out all blanks.'));
         }
     }
-
+    
+    // Check servericons and imagepack
+    if((isNullOrEmtpy($_POST['servericons']) || $_POST['servericons'] == "false") && isNullOrEmtpy($_POST['imagepack']))
+    {
+        $vars_unavailable = true;
+        $_POST['servericons'] = "";
+        $_POST['imagepack'] = "";
+        echo throwAlert("Servericons or imagepack" . __('is not set. Please check if you filled out all blanks.'));
+    }
+    
     // END VAR CHECKING \\
 
     $xml->host = $_POST['serveradress'];
