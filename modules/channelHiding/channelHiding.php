@@ -20,14 +20,14 @@ class channelHiding extends ms_Module
         {
             if (isset($_GET['config']))
             {
-                if(isset($_SESSION['data_manager'][$_GET['config']]['channelHiding'])) {
-                    $managevars = $_SESSION['data_manager'][$_GET['config']]['channelHiding'];
+                if(isset($_SESSION['dataManager'][$_GET['config']]['channelHiding'])) {
+                    $managevars = $_SESSION['dataManager'][$_GET['config']]['channelHiding'];
                 }
                 
             }
             else {
-                if(isset($_SESSION['data_manager']['channelHiding'])) {
-                    $managevars = $_SESSION['data_manager']['channelHiding'];
+                if(isset($_SESSION['dataManager']['channelHiding'])) {
+                    $managevars = $_SESSION['dataManager']['channelHiding'];
                 }
             }
             
@@ -104,13 +104,13 @@ class channelHiding extends ms_Module
 												$(this).siblings().fadeIn(" . $this->config['fadeIn_time'] . ");			
                                                                                                 $(this).children('.arrow').switchClass('arrow-hidden', 'arrow-normal', 500);
 												$(this).attr('is_hidden','false');
-												$.get('" . s_http . "core/teamspeak/data_manager.php',{action: 'delete', field: 'channelHiding', id: ms_id ".$append_config."});
+												$.get('" . s_http . "dataManager.php',{action: 'delete', field: 'channelHiding', id: ms_id ".$append_config."});
 											}
 											else{
 												$(this).siblings().fadeOut(" . $this->config['fadeOut_time'] . ");
                                                                                                 $(this).children('.arrow').switchClass('arrow-normal', 'arrow-hidden', 500);
 												$(this).attr('is_hidden','true');
-												$.get('" . s_http . "core/teamspeak/data_manager.php',{action: 'save', field: 'channelHiding', id: ms_id, data: 'true' ".$append_config."});
+												$.get('" . s_http . "dataManager.php',{action: 'save', field: 'channelHiding', id: ms_id, data: 'true' ".$append_config."});
 											}
 										});
 										$('.spacer_con').click(function() {
@@ -119,13 +119,13 @@ class channelHiding extends ms_Module
 												$(this).siblings().fadeIn(" . $this->config['fadeIn_time'] . ");											
                                                                                                 $(this).children('.arrow').switchClass('arrow-hidden', 'arrow-normal', 500);
 												$(this).attr('is_hidden','false');
-												$.get('" . s_http . "core/teamspeak/data_manager.php',{action: 'delete', field: 'channelHiding', id: ms_id ".$append_config."});
+												$.get('" . s_http . "dataManager.php',{action: 'delete', field: 'channelHiding', id: ms_id ".$append_config."});
 											}
 											else{
 												$(this).siblings().fadeOut(" . $this->config['fadeOut_time'] . ");
                                                                                                 $(this).children('.arrow').switchClass('arrow-normal', 'arrow-hidden', 500);
 												$(this).attr('is_hidden','true');
-												$.get('" . s_http . "core/teamspeak/data_manager.php',{action: 'save', field: 'channelHiding', id: ms_id, data: 'true' ".$append_config."});
+												$.get('" . s_http . "dataManager.php',{action: 'save', field: 'channelHiding', id: ms_id, data: 'true' ".$append_config."});
 											}
 										});
 });", 'text');

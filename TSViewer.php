@@ -172,11 +172,11 @@ if ($config['use_serverimages'] == true)
 {
     if (isset($_GET['config']))
     {
-        $config['serverimages'] = s_http . "core/teamspeak/get_server_icon.php?config=" . $_GET['config'] . "&id=";
+        $config['serverimages'] = s_http . "getServerIcon.php?config=" . $_GET['config'] . "&id=";
     }
     else
     {
-        $config['serverimages'] = s_http . "core/teamspeak/get_server_icon.php?id=";
+        $config['serverimages'] = s_http . "getServerIcon.php?id=";
     }
 }
 else

@@ -67,7 +67,7 @@ foreach ($viewer_conf as $key => $value)
         $config['channelgrp_images'][$temp] = $value;
     }
 }
-if ($viewer_conf['use_serverimages'] == true) $viewer_conf['serverimages'] = s_http . "core/teamspeak/get_server_icon.php?config=" . $_GET['config'] . "&id=";
+if ($viewer_conf['use_serverimages'] == true) $viewer_conf['serverimages'] = s_http . "getServerIcon.php?config=" . $_GET['config'] . "&id=";
 else $viewer_conf['serverimages'] = s_http . "images/" . $viewer_conf['imagepack'] . "/";
 $viewer_conf['client_name'] = "Maxesstuff TS3 Webviewer";
 
