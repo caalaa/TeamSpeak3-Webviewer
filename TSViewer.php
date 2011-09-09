@@ -316,14 +316,24 @@ $duration = microtime(true) - $start;
 function render_server($serverinfo, $imagepath, $config)
 {
     global $config, $mManager;
-    return "<div class=\"server\">\r\n<p  class=\"servername\">" . $mManager->triggerEvent("InServer") . " <span>" . '<span class="serverimage image">&nbsp;</span>' . escape_name($serverinfo['virtualserver_name']) ."&nbsp;". getServerIcon($serverinfo, $config)."&nbsp;"."</span></p>\r\n";
+    return "<div class=\"server\">\r\n<p  class=\"servername\">" . $mManager->triggerEvent("InServer") . " <span>" . getServerIcon($serverinfo, $config) . '<span class="serverimage image">&nbsp;</span>' . escape_name($serverinfo['virtualserver_name']) . "</span></p>\r\n";
 }
 
-function getServerIcon($serverinfo, $config) {
-    if($config['use_serverimages'] && isset($serverinfo['virtualserver_icon_id']) && $serverinfo['virtualserver_icon_id'] != 0) {
-        return '<img class="img_r" src="'.$config['serverimages'].$serverinfo['virtualserver_icon_id'].'"/>';
+/**
+ * returns the servericon
+ * @since 1.0
+ * @param type $serverinfo
+ * @param type $config
+ * @return type 
+ */
+function getServerIcon($serverinfo, $config)
+{
+    if ($config['use_serverimages'] && isset($serverinfo['virtualserver_icon_id']) && $serverinfo['virtualserver_icon_id'] != 0)
+    {
+        return '<span class="group-image img_r" style="background-image: url(\'' . $config['serverimages'] . $serverinfo['virtualserver_icon_id'] . '\');">&nbsp;</span>';
     }
-    else {
+    else
+    {
         return '';
     }
 }
@@ -380,14 +390,14 @@ function render_channel_start($channel, $clientlist)
             $output .= '<div class="channel channel_norm" id="' . $config['prefix'] . "channel_" . htmlspecialchars($channel['cid'], ENT_QUOTES) . "\">\r\n";
         }
         $output .= '<p class="chan_content">';
-        
+
         // If channel has a channel icon
         if ($channel['channel_icon_id'] != 0 && $config['use_serverimages'] == true)
         {
             $output .= '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $channel['channel_icon_id'] . '\') no-repeat transparent;">&nbsp;</span>';
         }
-        
-        $output .= getIsDefaultIcon($channel , $config);
+
+        $output .= getIsDefaultIcon($channel, $config);
 
         // If channel is moderated
         if ($channel['channel_needed_talk_power'] > 0)
@@ -475,9 +485,17 @@ function render_channel_start($channel, $clientlist)
     return $output;
 }
 
-function getIsDefaultIcon($channel, $config) {
-    if(isset($channel['channel_flag_default']) && $channel['channel_flag_default'] == 1) {
-        return '<span class="image img_r home">&nobsp;</span>';
+/**
+ * Returns the html of a home icon if the channel is the default channel
+ * @param type $channel
+ * @param type $config
+ * @return type 
+ */
+function getIsDefaultIcon($channel, $config)
+{
+    if (isset($channel['channel_flag_default']) && $channel['channel_flag_default'] == 1)
+    {
+        return '<span class="group-image img_r home">&nbsp;</span>';
     }
 }
 
