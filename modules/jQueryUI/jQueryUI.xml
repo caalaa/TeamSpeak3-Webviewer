@@ -14,9 +14,9 @@
     
     <!-- CSS Path of jQuery UI -->
     <!-- CSS Pfad von jQuery UI -->
-    <css_path>http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/base/jquery-ui.css</css_path>
+    <css_path>https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/base/jquery-ui.css</css_path>
     
     <!-- JS Path of jQuery -->
     <!-- JS Pfad von jQuery -->
-    <js_path>http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.js</js_path>
+    <js_path>https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.js</js_path>
 </config>

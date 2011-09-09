@@ -55,43 +55,6 @@ function bool2text($var)
 }
 
 /**
- * Replaces {} in the Code with the given data
- * @deprecated new MVC
- * @param type $file
- * @param type $values
- * @param type $languagefile
- * @return type 
- */
-function replaceValues($file, $values, $languagefile)
-{
-    $data = array();
-    $lang = simplexml_load_file($languagefile);
-
-    if ($values != NULL)
-    {
-        (array) $data = array_merge((array) $lang, (array) $values);
-    }
-    else
-    {
-        $data = (array) $lang;
-    }
-
-    $html = file_get_contents($file);
-
-    $matches = array();
-    preg_match_all("/{.*?}/", $html, $matches);
-
-    foreach ($matches[0] as $match)
-    {
-        $match_raw = $match;
-        $match_norm = preg_replace("/[{}]/", "", strtolower($match_raw));
-
-        $html = str_replace($match_raw, (string) $data[$match_norm], $html);
-    }
-    return $html;
-}
-
-/**
  * Throws alert
  * @param type $message
  * @param type $code error code

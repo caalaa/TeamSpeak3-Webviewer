@@ -16,7 +16,7 @@ class about extends ms_Module
     }
     
     function getText() {
-        return '<span class="ui-state-highlight" style="padding:5px; font-size:10px; margin-bottom:5px; float:right;">Powered by <a href="http://en.maxesstuff.de/software/teamspeak3-webviewer"  target="_blank">Maxesstuff Webviewer</a></span>';
+        return '<span class="ui-state-highlight" style="padding:5px; font-size:10px; margin-bottom:5px; float:right;">Powered by <a href="http://en.devmx.de/software/teamspeak3-webviewer"  target="_blank">devMX Webviewer</a></span>';
     }
     
     function onBeforeTabs() {

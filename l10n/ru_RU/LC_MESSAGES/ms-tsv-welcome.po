@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: TeamSpeak3 Webviewer welcome\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-08-29 23:04+0100\n"
-"PO-Revision-Date: 2011-08-29 23:04+0100\n"
+"PO-Revision-Date: 2011-09-04 00:30+0200\n"
 "Last-Translator: crysea <grustniy.by@gmail.com>\n"
 "Language-Team: crysea <grustniy.by@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -31,13 +31,13 @@ msgstr "Добро пожаловать в Maxesstuff TeamSpeak3 Webviewer"
 #: Dokumente\NetBeansProjects\TeamSpeak3
 #: Webviewer\html\welcome/welcome.php:114
 msgid "by"
-msgstr ""
+msgstr "by"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
 #: Webviewer\html\welcome/welcome.php:115
 msgid "Version"
-msgstr ""
+msgstr "Версия"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
@@ -80,13 +80,13 @@ msgstr "Если вам нужна помощь, вы можете обрати�
 #: Dokumente\NetBeansProjects\TeamSpeak3
 #: Webviewer\html\welcome/welcome.php:149
 msgid "Livesupport"
-msgstr ""
+msgstr "Поддержка"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
 #: Webviewer\html\welcome/welcome.php:150
 msgid "FAQ"
-msgstr ""
+msgstr "ЧАВО"
 
 #~ msgid "English"
 #~ msgstr "Английский"

@@ -144,6 +144,11 @@ body
     background: url("img/pw.png") no-repeat transparent;
 }
 
+.home
+{
+    background: url("img/home.png") no-repeat transparent;
+}
+
 .arrow-normal
 {
     background: url("img/arrow_normal.png") no-repeat transparent;
