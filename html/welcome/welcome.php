@@ -24,17 +24,35 @@ require_once s_root . 'core/i18n.inc';
 $lang = "en_US";
 $newlang = '';
 
+$utils = new tsvUtils();
+
+//L10N
+setL10n($lang, "ms-tsv-welcome");
+
 if (isset($_GET['lang']) && $_GET['lang'] != "")
 {
     $lang = $_GET['lang'];
     $newlang = '?action=setlang&lang='.$lang;
 }
+else if(isset($_GET['action']) && $_GET['action'] == "showtrans") : ?>
 
-$utils = new tsvUtils();
+            <?php $languages = $utils->getLanguages(); ?>
+            <div id="lang-credits">
+            <?php foreach($languages as $langCode => $langOptions) : ?>
+            <div id="lang<?php echo($langCode);?>">
+                <p><?php __e('Translators')?>: <?php echo($langOptions['lang']);?> (<?php echo($langOptions['version']); ?>)</p>
+                <ul>
+                <?php foreach($langOptions['authors'] as $author => $homepage) : ?>
+                    <li><a href="<?php echo($homepage)?>"><?php echo($author)?></a></li>
+                <?php endforeach; ?>
+                </ul>
+            </div>   
+            <?php endforeach; ?>
+        </div>
+ <?php   
+    exit;
+endif; ?>
 
-//L10N
-setL10n($lang, "ms-tsv-welcome");
-?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
     <head>
@@ -45,6 +63,9 @@ setL10n($lang, "ms-tsv-welcome");
         <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/redmond/jquery-ui.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.js"></script>
 
+        <!-- Colorbox -->
+        <link href="libraries/colorbox/example1/colorbox.css" rel="stylesheet" type="text/css">
+        <script src="libraries/colorbox/colorbox/jquery.colorbox-min.js" type="text/javascript"></script>
         <style type="text/css">
             div
             {
@@ -101,6 +122,11 @@ setL10n($lang, "ms-tsv-welcome");
                 list-style-position: inside;
             }
         </style>
+        <script>
+            $(document).ready(function(){
+                $("#lang-link").colorbox();
+            });
+        </script>
     </head>
     <body>
         <div class="ui-widget">
@@ -116,8 +142,9 @@ setL10n($lang, "ms-tsv-welcome");
                             <?php $languages = $utils->getLanguages(); 
                             foreach ($languages as $langCode => $langOptions)
                             { ?>              
-                                <span class="lang" style="float:left; margin-right: 30px;"><a href="?lang=<?php echo($langCode); ?>"><?php echo($langOptions['lang']) ?></a>  <span class="ui-icon ui-icon-info"></span></span>
+                                <p class="lang" style="float:left; margin-right: 10px;"><a href="?lang=<?php echo($langCode); ?>"><?php echo($langOptions['lang']) ?></a></p>
                             <?php } ?>
+                                <p><a style="float:left; margin-right: 20px;" title="<?php __e('show Translators');?>" id="lang-link" href="?action=showtrans" class="ui-icon ui-icon-info">&nbsp;</a></p>
                         </fieldset>
                         <br>
                         <p><?php
@@ -159,17 +186,5 @@ setL10n($lang, "ms-tsv-welcome");
             </div>
         </div>
         <br>
-        <div style="display: none">
-            <?php foreach($languages as $langCode => $langOptions) : ?>
-            <div id="lang<?php echo($langCode);?>">
-                <p><?php __e('Translators')?></p>
-                <ul>
-                <?php foreach($langOptions['authors'] as $author => $homepage) : ?>
-                    <li><a href="<?php echo($homepage)?>"><?php echo($author)?></a></li>
-                <?php endforeach; ?>
-                </ul>
-            </div>   
-            <?php endforeach; ?>
-        </div>
     </body>
 </html>
