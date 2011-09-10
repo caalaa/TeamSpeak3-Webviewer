@@ -19,5 +19,5 @@
 $l10_lang = array();
 $l10_lang['version'] = '1.0';
 $l10_lang['lang'] = __('Russian');
-$l10_lang['authors'] = array("-AS- Draketornado" => "http://www.altesaecke.eu");
+$l10_lang['authors'] = array("crysea" => "http://vk.com/grustniy");
 ?>
