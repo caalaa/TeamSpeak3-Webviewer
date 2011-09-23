@@ -57,7 +57,15 @@ $serveradress = "";
 
 if (!isset($serveradress) || $serveradress == "")
 {
-    $url = $_SERVER['SERVER_NAME'] . $_SERVER['PHP_SELF'];
+    if ((int) $_SERVER['REMOTE_PORT'] == 80 || (int) $_SERVER['REMOTE_PORT'] == 443)
+    {
+        $url = $_SERVER['SERVER_NAME'] . $_SERVER['PHP_SELF'];
+    }
+    else
+    {
+        $url = $_SERVER['SERVER_NAME']. ":" . $_SERVER['REMOTE_PORT'] . $_SERVER['PHP_SELF'];
+    }
+    
     if (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === '' || $_SERVER['HTTPS'] === "off")
     {
         $url = "http://" . $url;
@@ -149,10 +157,12 @@ foreach ($config as $key => $value)
 
 $config['modules'] = explode(',', $config['modules']);
 
-if($config['sort_method'] == "tsclient") {
+if ($config['sort_method'] == "tsclient")
+{
     $config['need_clientinfo'] = true;
 }
-else {
+else
+{
     $config['need_clientinfo'] = false;
 }
 
@@ -267,15 +277,16 @@ try
 
     $channelgroups = $query->channelgrouplist();
     ts3_check($channelgroups, 'channelgroups');
-    
-    if($config['need_clientinfo']) {
-        foreach($clientlist['return'] as $key => $toFetch) {
+
+    if ($config['need_clientinfo'])
+    {
+        foreach ($clientlist['return'] as $key => $toFetch)
+        {
             $fetched = $query->clientinfo($toFetch['clid']);
             ts3_check($fetched, 'clientinfo');
-            $clientlist['return'][$key] = array_merge($clientlist['return'][$key],$fetched);  
+            $clientlist['return'][$key] = array_merge($clientlist['return'][$key], $fetched);
         }
     }
-    
 }
 catch (Exception $ex)
 {
