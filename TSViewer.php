@@ -149,6 +149,13 @@ foreach ($config as $key => $value)
 
 $config['modules'] = explode(',', $config['modules']);
 
+if($config['sort_method'] == "tsclient") {
+    $config['need_clientinfo'] = true;
+}
+else {
+    $config['need_clientinfo'] = false;
+}
+
 // Checks if the language as been submitted over the URL
 
 
@@ -260,6 +267,15 @@ try
 
     $channelgroups = $query->channelgrouplist();
     ts3_check($channelgroups, 'channelgroups');
+    
+    if($config['need_clientinfo']) {
+        foreach($clientlist['return'] as $key => $toFetch) {
+            $fetched = $query->clientinfo($toFetch['clid']);
+            ts3_check($fetched, 'clientinfo');
+            $clientlist['return'][$key] = array_merge($clientlist['return'][$key],$fetched);  
+        }
+    }
+    
 }
 catch (Exception $ex)
 {
@@ -524,7 +540,7 @@ function render_channellist($channellist, $clientlist, $servergroups, $channelgr
             }
         }
 
-        $clients_to_render = sort_clients($clients_to_render);
+        $clients_to_render = sort_clients($clients_to_render, $config['sort_method']);
         foreach ($clients_to_render as $client)
         {
             $output .= render_client($client, $servergroups, $channelgroups);
