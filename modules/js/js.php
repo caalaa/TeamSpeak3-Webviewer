@@ -30,9 +30,9 @@ class js extends ms_Module
                     break;
                 default:
                     $this->text .= "<script type=\"text/javascript\">
-				//<!--
+				/* <![CDATA[ */
 				$text
-				//-->
+				/* ]]> */
 				</script>";
                     break;
             }

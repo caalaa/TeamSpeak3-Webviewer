@@ -57,13 +57,13 @@ $serveradress = "";
 
 if (!isset($serveradress) || $serveradress == "")
 {
-    if ((int) $_SERVER['REMOTE_PORT'] == 80 || (int) $_SERVER['REMOTE_PORT'] == 443)
+    if ((int) $_SERVER['SERVER_PORT'] == 80 || (int) $_SERVER['SERVER_PORT'] == 443)
     {
         $url = $_SERVER['SERVER_NAME'] . $_SERVER['PHP_SELF'];
     }
     else
     {
-        $url = $_SERVER['SERVER_NAME']. ":" . $_SERVER['REMOTE_PORT'] . $_SERVER['PHP_SELF'];
+        $url = $_SERVER['SERVER_NAME']. ":" . $_SERVER['SERVER_PORT'] . $_SERVER['PHP_SELF'];
     }
     
     if (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === '' || $_SERVER['HTTPS'] === "off")
