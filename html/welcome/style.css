@@ -1,0 +1,162 @@
+/**
+ *  This file is part of TeamSpeak3 Webviewer.
+ *
+ *  TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  TeamSpeak3 Webviewer is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+body
+{
+    background-image: linear-gradient(bottom, #E0E0E0 30%, #F5F5F5 50%);
+    background-image: -o-linear-gradient(bottom, #E0E0E0 30%, #F5F5F5 50%);
+    background-image: -moz-linear-gradient(bottom, #E0E0E0 30%, #F5F5F5 50%);
+    background-image: -webkit-linear-gradient(bottom, #E0E0E0 30%, #F5F5F5 50%);
+    background-image: -ms-linear-gradient(bottom, #E0E0E0 30%, #F5F5F5 50%);
+
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0.3, #E0E0E0),
+        color-stop(0.5, #F5F5F5)
+        );
+}
+
+fieldset
+{
+    border: transparent;
+}
+
+div
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header
+{
+    font-size: 26px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+p, span, a
+{
+    font-size: 14px;
+}
+
+.ui-widget
+{
+    width: 1000px;
+    padding: 15px;
+}
+
+#wrapper
+{
+    padding: 15px;
+    padding-right: 10px;
+}
+
+span .lang
+{
+    margin-left: 12px;
+    font-size: 14px;
+}
+
+ul
+{
+    font-size: 18px;
+    list-style-position: inside;
+}
+
+
+.orange
+{
+    background: #ffd65e; 
+    background: -moz-linear-gradient(top, #ffd65e 0%, #febf04 100%); 
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffd65e), color-stop(100%,#febf04));
+    background: -webkit-linear-gradient(top, #ffd65e 0%,#febf04 100%); 
+    background: -o-linear-gradient(top, #ffd65e 0%,#febf04 100%); 
+    background: -ms-linear-gradient(top, #ffd65e 0%,#febf04 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffd65e', endColorstr='#febf04',GradientType=0 );
+    background: linear-gradient(top, #ffd65e 0%,#febf04 100%);
+
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px#888;
+    box-shadow: 0 0 5px #888;
+}
+
+.green
+{
+    background: #b6e026; 
+    background: -moz-linear-gradient(top, #b6e026 0%, #abdc28 100%); 
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b6e026), color-stop(100%,#abdc28));
+    background: -webkit-linear-gradient(top, #b6e026 0%,#abdc28 100%); 
+    background: -o-linear-gradient(top, #b6e026 0%,#abdc28 100%); 
+    background: -ms-linear-gradient(top, #b6e026 0%,#abdc28 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b6e026', endColorstr='#abdc28',GradientType=0 ); 
+    background: linear-gradient(top, #b6e026 0%,#abdc28 100%); 
+
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px#888;
+    box-shadow: 0 0 5px #888;
+}
+
+#navigation
+{
+    margin-top: 8px;
+    display: inline-block;
+}
+
+#nav-element
+{
+    float: right;
+    margin-left: 15px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+#nav-element a
+{
+    text-decoration: none;
+}
+
+#languages
+{
+    padding: 10px;
+}
+
+#configs
+{
+    width: 250px;
+    padding: 10px;
+}
+
+#logo
+{
+    margin-left: 50%;
+    margin-top: 18px;
+}
+
+#version
+{
+    text-align: right;
+    color: gray;
+    text-shadow: 0px 0px 3px #555;
+}
