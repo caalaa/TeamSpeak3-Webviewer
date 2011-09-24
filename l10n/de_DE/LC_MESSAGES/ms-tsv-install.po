@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TeamSpeak3 Webviewer Installscript\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-29 23:03+0100\n"
-"PO-Revision-Date: 2011-08-29 23:05+0100\n"
+"POT-Creation-Date: 2011-09-10 09:01+0100\n"
+"PO-Revision-Date: 2011-09-10 09:01+0100\n"
 "Last-Translator: Maximilian Narr <maxesstuff@live.de>\n"
 "Language-Team: Maxestuff <info@maxesstuff.de>\n"
 "MIME-Version: 1.0\n"
@@ -31,42 +31,43 @@ msgstr "Das von Ihnen eingegebene Passwort war nicht korrekt. Bitte versuchen Si
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
 #: Webviewer\install/index.php:203
+#: Webviewer\install/index.php:213
 msgid "is not set. Please check if you filled out all blanks."
 msgstr "wurde nicht ausgefüllt. Bitte füllen Sie alle nötigen Felder aus."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/index.php:265
+#: Webviewer\install/index.php:274
 msgid "The directory for the query data-cache could not be created. Please make it writable manually."
 msgstr "Das Verzeichnis für den Query Daten-Cache konnte nicht erstellt werden. Bitte erstellen Sie es manuell und machen Sie es beschreibbar."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/index.php:266
+#: Webviewer\install/index.php:275
 msgid "Query cache directory: "
 msgstr "Query-Zwischenspeicher-Verzeichnis:"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/index.php:277
+#: Webviewer\install/index.php:286
 msgid "The directory for the query image-cache could not be created. Please make it writable manually."
 msgstr "Das Verzeichnis für den Query Bilder-Cache konnte nicht erstellt werden. Bitte erstellen Sie es manuell und machen Sie es beschreibbar."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/index.php:278
+#: Webviewer\install/index.php:287
 msgid "Image cache directory: "
 msgstr "Bild-Zwischenspeicher-Verzeichnis:"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/index.php:285
+#: Webviewer\install/index.php:294
 msgid "The configfile is not writable. Please check if the required permissions are given to write the file."
 msgstr "Die Konfigurationsdatei ist nicht beschreibbar. Bitte setzen Sie Schreibrechte auf das Verzeichnis \"config\"."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/index.php:291
+#: Webviewer\install/index.php:300
 msgid "Configfile successfully saved."
 msgstr "Konfigurationsdatei erfolgreich gespeichert."
 
@@ -132,55 +133,55 @@ msgstr "Deaktiviert"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/core/utils.php:166
+#: Webviewer\install/core/utils.php:148
 msgid "Not all necessary information is given in the configfile to flush the cache."
 msgstr "Es sind nicht alle nötigen Informationen in der Konfigurationsdatei vorhanden, um den Cache zu löschen"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/core/utils.php:193
+#: Webviewer\install/core/utils.php:175
 msgid "Cache flushed."
 msgstr "Cache gelöscht"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/core/utils.php:207
+#: Webviewer\install/core/utils.php:189
 msgid "The configfile you wanted to delete does not exist"
 msgstr "Die zu löschende Datei existiert nicht."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/core/utils.php:212
+#: Webviewer\install/core/utils.php:194
 msgid "The configfile has been successfully deleted"
 msgstr "Konfigurationsdatei erfolgreich gelöscht."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/core/utils.php:229
+#: Webviewer\install/core/utils.php:211
 msgid "The necessary function"
 msgstr "Die benötigte Funktion"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/core/utils.php:229
+#: Webviewer\install/core/utils.php:211
 msgid "is not available on your webspace. Please contact your service provider."
 msgstr "is not available on your webspace. Please contact your service provider."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/core/xmledit.php:63
+#: Webviewer\install/core/xmledit.php:57
 msgid "The configfile could not be written. Please check the permissions for the file."
 msgstr "The configfile could not be written. Please check the permissions for the file."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/core/xmledit.php:64
+#: Webviewer\install/core/xmledit.php:58
 msgid "Configfile successfully saved!"
 msgstr "Konfigurationsdatei erfolgreich gespeichert"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/core/xmledit.php:96
+#: Webviewer\install/core/xmledit.php:90
 msgid "The changes have been added to the queue. They will be saved if you save the configfile of the viewer for the next time."
 msgstr "Die Änderungen wurden hinzugefügt. Sie werden gespeichert, sobald Sie die Konfigurationsdatei des Viewers speichern."
 
@@ -524,31 +525,31 @@ msgstr "Konfigurationsdatei speichern"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\l10n/da_DK/lang.php:3
+#: Webviewer\l10n/da_DK/lang.php:21
 msgid "Danish"
 msgstr "Dänisch"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\l10n/de_DE/lang.php:3
+#: Webviewer\l10n/de_DE/lang.php:21
 msgid "German"
 msgstr "Deutsch"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\l10n/en_US/lang.php:3
+#: Webviewer\l10n/en_US/lang.php:21
 msgid "English"
 msgstr "Englisch"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\l10n/fr_FR/lang.php:3
+#: Webviewer\l10n/fr_FR/lang.php:21
 msgid "French"
 msgstr "Französisch"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\l10n/ru_RU/lang.php:3
+#: Webviewer\l10n/ru_RU/lang.php:21
 msgid "Russian"
 msgstr "Russisch"
 

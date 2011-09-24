@@ -25,6 +25,7 @@ class tsvUtils
 {
 
     private $customPath;
+    private $versionPath = "http://cdn.devmx.de/tswebviewer/update.xml";
 
     /**
      * Contruct
@@ -64,6 +65,25 @@ class tsvUtils
         uasort($languages, array($this, "languagesort"));
 
         return $languages;
+    }
+
+    /**
+     * Checks if a new version of the webviewer is available
+     * @since 1.0
+     * @return type 
+     */
+    public function versionCompare()
+    {
+        if (function_exists("ini_get") && (bool) ini_get("allow_url_fopen"))
+        {
+            $xml = simplexml_load_string(file_get_contents($this->versionPath));
+            
+            if(version_compare(version, (string)$xml->version, "<"))
+            {
+                return $xml;
+            }
+        }
+        return false;
     }
 
     /**

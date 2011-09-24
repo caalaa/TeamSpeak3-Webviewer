@@ -3,7 +3,7 @@
 session_name("tswv");
 session_start();
 
-error_reporting(E_ALL);
+error_reporting(E_STRICT);
 
 /* Author    : Maximilian Narr
  * Homepage  : http://maxesstuff.de
@@ -29,7 +29,7 @@ echo(file_get_contents("html/header.php"));
 
 // START NON OUTPUT FUCTIONS \\
 // destroys the session. Loggs out of the installation script
-if(isset($_REQUEST['action']) && $_REQUEST['action'] == "logout")
+if (isset($_REQUEST['action']) && $_REQUEST['action'] == "logout")
 {
     session_destroy();
     require_once 'html/select_language.php';
@@ -143,7 +143,7 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'validate' && isset($_P
         // If password is wrong
         $_SESSION['validated'] = false;
 
-        echo(__("The password you provided was not correct. Please try again."));
+        echo(throwAlert(__("The password you provided was not correct. Please try again.")));
     }
 }
 
@@ -189,19 +189,28 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
 
     $xml = simplexml_load_string($_SESSION['config_xml']);
 
-    $necessary_vars = array("serveradress", "queryport", "serverport", "login_needed", "servericons", "imagepack", "style", "arrows", "caching", "language");
+    $necessary_vars = array("serveradress", "queryport", "serverport", "login_needed", "style", "arrows", "caching", "language");
     $vars_unavailable = false;
 
     // START VAR CHECKING \\
     // Check if necessary vars are full
     foreach ($necessary_vars as $var)
     {
-        if (!isset($var) || empty($_POST[$var]) || $_POST[$var] == NULL || $_POST[$var] == "")
+        if (isNullOrEmtpy($_POST[$var]))
         {
             $vars_unavailable = true;
             $_POST[$var] = "";
             echo throwAlert($var . " " . __('is not set. Please check if you filled out all blanks.'));
         }
+    }
+
+    // Check servericons and imagepack
+    if ((isNullOrEmtpy($_POST['servericons']) || $_POST['servericons'] == "false") && isNullOrEmtpy($_POST['imagepack']))
+    {
+        $vars_unavailable = true;
+        $_POST['servericons'] = "";
+        $_POST['imagepack'] = "";
+        echo throwAlert("Servericons or imagepack" . __('is not set. Please check if you filled out all blanks.'));
     }
 
     // END VAR CHECKING \\
@@ -212,17 +221,19 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
     $xml->login_needed = $_POST['login_needed'];
     $xml->username = $_POST['username'];
     $xml->password = $_POST['password'];
-
-    if (empty($_POST['module']))
+    
+    // Modules
+    if (empty($_POST['module']) || $_POST['module'][0] == "")
     {
         $pre = "htmlframe,style";
+        $xml->modules = $pre;
     }
     else
     {
         $pre = "htmlframe,style,";
+        $xml->modules = $pre . implode(",", $_POST['module']);
     }
 
-    $xml->modules = $pre . implode(",", $_POST['module']);
 
     $xml->use_serverimages = $_POST['servericons'];
     $xml->imagepack = $_POST['imagepack'];

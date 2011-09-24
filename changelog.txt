@@ -20,12 +20,18 @@ v 1.0
 ~ stats module uses now global cache of the viewer to prevent permission issues
 ~ Issue #8: Installscript skips language selection if the language has been selected in the welcome screen before
 ~ Issue #10: Installscript preselects language set in the script if you create a new config file
+~ Issue #17: Welcomescreen redesigned
+~ Issue #21: Installscript shows now a hint if a new version of the webviewer is available
 * Fixed bug in installscript that 'no.png' has been shown as an imagepack
 * Issue #7: Adapted jQuery and jQueryUI to secure connection that the viewer works with https too
 * notice in installscript
 * Issue #3: Installscript module-config save failure
 * Issue #4: Notices in installscript at module config
 * Issue #12: Channelhiding module not working
+* Issue #11: Installscript no longer requires imagepack to be set if servericons are getting downloaded automatically
+* Issue #15: Make viewer running too if not standard ports (80 and 443) used for the viewer
+* Issue #18: Installscript didn't show the error message if password has been entered wrong
+* Issue #14: Viewer shows Error: "cannot load Module" if no module is selected in the installation script
 
 v 0.9
 ! Added GNU gettext for i18n/ l10n instead of xml config files for easy translation in other languages

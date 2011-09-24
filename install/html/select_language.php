@@ -8,7 +8,9 @@
         
         $languages = $utils->getLanguages();
         
-        foreach($languages as $langCode => $langOptions) { ?>
+        foreach($languages as $langCode => $langOptions) 
+        {
+            $xml = simplexml_load_string($langOptions['xml']);  ?>
 
         <button onclick="javascript: setLang('<?php echo($langCode);?>');"><?php echo($langOptions['lang']); ?></button>
 
