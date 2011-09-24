@@ -3,7 +3,7 @@
 session_name("tswv");
 session_start();
 
-error_reporting(E_ALL);
+error_reporting(E_STRICT);
 
 /* Author    : Maximilian Narr
  * Homepage  : http://maxesstuff.de
@@ -143,7 +143,7 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'validate' && isset($_P
         // If password is wrong
         $_SESSION['validated'] = false;
 
-        echo(__("The password you provided was not correct. Please try again."));
+        echo(throwAlert(__("The password you provided was not correct. Please try again.")));
     }
 }
 
