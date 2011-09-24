@@ -70,7 +70,7 @@ endif;
         <!-- Colorbox -->
         <link href="<?php echo(s_http) ?>libraries/colorbox/example1/colorbox.css" rel="stylesheet" type="text/css">
         <script src="<?php echo(s_http) ?>libraries/colorbox/colorbox/jquery.colorbox-min.js" type="text/javascript"></script>
-        <script>
+        <script type="text/javascript">
             $(document).ready(function(){
                 $("#lang-link").colorbox();
                 $("#facebook").colorbox({width:"550px", height:"630px", iframe:true});
