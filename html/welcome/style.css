@@ -177,5 +177,15 @@ ul
 {
     text-align: right;
     color: gray;
-    text-shadow: 0px 0px 3px #555;
+    text-shadow: 0px 0px 2px #555;
+}
+
+#version-hint, #version-hint a
+{
+    cursor: pointer;
+    padding: 8px;
+    text-decoration: none;
+    font-size: 10px;
+    text-align: right;
+    color: white;
 }

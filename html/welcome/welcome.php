@@ -83,7 +83,7 @@ endif;
                 <div id="wrapper">
                     <div id="content">
                         <div id="navigation">
-                            <span class="nav-element red"><a id="facebook" href="http://www.facebook.com/plugins/likebox.php?href=http://www.facebook.com/maxesstuff&width=500&colorscheme=light&show_faces=true&border_color=000000&stream=true&header=true&height=590"><?php __e('Become fan at facebook'); ?></a></span>
+                            <span class="nav-element orange"><a id="facebook" href="http://www.facebook.com/plugins/likebox.php?href=http://www.facebook.com/maxesstuff&width=500&colorscheme=light&show_faces=true&border_color=000000&stream=true&header=true&height=590"><?php __e('Become fan at facebook'); ?></a></span>
                             <span class="nav-element orange"><a href="<?php echo(s_http . 'install/index.php' . $newlang) ?>"><?php __e('Installation and Configuration') ?></a></span>
                             <span class="nav-element orange"><a target="_blank" href="http://en.devmx.de/emailsupport"><?php __e('Support') ?></a></span>
                             <span class="nav-element orange"><a target="_blank" href="http://en.devmx.de/software/teamspeak3-webviewer/installation"><?php __e('Documentation') ?></a></span>
@@ -128,7 +128,14 @@ endif;
                                 ?><li><a href="<?php echo(s_http . 'TSViewer.php?config=' . $file) ?>"><?php echo($file) ?></a></li><?php } ?></ul>   
                             <?php } ?></p>
 
-                        <p id="version"><?php __e('Version:'); ?> <?php echo version; ?></p>
+                    <p id="version"><?php __e('Version:'); ?> <?php echo (string)version; ?></p>
+                    
+                    <?php  
+                        $versionInfo = $utils->versionCompare();
+                        if($versionInfo !== false) : 
+                    ?>
+                    <p id="version-hint"><a class="red" target="_blank" href="<?php echo($versionInfo->url); ?>"><?php echo sprintf(__('Version %s of the TeamSpeak3 Webviewer has been released. Click here to update.'), (string)$versionInfo->version) ?></a></p>
+                    <?php endif; ?>
                     </div>
                 </div>
             </div>
