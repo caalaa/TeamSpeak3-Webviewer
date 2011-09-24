@@ -30,6 +30,7 @@ v 1.0
 * Issue #11: Installscript no longer requires imagepack to be set if servericons are getting downloaded automatically
 * Issue #15: Make viewer running too if not standard ports (80 and 443) used for the viewer
 * Issue #18: Installscript didn't show the error message if password has been entered wrong
+* Issue #14: Viewer shows Error: "cannot load Module" if no module is selected in the installation script
 
 v 0.9
 ! Added GNU gettext for i18n/ l10n instead of xml config files for easy translation in other languages

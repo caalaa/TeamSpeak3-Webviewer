@@ -29,7 +29,7 @@ echo(file_get_contents("html/header.php"));
 
 // START NON OUTPUT FUCTIONS \\
 // destroys the session. Loggs out of the installation script
-if(isset($_REQUEST['action']) && $_REQUEST['action'] == "logout")
+if (isset($_REQUEST['action']) && $_REQUEST['action'] == "logout")
 {
     session_destroy();
     require_once 'html/select_language.php';
@@ -203,16 +203,16 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
             echo throwAlert($var . " " . __('is not set. Please check if you filled out all blanks.'));
         }
     }
-    
+
     // Check servericons and imagepack
-    if((isNullOrEmtpy($_POST['servericons']) || $_POST['servericons'] == "false") && isNullOrEmtpy($_POST['imagepack']))
+    if ((isNullOrEmtpy($_POST['servericons']) || $_POST['servericons'] == "false") && isNullOrEmtpy($_POST['imagepack']))
     {
         $vars_unavailable = true;
         $_POST['servericons'] = "";
         $_POST['imagepack'] = "";
         echo throwAlert("Servericons or imagepack" . __('is not set. Please check if you filled out all blanks.'));
     }
-    
+
     // END VAR CHECKING \\
 
     $xml->host = $_POST['serveradress'];
@@ -221,17 +221,19 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
     $xml->login_needed = $_POST['login_needed'];
     $xml->username = $_POST['username'];
     $xml->password = $_POST['password'];
-
-    if (empty($_POST['module']))
+    
+    // Modules
+    if (empty($_POST['module']) || $_POST['module'][0] == "")
     {
         $pre = "htmlframe,style";
+        $xml->modules = $pre;
     }
     else
     {
         $pre = "htmlframe,style,";
+        $xml->modules = $pre . implode(",", $_POST['module']);
     }
 
-    $xml->modules = $pre . implode(",", $_POST['module']);
 
     $xml->use_serverimages = $_POST['servericons'];
     $xml->imagepack = $_POST['imagepack'];
