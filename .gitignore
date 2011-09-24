@@ -1,5 +1,6 @@
 /config/foo.xml
 /config/default.xml
+/config/devmx.xml
 /config/config.xml
 /config/maxesstuff.xml
 /config/ghs.xml
@@ -27,4 +28,3 @@
 /styles/modern-dark/img/mic_deactivated.ai
 /styles/modern-dark/img/channel_full.ai
 /styles/modern-dark/img/pw.ai
-/config/devmx.xml
