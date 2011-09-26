@@ -24,7 +24,7 @@
             <th><?php __e("Directory"); ?></th>
             <th><?php __e("Status"); ?></th>
         </tr>
-        <?php $dirs = checkPermissions(array("", "../config", "../cache")); ?>
+        <?php $dirs = checkPermissions(array("pw.xml", "../config", "../cache")); ?>
 
         <?php
         foreach ($dirs as $key => $value)
