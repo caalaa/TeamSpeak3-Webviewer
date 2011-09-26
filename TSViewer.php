@@ -481,7 +481,7 @@ function render_channel_start($channel, $clientlist)
             {
                 $output .= '<img alt="" class="img_l arrow" src="' . $config['imagepath'] . 'arrow_normal' . $config['image_type'] . '"/>';
             }
-            $output .= '&nbsp';
+            $output .= '&nbsp;';
 
             $output .= '</p>';
         }
