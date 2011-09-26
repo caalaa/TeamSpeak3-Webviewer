@@ -105,7 +105,7 @@ endif;
                             if (count(getConfigFiles(s_root . 'config')) == 0)
                             {
                                 __e('Apparently you didn\'t set up the Viewer yet. Please run the')
-                                ?> <a href="<?php echo(s_http . 'install/index.php&set_lang=' . $lang) ?>"><?php __e('Installscript') ?></a><?php
+                                ?> <a href="<?php echo(s_http . 'install/index.php' . $newlang ) ?>"><?php __e('Installscript') ?></a><?php
                         }
                         else
                         {
