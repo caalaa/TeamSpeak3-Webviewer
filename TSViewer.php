@@ -189,7 +189,7 @@ if ($config['use_serverimages'] == true)
 {
     if (isset($_GET['config']))
     {
-        $config['serverimages'] = s_http . "getServerIcon.php?config=" . $_GET['config'] . "&id=";
+        $config['serverimages'] = s_http . "getServerIcon.php?config=" . $_GET['config'] . "&amp;id=";
     }
     else
     {
@@ -371,7 +371,7 @@ function render_client($clientinfo, $servergrouplist, $channelgrouplist)
 
     if ($clientinfo['client_type'] == 1) return '';
 
-    $rendered = '<div class="client" id="' . $config['prefix'] . 'client_' . htmlspecialchars($clientinfo['clid'], ENT_QUOTES) . '"><p class="client-content" id="' . $config['prefix'] . "client_" . htmlspecialchars($clientinfo['clid'], ENT_QUOTES) . '">';
+    $rendered = '<div class="client" id="' . $config['prefix'] . 'client_' . htmlspecialchars($clientinfo['clid'], ENT_QUOTES) . '"><p class="client-content">';
 
     foreach (get_servergroup_images($clientinfo, $servergrouplist, $config['use_serverimages'], $config['servergrp_images']) as $image)
     {
@@ -384,7 +384,7 @@ function render_client($clientinfo, $servergrouplist, $channelgrouplist)
         $rendered .= '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $channelgroup_icon . '\') no-repeat transparent;">&nbsp;</span>';
     }
     $rendered .= '<span class="clientimage ' . get_client_image($clientinfo) . '">&nbsp;</span>' . escape_name($clientinfo['client_nickname']);
-    $rendered .= "\r\n</div></p>";
+    $rendered .= "\r\n</p></div>";
     return $rendered;
 }
 

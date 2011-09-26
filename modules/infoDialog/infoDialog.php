@@ -78,7 +78,7 @@ class infoDialog extends ms_Module
             $this->jsModule->loadJS("$(document).ready(function() {
 								var ms_dialogs = new Array();
                                                                 
-                                                                $('body').append('<div id=\"dialog\" style=\"overflow:hidden;\"></div>');
+                                                                $('body').append('<div id=\"dialog\" style=\"overflow:hidden;\"><\/div>');
 
 								$('.client').hover(function() {
 									var ms_akt_html;
@@ -89,7 +89,7 @@ class infoDialog extends ms_Module
 						
                                                                         ms_title = '" . __('loading...') . "';
                                                                         ms_pos = ms_getPosition(ms_client);
-                                                                        ms_dialogs[ms_id] = $('#dialog').html('<img  style=\" margin-left: 50%; margin-right:50%; margin-top: 25px;\" src=\"" . s_http . "modules/infoDialog/img/ajax-loader.gif\" alt=\"\"></img>').dialog(" . $dialog_conf . ");
+                                                                        ms_dialogs[ms_id] = $('#dialog').html('<img  style=\" margin-left: 50%; margin-right:50%; margin-top: 25px;\" src=\"" . s_http . "modules/infoDialog/img/ajax-loader.gif\" alt=\"\"><\/img>').dialog(" . $dialog_conf . ");
                                                                                 
                                                                         ms_dialogs[ms_id].dialog('open');
                                                                         $.get('" . s_http . "modules/infoDialog/getHTML.php', {type: 'client', id: ms_id, title: 'true', config: '" . $configfile . "'}, function(data) {
