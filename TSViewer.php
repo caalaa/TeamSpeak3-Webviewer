@@ -384,7 +384,7 @@ function render_client($clientinfo, $servergrouplist, $channelgrouplist)
         $rendered .= '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $channelgroup_icon . '\') no-repeat transparent;">&nbsp;</span>';
     }
     $rendered .= '<span class="clientimage ' . get_client_image($clientinfo) . '">&nbsp;</span>' . escape_name($clientinfo['client_nickname']);
-    $rendered .= "\r\n</div></p>";
+    $rendered .= "\r\n</p></div>";
     return $rendered;
 }
 
