@@ -1,0 +1,122 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: TeamSpeak3 Webviewer welcome\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-09-28 14:47+0100\n"
+"PO-Revision-Date: 2011-09-28 14:54+0100\n"
+"Last-Translator: Maximilian Narr <maxesstuff@live.de>\n"
+"Language-Team: Maxesstuff <info@maxesstuff.de>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;__e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
+"X-Poedit-SearchPath-0: B:\\Eigene Dokumente\\NetBeansProjects\\TeamSpeak3 Webviewer\\html\\welcome\n"
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\html\welcome/welcome.php:45
+msgid "Translators"
+msgstr "Übersetzer"
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\html\welcome/welcome.php:86
+msgid "Become fan at facebook"
+msgstr "Werden Sie Fan auf Facebook"
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\html\welcome/welcome.php:87
+msgid "Installation and Configuration"
+msgstr "Installation und Konfiguration"
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\html\welcome/welcome.php:88
+msgid "Support"
+msgstr "Support"
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\html\welcome/welcome.php:89
+msgid "Documentation"
+msgstr "Dokumentation"
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\html\welcome/welcome.php:92
+msgid "Welcome to the devMX TeamSpeak3 Webviewer"
+msgstr "Willkommen zum devMX TeamSpeak3 Webviewer"
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\html\welcome/welcome.php:101
+msgid "show Translators"
+msgstr "Übersetzer anzeigen"
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\html\welcome/welcome.php:107
+msgid "Apparently you didn't set up the Viewer yet. Please run the"
+msgstr "Anscheinen haben Sie noch keine Konfigurationsdateien erstellt. Konfigurationsdateien erstellen wollen:"
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\html\welcome/welcome.php:108
+#: Webviewer\html\welcome/welcome.php:113
+msgid "Installscript"
+msgstr "Installationsroutine"
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\html\welcome/welcome.php:112
+msgid "You can see a list of your config files below. If you want to add more, run the"
+msgstr "Sie haben folgende Konfigurationdateien erstellt. Um eine neue Datei zu erstellen, starten Sie die"
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\html\welcome/welcome.php:115
+msgid "The following configfiles are available"
+msgstr "Diese Konfigurationsdateien sind verfügbar:"
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\html\welcome/welcome.php:119
+msgid "No configfile available"
+msgstr "Keine Konfigurationsdateien erstellt."
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\html\welcome/welcome.php:131
+msgid "Version:"
+msgstr "Version:"
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\html\welcome/welcome.php:137
+#, php-format
+msgid "Version %s of the TeamSpeak3 Webviewer has been released. Click here to update."
+msgstr "Version %s des TeamSpeak3 Webviewer wurde veröffentlicht. Klicken Sie hier um upzudaten."
+
+#~ msgid "Find us on facebook"
+#~ msgstr "Werden Sie Fan auf Facebook"
+
+#~ msgid "If you need help, you can take a look for our Support or our FAQ"
+#~ msgstr ""
+#~ "Sollten Sie Hilfe benötigen, so können Sie unseren Support besuchen oder "
+#~ "sich unsere FAQ ansehen"
+
+#~ msgid "FAQ"
+#~ msgstr "FAQ"
+
+#~ msgid "by"
+#~ msgstr "von"
+
+#~ msgid "English"
+#~ msgstr "Englisch"
+
+#~ msgid "German"
+#~ msgstr "Deutsch"
