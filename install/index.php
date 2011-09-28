@@ -98,7 +98,7 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'setpw' && isset($_POST
 
     if ($result == FALSE)
     {
-        echo(throwAlert(__('The password could not be saved. Please make the "install" directory writable.'), 21));
+        echo(throwAlert(__('The password could not be saved. Please make "pw.xml" in the install directory writable.'), 21));
         require_once 'html/set_password.php';
         exit;
     }
