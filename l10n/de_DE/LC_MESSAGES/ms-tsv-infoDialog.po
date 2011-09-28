@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TeamSpeak3 Webviewer infoDialog\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-10 09:01+0100\n"
-"PO-Revision-Date: 2011-09-10 09:01+0100\n"
+"POT-Creation-Date: 2011-09-28 14:47+0100\n"
+"PO-Revision-Date: 2011-09-28 14:47+0100\n"
 "Last-Translator: Maximilian Narr <maxesstuff@live.de>\n"
 "Language-Team: Maxesstuff <info@maxesstuff.de>\n"
 "MIME-Version: 1.0\n"
@@ -17,55 +17,55 @@ msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\infoDialog/getHTML.php:127
+#: Webviewer\modules\infoDialog/getHTML.php:142
 msgid "Nickname"
 msgstr "Benutzername"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\infoDialog/getHTML.php:132
+#: Webviewer\modules\infoDialog/getHTML.php:147
 msgid "Country"
 msgstr "Land"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\infoDialog/getHTML.php:138
+#: Webviewer\modules\infoDialog/getHTML.php:153
 msgid "Version"
 msgstr "Version"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\infoDialog/getHTML.php:143
+#: Webviewer\modules\infoDialog/getHTML.php:158
 msgid "Servergroup(s)"
 msgstr "Servergruppe(n)"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\infoDialog/getHTML.php:158
+#: Webviewer\modules\infoDialog/getHTML.php:173
 msgid "Channelgroup(s)"
 msgstr "Channelgruppe(n)"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\infoDialog/getHTML.php:170
+#: Webviewer\modules\infoDialog/getHTML.php:185
 msgid "Connections"
 msgstr "Verbindungen"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\infoDialog/getHTML.php:178
+#: Webviewer\modules\infoDialog/getHTML.php:193
 msgid "Description"
 msgstr "Beschreibung"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\infoDialog/getHTML.php:451
+#: Webviewer\modules\infoDialog/getHTML.php:466
 msgid "none"
 msgstr "keines"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\infoDialog/infoDialog.php:75
+#: Webviewer\modules\infoDialog/infoDialog.php:90
 msgid "loading..."
 msgstr "loading..."
 

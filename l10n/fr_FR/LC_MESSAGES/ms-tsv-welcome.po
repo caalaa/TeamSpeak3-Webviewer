@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TeamSpeak3 Webviewer welcome\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-10 09:02+0100\n"
-"PO-Revision-Date: 2011-09-10 09:02+0100\n"
+"POT-Creation-Date: 2011-09-28 14:47+0100\n"
+"PO-Revision-Date: 2011-09-28 14:47+0100\n"
 "Last-Translator: Chriss <chriss@rbl.lu>\n"
 "Language-Team: -AS- Draketornado <chriss@rbl.lu>\n"
 "MIME-Version: 1.0\n"
@@ -17,78 +17,99 @@ msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:43
+#: Webviewer\html\welcome/welcome.php:45
 msgid "Translators"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:136
-msgid "Find us on facebook"
-msgstr "Trouve-nous sur facebook"
+#: Webviewer\html\welcome/welcome.php:86
+msgid "Become fan at facebook"
+msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:140
+#: Webviewer\html\welcome/welcome.php:87
+msgid "Installation and Configuration"
+msgstr ""
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\html\welcome/welcome.php:88
+msgid "Support"
+msgstr ""
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\html\welcome/welcome.php:89
+msgid "Documentation"
+msgstr ""
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\html\welcome/welcome.php:92
 #, fuzzy
 msgid "Welcome to the devMX TeamSpeak3 Webviewer"
 msgstr "Bienvenu au Maxesstuff TeamSpeak3 Webviewer"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:147
+#: Webviewer\html\welcome/welcome.php:101
 msgid "show Translators"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:153
+#: Webviewer\html\welcome/welcome.php:107
 msgid "Apparently you didn't set up the Viewer yet. Please run the"
 msgstr "Apparemment vous n'avez pas encore configuré le visionneur. Veuillez lancer le"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:154
-#: Webviewer\html\welcome/welcome.php:159
+#: Webviewer\html\welcome/welcome.php:108
+#: Webviewer\html\welcome/welcome.php:113
 msgid "Installscript"
 msgstr "scripte d'installation"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:158
+#: Webviewer\html\welcome/welcome.php:112
 msgid "You can see a list of your config files below. If you want to add more, run the"
 msgstr "Vous pouvez consultez une liste de vos fichiers de configuration si-dessous. Si vous en voulez ajouter, démarrez le"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:161
+#: Webviewer\html\welcome/welcome.php:115
 msgid "The following configfiles are available"
 msgstr "Les fichiers de configuration suivants sont disponibles"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:165
+#: Webviewer\html\welcome/welcome.php:119
 msgid "No configfile available"
 msgstr "Aucun fichier de configuration disponible"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:178
+#: Webviewer\html\welcome/welcome.php:131
+msgid "Version:"
+msgstr ""
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\html\welcome/welcome.php:137
+#, php-format
+msgid "Version %s of the TeamSpeak3 Webviewer has been released. Click here to update."
+msgstr ""
+
+#~ msgid "Find us on facebook"
+#~ msgstr "Trouve-nous sur facebook"
+
 #, fuzzy
-msgid "If you need help, you can take a look for our Support or our FAQ"
-msgstr "Si vous avez besoin d'aide, vous pouvez consulter notre Support en ligne ou notre FAQ"
-
-#: B:\Eigene
-#: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:180
-msgid "Support"
-msgstr ""
-
-#: B:\Eigene
-#: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:181
-msgid "FAQ"
-msgstr ""
+#~ msgid "If you need help, you can take a look for our Support or our FAQ"
+#~ msgstr ""
+#~ "Si vous avez besoin d'aide, vous pouvez consulter notre Support en ligne "
+#~ "ou notre FAQ"
 
 #~ msgid "English"
 #~ msgstr "Anglais"

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TeamSpeak3 Webviewer legend\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-10 09:01+0100\n"
-"PO-Revision-Date: 2011-09-10 09:01+0100\n"
+"POT-Creation-Date: 2011-09-28 14:47+0100\n"
+"PO-Revision-Date: 2011-09-28 14:47+0100\n"
 "Last-Translator: Maximilian Narr <maxesstuff@live.de>\n"
 "Language-Team: Maxesstuff <info@maxesstuff.de>\n"
 "MIME-Version: 1.0\n"
@@ -17,33 +17,33 @@ msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\legend/legend.php:35
-#: Webviewer\modules\legend/legend.php:56
+#: Webviewer\modules\legend/legend.php:50
+#: Webviewer\modules\legend/legend.php:71
 msgid "Legend"
 msgstr "legend"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\legend/legend.php:59
+#: Webviewer\modules\legend/legend.php:74
 msgid "Servergroup(s)"
 msgstr "Servergruppe(n)"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\legend/legend.php:70
-#: Webviewer\modules\legend/legend.php:80
+#: Webviewer\modules\legend/legend.php:85
+#: Webviewer\modules\legend/legend.php:95
 msgid "No image"
 msgstr "kein Icon"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\legend/legend.php:88
+#: Webviewer\modules\legend/legend.php:103
 msgid "Channelgroup(s)"
 msgstr "Channelgruppe(n)"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\legend/legend.php:103
+#: Webviewer\modules\legend/legend.php:118
 msgid "No Image"
 msgstr "kein Icon"
 
