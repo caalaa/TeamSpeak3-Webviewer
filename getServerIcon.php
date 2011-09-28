@@ -52,6 +52,7 @@ foreach ($paths as $path)
 
 
 $cachefile = s_root . "cache/" . $config['host'] . $config['queryport'] . "/" . $config['vserverport'] . "/server/images/" . $_GET['id'];
+$config['imagepack'] = !isset($config['imagepack']) ||trim($config['imagepack']) == '' ? 'standard' : $config['imagepack'];
 $standardIconsPath = s_root . "images/" . $config['imagepack'] . "/";
 
 $isStandardIcon = false;
