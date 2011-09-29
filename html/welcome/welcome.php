@@ -38,7 +38,7 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
 else if (isset($_GET['action']) && $_GET['action'] == "showtrans") :
     ?>
 
-        <?php $languages = $utils->getLanguages(); ?>
+        <?php $languages = $utils->getLanguages();?>
     <div id="lang-credits">
     <?php foreach ($languages as $langCode => $langOptions) : ?>
             <div id="lang<?php echo($langCode); ?>">
