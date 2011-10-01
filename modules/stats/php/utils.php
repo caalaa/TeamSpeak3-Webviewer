@@ -80,9 +80,8 @@ function createJS($name, $xml, $locale)
 
     $values = array();
 
-    if ($locale == NULL) $locale = "de_DE.UTF-8";
-
-    setlocale(LC_TIME, $locale);
+    if (!$locale == NULL)
+        setlocale(LC_TIME, $locale);
 
     foreach ($xml->entry as $entry)
     {

@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-    Document   : userBar.xml
-    Created on : 18. März 2011, 20:47
-    Author     : drak3
-    Description:
-        Purpose of the document follows.
--->
 <config>
     <!-- Information -->
     <info>
         <author>Maximilian Narr</author>
-        <homepage>http://maxesstuff.de</homepage>
-        <description_en>Shows a progessbar with the amount of clients connected over the viewer</description_en>    
-        <description_de>Zeigt einen Fortschrittsbalken über dem Viewer an. Der Balken zeigt die prozentuale Slotausnutzung des Servers.</description_de>
+        <homepage>http://devmx.de</homepage>
         
         <!-- Don't change anything here -->
         <!-- Ändern Sie hier nichts! -->
