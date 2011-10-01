@@ -1,17 +1,8 @@
-<!--
- * Author    : Maximilian Narr
- * Homepage  : http://maxesstuff.de
- * Email     : maxe@maxesstuff.de
- * License   : See license-folder
- * Version   : See changelog.txt
--->
-<!DOCTYPE root PUBLIC '-//W3C//DTD HTML 3.2 Final//EN' 'null'>
+<?xml version="1.0" encoding="UTF-8"?>
 <config>
     <info>
         <author>Max Rath</author>
         <homepage>http://maxesstuff.de</homepage>
-        <description_en>Provides direct login to the server if you click on the servername</description_en>    
-        <description_de>Verbindet sofort zum Server, wenn Sie auf den Servernamen klicken</description_de>
         
         <!-- Don't change anything here -->
         <!-- Ändern Sie hier nichts! -->

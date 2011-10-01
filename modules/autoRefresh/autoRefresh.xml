@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-    Document   : autoRefresh.xml
-    Created on : 18. März 2011, 20:36
-    Author     : drak3
-    Description:
-        Purpose of the document follows.
--->
-
 <config>
     <!-- Information -->
     <info>
         <author>Max Rath</author>
-        <homepage>http://maxesstuff.de</homepage>
-        <description_en>Provides a module that the viewer will refresh itself after a specific time</description_en>    
-        <description_de>Dieses Modul bewirkt, dass der Viewer nach eine bestimmten Zeit automatisch neu geladen wird</description_de>
+        <homepage>http://devmx.de</homepage>
         
         <!-- Don't change anything here -->
         <!-- Ändern Sie hier nichts! -->

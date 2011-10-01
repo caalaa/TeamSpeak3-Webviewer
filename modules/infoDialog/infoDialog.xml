@@ -1,18 +1,9 @@
 <?xml version="1.0"?>
-<!--
- * Author    : Maximilian Narr
- * Homepage  : http://maxesstuff.de
- * Email     : maxe@maxesstuff.de
- * License   : See license-folder
- * Version   : See changelog.txt
--->
 <config>
     <!-- Information -->
     <info>
         <author>Max Rath and Maximilian Narr</author>
-        <homepage>http://maxesstuff.de</homepage>
-        <description_en>This module shows an infodialog if you hover with the mouse about any client.</description_en>    
-        <description_de>Zeigt ein Infofenster über den Client an, wenn Sie die Maus über einen Client bewegen.</description_de>
+        <homepage>http://devmx.de</homepage>
         
         <!-- Don't change anything here -->
         <!-- Ändern Sie hier nichts! -->

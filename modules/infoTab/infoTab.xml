@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-    Document   : infoTab.xml
-    Created on : 18. März 2011, 20:38
-    Author     : drak3
-    Description:
-        Purpose of the document follows.
--->
-
 <config>
     <!-- Information -->
     <info>
         <author>Max Rath and Maximilian Narr</author>
-        <homepage>http://maxesstuff.de</homepage>
+        <homepage>http://devmx.de</homepage>
         <description_en></description_en>    
         <description_de></description_de>
         
