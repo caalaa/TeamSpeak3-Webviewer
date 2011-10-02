@@ -373,15 +373,35 @@ function render_client($clientinfo, $servergrouplist, $channelgrouplist)
 
     $rendered = '<div class="client" id="' . $config['prefix'] . 'client_' . htmlspecialchars($clientinfo['clid'], ENT_QUOTES) . '"><p class="client-content">';
 
-    foreach (get_servergroup_images($clientinfo, $servergrouplist, $config['use_serverimages'], $config['servergrp_images']) as $image)
+    foreach (  get_servergroup_icons( $clientinfo , $servergrouplist) as $sgroup)
     {
-        if ($image == 0) continue;
-        $rendered .= '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $image . '\') no-repeat transparent;">&nbsp;</span>';
+        if ($config['use_serverimages'] == true)
+                {
+                    if ($sgroup['iconid'] != 0)
+                        continue;
+                    else
+                            $rendered .= '<p><span class="channelimage" title="' . __('No image') . '">&nbsp;</span>';
+                }
+                else
+                {
+                    if (isset($this->config['servergrp_images'][$sgroup['sgid']]))
+                    {
+                        $rendered .= '<span class="channelimage" style="background: url(\'' . $this->config['serverimages'] . $this->config['servergrp_images'][$sgroup['sgid']] . $this->config['image_type'] . '\') no-repeat transparent;">&nbsp;</span>';
+                    }
+                    else
+                    {
+                        $rendered .= '<span class="channelimage" title="' . __('No image') . '">&nbsp;</span>';
+                    }
+                }
     }
-    $channelgroup_icon = get_channelgroup_image($clientinfo, $channelgrouplist, $config['use_serverimages'], $config['channelgrp_images']);
+    $channelgroup_icon = getChannelGroupIcon($clientinfo, $channelgrouplist);
     if ($channelgroup_icon != 0)
     {
-        $rendered .= '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $channelgroup_icon . '\') no-repeat transparent;">&nbsp;</span>';
+                    if ($channelgroup_icon != 0)
+                            $output .= '<p><span class="channelimage" style="background: url(\'' . $this->config['serverimages'] . $cgroup['iconid'] . '\') no-repeat transparent;" title="' . $cgroup['name'] . '">&nbsp;</span>';
+                    else
+                            $output .= '<p><span class="channelimage" title="' . __('No Image') . '">&nbsp;</span>';
+                
     }
     $rendered .= '<span class="clientimage ' . get_client_image($clientinfo) . '">&nbsp;</span>' . escape_name($clientinfo['client_nickname']);
     $rendered .= "\r\n</p></div>";

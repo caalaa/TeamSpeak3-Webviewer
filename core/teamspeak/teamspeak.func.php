@@ -194,40 +194,26 @@ function get_client_image($client)
     return "normal-client";
 }
 
-function get_servergroup_images($client, $servergroups, $use_serverimages = false, $servergrpimages = FALSE)
+function get_servergroup_icons($client, $servergroups)
 {
     $ret = Array();
-    global $config;
     $client['servergroups'] = explode(",", $client['client_servergroups']);
 
     foreach ($client['servergroups'] as $group)
     {
-        if ($use_serverimages == false)
-        {
-
-            if (isset($servergrpimages[$group]))
-            {
-                $ret[] = $servergrpimages[$group] . $config['image_type'];
-            }
-        }
-        else
-        {
-
             foreach ($servergroups as $sgroup)
             {
-
                 if ((int) $sgroup['sgid'] == (int) $group)
                 {
 
                     $ret[] = $sgroup['iconid'];
                 }
             }
-        }
     }
     return $ret;
 }
 
-function get_channelgroup_image($client, $channelgroups, $use_serverimages = false, $channelgrpimages = NULL)
+function get_channelgroup_image($client, $channelgroups)
 {
     global $config;
 
