@@ -22,14 +22,21 @@
  * @param type $configfile
  * @return type true if needed, else false
  */
-function needNewEntry($configfile)
+function needNewEntry($configfile, $customDir = null)
 {
-    $fileDir = cacheDir . "stats/$configfile.xml";
+    $baseDir = cacheDir;
+
+    if ($customDir != null)
+    {
+        $baseDir = $customDir;
+    }
+
+    $fileDir = $baseDir . "stats/$configfile.xml";
     if (!file_exists($fileDir))
     {
-        if (!is_dir(cacheDir . "stats"))
+        if (!is_dir($baseDir . "stats"))
         {
-            mkdir(cacheDir . "stats", 0775);
+            mkdir($baseDir. "stats", 0775);
         }
 
         file_put_contents($fileDir, file_get_contents(s_root . "modules/stats/cache/template.xml"));
@@ -50,9 +57,16 @@ function needNewEntry($configfile)
  * @param type $clients_online
  * @param type $configfile 
  */
-function addEntry($clients_online, $configfile)
+function addEntry($clients_online, $configfile, $customDir = null)
 {
-    $fileDir = cacheDir . "stats/$configfile.xml";
+    $baseDir = cacheDir;
+
+    if ($customDir != null)
+    {
+        $baseDir = $customDir;
+    }
+
+    $fileDir = $baseDir . "stats/$configfile.xml";
 
     $xml = simplexml_load_file($fileDir);
 
@@ -80,8 +94,7 @@ function createJS($name, $xml, $locale)
 
     $values = array();
 
-    if (!$locale == NULL)
-        setlocale(LC_TIME, $locale);
+    if (!$locale == NULL) setlocale(LC_TIME, $locale);
 
     foreach ($xml->entry as $entry)
     {

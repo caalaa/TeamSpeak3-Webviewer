@@ -91,7 +91,7 @@
         name -> alphabetical sorting, no extra queries are made
         tsclient -> sorting like in ts3-client (talkpower, is_talker, alphabetical) one query per user is made, may slow down the viewer!
      -->
-     <sort_method>clid</sort_method>
+    <sort_method>clid</sort_method>
 
     
     <!-- Caching -->
