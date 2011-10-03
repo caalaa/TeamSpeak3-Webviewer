@@ -34,6 +34,7 @@ v 1.0
 * Issue #18: Installscript didn't show the error message if password has been entered wrong
 * Issue #14: Viewer shows Error: "cannot load Module" if no module is selected in the installation script
 * Issue #6: Installscript and welcome screen crashed when a third-party file was located in "l10n"
+* Issue #28: use_servericons = false was not working correctly
 
 v 0.9
 ! Added GNU gettext for i18n/ l10n instead of xml config files for easy translation in other languages
