@@ -49,19 +49,16 @@ class tsvUtils
     {
         $languages = array();
         $path = $this->customPath . "/l10n";
-
         $handler = opendir($path);
-
         while ($file = readdir($handler))
         {
-            if ($file != "." && $file != "..")
+            if ($file != "." && $file != ".." && preg_match("/([a-z]){2}(_){1}([A-Z]){2}/", $file) >= 1 )
             {
                 require $path . "/" . $file . "/" . "lang.php";
 
                 $languages[$file] = $l10_lang;
             }
         }
-
         uasort($languages, array($this, "languagesort"));
 
         return $languages;

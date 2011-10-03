@@ -38,7 +38,7 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
 else if (isset($_GET['action']) && $_GET['action'] == "showtrans") :
     ?>
 
-        <?php $languages = $utils->getLanguages(); ?>
+        <?php $languages = $utils->getLanguages();?>
     <div id="lang-credits">
     <?php foreach ($languages as $langCode => $langOptions) : ?>
             <div id="lang<?php echo($langCode); ?>">
@@ -86,7 +86,8 @@ endif;
                             <span class="nav-element orange"><a id="facebook" href="http://www.facebook.com/plugins/likebox.php?href=http://www.facebook.com/maxesstuff&width=500&colorscheme=light&show_faces=true&border_color=000000&stream=true&header=true&height=590"><?php __e('Become fan at facebook'); ?></a></span>
                             <span class="nav-element orange"><a href="<?php echo(s_http . 'install/index.php' . $newlang) ?>"><?php __e('Installation and Configuration') ?></a></span>
                             <span class="nav-element orange"><a target="_blank" href="http://en.devmx.de/emailsupport"><?php __e('Support') ?></a></span>
-                            <span class="nav-element orange"><a target="_blank" href="http://en.devmx.de/software/teamspeak3-webviewer/installation"><?php __e('Documentation') ?></a></span>
+                            <span class="nav-element orange"><a target="_blank" href="http://en.devmx.de/software/teamspeak3-webviewer/dokumentation"><?php __e('Documentation') ?></a></span>
+                            <span class="nav-element orange"><a href="ts3server://devmx.de"><?php __e('TeamSpeak')?><a></span> 
                         </div>
                         <div id="logo"><img style="margin-left: -175px;" src="<?php echo s_http; ?>html/welcome/logo.png" alt="" /></div>
                         <div><p class="header"><?php __e('Welcome to the devMX TeamSpeak3 Webviewer') ?></p></div>

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TeamSpeak3 Webviewer userBar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-10 09:01+0100\n"
-"PO-Revision-Date: 2011-09-10 09:01+0100\n"
+"POT-Creation-Date: 2011-09-28 14:47+0100\n"
+"PO-Revision-Date: 2011-09-28 14:47+0100\n"
 "Last-Translator: Maximilian Narr <maxesstuff@live.de>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,13 +15,13 @@ msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\userBar/userBar.php:46
+#: Webviewer\modules\userBar/userBar.php:61
 msgid "of"
 msgstr "af"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\userBar/userBar.php:46
+#: Webviewer\modules\userBar/userBar.php:61
 #, fuzzy
 msgid "clients are currently online"
 msgstr "er i øjeblikket online"

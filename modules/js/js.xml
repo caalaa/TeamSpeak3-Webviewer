@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-    Document   : js.xml
-    Created on : 18. März 2011, 20:42
-    Author     : drak3
-    Description:
-        Purpose of the document follows.
--->
-
 <config>
     <!-- Information -->
     <info>
         <author>Max Rath</author>
-        <homepage>http://maxesstuff.de</homepage>
-        <description_en></description_en>    
-        <description_de></description_de>
+        <homepage>http://devmx.de</homepage>
         
         <!-- Don't change anything here -->
         <!-- Ändern Sie hier nichts! -->
