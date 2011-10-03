@@ -102,13 +102,13 @@ class ms_ModuleManager
                     {
                         foreach ($module as $key => $value)
                         {                          
-                            switch ($value)
+                            switch (strtolower($value))
                             {
                                 case "true":
-                                    (boolean) $value = (boolean) TRUE;
+                                    $value = TRUE;
                                     break;
                                 case "false":
-                                    (boolean) $value = (boolean) FALSE;
+                                    $value = FALSE;
                                     break;
                                 case "none":
                                     $value = NULL;
@@ -118,14 +118,14 @@ class ms_ModuleManager
                                     break;
                             }
 
-                            if(!$value === NULL)
+                            if($value !== NULL)
                                 $config[$key] = $value;
                         }
                     }
                 }
             }
 
-
+            var_dump($config);
             $lang = NULL;
             $module = new $name($config, $lang, $this);
             $this->loadedModules[$name] = $module;
