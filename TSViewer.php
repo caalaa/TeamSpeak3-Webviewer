@@ -184,22 +184,15 @@ $_SESSION['s_http'] = s_http;
 
 
 $config['image_type2'] = $config['image_type'];
-$config['imagepath'] = s_http . "images/serverimages/";
-if ($config['use_serverimages'] == true)
+if (isset($_GET['config']))
 {
-    if (isset($_GET['config']))
-    {
-        $config['serverimages'] = s_http . "getServerIcon.php?config=" . $_GET['config'] . "&amp;id=";
-    }
-    else
-    {
-        $config['serverimages'] = s_http . "getServerIcon.php?id=";
-    }
+    $config['serverimages'] = s_http . "getServerIcon.php?config=" . $_GET['config'] . "&amp;id=";
 }
 else
 {
-    $config['serverimages'] = s_http . "images/" . $config['imagepack'] . "/";
+    $config['serverimages'] = s_http . "getServerIcon.php?id=";
 }
+
 
 $config['image_type'] = '.' . $config['image_type'];
 $config['client_name'] = "Maxesstuff TS3 Webviewer";
@@ -322,7 +315,7 @@ $output .= $mManager->triggerEvent('HtmlStartup');
 $output .= $mManager->getHeaders();
 
 //render the server
-$output .= render_server($serverinfo['return'], $config['imagepath'], $config);
+$output .= render_server($serverinfo['return']);
 $output .= $mManager->triggerEvent("serverRendered");
 
 // render the channels
@@ -340,7 +333,7 @@ $duration = microtime(true) - $start;
 
 //echo $duration;
 //** Rendering Functions **\\
-function render_server($serverinfo, $imagepath, $config)
+function render_server($serverinfo)
 {
     global $config, $mManager;
     return "<div class=\"server\">\r\n<p  class=\"servername\">" . $mManager->triggerEvent("InServer") . " <span>" . getServerIcon($serverinfo, $config) . '<span class="serverimage image">&nbsp;</span>' . escape_name($serverinfo['virtualserver_name']) . "</span></p>\r\n";
@@ -372,36 +365,16 @@ function render_client($clientinfo, $servergrouplist, $channelgrouplist)
     if ($clientinfo['client_type'] == 1) return '';
 
     $rendered = '<div class="client" id="' . $config['prefix'] . 'client_' . htmlspecialchars($clientinfo['clid'], ENT_QUOTES) . '"><p class="client-content">';
-
-    foreach (  get_servergroup_icons( $clientinfo , $servergrouplist) as $sgroup)
-    {
-        if ($config['use_serverimages'] == true)
-                {
-                    if ($sgroup['iconid'] != 0)
-                        continue;
-                    else
-                            $rendered .= '<p><span class="channelimage" title="' . __('No image') . '">&nbsp;</span>';
-                }
-                else
-                {
-                    if (isset($this->config['servergrp_images'][$sgroup['sgid']]))
-                    {
-                        $rendered .= '<span class="channelimage" style="background: url(\'' . $this->config['serverimages'] . $this->config['servergrp_images'][$sgroup['sgid']] . $this->config['image_type'] . '\') no-repeat transparent;">&nbsp;</span>';
-                    }
-                    else
-                    {
-                        $rendered .= '<span class="channelimage" title="' . __('No image') . '">&nbsp;</span>';
-                    }
-                }
+    
+    $serverGroupIcons = get_servergroup_icons($clientinfo, $servergrouplist);
+    foreach($serverGroupIcons as $iconID) {
+        if($iconID == 0)
+            continue;
+        $rendered .= '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $iconID . '\') no-repeat transparent;">&nbsp;</span>';
     }
-    $channelgroup_icon = getChannelGroupIcon($clientinfo, $channelgrouplist);
-    if ($channelgroup_icon != 0)
-    {
-                    if ($channelgroup_icon != 0)
-                            $output .= '<p><span class="channelimage" style="background: url(\'' . $this->config['serverimages'] . $cgroup['iconid'] . '\') no-repeat transparent;" title="' . $cgroup['name'] . '">&nbsp;</span>';
-                    else
-                            $output .= '<p><span class="channelimage" title="' . __('No Image') . '">&nbsp;</span>';
-                
+    $channelGroupIcon = get_channelgroup_image($clientinfo,$channelgrouplist);
+    if($channelGroupIcon != 0) {
+        $rendered .= '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $channelGroupIcon . '\') no-repeat transparent;">&nbsp;</span>';
     }
     $rendered .= '<span class="clientimage ' . get_client_image($clientinfo) . '">&nbsp;</span>' . escape_name($clientinfo['client_nickname']);
     $rendered .= "\r\n</p></div>";

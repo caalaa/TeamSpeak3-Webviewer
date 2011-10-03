@@ -67,7 +67,7 @@ foreach ($viewer_conf as $key => $value)
     {
         $temp = explode('_', $key, 2);
         $temp[1] = str_replace('_', ' -', $temp[1]);
-        $config['cachetime'][$temp[1]] = $value;
+        $viewer_conf['cachetime'][$temp[1]] = $value;
     }
     if (preg_match("/^servergrp_images_/", $key))
     {
@@ -82,11 +82,19 @@ foreach ($viewer_conf as $key => $value)
         $config['channelgrp_images'][$temp] = $value;
     }
 }
-if ($viewer_conf['use_serverimages'] == true) $viewer_conf['serverimages'] = s_http . "getServerIcon.php?config=" . $_GET['config'] . "&id=";
-else $viewer_conf['serverimages'] = s_http . "images/" . $viewer_conf['imagepack'] . "/";
+
+
 $viewer_conf['client_name'] = "Maxesstuff TS3 Webviewer";
 
 $config = parseConfigFile(s_root . 'modules/infoDialog/infoDialog.xml', true);
+if (isset($_GET['config']))
+{
+    $config['serverimages'] = s_http . "getServerIcon.php?config=" . $_GET['config'] . "&amp;id=";
+}
+else
+{
+    $config['serverimages'] = s_http . "getServerIcon.php?id=";
+}
 
 $info = $_SESSION['infoDialog']['info'];
 
@@ -158,13 +166,11 @@ if ($_GET['type'] == 'client')
                 $out .= '<td class="label">' . __('Servergroup(s)') . ':</td>';
                 $out .= '<td>';
 
-                foreach (get_servergroup_images($user, $info['servergroups'], $viewer_conf['use_serverimages'], $viewer_conf['servergrp_images']) as $image)
-                {
-
-                    if ($image !== 0)
-                    {
-                        $out .= '<img src="' . $viewer_conf['serverimages'] . $image . '" alt="" style="margin-right:2px;" />';
-                    }
+                $serverGroupIcons = get_servergroup_icons($user, $info['servergroups']);
+                foreach($serverGroupIcons as $iconID) {
+                    if($iconID == 0)
+                        continue;
+                    $out .= '<span class="img_l group-image" style="background: url(\'' . $config['serverimages'] . $iconID . '\') no-repeat transparent;">&nbsp;</span>';
                 }
                 $out .= '</td></tr>';
                 break;
@@ -172,11 +178,9 @@ if ($_GET['type'] == 'client')
                 $out .= '<tr>';
                 $out .= '<td class="label">' . __('Channelgroup(s)') . ':</td>';
                 $out .= '<td>';
-                $channelgroup_icon = get_channelgroup_image($user, $info['channelgroups'], $viewer_conf['use_serverimages'], $viewer_conf['channelgrp_images']);
-
-                if ($channelgroup_icon !== 0)
-                {
-                    $out .= '<img  src="' . $viewer_conf['serverimages'] . $channelgroup_icon . '" alt="" style="margin-right:2px;"/>';
+                $channelGroupIcon = get_channelgroup_image($user,$info['channelgroups']);
+                if($channelGroupIcon != 0) {
+                    $out .= '<span class="img_l group-image" style="background: url(\'' . $config['serverimages'] . $channelGroupIcon . '\') no-repeat transparent;">&nbsp;</span>';
                 }
                 $out .= '</td></tr>';
                 break;

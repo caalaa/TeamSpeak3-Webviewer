@@ -220,18 +220,8 @@ function get_channelgroup_image($client, $channelgroups)
     foreach ($channelgroups as $group)
     {
         if ($client['client_channel_group_id'] == $group['cgid'])
-        {
-            if ($use_serverimages == false)
-            {
-                if (isset($channelgrpimages[$group['cgid']]))
-                {
-                    return $channelgrpimages[$group['cgid']] . $config['image_type'];
-                }
-            }
-            else
-            {
+        { 
                 return $group['iconid'];
-            }
         }
     }
 }
