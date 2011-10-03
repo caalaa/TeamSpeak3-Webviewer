@@ -125,7 +125,6 @@ class ms_ModuleManager
                 }
             }
 
-            var_dump($config);
             $lang = NULL;
             $module = new $name($config, $lang, $this);
             $this->loadedModules[$name] = $module;
