@@ -118,7 +118,7 @@ class ms_ModuleManager
                                     break;
                             }
 
-                            if(!$value == NULL)
+                            if(!$value === NULL)
                                 $config[$key] = $value;
                         }
                     }
