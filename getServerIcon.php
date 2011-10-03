@@ -99,6 +99,9 @@ if (isset($img))
     echo $img;
     exit;
 }
+else if($config['use_serverimages'] == FALSE) {
+    exit;
+}
 
 
 if (file_exists($cachefile)) $img = file_get_contents($cachefile);
