@@ -21,9 +21,8 @@ $(document).ready(function(){
     
     // jQueryUI
     $("button, input:submit, input:button, .button").button();  
-    
-    // jQTransfom
-    $('form.jqform').jqTransform();
+    $("input:text, input:password").TextBox();
+    $("fieldset").FieldSet();
     
     // Colorbox
     $('.color').colorbox({
@@ -123,9 +122,9 @@ $(document).ready(function(){
         }
     });
     
-    // ********************************************************************** \\
-    // Hiding of several fields Stop
-    // ********************************************************************** \\
+// ********************************************************************** \\
+// Hiding of several fields Stop
+// ********************************************************************** \\
 });
 
 // Sets the requested language

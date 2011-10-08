@@ -8,6 +8,9 @@
 ~ Minor Change
 * Fix
 
+v1.1
++ Issue #25: added a cron file to update the statistics
+
 v 1.0
 ! There are two module configfiles now:
     - one global one for all viewer-configfiles

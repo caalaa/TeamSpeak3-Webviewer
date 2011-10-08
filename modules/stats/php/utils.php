@@ -24,11 +24,13 @@
  */
 function needNewEntry($configfile, $customDir = null)
 {
-    $baseDir = cacheDir;
-
     if ($customDir != null)
     {
         $baseDir = $customDir;
+    }
+    else
+    {
+        $baseDir = cacheDir;
     }
 
     $fileDir = $baseDir . "stats/$configfile.xml";
@@ -36,7 +38,7 @@ function needNewEntry($configfile, $customDir = null)
     {
         if (!is_dir($baseDir . "stats"))
         {
-            mkdir($baseDir. "stats", 0775);
+            mkdir($baseDir . "stats", 0775);
         }
 
         file_put_contents($fileDir, file_get_contents(s_root . "modules/stats/cache/template.xml"));
@@ -59,11 +61,13 @@ function needNewEntry($configfile, $customDir = null)
  */
 function addEntry($clients_online, $configfile, $customDir = null)
 {
-    $baseDir = cacheDir;
-
     if ($customDir != null)
     {
         $baseDir = $customDir;
+    }
+    else
+    {
+        $baseDir = cacheDir;
     }
 
     $fileDir = $baseDir . "stats/$configfile.xml";
