@@ -17,7 +17,12 @@
 
 body
 {
+    background: rgb(238,238,238);
+}
 
+fieldset.config
+{
+    margin-bottom: 6px;
 }
 
 p, span,a, tr, td, button, input, .tooltip
@@ -25,11 +30,43 @@ p, span,a, tr, td, button, input, .tooltip
     font-size: 14px;
 }
 
-div#language, div#selection, div#password
+div.center
+{
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div#language, div#config-selection, div#password, div#config
 {
     margin-left: auto;
     margin-right: auto;
+
+    padding: 20px;
+
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+
+    border: 1px #E0E0E0 solid;
+
+
+    background: -moz-linear-gradient(top, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.5) 1%, rgba(242,242,242,1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.5)), color-stop(1%,rgba(255,255,255,0.5)), color-stop(100%,rgba(242,242,242,1)));
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0.5) 0%,rgba(255,255,255,0.5) 1%,rgba(242,242,242,1) 100%);
+    background: -o-linear-gradient(top, rgba(255,255,255,0.5) 0%,rgba(255,255,255,0.5) 1%,rgba(242,242,242,1) 100%);
+    background: -ms-linear-gradient(top, rgba(255,255,255,0.5) 0%,rgba(255,255,255,0.5) 1%,rgba(242,242,242,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80ffffff', endColorstr='#f2f2f2',GradientType=0 );
+    background: linear-gradient(top, rgba(255,255,255,0.5) 0%,rgba(255,255,255,0.5) 1%,rgba(242,242,242,1) 100%);
+}
+
+div#config-selection, div#password
+{
     margin-top: 100px;
+}
+
+div#config
+{
+    width: 1200px;
 }
 
 div#language, div#password
@@ -37,7 +74,7 @@ div#language, div#password
     width: 600px;
 }
 
-div#selection
+div#config-selection
 {
     width: 800px;
 }
@@ -70,7 +107,7 @@ div#config
     background-color: #eee;
     padding: 15px;
     width: 200px;
-    height: 400px;
+    height: 350px;
 }
 
 li

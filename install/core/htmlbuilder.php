@@ -39,7 +39,7 @@ function createConfigHtml()
 
     foreach ($files as $file)
     {
-        $html['selector'] .= '<p><fieldset><button style="width:200px;" onclick="javascript: setconfig(\'' . $file . '\')">' . $file . ' (' . __('edit') . ')</button><span onclick="javascript: showViewer(\'' . $file . '\');"style="padding:4px; margin-left:15px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . __('Show Viewer') . '</span><span onclick="javascript: flushCache(\'' . $file . '.xml\');"style="padding:4px; margin-left:10px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . __('Flush cache') . '</span><span onclick="javascript: deleteConfig(\'' . $file . '.xml\');"style="padding:4px; margin-left:10px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . __('delete configfile') . '</span></fieldset></p>';
+        $html['selector'] .= '<fieldset class="config"><button style="width:200px;" onclick="javascript: setconfig(\'' . $file . '\')">' . $file . ' (' . __('edit') . ')</button><span onclick="javascript: showViewer(\'' . $file . '\');"style="padding:4px; margin-left:15px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . __('Show Viewer') . '</span><span onclick="javascript: flushCache(\'' . $file . '.xml\');"style="padding:4px; margin-left:10px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . __('Flush cache') . '</span><span onclick="javascript: deleteConfig(\'' . $file . '.xml\');"style="padding:4px; margin-left:10px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . __('delete configfile') . '</span></fieldset>';
     }
     return $html;
 }

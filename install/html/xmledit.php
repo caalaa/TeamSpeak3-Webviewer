@@ -29,7 +29,7 @@
 
         <!-- Jquery UI -->
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"></script>
-        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/redmond/jquery-ui.css" type="text/css" />
+        <link rel="stylesheet" href="../../libraries/fluent/css/fluent.css" type="text/css" />
         <link rel="stylesheet" href="../../libraries/codemirror/lib/codemirror.css" type="text/css">
         <script src="../../libraries/codemirror/lib/codemirror.js" type="text/javascript"></script>
         <script src="../../libraries/codemirror/mode/xml/xml.js" type="text/javascript"></script>

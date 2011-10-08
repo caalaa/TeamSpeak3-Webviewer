@@ -15,11 +15,13 @@
 * You should have received a copy of the GNU General Public License
 * along with TeamSpeak3 Webviewer. If not, see http://www.gnu.org/licenses/.
 */?>
-<!-- Logout Button -->
+<!-- Navigation -->
 <span style="position: absolute; right: 10px; top: 10px;" >
-    <a href="index.php?action=return" class="button"><?php __e('Back to configfiles')?></a>
-    <a href="index.php?action=logout" class="button"><?php __e('Logout') ?></a>
+    <a href="index.php?action=return" alt="" class="button"><?php __e('Back to configfiles')?></a>
+    <a href="index.php?action=logout" alt="" class="button"><?php __e('Logout') ?></a>
+    <a href="http://devmx.de/en/software/teamspeak3-webviewer/dokumentation" target="_blank" title="<?php __e('Hilfe')?>" alt="" class="button"><span class="ui-icon ui-icon-info">&nbsp;</span></a>
 </span>
+
 <div id="config">
     <script type="text/javascript">
         $(document).ready(function()

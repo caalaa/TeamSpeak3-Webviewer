@@ -15,6 +15,7 @@
 * You should have received a copy of the GNU General Public License
 * along with TeamSpeak3 Webviewer. If not, see http://www.gnu.org/licenses/.
 */?>
+<div class="center" style="margin-top: 80px; margin-bottom: 20px;"><img src="../html/welcome/webviewer-logo.png" alt="" /></div>
 <div id="language">
     <div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em; margin-bottom: 10px;"> 
         <p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
