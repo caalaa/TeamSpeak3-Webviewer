@@ -48,6 +48,7 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == "logout")
 {
     session_destroy();
     require_once 'html/select_language.php';
+    require_once 'html/footer.php';
     exit;
 }
 
@@ -100,6 +101,7 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'setpw' && isset($_POST
     {
         echo(throwAlert(__('The password could not be saved. Please make "pw.xml" in the install directory writable.'), 21));
         require_once 'html/set_password.php';
+        require_once 'html/footer.php';
         exit;
     }
 
@@ -128,6 +130,7 @@ if (isset($_SESSION['validated']) && $_SESSION['validated'] == true && isset($_R
     echo(flushCache($_REQUEST['config']));
 
     require_once 'html/select_config.php';
+    require_once 'html/footer.php';
     exit;
 }
 
@@ -139,6 +142,7 @@ if (isset($_SESSION['validated']) && $_SESSION['validated'] == true && isset($_R
     $data = createConfigHtml();
 
     require_once 'html/select_config.php';
+    require_once 'html/footer.php';
     exit;
 }
 
@@ -167,6 +171,7 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'validate' && isset($_P
 if (!isset($_SESSION['lang']))
 {
     require_once 'html/select_language.php';
+    require_once 'html/footer.php';
 
     exit;
 }
@@ -175,6 +180,7 @@ if (!isset($_SESSION['lang']))
 if (!passwordSetted())
 {
     require_once 'html/set_password.php';
+    require_once 'html/footer.php';
     exit;
 }
 
@@ -182,6 +188,7 @@ if (!passwordSetted())
 if (passwordSetted() && !isset($_SESSION['validated']) || $_SESSION['validated'] != true)
 {
     require_once 'html/enter_pw.php';
+    require_once 'html/footer.php';
     exit;
 }
 
@@ -194,6 +201,7 @@ if (!isset($_SESSION['config']) || $_SESSION['config'] == "")
     $data['err_warn'] = checkFunctions();
 
     require_once 'html/select_config.php';
+    require_once 'html/footer.php';
     exit;
 }
 
@@ -272,6 +280,7 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
         $data = createEditHtml();
 
         require_once 'html/config.php';
+        require_once 'html/footer.php';
         exit;
     }
 
@@ -317,6 +326,7 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
     echo(throwWarning(__('Configfile successfully saved.')));
 
     require_once 'html/config.php';
+    require_once 'html/footer.php';
 
     echo('<script type="text/javascript">
             $(document).ready(function(){
@@ -333,6 +343,7 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
     $data = createEditHtml();
 
     require_once 'html/config.php';
+    require_once 'html/footer.php';
     exit;
 }
 ?>

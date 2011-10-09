@@ -102,6 +102,20 @@ div#config
     margin-top: 100px;
 }
 
+div#hint
+{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    padding: 5px;
+    font-size: 12px;
+}
+
+div#hint a
+{
+    text-decoration: none;
+}
+
 .sortable
 {
     background-color: #eee;
