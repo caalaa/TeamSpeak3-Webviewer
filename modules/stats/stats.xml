@@ -21,7 +21,7 @@
     
     <!-- Width of the chart in pixels. If none the default value will be used -->
     <!-- Breite des Diagrammes in Pixeln. Wenn none angegeben ist wird der Standardwert verwendet -->
-    <width>none</width>
+    <width>90%</width>
     
     <!-- How the labels at the x axes should be formatted. If none, default value will be used-->
     <!-- Legt fest wie die Beschriftungen an der X-Achse formatiert werden sollen. Bei none wird der Standard-Wert benutzt -->
