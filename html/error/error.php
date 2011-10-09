@@ -22,7 +22,7 @@
     "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
-        <title>TeamSpeak3 Webviewer - Installation</title>
+        <title>TeamSpeak3 Webviewer</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
         <!-- Jquery -->
@@ -30,7 +30,7 @@
 
         <!-- Jquery UI -->
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"></script>
-        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/redmond/jquery-ui.css" type="text/css" />
+        <link rel="stylesheet" href="libraries/fluent/fluent.css" type="text/css" />
     </head>
     <body style="width: 600px; margin-left: auto; margin-right: auto;">
         <?php echo($msERRWAR); ?>
