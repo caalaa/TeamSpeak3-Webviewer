@@ -19,7 +19,7 @@
 <span style="position: absolute; right: 10px; top: 10px;" >
     <a href="index.php?action=return" alt="" class="button"><?php __e('Back to configfiles')?></a>
     <a href="index.php?action=logout" alt="" class="button"><?php __e('Logout') ?></a>
-    <a href="http://devmx.de/en/software/teamspeak3-webviewer/dokumentation" target="_blank" title="<?php __e('Hilfe')?>" alt="" class="button"><span class="ui-icon ui-icon-info">&nbsp;</span></a>
+    <a href="http://devmx.de/en/software/teamspeak3-webviewer/dokumentation" target="_blank" alt="" class="button"><span class="ui-icon ui-icon-info">&nbsp;</span></a>
 </span>
 
 <div id="config">
@@ -87,7 +87,11 @@
                             <td><div>
                                     <p><?php __e('disabled modules:')?></p>
                                     <p><?php echo($data['mod_sort_disabled'])?></p>
-                                </div></td>
+                                </div></td>                      
+                        </tr>
+                        <tr>
+                            <td><span class="button" onclick="javascript: enableAllModules();"><?php __e('Enable all'); ?></span></td>
+                            <td><span class="button" onclick="javascript: disableAllModules();"><?php __e('Disable all'); ?></span></td>
                         </tr>
                     </table>
                 </div>

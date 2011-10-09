@@ -15,10 +15,10 @@
  *  along with TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+var modules = new Array();
+
 $(document).ready(function(){
-    
-    var modules = new Array();
-    
+     
     // jQueryUI
     $("button, input:submit, input:button, .button").button();  
     $("input:text, input:password").TextBox();
@@ -61,12 +61,7 @@ $(document).ready(function(){
 
      
     $('#sort1').bind("sortstop sortremove sortreceive", function(event,ui){
-        modules = null;
-        modules = new Array();
-            
-        modules = $('#sort1').sortable('toArray');
-            
-        document.getElementById("modules_hidden").value = modules;
+        updateModules();
     });    
     // ********************************************************************** \\
     // Modules End
@@ -138,11 +133,23 @@ function setLang(language)
 function enableAllModules()
 {
     $("#sort1").append($("#sort2>li"));
+    updateModules();
 }
 
 // Disable all modules
 function disableAllModules()
 {
     $("#sort2").append($("#sort1>li"));
+    updateModules();
+
+}
+
+// Updates the hidden modules field
+function updateModules()
+{       
+    modules = null;
+    modules = new Array();         
+    modules = $('#sort1').sortable('toArray');          
+    document.getElementById("modules_hidden").value = modules;
 }
 
