@@ -39,7 +39,12 @@ function createConfigHtml()
 
     foreach ($files as $file)
     {
-        $html['selector'] .= '<fieldset class="config"><button style="width:200px;" onclick="javascript: setconfig(\'' . $file . '\')">' . $file . ' (' . __('edit') . ')</button><span onclick="javascript: showViewer(\'' . $file . '\');"style="padding:4px; margin-left:15px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . __('Show Viewer') . '</span><span onclick="javascript: flushCache(\'' . $file . '.xml\');"style="padding:4px; margin-left:10px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . __('Flush cache') . '</span><span onclick="javascript: deleteConfig(\'' . $file . '.xml\');"style="padding:4px; margin-left:10px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . __('delete configfile') . '</span></fieldset>';
+        $html['selector'] .= '<fieldset class="config">';
+        $html['selector'] .= '<a href="index.php?action=set_config&configname='.$file.'"><span class="ui-corner-all ui-state-default">'.$file.' ('. __('edit').'</span></a>';
+        $html['selector'] .= '<a href="../index.php?config='.$file.'" target="_blank"><span class="ui-corner-all ui-state-highlight">'.__('show').'</span></a>';
+        $html['selector'] .= '<a href="index.php?action=fc&config='.$file.'"><span class="ui-corner-all ui-state-highlight">'.__('flush cache').'</span></a>';
+        $html['selector'] .= '<a href="index.php?action=delete&config='.$file.'"><span class="ui-corner-all ui-state-highlight">'.__('delete file').'</span></a>';
+        $html['selector'] .= '</fieldset>';
     }
     return $html;
 }

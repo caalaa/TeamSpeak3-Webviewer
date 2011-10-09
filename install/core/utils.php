@@ -135,17 +135,19 @@ function getStyles()
  */
 function flushCache($config)
 {
+    $config .= '.xml';
+    
     if (!file_exists("../config/" . $config))
     {
-        return throwAlert($lang->not_exist);
+        return throwAlert(__('The configfile does not exist'));
     }
     else
     {
-        $config = simplexml_load_file("../config/" . $config);
+        $config = simplexml_load_file("../config/" . $config );
 
         if ((string) $config->host == "" || (string) $config->host == NULL || (string) $config->queryport == "" || (string) $config->queryport == NULL || (string) $config->vserverport == "" || (string) $config->vserverport == NULL)
         {
-            return throwAlert(__e('Not all necessary information is given in the configfile to flush the cache.'));
+            return throwAlert(__('Not all necessary information is given in the configfile to flush the cache.'));
         }
         else
         {
@@ -184,6 +186,7 @@ function flushCache($config)
  */
 function deleteConfigfile($file)
 {
+    $file .= '.xml';
     if (!file_exists("../config/" . $file))
     {
         return throwAlert(__('The configfile you wanted to delete does not exist'));
@@ -293,8 +296,7 @@ function setChmodRecursive($path, $chmod)
  */
 function isNullOrEmtpy($var)
 {
-    if(!isset($var) || empty ($var) || $var == null || $var = "")
-        return true;
+    if (!isset($var) || empty($var) || $var == null || $var = "") return true;
     return falsE;
 }
 

@@ -116,6 +116,17 @@ div#hint a
     text-decoration: none;
 }
 
+.config
+{
+    padding: 0.7em;
+}
+
+.config a span
+{
+    padding: 5px;
+    margin-right: 5px;
+}
+
 .sortable
 {
     background-color: #eee;

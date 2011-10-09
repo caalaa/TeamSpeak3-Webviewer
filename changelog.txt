@@ -10,6 +10,7 @@
 
 v1.1
 + Issue #25: added a cron file to update the statistics
+* Issue #32: Flushing cache in installscript did not work
 
 v 1.0
 ! There are two module configfiles now:

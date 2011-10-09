@@ -134,31 +134,15 @@ function setLang(language)
     window.location.href = lang;
 }
 
-// Sets the requested configfile to edit
-function setconfig(file)
+// Enables all modules
+function enableAllModules()
 {
-    var href = "index.php?action=set_config&configname=" + file;
-    window.location.href = href;
+    $("#sort1").append($("#sort2>li"));
 }
 
-// Shows the viewer of the requested configfile
-function showViewer(config)
+// Disable all modules
+function disableAllModules()
 {
-    var href="../index.php?config=" + config;
-    window.location.href = href;
-}
-
-// Flushs the cache of the requested configfile
-function flushCache(config)
-{
-    var href="?action=fc&config="+config;
-    window.location.href = href;
-}
-
-// Deletes the requested configfile
-function deleteConfig(config)
-{
-    var href="?action=delete&config="+config
-    window.location.href = href;
+    $("#sort2").append($("#sort1>li"));
 }
 
