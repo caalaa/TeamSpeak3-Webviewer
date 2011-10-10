@@ -10,7 +10,7 @@ function ts3_connect(host,port,server_pass_needed, serverpass, prompt_username, 
     
     // Checks If password should be prompted
     if(server_pass_needed == true) {
-        var pass = prompt(server_pass_i18n);
+        var pass = prompt(server_pass_i18n);          
         if(pass == "" || pass == null || pass == undefined) {
             return;
         }

@@ -24,6 +24,7 @@ class js_login extends ms_Module
     public function init() {
         
         $this->mManager->loadModule('jQuery');
+        $this->mManager->loadModule('jQueryUI');
         $this->jsModule = $this->mManager->loadModule('js');
         $this->styleModule = $this->mManager->loadModule('style');
     }

@@ -23,17 +23,20 @@ if (isset($configFiles) && is_array($configFiles))
     foreach ($configFiles as $config)
     {
         updateStatsFile($config);
+        exit;
     }
 }
 // If only one configfile should be updated
 else if (isset($configFiles) && $configFiles != "")
 {
     updateStatsFile($configFiles);
+    exit;
 }
 else
 {
     exit;
 }
+exit;
 
 /**
  * Updates the statsfile for a configfile
@@ -78,7 +81,9 @@ function updateStatsFile($configfile)
             {
                 addEntry((int) $serverinfo['virtualserver_clientsonline'] - (int) $serverinfo['virtualserver_queryclientsonline'], $configfile, $customDir);
             }
+            exit;
         }
+        exit;
     }
     catch (Exception $ex)
     {
