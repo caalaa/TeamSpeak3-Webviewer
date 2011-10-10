@@ -79,11 +79,11 @@ class stats extends ms_Module
         $this->jsModule->loadJS(s_http . 'modules/stats/js/script.js');
 
         // Height and Width
-        if ($this->config['height'] == NULL) $this->config['height'] = "400";
+        if ($this->config['height'] == NULL) $this->config['height'] = "400px";
 
-        if ($this->config['width'] == NULL) $this->config['width'] = "600";
+        if ($this->config['width'] == NULL) $this->config['width'] = "600px";
 
-        $this->html = '<div class="jqplot" id="stats" style="height:' . $this->config['height'] . 'px;width:' . $this->config['width'] . 'px; "></div>';
+        $this->html = '<div class="jqplot" id="stats" style="height:' . $this->config['height'] . ';width:' . $this->config['width'] . '; "></div>';
 
         // If chart should be shown in Tab
         if ($this->config['use_tab'] == true)

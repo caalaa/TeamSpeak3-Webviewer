@@ -23,14 +23,12 @@ if (isset($configFiles) && is_array($configFiles))
     foreach ($configFiles as $config)
     {
         updateStatsFile($config);
-        exit;
     }
 }
 // If only one configfile should be updated
 else if (isset($configFiles) && $configFiles != "")
 {
     updateStatsFile($configFiles);
-    exit;
 }
 else
 {
@@ -66,13 +64,12 @@ function updateStatsFile($configfile)
 
             $query->use_by_port((string)$xml->vserverport);
 
-            $serverinfo = $query->serverinfo();
+            $serverinfo = $query->serverinfo() or exit;
             $serverinfo = $serverinfo['return'];
             
             if($serverinfo['error']['message'] != "ok")
             {
                 $query->quit();
-                exit;
             }
             
             $query->quit();
@@ -81,13 +78,10 @@ function updateStatsFile($configfile)
             {
                 addEntry((int) $serverinfo['virtualserver_clientsonline'] - (int) $serverinfo['virtualserver_queryclientsonline'], $configfile, $customDir);
             }
-            exit;
         }
-        exit;
     }
     catch (Exception $ex)
     {
-        exit;
     }
 }
 ?>
