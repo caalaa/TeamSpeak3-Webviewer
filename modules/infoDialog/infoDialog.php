@@ -1,39 +1,45 @@
 <?php
+
 /**
-* This file is part of TeamSpeak3 Webviewer.
-*
-* TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* TeamSpeak3 Webviewer is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with TeamSpeak3 Webviewer. If not, see http://www.gnu.org/licenses/.
-*/
+ * This file is part of TeamSpeak3 Webviewer.
+ *
+ * TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * TeamSpeak3 Webviewer is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with TeamSpeak3 Webviewer. If not, see http://www.gnu.org/licenses/.
+ */
 class infoDialog extends ms_Module
 {
-    
+
     protected $jsModule;
-    
-    function init() {
+    protected $styleModule;
+
+    function init()
+    {
         $this->config['usefor'] = explode(',', $this->config['usefor']);
         $this->mManager->loadModule('jQueryUI');
         $this->jsModule = $this->mManager->loadModule('js');
+        $this->styleModule = $this->mManager->loadModule('style');
     }
-    
-    function onStartup() {
+
+    function onStartup()
+    {
         $this->jsModule->loadJS(s_http . 'modules/infoDialog/utils.js');
+        $this->styleModule->loadStyle(s_http . 'modules/infoDialog/infoDialog.css', 'file');
     }
 
     function onInfoLoaded()
     {
-        
-        
+
+
         $_SESSION['infoDialog']['info']['clientlist'] = $this->info['clientlist'];
         $_SESSION['infoDialog']['info']['servergroups'] = $this->info['servergroups'];
         $_SESSION['infoDialog']['info']['channelgroups'] = $this->info['channelgroups'];
@@ -50,16 +56,16 @@ class infoDialog extends ms_Module
 
         if (isset($this->config['height']))
         {
-                $dialog_conf .= "height: " . $this->config['height'] . ",";
-                $height = $this->config['height'];
+            $dialog_conf .= "height: " . $this->config['height'] . ",";
+            $height = $this->config['height'];
         }
         else $dialog_conf.= "height: 200,";
 
 
         if (isset($this->config['width']))
         {
-                $dialog_conf .= "width: " . $this->config['width'];
-                $width = $this->config['width'];
+            $dialog_conf .= "width: " . $this->config['width'];
+            $width = $this->config['width'];
         }
         else $dialog_conf .= "width: 400,";
 
@@ -102,8 +108,7 @@ class infoDialog extends ms_Module
                                                                             } );					
 								}, " . ($this->config['close_by_mouseout'] ? "function() { ms_dialogs[$(this).attr('id')].dialog('close');}" : "function(){}") . ");
 										
-							});",
-                    'text');
+							});", 'text');
         }
     }
 

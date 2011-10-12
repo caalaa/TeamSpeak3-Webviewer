@@ -4,7 +4,7 @@
 // EDIT THE FOLLOWING LINES THAT THEY FIT TO YOUR CONFIGURATION \\
 // ************************************************************ \\
 // If you want to upate only one configfile (Comment out inappropriate)
-$configFiles = "test";
+$configFiles = "devmx";
 
 // If you want to update several configfiles (Comment out inappropriate)
 //$configFiles = array("config1", "config2");

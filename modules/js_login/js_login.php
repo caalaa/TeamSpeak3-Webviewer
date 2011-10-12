@@ -29,7 +29,7 @@ class js_login extends ms_Module
         $this->styleModule = $this->mManager->loadModule('style');
     }
     
-    function onStartup()
+    public function onStartup()
     {
   
         setL10n($this->config['language'], "ms-tsv-js_login");
@@ -57,16 +57,12 @@ class js_login extends ms_Module
 
         $this->jsModule->loadJS("$(document).ready( function() {
                         $('.servername').click(function() {
-                                ts3_connect('" . $this->config['host'] . "','" . $this->config['vserverport'] . "'," . $pass_n . "," . $serverpassword. "," . $prompt . ", '" . $prompt_serverpass . "','" . $prompt_nickname . "');
+                                ts3_connect('" . $this->config['host'] . "','" . $this->config['vserverport'] . "'," . $pass_n . ",'" . $serverpassword. "'," . $prompt . ", '" . $prompt_serverpass . "','" . $prompt_nickname . "');
                                 })
                         });", 'text');
 
-
-        $this->styleModule->loadStyle('.servername {
-                        cursor: pointer
-                }', 'text');
+        $this->styleModule->loadStyle(s_http . "modules/js_login/js_login.css", "file");
     }
-
 }
 
 ?>

@@ -62,7 +62,7 @@ class loginButton extends ms_Module
         $prompt_nickname = __('Please insert a nickname of your choice');
 
         if (isset($this->config['connect_host'])) $this->config['host'] = $this->config['connect_host'];
-        return "<input id=\"LoginButton\" type=\"button\" onclick=\"ts3_connect('" . $this->config['host'] . "','" . $this->config['vserverport'] . "'," . $pass_n . "," . $serverpassword . "," . $prompt . ", '" . $prompt_serverpass . "', '" . $prompt_nickname . "');\" value=\"" . $this->config['button_text'] . "\" >";
+        return "<input id=\"LoginButton\" type=\"button\" onclick=\"ts3_connect('" . $this->config['host'] . "','" . $this->config['vserverport'] . "'," . $pass_n . ",'" . $serverpassword . "'," . $prompt . ", '" . $prompt_serverpass . "', '" . $prompt_nickname . "');\" value=\"" . $this->config['button_text'] . "\" >";
     }
 
 }
