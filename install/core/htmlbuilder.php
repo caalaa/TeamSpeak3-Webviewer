@@ -40,7 +40,7 @@ function createConfigHtml()
     foreach ($files as $file)
     {
         $html['selector'] .= '<fieldset class="config">';
-        $html['selector'] .= '<a href="index.php?action=set_config&configname='.$file.'"><span class="ui-corner-all ui-state-default">'.$file.' ('. __('edit').'</span></a>';
+        $html['selector'] .= '<a href="index.php?action=set_config&configname='.$file.'"><span class="ui-corner-all ui-state-default">'.$file.' ('. __('edit').')</span></a>';
         $html['selector'] .= '<a href="../index.php?config='.$file.'" target="_blank"><span class="ui-corner-all ui-state-highlight">'.__('show').'</span></a>';
         $html['selector'] .= '<a href="index.php?action=fc&config='.$file.'"><span class="ui-corner-all ui-state-highlight">'.__('flush cache').'</span></a>';
         $html['selector'] .= '<a href="index.php?action=delete&config='.$file.'"><span class="ui-corner-all ui-state-highlight">'.__('delete file').'</span></a>';

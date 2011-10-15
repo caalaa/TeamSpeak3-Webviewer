@@ -14,6 +14,7 @@ v1.1
 ~ Issue #30: redesigned loginButton and js_login
 * Issue #32: Flushing cache in installscript did not work
 * Issue #34: If the password is preset in the configfile the js_login and loginButton module are crashing
+* Issue #20: added custom jQueryUI Theme which will be uses as default
 
 v 1.0
 ! There are two module configfiles now:
