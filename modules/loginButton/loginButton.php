@@ -33,12 +33,14 @@ class loginButton extends ms_Module
     function onStartup()
     {
 
-        $this->jsModule->loadJS(s_http . '/modules/js_login/ts3_connect.js');
+        $this->jsModule->loadJS(s_http . 'modules/js_login/ts3_connect.js');
         $this->jsModule->loadJS("$(document).ready(function() { $('#LoginButton').button(); } );", "text");
         $this->styleModule->loadStyle('#LoginButton
             {
                 margin-bottom: 5px;
             }', 'text');
+
+        $this->styleModule->loadStyle(s_http . 'modules/js_login/js_login.css', 'file');
     }
 
     function getHeader()
