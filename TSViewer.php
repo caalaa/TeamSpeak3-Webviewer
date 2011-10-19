@@ -472,7 +472,7 @@ function render_channel_start($channel, $clientlist)
             }
             if (($channel->has_childs() || $channel->has_clients($clientlist)) && $config['show_arrows'])
             {
-                $output .= '<img alt="" class="img_l arrow" src="' . $config['imagepath'] . 'arrow_normal' . $config['image_type'] . '"/>';
+                $output .= '<span class="img_l arrow arrow-normal">&nbsp;</span>';
             }
             $output .= '&nbsp;';
 
@@ -495,7 +495,7 @@ function render_channel_start($channel, $clientlist)
             }
             if (($channel->has_childs() || $channel->has_clients($clientlist)) && $config['show_arrows'])
             {
-                $output .= '<img alt="" class="img_l arrow" src="' . $config['imagepath'] . 'arrow_normal' . $config['image_type'] . '"/>';
+                $output .= '<span class="img_l arrow arrow-normal">&nbsp;</span>';
             }
 
             $output .= ( $channel['channel_name']['spacer_alignment'] == '*' ? str_repeat(escape_name($channel['channel_name']['spacer_name']), 200) : escape_name($channel['channel_name']['spacer_name'])) . "</p>\r\n";

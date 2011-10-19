@@ -16,6 +16,7 @@ v1.1
 * Issue #32: Flushing cache in installscript did not work
 * Issue #34: If the password is preset in the configfile the js_login and loginButton module are crashing
 * Issue #20: added custom jQueryUI Theme which will be uses as default
+* Issue #37: arrows are shown wrong if channel is a spacer
 
 v 1.0
 ! There are two module configfiles now:
