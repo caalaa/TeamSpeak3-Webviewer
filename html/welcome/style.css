@@ -190,7 +190,7 @@ a.nav
     padding: 10px;
 }
 
-#configs li a
+#configs li
 {
     text-decoration: none;
     background: #8fc400;
@@ -209,6 +209,8 @@ a.nav
     -moz-border-radius: 5px;
     border-radius: 5px;
     padding: 5px;
+    
+    margin-bottom: 8px;
 }
 
 #logo
