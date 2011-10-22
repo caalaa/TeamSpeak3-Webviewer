@@ -20,16 +20,16 @@
 // EDIT THE FOLLOWING LINES THAT THEY FIT TO YOUR CONFIGURATION \\
 // ************************************************************ \\
 // If you want to upate only one configfile (Comment out inappropriate)
-$configFiles = "devmx";
+//$configFiles = "devmx";
 
 // If you want to update several configfiles (Comment out inappropriate)
-//$configFiles = array("config1", "config2");
+$configFiles = array("devmx", "9988");
 // ************************************************************ \\
 // END CONFIGURATION DON'T EDIT ANYTHING BEYOND THIS LINE       \\
 // ************************************************************ \\
 define('s_root', "../../");
 
-require_once '../../core/teamspeak/TSQuery.class.php';
+require_once s_root . 'core/teamspeak/TSQuery.class.php';
 
 // If several configfiles should be updated
 if (isset($configFiles) && is_array($configFiles))
@@ -59,9 +59,9 @@ exit;
 function updateStatsFile($configfile)
 {
     $configfile = str_replace(".xml", "", $configfile);
-    $xml = simplexml_load_file("../../config/$configfile.xml");
+    $xml = simplexml_load_file(s_root . "config/$configfile.xml");
 
-    $customDir = '../../cache/' . $xml->host . $xml->queryport . '/' . $xml->vserverport . '/';
+    $customDir = s_root . 'cache/' . $xml->host . $xml->queryport . '/' . $xml->vserverport . '/';
 
     try
     {
@@ -83,26 +83,28 @@ function updateStatsFile($configfile)
 
             $use = $query->use_by_port((string) $xml->vserverport);
 
-            if (isset($serverinfo['error']['msg']) && trim($use['error']['msg']) != "ok")
+            if (isset($use['error']['msg']) && trim($use['error']['msg']) != "ok")
             {
                 $query->quit();
                 throw new Exception("Failed to select virtualserver: " . $use['error']['msg']);
             }
 
-
             $serverinfo = $query->serverinfo();
-
+            
             if (isset($serverinfo['error']['msg']) && trim($serverinfo['error']['msg']) != "ok")
             {
                 $query->quit();
                 throw new Exception("Failed to retrieve serverinfo: " . $serverinfo['error']['msg']);
             }
+            
+            $serverinfo = $serverinfo['return'];
 
             $query->quit();
 
             if (isset($serverinfo['virtualserver_clientsonline']) && isset($serverinfo['virtualserver_queryclientsonline']))
             {
-                addEntry((int) $serverinfo['virtualserver_clientsonline'] - (int) $serverinfo['virtualserver_queryclientsonline'], $configfile, $customDir);
+                $clients  = (int) $serverinfo['virtualserver_clientsonline'] - (int) $serverinfo['virtualserver_queryclientsonline'];
+                addEntry($clients, $configfile, $customDir);
             }
         }
     }
