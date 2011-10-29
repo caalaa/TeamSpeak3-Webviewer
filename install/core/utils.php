@@ -59,7 +59,7 @@ function getModules()
 
     while ($module = readdir($dir))
     {
-        if ($module != '..' && $module != '.' && !moduleIsAbstract($module))
+        if ($module != '..' && $module != '.' && file_exists("../modules/$module/$module.xml")  && !moduleIsAbstract($module))
         {
             if (file_exists("../modules/$module/$module.php") && file_exists("../modules/$module/$module.xml"))
             {
@@ -94,7 +94,7 @@ function getImagePacks()
     $blacklist = array('..', '.', 'serverimages', 'no.png');
 
     $dir = opendir("../images");
-
+    
     while ($imagepack = readdir($dir))
     {
         if (!in_array($imagepack, $blacklist))

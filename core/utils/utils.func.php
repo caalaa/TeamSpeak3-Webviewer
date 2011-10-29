@@ -74,7 +74,7 @@ function throwAlert($message, $code=NULL, $display=false)
     $html .= '<div class="ui-widget">
                     <div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">';
 
-    if ($code != NULL) $html .= '<p><a href="http://en.devmx.de/software/teamspeak3-webviewer/faq" target="_blank">' . __('Error') . ' ' . $code . '</a></p>';
+    if ($code != NULL) $html .= '<p><a href="http://devmx.de/en/software/teamspeak3-webviewer/faq-2" target="_blank">' . __('Error') . ' ' . $code . '</a></p>';
 
     $html .= '<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>' . $message . '</p>                       
                     </div>
