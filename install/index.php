@@ -64,14 +64,14 @@ if (isset($_SESSION['lang']) && $_SESSION['lang'] != "")
 {
     $lang = $_SESSION['lang'];
 
-    T_setlocale(LC_MESSAGES, $lang);
+    _setlocale(LC_MESSAGES, $lang);
 
     $domain = "ms-tsv-install";
 
-    T_bindtextdomain($domain, PROJECTPATH);
+    _bindtextdomain($domain, PROJECTPATH);
 
-    T_textdomain($domain);
-    T_bind_textdomain_codeset($domain, "UTF-8");
+    _textdomain($domain);
+    _bind_textdomain_codeset($domain, "UTF-8");
 }
 
 // Sets Language
@@ -79,14 +79,14 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == "setlang" && isset($_GE
 {
     $lang = $_GET['lang'];
 
-    T_setlocale(LC_MESSAGES, $lang);
+    _setlocale(LC_MESSAGES, $lang);
 
     $domain = "ms-tsv-install";
 
-    T_bindtextdomain($domain, PROJECTPATH);
+    _bindtextdomain($domain, PROJECTPATH);
 
-    T_textdomain($domain);
-    T_bind_textdomain_codeset($domain, "UTF-8");
+    _textdomain($domain);
+    _bind_textdomain_codeset($domain, "UTF-8");
 
     $_SESSION['lang'] = $_GET['lang'];
 }

@@ -36,13 +36,13 @@ function __e($string)
  */
 function setL10n($locale, $domain, $newPath=NULL)
 {
-    T_setlocale(LC_MESSAGES, $locale);
+    _setlocale(LC_MESSAGES, $locale);
 
     if ($newPath == NULL) T_bindtextdomain($domain, l10nDir);
-    else T_bindtextdomain($domain, $newPath);
+    else _bindtextdomain($domain, $newPath);
 
-    T_textdomain($domain);
-    T_bind_textdomain_codeset($domain, "UTF-8");
+    _textdomain($domain);
+    _bind_textdomain_codeset($domain, "UTF-8");
 }
 
 ?>
