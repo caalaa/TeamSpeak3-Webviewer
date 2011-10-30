@@ -17,7 +17,8 @@ v1.1
 * Issue #34: If the password is preset in the configfile the js_login and loginButton module are crashing
 * Issue #20: added custom jQueryUI Theme which will be uses as default
 * Issue #37: arrows are shown wrong if channel is a spacer
-* Issue #39: The l10n didn't work properly or at all if the php gettext module was enabled
+* Issue #39: The l10n didn't work properly or at all if the php gettext module was enabled (Thanks to xiloid (http://forum.teamspeak.com))
+* Issue #38: A whitescreen in the installscrip occured when the php DOM extension was not enabled (Thanks to xiloid (http://forum.teamspeak.com))
 
 v 1.0
 ! There are two module configfiles now:

@@ -92,13 +92,20 @@ function addModuleConfigParameter($xml)
         }
     }
 
-    // Tidy Up
-    $dom = new DOMDocument('1.0');
-    $dom->preserveWhiteSpace = false;
-    $dom->formatOutput = true;
-    $dom->loadXML($xml->asXML());
+    // Tidy Up if DOM extension is loaded
+    if (extension_loaded("dom"))
+    {     
+        $dom = new DOMDocument('1.0');
+        $dom->preserveWhiteSpace = false;
+        $dom->formatOutput = true;
+        $dom->loadXML($xml->asXML());
 
-    return simplexml_load_string($dom->saveXML());
+        return simplexml_load_string($dom->saveXML());
+    }
+    else
+    {
+        return $xml;
+    }
 }
 
 ?>
