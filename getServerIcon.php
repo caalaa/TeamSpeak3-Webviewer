@@ -112,6 +112,11 @@ else
 
     $query = new TSQuery($config['host'], $config['queryport']);
     $query->use_by_port($config['vserverport']);
+    
+    if($config['login_needed'])
+    {
+        $query->login($config['username'], $config['password']);
+    }
 
     $img = $query->download("/icon_" . $_GET['id'], 0);
     $query->quit();
