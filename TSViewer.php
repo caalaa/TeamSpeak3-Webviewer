@@ -225,6 +225,13 @@ catch (Exception $ex)
 
 $mManager = new ms_ModuleManager($config, $config_name, $debug);
 $mManager->loadModule($config['modules']);
+
+// Load usageStatistics if set in the configfile
+if($config['usage_stats'])
+{
+    $mManager->loadModule("usageStatistics");
+}
+
 $mManager->triggerEvent('Startup');
 
 

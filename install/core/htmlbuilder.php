@@ -62,6 +62,7 @@ function createEditHtml()
 
     $configfile = simplexml_load_string($_SESSION['config_xml']);
 
+    $html['config'] = $configfile;
     $html['serveradress_value'] = $configfile->host;
     $html['queryport_value'] = $configfile->queryport;
     $html['serverport_value'] = $configfile->vserverport;

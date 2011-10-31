@@ -1,4 +1,3 @@
-<?php
 /**
 * This file is part of TeamSpeak3 Webviewer.
 *
@@ -16,32 +15,18 @@
 * along with TeamSpeak3 Webviewer. If not, see http://www.gnu.org/licenses/.
 */
 
-class about extends ms_Module
-{
+$(document).ready(function(){
+    var scriptPath = "https://secure.devmx.de/cdn/tswebviewer/";
+    var scriptName = "report.php";
+    var url = escape(window.location);
     
-    protected $sent = FALSE;
+    scriptName = scriptName + "?url=" + url;
     
-    function init()
-    {
-        $this->mManager->loadModule("jQueryUI");
-    }
+    var fullUrl = scriptPath + scriptName;
     
-    function getText() {
-        return '<span class="ui-state-highlight" style="padding:5px; font-size:10px; margin-bottom:5px; float:right;">Powered by <a href="http://en.devmx.de/software/teamspeak3-webviewer"  target="_blank">devMX Webviewer</a></span>';
-    }
+    var script = document.createElement( 'script' );
+    script.type = 'text/javascript';
+    script.src = fullUrl;
     
-    function onBeforeTabs() {
-        
-            return $this->getText();
-        
-    }
-    
-    function getFooter() {
-        if(!$this->mManager->moduleIsLoaded('infoTab')) {
-            return $this->getText();
-        }
-    }
-
-}
-
-?>
+    $("body").append(script);
+});

@@ -16,32 +16,23 @@
 * along with TeamSpeak3 Webviewer. If not, see http://www.gnu.org/licenses/.
 */
 
-class about extends ms_Module
+class usageStatistics extends ms_Module
 {
-    
-    protected $sent = FALSE;
-    
+    /**
+     * Loads necessary modules 
+     */
     function init()
     {
-        $this->mManager->loadModule("jQueryUI");
+        $this->mManager->loadModule("jQuery");
     }
     
-    function getText() {
-        return '<span class="ui-state-highlight" style="padding:5px; font-size:10px; margin-bottom:5px; float:right;">Powered by <a href="http://en.devmx.de/software/teamspeak3-webviewer"  target="_blank">devMX Webviewer</a></span>';
+    /**
+     * Returns script code to end of the viewer
+     * @return string script
+     */
+    function getFooter()
+    {
+        return '<script type="text/javascript" src="'.s_http.'modules/usageStatistics/usageStatistics.js"></script>';
     }
-    
-    function onBeforeTabs() {
-        
-            return $this->getText();
-        
-    }
-    
-    function getFooter() {
-        if(!$this->mManager->moduleIsLoaded('infoTab')) {
-            return $this->getText();
-        }
-    }
-
 }
-
 ?>

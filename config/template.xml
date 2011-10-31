@@ -45,6 +45,8 @@
     <language></language>
     <!-- DONT CHANGE ANYTHING HERE -->
     <prefix>none</prefix>
+    <!-- Usage statistics -->
+    <usage_stats></usage_stats>
 
 
     <!-- Images -->

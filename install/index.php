@@ -271,6 +271,7 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
     $xml->cachetime_channelgrouplist = $_POST['standard_caching'];
 
     $xml->language = $_POST['language'];
+    $xml->usage_stats = $_POST['usage-statistics'];
 
 
     // Not all necessary values were entered.

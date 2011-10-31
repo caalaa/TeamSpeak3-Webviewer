@@ -143,6 +143,13 @@
                         <td title="<?php __e('Language of the viewer')?>"><?php __e('Language')?></td>
                         <td><?php echo($data['language_html'])?></td>
                     </tr>
+                    <tr>
+                        <td title="<?php __e('If enabled the url to your webviewer will be submitted to devMX') ?>"><?php __e('Provide usage statistics')?></td>
+                        <td>
+                            <input type="radio" name="usage-statistics" value="true" <?php if($data['config']->usage_stats == "true"): ?>checked="checked" <?php endif;?>> <?php __e('Yes')?><br>
+                            <input type="radio" name="usage-statistics" value="false" <?php if($data['config']->usage_stats != "true") : ?>checked="checked" <?php endif;?>> <?php __e('No')?>
+                        </td>
+                    </tr>
                 </table>
             </div>
         </div>
