@@ -23,16 +23,7 @@ $(document).ready(function(){
     $("button, input:submit, input:button, .button").button();  
     $("input:text, input:password").TextBox();
     $("fieldset").FieldSet();
-    
-    // Colorbox
-    $('.color').colorbox({
-        innerWidth:"1025px",
-        height:"650px", 
-        iframe:true,
-        scrolling: false,
-        fastIframe: false
-    });
-    
+        
     // Tooltips
     $('td[title], a[title], span[title], p[title]').qtip({
         style:{
@@ -151,5 +142,20 @@ function updateModules()
     modules = new Array();         
     modules = $('#sort1').sortable('toArray');          
     document.getElementById("modules_hidden").value = modules;
+}
+
+// Opens the module configuration in a jQueryUI Dialog
+function openModuleConfig(module)
+{
+    var dialogOptions = {
+        minWidth: 1100, 
+        minHeight: 700, 
+        title: "devMX Webviewer", 
+        hide: 'fade', 
+        show: 'fade',
+        modal: true
+    }
+    
+    $("#module-config").dialog(dialogOptions).attr("src", 'core/xmledit.php?module=' + module);
 }
 

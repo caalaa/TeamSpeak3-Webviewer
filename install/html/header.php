@@ -14,10 +14,6 @@
         <link rel="stylesheet" href="../libraries/fluent/css/fluent.css" type="text/css" />
         <script type="text/javascript" src="../libraries/fluent/js/fluent.js"></script>
         
-        <!-- Colorbox -->
-        <link href="../libraries/colorbox/example1/colorbox.css" rel="stylesheet" type="text/css">
-        <script src="../libraries/colorbox/colorbox/jquery.colorbox-min.js" type="text/javascript"></script>
-        
         <!-- qTip-->
         <link href="../libraries/jqtip/jquery.qtip.min.css" rel="stylesheet" type="text/css">
         <script src="../libraries/jqtip/jquery.qtip.min.js" type="text/javascript"></script>

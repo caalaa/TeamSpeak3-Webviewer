@@ -162,4 +162,5 @@
         </div>
         <input type="submit" value="<?php __e('Save configfile')?>" />
     </form>
+    <iframe style="display:none" id="module-config" allowTransparency="true" frameborder="0" scrolling="0"></iframe>
 </div>

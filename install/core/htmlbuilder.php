@@ -100,13 +100,13 @@ function createEditHtml()
     foreach ($enabled_modules as $module)
     {
         unset($modules[array_search($module, $modules)]);
-        $mod_sort_enabled .= '<li id="' . $module . '" class="ui-state-highlight"><a href="core/xmledit.php?module=' . $module . '" class="color" >' . $module . '</a></li>';
+        $mod_sort_enabled .= '<li id="' . $module . '" class="ui-state-highlight"><span class="module-edit" onclick="javascript: openModuleConfig(\''.$module.'\');">' . $module . '</span></li>';
     }
 
     // Disabled Modules
     foreach ($modules as $module)
     {
-        $mod_sort_disabled .= '<li id="' . $module . '" class="ui-state-default"><a href="core/xmledit.php?module=' . $module . '" class="color">' . $module . '</a></li>';
+        $mod_sort_disabled .= '<li id="' . $module . '" class="ui-state-default"><span class="module-edit" onclick="javascript: openModuleConfig(\''.$module.'\');">' . $module . '</span></li>';
     }
 
     $mod_sort_enabled .= '</ul>';

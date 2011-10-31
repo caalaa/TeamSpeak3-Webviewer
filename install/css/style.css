@@ -153,3 +153,17 @@ tr
     margin-bottom: 15px !important;
     padding: 3px;
 }
+
+iframe#module-config
+{
+    border: 0;
+    overflow: hidden;
+    width: 1050px !important;
+    height: 700px !important;
+}
+
+span.module-edit
+{
+    cursor: pointer;
+    text-decoration: underline;
+}
