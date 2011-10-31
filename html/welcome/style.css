@@ -209,7 +209,7 @@ a.nav
     -moz-border-radius: 5px;
     border-radius: 5px;
     padding: 5px;
-    
+
     margin-bottom: 8px;
 }
 
@@ -271,4 +271,16 @@ div#lang-credits
 span#lang-link
 {
     cursor: pointer;
+}
+
+a.link-gray
+{
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    background: #e5e5e5;
+    padding: 3px;
+
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px#888;
+    box-shadow: 0 0 5px #888;
 }
