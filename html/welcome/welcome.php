@@ -35,25 +35,6 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
     $newlang = '?action=setlang&lang=' . $lang;
     setL10n($lang, "ms-tsv-welcome");
 }
-else if (isset($_GET['action']) && $_GET['action'] == "showtrans") :
-    ?>
-
-    <?php $languages = $utils->getLanguages(); ?>
-    <div id="lang-credits">
-        <?php foreach ($languages as $langCode => $langOptions) : ?>
-            <div id="lang<?php echo($langCode); ?>">
-                <p><?php __e('Translators') ?>: <?php echo($langOptions['lang']); ?> (<?php echo($langOptions['version']); ?>)</p>
-                <ul>
-                    <?php foreach ($langOptions['authors'] as $author => $homepage) : ?>
-                        <li><a href="<?php echo($homepage) ?>"><?php echo($author) ?></a></li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>   
-        <?php endforeach; ?>
-    </div>
-    <?php
-    exit;
-endif;
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -67,9 +48,6 @@ endif;
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.js"></script>
         <link href="<?php echo(s_http) ?>html/welcome/style.css" rel="stylesheet" type="text/css">
 
-        <!-- Colorbox -->
-        <link href="<?php echo(s_http) ?>libraries/colorbox/example1/colorbox.css" rel="stylesheet" type="text/css">
-        <script src="<?php echo(s_http) ?>libraries/colorbox/colorbox/jquery.colorbox-min.js" type="text/javascript"></script>
         <script src="<?php echo(s_http) ?>html/welcome/welcome.js" type="text/javascript"></script>
     </head>
     <body>
@@ -77,7 +55,7 @@ endif;
         <div id="wrapper" style="margin-top: 20px; padding: 0 .7em;"> 
             <div id="content">
                 <div id="navigation">
-                    <a class="nav" id="facebook" href="http://www.facebook.com/plugins/likebox.php?href=http://www.facebook.com/maxesstuff&width=500&colorscheme=light&show_faces=true&border_color=000000&stream=true&header=true&height=590"><span class="nav-element orange"><?php __e('Become fan at facebook'); ?></span></a>
+                    <span onclick="javascript: openFacebookDialog();" class="nav nav-element orange"><?php __e('Become fan at facebook'); ?></span>
                     <a class="nav" href="<?php echo(s_http . 'install/index.php' . $newlang) ?>"><span class="nav-element orange"><?php __e('Installation and Configuration') ?></span></a>
                     <a class="nav" target="_blank" href="http://en.devmx.de/emailsupport"><span class="nav-element orange"><?php __e('Support') ?></span></a>
                     <a class="nav" target="_blank" href="http://en.devmx.de/software/teamspeak3-webviewer/dokumentation"><span class="nav-element orange"><?php __e('Documentation') ?></span></a>
@@ -93,7 +71,7 @@ endif;
                         ?>              
                         <p class="orange lang" style="float:left; margin-right: 10px;"><a href="?lang=<?php echo($langCode); ?>"><?php echo($langOptions['lang']) ?></a></p>
                     <?php } ?>
-                    <p><a style="float:left; margin-right: 20px;" title="<?php __e('show Translators'); ?>" id="lang-link" href="?action=showtrans" class="ui-icon ui-icon-info">&nbsp;</a></p>
+                    <p><span style="float:left; margin-right: 20px;" title="<?php __e('show Translators'); ?>" id="lang-link" onclick="javascript: openTranslatorDialog();" class="ui-icon ui-icon-info">&nbsp;</span></p>
                 </fieldset>
                 <br>
                 <p><?php
@@ -135,6 +113,25 @@ endif;
         </div>
         <div id="hint" class="ui-state-highlight ui-corner-tl">
             <a href="http://devmx.de" target="_blank"><?php __e('devMX TeamSpeak3 Webviewer') ?></a>
+        </div>
+
+        <?php $languages = $utils->getLanguages(); ?>
+        <div id="lang-credits" style="display:none">
+            <?php foreach ($languages as $langCode => $langOptions) : ?>
+                <div id="lang<?php echo($langCode); ?>">
+                    <p><?php __e('Translators') ?>: <?php echo($langOptions['lang']); ?> (<?php echo($langOptions['version']); ?>)</p>
+                    <ul>
+                        <?php foreach ($langOptions['authors'] as $author => $homepage) : ?>
+                            <li><a href="<?php echo($homepage) ?>"><?php echo($author) ?></a></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>   
+            <?php endforeach; ?>
+        </div>
+
+        <div style="display: none;">
+            <iframe style="width:500px !important; height:500px" allowTransparency="true" frameborder="0" scrolling="0" id="fblink"></iframe>  
+            <iframe allowTransparency="true" frameborder="0" scrolling="0" id="langlink"></iframe>
         </div>
     </body>
 </html>

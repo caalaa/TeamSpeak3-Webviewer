@@ -15,11 +15,27 @@
  *  along with TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-$(document).ready(function(){
-    $("#lang-link").colorbox();
-    $("#facebook").colorbox({
-        width:"550px", 
-        height:"630px", 
-        iframe:true
+var defaultOptions = {
+    title: "devMX Webviewer",
+    modal: true,
+    show: 'fade',
+    hide: 'fade'
+}
+
+// Opens the Facebook Like Box in a jQueryUI Dialog
+function openFacebookDialog()
+{
+    $("#fblink").dialog(defaultOptions, {
+        minHeight: 600,
+        minWidth: 550
+    }).attr("src", 'http://www.facebook.com/plugins/likebox.php?href=http://www.facebook.com/maxesstuff&width=500&colorscheme=light&show_faces=true&border_color=000000&stream=true&header=true&height=550');
+}
+
+// Opens the translation credits in a jQueryUI Dialog
+function openTranslatorDialog()
+{
+    $("#lang-credits").dialog(defaultOptions, {
+        minHeight: 320, 
+        minWidth: 220
     });
-});
+}

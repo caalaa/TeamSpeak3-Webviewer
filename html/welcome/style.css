@@ -57,6 +57,12 @@ fieldset
     border: transparent;
 }
 
+iframe
+{
+    border: none;
+    overflow: hidden;
+}
+
 div
 {
     margin-left: auto;
@@ -76,12 +82,6 @@ p, span, a
     text-decoration: none;
     color: #000000;
     font-family: sans-serif;
-}
-
-.ui-widget
-{
-    width: 1000px;
-    padding: 15px;
 }
 
 #wrapper
@@ -260,4 +260,15 @@ div#hint
 div#hint a
 {
     text-decoration: none;
+}
+
+div#lang-credits
+{
+    width: 200px;
+    height: 300px;
+}
+
+span#lang-link
+{
+    cursor: pointer;
 }
