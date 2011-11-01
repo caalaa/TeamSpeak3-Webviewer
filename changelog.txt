@@ -22,6 +22,7 @@ v1.1
 * Issue #38: A whitescreen in the installscrip occured when the php DOM extension was not enabled (Thanks to xiloid (http://forum.teamspeak.com))
 * Issue #36: If a login to the query is required the icon download didn't login itself
 * Issue #41: The infoDialog shows now the name of the server- and channelgroups near to the icon
+* Issue #35: added a bash script to automaticall set chmod
 
 v 1.0
 ! There are two module configfiles now:
