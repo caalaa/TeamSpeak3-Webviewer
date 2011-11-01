@@ -123,7 +123,7 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
                     <p><?php __e('Translators') ?>: <?php echo($langOptions['lang']); ?> (<?php echo($langOptions['version']); ?>)</p>
                     <ul>
                         <?php foreach ($langOptions['authors'] as $author => $homepage) : ?>
-                            <li><a href="<?php echo($homepage) ?>"><?php echo($author) ?></a></li>
+                            <li><a class="link-gray" href="<?php echo($homepage) ?>"><?php echo($author) ?></a></li>
                         <?php endforeach; ?>
                     </ul>
                 </div>   
