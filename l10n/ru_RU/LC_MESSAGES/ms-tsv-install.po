@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TeamSpeak3 Webviewer Installscript\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-28 14:47+0100\n"
-"PO-Revision-Date: 2011-09-28 14:47+0100\n"
+"POT-Creation-Date: 2011-11-01 12:17+0100\n"
+"PO-Revision-Date: 2011-11-01 12:17+0100\n"
 "Last-Translator: crysea <grustniy.by@gmail.com>\n"
 "Language-Team: crysea <grustniy.by@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -19,153 +19,164 @@ msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/index.php:101
+#: Webviewer\install/index.php:102
 #, fuzzy
 msgid "The password could not be saved. Please make \"pw.xml\" in the install directory writable."
 msgstr "Невозможно сохранить пароль. Убедитесь, что директории  \"install\"  предоставлены права записи."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/index.php:161
+#: Webviewer\install/index.php:165
 msgid "The password you provided was not correct. Please try again."
 msgstr "Вы ввели неверный пароль. Пожалуйста, попробуйте снова."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/index.php:218
-#: Webviewer\install/index.php:228
+#: Webviewer\install/index.php:226
+#: Webviewer\install/index.php:236
 msgid "is not set. Please check if you filled out all blanks."
 msgstr "не установлено. Пожалуйста, проверьте заполненные поля."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/index.php:291
+#: Webviewer\install/index.php:301
 msgid "The directory for the query data-cache could not be created. Please make it writable manually."
 msgstr "Невозможно создать директорию для кэширования данных. Пожалуйста, выставьте права вручную."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/index.php:292
+#: Webviewer\install/index.php:302
 msgid "Query cache directory: "
 msgstr "Директория кэша:"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/index.php:303
+#: Webviewer\install/index.php:313
 msgid "The directory for the query image-cache could not be created. Please make it writable manually."
 msgstr "Невозможно создать директорию для кэширования изображений. Пожалуйста, выставьте права вручную."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/index.php:304
+#: Webviewer\install/index.php:314
 msgid "Image cache directory: "
 msgstr "Директория кэширования изображений:"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/index.php:311
+#: Webviewer\install/index.php:321
 msgid "The configfile is not writable. Please check if the required permissions are given to write the file."
 msgstr "Невозможно записать конфигурационный файл. Пожалуйста, проверьте выставлены ли права на запись файла."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/index.php:317
+#: Webviewer\install/index.php:327
 msgid "Configfile successfully saved."
 msgstr "Файл конфигурации успешно сохранен."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/core/htmlbuilder.php:42
+#: Webviewer\install/core/htmlbuilder.php:43
 msgid "edit"
 msgstr "редактировать"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/core/htmlbuilder.php:42
-msgid "Show Viewer"
-msgstr "Показать Обозреватель"
+#: Webviewer\install/core/htmlbuilder.php:44
+msgid "show"
+msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/core/htmlbuilder.php:42
-msgid "Flush cache"
+#: Webviewer\install/core/htmlbuilder.php:45
+#, fuzzy
+msgid "flush cache"
 msgstr "Очистить кеш"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/core/htmlbuilder.php:42
-msgid "delete configfile"
+#: Webviewer\install/core/htmlbuilder.php:46
+#, fuzzy
+msgid "delete file"
 msgstr "удалить файл конфигурации"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/core/htmlbuilder.php:68
-#: Webviewer\install/core/htmlbuilder.php:73
-#: Webviewer\install/core/htmlbuilder.php:163
-#: Webviewer\install/core/htmlbuilder.php:168
+#: Webviewer\install/core/htmlbuilder.php:74
+#: Webviewer\install/core/htmlbuilder.php:79
+#: Webviewer\install/core/htmlbuilder.php:169
+#: Webviewer\install/core/htmlbuilder.php:174
+#: Webviewer\install/html/config.php:149
 msgid "Yes"
 msgstr "Да"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/core/htmlbuilder.php:69
-#: Webviewer\install/core/htmlbuilder.php:74
-#: Webviewer\install/core/htmlbuilder.php:164
-#: Webviewer\install/core/htmlbuilder.php:169
+#: Webviewer\install/core/htmlbuilder.php:75
+#: Webviewer\install/core/htmlbuilder.php:80
+#: Webviewer\install/core/htmlbuilder.php:170
+#: Webviewer\install/core/htmlbuilder.php:175
+#: Webviewer\install/html/config.php:150
 msgid "No"
 msgstr "Нет"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/core/htmlbuilder.php:115
-#: Webviewer\install/core/htmlbuilder.php:120
-#: Webviewer\install/core/htmlbuilder.php:151
-#: Webviewer\install/core/htmlbuilder.php:156
+#: Webviewer\install/core/htmlbuilder.php:121
+#: Webviewer\install/core/htmlbuilder.php:126
+#: Webviewer\install/core/htmlbuilder.php:157
+#: Webviewer\install/core/htmlbuilder.php:162
 msgid "Enabled"
 msgstr "Включить"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/core/htmlbuilder.php:116
-#: Webviewer\install/core/htmlbuilder.php:121
-#: Webviewer\install/core/htmlbuilder.php:152
-#: Webviewer\install/core/htmlbuilder.php:157
+#: Webviewer\install/core/htmlbuilder.php:122
+#: Webviewer\install/core/htmlbuilder.php:127
+#: Webviewer\install/core/htmlbuilder.php:158
+#: Webviewer\install/core/htmlbuilder.php:163
 msgid "Disabled"
 msgstr "Выключить"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/core/utils.php:148
+#: Webviewer\install/core/utils.php:142
+#, fuzzy
+msgid "The configfile does not exist"
+msgstr "Файл конфигурации, который вы пытаетесь удалить, не существует"
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\install/core/utils.php:150
 msgid "Not all necessary information is given in the configfile to flush the cache."
 msgstr "Не предоставлена вся необходимая информация в конфигурационном файле для очистки кеша."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/core/utils.php:175
+#: Webviewer\install/core/utils.php:177
 msgid "Cache flushed."
 msgstr "Кеш очищен."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/core/utils.php:189
+#: Webviewer\install/core/utils.php:192
 msgid "The configfile you wanted to delete does not exist"
 msgstr "Файл конфигурации, который вы пытаетесь удалить, не существует"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/core/utils.php:194
+#: Webviewer\install/core/utils.php:197
 msgid "The configfile has been successfully deleted"
 msgstr "Файл конфигурации успешно сохранен."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/core/utils.php:211
+#: Webviewer\install/core/utils.php:214
 msgid "The necessary function"
 msgstr "Необходимая функция"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/core/utils.php:211
+#: Webviewer\install/core/utils.php:214
 msgid "is not available on your webspace. Please contact your service provider."
 msgstr "не доступно(-а) на вашем хостинге. Пожалуйста, свяжитесь с вашим хостинг-провайдером."
 
@@ -196,226 +207,252 @@ msgstr "Вернуться к файлам конфигурации"
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
 #: Webviewer\install/html/config.php:21
-#: Webviewer\install/html/select_config.php:20
+#: Webviewer\install/html/select_config.php:21
 msgid "Logout"
 msgstr "Выйти"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:33
+#: Webviewer\install/html/config.php:35
 msgid "Mainsettings"
 msgstr "Основные настройки"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:34
+#: Webviewer\install/html/config.php:36
 msgid "Modules"
 msgstr "Модули"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:35
+#: Webviewer\install/html/config.php:37
 msgid "Style"
 msgstr "Скины"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:36
+#: Webviewer\install/html/config.php:38
 msgid "Caching"
 msgstr "Кеширование"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:37
+#: Webviewer\install/html/config.php:39
 msgid "Misc"
 msgstr "Дополнительно"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:44
+#: Webviewer\install/html/config.php:46
 msgid "The adress with which you are connecting to the server (Can be an IP-Adress or hostname)."
 msgstr "Адрес соединения с сервером (Может быть IP-адресом или доменным именем)."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:44
+#: Webviewer\install/html/config.php:46
 msgid "Serveradress"
 msgstr "Адрес сервера"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:48
+#: Webviewer\install/html/config.php:50
 msgid "The Queryport of your server (Default: 10011)."
 msgstr "Порт опроса вашего сервера (По умолчанию:10011)."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:48
+#: Webviewer\install/html/config.php:50
 msgid "Queryport"
 msgstr "Порт"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:52
+#: Webviewer\install/html/config.php:54
 msgid "The port through which you are connecting to your server via the client (Default: 9987)."
 msgstr "Порт, через который Вы соединяетесь с сервером через клиент (По умолчанию: 9987)."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:52
+#: Webviewer\install/html/config.php:54
 msgid "Serverport"
 msgstr "Порт сервера"
 
 # can u tell this in other words?
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:56
+#: Webviewer\install/html/config.php:58
 msgid "If a login is required that the viewer can get the needed information (Default: yes)."
 msgstr "При авторазации скрипт будет получать всю необходимую информацию (По умолчания: да)."
 
 # it's a verb or a noun?
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:56
+#: Webviewer\install/html/config.php:58
 msgid "Login required?"
 msgstr "Авторизация необходима?"
 
 # really, it is difficult to translate this. i need more comments on this.
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:62
+#: Webviewer\install/html/config.php:64
 msgid "The username of the query-user."
 msgstr "Имя пользователя, выступающего в качестве клиента."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:62
+#: Webviewer\install/html/config.php:64
 msgid "Username"
 msgstr "Имя пользователя"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:66
+#: Webviewer\install/html/config.php:68
 msgid "Password corresponding to the username above."
 msgstr "Пароль соответствующий пользователю, указанному ранее."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:66
+#: Webviewer\install/html/config.php:68
 msgid "Password"
 msgstr "Пароль"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:76
+#: Webviewer\install/html/config.php:78
 msgid "Click on a module to edit the modules configfile. Drag and sort the modules in the order you want them displayed"
 msgstr "Нажмите на модуль чтобы редактировать конфигурационный файл модулей. Перетаскивайте и сортируйте модули в том порядке, в котором они будут отображаться."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:82
+#: Webviewer\install/html/config.php:84
 msgid "enabled modules:"
 msgstr "включенные модули:"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:86
+#: Webviewer\install/html/config.php:88
 msgid "disabled modules:"
 msgstr "отключенные модули:"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:98
+#: Webviewer\install/html/config.php:93
+#, fuzzy
+msgid "Enable all"
+msgstr "Включить"
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\install/html/config.php:94
+#, fuzzy
+msgid "Disable all"
+msgstr "Выключить"
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\install/html/config.php:104
 msgid "If you set this on true, custom icons will be downloaded automatically."
 msgstr "Если вы установите это верным, иконки по умолчанию будут загружены автоматически."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:98
+#: Webviewer\install/html/config.php:104
 msgid "download servericons automatically"
 msgstr "автоматически скачать иконки сервера"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:102
+#: Webviewer\install/html/config.php:108
 msgid "If the setting above is FALSE, the viewer will use the imagepack provided here."
 msgstr "Если предыдущая настройка НЕВЕРНА, скрипт будет использовать набор иконок, предоставленный здесь."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:102
+#: Webviewer\install/html/config.php:108
 msgid "Group-Icons Imagepackage"
 msgstr "Набор иконок для групп"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:106
+#: Webviewer\install/html/config.php:112
 msgid "The stylesheet which should be used for the viewer"
 msgstr "Стиль, который используется скриптом."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:106
+#: Webviewer\install/html/config.php:112
 msgid "Stylesheet"
 msgstr "Стиль"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:110
+#: Webviewer\install/html/config.php:116
 msgid "If you set that on TRUE, the viewer will show arrows next to the channel similar as in the client."
 msgstr "Если вы установите значение ДА, скрипт будет показывать стрелки, идентичные клиенту."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:110
+#: Webviewer\install/html/config.php:116
 msgid "display arrows"
 msgstr "показывать стрелки"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:119
+#: Webviewer\install/html/config.php:125
 msgid "If this on true the viewer will buffer the data it received. It is strongly recommended to enable caching due to stability reasons."
 msgstr "Если это включено, скрипт будет помещать в буфер полученные данные. Настоятельно рекомендуется включить кеширование для стабильной работы."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:119
+#: Webviewer\install/html/config.php:125
 msgid "Enable caching?"
 msgstr "Включить кеширование?"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:125
+#: Webviewer\install/html/config.php:131
 msgid "The time in seconds the viewer should buffer the serverdata (Recommended: 60)."
 msgstr "Интервал в секундах, через которые скрипт будет помещать серверные данные в буфер (Рекомундуется: 60)."
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:125
+#: Webviewer\install/html/config.php:131
 msgid "Standard cachetime"
 msgstr "Стандартное время кеширование"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:137
+#: Webviewer\install/html/config.php:143
 msgid "Language of the viewer"
 msgstr "Язык скрипта"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:137
+#: Webviewer\install/html/config.php:143
 msgid "Language"
 msgstr "Язык"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:148
+#: Webviewer\install/html/config.php:147
+msgid "If enabled the url to your webviewer will be submitted to devMX"
+msgstr ""
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\install/html/config.php:147
+msgid "Provide usage statistics"
+msgstr ""
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\install/html/config.php:161
 msgid "Tip: Hover over the labels to get more information about the requested data."
 msgstr "Информация: Наведите на текст чтобы получить больше информации о необходимых данных"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/config.php:150
+#: Webviewer\install/html/config.php:163
 msgid "Save configfile"
 msgstr "Сохранить файл конфигурации"
 
@@ -430,6 +467,12 @@ msgstr "Пожалуйста, введите пароль для интерфе�
 #: Webviewer\install/html/enter_pw.php:28
 msgid "Submit"
 msgstr "Подтвердить"
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\install/html/footer-hint.php:20
+msgid "devMX TeamSpeak3 Webviewer"
+msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
@@ -469,25 +512,25 @@ msgstr "Если статус одной из директорий - \"НЕ УД
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/select_config.php:28
+#: Webviewer\install/html/select_config.php:32
 msgid "Please select one of those existing configfiles:"
 msgstr "Пожалуйста, выберите один из существующих файлов конфигурации:"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/select_config.php:35
+#: Webviewer\install/html/select_config.php:38
 msgid "or create a new configfile (If no configfile is available please name the new one \"default\")"
 msgstr "или создайте новый конфигурационный файл (Если ни один конфигурациооный файл не доступен, введите имя нового файла \"по умолчанию\")"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/select_config.php:38
+#: Webviewer\install/html/select_config.php:41
 msgid "Name of the new file"
 msgstr "Имя нового файла"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\install/html/select_config.php:39
+#: Webviewer\install/html/select_config.php:42
 msgid "create file"
 msgstr "создать файл"
 
@@ -560,6 +603,9 @@ msgstr "Французский"
 #: Webviewer\l10n/ru_RU/lang.php:21
 msgid "Russian"
 msgstr "Русский"
+
+#~ msgid "Show Viewer"
+#~ msgstr "Показать Обозреватель"
 
 #~ msgid ""
 #~ "You can edit the configfile of the module here. If you have finished just "

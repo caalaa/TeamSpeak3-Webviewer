@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TeamSpeak3 Webviewer welcome\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-28 14:47+0100\n"
-"PO-Revision-Date: 2011-09-28 14:47+0100\n"
+"POT-Creation-Date: 2011-11-01 12:17+0100\n"
+"PO-Revision-Date: 2011-11-01 12:17+0100\n"
 "Last-Translator: crysea <grustniy.by@gmail.com>\n"
 "Language-Team: crysea <grustniy.by@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -17,91 +17,104 @@ msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:45
-msgid "Translators"
-msgstr ""
-
-#: B:\Eigene
-#: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:86
+#: Webviewer\html\welcome/welcome.php:59
 msgid "Become fan at facebook"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:87
+#: Webviewer\html\welcome/welcome.php:60
 msgid "Installation and Configuration"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:88
+#: Webviewer\html\welcome/welcome.php:61
 #, fuzzy
 msgid "Support"
 msgstr "Поддержка"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:89
+#: Webviewer\html\welcome/welcome.php:62
 msgid "Documentation"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:92
+#: Webviewer\html\welcome/welcome.php:63
+msgid "TeamSpeak"
+msgstr ""
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\html\welcome/welcome.php:66
 #, fuzzy
 msgid "Welcome to the devMX TeamSpeak3 Webviewer"
 msgstr "Добро пожаловать в Maxesstuff TeamSpeak3 Webviewer"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:101
+#: Webviewer\html\welcome/welcome.php:75
 msgid "show Translators"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:107
+#: Webviewer\html\welcome/welcome.php:81
 msgid "Apparently you didn't set up the Viewer yet. Please run the"
 msgstr "Вы еще не установили скрипт. Пожалуйста, запустите"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:108
-#: Webviewer\html\welcome/welcome.php:113
+#: Webviewer\html\welcome/welcome.php:82
+#: Webviewer\html\welcome/welcome.php:87
 msgid "Installscript"
 msgstr "файл установки"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:112
+#: Webviewer\html\welcome/welcome.php:86
 msgid "You can see a list of your config files below. If you want to add more, run the"
 msgstr "Вы можете увидеть список ваших конфигурационных файлов ниже. Если вы хотите добавить еще, запустите"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:115
+#: Webviewer\html\welcome/welcome.php:89
 msgid "The following configfiles are available"
 msgstr "Следующие конфигурационные файлы доступны"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:119
+#: Webviewer\html\welcome/welcome.php:93
 msgid "No configfile available"
 msgstr "Нет доступных конфигурационных файлов"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:131
+#: Webviewer\html\welcome/welcome.php:105
 #, fuzzy
 msgid "Version:"
 msgstr "Версия"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:137
+#: Webviewer\html\welcome/welcome.php:111
 #, php-format
 msgid "Version %s of the TeamSpeak3 Webviewer has been released. Click here to update."
+msgstr ""
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\html\welcome/welcome.php:116
+#, fuzzy
+msgid "devMX TeamSpeak3 Webviewer"
+msgstr "Добро пожаловать в Maxesstuff TeamSpeak3 Webviewer"
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\html\welcome/welcome.php:123
+msgid "Translators"
 msgstr ""
 
 #~ msgid "Find us on facebook"

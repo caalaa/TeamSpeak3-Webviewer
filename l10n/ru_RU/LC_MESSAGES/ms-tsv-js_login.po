@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TeamSpeak3 Webviewer js_login\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-28 14:47+0100\n"
-"PO-Revision-Date: 2011-09-28 14:47+0100\n"
+"POT-Creation-Date: 2011-11-01 12:17+0100\n"
+"PO-Revision-Date: 2011-11-01 12:17+0100\n"
 "Last-Translator: crysea <grustniy.by@gmail.com>\n"
 "Language-Team: crysea <grustniy.by@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -17,13 +17,13 @@ msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\js_login/js_login.php:51
+#: Webviewer\modules\js_login/js_login.php:52
 msgid "Please insert the serverpassword"
 msgstr "Пожалуйста, введите пароль сервера"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\js_login/js_login.php:52
+#: Webviewer\modules\js_login/js_login.php:53
 msgid "Please insert a nickname of your choice"
 msgstr "Пожалуйста, введите ваш никнейм"
 

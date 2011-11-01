@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TeamSpeak3 Webviewer welcome\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-28 14:47+0100\n"
-"PO-Revision-Date: 2011-09-28 14:47+0100\n"
+"POT-Creation-Date: 2011-11-01 12:16+0100\n"
+"PO-Revision-Date: 2011-11-01 12:19+0100\n"
 "Last-Translator: Maximilian Narr <maxesstuff@live.de>\n"
 "Language-Team: Maxesstuff <info@maxesstuff.de>\n"
 "MIME-Version: 1.0\n"
@@ -17,90 +17,101 @@ msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:45
-msgid "Translators"
-msgstr "Translators"
-
-#: B:\Eigene
-#: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:86
+#: Webviewer\html\welcome/welcome.php:59
 msgid "Become fan at facebook"
-msgstr ""
+msgstr "Become fan at facebook"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:87
+#: Webviewer\html\welcome/welcome.php:60
 msgid "Installation and Configuration"
-msgstr ""
+msgstr "Installation and Configuration"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:88
+#: Webviewer\html\welcome/welcome.php:61
 msgid "Support"
 msgstr "Support"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:89
+#: Webviewer\html\welcome/welcome.php:62
 msgid "Documentation"
-msgstr ""
+msgstr "Documentation"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:92
+#: Webviewer\html\welcome/welcome.php:63
+msgid "TeamSpeak"
+msgstr "TeamSpeak"
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\html\welcome/welcome.php:66
 msgid "Welcome to the devMX TeamSpeak3 Webviewer"
 msgstr "Welcome to the devMX TeamSpeak3 Webviewer"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:101
+#: Webviewer\html\welcome/welcome.php:75
 msgid "show Translators"
 msgstr "show Translators"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:107
+#: Webviewer\html\welcome/welcome.php:81
 msgid "Apparently you didn't set up the Viewer yet. Please run the"
 msgstr "Apparently you didn't set up the Viewer yet. Please run the"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:108
-#: Webviewer\html\welcome/welcome.php:113
+#: Webviewer\html\welcome/welcome.php:82
+#: Webviewer\html\welcome/welcome.php:87
 msgid "Installscript"
 msgstr "Installscript"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:112
+#: Webviewer\html\welcome/welcome.php:86
 msgid "You can see a list of your config files below. If you want to add more, run the"
 msgstr "You can see a list of your config files below. If you want to add more, run the"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:115
+#: Webviewer\html\welcome/welcome.php:89
 msgid "The following configfiles are available"
 msgstr "The following configfiles are available"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:119
+#: Webviewer\html\welcome/welcome.php:93
 msgid "No configfile available"
 msgstr "No configfile available"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:131
-#, fuzzy
+#: Webviewer\html\welcome/welcome.php:105
 msgid "Version:"
-msgstr "Version"
+msgstr "Version:"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\html\welcome/welcome.php:137
+#: Webviewer\html\welcome/welcome.php:111
 #, php-format
 msgid "Version %s of the TeamSpeak3 Webviewer has been released. Click here to update."
-msgstr ""
+msgstr "Version %s of the TeamSpeak3 Webviewer has been released. Click here to update."
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\html\welcome/welcome.php:116
+msgid "devMX TeamSpeak3 Webviewer"
+msgstr "devMX TeamSpeak3 Webviewer"
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer\html\welcome/welcome.php:123
+msgid "Translators"
+msgstr "Translators"
 
 #~ msgid "Find us on facebook"
 #~ msgstr "Find us on facebook"
