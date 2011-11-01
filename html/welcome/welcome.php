@@ -41,6 +41,7 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
 <html>
     <head>
         <title>devMX TeamSpeak3 Webviewer</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=9" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="icon" href="<?php echo s_http; ?>html/welcome/tools.png" type="image/png">
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
@@ -130,7 +131,7 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
         </div>
 
         <div style="display: none;">
-            <iframe style="width:500px !important; height:500px" allowTransparency="true" frameborder="0" scrolling="0" id="fblink"></iframe>  
+            <iframe style="width:500px !important; height:100%" allowTransparency="true" frameborder="0" scrolling="0" id="fblink"></iframe>  
             <iframe allowTransparency="true" frameborder="0" scrolling="0" id="langlink"></iframe>
         </div>
     </body>

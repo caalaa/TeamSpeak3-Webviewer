@@ -17,21 +17,22 @@
 
 body
 {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
     background: #ffffff;
     background: -moz-linear-gradient(top, #ffffff 0%, #e5e5e5 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e5e5e5));
     background: -webkit-linear-gradient(top, #ffffff 0%,#e5e5e5 100%);
     background: -o-linear-gradient(top, #ffffff 0%,#e5e5e5 100%);
     background: -ms-linear-gradient(top, #ffffff 0%,#e5e5e5 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 );
     background: linear-gradient(top, #ffffff 0%,#e5e5e5 100%);
 }
 
 #wrapper
 {
     width: 950px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
     padding: 15px !important;
 
     background: #ffffff;
@@ -48,6 +49,8 @@ body
     box-shadow: 0 0 5px #888;
 
     -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -khtml-border-radius: 15px;
     border-radius: 15px;
 
 }
@@ -115,6 +118,8 @@ ul
     background: linear-gradient(top, #ffd65e 0%,#febf04 100%);
 
     -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -khtml-border-radius: 15px;
     border-radius: 15px;
 
     -moz-box-shadow: 0 0 5px #888;
@@ -134,6 +139,8 @@ ul
     background: linear-gradient(top, #b6e026 0%,#abdc28 100%); 
 
     -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -khtml-border-radius: 15px;
     border-radius: 15px;
 
     -moz-box-shadow: 0 0 5px #888;
@@ -153,6 +160,8 @@ ul
     background: linear-gradient(top, #ff3019 0%,#cf0404 100%);
 
     -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -khtml-border-radius: 15px;
     border-radius: 15px;
 
     -moz-box-shadow: 0 0 5px #888;
@@ -207,6 +216,8 @@ a.nav
     box-shadow: 0 0 5px #888;
 
     -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
     border-radius: 5px;
     padding: 5px;
 
@@ -240,8 +251,9 @@ a.nav
 {
     padding: 4px;
     -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
     border-radius: 5px;
-
     -moz-box-shadow: 0 0 5px #888;
     -webkit-box-shadow: 0 0 5px#888;
     box-shadow: 0 0 5px #888;
@@ -275,8 +287,10 @@ span#lang-link
 
 a.link-gray
 {
-    border-radius: 4px;
     -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -khtml-border-radius: 4px;
+    border-radius: 4px;
     background: #e5e5e5;
     padding: 3px;
 

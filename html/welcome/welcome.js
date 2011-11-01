@@ -19,7 +19,8 @@ var defaultOptions = {
     title: "devMX Webviewer",
     modal: true,
     show: 'fade',
-    hide: 'fade'
+    hide: 'fade',
+    position: 'center'
 }
 
 // Opens the Facebook Like Box in a jQueryUI Dialog
@@ -28,7 +29,7 @@ function openFacebookDialog()
     $("#fblink").dialog(defaultOptions, {
         minHeight: 600,
         minWidth: 550
-    }).attr("src", 'http://www.facebook.com/plugins/likebox.php?href=http://www.facebook.com/maxesstuff&width=500&colorscheme=light&show_faces=true&border_color=000000&stream=true&header=true&height=550');
+    }).attr("src", 'http://www.facebook.com/plugins/likebox.php?href=http://www.facebook.com/maxesstuff&width=500&colorscheme=light&show_faces=true&border_color=000000&stream=true&header=true&height=550').css("width", "100%");
 }
 
 // Opens the translation credits in a jQueryUI Dialog
