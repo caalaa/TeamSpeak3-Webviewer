@@ -37,7 +37,7 @@
 
         <!-- Style -->
         <link rel="stylesheet" href="../css/xmledit.css" type="text/css">
-        
+
         <script type="text/javascript">
             $(document).ready(function(){
                 $("input:submit").button();
@@ -52,6 +52,8 @@
             <div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em; margin-bottom: 10px;"> 
                 <p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
                     <?php __e('You can edit the global and the local configfile of the module here. If you have finished just press the button. The local configfile overrides all configparameters set in the global one. Set \'none\' in the local config, if you want to use the parameter of the global config') ?></p>
+                <p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+                    <a href="http://devmx.de/en/software/teamspeak3-webviewer/dokumentation/modules/<?php echo(strtolower($module))?>" target="_blank"><?php __e('Learn more about this module') ?></a></p>
             </div>
 
             <div id="tabs">

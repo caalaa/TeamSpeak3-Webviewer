@@ -24,6 +24,7 @@ v1.1
 * Issue #41: The infoDialog shows now the name of the server- and channelgroups near to the icon
 * Issue #35: added a bash script to automatically set chmod
 * Issue #40: closing html and body tag was missing
+* Issue #42: added links to the modules documentation in the installscript
 
 v 1.0
 ! There are two module configfiles now:
