@@ -152,25 +152,34 @@ if ($_GET['type'] == 'client')
             case 'servergroup':
                 $out .= '<tr>';
                 $out .= '<td class="label">' . __('Servergroup(s)') . ':</td>';
-                $out .= '<td>';
+                $out .= '<td><ul style="list-style-type: none; margin:0; padding:0;">';
 
                 $serverGroupIcons = get_servergroup_icons($user, $info['servergroups']);
-                foreach($serverGroupIcons as $iconID) {
-                    if($iconID == 0)
-                        continue;
-                    $out .= '<span class="img_l group-image" style="background: url(\'' . $config['serverimages'] . $iconID . '\') no-repeat transparent;">&nbsp;</span>';
+                
+                foreach($info['servergroups'] as $group)
+                {
+                    if(in_array($group['iconid'], $serverGroupIcons))
+                    {
+                        $out .= '<li><span class="group-image" style="background: url(\'' . $config['serverimages'] . $serverGroupIcons[array_search($group['iconid'], $serverGroupIcons)] . '\') no-repeat transparent;">&nbsp;</span><span style="margin-left:4px;">'.$group['name'].'</span></li>';
+                    }
                 }
-                $out .= '</td></tr>';
+                $out .= '</ul></td></tr>';
                 break;
             case 'channelgroup':
                 $out .= '<tr>';
                 $out .= '<td class="label">' . __('Channelgroup(s)') . ':</td>';
-                $out .= '<td>';
+                $out .= '<td><ul style="list-style-type: none; margin:0; padding:0;">';
                 $channelGroupIcon = get_channelgroup_image($user,$info['channelgroups']);
-                if($channelGroupIcon != 0) {
-                    $out .= '<span class="img_l group-image" style="background: url(\'' . $config['serverimages'] . $channelGroupIcon . '\') no-repeat transparent;">&nbsp;</span>';
+                
+                foreach($info['channelgroups'] as $group)
+                {
+                    if($group['iconid'] == 0) continue;
+                    if($group['iconid'] == $channelGroupIcon)
+                    {
+                        $out .= '<li><span class="group-image" style="background: url(\'' . $config['serverimages'] . $channelGroupIcon . '\') no-repeat transparent;">&nbsp;</span><span style="margin-left:4px;">'.$group['name'].'</span></li>';
+                    }
                 }
-                $out .= '</td></tr>';
+                $out .= '</ul></td></tr>';
                 break;
             case 'connections':
                 $out .= '<tr>';

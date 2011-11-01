@@ -52,14 +52,14 @@ class infoDialog extends ms_Module
         // Reading sizes from config files, else use standard values
 
         $width = 400;
-        $height = 300;
+        $height = 230;
 
         if (isset($this->config['height']))
         {
             $dialog_conf .= "height: " . $this->config['height'] . ",";
             $height = $this->config['height'];
         }
-        else $dialog_conf.= "height: 200,";
+        else $dialog_conf.= "height: $height,";
 
 
         if (isset($this->config['width']))
@@ -67,7 +67,7 @@ class infoDialog extends ms_Module
             $dialog_conf .= "width: " . $this->config['width'];
             $width = $this->config['width'];
         }
-        else $dialog_conf .= "width: 400,";
+        else $dialog_conf .= "width: $width,";
 
 
         $dialog_conf = rtrim($dialog_conf, ",");
