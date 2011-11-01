@@ -332,7 +332,7 @@ $output .= render_channellist($channellist_obj, $clientlist['return'], $servergr
 
 $output .= $mManager->getFooters();
 $output .= "</div>";
-$output .= $mManager->triggerEvent('Shutdown');
+$output .= $mManager->triggerEvent('HtmlShutdown');
 
 echo $output;
 
