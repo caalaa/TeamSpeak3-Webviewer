@@ -16,6 +16,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 /**
  *
  * @param type $l
@@ -24,31 +25,30 @@
  */
 function sort_clients($l, $sortType)
 {
-    switch($sortType) {
-        case "name" : usort($l,"compare_clients_byName");
-        break;
-        case "tsclient":  usort($l,"compare_clients_likeTs3");
-        break;
+    switch ($sortType)
+    {
+        case "name" : usort($l, "compare_clients_byName");
+            break;
+        case "tsclient": usort($l, "compare_clients_likeTs3");
+            break;
     }
     return $l;
 }
 
-function compare_clients_byName($a, $b) {
-    return strcasecmp($a['client_nickname'],$b['client_nickname']);  
+function compare_clients_byName($a, $b)
+{
+    return strcasecmp($a['client_nickname'], $b['client_nickname']);
 }
 
-function compare_clients_likeTs3($a,$b) {
-    if($a['client_talk_power'] > $b['client_talk_power'])
-        return -1;
-    else if($a['client_talk_power'] < $b['client_talk_power'])
-        return 1;
-    else {
-        if($a['client_is_talker'] == 1 && $b['client_is_talker'] == 0)
-            return -1;
-        else if($a['client_is_talker'] ==0 && $b['client_is_talker'] == 1)
-            return 1;
-        else
-            return compare_clients_byName ( $a , $b );
+function compare_clients_likeTs3($a, $b)
+{
+    if ($a['client_talk_power'] > $b['client_talk_power']) return -1;
+    else if ($a['client_talk_power'] < $b['client_talk_power']) return 1;
+    else
+    {
+        if ($a['client_is_talker'] == 1 && $b['client_is_talker'] == 0) return -1;
+        else if ($a['client_is_talker'] == 0 && $b['client_is_talker'] == 1) return 1;
+        else return compare_clients_byName($a, $b);
     }
 }
 
@@ -58,8 +58,8 @@ function compare_clients_likeTs3($a,$b) {
  * @param type $cmd
  * @return type 
  */
-function ts3_check($response, $cmd='')
-{  
+function ts3_check($response, $cmd = '')
+{
     if ($response == true)
     {
         return;
@@ -72,11 +72,11 @@ function ts3_check($response, $cmd='')
     {
         if ($cmd == '')
         {
-            throw new QueryCommunicationException("An error occured while executing on the query: " .$response['error']['msg']);
+            throw new QueryCommunicationException("An error occured while executing on the query: " . $response['error']['msg']);
         }
         else
         {
-            throw new QueryCommunicationException("An error occured while executing $cmd on the query: ".$response['error']['id']. " ".$response['error']['msg']);
+            throw new QueryCommunicationException("An error occured while executing $cmd on the query: " . $response['error']['id'] . " " . $response['error']['msg']);
         }
     }
 }
@@ -124,7 +124,7 @@ function escape_name($name)
 //http://de3.php.net/manual/de/function.htmlentities.php#96648
 //thx to silverbeat
 
-function utf8tohtml($utf8, $encodeTags=true)
+function utf8tohtml($utf8, $encodeTags = true)
 {
     $result = '';
     for ($i = 0; $i < strlen($utf8); $i++)
@@ -194,34 +194,53 @@ function get_client_image($client)
     return "normal-client";
 }
 
-function get_servergroup_icons($client, $servergroups)
+function get_servergroup_icons($client, $servergroups, $returnArray = false)
 {
     $ret = Array();
     $client['servergroups'] = explode(",", $client['client_servergroups']);
 
     foreach ($client['servergroups'] as $group)
     {
-            foreach ($servergroups as $sgroup)
+        foreach ($servergroups as $sgroup)
+        {
+            if ((int) $sgroup['sgid'] == (int) $group)
             {
-                if ((int) $sgroup['sgid'] == (int) $group)
-                {
 
+                if ($returnArray)
+                {
+                    $ret['ids'][] = $sgroup['iconid'];
+                    $ret['names'][] = $sgroup['name'];
+                }
+                else
+                {
                     $ret[] = $sgroup['iconid'];
                 }
             }
+        }
     }
     return $ret;
 }
 
-function get_channelgroup_image($client, $channelgroups)
+function get_channelgroup_image($client, $channelgroups, $returnArray = false)
 {
     global $config;
 
     foreach ($channelgroups as $group)
     {
         if ($client['client_channel_group_id'] == $group['cgid'])
-        { 
+        {
+            if ($returnArray)
+            {
+                $sgroup['iconid'] = $group['iconid'];
+                $sgroup['name'] = $group['name'];
+                return $sgroup;
+                
+            }
+            else
+            {
+
                 return $group['iconid'];
+            }
         }
     }
 }

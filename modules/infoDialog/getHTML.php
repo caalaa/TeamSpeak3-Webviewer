@@ -147,20 +147,20 @@ if ($_GET['type'] == 'client')
             case 'version':
                 $out .= '<tr>';
                 $out .= '<td class="label">' . __('Version') . ':</td>';
-                $out .= '<td>' . $user['client_version'] . '</td></tr>';
+                $out .= '<td>' . preg_replace("/\[(.*)\]/", "", $user['client_version'])  . '</td></tr>';
                 break;
             case 'servergroup':
                 $out .= '<tr>';
                 $out .= '<td class="label">' . __('Servergroup(s)') . ':</td>';
                 $out .= '<td><ul style="list-style-type: none; margin:0; padding:0;">';
 
-                $serverGroupIcons = get_servergroup_icons($user, $info['servergroups']);
-                
+                $serverGroupIcons = get_servergroup_icons($user, $info['servergroups'], true);
+                              
                 foreach($info['servergroups'] as $group)
-                {
-                    if(in_array($group['iconid'], $serverGroupIcons))
+                {              
+                    if(in_array($group['iconid'], $serverGroupIcons['ids']) && in_array($group['name'], $serverGroupIcons['names']) && (int)$group['type'] == 1  )
                     {
-                        $out .= '<li><span class="group-image" style="background: url(\'' . $config['serverimages'] . $serverGroupIcons[array_search($group['iconid'], $serverGroupIcons)] . '\') no-repeat transparent;">&nbsp;</span><span style="margin-left:4px;">'.$group['name'].'</span></li>';
+                        $out .= '<li><span class="group-image" style="background: url(\'' . $config['serverimages'] . $serverGroupIcons['ids'][array_search($group['iconid'], $serverGroupIcons['ids'])] . '\') no-repeat transparent;">&nbsp;</span><span style="margin-left:4px;">'.$group['name'].'</span></li>';
                     }
                 }
                 $out .= '</ul></td></tr>';
@@ -169,14 +169,13 @@ if ($_GET['type'] == 'client')
                 $out .= '<tr>';
                 $out .= '<td class="label">' . __('Channelgroup(s)') . ':</td>';
                 $out .= '<td><ul style="list-style-type: none; margin:0; padding:0;">';
-                $channelGroupIcon = get_channelgroup_image($user,$info['channelgroups']);
+                $channelGroupIcon = get_channelgroup_image($user,$info['channelgroups'], true);
                 
                 foreach($info['channelgroups'] as $group)
                 {
-                    if($group['iconid'] == 0) continue;
-                    if($group['iconid'] == $channelGroupIcon)
+                    if($group['name'] == $channelGroupIcon['name'] && (int)$group['type'] == 1 )
                     {
-                        $out .= '<li><span class="group-image" style="background: url(\'' . $config['serverimages'] . $channelGroupIcon . '\') no-repeat transparent;">&nbsp;</span><span style="margin-left:4px;">'.$group['name'].'</span></li>';
+                        $out .= '<li><span class="group-image" style="background: url(\'' . $config['serverimages'] . $channelGroupIcon['iconid'] . '\') no-repeat transparent;">&nbsp;</span><span style="margin-left:4px;">'.$group['name'].'</span></li>';
                     }
                 }
                 $out .= '</ul></td></tr>';

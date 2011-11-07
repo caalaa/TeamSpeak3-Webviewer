@@ -8,6 +8,10 @@
 ~ Minor Change
 * Fix
 
+v1.2
+* Issue #43: TS Query Groups and wrong server groups were displayed as a users group in the infoDialog module
+* Issue #44: The client version in the infoDialog was shown as an unix timestamp. The build has been removed now.
+
 v1.1
 + Issue #25: added a cron file to update the statistics
 ~ Issue #33: added button to disable or enable all modules in the installscript
