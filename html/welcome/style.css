@@ -280,12 +280,32 @@ div#lang-credits
     height: 300px;
 }
 
+textarea#code-area
+{
+    width: 555px;
+    height: 110px;
+    font-weight: normal !important;
+}
+
+input#code-height, input#code-width
+{
+    width: 150px;
+    height: 30px;
+    padding: 3px;
+}
+
+span.get-code
+{
+    cursor: pointer;
+    float: right;
+}
+
 span#lang-link
 {
     cursor: pointer;
 }
 
-a.link-gray
+a.link-gray, span.get-code
 {
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;

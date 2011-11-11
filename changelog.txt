@@ -9,6 +9,7 @@
 * Fix
 
 v1.2
+~ Issue #45: Added a dialog which shows the code to include the viewer into a webpage
 * Issue #43: TS Query Groups and wrong server groups were displayed as a users group in the infoDialog module
 * Issue #44: The client version in the infoDialog was shown as an unix timestamp. The build has been removed now.
 

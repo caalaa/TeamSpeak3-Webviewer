@@ -45,11 +45,9 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="icon" href="<?php echo s_http; ?>html/welcome/tools.png" type="image/png">
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-        <link href="<?php echo(s_http) ?>libraries/fluent/css/fluent.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.js"></script>
+        <link href="<?php echo(s_http) ?>libraries/fluent/css/fluent.css" rel="stylesheet" type="text/css">
         <link href="<?php echo(s_http) ?>html/welcome/style.css" rel="stylesheet" type="text/css">
-
-        <script src="<?php echo(s_http) ?>html/welcome/welcome.js" type="text/javascript"></script>
     </head>
     <body>
 
@@ -99,7 +97,7 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
                     $configfiles = getConfigFiles(s_root . 'config');
                     foreach ($configfiles as $file)
                     {
-                            ?><li><a href="<?php echo(s_http . 'TSViewer.php?config=' . $file) ?>"><?php echo($file) ?></a></li><?php } ?></ul>   
+                            ?><li><a href="<?php echo(s_http . 'TSViewer.php?config=' . $file) ?>"><?php echo($file) ?></a> <span class="get-code" title="<?php __e('Get code to include this configfile') ?>" onclick="javascript: openLinkDialog('<?php echo($file) ?>');"><?php __e('Get code to include')?></span></li><?php } ?></ul>   
                 <?php } ?></p>
 
                 <p id="version"><?php __e('Version:'); ?> <?php echo (string) version; ?></p>
@@ -133,6 +131,23 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
         <div style="display: none;">
             <iframe style="width:500px !important; height:100%" allowTransparency="true" frameborder="0" scrolling="0" id="fblink"></iframe>  
             <iframe allowTransparency="true" frameborder="0" scrolling="0" id="langlink"></iframe>
+            <div id="code">
+                <table>
+                    <tr>
+                        <td><?php __e('Height') ?>:</td>
+                        <td><input class="ui-widget ui-corner-all ui-widget-content ui-textboxl" type="text" value="100%" id="code-height" /></td>
+                    </tr>
+                    <tr>
+                        <td><?php __e('Width') ?>:</td>
+                        <td><input class="ui-widget ui-corner-all ui-widget-content ui-textbox" type="text" value="100%" id="code-width" /></td>
+                    </tr>
+                </table>
+                <textarea class="ui-textbox ui-corner-all ui-widget-content ui-widget" id="code-area"></textarea>
+            </div>
         </div>
+        <script>
+            var s_http='<?php echo(s_http) ?>';
+        </script>
+        <script src="<?php echo(s_http) ?>html/welcome/welcome.js" type="text/javascript"></script>
     </body>
 </html>

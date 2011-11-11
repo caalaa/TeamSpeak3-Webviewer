@@ -15,6 +15,14 @@
  *  along with TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+var config;
+
+$(document).ready(function(){
+    $("input#code-width,input#code-height").change(function(){
+        $("#code-area").html(getIframeLink($("#code-height").val(), $("#code-width").val()));
+    });
+});
+
 var defaultOptions = {
     title: "devMX Webviewer",
     modal: true,
@@ -39,4 +47,20 @@ function openTranslatorDialog()
         minHeight: 320, 
         minWidth: 220
     });
+}
+
+function openLinkDialog(conf)
+{
+    config = conf;
+    $("#code-area").html(getIframeLink("100%", "100%"));
+    $("#code").dialog(defaultOptions, {
+        minWidth: 600,
+        minHeight: 250
+    });
+}
+
+// Opens a dialog containing the link to include the viewer into another homepage
+function getIframeLink(height, width)
+{
+    return '<iframe src="' + s_http + 'index.php?config=' + config + '" height="' + height + ' width="' + width + '" frameborder="0" scrolling="0" allowTransparency="true"></iframe>'; 
 }
