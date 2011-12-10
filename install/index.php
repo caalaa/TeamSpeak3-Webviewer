@@ -212,7 +212,7 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
 
     $xml = simplexml_load_string($_SESSION['config_xml']);
 
-    $necessary_vars = array("serveradress", "queryport", "serverport", "login_needed", "style", "arrows", "caching", "language");
+    $necessary_vars = array("serveradress", "queryport", "serverport", "login_needed", "style", "arrows", "caching", "language", "display-filter");
     $vars_unavailable = false;
 
     // START VAR CHECKING \\
@@ -273,6 +273,17 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
     $xml->language = $_POST['language'];
     $xml->usage_stats = $_POST['usage-statistics'];
 
+    
+    // Upgrade compatibility with old configfiles
+    if($xml->filter != null && $xml->filter != "")
+    {
+        $xml->filter = $_POST['display-filter'];
+    }
+    else
+    {
+        $xml->addChild('filter', $_POST['display-filter']);
+    }
+    
 
     // Not all necessary values were entered.
     if ($vars_unavailable)

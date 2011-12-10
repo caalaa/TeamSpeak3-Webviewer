@@ -95,6 +95,13 @@
      -->
     <sort_method>clid</sort_method>
 
+
+    <!-- Filters -->
+    <!-- Available Filters:
+        clientsonly        -> Shows only clients
+        channelclientsonly -> Shows only channels in which are clients online
+    -->
+    <filter></filter>
     
     <!-- Caching -->
 

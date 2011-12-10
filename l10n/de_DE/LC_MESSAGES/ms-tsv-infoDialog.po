@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TeamSpeak3 Webviewer infoDialog\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-01 12:16+0100\n"
-"PO-Revision-Date: 2011-11-01 12:16+0100\n"
+"POT-Creation-Date: 2011-12-10 18:54+0100\n"
+"PO-Revision-Date: 2011-12-10 18:54+0100\n"
 "Last-Translator: Maximilian Narr <maxesstuff@live.de>\n"
 "Language-Team: Maxesstuff <info@maxesstuff.de>\n"
 "MIME-Version: 1.0\n"
@@ -47,19 +47,19 @@ msgstr "Channelgruppe(n)"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\infoDialog/getHTML.php:186
+#: Webviewer\modules\infoDialog/getHTML.php:185
 msgid "Connections"
 msgstr "Verbindungen"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\infoDialog/getHTML.php:194
+#: Webviewer\modules\infoDialog/getHTML.php:193
 msgid "Description"
 msgstr "Beschreibung"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\infoDialog/getHTML.php:467
+#: Webviewer\modules\infoDialog/getHTML.php:466
 msgid "none"
 msgstr "keines"
 

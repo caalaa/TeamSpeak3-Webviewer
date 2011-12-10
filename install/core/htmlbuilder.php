@@ -40,10 +40,10 @@ function createConfigHtml()
     foreach ($files as $file)
     {
         $html['selector'] .= '<fieldset class="config">';
-        $html['selector'] .= '<a href="index.php?action=set_config&configname='.$file.'"><span class="ui-corner-all ui-state-default">'.$file.' ('. __('edit').')</span></a>';
-        $html['selector'] .= '<a href="../index.php?config='.$file.'" target="_blank"><span class="ui-corner-all ui-state-highlight">'.__('show').'</span></a>';
-        $html['selector'] .= '<a href="index.php?action=fc&config='.$file.'"><span class="ui-corner-all ui-state-highlight">'.__('flush cache').'</span></a>';
-        $html['selector'] .= '<a href="index.php?action=delete&config='.$file.'"><span class="ui-corner-all ui-state-highlight">'.__('delete file').'</span></a>';
+        $html['selector'] .= '<a href="index.php?action=set_config&configname=' . $file . '"><span class="ui-corner-all ui-state-default">' . $file . ' (' . __('edit') . ')</span></a>';
+        $html['selector'] .= '<a href="../index.php?config=' . $file . '" target="_blank"><span class="ui-corner-all ui-state-highlight">' . __('show') . '</span></a>';
+        $html['selector'] .= '<a href="index.php?action=fc&config=' . $file . '"><span class="ui-corner-all ui-state-highlight">' . __('flush cache') . '</span></a>';
+        $html['selector'] .= '<a href="index.php?action=delete&config=' . $file . '"><span class="ui-corner-all ui-state-highlight">' . __('delete file') . '</span></a>';
         $html['selector'] .= '</fieldset>';
     }
     return $html;
@@ -66,6 +66,7 @@ function createEditHtml()
     $html['serveradress_value'] = $configfile->host;
     $html['queryport_value'] = $configfile->queryport;
     $html['serverport_value'] = $configfile->vserverport;
+    $html['display-filter'] = $configfile->filter;
 
 
     // Login
@@ -100,13 +101,13 @@ function createEditHtml()
     foreach ($enabled_modules as $module)
     {
         unset($modules[array_search($module, $modules)]);
-        $mod_sort_enabled .= '<li id="' . $module . '" class="ui-state-highlight"><span class="module-edit" onclick="javascript: openModuleConfig(\''.$module.'\');">' . $module . '</span></li>';
+        $mod_sort_enabled .= '<li id="' . $module . '" class="ui-state-highlight"><span class="module-edit" onclick="javascript: openModuleConfig(\'' . $module . '\');">' . $module . '</span></li>';
     }
 
     // Disabled Modules
     foreach ($modules as $module)
     {
-        $mod_sort_disabled .= '<li id="' . $module . '" class="ui-state-default"><span class="module-edit" onclick="javascript: openModuleConfig(\''.$module.'\');">' . $module . '</span></li>';
+        $mod_sort_disabled .= '<li id="' . $module . '" class="ui-state-default"><span class="module-edit" onclick="javascript: openModuleConfig(\'' . $module . '\');">' . $module . '</span></li>';
     }
 
     $mod_sort_enabled .= '</ul>';
@@ -154,13 +155,13 @@ function createEditHtml()
     // Arrows
     if ($configfile->show_arrows == "true" || $configfile->show_arrows == '')
     {
-        $html['arrow_html'] = '<input type="radio" name="arrows" value="true" checked="checked"><span> ' . __('Enabled') . '<br>
-            <input type="radio" name="arrows" value="false"  ><span> ' . __('Disabled') . '</span>';
+        $html['arrow_html'] = '<input type="radio" name="arrows" value="true" checked="checked"><span> ' . __('Enabled') . '</span><br>
+            <input type="radio" name="arrows" value="false"  ><span> ' . __('Disabled') . '<span>';
     }
     else
     {
-        $html['arrow_html'] = '<input type="radio" name="arrows" value="true" > ' . __('Enabled') . '<br>
-            <input type="radio" name="arrows" value="false" checked="checked"> ' . __('Disabled') . '</span>';
+        $html['arrow_html'] = '<input type="radio" name="arrows" value="true" ><span> ' . __('Enabled') . '<br></span>
+            <input type="radio" name="arrows" value="false" checked="checked"><span> ' . __('Disabled') . '</span>';
     }
 
     // Caching
@@ -181,9 +182,9 @@ function createEditHtml()
     // Language
     $html['language_html'] = "";
     $languages = $utils->getLanguages();
-    $selected_lang = (string)$_SESSION['lang'];
-    
-    if(isset($configfile->language) && (string)$configfile->language != "")
+    $selected_lang = (string) $_SESSION['lang'];
+
+    if (isset($configfile->language) && (string) $configfile->language != "")
     {
         $selected_lang = (string) $configfile->language;
     }

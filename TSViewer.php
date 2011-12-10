@@ -63,9 +63,9 @@ if (!isset($serveradress) || $serveradress == "")
     }
     else
     {
-        $url = $_SERVER['SERVER_NAME']. ":" . $_SERVER['SERVER_PORT'] . $_SERVER['PHP_SELF'];
+        $url = $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . $_SERVER['PHP_SELF'];
     }
-    
+
     if (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === '' || $_SERVER['HTTPS'] === "off")
     {
         $url = "http://" . $url;
@@ -227,7 +227,7 @@ $mManager = new ms_ModuleManager($config, $config_name, $debug);
 $mManager->loadModule($config['modules']);
 
 // Load usageStatistics if set in the configfile
-if($config['usage_stats'])
+if ($config['usage_stats'])
 {
     $mManager->loadModule("usageStatistics");
 }
@@ -326,7 +326,24 @@ $output .= render_server($serverinfo['return']);
 $output .= $mManager->triggerEvent("serverRendered");
 
 // render the channels
-$output .= render_channellist($channellist_obj, $clientlist['return'], $servergroups['return'], $channelgroups['return']);
+switch ($config["filter"])
+{
+    case "clientsonly":
+        $output .= render_channellist($channellist_obj, $clientlist['return'], $servergroups['return'], $channelgroups['return'], true, false);
+        break;
+
+    case "channelclientsonly":
+        $output .= render_channellist($channellist_obj, $clientlist['return'], $servergroups['return'], $channelgroups['return'], false, true);
+        break;
+
+    case "standard":
+        $output .= render_channellist($channellist_obj, $clientlist['return'], $servergroups['return'], $channelgroups['return'], false, false);
+        break;
+    
+    default:
+        $output .= render_channellist($channellist_obj, $clientlist['return'], $servergroups['return'], $channelgroups['return'], false, false);
+        break;
+}
 
 
 
@@ -372,15 +389,16 @@ function render_client($clientinfo, $servergrouplist, $channelgrouplist)
     if ($clientinfo['client_type'] == 1) return '';
 
     $rendered = '<div class="client" id="' . $config['prefix'] . 'client_' . htmlspecialchars($clientinfo['clid'], ENT_QUOTES) . '"><p class="client-content">';
-    
+
     $serverGroupIcons = get_servergroup_icons($clientinfo, $servergrouplist);
-    foreach($serverGroupIcons as $iconID) {
-        if($iconID == 0)
-            continue;
+    foreach ($serverGroupIcons as $iconID)
+    {
+        if ($iconID == 0) continue;
         $rendered .= '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $iconID . '\') no-repeat transparent;">&nbsp;</span>';
     }
-    $channelGroupIcon = get_channelgroup_image($clientinfo,$channelgrouplist);
-    if($channelGroupIcon != 0) {
+    $channelGroupIcon = get_channelgroup_image($clientinfo, $channelgrouplist);
+    if ($channelGroupIcon != 0)
+    {
         $rendered .= '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $channelGroupIcon . '\') no-repeat transparent;">&nbsp;</span>';
     }
     $rendered .= '<span class="clientimage ' . get_client_image($clientinfo) . '">&nbsp;</span>' . escape_name($clientinfo['client_nickname']);
@@ -526,8 +544,18 @@ function getIsDefaultIcon($channel, $config)
     }
 }
 
-// Renders the Channels
-function render_channellist($channellist, $clientlist, $servergroups, $channelgroups)
+/*
+ * Renders the Channellist
+ * @param mixed $channellist
+ * @param mixed $clientlist
+ * @param mixed $servergroups
+ * @param mixed $channelgroups
+ * @param bool $renderClientsOnly If only clients should be shown in the viewer
+ * @param bool $renderChanelsWithClientsOnly If only channels should be shown with clients inside
+ * @return string output
+ */
+
+function render_channellist($channellist, $clientlist, $servergroups, $channelgroups, $renderClientsOnly = false, $renderChannelsWithClientsOnly = false)
 {
     static $is_rendered;
 
@@ -542,7 +570,24 @@ function render_channellist($channellist, $clientlist, $servergroups, $channelgr
         if (@in_array($channel['cid'], $is_rendered)) continue;
 
         $is_rendered[] = $channel['cid'];
-        $output .= render_channel_start($channel, $clientlist);
+
+        // If only clients should be rendered
+        if (!$renderClientsOnly)
+        {
+            // Check if only channels with clients should be rendered
+            if (!$renderChannelsWithClientsOnly)
+            {
+                $output .= render_channel_start($channel, $clientlist);
+            }
+            else
+            {
+                if (!$channel->isEmpty() && parse_spacer($channel) === false)
+                {
+                    $output .= render_channel_start($channel, $clientlist);
+                }
+            }
+        }
+
         foreach ($clientlist as $client)
         {
             if ($client['cid'] == $channel['cid'])
@@ -560,7 +605,12 @@ function render_channellist($channellist, $clientlist, $servergroups, $channelgr
 
         if ($channel->has_childs())
         {
-            $output .= render_channellist($channel->get_childs(), $clientlist, $servergroups, $channelgroups);
+
+            // If only clients should be rendered
+            if (!$renderClientsOnly && !$renderChannelsWithClientsOnly)
+            {
+                $output .= render_channellist($channel->get_childs(), $clientlist, $servergroups, $channelgroups);
+            }
         }
 
         $output .= "</div>\r\n";
