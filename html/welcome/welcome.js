@@ -62,5 +62,5 @@ function openLinkDialog(conf)
 // Opens a dialog containing the link to include the viewer into another homepage
 function getIframeLink(height, width)
 {
-    return '<iframe src="' + s_http + 'index.php?config=' + config + '" height="' + height + ' width="' + width + '" frameborder="0" scrolling="0" allowTransparency="true"></iframe>'; 
+    return '&lt;iframe src="' + s_http + 'index.php?config=' + config + '" height="' + height + ' width="' + width + '" frameborder="0" scrolling="0" allowTransparency="true"&gt;&lt;/iframe&gt;' 
 }

@@ -145,7 +145,7 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
                 <textarea class="ui-textbox ui-corner-all ui-widget-content ui-widget" id="code-area"></textarea>
             </div>
         </div>
-        <script>
+        <script type="text/javascript">
             var s_http='<?php echo(s_http) ?>';
         </script>
         <script src="<?php echo(s_http) ?>html/welcome/welcome.js" type="text/javascript"></script>

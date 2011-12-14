@@ -98,10 +98,11 @@
 
     <!-- Filters -->
     <!-- Available Filters:
+        standard           -> Standard display
         clientsonly        -> Shows only clients
         channelclientsonly -> Shows only channels in which are clients online
     -->
-    <filter></filter>
+    <filter>standard</filter>
     
     <!-- Caching -->
 
