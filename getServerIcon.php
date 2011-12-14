@@ -1,20 +1,21 @@
 <?php
+
 /**
-* This file is part of TeamSpeak3 Webviewer.
-*
-* TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* TeamSpeak3 Webviewer is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with TeamSpeak3 Webviewer. If not, see http://www.gnu.org/licenses/.
-*/
+ * This file is part of TeamSpeak3 Webviewer.
+ *
+ * TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * TeamSpeak3 Webviewer is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with TeamSpeak3 Webviewer. If not, see http://www.gnu.org/licenses/.
+ */
 session_name("ms_ts3Viewer");
 session_start();
 
@@ -52,7 +53,7 @@ foreach ($paths as $path)
 
 
 $cachefile = s_root . "cache/" . $config['host'] . $config['queryport'] . "/" . $config['vserverport'] . "/server/images/" . $_GET['id'];
-$config['imagepack'] = !isset($config['imagepack']) ||trim($config['imagepack']) == '' ? 'standard' : $config['imagepack'];
+$config['imagepack'] = !isset($config['imagepack']) || trim($config['imagepack']) == '' ? 'standard' : $config['imagepack'];
 $standardIconsPath = s_root . "images/" . $config['imagepack'] . "/";
 
 $isStandardIcon = false;
@@ -99,32 +100,41 @@ if (isset($img))
     echo $img;
     exit;
 }
-else if($config['use_serverimages'] == FALSE) {
+// If using automatic icon download is turned off
+else if ($config['use_serverimages'] == FALSE)
+{
     exit;
 }
-
-
-if (file_exists($cachefile)) $img = file_get_contents($cachefile);
+// If automatic icon download is on
 else
 {
-
-    include s_root . "core/teamspeak/TSQuery.class.php";
-
-    $query = new TSQuery($config['host'], $config['queryport']);
-    $query->use_by_port($config['vserverport']);
-    
-    if($config['login_needed'])
+    // If file is cached
+    if (file_exists($cachefile))
     {
-        $query->login($config['username'], $config['password']);
+        $img = file_get_contents($cachefile);
+    }
+    // If icon needs to be downloaded
+    else
+    {
+        include s_root . "core/teamspeak/TSQuery.class.php";
+
+        $query = new TSQuery($config['host'], $config['queryport']);
+
+        if ($config['login_needed'])
+        {
+            $query->login($config['username'], $config['password']);
+        }
+
+        $query->use_by_port($config['vserverport']);
+
+        $img = $query->download("/icon_" . $_GET['id'], 0);
+        $query->quit();
+        $file = fopen($cachefile, "wb");
+        fwrite($file, $img);
+        fclose($file);
     }
 
-    $img = $query->download("/icon_" . $_GET['id'], 0);
-    $query->quit();
-    $file = fopen($cachefile, "wb");
-    fwrite($file, $img);
-    fclose($file);
+    header("Content-Type: image/png");
+    echo $img;
 }
-
-header("Content-Type: image/" . $config['image_type']);
-echo $img;
 ?>

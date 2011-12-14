@@ -148,22 +148,6 @@ class TSQuery
         return $ret;
     }
 
-    /*
-     * $i = -1;
-      $ret = '';
-      if($this->connection === NULL) {
-      $this->open_new_connection();
-      }
-      stream_set_timeout($this->connection, 0, 300000);
-      fputs($this->connection,$text);
-
-      do {
-      $ret .=  fgets($this->connection,8096);
-      } while(strstr($ret,"error id=") === false);
-
-      return $ret;
-     */
-
     public function download($path, $cid, $cpw="", $seek=0)
     {
 
@@ -174,8 +158,8 @@ class TSQuery
         $ret = $this->ts3_to_hash($ret['return']);
         $key = $this->ts3query_unescape($ret['ftkey']);
         $size = $ret['size'];
-
-        if ($this->ftconn == NULL) $this->ftconn = fsockopen($this->ip, $ret['port']);
+        
+        if ($this->ftconn == NULL || $this->ftconn == false) $this->ftconn = fsockopen($this->ip, $ret['port']);
         if ($this->ftconn == false) return false;
 
         fputs($this->ftconn, $key);
