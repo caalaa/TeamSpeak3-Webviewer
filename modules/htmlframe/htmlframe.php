@@ -28,12 +28,12 @@ class htmlframe extends ms_Module
                     
                     <!-- Meta Information -->
                     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-                    <meta name="description" content="TeamSpeak3 Webviewer by devMX">
+                    <meta name="description" content="devMX Webviewer">
                     
                     <meta name="software" content="TeamSpeak3 Webviewer">
                     <meta name="version" content="'.version.'">
                     <meta name="author" content="devMX">
-                    <meta name="url" content="http://devmx.de.de">
+                    <meta name="url" content="http://devmx.de">
 
                     <!-- End Meta Information -->
                     ' . $this->mManager->triggerEvent("head") . '</head>
