@@ -339,7 +339,7 @@ switch ($config["filter"])
     case "standard":
         $output .= render_channellist($channellist_obj, $clientlist['return'], $servergroups['return'], $channelgroups['return'], false, false);
         break;
-    
+
     default:
         $output .= render_channellist($channellist_obj, $clientlist['return'], $servergroups['return'], $channelgroups['return'], false, false);
         break;
@@ -584,6 +584,7 @@ function render_channellist($channellist, $clientlist, $servergroups, $channelgr
                 if (!$channel->isEmpty() && parse_spacer($channel) === false)
                 {
                     $output .= render_channel_start($channel, $clientlist);
+                    $output .= "</div>\r\n";
                 }
             }
         }
@@ -610,10 +611,9 @@ function render_channellist($channellist, $clientlist, $servergroups, $channelgr
             if (!$renderClientsOnly && !$renderChannelsWithClientsOnly)
             {
                 $output .= render_channellist($channel->get_childs(), $clientlist, $servergroups, $channelgroups);
+                $output .= "</div>\r\n";
             }
         }
-
-        $output .= "</div>\r\n";
     }
 
     return $output;

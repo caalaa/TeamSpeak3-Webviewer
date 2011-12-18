@@ -39,13 +39,9 @@ class TSQuery
 
     /**
       The consructor opens a new Connection to the host and logs in with name and password
-
       @throws Exception throws if connection or login failed.
       @param	string	$host: the hostname or the ip-adress e.g. "localhost" or "127.0.0.1"
-      @param	int		$port: the server query port e.g. 10011 (standart query port)
-      @param 	int 	$vserver: the virtual server to login e.g. 0
-      @param 	string	$loginname: with this name you will be logged in (make sure that if you're no logged in with serveradmin some functions don't work)
-      @param	string	$password: a valid Password connected to the loginname
+      @param	int	$port: the server query port e.g. 10011 (standart query port)
      */
     function __construct($host, $port)
     {
@@ -80,23 +76,25 @@ class TSQuery
         $this->cmds = array();
     }
 
-    function set_caching($caching, $standard_cachetime=NULL, $cachetime=NULL)
+    /**
+     * Sets the caching 
+     * @param bool $caching If caching should be used
+     * @param int $standard_cachetime stadard cachetime
+     * @param int $cachetime cachtime 
+     */
+    function set_caching($caching, $standard_cachetime = NULL, $cachetime = NULL)
     {
         $this->caching = $caching;
         if ($standard_cachetime != NULL) $this->standard_cachetime = $standard_cachetime;
         if (is_array($cachetime)) $this->cachetime = $cachetime;
     }
 
-    //WRAPPER\\
     /**
       Wrapper for the Querycommand use with port=$port i had to choose another name
       so the function is called use_vserver
-      @acces public
-
-      @param integer $port: is a valid port of a Virtual server
-
-      @return array|boolean	parsed response of the query if port is an integer, if not an integer: false
-     * */
+      @param integer $port: is a valid port of a virtual server
+      @return array|boolean parsed response of the query if port is an integer, if not an integer: false
+     */
     public function use_by_port($port)
     {
         if (is_numeric($port))
@@ -112,6 +110,11 @@ class TSQuery
         return false;
     }
 
+    /**
+     * Selects a virtual server by its id
+     * @param int $id valid id of a virtual server
+     * @return array|boolean Array with parsed response, if not numeric false.
+     */
     public function use_by_id($id)
     {
         if (is_numeric($id))
@@ -121,16 +124,30 @@ class TSQuery
         return false;
     }
 
+    /**
+     * Sends the logout-command to the query
+     * @return array parsed response
+     */
     public function logout()
     {
-        $this->send_cmd("logout");
+        return $this->send_cmd("logout");
     }
 
+    /**
+     * Sends the quit-command to the query
+     * @return array parsed response
+     */
     public function quit()
     {
         return $this->send_cmd("quit");
     }
 
+    /**
+     * Sends a command that logins to the serverquery
+     * @param string $username valid server query username
+     * @param string $password
+     * @return array parsed command 
+     */
     public function login($username, $password)
     {
 
@@ -139,7 +156,12 @@ class TSQuery
         return $this->send_cmd("login client_login_name=" . $username . " client_login_password=" . $password);
     }
 
-    public function serverinfo($caching=true)
+    /**
+     * Sends the serverinfo-command to the server
+     * @param bool $caching If command should be cached
+     * @return boolean|array returns parsed response as an array, if command failes, false
+     */
+    public function serverinfo($caching = true)
     {
         $ret = $this->send_cmd("serverinfo", $caching);
         if ($ret == false) return false;
@@ -148,7 +170,15 @@ class TSQuery
         return $ret;
     }
 
-    public function download($path, $cid, $cpw="", $seek=0)
+    /**
+     * Downloads the file specified in $path from the server query
+     * @param string $path path to the file
+     * @param int $cid channel id
+     * @param string $cpw channel password
+     * @param type $seek
+     * @return boolean|mixed returns false on failure else the downloaded file
+     */
+    public function download($path, $cid, $cpw = "", $seek = 0)
     {
 
         $this->ftid++;
@@ -158,7 +188,7 @@ class TSQuery
         $ret = $this->ts3_to_hash($ret['return']);
         $key = $this->ts3query_unescape($ret['ftkey']);
         $size = $ret['size'];
-        
+
         if ($this->ftconn == NULL || $this->ftconn == false) $this->ftconn = fsockopen($this->ip, $ret['port']);
         if ($this->ftconn == false) return false;
 
@@ -174,7 +204,13 @@ class TSQuery
         return $download;
     }
 
-    public function channellist($options="", $caching=true)
+    /**
+     * Sends the channellist-command to the query
+     * @param string $options options
+     * @param bool $caching If command should be cached
+     * @return boolean|array Returns parsed response, on failure false
+     */
+    public function channellist($options = "", $caching = true)
     {
         if ($this->are_options($options))
         {
@@ -190,7 +226,13 @@ class TSQuery
         return false;
     }
 
-    public function clientlist($options="", $caching=true)
+    /**
+     * Sends the clientlist-command to the query
+     * @param string $options options
+     * @param bool $caching If command should be cached
+     * @return boolean|array Returns parsed command, on failure false
+     */
+    public function clientlist($options = "", $caching = true)
     {
         if ($this->are_options($options))
         {
@@ -205,21 +247,37 @@ class TSQuery
         }
     }
 
-    public function servergrouplist($caching=true)
+    /**
+     * Sends the servergrouplist-command to the query
+     * @param bool $caching If command should be cached
+     * @return array Returns parsed command
+     */
+    public function servergrouplist($caching = true)
     {
         $ret = $this->send_cmd("servergrouplist", $caching);
         $ret['return'] = $this->ts3_to_hash(explode("|", $ret['return']));
         return $ret;
     }
 
-    public function channelgrouplist($caching=true)
+    /**
+     * Sends the channelgrouplist-command to the query
+     * @param bool $caching If command should be cached
+     * @return array Returns parsed command 
+     */
+    public function channelgrouplist($caching = true)
     {
         $ret = $this->send_cmd("channelgrouplist", $caching);
         $ret['return'] = $this->ts3_to_hash(explode("|", $ret['return']));
         return $ret;
     }
 
-    public function clientinfo($clid, $caching=TRUE)
+    /**
+     * Sends the clientinfo-command to the query
+     * @param int $clid clientid
+     * @param bool $caching If command should be cached
+     * @return array parsed response
+     */
+    public function clientinfo($clid, $caching = TRUE)
     {
 
         $ret = $this->send_cmd("clientinfo clid=" . $clid, $caching);
@@ -227,21 +285,12 @@ class TSQuery
         return $ret;
     }
 
-    //TOOLS\\
-
-
-    /*
+    /**
       This function parses a response given by the query the
-      @acces protected
-
       @param	string	$response: a response of a TS3 Query (example response: "helpfilestuff error id=0 msg=nothing\susefull"
-
-
-      @return array	it's split into ['return'] (in this example "helpfilestuff") ['error']['id'] (here zero) and ['error']['msg']
+      @return array splitTED into ['return'] (in this example "helpfilestuff") ['error']['id'] (here zero) and ['error']['msg']
       (here "nothing usefull") Note that ['error']['msg'] is escaped by @see ts3_response_escape()
-
      */
-
     protected function parse_ts3_response($response)
     {
         $result = preg_match("#.*error id=([[:digit:]]{1,4}) msg=(.*)$#Ds", $response, $buff);
@@ -259,6 +308,11 @@ class TSQuery
         return $ret;
     }
 
+    /**
+     * @todo documentate
+     * @param type $ts3
+     * @return boolean 
+     */
     public function ts3_to_hash($ts3)
     {
         if (is_array($ts3))
@@ -287,10 +341,11 @@ class TSQuery
         return $ret;
     }
 
-    /* public function ts3_clientlist_delqueryclient($clientlist) {
-      foreach($clientlist as $client) {
+    /**
+     * Escapes a TeamSpeak3 Query Command
+     * @param type $text
+     * @return type escaped string
      */
-
     public function ts3query_escape($text)
     {
         $to_escape = Array("\\", "/", "\n", " ", "|", "\a", "\b", "\f", "\n", "\r", "\t", "\v");
@@ -298,6 +353,11 @@ class TSQuery
         return str_replace($to_escape, $replace_with, $text);
     }
 
+    /**
+     * Unescapes a TeamSpeak3 Query Result
+     * @param type $text
+     * @return type unescaped string
+     */
     public function ts3query_unescape($text)
     {
         if (is_numeric($text)) return (int) $text;
@@ -306,6 +366,11 @@ class TSQuery
         return str_replace($to_unescape, $replace_with, $text);
     }
 
+    /**
+     * Checks if $options are real query options
+     * @param string $options query options
+     * @return boolean true if option else false
+     */
     public function are_options($options)
     {
         if ($options == "")
@@ -319,7 +384,13 @@ class TSQuery
         return false;
     }
 
-    public function send_cmd($cmd, $caching=false)
+    /**
+     * Sends a command to the TeamSpeak3 Query
+     * @param string $cmd command
+     * @param bool $caching If the command should be cached
+     * @return mixed response
+     */
+    public function send_cmd($cmd, $caching = false)
     {
 
         if (preg_match("/[\r\n]/", $cmd)) return false;
@@ -359,6 +430,11 @@ class TSQuery
         return $response;
     }
 
+    /**
+     * Checks if the cache is expires
+     * @param string $cmd command
+     * @return boolean true if expired, else false
+     */
     protected function cache_expired($cmd)
     {
         if (!file_exists($this->cachepath . "query/time/$cmd")) return true;
@@ -374,6 +450,11 @@ class TSQuery
         return true;
     }
 
+    /**
+     * Sends raw command to the query
+     * @param string $text command
+     * @return mixed raw query response
+     */
     private function send_raw($text)
     {
         $i = -1;
@@ -394,6 +475,10 @@ class TSQuery
         return $ret;
     }
 
+    /**
+     * Opens a new TeamSpeak3 Query Connection
+     * @throws QueryNoResponseException 
+     */
     private function open_new_connection()
     {
 

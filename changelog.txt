@@ -8,6 +8,9 @@
 ~ Minor Change
 * Fix
 
+v1.3
+* Issue #47: Fixed div-code failure (thanks to outlaws-clan.eu)
+
 v1.2
 ! Issue #46: Added some options for filtering the viewer, for example show only clients or only channels with clients inside
 ~ Issue #45: Added a dialog which shows the code to include the viewer into a webpage
