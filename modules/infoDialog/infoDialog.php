@@ -81,7 +81,7 @@ class infoDialog extends ms_Module
 
         if (in_array('clients', $this->config['usefor']))
         {
-            $this->jsModule->loadJS("$(document).ready(function() {
+            $this->jsModule->loadJS("$(document).on('ready', function() {
 								var ms_dialogs = new Array();
                                                                 
                                                                 $('body').append('<div id=\"dialog\" style=\"overflow:hidden;\"><\/div>');

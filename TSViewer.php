@@ -74,8 +74,12 @@ if (!isset($serveradress) || $serveradress == "")
     {
         $url = "https://" . $url;
     }
+
+    // Replace file names
     $url = str_replace("index.php", "", $url);
     $url = str_replace("TSViewer.php", "", $url);
+    $url = str_replace("ajax.php", "", $url);
+
     define("s_http", $url);
 }
 else
@@ -83,7 +87,10 @@ else
     define("s_http", $serveradress);
 }
 
-//Debug flag causes printing more detailed information in ms_ModuleManager and TSQuery.class.php
+// Enable Ajax-mode
+$ajaxEnabled = false;
+
+// Debug flag causes printing more detailed information in ms_ModuleManager and TSQuery.class.php
 $debug = true;
 if ($debug) error_reporting(E_ALL);
 else
@@ -99,6 +106,14 @@ require_once s_root . 'core/config.inc';
 unregister_globals('_POST', '_GET', '_COOKIE', '_REQUEST', '_SERVER', '_ENV', '_FILES', '_SESSION');
 
 $config_name = isset($_GET['config']) ? $_GET['config'] : 'config';
+
+// Check if ajax Mode should be used
+if (isset($ajaxConfig) && $ajaxConfig != "")
+{
+    $config_name = $ajaxConfig;
+    $ajaxEnabled = true;
+}
+
 str_replace('/', '', $config_name);
 str_replace('.', '', $config_name);
 $paths[] = s_root . "config/" . $config_name . ".xml";
@@ -167,9 +182,6 @@ else
 }
 
 // Checks if the language as been submitted over the URL
-
-
-
 if (isset($_GET['lang']))
 {
     $lang = str_replace(".", "", $_GET['lang']);
@@ -195,7 +207,18 @@ else
 
 
 $config['image_type'] = '.' . $config['image_type'];
-$config['client_name'] = "Maxesstuff TS3 Webviewer";
+$config['client_name'] = "devMX TS3 Webviewer // devmx.de";
+
+
+// Write ajax mode settings to config
+if($ajaxEnabled)
+{
+    $config['ajaxEnabled'] = true;
+}
+else
+{
+    $config['ajaxEnabled'] = false;
+}
 
 
 // get all needed classes
@@ -351,7 +374,14 @@ $output .= $mManager->getFooters();
 $output .= "</div>";
 $output .= $mManager->triggerEvent('HtmlShutdown');
 
-echo $output;
+if (isset($ajax) && $ajax)
+{
+    $ajaxHtmlOutput = $output;
+}
+else
+{
+    echo $output;
+}
 
 $duration = microtime(true) - $start;
 
@@ -611,8 +641,12 @@ function render_channellist($channellist, $clientlist, $servergroups, $channelgr
             if (!$renderClientsOnly && !$renderChannelsWithClientsOnly)
             {
                 $output .= render_channellist($channel->get_childs(), $clientlist, $servergroups, $channelgroups);
-                $output .= "</div>\r\n";
             }
+        }
+
+        if (!$renderClientsOnly && !$renderChannelsWithClientsOnly)
+        {
+            $output .= "</div>\r\n";
         }
     }
 

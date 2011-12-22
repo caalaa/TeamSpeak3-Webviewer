@@ -34,7 +34,7 @@ class infoTab extends ms_Module
     }
     
     function onStartup() {
-        $this->jsModule->loadJS('$(document).ready(function() {
+        $this->jsModule->loadJS('$(document).on("ready", function() {
                  $( "#mstabs" ).tabs({
                         fx: { height: "toggle", duration: "slow" }
                     });

@@ -15,7 +15,7 @@
 * along with TeamSpeak3 Webviewer. If not, see http://www.gnu.org/licenses/.
 */
 
-$(document).ready(function(){
+$(document).on("ready", function(){
     var scriptPath = "https://secure.devmx.de/cdn/tswebviewer/";
     var scriptName = "report.php";
     var url = escape(window.location);

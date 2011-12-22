@@ -15,7 +15,7 @@
 * You should have received a copy of the GNU General Public License
 * along with TeamSpeak3 Webviewer. If not, see http://www.gnu.org/licenses/.
 */
-$(document).ready(function(){
+$(document).on("ready", function(){
     
     plot = $.jqplot('stats', [line1], {
         title: plotoptions.title,

@@ -90,7 +90,7 @@ class channelHiding extends ms_Module
             {
                 $ops = rtrim($ops, ",");
             $ops .= "};\r\n";
-                $this->jsModule->loadJS($ops . "$(document).ready(function() {
+                $this->jsModule->loadJS($ops . "$(document).on('ready', function() {
 
 										$('.channel').each( function() {
 
@@ -112,7 +112,7 @@ class channelHiding extends ms_Module
 										});});", 'text');
             }
             
-            $this->jsModule->loadJS("$(document).ready(function() { 
+            $this->jsModule->loadJS("$(document).on('ready', function() { 
 											$('.chan_content').click(function() {
 											var ms_id = $(this).parent().attr('id');
 											if($(this).attr('is_hidden') == 'true') {

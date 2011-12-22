@@ -23,7 +23,7 @@ class js extends ms_Module
 
     function init()
     {
-        $this->js_sent = false;
+        $this->js_sent = false;  
         $this->text = '';
     }
 
@@ -53,12 +53,18 @@ class js extends ms_Module
             }
         }
     }
+    
+    private function onSend()
+    {
+        $this->text .= '<script type="text/javascript">/* <![CDATA[ */ $(document).ready(function(){ $(document).trigger("ready"); }) /* ]]> */</script>';
+    }
 
     public function onHtmlStartup()
     {
         if (!$this->mManager->moduleIsLoaded('htmlframe') && !$this->js_sent)
         {
             $this->js_sent = true;
+            $this->onSend();
             return $this->text;
         }
     }
@@ -68,6 +74,7 @@ class js extends ms_Module
         if (!$this->js_sent)
         {
             $this->js_sent = true;
+            $this->onSend();
             return $this->text;
         }
     }
