@@ -74,7 +74,7 @@ class stats extends ms_Module
         $this->styleModule->loadStyle(s_http . 'libraries/jqplot/jquery.jqplot.min.css');
         $this->jsModule->loadJS(s_http . 'libraries/jqplot/plugins/jqplot.dateAxisRenderer.min.js');
         $this->jsModule->loadJS(createJS("line1", $xml, $this->config['locale']), 'text');
-        $this->jsModule->loadJS('$.jqplot.config.enablePlugins = true;', "text");
+        //$this->jsModule->loadJS('$.jqplot.config.enablePlugins = true;', "text");
         $this->jsModule->loadJs(createPlotOptions($this->config), "text");
         $this->jsModule->loadJS(s_http . 'modules/stats/js/script.js');
 

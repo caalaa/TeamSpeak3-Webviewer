@@ -16,7 +16,7 @@
 * along with TeamSpeak3 Webviewer. If not, see http://www.gnu.org/licenses/.
 */
 $(document).on("ready", function(){
-    
+    $.jqplot.config.enablePlugins = true;
     plot = $.jqplot('stats', [line1], {
         title: plotoptions.title,
         axesDefaults:{

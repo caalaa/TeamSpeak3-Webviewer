@@ -55,7 +55,7 @@ class js_login extends ms_Module
         if (isset($this->config['connect_host']) && $this->config['connect_host'] != $this->config['host'])
             $this->config['host'] = $this->config['connect_host'];
 
-        $this->jsModule->loadJS("$(document).ready( function() {
+        $this->jsModule->loadJS("$(document).on('ready', function() {
                         $('.servername').click(function() {
                                 ts3_connect('" . $this->config['host'] . "','" . $this->config['vserverport'] . "'," . $pass_n . ",'" . $serverpassword. "'," . $prompt . ", '" . $prompt_serverpass . "','" . $prompt_nickname . "');
                                 })

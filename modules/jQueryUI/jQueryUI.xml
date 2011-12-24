@@ -16,5 +16,5 @@
     
     <!-- JS Path of jQuery -->
     <!-- JS Pfad von jQuery -->
-    <js_path>https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js</js_path>
+    <js_path>https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js</js_path>
 </config>

@@ -374,10 +374,13 @@ $output .= $mManager->getFooters();
 $output .= "</div>";
 $output .= $mManager->triggerEvent('HtmlShutdown');
 
+// Check if ajax mode is enabled
 if (isset($ajax) && $ajax)
 {
+    $ajaxScriptOutput = $mManager->loadModule("js")->ajaxJS;
     $ajaxHtmlOutput = $output;
 }
+// Normal mode
 else
 {
     echo $output;

@@ -161,7 +161,7 @@ function createPlotOptions($config)
     if ($config['use_tab']) $tab = "true";
     else $tab = "false";
 
-    $js .= '    var plotoptions = {
+    $js .= 'plotoptions = {
         "title": "' . __('User history') . '", 
         "x_formatString":"' . $config['x_formatString'] . '", 
         "y_formatString": "' . $config['y_formatString'] . '", 
