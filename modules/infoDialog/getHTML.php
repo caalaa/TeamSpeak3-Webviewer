@@ -1,20 +1,21 @@
 <?php
+
 /**
-* This file is part of TeamSpeak3 Webviewer.
-*
-* TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* TeamSpeak3 Webviewer is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with TeamSpeak3 Webviewer. If not, see http://www.gnu.org/licenses/.
-*/
+ * This file is part of TeamSpeak3 Webviewer.
+ *
+ * TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * TeamSpeak3 Webviewer is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with TeamSpeak3 Webviewer. If not, see http://www.gnu.org/licenses/.
+ */
 error_reporting(E_ERROR);
 session_name('ms_ts3Viewer');
 session_start();
@@ -104,8 +105,8 @@ if ($_GET['type'] == 'client' && isset($_GET['title']))
     $matches = Array();
     preg_match("/^.*?([0-9]*)$/", $_GET['id'], $matches);
     $user = getUserByID($info['clientlist'], $matches[1]);
-    echo escape_name($user['client_nickname']);
-    die();
+    echo $_GET['callback'] . '(' . json_encode(array("name" => escape_name($user['client_nickname']))) . ')';
+    exit;
 }
 
 if ($_GET['type'] == 'client')
@@ -147,7 +148,7 @@ if ($_GET['type'] == 'client')
             case 'version':
                 $out .= '<tr>';
                 $out .= '<td class="label">' . __('Version') . ':</td>';
-                $out .= '<td>' . preg_replace("/\[(.*)\]/", "", $user['client_version'])  . '</td></tr>';
+                $out .= '<td>' . preg_replace("/\[(.*)\]/", "", $user['client_version']) . '</td></tr>';
                 break;
             case 'servergroup':
                 $out .= '<tr>';
@@ -155,12 +156,12 @@ if ($_GET['type'] == 'client')
                 $out .= '<td><ul style="list-style-type: none; margin:0; padding:0;">';
 
                 $serverGroupIcons = get_servergroup_icons($user, $info['servergroups'], true);
-                              
-                foreach($info['servergroups'] as $group)
-                {              
-                    if(in_array($group['iconid'], $serverGroupIcons['ids']) && in_array($group['name'], $serverGroupIcons['names']) && (int)$group['type'] == 1  )
+
+                foreach ($info['servergroups'] as $group)
+                {
+                    if (in_array($group['iconid'], $serverGroupIcons['ids']) && in_array($group['name'], $serverGroupIcons['names']) && (int) $group['type'] == 1)
                     {
-                        $out .= '<li><span class="group-image" style="background: url(\'' . $config['serverimages'] . $serverGroupIcons['ids'][array_search($group['iconid'], $serverGroupIcons['ids'])] . '\') no-repeat transparent;">&nbsp;</span><span style="margin-left:4px;">'.$group['name'].'</span></li>';
+                        $out .= '<li><span class="group-image" style="background: url(\'' . $config['serverimages'] . $serverGroupIcons['ids'][array_search($group['iconid'], $serverGroupIcons['ids'])] . '\') no-repeat transparent;">&nbsp;</span><span style="margin-left:4px;">' . $group['name'] . '</span></li>';
                     }
                 }
                 $out .= '</ul></td></tr>';
@@ -169,13 +170,13 @@ if ($_GET['type'] == 'client')
                 $out .= '<tr>';
                 $out .= '<td class="label">' . __('Channelgroup(s)') . ':</td>';
                 $out .= '<td><ul style="list-style-type: none; margin:0; padding:0;">';
-                $channelGroupIcon = get_channelgroup_image($user,$info['channelgroups'], true);
-                
-                foreach($info['channelgroups'] as $group)
+                $channelGroupIcon = get_channelgroup_image($user, $info['channelgroups'], true);
+
+                foreach ($info['channelgroups'] as $group)
                 {
-                    if($group['name'] == $channelGroupIcon['name'] && (int)$group['type'] == 1 )
+                    if ($group['name'] == $channelGroupIcon['name'] && (int) $group['type'] == 1)
                     {
-                        $out .= '<li><span class="group-image" style="background: url(\'' . $config['serverimages'] . $channelGroupIcon['iconid'] . '\') no-repeat transparent;">&nbsp;</span><span style="margin-left:4px;">'.$group['name'].'</span></li>';
+                        $out .= '<li><span class="group-image" style="background: url(\'' . $config['serverimages'] . $channelGroupIcon['iconid'] . '\') no-repeat transparent;">&nbsp;</span><span style="margin-left:4px;">' . $group['name'] . '</span></li>';
                     }
                 }
                 $out .= '</ul></td></tr>';
@@ -200,7 +201,7 @@ if ($_GET['type'] == 'client')
     $query->quit();
 
     $out.= '</table>';
-    echo $out;
+    echo $_GET['callback'] . '(' . json_encode(array("html" => $out), JSON_HEX_QUOT) . ')';
 }
 
 // Returns the path of the countryicons

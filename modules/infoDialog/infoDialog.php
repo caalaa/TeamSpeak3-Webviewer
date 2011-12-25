@@ -98,14 +98,29 @@ class infoDialog extends ms_Module
                                                                         ms_dialogs[ms_id] = $('#dialog').html('<img  style=\" margin-left: 50%; margin-right:50%; margin-top: 25px;\" src=\"" . s_http . "modules/infoDialog/img/ajax-loader.gif\" alt=\"\"><\/img>').dialog(" . $dialog_conf . ");
                                                                                 
                                                                         ms_dialogs[ms_id].dialog('open');
-                                                                        $.get('" . s_http . "modules/infoDialog/getHTML.php', {type: 'client', id: ms_id, title: 'true', config: '" . $configfile . "'}, function(data) {
-                                                                                ms_title = data;
-                                                                        });
-                                                                             $.get('" . s_http . "modules/infoDialog/getHTML.php',{type: 'client', id: ms_id, config: '" . $configfile . "'}, function(data){
-														
-                                                                                ms_dialogs[ms_id].dialog('option', 'title', ms_title);
-                                                                                $('#dialog').html(data);
-                                                                            } );					
+
+                                                                        $.ajax({
+                                                                            url: '" . s_http . "modules/infoDialog/getHTML.php?type=client&id=' + ms_id + '&title=true&config=" . $configfile . "',
+                                                                            crossDomain: true,
+                                                                            dataType: 'jsonp',
+                                                                            success: function(data) 
+                                                                                {
+                                                                                    ms_title = data.name;
+                                                                                }
+
+                                                                        });  
+                                                                        
+                                                                        $.ajax({
+                                                                            url: '" . s_http . "modules/infoDialog/getHTML.php?type=client&id=' + ms_id + '&config=" . $configfile . "',
+                                                                            crossDomain: true,
+                                                                            dataType: 'jsonp',
+                                                                            success: function(data) 
+                                                                                {
+                                                                                    ms_dialogs[ms_id].dialog('option', 'title', ms_title);
+                                                                                    $('#dialog').html(data.html);
+                                                                                }
+
+                                                                        });					
 								}, " . ($this->config['close_by_mouseout'] ? "function() { ms_dialogs[$(this).attr('id')].dialog('close');}" : "function(){}") . ");
 										
 							});", 'text');
