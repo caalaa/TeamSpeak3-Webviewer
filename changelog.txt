@@ -12,6 +12,7 @@ v1.3
 ! Issue #49: The viewer can be included via ajax too (for more informatio see docs)
 * Issue #47: Fixed div-code failure (thanks to outlaws-clan.eu)
 * Updated jQuery to 1.7.1 and jQueryUI to 1.8.16
+* Issue #50: Missing " in 'get code to include' (Thanks to Marco (konzil-gilde.de))
 
 v1.2
 ! Issue #46: Added some options for filtering the viewer, for example show only clients or only channels with clients inside
