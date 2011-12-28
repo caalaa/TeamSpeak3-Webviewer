@@ -616,8 +616,7 @@ function render_channellist($channellist, $clientlist, $servergroups, $channelgr
             {
                 if (!$channel->isEmpty() && parse_spacer($channel) === false)
                 {
-                    $output .= render_channel_start($channel, $clientlist);
-                    $output .= "</div>\r\n";
+                    $output .= render_channel_start($channel, $clientlist);           
                 }
             }
         }
@@ -647,7 +646,7 @@ function render_channellist($channellist, $clientlist, $servergroups, $channelgr
             }
         }
 
-        if (!$renderClientsOnly && !$renderChannelsWithClientsOnly)
+        if (!$renderClientsOnly)
         {
             $output .= "</div>\r\n";
         }
