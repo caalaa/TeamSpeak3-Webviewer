@@ -21,6 +21,7 @@ function ts3_connect(host,port,server_pass_needed, serverpass, prompt_username, 
             text: "OK", 
             click: function() { 
                 username = $("#jsUserVal2").val();
+                $("#jsUser").remove();
                 openLink(false, username, uri, null);
                 $(this).dialog("close"); 
             }
@@ -33,6 +34,7 @@ function ts3_connect(host,port,server_pass_needed, serverpass, prompt_username, 
             click : function () {
                 username = $("#jsUserVal1").val();
                 pass = $("#jsPassVal1").val();
+                $("#jsUserPass").remove();
                 openLink(true, username, uri, pass);
                 $(this).dialog("close");
             }
@@ -47,10 +49,12 @@ function ts3_connect(host,port,server_pass_needed, serverpass, prompt_username, 
                 if(pass == "" || pass == null || pass == undefined) 
                 {
                     pass = "";
+                    $("#jsPass").remove();
                 }
                 else
                 {
                     pass = $("#jsPassVal3").val();
+                    $("#jsPass").remove();
                 }
                 openLink(true, null, uri, pass);           
                 $(this).dialog("close");
@@ -97,6 +101,11 @@ function ts3_connect(host,port,server_pass_needed, serverpass, prompt_username, 
         
         $("#jsPass").dialog(dialogOptions, dialogOptionsPass);
     }
+    // Ask for nothing
+    else
+    {
+        openLink(false, null, uri, null);
+    }
 }
 
 function openLink(password, username, uri, pass)
@@ -106,7 +115,7 @@ function openLink(password, username, uri, pass)
         username = "Homepage-User";
     }
     
-    if(password == false)
+    if(password == false || password == null)
     {
         uri = uri + '&nickname=' + username;
         var popup = window.open(uri);
