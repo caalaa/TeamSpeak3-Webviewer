@@ -31,10 +31,7 @@ $config_name = isset($_GET['config']) ? $_GET['config'] : '';
 str_replace('/', '', $config_name);
 str_replace('.', '', $config_name);
 $paths[] = s_root . "config/" . $config_name . ".xml";
-$paths[] = s_root . 'config/' . $config_name . ".conf";
 $paths[] = s_root . 'config/config.xml';
-$paths[] = s_root . 'config/config.conf';
-$paths[] = s_root . 'viewer.conf';
 foreach ($paths as $path)
 {
     if (file_exists($path))
@@ -58,10 +55,16 @@ $standardIconsPath = s_root . "images/" . $config['imagepack'] . "/";
 
 $isStandardIcon = false;
 
-if (in_array((int) $_GET['id'], array(100, 200, 300, 500, 600))) $isStandardIcon = true;
+if (in_array($_GET['id'], array("100", "200", "300", "500", "600")))
+{
+    $isStandardIcon = true;
+}
 
 // Check if standard group icon exists
-if ((!file_exists($standardIconsPath . "group_" . (string) $_GET['id'] . "." . $config['image_type']) && $isStandardIcon) || (int) $_GET['id'] == 0) exit;
+if ((!file_exists($standardIconsPath . "group_" . (string) $_GET['id'] . "." . $config['image_type']) && $isStandardIcon) || (int) $_GET['id'] == 0)
+{
+    exit;
+}
 
 // Check if standard group icons are used switch ((int) $_GET['id'])
 switch ((int) $_GET['id'])
