@@ -16,30 +16,80 @@
  * You should have received a copy of the GNU General Public License
  * along with TeamSpeak3 Webviewer. If not, see http://www.gnu.org/licenses/.
  */
-$ajax = true;
-$ajaxConfig = $_GET['config'];
-
-require_once 'TSViewer.php';
-
-// If javascript should be sent
-if (isset($_GET['json']) && $_GET['json'] == "false")
+if (isset($_GET['s']) && $_GET['s'] == "true" && isset($_GET['config']) && isset($_GET['id']) && $_GET['id'] != "")
 {
-    $createScript;
-
     header('Content-type: text/javascript');
-
-    foreach ($ajaxScriptOutput['src'] as $s)
-    {
-        $createScript .= "document.write('<script type=\"text/javascript\" src=\"" . $s . "\"><\/script>');\r\n";
-    }
-
-    echo($createScript);
+    
+    $url = "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['PHP_SELF'];
+    $url = str_replace("/ajax.php", "", $url);
+    $url = str_replace("//", "\/\/", $url);
+    
+    $id = str_replace("#", "", $_GET['id']);
+    
+    $config = $_GET['config'];
+    $data = <<<'EOF'
+var scriptdata = '
+<script type="text/javascript" src="%s/ajax.php?config=%s&json=false"><\/script>
+<script type="text/javascript">
+var viewerData;
+$(document).ready(function(){
+    $.ajax(
+            {
+                url: \'%s/ajax.php?config=%s&json=true\',
+                crossDomain: true,
+                dataType: "jsonp",
+                jsonp: "callback",
+                jsonpCallback: "viewerReceived"
+            }
+    );
+});
+function viewerReceived (data){
+    $(data.script.txt).each(function(index, value){
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        document.getElementsByTagName("head")[0].appendChild(s);
+        s.text = value;
+    });
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    $("#%s").html(data.html);
+    document.getElementsByTagName("head")[0].appendChild(s);
+    s.text = "$(document).triggerHandler(\'ready\');";
 }
-// If json should be sent
-else if (isset($_GET['json']) && $_GET['json'] == "true")
+<\/script>';
+document.write(scriptdata);
+EOF;
+    $data = sprintf($data, $url, $config, $url, $config, $id);
+    $data = preg_replace("/[\\t\\n\\r]/", "", $data);
+    echo $data;
+}
+else if (isset($_GET['config']) && isset($_GET['json']))
 {
-    header('Content-type: application/json');
+    $ajax = true;
+    $ajaxConfig = $_GET['config'];
 
-    echo($_GET['callback'] . '(' . json_encode(array("html" => $ajaxHtmlOutput, "script" => $ajaxScriptOutput), JSON_HEX_QUOT) . ')');
+    require_once 'TSViewer.php';
+
+    // If javascript should be sent
+    if (isset($_GET['json']) && $_GET['json'] == "false")
+    {
+        $createScript;
+
+        header('Content-type: text/javascript');
+
+        foreach ($ajaxScriptOutput['src'] as $s)
+        {
+            $createScript .= "document.write('<script type=\"text/javascript\" src=\"" . $s . "\"><\/script>');\r\n";
+        }
+
+        echo($createScript);
+    }
+    // If json should be sent
+    else if (isset($_GET['json']) && $_GET['json'] == "true")
+    {
+        header('Content-type: application/json');
+
+        echo($_GET['callback'] . '(' . json_encode(array("html" => $ajaxHtmlOutput, "script" => $ajaxScriptOutput), JSON_HEX_QUOT) . ')');
+    }
 }
 ?>
