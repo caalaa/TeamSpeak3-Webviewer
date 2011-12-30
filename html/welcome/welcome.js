@@ -21,6 +21,10 @@ $(document).ready(function(){
     $("input#code-width,input#code-height").change(function(){
         $("#code-area").html(getIframeLink($("#code-height").val(), $("#code-width").val()));
     });
+    
+    $("input#ajax-id").change(function(){
+       $("#ajax-area").html(getAjaxLink($("#ajax-id").val())); 
+    });
 });
 
 var defaultOptions = {
@@ -53,14 +57,22 @@ function openLinkDialog(conf)
 {
     config = conf;
     $("#code-area").html(getIframeLink("100%", "100%"));
+    $("#ajax-area").html(getAjaxLink("viewer"));
+    $('#include-tabs').tabs();
     $("#code").dialog(defaultOptions, {
         minWidth: 600,
         minHeight: 250
     });
 }
 
-// Opens a dialog containing the link to include the viewer into another homepage
+// returns the code to include the viewer via an iframe
 function getIframeLink(height, width)
 {
     return '&lt;iframe src="' + s_http + 'index.php?config=' + config + '" height="' + height + '" width="' + width + '" frameborder="0" scrolling="0" allowTransparency="true"&gt;&lt;/iframe&gt;' 
+}
+
+// returns the code to include the viewer via ajax
+function getAjaxLink(id)
+{
+    return '&lt;script src="' + s_http + 'ajax.php?config=' + config + '&id=' + id + '&s=true" type="text/javascript"&gt;&lt;/script&gt;'
 }

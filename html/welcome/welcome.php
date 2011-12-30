@@ -97,7 +97,7 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
                     $configfiles = getConfigFiles(s_root . 'config');
                     foreach ($configfiles as $file)
                     {
-                            ?><li><a href="<?php echo(s_http . 'TSViewer.php?config=' . $file) ?>"><?php echo($file) ?></a> <span class="get-code" title="<?php __e('Get code to include this configfile') ?>" onclick="javascript: openLinkDialog('<?php echo($file) ?>');"><?php __e('Get code to include')?></span></li><?php } ?></ul>   
+                            ?><li><a href="<?php echo(s_http . 'TSViewer.php?config=' . $file) ?>"><?php echo($file) ?></a> <span class="get-code" title="<?php __e('Get code to include this configfile') ?>" onclick="javascript: openLinkDialog('<?php echo($file) ?>');"><?php __e('Get code to include') ?></span></li><?php } ?></ul>   
                 <?php } ?></p>
 
                 <p id="version"><?php __e('Version:'); ?> <?php echo (string) version; ?></p>
@@ -132,17 +132,29 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
             <iframe style="width:500px !important; height:100%" allowTransparency="true" frameborder="0" scrolling="0" id="fblink"></iframe>  
             <iframe allowTransparency="true" frameborder="0" scrolling="0" id="langlink"></iframe>
             <div id="code">
-                <table>
-                    <tr>
-                        <td><?php __e('Height') ?>:</td>
-                        <td><input class="ui-widget ui-corner-all ui-widget-content ui-textboxl" type="text" value="100%" id="code-height" /></td>
-                    </tr>
-                    <tr>
-                        <td><?php __e('Width') ?>:</td>
-                        <td><input class="ui-widget ui-corner-all ui-widget-content ui-textbox" type="text" value="100%" id="code-width" /></td>
-                    </tr>
-                </table>
-                <textarea class="ui-textbox ui-corner-all ui-widget-content ui-widget" id="code-area"></textarea>
+                <div id="include-tabs">
+                    <ul>
+                        <li><a href="#iframeInclude"><?php __e('Iframe'); ?></a></li>
+                        <li><a href="#ajaxInclude"><?php __e('Ajax'); ?></a></li>
+                    </ul>
+                    <div id="iframeInclude">
+                        <table>
+                            <tr>
+                                <td><?php __e('Height') ?>:</td>
+                                <td><input class="ui-widget ui-corner-all ui-widget-content ui-textbox" type="text" value="100%" id="code-height" /></td>
+                            </tr>
+                            <tr>
+                                <td><?php __e('Width') ?>:</td>
+                                <td><input class="ui-widget ui-corner-all ui-widget-content ui-textbox" type="text" value="100%" id="code-width" /></td>
+                            </tr>
+                        </table>
+                        <textarea class="ui-textbox ui-corner-all ui-widget-content ui-widget" id="code-area"></textarea>
+                    </div>
+                    <div id="ajaxInclude">
+                        <p><?php __e('Id')?> <input class="ui-widget ui-corner-all ui-widget-content ui-textbox" type="text" value="viewer" id="ajax-id" /></p>
+                        <textarea class="ui-textbox ui-corner-all ui-widget-content ui-widget" id="ajax-area"></textarea>
+                    </div>
+                </div>
             </div>
         </div>
         <script type="text/javascript">

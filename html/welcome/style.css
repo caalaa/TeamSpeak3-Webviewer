@@ -280,11 +280,12 @@ div#lang-credits
     height: 300px;
 }
 
-textarea#code-area
+textarea#code-area, textarea#ajax-area
 {
-    width: 555px;
+    width: 500px;
     height: 110px;
     font-weight: normal !important;
+    font-size: 12px;
 }
 
 input#code-height, input#code-width
