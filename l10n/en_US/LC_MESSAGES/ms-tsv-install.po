@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TeamSpeak3 Webviewer Installscript\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-10 18:54+0100\n"
-"PO-Revision-Date: 2011-12-10 18:54+0100\n"
+"POT-Creation-Date: 2012-01-01 19:02+0100\n"
+"PO-Revision-Date: 2012-01-01 19:03+0100\n"
 "Last-Translator: Maximilian Narr <maxesstuff@live.de>\n"
 "Language-Team: Maxesstuff <info@maxesstuff.de>\n"
 "MIME-Version: 1.0\n"
@@ -391,32 +391,31 @@ msgstr "display arrows"
 #: Dokumente\NetBeansProjects\TeamSpeak3
 #: Webviewer\install/html/config.php:119
 msgid "standard -> shows the viewer like in TS Client; clientonly -> shows only clients; channelclientsonly -> shows only channels with clients inside"
-msgstr ""
+msgstr "standard -> shows the viewer like in TS Client; clientonly -> shows only clients; channelclientsonly -> shows only channels with clients inside"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
 #: Webviewer\install/html/config.php:119
 msgid "Display filter"
-msgstr ""
+msgstr "Display filter"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
 #: Webviewer\install/html/config.php:121
-#, fuzzy
 msgid "Standard"
-msgstr "Standard cachetime"
+msgstr "Standard"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
 #: Webviewer\install/html/config.php:122
 msgid "Clients only"
-msgstr ""
+msgstr "Clients only"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
 #: Webviewer\install/html/config.php:123
 msgid "Channels with clients inside only"
-msgstr ""
+msgstr "Channels with clients inside only"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
@@ -578,7 +577,7 @@ msgstr "You can edit the global and the local configfile of the module here. If 
 #: Dokumente\NetBeansProjects\TeamSpeak3
 #: Webviewer\install/html/xmledit.php:56
 msgid "Learn more about this module"
-msgstr ""
+msgstr "Learn more about this module"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3

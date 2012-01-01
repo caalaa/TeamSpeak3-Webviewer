@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TeamSpeak3 Webviewer infoDialog\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-10 18:54+0100\n"
-"PO-Revision-Date: 2011-12-10 18:54+0100\n"
+"POT-Creation-Date: 2012-01-01 19:02+0100\n"
+"PO-Revision-Date: 2012-01-01 19:02+0100\n"
 "Last-Translator: Maximilian Narr <maxesstuff@live.de>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,49 +15,49 @@ msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\infoDialog/getHTML.php:138
+#: Webviewer\modules\infoDialog/getHTML.php:139
 msgid "Nickname"
 msgstr "Nickname"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\infoDialog/getHTML.php:143
+#: Webviewer\modules\infoDialog/getHTML.php:144
 msgid "Country"
 msgstr "Land"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\infoDialog/getHTML.php:149
+#: Webviewer\modules\infoDialog/getHTML.php:150
 msgid "Version"
 msgstr "Version"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\infoDialog/getHTML.php:154
+#: Webviewer\modules\infoDialog/getHTML.php:155
 msgid "Servergroup(s)"
 msgstr "Servergruppe(r)"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\infoDialog/getHTML.php:170
+#: Webviewer\modules\infoDialog/getHTML.php:171
 msgid "Channelgroup(s)"
 msgstr "Kanalgruppe(r)"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\infoDialog/getHTML.php:185
+#: Webviewer\modules\infoDialog/getHTML.php:186
 msgid "Connections"
 msgstr "Forbindelser"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\infoDialog/getHTML.php:193
+#: Webviewer\modules\infoDialog/getHTML.php:194
 msgid "Description"
 msgstr "Beskrivelse"
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer\modules\infoDialog/getHTML.php:466
+#: Webviewer\modules\infoDialog/getHTML.php:467
 msgid "none"
 msgstr "ingen"
 
