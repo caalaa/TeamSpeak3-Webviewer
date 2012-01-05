@@ -73,7 +73,7 @@ else if (isset($_GET['config']) && isset($_GET['json']))
     // If javascript should be sent
     if (isset($_GET['json']) && $_GET['json'] == "false")
     {
-        $createScript;
+        $createScript = "";
 
         header('Content-type: text/javascript');
 

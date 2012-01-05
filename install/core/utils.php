@@ -59,7 +59,7 @@ function getModules()
 
     while ($module = readdir($dir))
     {
-        if ($module != '..' && $module != '.' && file_exists("../modules/$module/$module.xml")  && !moduleIsAbstract($module))
+        if ($module != '..' && $module != '.' && file_exists("../modules/$module/$module.xml") && !moduleIsAbstract($module))
         {
             if (file_exists("../modules/$module/$module.php") && file_exists("../modules/$module/$module.xml"))
             {
@@ -94,7 +94,7 @@ function getImagePacks()
     $blacklist = array('..', '.', 'serverimages', 'no.png');
 
     $dir = opendir("../images");
-    
+
     while ($imagepack = readdir($dir))
     {
         if (!in_array($imagepack, $blacklist))
@@ -136,14 +136,14 @@ function getStyles()
 function flushCache($config)
 {
     $config .= '.xml';
-    
+
     if (!file_exists("../config/" . $config))
     {
         return throwAlert(__('The configfile does not exist'));
     }
     else
     {
-        $config = simplexml_load_file("../config/" . $config );
+        $config = simplexml_load_file("../config/" . $config);
 
         if ((string) $config->host == "" || (string) $config->host == NULL || (string) $config->queryport == "" || (string) $config->queryport == NULL || (string) $config->vserverport == "" || (string) $config->vserverport == NULL)
         {
@@ -234,29 +234,11 @@ function checkPermissions($directories)
         if (is_writable($dir))
         {
             $results[$dir] = true;
-            continue;
         }
         else
         {
-            setChmodRecursive($dir, 0775);
-
-            if (is_writable($dir))
-            {
-                $results[$dir] = true;
-                continue;
-            }
-            else
-            {
-                setChmodRecursive($dir, 0777);
-
-                if (is_writable($dir))
-                {
-                    $results[$dir] = true;
-                    continue;
-                }
-            }
+            $results[$dir] = false;
         }
-        $results[$dir] = false;
     }
     return $results;
 }
@@ -266,6 +248,7 @@ function checkPermissions($directories)
  * @since 0.9
  * @param type $directory
  * @param type $chmod 
+ * @deprecated since 1.3.1, deleted all chmod-modifications
  */
 function setChmodRecursive($path, $chmod)
 {

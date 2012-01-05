@@ -305,11 +305,11 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
     // create querycache directory
     if (!is_dir($querycachePath))
     {
-        $result = mkdir($querycachePath, 0775, true);
+        $result = mkdir($querycachePath, 0776, true);
 
         if ($result == 0)
         {
-            echo(throwAlert(__("The directory for the query data-cache could not be created. Please make it writable manually."), 22));
+            echo(throwAlert(__("The directory for the query data-cache could not be created. Please create it and make it writable manually."), 22));
             echo(throwInfo(__("Query cache directory: " . str_replace("../", "", $querycachePath))));
         }
     }
@@ -317,11 +317,11 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
     // create imagecache directory
     if (!is_dir($imagecachePath))
     {
-        $result = mkdir($imagecachePath, 0775, true);
+        $result = mkdir($imagecachePath, 0776, true);
 
         if ($result == 0)
         {
-            echo(throwAlert(__("The directory for the query image-cache could not be created. Please make it writable manually."), 23));
+            echo(throwAlert(__("The directory for the query image-cache could not be created. Please create it and make it writable manually."), 23));
             echo(throwInfo(__("Image cache directory: " . str_replace("../", "", $imagecachePath))));
         }
     }

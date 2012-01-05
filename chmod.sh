@@ -19,8 +19,10 @@
 
 ## cd into the webviewer directory and execute this file:
 ## sh ./chmod.sh
+## Be sure that the user who runs the webserver is owner of the webviewer files,
+## otherwise the viewer may not work.
 
-chmod -R 0777 ./config
-chmod -R 0777 ./cache
-chmod 0777 ./install/pw.xml
-find ./modules -name "*.xml" -exec chmod 0777 {} \;
+chmod -R 0600 ./config
+chmod -R 0600 ./cache
+chmod 0600 ./install/pw.xml
+find ./modules -name "*.xml" -exec chmod 0600 {} \;
