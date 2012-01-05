@@ -21,7 +21,7 @@ class autoRefresh extends ms_Module
 
     function onHead()
     {
-        if ($this->mManager->config['ajaxEnabled'] == false)
+        if ($this->config['ajaxEnabled'] == false)
         {
             return '<meta http-equiv="refresh" content="' . $this->config['refresh_time'] . '" >';
         }

@@ -8,6 +8,9 @@
 ~ Minor Change
 * Fix
 
+v1.3.1
+* Issue #59: Bugs in modules htmlframe and autorefresh, which caused a notice
+
 v1.3
 + new iconpackage (devMX Shield-Icons)
 ! Issue #49: The viewer can be included via ajax too (for more informatio see docs)

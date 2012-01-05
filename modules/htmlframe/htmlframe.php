@@ -51,7 +51,7 @@ class htmlframe extends ms_Module
 
     public function onHtmlShutdown()
     {
-        if ($this->mManager->config['ajaxEnabled'] !== true)
+        if ($this->config['ajaxEnabled'] !== true)
         {
             return "</body></html>";
         }
