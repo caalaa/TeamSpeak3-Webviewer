@@ -9,7 +9,7 @@
 * Fix
 
 v1.3.1
-* Issue #59: Bugs in modules htmlframe and autorefresh, which caused a notice
+* Issue #53: Bugs in modules htmlframe and autorefresh, which caused a notice
 
 v1.3
 + new iconpackage (devMX Shield-Icons)
