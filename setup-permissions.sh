@@ -1,3 +1,4 @@
+
 #!/bin/bash
 # usage: sh setup-permissions.sh
 #
@@ -13,5 +14,6 @@ chmod -R 0755 ./install
 chmod -R g+w ./config ./cache ./install/pw.xml
 find ./modules -name "*.xml" -exec chmod g+w {} \;
 
-chgrp -R $wwwuser ./config ./cache ./install/pw.xml
+chgrp -R $wwwuser ./config ./cache ./install
 find ./modules -name "*.xml" -exec chgrp $wwwuser {} \;
+
