@@ -43,8 +43,8 @@ class userBar extends ms_Module
         $this->clients_online = $this->info['serverinfo']['virtualserver_clientsonline'] - $this->info['serverinfo']['virtualserver_queryclientsonline'];
 
         $per_cent = $this->clients_online / $this->max_clients * 100;
-        $this->jsModule->loadJS('$(document).on("ready", function() {
-                                                   $("#userBar").progressbar({
+        $this->jsModule->loadJS('jQuery(document).on("ready", function() {
+                                                   jQuery("#userBar").progressbar({
                                                    value: ' . $per_cent . '
                                                    });
                                                   });', "text");

@@ -10,6 +10,7 @@
 
 v1.3.1
 * Issue #53: Bugs in modules htmlframe and autorefresh, which caused a notice
+~ Issue #54: Viewer uses no jQuery and not $ for jQuery to prevent conflicts with other libs
 
 v1.3
 + new iconpackage (devMX Shield-Icons)

@@ -81,25 +81,25 @@ class infoDialog extends ms_Module
 
         if (in_array('clients', $this->config['usefor']))
         {
-            $this->jsModule->loadJS("$(document).on('ready', function() {
+            $this->jsModule->loadJS("jQuery(document).on('ready', function() {
 								var ms_dialogs = new Array();
                                                                 
-                                                                $('body').append('<div id=\"dialog\" style=\"overflow:hidden;\"><\/div>');
+                                                                jQuery('body').append('<div id=\"dialog\" style=\"overflow:hidden;\"><\/div>');
 
-								$('.client').hover(function() {
+								jQuery('.client').hover(function() {
 									var ms_akt_html;
 									var ms_title;
                                                                         var ms_id;
 									ms_client = this;
-                                                                        ms_id = $(this).attr('id');
+                                                                        ms_id = jQuery(this).attr('id');
 						
                                                                         ms_title = '" . __('loading...') . "';
                                                                         ms_pos = ms_getPosition(ms_client);
-                                                                        ms_dialogs[ms_id] = $('#dialog').html('<img  style=\" margin-left: 50%; margin-right:50%; margin-top: 25px;\" src=\"" . s_http . "modules/infoDialog/img/ajax-loader.gif\" alt=\"\"><\/img>').dialog(" . $dialog_conf . ");
+                                                                        ms_dialogs[ms_id] = jQuery('#dialog').html('<img  style=\" margin-left: 50%; margin-right:50%; margin-top: 25px;\" src=\"" . s_http . "modules/infoDialog/img/ajax-loader.gif\" alt=\"\"><\/img>').dialog(" . $dialog_conf . ");
                                                                                 
                                                                         ms_dialogs[ms_id].dialog('open');
 
-                                                                        $.ajax({
+                                                                        jQuery.ajax({
                                                                             url: '" . s_http . "modules/infoDialog/getHTML.php?type=client&id=' + ms_id + '&title=true&config=" . $configfile . "',
                                                                             crossDomain: true,
                                                                             dataType: 'jsonp',
@@ -110,18 +110,18 @@ class infoDialog extends ms_Module
 
                                                                         });  
                                                                         
-                                                                        $.ajax({
+                                                                        jQuery.ajax({
                                                                             url: '" . s_http . "modules/infoDialog/getHTML.php?type=client&id=' + ms_id + '&config=" . $configfile . "',
                                                                             crossDomain: true,
                                                                             dataType: 'jsonp',
                                                                             success: function(data) 
                                                                                 {
                                                                                     ms_dialogs[ms_id].dialog('option', 'title', ms_title);
-                                                                                    $('#dialog').html(data.html);
+                                                                                    jQuery('#dialog').html(data.html);
                                                                                 }
 
                                                                         });					
-								}, " . ($this->config['close_by_mouseout'] ? "function() { ms_dialogs[$(this).attr('id')].dialog('close');}" : "function(){}") . ");
+								}, " . ($this->config['close_by_mouseout'] ? "function() { ms_dialogs[jQuery(this).attr('id')].dialog('close');}" : "function(){}") . ");
 										
 							});", 'text');
         }

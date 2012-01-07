@@ -20,10 +20,10 @@ function ts3_connect(host,port,server_pass_needed, serverpass, prompt_username, 
         "buttons": [{
             text: "OK", 
             click: function() { 
-                username = $("#jsUserVal2").val();
-                $("#jsUser").remove();
+                username = jQuery("#jsUserVal2").val();
+                jQuery("#jsUser").remove();
                 openLink(false, username, uri, null);
-                $(this).dialog("close"); 
+                jQuery(this).dialog("close"); 
             }
         }]
     }
@@ -32,11 +32,11 @@ function ts3_connect(host,port,server_pass_needed, serverpass, prompt_username, 
         "buttons": [{
             text: "OK",
             click : function () {
-                username = $("#jsUserVal1").val();
-                pass = $("#jsPassVal1").val();
-                $("#jsUserPass").remove();
+                username = jQuery("#jsUserVal1").val();
+                pass = jQuery("#jsPassVal1").val();
+                jQuery("#jsUserPass").remove();
                 openLink(true, username, uri, pass);
-                $(this).dialog("close");
+                jQuery(this).dialog("close");
             }
         }]
     }
@@ -49,15 +49,15 @@ function ts3_connect(host,port,server_pass_needed, serverpass, prompt_username, 
                 if(pass == "" || pass == null || pass == undefined) 
                 {
                     pass = "";
-                    $("#jsPass").remove();
+                    jQuery("#jsPass").remove();
                 }
                 else
                 {
-                    pass = $("#jsPassVal3").val();
-                    $("#jsPass").remove();
+                    pass = jQuery("#jsPassVal3").val();
+                    jQuery("#jsPass").remove();
                 }
                 openLink(true, null, uri, pass);           
-                $(this).dialog("close");
+                jQuery(this).dialog("close");
             }
         }]
     }
@@ -74,32 +74,32 @@ function ts3_connect(host,port,server_pass_needed, serverpass, prompt_username, 
     {
         //var pass = prompt(server_pass_i18n);  
     
-        if($("#jsPassUser").length == 0)
+        if(jQuery("#jsPassUser").length == 0)
         {
-            $("body").append('<div id="jsPassUser" class="ui-widget"><p>' + server_pass_i18n + '</p><p><input class="ui-widget ui-corner-all ui-widget-content" style="padding: 5px;" type="text" id="jsPassVal1" /></p><br><p>' + nickname_i18n + '</p><p><input type="text" id="jsUserVal1" class="ui-widget ui-corner-all ui-widget-content" style="padding: 5px;" /></p></div>');
+            jQuery("body").append('<div id="jsPassUser" class="ui-widget"><p>' + server_pass_i18n + '</p><p><input class="ui-widget ui-corner-all ui-widget-content" style="padding: 5px;" type="text" id="jsPassVal1" /></p><br><p>' + nickname_i18n + '</p><p><input type="text" id="jsUserVal1" class="ui-widget ui-corner-all ui-widget-content" style="padding: 5px;" /></p></div>');
         }
         
-        $("#jsPassUser").dialog(dialogOptions, dialogOptionsUserPass);
+        jQuery("#jsPassUser").dialog(dialogOptions, dialogOptionsUserPass);
     }
     // Ask for username only
     else if(prompt_username == true) 
     {   
-        if($("#jsUser").length == 0)
+        if(jQuery("#jsUser").length == 0)
         {
-            $("body").append('<div id="jsUser" class="ui-widget"><p>' + nickname_i18n + '</p><p><input class="ui-widget ui-corner-all ui-widget-content" style="padding: 5px;" type="text" id="jsUserVal2" /></p></div>');
+            jQuery("body").append('<div id="jsUser" class="ui-widget"><p>' + nickname_i18n + '</p><p><input class="ui-widget ui-corner-all ui-widget-content" style="padding: 5px;" type="text" id="jsUserVal2" /></p></div>');
         }
         
-        $("#jsUser").dialog(dialogOptions, dialogOptionsUser);
+        jQuery("#jsUser").dialog(dialogOptions, dialogOptionsUser);
     }
     // Ask for password only
     else if (server_pass_needed == true)
     {
-        if($("#jsPass").length == 0)
+        if(jQuery("#jsPass").length == 0)
         {
-            $("body").append('<div id="jsPass" class="ui-widget"><p>' + server_pass_i18n + '</p><p><input class="ui-widget ui-corner-all ui-widget-content" style="padding: 5px;" type="text" id="jsPassVal3" /></p></div>');    
+            jQuery("body").append('<div id="jsPass" class="ui-widget"><p>' + server_pass_i18n + '</p><p><input class="ui-widget ui-corner-all ui-widget-content" style="padding: 5px;" type="text" id="jsPassVal3" /></p></div>');    
         }
         
-        $("#jsPass").dialog(dialogOptions, dialogOptionsPass);
+        jQuery("#jsPass").dialog(dialogOptions, dialogOptionsPass);
     }
     // Ask for nothing
     else

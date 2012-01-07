@@ -15,9 +15,9 @@
 * You should have received a copy of the GNU General Public License
 * along with TeamSpeak3 Webviewer. If not, see http://www.gnu.org/licenses/.
 */
-$(document).on("ready", function(){
-    $.jqplot.config.enablePlugins = true;
-    plot = $.jqplot('stats', [line1], {
+jQuery(document).on("ready", function(){
+    jQuery.jqplot.config.enablePlugins = true;
+    plot = jQuery.jqplot('stats', [line1], {
         title: plotoptions.title,
         axesDefaults:{
             tickSpacing: 20
@@ -25,7 +25,7 @@ $(document).on("ready", function(){
         axes:{
             xaxis:{
                 autoscale: true,
-                renderer:$.jqplot.DateAxisRenderer,
+                renderer:jQuery.jqplot.DateAxisRenderer,
                 tickOptions:{
                     formatString: plotoptions.x_formatString
                 }
@@ -52,7 +52,7 @@ $(document).on("ready", function(){
     // JQuery UI Tabs workaround
     if(plotoptions.tab == true)
     {
-        $( "#mstabs" ).bind( "tabsshow", function(event, ui) {
+        jQuery( "#mstabs" ).bind( "tabsshow", function(event, ui) {
             plot.replot();
         });
     }

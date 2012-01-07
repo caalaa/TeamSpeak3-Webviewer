@@ -84,15 +84,15 @@ class js extends ms_Module
 
     private function onSend()
     {
-        $this->text .= '<script type="text/javascript">/* <![CDATA[ */ $(document).ready(function(){ $(document).trigger("ready"); }) /* ]]> */</script>';
+        $this->text .= '<script type="text/javascript">/* <![CDATA[ */ jQuery(document).ready(function(){ jQuery(document).trigger("ready"); }) /* ]]> */</script>';
     }
-
+    
     public function onHtmlStartup()
     {
         if (!$this->mManager->moduleIsLoaded('htmlframe') && !$this->js_sent)
         {
             $this->js_sent = true;
-            $this->onSend();
+            $this->onSend();           
             return $this->text;
         }
     }
@@ -102,7 +102,7 @@ class js extends ms_Module
         if (!$this->js_sent)
         {
             $this->js_sent = true;
-            $this->onSend();
+            $this->onSend();         
             return $this->text;
         }
     }

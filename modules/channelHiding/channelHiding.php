@@ -90,21 +90,21 @@ class channelHiding extends ms_Module
             {
                 $ops = rtrim($ops, ",");
             $ops .= "};\r\n";
-                $this->jsModule->loadJS($ops . "$(document).on('ready', function() {
+                $this->jsModule->loadJS($ops . "jQuery(document).on('ready', function() {
 
-										$('.channel').each( function() {
+										jQuery('.channel').each( function() {
 
-											if(channelHiding_ops[$(this).attr('id')] == true) {
+											if(channelHiding_ops[jQuery(this).attr('id')] == true) {
 
-												var ms_chan_con = $(this).children('.chan_content');
+												var ms_chan_con = jQuery(this).children('.chan_content');
 												ms_chan_con.siblings().fadeOut(0);
                                                                                                 ms_chan_con.children('.arrow').switchClass('arrow-normal', 'arrow-hidden', 500);
 												ms_chan_con.attr('is_hidden','true');
 											}
 										});
-										$('.spacer').each( function() {
-											if(channelHiding_ops[$(this).attr('id')] == true) {
-												var ms_chan_con = $(this).children('.spacer_con');
+										jQuery('.spacer').each( function() {
+											if(channelHiding_ops[jQuery(this).attr('id')] == true) {
+												var ms_chan_con = jQuery(this).children('.spacer_con');
 												ms_chan_con.siblings().fadeOut(0);
                                                                                                 ms_chan_con.children('.arrow').switchClass('arrow-normal', 'arrow-hidden', 500);
 												ms_chan_con.attr('is_hidden','true');
@@ -112,35 +112,35 @@ class channelHiding extends ms_Module
 										});});", 'text');
             }
             
-            $this->jsModule->loadJS("$(document).on('ready', function() { 
-											$('.chan_content').click(function() {
-											var ms_id = $(this).parent().attr('id');
-											if($(this).attr('is_hidden') == 'true') {
-												$(this).siblings().fadeIn(" . $this->config['fadeIn_time'] . ");			
-                                                                                                $(this).children('.arrow').switchClass('arrow-hidden', 'arrow-normal', 500);
-												$(this).attr('is_hidden','false');
-												$.get('" . s_http . "dataManager.php',{action: 'delete', field: 'channelHiding', id: ms_id ".$append_config."});
+            $this->jsModule->loadJS("jQuery(document).on('ready', function() { 
+											jQuery('.chan_content').click(function() {
+											var ms_id = jQuery(this).parent().attr('id');
+											if(jQuery(this).attr('is_hidden') == 'true') {
+												jQuery(this).siblings().fadeIn(" . $this->config['fadeIn_time'] . ");			
+                                                                                                jQuery(this).children('.arrow').switchClass('arrow-hidden', 'arrow-normal', 500);
+												jQuery(this).attr('is_hidden','false');
+												jQuery.get('" . s_http . "dataManager.php',{action: 'delete', field: 'channelHiding', id: ms_id ".$append_config."});
 											}
 											else{
-												$(this).siblings().fadeOut(" . $this->config['fadeOut_time'] . ");
-                                                                                                $(this).children('.arrow').switchClass('arrow-normal', 'arrow-hidden', 500);
-												$(this).attr('is_hidden','true');
-												$.get('" . s_http . "dataManager.php',{action: 'save', field: 'channelHiding', id: ms_id, data: 'true' ".$append_config."});
+												jQuery(this).siblings().fadeOut(" . $this->config['fadeOut_time'] . ");
+                                                                                                jQuery(this).children('.arrow').switchClass('arrow-normal', 'arrow-hidden', 500);
+												jQuery(this).attr('is_hidden','true');
+												jQuery.get('" . s_http . "dataManager.php',{action: 'save', field: 'channelHiding', id: ms_id, data: 'true' ".$append_config."});
 											}
 										});
-										$('.spacer_con').click(function() {
-											var ms_id = $(this).parent().attr('id');
-											if($(this).attr('is_hidden') == 'true') {
-												$(this).siblings().fadeIn(" . $this->config['fadeIn_time'] . ");											
-                                                                                                $(this).children('.arrow').switchClass('arrow-hidden', 'arrow-normal', 500);
-												$(this).attr('is_hidden','false');
-												$.get('" . s_http . "dataManager.php',{action: 'delete', field: 'channelHiding', id: ms_id ".$append_config."});
+										jQuery('.spacer_con').click(function() {
+											var ms_id = jQuery(this).parent().attr('id');
+											if(jQuery(this).attr('is_hidden') == 'true') {
+												jQuery(this).siblings().fadeIn(" . $this->config['fadeIn_time'] . ");											
+                                                                                                jQuery(this).children('.arrow').switchClass('arrow-hidden', 'arrow-normal', 500);
+												jQuery(this).attr('is_hidden','false');
+												jQuery.get('" . s_http . "dataManager.php',{action: 'delete', field: 'channelHiding', id: ms_id ".$append_config."});
 											}
 											else{
-												$(this).siblings().fadeOut(" . $this->config['fadeOut_time'] . ");
-                                                                                                $(this).children('.arrow').switchClass('arrow-normal', 'arrow-hidden', 500);
-												$(this).attr('is_hidden','true');
-												$.get('" . s_http . "dataManager.php',{action: 'save', field: 'channelHiding', id: ms_id, data: 'true' ".$append_config."});
+												jQuery(this).siblings().fadeOut(" . $this->config['fadeOut_time'] . ");
+                                                                                                jQuery(this).children('.arrow').switchClass('arrow-normal', 'arrow-hidden', 500);
+												jQuery(this).attr('is_hidden','true');
+												jQuery.get('" . s_http . "dataManager.php',{action: 'save', field: 'channelHiding', id: ms_id, data: 'true' ".$append_config."});
 											}
 										});
 });", 'text');

@@ -32,8 +32,8 @@ var scriptdata = '
 <script type="text/javascript" src="%s/ajax.php?config=%s&json=false"><\/script>
 <script type="text/javascript">
 var viewerData;
-$(document).ready(function(){
-    $.ajax(
+jQuery(document).ready(function(){
+    jQuery.ajax(
             {
                 url: \'%s/ajax.php?config=%s&json=true\',
                 crossDomain: true,
@@ -44,7 +44,7 @@ $(document).ready(function(){
     );
 });
 function viewerReceived (data){
-    $(data.script.txt).each(function(index, value){
+    jQuery(data.script.txt).each(function(index, value){
         var s = document.createElement("script");
         s.type = "text/javascript";
         document.getElementsByTagName("head")[0].appendChild(s);
@@ -52,9 +52,9 @@ function viewerReceived (data){
     });
     var s = document.createElement("script");
     s.type = "text/javascript";
-    $("#%s").html(data.html);
+    jQuery("#%s").html(data.html);
     document.getElementsByTagName("head")[0].appendChild(s);
-    s.text = "$(document).triggerHandler(\'ready\');";
+    s.text = "jQuery(document).triggerHandler(\'ready\');";
 }
 <\/script>';
 document.write(scriptdata);
@@ -81,7 +81,7 @@ else if (isset($_GET['config']) && isset($_GET['json']))
         {
             $createScript .= "document.write('<script type=\"text/javascript\" src=\"" . $s . "\"><\/script>');\r\n";
         }
-
+        
         echo($createScript);
     }
     // If json should be sent
