@@ -203,7 +203,7 @@ function get_servergroup_icons($client, $servergroups, $returnArray = false)
     {
         foreach ($servergroups as $sgroup)
         {
-            if ((int) $sgroup['sgid'] == (int) $group)
+            if (isset($sgroup['sgid']) && (int) $sgroup['sgid'] == (int) $group)
             {
 
                 if ($returnArray)
@@ -227,7 +227,7 @@ function get_channelgroup_image($client, $channelgroups, $returnArray = false)
 
     foreach ($channelgroups as $group)
     {
-        if ($client['client_channel_group_id'] == $group['cgid'])
+        if (isset($group['cgid']) && $client['client_channel_group_id'] == $group['cgid'])
         {
             if ($returnArray)
             {
