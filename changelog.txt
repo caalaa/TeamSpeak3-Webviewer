@@ -8,6 +8,9 @@
 ~ Minor Change
 * Fix
 
+v1.4
+* Issue #48: Spam of warning messages in apache log (thanks to Samifighter)
+
 v1.3.1
 ~ Issue #54: Viewer uses no jQuery and not $ for jQuery to prevent conflicts with other libs
 * Issue #52: deleted chmod.sh and added secure-permissions.sh and setup-permissions.sh ( Thanks to brrrt (forum.teamspeak.com))
