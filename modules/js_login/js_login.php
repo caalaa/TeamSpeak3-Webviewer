@@ -61,7 +61,7 @@ class js_login extends ms_Module
                                 })
                         });", 'text');
 
-        $this->styleModule->loadStyle(s_http . "modules/js_login/js_login.css", "file");
+        $this->styleModule->loadStyle(s_http . "modules/js_login/js_login.css");
     }
 }
 

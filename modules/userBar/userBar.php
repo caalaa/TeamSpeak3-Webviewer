@@ -1,20 +1,21 @@
 <?php
+
 /**
-* This file is part of TeamSpeak3 Webviewer.
-*
-* TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* TeamSpeak3 Webviewer is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with TeamSpeak3 Webviewer. If not, see http://www.gnu.org/licenses/.
-*/
+ * This file is part of TeamSpeak3 Webviewer.
+ *
+ * TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * TeamSpeak3 Webviewer is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with TeamSpeak3 Webviewer. If not, see http://www.gnu.org/licenses/.
+ */
 class userBar extends ms_Module
 {
 
@@ -49,17 +50,14 @@ class userBar extends ms_Module
                                                    });
                                                   });', "text");
 
-        $this->styleModule->loadStyle('#userBar
-            {
-                margin-bottom:5px;
-            }', "text");
+        $this->styleModule->loadStyle(s_http . 'modules/userBar/userBar.css');
     }
 
     public function getHeader()
     {
-        setL10n($this->config['language'], "mssetL10n-tsv-userBar");
-        return('<p style="font-family: sans-serif; font-size: small;">' . $this->clients_online . ' ' . __('of') . ' ' . $this->max_clients . ' ' . __('clients are currently online') . '</p>
-                <div id="userBar" style="height:15px; width:100%; margin-top:10px;"></div>');
+        setL10n($this->config['language'], "ms-tsv-userBar");
+        return('<div class="devmx-webviewer-userBar"><p>' . $this->clients_online . ' ' . __('of') . ' ' . $this->max_clients . ' ' . __('clients are currently online') . '</p>
+                <div id="userBar"></div></div>');
     }
 
 }

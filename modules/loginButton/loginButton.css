@@ -1,0 +1,5 @@
+.devmx-webviewer #LoginButton,
+.devmx-webviewer * #LoginButton
+{
+    margin-bottom: 5px;
+}

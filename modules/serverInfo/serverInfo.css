@@ -14,39 +14,63 @@
 * You should have received a copy of the GNU General Public License
 * along with TeamSpeak3 Webviewer. If not, see http://www.gnu.org/licenses/.
 */
-/* START Serverinfo */
-.serverinfo
+.devmx-webviewer .serverinfo,
+.devmx-webviewer * .serverinfo
 {
     font-family: sans-serif;
 }
 
-.serverinfo img
+.devmx-webviewer .serverinfo img,
+.devmx-webviewer * .serverinfo img
 {
     margin-right:3px;
 }
 
-.serverinfo p
+.devmx-webviewer .serverinfo p,
+.devmx-webviewer * .serverinfo p
 {
     margin-top:0px;
     margin-bottom:5px;
     font-size:small;
 }
-.serverinfo h5
+.devmx-webviewer .serverinfo h5,
+.devmx-webviewer * .serverinfo h5
 {
     vertical-align:top;
     margin-bottom:5px;
     margin-top:0px;
 }
 
-.serverinfo h6
+.devmx-webviewer .serverinfo h6,
+.devmx-webviewer * .serverinfo h6
 {
     font-weight:bold;
     margin-bottom:5px;
     margin-top:0px;
 }
 
-.serverinfo td
+.devmx-webviewer .serverinfo td,
+.devmx-webviewer * .serverinfo td
 {
     vertical-align:top;
 }
-/* END Serverinfo */
+
+.devmx-webviewer .serverinfo table,
+.devmx-webviewer * .serverinfo table
+{
+    width: 100%;
+}
+
+.devmx-webviewer .serverinfo * td,
+.devmx-webviewer * .serverinfo * td
+{
+    width: 33%;
+}
+
+.devmx-webviewer .serverinfo * p.welcomemsg,
+.devmx-webviewer * .serverinfo * p.welcomemsg
+{
+    border-width:1px;
+    border-style:dotted;
+    padding: 2px;
+}

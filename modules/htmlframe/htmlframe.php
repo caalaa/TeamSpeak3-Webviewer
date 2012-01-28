@@ -40,12 +40,13 @@ class htmlframe extends ms_Module
 
                     <!-- End Meta Information -->
                     ' . $this->mManager->triggerEvent("Head") . '</head>
-                    <body>' . $this->mManager->triggerEvent("Body");
+                    <body>
+                    <div class="devmx-webviewer">' . $this->mManager->triggerEvent("Body");
             return $html;
         }
         else
         {
-            return $this->mManager->triggerEvent("Head") . $this->mManager->triggerEvent("Body");
+            return '<div class="devmx-webviewer">' . $this->mManager->triggerEvent("Head") . $this->mManager->triggerEvent("Body") . '</div>';
         }
     }
 
@@ -53,7 +54,7 @@ class htmlframe extends ms_Module
     {
         if ($this->config['ajaxEnabled'] !== true)
         {
-            return "</body></html>";
+            return "</div></body></html>";
         }
     }
 

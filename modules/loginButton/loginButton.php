@@ -35,11 +35,7 @@ class loginButton extends ms_Module
 
         $this->jsModule->loadJS(s_http . 'modules/js_login/ts3_connect.js');
         $this->jsModule->loadJS("jQuery(document).on('ready', function() { jQuery('#LoginButton').button(); } );", "text");
-        $this->styleModule->loadStyle('#LoginButton
-            {
-                margin-bottom: 5px;
-            }', 'text');
-
+        $this->styleModule->loadStyle(s_http . 'modules/loginButton/loginButton.css');
         $this->styleModule->loadStyle(s_http . 'modules/js_login/js_login.css', 'file');
     }
 

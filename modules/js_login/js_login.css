@@ -15,23 +15,35 @@
 * along with TeamSpeak3 Webviewer. If not, see http://www.gnu.org/licenses/.
 */
 
-.servername 
+.devmx-webviewer .servername,
+.devmx-webviewer * .servername
 {
     cursor: pointer;
 }
 
-#jsPass p, #jsUser p, #jsPassUser p
+.devmx-webviewer #jsPass p,
+.devmx-webviewer * #jsPass p,
+.devmx-webviewer #jsUser p,
+.devmx-webviewer * #jsUser p,
+.devmx-webviewer #jsPassUser p,
+.devmx-webviewer * #jsPassUser p
 {
     font-size: 12px;
     text-align: center;
 }
 
-.ui-dialog
+.devmx-webviewer .ui-dialog,
+.devmx-webviewer * .ui-dialog
 {
     font-size: 14px;
 }
 
-#jsPass p input, #jsUser p input, #jsPassUser p input
+.devmx-webviewer #jsPass p input,
+.devmx-webviewer * #jsPass p input,
+.devmx-webviewer #jsUser p input,
+.devmx-webviewer * #jsUser p input,
+.devmx-webviewer #jsPassUser p input,
+.devmx-webviewer * #jsPassUser p input
 {
     margin-top: 8px;
     margin-left: auto;

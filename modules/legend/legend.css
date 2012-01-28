@@ -1,0 +1,9 @@
+.devmx-webviewer .legend,
+.devmx-webviewer * .legend
+{
+    margin-top:10px;
+    margin-left:0px;
+    margin-right:0px;
+    margin-bottom:0px;
+}
+

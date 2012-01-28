@@ -113,7 +113,7 @@ if ($_GET['type'] == 'client')
 {
     $config['show_html_for_client'] = explode(",", $config['show_html_for_client']);
 
-    $out = '<table style="margin:0" width="100%" height="100%" class="infodialog">';
+    $out = '<table style="margin:0" width="100%" height="100%" class="devmx-infodialog">';
 
     $matches = Array();
     preg_match("/^.*?([0-9]*)$/", $_GET['id'], $matches);

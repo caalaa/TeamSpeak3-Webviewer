@@ -16,30 +16,30 @@
  *  You should have received a copy of the GNU General Public License
  *  along with TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 class serverInfo extends ms_Module
 {
 
     public $html = "";
     public $use_tab = false;
-    
     protected $styleModule;
     protected $tabModule;
-    
-    public function init() {
-      
+
+    public function init()
+    {
+
         require_once s_root . 'modules/serverInfo/nbbc/nbbc.php';
         $this->use_tab = $this->config['use_tab'];
         $this->styleModule = $this->mManager->loadModule('style');
-        if($this->use_tab) {
+        if ($this->use_tab)
+        {
             $this->tabModule = $this->mManager->loadModule('infoTab');
         }
     }
 
     function onInfoLoaded()
     {
-       setL10n($this->config['language'], "ms-tsv-serverInfo");
-      
+        setL10n($this->config['language'], "ms-tsv-serverInfo");
+
         $value_format = "mb";
 
         if ($this->config['value_format'] != NULL || $this->config['value_format'] != "")
@@ -53,31 +53,27 @@ class serverInfo extends ms_Module
 
 
         $welcomemsg = '';
-        
-        if ($serverinfo['virtualserver_welcomemessage'] == '')
-                $welcomemsg = __('no welcomemessage');
+
+        if ($serverinfo['virtualserver_welcomemessage'] == '') $welcomemsg = __('no welcomemessage');
         else $welcomemsg = $bbparser->Parse($serverinfo['virtualserver_welcomemessage']);
 
         $this->html.='<!--- START Serverinfo -->
-            <div class="serverinfo"><table width="100%">
+            <div class="serverinfo"><table>
             <tr>
-            <td width="33%"><h5>' . __('Welcomemessage') . '</h5><p style="border-width:1px;border-style:dotted; padding: 2px;">' . $welcomemsg . '</p><h5>' . __('Channels') . '</h5><p><span class="channelimage normal-channel">&nbsp;</span>' . $serverinfo['virtualserver_channelsonline'] . '</p></td>
-            <td width="33%"><h5>' . __('Version') . '</h5><p>' . $serverinfo['virtualserver_version'] . '</p><h5>' . __('Server OS') . '</h5><p>' . $serverinfo['virtualserver_platform'] . '</p></td>
-            <td width="33%"><h5>' . __('Connectiondetails') . '</h5><h6>' . __('total sent') . '</h6><p>' . $this->get_value($serverinfo['connection_bytes_sent_total'],
-                        $value_format) . '</p><h6>' . __('total received') . '</h6><p>' . $this->get_value($serverinfo['connection_bytes_received_total'],
-                        $value_format) . '</td>
+            <td><h5>' . __('Welcomemessage') . '</h5><p class="welcomemsg">' . $welcomemsg . '</p><h5>' . __('Channels') . '</h5><p><span class="channelimage normal-channel">&nbsp;</span>' . $serverinfo['virtualserver_channelsonline'] . '</p></td>
+            <td><h5>' . __('Version') . '</h5><p>' . $serverinfo['virtualserver_version'] . '</p><h5>' . __('Server OS') . '</h5><p>' . $serverinfo['virtualserver_platform'] . '</p></td>
+            <td><h5>' . __('Connectiondetails') . '</h5><h6>' . __('total sent') . '</h6><p>' . $this->get_value($serverinfo['connection_bytes_sent_total'], $value_format) . '</p><h6>' . __('total received') . '</h6><p>' . $this->get_value($serverinfo['connection_bytes_received_total'], $value_format) . '</td>
             </tr>
             </table>
             </div>
             <!--- END Serverinfo -->';
 
-        $this->styleModule->loadStyle(s_http . "modules/serverInfo/style.css");
+        $this->styleModule->loadStyle(s_http . "modules/serverInfo/serverInfo.css");
 
         if ($this->use_tab == true)
         {
 
-            $this->tabModule->addTab(__('Serverinformation'),
-                    $this->html);
+            $this->tabModule->addTab(__('Serverinformation'), $this->html);
         }
     }
 

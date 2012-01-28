@@ -14,17 +14,12 @@
 * You should have received a copy of the GNU General Public License
 * along with TeamSpeak3 Webviewer. If not, see http://www.gnu.org/licenses/.
 */
-.infodialog
+.devmx-infodialog,
 {
     font-size: 12px;
 }
 
-.ui-dialog
-{
-    font-size: 14px;
-}
-
-.label
+.devmx-infodialog * .label,
 {
     font-weight: bold;
 }

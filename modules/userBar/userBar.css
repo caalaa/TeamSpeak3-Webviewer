@@ -1,0 +1,16 @@
+.devmx-webviewer .devmx-webviewer-userBar p,
+.devmx-webviewer * .devmx-webviewer-userBar p
+{
+    font-family: sans-serif; 
+    font-size: small;
+}
+
+.devmx-webviewer .devmx-webviewer-userBar #userBar,
+.devmx-webviewer * .devmx-webviewer-userBar #userBar
+{
+    height:15px; 
+    width:100%;
+    margin-top:10px;
+    margin-bottom:5px;
+}
+
