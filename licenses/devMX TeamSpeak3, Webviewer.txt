@@ -1,4 +1,6 @@
-<?php
+++++++++++++++++++++++++++++
++++ devMX TeamSpeak3 Webviewer +++
+++++++++++++++++++++++++++++
 
 /**
  *  This file is part of devMX TeamSpeak3 Webviewer.
@@ -17,31 +19,3 @@
  *  You should have received a copy of the GNU General Public License
  *  along with devMX TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
  */
-class jQuery extends ms_Module
-{
-
-    function init()
-    {
-        $fullPath = true;
-
-        // Check if a full path is given in the configfile
-        if (!preg_match("/(http(s)?)(.*)(\.)(.*)/", $this->config['jQuery_path'])) $fullPath = false;
-
-        // relative path
-        if (!$fullPath)
-        {
-            $this->mManager->loadModule('js')->loadJS(s_http . "modules/jQuery/" . $this->config['jQuery_path']);
-            $this->mManager->loadModule('js')->loadJS("$.noConflict();", 'text');
-        }
-        
-        // absolute path
-        else
-        {
-            $this->mManager->loadModule('js')->loadJS(stripslashes($this->config['jQuery_path']));
-            $this->mManager->loadModule('js')->loadJS("$.noConflict();", 'text');
-        }
-    }
-
-}
-
-?>

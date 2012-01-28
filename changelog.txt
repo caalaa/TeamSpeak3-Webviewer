@@ -9,7 +9,8 @@
 * Fix
 
 v1.4
-~ Issue #55: transfered all hardcoded module-css styles into the css file of the modules
+* Issue #56: Updated all styles that they don't apply styles at global elements like <body> or <p>
+* Issue #55: transfered all hardcoded module-css styles into the css file of the modules
 * Issue #48: Spam of warning messages in apache log (thanks to Samifighter)
 
 v1.3.1

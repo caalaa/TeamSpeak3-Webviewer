@@ -1,20 +1,21 @@
 <?php
 
 /**
- * This file is part of TeamSpeak3 Webviewer.
+ *  This file is part of devMX TeamSpeak3 Webviewer.
+ *  Copyright (C) 2011 - 2012 Max Rath and Maximilian Narr
  *
- * TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ *  devMX TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
  *
- * TeamSpeak3 Webviewer is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
+ *  TeamSpeak3 Webviewer is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with TeamSpeak3 Webviewer. If not, see http://www.gnu.org/licenses/.
+ *  You should have received a copy of the GNU General Public License
+ *  along with devMX TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
  */
 class infoDialog extends ms_Module
 {
@@ -84,7 +85,7 @@ class infoDialog extends ms_Module
             $this->jsModule->loadJS("jQuery(document).on('ready', function() {
 								var ms_dialogs = new Array();
                                                                 
-                                                                jQuery('body').append('<div id=\"dialog\" style=\"overflow:hidden;\"><\/div>');
+                                                                jQuery('.devmx-webviewer').append('<div id=\"dialog\" style=\"overflow:hidden;\"><\/div>');
 
 								jQuery('.client').hover(function() {
 									var ms_akt_html;
