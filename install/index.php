@@ -16,6 +16,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with devMX TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
  */ 
+
 session_name("tswv");
 session_start();
 
@@ -40,7 +41,7 @@ require_once '../core/utils/utils.func.php';
 $utils = new tsvUtils("../");
 
 // Outputs the header
-echo(file_get_contents("html/header.php"));
+require_once ("html/header.php");
 
 
 // START NON OUTPUT FUCTIONS \\

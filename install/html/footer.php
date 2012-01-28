@@ -1,4 +1,4 @@
-<?php/**
+<?php /**
  *  This file is part of devMX TeamSpeak3 Webviewer.
  *  Copyright (C) 2011 - 2012 Max Rath and Maximilian Narr
  *
