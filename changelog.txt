@@ -13,6 +13,7 @@ v1.4
 * Issue #56: Updated all styles that they don't apply styles at global elements like <body> or <p>
 * Issue #55: transfered all hardcoded module-css styles into the css file of the modules
 * Issue #48: Spam of warning messages in apache log (thanks to Samifighter)
+* Issue #61: Server- and Channelgrouicons are now displayed in the right order
 
 v1.3.1
 ~ Issue #54: Viewer uses no jQuery and not $ for jQuery to prevent conflicts with other libs

@@ -423,28 +423,31 @@ function render_client($clientinfo, $servergrouplist, $channelgrouplist)
     if ($clientinfo['client_type'] == 1) return '';
 
     $rendered = '<div class="client" id="' . $config['prefix'] . 'client_' . htmlspecialchars($clientinfo['clid'], ENT_QUOTES) . '"><p class="client-content">';
-
+    $iconHtml = '';
+    
     // Get servercroup icons
     $serverGroupIcons = get_servergroup_icons($clientinfo, $servergrouplist);
     foreach ($serverGroupIcons as $iconID)
     {
         if ($iconID == 0) continue;
-        $rendered .= '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $iconID . '\') no-repeat transparent;">&nbsp;</span>';
+        $iconHtml = '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $iconID . '\') no-repeat transparent;">&nbsp;</span>' . $iconHtml;
     }
     
     // Get channelgroup icons
     $channelGroupIcon = get_channelgroup_image($clientinfo, $channelgrouplist);
     if ($channelGroupIcon != 0)
     {
-        $rendered .= '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $channelGroupIcon . '\') no-repeat transparent;">&nbsp;</span>';
+        $iconHtml .= '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $channelGroupIcon . '\') no-repeat transparent;">&nbsp;</span>';
     }
     
     // Get clienticon
     $clientIcon = $clientinfo['client_icon_id'];
     if($clientIcon !== 0)
     {
-        $rendered = '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $clientIcon . '\') no-repeat transparent;">&nbsp;</span>'. $rendered;
+        $iconHtml = '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $clientIcon . '\') no-repeat transparent;">&nbsp;</span>'. $iconHtml;
     }
+    
+    $rendered .= $iconHtml;
     
     $rendered .= '<span class="clientimage ' . get_client_image($clientinfo) . '">&nbsp;</span>' . escape_name($clientinfo['client_nickname']);
     $rendered .= "\r\n</p></div>";

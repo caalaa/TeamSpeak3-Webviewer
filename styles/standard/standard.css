@@ -302,7 +302,7 @@ div.devmx-webviewer
     font-size:small;
     font-weight: bold;
     margin-left:32px;
-    margin-top:1px;
+    margin-top:1px !important;
     margin-bottom:0px;
 }
 
