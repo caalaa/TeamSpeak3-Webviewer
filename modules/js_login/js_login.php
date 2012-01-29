@@ -48,7 +48,7 @@ class js_login extends ms_Module
         }
 
         
-        $this->jsModule->loadJS(s_http . '/modules/js_login/ts3_connect.js');
+        $this->jsModule->loadJS(s_http . 'modules/js_login/ts3_connect.js');
 
         $prompt_serverpass = __('Please insert the serverpassword');
         $prompt_nickname = __('Please insert a nickname of your choice');

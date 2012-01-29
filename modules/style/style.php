@@ -1,4 +1,5 @@
 <?php
+
 /**
  *  This file is part of devMX TeamSpeak3 Webviewer.
  *  Copyright (C) 2011 - 2012 Max Rath and Maximilian Narr
@@ -19,50 +20,53 @@
 class style extends ms_Module
 {
 
-    private $text;
     public $styles_sent;
-    
-    public function init() {
+    protected $styles = array();
+
+    public function init()
+    {
         $this->styles_sent = false;
-        $this->text = '';
     }
 
     function onStartup()
-    {       
+    {
 
         $filepath = s_root . 'styles/' . $this->config['style'] . '/' . $this->config['style'] . '.css';
-        
-        if (!file_exists($filepath))
-                die('style_not_found');
-        
+
+        if (!file_exists($filepath)) die('style_not_found');
+
         $style = $this->config['style'];
-        
+
         $this->config['style'] = s_http . 'styles/' . $this->config['style'] . '/' . $this->config['style'] . '.css';
         $this->config['style_ie'] = s_http . 'styles/' . $style . '/' . $style . '_ie.css';
-        $this->text .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $this->config['style'] . "\" >\r\n";
-        $this->text .= '<!--[if IE]><link rel="stylesheet" type="text/css" href="' . $this->config['style_ie'] . '"><![endif]-->';
+        $this->styles[] = "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $this->config['style'] . "\" >\r\n";
+        $this->styles[] = '<!--[if IE]><link rel="stylesheet" type="text/css" href="' . $this->config['style_ie'] . '"><![endif]-->';
     }
 
-    public function loadStyle($text, $type='file', $cc=NULL)
+    public function loadStyle($text, $type = 'file', $cc = NULL)
     {
         if (!$this->styles_sent)
         {
+            $style = "";
             switch ($type)
             {
                 case 'file':
-                    $this->text .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $text . "\" >\r\n";
+                    $style = "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $text . "\" >\r\n";
                     break;
                 case 'cc':
-                    $this->text .= '<!--[if ' . $cc . ']><style type="text/css">' . $text . '</style><![endif]-->';
+                    $style = '<!--[if ' . $cc . ']><style type="text/css">' . $text . '</style><![endif]-->';
                     break;
                 default:
-                    $this->text .= "<style type=\"text/css\">
+                    $style = "<style type=\"text/css\">
 				<!--
 				$text
 				-->
 				</style>";
                     break;
             }
+            
+            if(!in_array($style, $this->styles))
+                    $this->styles[] = $style;
         }
     }
 
@@ -71,16 +75,17 @@ class style extends ms_Module
         if (!$this->mManager->moduleIsLoaded('htmlframe') && !$this->styles_sent)
         {
             $this->styles_sent = true;
-            return $this->text;
+            return implode("", $this->styles);
         }
     }
 
     public function onHead()
+            
     {
         if (!$this->styles_sent)
         {
             $this->styles_sent = true;
-            return $this->text;
+            return implode("", $this->styles);
         }
     }
 

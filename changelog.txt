@@ -15,6 +15,7 @@ v1.4
 * Issue #48: Spam of warning messages in apache log (thanks to Samifighter)
 * Issue #61: Server- and Channelgrouicons are now displayed in the right order
 * Issue #59: If a client is talking the client will be displayed as a normal client
+* Issue #60: Fixed bug that some script and style files were included twice
 
 v1.3.1
 ~ Issue #54: Viewer uses no jQuery and not $ for jQuery to prevent conflicts with other libs

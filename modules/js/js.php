@@ -20,15 +20,14 @@
 class js extends ms_Module
 {
 
-    private $text;
     private $ajaxEnabled;
     public $js_sent;
+    protected $scripts = array();
     public $ajaxJS;
 
     function init()
     {
         $this->js_sent = false;
-        $this->text = '';
         $this->ajaxJS = array();
         $this->ajaxEnabled = $this->config['ajaxEnabled'];
     }
@@ -37,6 +36,8 @@ class js extends ms_Module
     {
         if (!$this->js_sent)
         {
+            $script = "";
+
             switch ($type)
             {
                 case 'file':
@@ -48,7 +49,7 @@ class js extends ms_Module
                         }
                         else
                         {
-                            $this->text .= "<script src=\"" . $text . "\" type=\"text/javascript\"></script>\r\n";
+                            $script = "<script src=\"" . $text . "\" type=\"text/javascript\"></script>\r\n";
                         }
                     }
                     else
@@ -59,7 +60,7 @@ class js extends ms_Module
                         }
                         else
                         {
-                            $this->text .= "<!--[if " . $cc . "]>" . '<script type="text/javascript" src="' . $text . '"></script><![endif]-->';
+                            $script = "<!--[if " . $cc . "]>" . '<script type="text/javascript" src="' . $text . '"></script><![endif]-->';
                         }
                     }
                     break;
@@ -72,7 +73,7 @@ class js extends ms_Module
                     }
                     else
                     {
-                        $this->text .= "<script type=\"text/javascript\">
+                        $script = "<script type=\"text/javascript\">
 				/* <![CDATA[ */
 				$text
 				/* ]]> */
@@ -80,21 +81,24 @@ class js extends ms_Module
                     }
                     break;
             }
+            
+            if(!in_array($script, $this->scripts))
+                    $this->scripts[] = $script;
         }
     }
 
     private function onSend()
     {
-        $this->text .= '<script type="text/javascript">/* <![CDATA[ */ jQuery(document).ready(function(){ jQuery(document).trigger("ready"); }) /* ]]> */</script>';
+        $this->scripts[]  = '<script type="text/javascript">/* <![CDATA[ */ jQuery(document).ready(function(){ jQuery(document).trigger("ready"); }) /* ]]> */</script>';
     }
-    
+
     public function onHtmlStartup()
     {
         if (!$this->mManager->moduleIsLoaded('htmlframe') && !$this->js_sent)
         {
             $this->js_sent = true;
-            $this->onSend();           
-            return $this->text;
+            $this->onSend();
+            return implode("", $this->scripts);
         }
     }
 
@@ -103,8 +107,8 @@ class js extends ms_Module
         if (!$this->js_sent)
         {
             $this->js_sent = true;
-            $this->onSend();         
-            return $this->text;
+            $this->onSend();
+            return implode("", $this->scripts);
         }
     }
 
