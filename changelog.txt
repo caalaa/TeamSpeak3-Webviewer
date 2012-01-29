@@ -14,7 +14,7 @@ v1.4
 * Issue #55: transfered all hardcoded module-css styles into the css file of the modules
 * Issue #48: Spam of warning messages in apache log (thanks to Samifighter)
 * Issue #61: Server- and Channelgrouicons are now displayed in the right order
-* Issue #59: If a client is talking the client will be displayed as a normal client
+* Issue #59: All client states like talking and channelcommander are displayed correctly now
 * Issue #60: Fixed bug that some script and style files were included twice
 * Issue #58: Fixed display issue with custom spacers like [*spacer1]♥. The chars were not repeated properly.
 

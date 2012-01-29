@@ -339,10 +339,23 @@ div.devmx-webviewer
     background: url("img/normal_client.png") no-repeat transparent;
 }
 
+.devmx-webviewer .talking-client,
+.devmx-webviewer * .talking-client
+{
+    background: url("img/talking_client.png") no-repeat transparent;
+}
+
+
 .devmx-webviewer .away,  
 .devmx-webviewer * .away
 {
     background: url("img/away.png") no-repeat transparent;
+}
+
+.devmx-webviewer .output-deactivated,
+.devmx-webviewer * .output-deactivated
+{
+    background: url("img/output_deactivated.png") no-repeat transparent;
 }
 
 .devmx-webviewer .output-muted,  
@@ -368,5 +381,12 @@ div.devmx-webviewer
 {
     background: url("img/channel_commander.png") no-repeat transparent;
 }
+
+.devmx-webviewer .channel-commander-talking,
+.devmx-webviewer * .channel-commander-talking
+{
+    background: url("img/talking_channel_commander.png") no-repeat transparent;
+}
+
 /* END CLIENT IMAGE */
 /* END CLIENT */

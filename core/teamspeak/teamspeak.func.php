@@ -175,19 +175,21 @@ function utf8tohtml($utf8, $encodeTags = true)
     return $result;
 }
 
+/**
+ * Returns the class of the client status image
+ * @param type $client Client to parse
+ * @return string class for the client status image
+ */
 function get_client_image($client)
 {
-    global $config;
-
     if ($client['client_away'] == 1) return "away";
+    if ($client['client_output_hardware'] == 0) return "output-deactivated";
     if ($client['client_output_muted'] == 1) return "output-muted";
-
     if ($client['client_input_hardware'] == 0) return "mic-deactivated";
-
     if ($client['client_input_muted'] == 1) return "mic-muted";
-
     if ($client['client_is_channel_commander'] == 1) return "channel-commander";
-
+    if ($client['client_is_channel_commander'] == 1 && $client['client_flag_talking'] == 1) return "channel-commander-talking";
+    if ($client['client_flag_talking']) return "talking-client";
     return "normal-client";
 }
 
@@ -231,7 +233,6 @@ function get_channelgroup_image($client, $channelgroups, $returnArray = false)
                 $sgroup['iconid'] = $group['iconid'];
                 $sgroup['name'] = $group['name'];
                 return $sgroup;
-                
             }
             else
             {
