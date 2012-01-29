@@ -188,10 +188,6 @@ function get_client_image($client)
 
     if ($client['client_is_channel_commander'] == 1) return "channel-commander";
 
-    if ($client['client_is_talker'] == 1) return "client-talking";
-
-    if ($client['client_is_channel_commander'] == 1 && $client['client_is_talker'] == 1) return "client-cm-talking";
-
     return "normal-client";
 }
 
