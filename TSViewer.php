@@ -563,15 +563,18 @@ function render_channel_start($channel, $clientlist)
                     $output .= '<p class="center spacer_con">';
                     break;
                 case 'l':
-                case '*':
                     $output .= '<p class="left spacer_con">';
+                    break;
+                case '*':
+                    $output .= '<p class="left overflow spacer_con">';
+                    break;
             }
             if (($channel->has_childs() || $channel->has_clients($clientlist)) && $config['show_arrows'])
             {
                 $output .= '<span class="img_l arrow arrow-normal">&nbsp;</span>';
             }
 
-            $output .= ( $channel['channel_name']['spacer_alignment'] == '*' ? str_repeat(escape_name($channel['channel_name']['spacer_name']), 200) : escape_name($channel['channel_name']['spacer_name'])) . "</p>\r\n";
+            $output .= ( $channel['channel_name']['spacer_alignment'] == '*' ? str_repeat(escape_name($channel['channel_name']['spacer_name']), 600) : escape_name($channel['channel_name']['spacer_name'])) . "</p>\r\n";
         }
     }
 

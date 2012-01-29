@@ -31,6 +31,7 @@ div.devmx-webviewer
     margin-bottom:0px;
     white-space:nowrap;
     background-color:transparent;
+    width: 100%;
 }
 
 /* SERVER START */
@@ -241,6 +242,13 @@ div.devmx-webviewer
 .devmx-webviewer * .center
 {
     text-align: center;
+}
+
+.devmx-webviewer .overflow,
+.devmx-webviewer * .overflow
+{
+    width: inherit;
+    overflow: hidden;
 }
 
 .devmx-webviewer .linie, 
