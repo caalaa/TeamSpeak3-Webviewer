@@ -38,7 +38,7 @@ class userBar extends ms_Module
 
 
         //L10N
-        setL10n($this->config['language'], "ms-tsv-userBar");
+        setL10n($this->config['language'], "teamspeak3-webviewer");
 
 
         $this->max_clients = $this->info['serverinfo']['virtualserver_maxclients'];
@@ -56,7 +56,7 @@ class userBar extends ms_Module
 
     public function getHeader()
     {
-        setL10n($this->config['language'], "ms-tsv-userBar");
+        setL10n($this->config['language'], "teamspeak3-webviewer");
         return('<div class="devmx-webviewer-userBar"><p>' . $this->clients_online . ' ' . __('of') . ' ' . $this->max_clients . ' ' . __('clients are currently online') . '</p>
                 <div id="userBar"></div></div>');
     }

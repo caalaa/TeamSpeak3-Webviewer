@@ -42,7 +42,7 @@ class loginButton extends ms_Module
 
     function getHeader()
     {
-        setL10n($this->config['language'], "ms-tsv-loginButton");
+        setL10n($this->config['language'], "teamspeak3-webviewer");
         $prompt = bool2text($this->config['prompt_username']);
         $pass_n = bool2text($this->config['prompt_pass']);
 

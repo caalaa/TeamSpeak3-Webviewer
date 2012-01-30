@@ -39,7 +39,7 @@ class serverInfo extends ms_Module
 
     function onInfoLoaded()
     {
-        setL10n($this->config['language'], "ms-tsv-serverInfo");
+        setL10n($this->config['language'], "teamspeak3-webviewer");
 
         $value_format = "mb";
 

@@ -68,7 +68,7 @@ if (isset($_SESSION['lang']) && $_SESSION['lang'] != "")
 
     _setlocale(LC_MESSAGES, $lang);
 
-    $domain = "ms-tsv-install";
+    $domain = "teamspeak3-webviewer";
 
     _bindtextdomain($domain, PROJECTPATH);
 
@@ -83,7 +83,7 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == "setlang" && isset($_GE
 
     _setlocale(LC_MESSAGES, $lang);
 
-    $domain = "ms-tsv-install";
+    $domain = "teamspeak3-webviewer";
 
     _bindtextdomain($domain, PROJECTPATH);
 

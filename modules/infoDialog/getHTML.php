@@ -60,7 +60,7 @@ if (isset($_SESSION['language']) && $_SESSION['language'] != "")
     $viewer_conf['language'] = $_SESSION['language'];
 }
 
-setL10n($viewer_conf['language'], "ms-tsv-infoDialog", s_root . "l10n");
+setL10n($viewer_conf['language'], "teamspeak3-webviewer", s_root . "l10n");
 
 
 foreach ($viewer_conf as $key => $value)

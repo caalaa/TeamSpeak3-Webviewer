@@ -33,7 +33,7 @@ class js_login extends ms_Module
     public function onStartup()
     {
   
-        setL10n($this->config['language'], "ms-tsv-js_login");
+        setL10n($this->config['language'], "teamspeak3-webviewer");
         $prompt = bool2text($this->config['prompt_username']);
         $pass_n = bool2text($this->config['prompt_pass']);
         $serverpassword = $this->config['server_password'];

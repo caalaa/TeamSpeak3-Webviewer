@@ -44,7 +44,7 @@ class stats extends ms_Module
     function onInfoLoaded()
     {     
 
-        setL10n($this->config['language'], "ms-tsv-stats");
+        setL10n($this->config['language'], "teamspeak3-webviewer");
         $configfile = '';
 
         if (!isset($_GET['config']) || $_GET['config'] == "")

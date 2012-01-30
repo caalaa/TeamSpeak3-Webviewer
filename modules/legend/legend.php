@@ -35,7 +35,7 @@ class legend extends ms_Module
     {
 
 
-        setL10n($this->config['language'], "ms-tsv-legend");
+        setL10n($this->config['language'], "teamspeak3-webviewer");
 
         $this->styleModule->loadStyle(s_http . 'modules/legend/legend.css');
 
