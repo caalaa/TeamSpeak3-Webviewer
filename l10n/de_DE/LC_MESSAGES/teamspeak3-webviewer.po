@@ -1,0 +1,308 @@
+# Translation of TeamSpeak3 Webviewer in German
+# This file is distributed under the same license as the TeamSpeak3 Webviewer package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2012-01-30 15:23:18+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/0.1\n"
+"Project-Id-Version: TeamSpeak3 Webviewer\n"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/core/utils/utils.func.php:78
+msgid "Error"
+msgstr "Fehler"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/html/welcome/welcome.php:110
+msgid "Version %s of the TeamSpeak3 Webviewer has been released. Click here to update."
+msgstr "Version %s des TeamSpeak3 Webviewers wurde freigegeben. Klicken Sie hier um ihren webviewer zu updaten."
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/index.php:104
+msgid "The password could not be saved. Please make \"pw.xml\" in the install directory writable."
+msgstr "Das Passwort konnte nicht gespeichert werden. Bitte machen sie die Datei \"pw.xml\" im \"install\" Verzeichnis beschreibbar."
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/index.php:167
+msgid "The password you provided was not correct. Please try again."
+msgstr "Das eingegebene Passwort war nicht korrekt. Bitte versuchen sie es erneut."
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/index.php:228 Webviewer/install/index.php:238
+msgid "is not set. Please check if you filled out all blanks."
+msgstr "ist nicht gesetzt. Bitte überprüfen sie, ob sie alle Lücken ausgefüllt haben."
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/index.php:314
+msgid "The directory for the query data-cache could not be created. Please create it and make it writable manually."
+msgstr "Das Verzeichnis für den query chache konnte nicht erstellt werden. Bitte erzeugen sie es manuell, und machen es beschreibbar."
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/index.php:315
+msgid "Query cache directory: "
+msgstr "Query cache Verzeichnis:"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/index.php:326
+msgid "The directory for the query image-cache could not be created. Please create it and make it writable manually."
+msgstr "Das Verzeichnis für den Query Bilder-Chache konnte nicht erstellt werden. Bitte erzeugen sie es manuell, und machen es beschreibbar. "
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/index.php:327
+msgid "Image cache directory: "
+msgstr "Image Cache Verzeichnis"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/index.php:334
+msgid "The configfile is not writable. Please check if the required permissions are given to write the file."
+msgstr "Die Konfigurationsdatei konnte nicht geschrieben werden. Bitte stellen sie sicher, dass die Datei beschreibbar ist."
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/index.php:340
+msgid "Configfile successfully saved."
+msgstr "Konfigurationsdatei erfolgreich gespeichert."
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/core/htmlbuilder.php:44
+msgid "edit"
+msgstr "Editieren"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/core/htmlbuilder.php:45
+msgid "show"
+msgstr "Anzeigen"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/core/htmlbuilder.php:46
+msgid "flush cache"
+msgstr "Cache leeren"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/core/htmlbuilder.php:47
+msgid "delete file"
+msgstr "Datei löschen"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/core/htmlbuilder.php:76
+#: Webviewer/install/core/htmlbuilder.php:81
+#: Webviewer/install/core/htmlbuilder.php:171
+#: Webviewer/install/core/htmlbuilder.php:176
+msgid "Yes"
+msgstr "Ja"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/core/htmlbuilder.php:77
+#: Webviewer/install/core/htmlbuilder.php:82
+#: Webviewer/install/core/htmlbuilder.php:172
+#: Webviewer/install/core/htmlbuilder.php:177
+msgid "No"
+msgstr "Nein"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/core/htmlbuilder.php:123
+#: Webviewer/install/core/htmlbuilder.php:128
+#: Webviewer/install/core/htmlbuilder.php:159
+#: Webviewer/install/core/htmlbuilder.php:164
+msgid "Enabled"
+msgstr "Aktiviert"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/core/htmlbuilder.php:124
+#: Webviewer/install/core/htmlbuilder.php:129
+#: Webviewer/install/core/htmlbuilder.php:160
+#: Webviewer/install/core/htmlbuilder.php:165
+msgid "Disabled"
+msgstr "Deaktiviert"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/core/utils.php:143
+msgid "The configfile does not exist"
+msgstr "Die Konfigurationsdatei existiert nicht"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/core/utils.php:151
+msgid "Not all necessary information is given in the configfile to flush the cache."
+msgstr "Nicht alle benötigten Daten sind vorhanden, um den Zwischenspeicher zu löschen."
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/core/utils.php:178
+msgid "Cache flushed."
+msgstr "Zwischenspeicher gelöscht."
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/core/utils.php:193
+msgid "The configfile you wanted to delete does not exist"
+msgstr "Die Konfigurationsdatei, die Sie löschen wollen, existiert nicht."
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/core/utils.php:198
+msgid "The configfile has been successfully deleted"
+msgstr "Die Konfigurationsdatei wurde erfolgreich gelöscht."
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/core/utils.php:215
+msgid "The necessary function"
+msgstr "Die benötigte Funktion"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/core/utils.php:215
+msgid "is not available on your webspace. Please contact your service provider."
+msgstr "ist auf Ihrem Webspace nicht verfügbar. Bitte kontaktieren Sie Ihren Provider"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/core/xmledit.php:58
+msgid "The configfile could not be written. Please check the permissions for the file."
+msgstr "Die Konfigurationsdatei konnte nicht geschrieben werden. Bitte überprüfen Sie die Berechtigungen für die Datei."
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/core/xmledit.php:59
+msgid "Configfile successfully saved!"
+msgstr "Die Konfigurationsdatei wurde erfolgreich gespeichert!"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/core/xmledit.php:91
+msgid "The changes have been added to the queue. They will be saved if you save the configfile of the viewer for the next time."
+msgstr "Tie Änderungen wurden übernommen. Sie werden gespeichert, sobald Sie die Konfigurationsdatei des Webviewers das nächste Mal speichern."
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/l10n/en_US/lang.php:21
+msgid "English"
+msgstr "Englisch"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/modules/infoDialog/getHTML.php:140
+msgid "Nickname"
+msgstr "Benutzername"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/modules/infoDialog/getHTML.php:145
+msgid "Country"
+msgstr "Land"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/modules/infoDialog/getHTML.php:151
+msgid "Version"
+msgstr "Version"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/modules/infoDialog/getHTML.php:156
+#: Webviewer/modules/legend/legend.php:67
+msgid "Servergroup(s)"
+msgstr "Servergruppe(n)"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/modules/infoDialog/getHTML.php:172
+#: Webviewer/modules/legend/legend.php:83
+msgid "Channelgroup(s)"
+msgstr "Channelgruppe(n)"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/modules/infoDialog/getHTML.php:187
+msgid "Connections"
+msgstr "Verbindungen"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/modules/infoDialog/getHTML.php:195
+msgid "Description"
+msgstr "Beschreibung"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/modules/infoDialog/getHTML.php:468
+msgid "none"
+msgstr "keines"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/modules/infoDialog/infoDialog.php:97
+msgid "loading..."
+msgstr "laden..."
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/modules/js_login/js_login.php:53
+#: Webviewer/modules/loginButton/loginButton.php:60
+msgid "Please insert the serverpassword"
+msgstr "Bitte geben Sie das Serverpasswort ein"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/modules/js_login/js_login.php:54
+#: Webviewer/modules/loginButton/loginButton.php:61
+msgid "Please insert a nickname of your choice"
+msgstr "Bitte geben Sie einen Nickname Ihrer Wahl an"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/modules/legend/legend.php:44
+#: Webviewer/modules/legend/legend.php:64
+msgid "Legend"
+msgstr "Legende"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/modules/legend/legend.php:76
+msgid "No image"
+msgstr "kein Bild"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/modules/legend/legend.php:94
+msgid "No Image"
+msgstr "kein Bild"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/modules/serverInfo/serverInfo.php:58
+msgid "no welcomemessage"
+msgstr "keine Willkommensnachricht"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/modules/serverInfo/serverInfo.php:64
+msgid "Welcomemessage"
+msgstr "Willkommensnachricht"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/modules/serverInfo/serverInfo.php:64
+msgid "Channels"
+msgstr "Channel"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/modules/serverInfo/serverInfo.php:65
+msgid "Server OS"
+msgstr "Server-Betriebssystem"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/modules/serverInfo/serverInfo.php:66
+msgid "Connectiondetails"
+msgstr "Verbindungsinformationen"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/modules/serverInfo/serverInfo.php:66
+msgid "total sent"
+msgstr "total gesendet"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/modules/serverInfo/serverInfo.php:66
+msgid "total received"
+msgstr "total empfangen"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/modules/serverInfo/serverInfo.php:77
+msgid "Serverinformation"
+msgstr "Serverinformationen"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/modules/stats/stats.php:91
+msgid "Statistics"
+msgstr "Statistiken"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/modules/stats/php/utils.php:166
+msgid "User history"
+msgstr "Benutzerverlauf"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/modules/userBar/userBar.php:60
+msgid "of"
+msgstr "von"
+
+#: B:\Eigene Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/modules/userBar/userBar.php:60
+msgid "clients are currently online"
+msgstr "Clients sind gerade online"

@@ -18,6 +18,6 @@
  */
 $l10_lang = array();
 $l10_lang['version'] = '1.4';
-$l10_lang['lang'] = __('English');
+$l10_lang['lang'] = __('German');
 $l10_lang['authors'] = array("Maximilian Narr" => "http://devmx.de");
 ?>

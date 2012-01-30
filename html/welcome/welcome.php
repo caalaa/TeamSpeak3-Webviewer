@@ -28,13 +28,13 @@ $newlang = '';
 $utils = new tsvUtils();
 
 //L10N
-setL10n($lang, "ms-tsv-welcome");
+setL10n($lang, "teamspeak3-webviewer");
 
 if (isset($_GET['lang']) && $_GET['lang'] != "")
 {
     $lang = $_GET['lang'];
     $newlang = '?action=setlang&lang=' . $lang;
-    setL10n($lang, "ms-tsv-welcome");
+    setL10n($lang, "teamspeak3-webviewer");
 }
 ?>
 

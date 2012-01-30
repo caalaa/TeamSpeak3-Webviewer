@@ -39,7 +39,7 @@ function setL10n($locale, $domain, $newPath=NULL)
 {
     _setlocale(LC_MESSAGES, $locale);
 
-    if ($newPath == NULL) T_bindtextdomain($domain, l10nDir);
+    if ($newPath == NULL) _bindtextdomain($domain, l10nDir);
     else _bindtextdomain($domain, $newPath);
 
     _textdomain($domain);
