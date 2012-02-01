@@ -22,6 +22,7 @@
  * Returns the $data array for select_config.php
  * @todo include directly in file
  * @return string 
+ * @deprecated directly in html file
  */
 function createConfigHtml()
 {
@@ -102,13 +103,13 @@ function createEditHtml()
     foreach ($enabled_modules as $module)
     {
         unset($modules[array_search($module, $modules)]);
-        $mod_sort_enabled .= '<li id="' . $module . '" class="ui-state-highlight"><span class="module-edit" onclick="javascript: openModuleConfig(\'' . $module . '\');">' . $module . '</span></li>';
+        $mod_sort_enabled .= '<li id="' . $module . '" class="module-active"><span class="module-edit" onclick="javascript: openModuleConfig(\'' . $module . '\');">' . $module . '</span></li>';
     }
 
     // Disabled Modules
     foreach ($modules as $module)
     {
-        $mod_sort_disabled .= '<li id="' . $module . '" class="ui-state-default"><span class="module-edit" onclick="javascript: openModuleConfig(\'' . $module . '\');">' . $module . '</span></li>';
+        $mod_sort_disabled .= '<li id="' . $module . '" class="module-inactive"><span class="module-edit" onclick="javascript: openModuleConfig(\'' . $module . '\');">' . $module . '</span></li>';
     }
 
     $mod_sort_enabled .= '</ul>';

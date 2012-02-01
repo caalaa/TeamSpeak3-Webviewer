@@ -19,22 +19,32 @@
 var modules = new Array();
 
 $(document).ready(function(){
-     
+    
+    // Check for return 
+    if(typeof ret != 'undefined' && ret != undefined && ret != null && ret == true)
+    {
+        loc = "?action=return";
+        window.location.href = loc;
+    }
+    
+    // Tabs
+    $('#tabs').tabs({
+        fx: {
+            height: "toggle", 
+            duration: "slow"
+        },
+        show: function(event, ui) {
+            $.smoothScroll({
+                scrollTarget: '#last',
+                speed: 1200
+            });
+        }
+    });
+    
     // jQueryUI
     $("button, input:submit, input:button, .button").button();  
     $("input:text, input:password").TextBox();
     $("fieldset").FieldSet();
-        
-    // Tooltips
-    $('td[title], a[title], span[title], p[title]').qtip({
-        style:{
-            classes: 'ui-state-highlight ui-corner-all tooltip'
-        },
-        position:{
-            my: 'left-top', 
-            at: 'bottom-center'
-        }
-    });
     
     // ********************************************************************** \\
     // Modules Start
@@ -61,7 +71,7 @@ $(document).ready(function(){
     
     
     // Display Warnings, Errors, etc.
-    $(".warning, .info, .alert").delay(500).fadeIn(500);
+    $(".warning, .info, .alert").delay(500).fadeIn(500).delay(4000).fadeOut(2000);
     
     // ********************************************************************** \\
     // Hiding of several fields Start

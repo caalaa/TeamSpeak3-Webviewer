@@ -343,9 +343,7 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
     require_once 'html/footer.php';
 
     echo('<script type="text/javascript">
-            $(document).ready(function(){
-                setTimeout(redirect(), 3000);
-            });
+            var ret = true;
           </script>');
 
     exit;

@@ -15,7 +15,3 @@
  *  You should have received a copy of the GNU General Public License
  *  along with devMX TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
  */ ?>
-
-<div id="hint" class="ui-state-highlight ui-corner-tl">
-    <a href="http://devmx.de" target="_blank"><?php __e('devMX TeamSpeak3 Webviewer') ?></a>
-</div>
