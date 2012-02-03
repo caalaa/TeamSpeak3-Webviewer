@@ -22,12 +22,9 @@
     cursor: pointer;
 }
 
-.devmx-webviewer #jsPass p,
-.devmx-webviewer * #jsPass p,
-.devmx-webviewer #jsUser p,
-.devmx-webviewer * #jsUser p,
-.devmx-webviewer #jsPassUser p,
-.devmx-webviewer * #jsPassUser p
+#jsPass p,
+#jsUser p,
+#jsPassUser p
 {
     font-size: 12px;
     text-align: center;
@@ -39,12 +36,9 @@
     font-size: 14px;
 }
 
-.devmx-webviewer #jsPass p input,
-.devmx-webviewer * #jsPass p input,
-.devmx-webviewer #jsUser p input,
-.devmx-webviewer * #jsUser p input,
-.devmx-webviewer #jsPassUser p input,
-.devmx-webviewer * #jsPassUser p input
+#jsPass p input,
+#jsUser p input,
+#jsPassUser p input
 {
     margin-top: 8px;
     margin-left: auto;

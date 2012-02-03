@@ -40,7 +40,8 @@
             <table class="config-select" cellspacing="0" >
                 <?php foreach ($files as $file) : ?>
                     <tr>
-                        <td><a href="index.php?action=set_config&configname=<?php echo($file) ?>" class="select-button"><span class="select-button config-button"><?php echo($file) ?> (<?php __e('Edit') ?>)</span></a></td>
+                        <td><?php echo($file)?></td>
+                        <td><a href="index.php?action=set_config&configname=<?php echo($file) ?>" class="select-button"><span class="select-button config-button"><?php __e ('Edit') ?></span></a></td>
                         <td><a href="../index.php?config=<?php echo($file) ?>" target="_blank" class="select-button"><span class="select-button config-button"><?php __e('Show') ?></span></a></td>
                         <td><a href="index.php?action=fc&config=<?php echo($file) ?>"class="select-button"><span class="select-button config-button"><?php __e('Flush cache') ?></span></a></td>
                         <td><a href="index.php?action=delete&config=<?php echo($file) ?>" class="select-button"><span class="select-button config-button"><?php __e('Delete configfile') ?></span></a></td>

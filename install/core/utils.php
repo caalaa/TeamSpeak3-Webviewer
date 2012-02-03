@@ -190,12 +190,12 @@ function deleteConfigfile($file)
     $file .= '.xml';
     if (!file_exists("../config/" . $file))
     {
-        return throwAlert(__('The configfile you wanted to delete does not exist'));
+        return throwAlert(__('The configfile you wanted to delete does not exist.'));
     }
     else
     {
         unlink("../config/" . $file);
-        return throwWarning(__('The configfile has been successfully deleted'));
+        return throwWarning(__('The configfile has been successfully deleted.'));
     }
 }
 
@@ -212,7 +212,7 @@ function checkFunctions()
         if (!function_exists($value))
         {
             // Create Warnings
-            $html .= throwAlert(__('The necessary function') . ' ' . $value . ' ' . __('is not available on your webspace. Please contact your service provider.'), 25);
+            $html .= throwAlert(sprintf(__('The required function %s is not available on your webspace. Please contact your service provider.'), $value), 25);
         }
     }
 

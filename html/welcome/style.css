@@ -31,7 +31,7 @@ body
 
 #wrapper
 {
-    width: 950px;
+    width: 1000px;
     margin: auto;
     padding: 15px !important;
 
@@ -195,7 +195,7 @@ a.nav
 
 #configs
 {
-    width: 250px;
+    width: 350px;
     padding: 10px;
 }
 
@@ -299,6 +299,14 @@ span.get-code
 {
     cursor: pointer;
     float: right;
+}
+
+p.no-config
+{
+    width: 400px;
+    padding: 12px;
+    color: white;
+    margin-top: 10px;
 }
 
 span#lang-link

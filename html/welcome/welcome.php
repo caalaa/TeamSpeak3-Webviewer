@@ -55,6 +55,7 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
         <div id="wrapper" style="margin-top: 20px; padding: 0 .7em;"> 
             <div id="content">
                 <div id="navigation">
+                    <a class="nav" href="http://devmx.de/en/software/teamspeak3-webviewer/ubersetzen" target="_blank"><span class="nav-element orange"><?php __e('Help us translating the webviewer')?></span></a>
                     <span onclick="javascript: openFacebookDialog();" class="nav nav-element orange"><?php __e('Become fan at facebook'); ?></span>
                     <a class="nav" href="<?php echo(s_http . 'install/index.php' . $newlang) ?>"><span class="nav-element orange"><?php __e('Installation and Configuration') ?></span></a>
                     <a class="nav" target="_blank" href="http://en.devmx.de/emailsupport"><span class="nav-element orange"><?php __e('Support') ?></span></a>
@@ -63,44 +64,27 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
                 </div>
                 <div id="logo"><img style="margin-left: -175px;" src="<?php echo s_http; ?>html/welcome/logo.png" alt="" /></div>
                 <div><p class="header"><?php __e('Welcome to the devMX TeamSpeak3 Webviewer') ?></p></div>
-                <fieldset id="languages" class="orange">
+                <br>
+                <p><?php __e('You can see a list of your config files below. If you want to add more, run the'); ?> <a href="<?php echo(s_http . 'install/index.php' . $newlang) ?>" class="link-gray"><?php __e('Installscript') ?></a></p>
+                <p><?php __e('The following configfiles are available:') ?></p>
+                <?php if (count(getConfigFiles(s_root . 'config')) == 0) : ?>
+                    <p class="red no-config"><?php __e('You did not create any configurationfiles yet.') ?></p>
+                <?php else : ?>
+                    <ul class="green" id="configs" style="list-style-image:url('<?php echo(s_http . 'html/welcome/tools.png'); ?>');">
+                        <?php
+                        $configfiles = getConfigFiles(s_root . 'config');
+                        foreach ($configfiles as $file) :
+                            ?>
+                            <li><a href="<?php echo(s_http . 'TSViewer.php?config=' . $file) ?>"><?php echo($file) ?></a> <span class="get-code" title="<?php __e('Get code to include this configfile') ?>" onclick="javascript: openLinkDialog('<?php echo($file) ?>');"><?php __e('Get code to include') ?></span></li>
+                        <?php endforeach; ?>
+                    </ul>   
+                <?php endif; ?>
                     <?php
                     $languages = $utils->getLanguages();
-                    foreach ($languages as $langCode => $langOptions)
-                    {
+                    foreach ($languages as $langCode => $langOptions) :
                         ?>              
-                        <p class="orange lang" style="float:left; margin-right: 10px;"><a href="?lang=<?php echo($langCode); ?>"><?php echo($langOptions['lang']) ?></a></p>
-                    <?php } ?>
-                    <p><span style="float:left; margin-right: 20px;" title="<?php __e('show Translators'); ?>" id="lang-link" onclick="javascript: openTranslatorDialog();" class="ui-icon ui-icon-info">&nbsp;</span></p>
-                </fieldset>
-                <br>
-                <p><?php
-                    if (count(getConfigFiles(s_root . 'config')) == 0)
-                    {
-                        __e('Apparently you didn\'t set up the Viewer yet. Please run the')
-                        ?> <a href="<?php echo(s_http . 'install/index.php' . $newlang ) ?>" class="link-gray"><?php __e('Installscript') ?></a><?php
-                }
-                else
-                {
-                    __e('You can see a list of your config files below. If you want to add more, run the');
-                        ?> <a href="<?php echo(s_http . 'install/index.php' . $newlang) ?>" class="link-gray"><?php __e('Installscript') ?></a><?php } ?></p>
-                <p></p>
-                <p><?php __e('The following configfiles are available') ?></p>
-                <p><?php
-                    if (count(getConfigFiles(s_root . 'config')) == 0)
-                    {
-                        __e('No configfile available');
-                    }
-                    else
-                    {
-                        ?>
-                    <ul class="green" id="configs" style="list-style-image:url('<?php echo(s_http . 'html/welcome/tools.png'); ?>');"><?php
-                    $configfiles = getConfigFiles(s_root . 'config');
-                    foreach ($configfiles as $file)
-                    {
-                            ?><li><a href="<?php echo(s_http . 'TSViewer.php?config=' . $file) ?>"><?php echo($file) ?></a> <span class="get-code" title="<?php __e('Get code to include this configfile') ?>" onclick="javascript: openLinkDialog('<?php echo($file) ?>');"><?php __e('Get code to include') ?></span></li><?php } ?></ul>   
-                <?php } ?></p>
-
+                        <span class="orange lang" style="float:left; margin-right: 10px;"><a href="?lang=<?php echo($langCode); ?>"><?php echo($langOptions['lang']) ?></a></span>
+                    <?php endforeach; ?>
                 <p id="version"><?php __e('Version:'); ?> <?php echo (string) version; ?></p>
 
                 <?php
@@ -113,20 +97,6 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
         </div>
         <div id="hint" class="ui-state-highlight ui-corner-tl">
             <a href="http://devmx.de" target="_blank"><?php __e('devMX TeamSpeak3 Webviewer') ?></a>
-        </div>
-
-        <?php $languages = $utils->getLanguages(); ?>
-        <div id="lang-credits" style="display:none">
-            <?php foreach ($languages as $langCode => $langOptions) : ?>
-                <div id="lang<?php echo($langCode); ?>">
-                    <p><?php __e('Translators') ?>: <?php echo($langOptions['lang']); ?> (<?php echo($langOptions['version']); ?>)</p>
-                    <ul>
-                        <?php foreach ($langOptions['authors'] as $author => $homepage) : ?>
-                            <li><a class="link-gray" href="<?php echo($homepage) ?>"><?php echo($author) ?></a></li>
-                        <?php endforeach; ?>
-                    </ul>
-                </div>   
-            <?php endforeach; ?>
         </div>
 
         <div style="display: none;">
@@ -152,7 +122,7 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
                         <textarea class="ui-textbox ui-corner-all ui-widget-content ui-widget" id="code-area"></textarea>
                     </div>
                     <div id="ajaxInclude">
-                        <p><?php __e('Id')?> <input class="ui-widget ui-corner-all ui-widget-content ui-textbox" type="text" value="viewer" id="ajax-id" /></p>
+                        <p><?php __e('Id') ?> <input class="ui-widget ui-corner-all ui-widget-content ui-textbox" type="text" value="viewer" id="ajax-id" /></p>
                         <textarea class="ui-textbox ui-corner-all ui-widget-content ui-widget" id="ajax-area"></textarea>
                     </div>
                 </div>

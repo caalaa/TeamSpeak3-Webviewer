@@ -45,15 +45,6 @@ function openFacebookDialog()
     }).attr("src", 'http://www.facebook.com/plugins/likebox.php?href=http://www.facebook.com/maxesstuff&width=500&colorscheme=light&show_faces=true&border_color=000000&stream=true&header=true&height=550').css("width", "100%");
 }
 
-// Opens the translation credits in a jQueryUI Dialog
-function openTranslatorDialog()
-{
-    $("#lang-credits").dialog(defaultOptions, {
-        minHeight: 320, 
-        minWidth: 220
-    });
-}
-
 function openLinkDialog(conf)
 {
     config = conf;

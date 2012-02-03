@@ -208,7 +208,7 @@ else
 
 
 $config['image_type'] = '.' . $config['image_type'];
-$config['client_name'] = "devMX TS3 Webviewer // devmx.de";
+$config['client_name'] = "devMX TS3 Webviewer " . version;
 
 
 // Write ajax mode settings to config
