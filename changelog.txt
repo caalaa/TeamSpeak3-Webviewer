@@ -17,6 +17,9 @@ v1.4
 * Issue #59: All client states like talking and channelcommander are displayed correctly now
 * Issue #60: Fixed bug that some script and style files were included twice
 * Issue #58: Fixed display issue with custom spacers like [*spacer1]♥. The chars were not repeated properly.
+* Issue #65: Fixed bug in internet explorer where only cryptical chars where shown in the infoDialog
+* Issue #66: Fixed bug of failing language selection on gettext enabled webserver
+* Issue #67: Using of options in the function json_encode raised required php version to 5.3
 
 v1.3.1
 ~ Issue #54: Viewer uses no jQuery and not $ for jQuery to prevent conflicts with other libs

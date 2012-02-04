@@ -106,6 +106,7 @@ if ($_GET['type'] == 'client' && isset($_GET['title']))
     $matches = Array();
     preg_match("/^.*?([0-9]*)$/", $_GET['id'], $matches);
     $user = getUserByID($info['clientlist'], $matches[1]);
+    header("Content-type: application/json");
     echo $_GET['callback'] . '(' . json_encode(array("name" => escape_name($user['client_nickname']))) . ')';
     exit;
 }
@@ -202,7 +203,9 @@ if ($_GET['type'] == 'client')
     $query->quit();
 
     $out.= '</table>';
-    echo $_GET['callback'] . '(' . json_encode(array("html" => $out), JSON_HEX_QUOT) . ')';
+    header("Content-type: application/json");
+    $jsonData = $_GET['callback'] . '(' . json_encode(array("html" => $out)) . ')';
+    echo str_replace("\u0000", "", $jsonData);
 }
 
 // Returns the path of the countryicons
