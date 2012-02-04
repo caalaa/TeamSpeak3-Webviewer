@@ -20,7 +20,7 @@ v1.3.2
 * Issue #65: Fixed bug in internet explorer where only cryptical chars where shown in the infoDialog
 * Issue #66: Fixed bug of failing language selection on gettext enabled webserver
 * Issue #67: Using of options in the function json_encode raised required php version to 5.3
-* Issue #64: Fixed bug in channelhiding where channels faded out and in again immediatly
+* Issue #62: Fixed bug in channelhiding where channels faded out and in again immediatly
 
 v1.3.1
 ~ Issue #54: Viewer uses no jQuery and not $ for jQuery to prevent conflicts with other libs
