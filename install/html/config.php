@@ -22,7 +22,7 @@
 <span style="position: absolute; right: 10px; top: 10px;" class="topnav" >
     <a href="index.php?action=return" alt="" class="button"><?php __e('Back to configfiles') ?></a>
     <a href="index.php?action=logout" alt="" class="button"><?php __e('Logout') ?></a>
-    <a href="http://devmx.de/en/software/teamspeak3-webviewer/dokumentation" title="<?php __e('I need help!')?>" target="_blank" alt="" class="button"><span class="ui-icon ui-icon-info">&nbsp;</span></a>
+    <a href="http://devmx.de/en/software/teamspeak3-webviewer/dokumentation" title="<?php __e('I need help!') ?>" target="_blank" alt="" class="button"><span class="ui-icon ui-icon-info">&nbsp;</span></a>
 </span>
 
 <div id="config">
@@ -57,7 +57,8 @@
                     <tr>
                         <td><?php __e('Login required') ?></td>
                         <td>
-                            <?php echo($data['login_html']); ?>
+                            <input id="login-needed-true" type="radio" name="login_needed" value="true" <?php if ($data['login_needed'] != "false"): ?>checked="checked"<?php endif; ?>> <?php __e('Yes') ?><br>
+                            <input id="login-needed-false" type="radio" name="login_needed" value="false" <?php if ($data['login_needed'] == "false"): ?>checked="checked"<?php endif; ?>><?php __e('No') ?>
                         </td>
                         <td class="option-descr"><?php __e('If a login is required that the viewer can get the needed information (Default: yes).') ?></td>
                     </tr>
@@ -85,11 +86,19 @@
                         <tr>
                             <td><div>
                                     <p><?php __e('enabled modules:') ?></p>
-                                    <?php echo($data['mod_sort_enabled']) ?>
+                                    <ul id="sort1" class="sortable">
+                                        <?php foreach ($data['enabledModules'] as $mod) : ?>
+                                            <li id="<?php echo $mod; ?>" class="module-active"><span class="module-edit" onclick="javascript: openModuleConfig('<?php echo $mod; ?>');"><?php echo $mod ?></span></li>
+                                        <?php endforeach; ?>
+                                    </ul>
                                 </div></td>
                             <td><div>
                                     <p><?php __e('disabled modules:') ?></p>
-                                    <?php echo($data['mod_sort_disabled']) ?>
+                                    <ul id="sort2" class="sortable">
+                                        <?php foreach ($data['disabledModules'] as $mod) : ?>
+                                            <li id="<?php echo $mod; ?>" class="module-inactive"><span class="module-edit" onclick="javascript: openModuleConfig('<?php echo $mod ?>');"><?php echo $mod ?></span></li>
+                                        <?php endforeach; ?>
+                                    </ul>
                                 </div></td>                      
                         </tr>
                         <tr>
@@ -106,13 +115,16 @@
                 <table class="config style" cellspacing="0">
                     <tr id="servericons-config">
                         <td><?php __e('Download servericons automatically') ?></td>
-                        <td><?php echo($data['servericons_radio']) ?></td>
+                        <td>
+                            <input id="servericons-true" type="radio" name="servericons" value="true" <?php if ($data['downloadIcons'] == "true" || $data['downloadIcons'] == '') : ?>checked="checked"><?php endif; ?><span> <?php __e('Enabled') ?></span><br>
+                            <input id="servericons-false" type="radio" name="servericons" value="false" <?php if ($data['downloadIcons'] == "false") : ?>checked="checked"><?php endif; ?><span> <?php __e('Disabled') ?></span>
+                        </td>
                         <td class="option-descr"><?php __e('If you set this on true, custom icons will be downloaded automatically.') ?></td>
                     </tr>
                     <tr id="imagepack-config">
                         <td><?php __e('Imagepack for icons') ?></td>
                         <td><?php echo($data['imagepack_html']) ?></td>
-                        <td class="option-descr"><?php __e('You you disable the automatic icon download the imagepack selected here will be used.') ?></td>
+                        <td class="option-descr"><?php __e('If you disable the automatic icon download the imagepack selected here will be used.') ?></td>
                     </tr>
                     <tr id="stylesheet-config">
                         <td><?php __e('Stylesheet') ?></td>

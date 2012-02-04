@@ -1,5 +1,4 @@
-<?php
-/**
+<?php /**
  *  This file is part of devMX TeamSpeak3 Webviewer.
  *  Copyright (C) 2011 - 2012 Max Rath and Maximilian Narr
  *
@@ -23,16 +22,12 @@
             Please select your language / Bitte wählen Sie Ihre Sprache</p>
     </div>
     <fieldset>
-        <?php 
-        
+        <?php
         $languages = $utils->getLanguages();
-        
-        foreach($languages as $langCode => $langOptions) 
-        {
-            $xml = simplexml_load_string($langOptions['xml']);  ?>
 
-        <button onclick="javascript: setLang('<?php echo($langCode);?>');"><?php echo($langOptions['lang']); ?></button>
-
-        <?php } ?>  
+        foreach ($languages as $langCode => $langOptions) :
+            ?>
+            <button onclick="javascript: setLang('<?php echo($langCode); ?>');"><?php echo($langOptions['lang']); ?></button>
+        <?php endforeach; ?>  
     </fieldset>
 </div>

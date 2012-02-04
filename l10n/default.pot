@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TeamSpeak3 Webviewer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-03 21:18+0100\n"
-"PO-Revision-Date: 2012-02-03 21:19+0100\n"
+"POT-Creation-Date: 2012-02-04 15:34+0100\n"
+"PO-Revision-Date: 2012-02-04 15:34+0100\n"
 "Last-Translator: Maximilian Narr <maxesstuff@live.de>\n"
 "Language-Team: devMX <maxe@devmx.de>\n"
 "MIME-Version: 1.0\n"
@@ -205,64 +205,60 @@ msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/core/htmlbuilder.php:45
+#: Webviewer/install/core/htmlbuilder.php:44
 msgid "edit"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/core/htmlbuilder.php:46
+#: Webviewer/install/core/htmlbuilder.php:45
 msgid "show"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/core/htmlbuilder.php:47
+#: Webviewer/install/core/htmlbuilder.php:46
 msgid "flush cache"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/core/htmlbuilder.php:48
+#: Webviewer/install/core/htmlbuilder.php:47
 msgid "delete file"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/core/htmlbuilder.php:77
-#: Webviewer/install/core/htmlbuilder.php:82
-#: Webviewer/install/core/htmlbuilder.php:172
-#: Webviewer/install/core/htmlbuilder.php:177
-#: Webviewer/install/html/config.php:172
-msgid "Yes"
-msgstr ""
-
-#: B:\Eigene
-#: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/core/htmlbuilder.php:78
-#: Webviewer/install/core/htmlbuilder.php:83
-#: Webviewer/install/core/htmlbuilder.php:173
-#: Webviewer/install/core/htmlbuilder.php:178
-#: Webviewer/install/html/config.php:173
-msgid "No"
-msgstr ""
-
-#: B:\Eigene
-#: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/core/htmlbuilder.php:124
 #: Webviewer/install/core/htmlbuilder.php:129
-#: Webviewer/install/core/htmlbuilder.php:160
-#: Webviewer/install/core/htmlbuilder.php:165
+#: Webviewer/install/core/htmlbuilder.php:134
+#: Webviewer/install/html/config.php:119
 msgid "Enabled"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/core/htmlbuilder.php:125
 #: Webviewer/install/core/htmlbuilder.php:130
-#: Webviewer/install/core/htmlbuilder.php:161
-#: Webviewer/install/core/htmlbuilder.php:166
+#: Webviewer/install/core/htmlbuilder.php:135
+#: Webviewer/install/html/config.php:120
 msgid "Disabled"
+msgstr ""
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/core/htmlbuilder.php:141
+#: Webviewer/install/core/htmlbuilder.php:146
+#: Webviewer/install/html/config.php:60
+#: Webviewer/install/html/config.php:184
+msgid "Yes"
+msgstr ""
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/core/htmlbuilder.php:142
+#: Webviewer/install/core/htmlbuilder.php:147
+#: Webviewer/install/html/config.php:61
+#: Webviewer/install/html/config.php:185
+msgid "No"
 msgstr ""
 
 #: B:\Eigene
@@ -414,205 +410,205 @@ msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:62
+#: Webviewer/install/html/config.php:63
 msgid "If a login is required that the viewer can get the needed information (Default: yes)."
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:65
+#: Webviewer/install/html/config.php:66
 msgid "Username"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:67
+#: Webviewer/install/html/config.php:68
 msgid "The username of the query-user."
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:70
+#: Webviewer/install/html/config.php:71
 msgid "Password"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:72
+#: Webviewer/install/html/config.php:73
 msgid "Password corresponding to the username above."
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:81
+#: Webviewer/install/html/config.php:82
 msgid "Click on a module to edit the modules configfile. Drag and sort the modules in the order you want them displayed"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:87
+#: Webviewer/install/html/config.php:88
 msgid "enabled modules:"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:91
+#: Webviewer/install/html/config.php:96
 msgid "disabled modules:"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:96
+#: Webviewer/install/html/config.php:105
 msgid "Enable all"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:97
+#: Webviewer/install/html/config.php:106
 msgid "Disable all"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:108
+#: Webviewer/install/html/config.php:117
 msgid "Download servericons automatically"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:110
+#: Webviewer/install/html/config.php:122
 msgid "If you set this on true, custom icons will be downloaded automatically."
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:113
+#: Webviewer/install/html/config.php:125
 msgid "Imagepack for icons"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:115
-msgid "You you disable the automatic icon download the imagepack selected here will be used."
-msgstr ""
-
-#: B:\Eigene
-#: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:118
-msgid "Stylesheet"
-msgstr ""
-
-#: B:\Eigene
-#: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:120
-msgid "The stylesheet which should be used for the viewer"
-msgstr ""
-
-#: B:\Eigene
-#: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:123
-msgid "Display arrows"
-msgstr ""
-
-#: B:\Eigene
-#: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:125
-msgid "If you enable this, the viewer will show arrows next to the channel as in the client."
-msgstr ""
-
-#: B:\Eigene
-#: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:128
-msgid "Display filter"
-msgstr ""
-
-#: B:\Eigene
-#: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:129
-msgid "Standard"
+#: Webviewer/install/html/config.php:127
+msgid "If you disable the automatic icon download the imagepack selected here will be used."
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
 #: Webviewer/install/html/config.php:130
-msgid "Clientsonly"
+msgid "Stylesheet"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:131
-msgid "Channelclientsonly"
-msgstr ""
-
-#: B:\Eigene
-#: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:133
-msgid "standard: shows the viewer like in the TeamSpeak3 Client"
-msgstr ""
-
-#: B:\Eigene
-#: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:134
-msgid "clientsonly: shows only clients"
+#: Webviewer/install/html/config.php:132
+msgid "The stylesheet which should be used for the viewer"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
 #: Webviewer/install/html/config.php:135
-msgid "channelclientsonly: shows only channels with clients inside"
+msgid "Display arrows"
+msgstr ""
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/html/config.php:137
+msgid "If you enable this, the viewer will show arrows next to the channel as in the client."
+msgstr ""
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/html/config.php:140
+msgid "Display filter"
+msgstr ""
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/html/config.php:141
+msgid "Standard"
+msgstr ""
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/html/config.php:142
+msgid "Clientsonly"
+msgstr ""
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/html/config.php:143
+msgid "Channelclientsonly"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
 #: Webviewer/install/html/config.php:145
+msgid "standard: shows the viewer like in the TeamSpeak3 Client"
+msgstr ""
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/html/config.php:146
+msgid "clientsonly: shows only clients"
+msgstr ""
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/html/config.php:147
+msgid "channelclientsonly: shows only channels with clients inside"
+msgstr ""
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/html/config.php:157
 msgid "Enable caching?"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:149
+#: Webviewer/install/html/config.php:161
 msgid "If this on true the viewer will buffer the data it received. It is strongly recommended to enable caching due to stability reasons."
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:152
+#: Webviewer/install/html/config.php:164
 msgid "Standard cachetime"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:156
+#: Webviewer/install/html/config.php:168
 msgid "The time in seconds the viewer should buffer the serverdata (Recommended: 60)."
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:165
+#: Webviewer/install/html/config.php:177
 msgid "Language"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:167
+#: Webviewer/install/html/config.php:179
 msgid "Language of the viewer"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:170
+#: Webviewer/install/html/config.php:182
 msgid "Provide usage statistics"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:175
+#: Webviewer/install/html/config.php:187
 msgid "If enabled the url to your webviewer will be submitted to devMX"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:183
+#: Webviewer/install/html/config.php:195
 msgid "Save configfile"
 msgstr ""
 
@@ -630,37 +626,37 @@ msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/permission-check.php:20
+#: Webviewer/install/html/permission-check.php:19
 msgid "Checking if all necessary directories are writable:"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/permission-check.php:25
+#: Webviewer/install/html/permission-check.php:24
 msgid "Directory"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/permission-check.php:26
+#: Webviewer/install/html/permission-check.php:25
 msgid "Status"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/permission-check.php:41
+#: Webviewer/install/html/permission-check.php:39
 msgid "OK"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/permission-check.php:54
+#: Webviewer/install/html/permission-check.php:49
 msgid "FAILED"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/permission-check.php:62
+#: Webviewer/install/html/permission-check.php:59
 msgid "If the status of one of those directories is FAILED, please make this directory writable manually! Otherwise the viewer may not work."
 msgstr ""
 

@@ -1,5 +1,4 @@
-<?php
-/**
+<?php /**
  *  This file is part of devMX TeamSpeak3 Webviewer.
  *  Copyright (C) 2011 - 2012 Max Rath and Maximilian Narr
  *
@@ -28,11 +27,10 @@
         <?php $dirs = checkPermissions(array("pw.xml", "../config", "../cache")); ?>
 
         <?php
-        foreach ($dirs as $key => $value)
-        {
+        foreach ($dirs as $key => $value) :
+
             // OK
-            if ($value == true)
-            {
+            if ($value == true) :
                 ?>
 
                 <tr>
@@ -42,20 +40,19 @@
                 </tr>
 
                 <?php
-            }
-
             // Failed
-            else
-            {
+            else:
                 ?>
                 <tr>
                     <td><img src="img/failure.png" alt="" /></td>
                     <td><?php echo($key) ?></td>
                     <td><?php __e("FAILED"); ?></td>
                 </tr>
-            <?php }
-        } ?>
-                
+            <?php
+            endif;
+        endforeach;
+        ?>
+
     </table>
 
     <div class="ui-state-error ui-corner-all" id="permission-warning">

@@ -20,7 +20,6 @@
 
 /**
  * Returns the $data array for select_config.php
- * @todo include directly in file
  * @return string 
  * @deprecated directly in html file
  */
@@ -69,19 +68,8 @@ function createEditHtml()
     $html['queryport_value'] = $configfile->queryport;
     $html['serverport_value'] = $configfile->vserverport;
     $html['display-filter'] = $configfile->filter;
-
-
-    // Login
-    if ($configfile->login_needed == "true" || $configfile->login_needed == '')
-    {
-        $html['login_html'] = '<input id="login-needed-true" type="radio" name="login_needed" value="true" checked="checked"> ' . __('Yes') . '<br>
-            <input id="login-needed-false" type="radio" name="login_needed" value="false"> ' . __('No');
-    }
-    else
-    {
-        $html['login_html'] = '<input id="login-needed-true" type="radio" name="login_needed" value="true"> ' . __('Yes') . '<br>
-            <input id="login-needed-false" type="radio" name="login_needed" value="false" checked="checked"> ' . __('No');
-    }
+    
+    $html['login_needed'] = $configfile->login_needed;
 
     $html['username_value'] = (string) $configfile->username;
     $html['password_value'] = (string) $configfile->password;
@@ -89,46 +77,27 @@ function createEditHtml()
     // Modules
     $modules = getModules();
 
-    $html['module_html'] = '';
-
-    $mod_sort_enabled = '<ul id="sort1" class="sortable">';
-    $mod_sort_disabled = '<ul id="sort2" class="sortable">';
     natcasesort($modules);
 
     $enabled_modules = explode(",", $configfile->modules);
     unset($enabled_modules[array_search("htmlframe", $enabled_modules)]);
     unset($enabled_modules[array_search("style", $enabled_modules)]);
 
-    // Enabled Modules
+    $html['enabledModules'] = $enabled_modules;
+    
+    // Unset enabled modules
     foreach ($enabled_modules as $module)
     {
         unset($modules[array_search($module, $modules)]);
-        $mod_sort_enabled .= '<li id="' . $module . '" class="module-active"><span class="module-edit" onclick="javascript: openModuleConfig(\'' . $module . '\');">' . $module . '</span></li>';
     }
+    
+    
+    // Set disabled modules
+    $html['disabledModules'] = $modules;
 
-    // Disabled Modules
-    foreach ($modules as $module)
-    {
-        $mod_sort_disabled .= '<li id="' . $module . '" class="module-inactive"><span class="module-edit" onclick="javascript: openModuleConfig(\'' . $module . '\');">' . $module . '</span></li>';
-    }
-
-    $mod_sort_enabled .= '</ul>';
-    $mod_sort_disabled .= '</ul>';
-
-    $html['mod_sort_enabled'] = $mod_sort_enabled;
-    $html['mod_sort_disabled'] = $mod_sort_disabled;
-
+    
     // Servericons
-    if ($configfile->use_serverimages == "true" || (string) $configfile->use_serverimages == '')
-    {
-        $html['servericons_radio'] = '<input id="servericons-true" type="radio" name="servericons" value="true" checked="checked"><span> ' . __('Enabled') . '</span><br>
-            <input id="servericons-false" type="radio" name="servericons" value="false"><span> ' . __('Disabled') . '</span>';
-    }
-    else
-    {
-        $html['servericons_radio'] = '<input id="servericons-true" type="radio" name="servericons" value="true"><span> ' . __('Enabled') . '<br>
-            <input id="servericons-false" type="radio" name="servericons" value="false"  checked="checked"><span> ' . __('Disabled') . '</span>';
-    }
+    $html['downloadIcons'] = $configfile->use_serverimages;
 
     // Imagepack
     $imagepacks = getImagePacks();
