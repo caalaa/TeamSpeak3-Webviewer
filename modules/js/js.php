@@ -89,7 +89,7 @@ class js extends ms_Module
 
     private function onSend()
     {
-        $this->scripts[]  = '<script type="text/javascript">/* <![CDATA[ */ jQuery(document).ready(function(){ jQuery(document).trigger("ready"); }) /* ]]> */</script>';
+     //   $this->scripts[]  = '<script type="text/javascript">/* <![CDATA[ */ jQuery(document).ready(function(){ jQuery(document).trigger("ready"); }) /* ]]> */</script>';
     }
 
     public function onHtmlStartup()

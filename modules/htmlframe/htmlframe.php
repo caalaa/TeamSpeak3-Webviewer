@@ -47,7 +47,7 @@ class htmlframe extends ms_Module
         }
         else
         {
-            return '<div class="devmx-webviewer">' . $this->mManager->triggerEvent("Head") . $this->mManager->triggerEvent("Body") . '</div>';
+            return '<div class="devmx-webviewer">' . $this->mManager->triggerEvent("Head") . $this->mManager->triggerEvent("Body");
         }
     }
 
