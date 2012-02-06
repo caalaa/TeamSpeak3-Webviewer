@@ -1,5 +1,0 @@
-### English ###
-Please follow our installation instructions here: http://en.maxesstuff.de/software/teamspeak3-webviewer/installation
-
-### German ###
-Bitte folgen Sie unserer Schritt-für-Schritt-Anleitung im Internet: http://de.maxesstuff.de/software/teamspeak3-webviewer/installation

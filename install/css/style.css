@@ -241,7 +241,8 @@ table.config-select td
     padding: 10px;
 }
 
-table.style tr td:nth-child(2)
+table.style tr td:nth-child(2),
+table.language tr td:nth-child(2)
 {
     width: 150px;
 }

@@ -172,7 +172,7 @@
 
             <!-- Stuff -->
             <div id="tab5">
-                <table class="config" cellspacing="0">
+                <table class="config language" cellspacing="0">
                     <tr>
                         <td><?php __e('Language') ?></td>
                         <td><?php echo($data['language_html']) ?></td>
