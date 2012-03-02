@@ -293,7 +293,7 @@ try
     $channellist = $query->channellist("-voice -flags -icon -limits");
     ts3_check($channellist, 'channellist');
 
-    $clientlist = $query->clientlist("-away -voice -groups -info -times -icon");
+    $clientlist = $query->clientlist("-away -voice -groups -info -times -icon -country");
     ts3_check($clientlist, 'clientlist');
 
     $servergroups = $query->servergrouplist();
@@ -407,10 +407,9 @@ function render_server($serverinfo)
 function getServerIcon($serverinfo, $config)
 {
     global $config;
-    
-    if(!$config['show_icons'])
-        return '';
-    
+
+    if (!$config['show_icons']) return '';
+
     if ($config['use_serverimages'] && isset($serverinfo['virtualserver_icon_id']) && $serverinfo['virtualserver_icon_id'] != 0)
     {
         return '<span class="group-image img_r" style="background-image: url(\'' . $config['serverimages'] . $serverinfo['virtualserver_icon_id'] . '\');">&nbsp;</span>';
@@ -456,6 +455,13 @@ function render_client($clientinfo, $servergrouplist, $channelgrouplist)
         {
             $iconHtml = '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $clientIcon . '\') no-repeat transparent;">&nbsp;</span>' . $iconHtml;
         }
+    }
+
+    // Country icon
+    $country = $clientinfo['client_country'];
+    if ($country != "" && $country != null && $config['show_country_icons'])
+    {
+        $iconHtml = '<span class="img_r group-image" style="background: url(\'' . s_http . "modules/infoDialog/flags/" . strtolower($country) . ".png" . '\') center center no-repeat;">&nbsp;</span> ' . $iconHtml;
     }
 
     $rendered .= $iconHtml;
