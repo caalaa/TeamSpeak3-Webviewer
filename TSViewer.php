@@ -212,7 +212,7 @@ $config['client_name'] = "devMX TS3 Webviewer " . version;
 
 
 // Write ajax mode settings to config
-if($ajaxEnabled)
+if ($ajaxEnabled)
 {
     $config['ajaxEnabled'] = true;
 }
@@ -406,6 +406,11 @@ function render_server($serverinfo)
  */
 function getServerIcon($serverinfo, $config)
 {
+    global $config;
+    
+    if(!$config['show_icons'])
+        return '';
+    
     if ($config['use_serverimages'] && isset($serverinfo['virtualserver_icon_id']) && $serverinfo['virtualserver_icon_id'] != 0)
     {
         return '<span class="group-image img_r" style="background-image: url(\'' . $config['serverimages'] . $serverinfo['virtualserver_icon_id'] . '\');">&nbsp;</span>';
@@ -424,31 +429,37 @@ function render_client($clientinfo, $servergrouplist, $channelgrouplist)
 
     $rendered = '<div class="client" id="' . $config['prefix'] . 'client_' . htmlspecialchars($clientinfo['clid'], ENT_QUOTES) . '"><p class="client-content">';
     $iconHtml = '';
-    
+
     // Get servercroup icons
     $serverGroupIcons = get_servergroup_icons($clientinfo, $servergrouplist);
     foreach ($serverGroupIcons as $iconID)
     {
-        if ($iconID == 0) continue;
+        if ($iconID == 0 || !$config['show_icons']) continue;
         $iconHtml = '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $iconID . '\') no-repeat transparent;">&nbsp;</span>' . $iconHtml;
     }
-    
+
     // Get channelgroup icons
     $channelGroupIcon = get_channelgroup_image($clientinfo, $channelgrouplist);
     if ($channelGroupIcon != 0)
     {
-        $iconHtml .= '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $channelGroupIcon . '\') no-repeat transparent;">&nbsp;</span>';
+        if ($config['show_icons'])
+        {
+            $iconHtml .= '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $channelGroupIcon . '\') no-repeat transparent;">&nbsp;</span>';
+        }
     }
-    
+
     // Get clienticon
     $clientIcon = $clientinfo['client_icon_id'];
-    if($clientIcon !== 0)
+    if ($clientIcon !== 0)
     {
-        $iconHtml = '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $clientIcon . '\') no-repeat transparent;">&nbsp;</span>'. $iconHtml;
+        if ($config['show_icons'])
+        {
+            $iconHtml = '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $clientIcon . '\') no-repeat transparent;">&nbsp;</span>' . $iconHtml;
+        }
     }
-    
+
     $rendered .= $iconHtml;
-    
+
     $rendered .= '<span class="clientimage ' . get_client_image($clientinfo) . '">&nbsp;</span>' . escape_name($clientinfo['client_nickname']);
     $rendered .= "\r\n</p></div>";
     return $rendered;
@@ -487,21 +498,34 @@ function render_channel_start($channel, $clientlist)
         // If channel has a channel icon
         if ($channel['channel_icon_id'] != 0 && $config['use_serverimages'] == true)
         {
-            $output .= '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $channel['channel_icon_id'] . '\') no-repeat transparent;">&nbsp;</span>';
+            if ($config['show_icons'])
+            {
+                $output .= '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $channel['channel_icon_id'] . '\') no-repeat transparent;">&nbsp;</span>';
+            }
         }
 
-        $output .= getIsDefaultIcon($channel, $config);
+
+        if ($config['show_icons'])
+        {
+            $output .= getIsDefaultIcon($channel, $config);
+        }
 
         // If channel is moderated
         if ($channel['channel_needed_talk_power'] > 0)
         {
-            $output .= '<span class="channel-perm-image moderated img_r">&nbsp;</span>';
+            if ($config['show_icons'])
+            {
+                $output .= '<span class="channel-perm-image moderated img_r">&nbsp;</span>';
+            }
         }
 
         // If channel has password
         if ($channel['channel_flag_password'] == '1')
         {
-            $output .= '<span class="channel-perm-image password img_r">&nbsp;</span>';
+            if ($config['show_icons'])
+            {
+                $output .= '<span class="channel-perm-image password img_r">&nbsp;</span>';
+            }
         }
 
         // If arrow needs to be displayed
@@ -634,7 +658,7 @@ function render_channellist($channellist, $clientlist, $servergroups, $channelgr
             {
                 if (!$channel->isEmpty() && parse_spacer($channel) === false)
                 {
-                    $output .= render_channel_start($channel, $clientlist);           
+                    $output .= render_channel_start($channel, $clientlist);
                 }
             }
         }
