@@ -86,6 +86,12 @@
     <image_type>png</image_type>
     <!-- Wheter arrows should shown like in the TS-Client (true or false) -->
     <show_arrows></show_arrows>
+    <!-- Whether icons should be shown or not -->
+    <show_icons>true</show_icons>
+    <!-- Whether country icons should be shown or not -->
+    <show_country_icons>false</show_country_icons>
+    <!-- Whether hierarchy icons should be shown or not -->
+    <show_hierarchy_icons>false</show_hierarchy_icons>
     
     <!-- Client ordering .
         Supported Orderings are:
