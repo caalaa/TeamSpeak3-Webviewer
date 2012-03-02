@@ -1,4 +1,5 @@
 <?php
+
 /**
  *  This file is part of devMX TeamSpeak3 Webviewer.
  *  Copyright (C) 2011 - 2012 Max Rath and Maximilian Narr
@@ -15,8 +16,7 @@
  *
  *  You should have received a copy of the GNU General Public License
  *  along with devMX TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
- */ 
-
+ */
 session_name("tswv");
 session_start();
 
@@ -246,7 +246,7 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
     $xml->login_needed = $_POST['login_needed'];
     $xml->username = $_POST['username'];
     $xml->password = $_POST['password'];
-    
+
     // Modules
     if (empty($_POST['module']) || $_POST['module'][0] == "")
     {
@@ -275,17 +275,12 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
     $xml->language = $_POST['language'];
     $xml->usage_stats = $_POST['usage-statistics'];
 
+    $xml->filter = $_POST['display-filter'];
+    $xml->show_icons = $_POST['show_icons'];
     
-    // Upgrade compatibility with old configfiles
-    if($xml->filter != null && $xml->filter != "")
-    {
-        $xml->filter = $_POST['display-filter'];
-    }
-    else
-    {
-        $xml->addChild('filter', $_POST['display-filter']);
-    }
-    
+    $xml->show_hierarchy_icons = $_POST['show_hierarchy_icons'];
+    $xml->show_country_icons = $_POST['show_country_icons'];
+
 
     // Not all necessary values were entered.
     if ($vars_unavailable)

@@ -64,15 +64,20 @@ function createEditHtml()
     $configfile = simplexml_load_string($_SESSION['config_xml']);
 
     $html['config'] = $configfile;
-    $html['serveradress_value'] = $configfile->host;
-    $html['queryport_value'] = $configfile->queryport;
-    $html['serverport_value'] = $configfile->vserverport;
-    $html['display-filter'] = $configfile->filter;
-    
-    $html['login_needed'] = $configfile->login_needed;
+    $html['serveradress_value'] = (string) $configfile->host;
+    $html['queryport_value'] = (string) $configfile->queryport;
+    $html['serverport_value'] = (string) $configfile->vserverport;
+    $html['display-filter'] = (string) $configfile->filter;
+
+    $html['login_needed'] = (string) $configfile->login_needed;
 
     $html['username_value'] = (string) $configfile->username;
     $html['password_value'] = (string) $configfile->password;
+
+    $html['show-images'] = (string) $configfile->show_icons;
+    
+    $html['show_country_icons'] = (string) $configfile->show_country_icons;
+    $html['show_hierarchy_icons'] = (string) $configfile->show_hierarchy_icons;
 
     // Modules
     $modules = getModules();
@@ -84,18 +89,18 @@ function createEditHtml()
     unset($enabled_modules[array_search("style", $enabled_modules)]);
 
     $html['enabledModules'] = $enabled_modules;
-    
+
     // Unset enabled modules
     foreach ($enabled_modules as $module)
     {
         unset($modules[array_search($module, $modules)]);
     }
-    
-    
+
+
     // Set disabled modules
     $html['disabledModules'] = $modules;
 
-    
+
     // Servericons
     $html['downloadIcons'] = $configfile->use_serverimages;
 

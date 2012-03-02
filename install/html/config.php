@@ -24,7 +24,6 @@
     <a href="index.php?action=logout" alt="" class="button"><?php __e('Logout') ?></a>
     <a href="http://devmx.de/en/software/teamspeak3-webviewer/dokumentation" title="<?php __e('I need help!') ?>" target="_blank" alt="" class="button"><span class="ui-icon ui-icon-info">&nbsp;</span></a>
 </span>
-
 <div id="config">
     <form action="index.php?action=submit" method="post" >
         <div id="tabs">
@@ -145,6 +144,29 @@
                             <span><?php __e('standard: shows the viewer like in the TeamSpeak3 Client') ?></span><br>
                             <span><?php __e('clientsonly: shows only clients') ?></span><br>
                             <span><?php __e('channelclientsonly: shows only channels with clients inside') ?></span>
+                        </td>
+                    </tr>
+                    <tr id="show-image-config">
+                        <td><?php __e('Show images') ?></td>
+                        <td>
+                            <input type="radio" name="show_icons" value="true" <?php if ($data['show-images'] == "true") : ?> checked="checked"<?php endif; ?>> <?php __e('Yes') ?><br>
+                            <input type="radio" name="show_icons" value="false" <?php if ($data['show-images'] == "false") : ?> checked="checked"<?php endif; ?>> <?php __e('No') ?><br>
+                        </td>
+                        <td class="option-descr"><?php __e('If you disable this, the webviewer will not show any images on the right side') ?></td>
+                    </tr>
+                    <tr id="show-country-icons-config">
+                        <td><?php __e('Show country icons') ?></td>
+                        <td>
+                            <input type="radio" name="show_country_icons" value="true" <?php if ($data['show_country_icons'] == "true") : ?> checked="checked"<?php endif; ?>> <?php __e('Yes') ?><br>
+                            <input type="radio" name="show_country_icons" value="false" <?php if ($data['show_country_icons'] == "false") : ?> checked="checked"<?php endif; ?>> <?php __e('No') ?>
+                        </td>
+                        <td class="option-descr"><?php __e('If country icons should be displayed as in the TeamSpeak3 Client')?></td>
+                    </tr>
+                    <tr id="show-hierarchy-icons">
+                        <td><?php __e('Show hierarchry icons')?></td>
+                        <td>
+                            <input type="radio" name="show_hierarchy_icons" value="true" <?php if($data['show_hierarchy_icons'] == "true") :?> checked="checked"<?php endif;?>> <?php __e('Yes')?><br>
+                            <input type="radio" name="show_hierarchy_icons" value="false" <?php if($data['show_hierarchy_icons'] == "false") :?> checked="checked"<?php endif;?>> <?php __e('No')?>
                         </td>
                     </tr>
                 </table>
