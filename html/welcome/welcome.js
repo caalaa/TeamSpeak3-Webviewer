@@ -66,5 +66,5 @@ function getIframeLink(height, width)
 // returns the code to include the viewer via ajax
 function getAjaxLink(id)
 {
-    return '&lt;script src="' + s_http + 'ajax.php?config=' + config + '&id=' + id + '&s=true" type="text/javascript"&gt;&lt;/script&gt;'
+    return '&lt;script src="' + s_http + 'ajax.php?config=' + config + '&id=' + id + '&s=true" type="text/javascript"&gt;&lt;/script&gt; &lt;div id="' + id + '"&gt;&lt;div&gt;';
 }

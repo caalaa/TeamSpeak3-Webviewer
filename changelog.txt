@@ -8,6 +8,11 @@
 ~ Minor Change
 * Fix
 
+v1.4
++ Issue #69: Added option to hide all icons on the right side
++ Issue #68: Added option to display country icons
+~ Issue #72: Added div element at ajax code output in welcome screen
+
 v1.3.2
 ~ Issue #57: Clienticons (set via permission system) are now displayed, too
 * Issue #56: Updated all styles that they don't apply styles at global elements like <body> or <p>
