@@ -278,7 +278,6 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
     $xml->filter = $_POST['display-filter'];
     $xml->show_icons = $_POST['show_icons'];
     
-    $xml->show_hierarchy_icons = $_POST['show_hierarchy_icons'];
     $xml->show_country_icons = $_POST['show_country_icons'];
 
 

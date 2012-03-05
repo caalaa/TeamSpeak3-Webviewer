@@ -162,14 +162,6 @@
                         </td>
                         <td class="option-descr"><?php __e('If country icons should be displayed as in the TeamSpeak3 Client') ?></td>
                     </tr>
-                    <tr id="show-hierarchy-icons">
-                        <td><?php __e('Show hierarchry icons') ?></td>
-                        <td>
-                            <input type="radio" name="show_hierarchy_icons" value="true" <?php if ($data['show_hierarchy_icons'] == "true") : ?> checked="checked"<?php endif; ?>> <?php __e('Yes') ?><br>
-                            <input type="radio" name="show_hierarchy_icons" value="false" <?php if ($data['show_hierarchy_icons'] == "false") : ?> checked="checked"<?php endif; ?>> <?php __e('No') ?>
-                        </td>
-                        <td class="option-descr"><?php __e('If you enable this option, the TeamSpeak3 Webviewer will show some lines at the front of the channels, like in the TeamSpeak3 Client') ?></td>
-                    </tr>
                 </table>
             </div>
 

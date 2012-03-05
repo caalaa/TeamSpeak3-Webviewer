@@ -90,8 +90,6 @@
     <show_icons>true</show_icons>
     <!-- Whether country icons should be shown or not -->
     <show_country_icons>false</show_country_icons>
-    <!-- Whether hierarchy icons should be shown or not -->
-    <show_hierarchy_icons>false</show_hierarchy_icons>
     
     <!-- Client ordering .
         Supported Orderings are:

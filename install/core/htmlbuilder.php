@@ -76,7 +76,6 @@ function createEditHtml()
 
     $html['show-images'] = (string) $configfile->show_icons;
     
-    $html['show_country_icons'] = (string) $configfile->show_country_icons;
     $html['show_hierarchy_icons'] = (string) $configfile->show_hierarchy_icons;
 
     // Modules
