@@ -20,10 +20,13 @@
 class js extends ms_Module
 {
 
-    private $ajaxEnabled;
     public $js_sent;
-    protected $scripts = array();
     public $ajaxJS;
+    protected $scripts = array();
+    protected $jsOptions = array();
+    private $ajaxEnabled;
+
+    const CONFIG_VAR_NAME = "tswv";
 
     function init()
     {
@@ -32,6 +35,12 @@ class js extends ms_Module
         $this->ajaxEnabled = $this->config['ajaxEnabled'];
     }
 
+    /**
+     * Loads javascript 
+     * @param string $text Javascript to load
+     * @param string $type Type of the script, 'file' specifies that it is a file
+     * @param string $cc Conditional Tags for browsers 
+     */
     public function loadJS($text, $type = 'file', $cc = NULL)
     {
         if (!$this->js_sent)
@@ -81,23 +90,39 @@ class js extends ms_Module
                     }
                     break;
             }
-            
-            if(!in_array($script, $this->scripts))
-                    $this->scripts[] = $script;
+
+            if (!in_array($script, $this->scripts)) $this->scripts[] = $script;
         }
     }
 
-    private function onSend()
+    /**
+     * Adds a key value pair to the javascript options output
+     * @param string $key Identifier
+     * @param string $value Value
+     * @author Maximilian Narr
+     * @since 1.4
+     */
+    public function loadJSVar($key, $value)
     {
-     //   $this->scripts[]  = '<script type="text/javascript">/* <![CDATA[ */ jQuery(document).ready(function(){ jQuery(document).trigger("ready"); }) /* ]]> */</script>';
+        $this->jsOptions[$key] = $value;
+    }
+
+    /**
+     * Adds the javascript custom options vars into $this->scripts 
+     * @author Maximilian Narr
+     * @since 1.4
+     */
+    private function prepareJSVars()
+    {
+        $this->loadJS("var tswv = " . json_encode($this->jsOptions) . ";", 'text');
     }
 
     public function onHtmlStartup()
     {
         if (!$this->mManager->moduleIsLoaded('htmlframe') && !$this->js_sent)
         {
+            $this->prepareJSVars();
             $this->js_sent = true;
-            $this->onSend();
             return implode("", $this->scripts);
         }
     }
@@ -106,8 +131,8 @@ class js extends ms_Module
     {
         if (!$this->js_sent)
         {
+            $this->prepareJSVars();
             $this->js_sent = true;
-            $this->onSend();
             return implode("", $this->scripts);
         }
     }
