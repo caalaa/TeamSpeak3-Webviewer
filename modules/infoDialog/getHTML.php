@@ -107,7 +107,7 @@ if ($_GET['type'] == 'client' && isset($_GET['title']))
     preg_match("/^.*?([0-9]*)$/", $_GET['id'], $matches);
     $user = getUserByID($info['clientlist'], $matches[1]);
     header("Content-type: application/json");
-    echo $_GET['callback'] . '(' . json_encode(array("name" => escape_name($user['client_nickname']))) . ')';
+    echo $_GET['callback'] . '(' . json_encode(array("name" => escape_name($user['client_nickname']), "country" => getCountryIcon($user['client_country']))) . ')';
     exit;
 }
 
@@ -144,7 +144,7 @@ if ($_GET['type'] == 'client')
             case 'country':
                 $out .= '<tr>';
                 $out .= '<td class="label">' . __('Country') . ":</td>";
-                $out .= '<td><span style="margin-right:10px;">' . getCountryIcon($clientinfo['return']['client_country']) . '</span>' . twolettertocountry($clientinfo['return']['client_country']) . '</td></tr>';
+                $out .= '<td>' . twolettertocountry($clientinfo['return']['client_country']) . '</td></tr>';
                 $out .= '</tr>';
                 break;
             case 'version':
@@ -216,7 +216,7 @@ function getCountryIcon($country)
 
     if (!file_exists($localpath)) return '';
 
-    return '<img src="' . $path . '" alt="" />';
+    return '<span style="margin-right:10px;"><img src="' . $path . '" alt="" /></span>';
 }
 
 // Returns the countryname of a two-letter countrycode

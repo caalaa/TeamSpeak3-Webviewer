@@ -106,7 +106,7 @@ class infoDialog extends ms_Module
                                                                             dataType: 'jsonp',
                                                                             success: function(data) 
                                                                                 {
-                                                                                    ms_title = data.name;
+                                                                                    ms_title = data.country + data.name;
                                                                                 }
 
                                                                         });  
