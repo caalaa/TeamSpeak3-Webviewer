@@ -1,20 +1,22 @@
 <?php
+
 /**
-* This file is part of TeamSpeak3 Webviewer.
-*
-* TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* TeamSpeak3 Webviewer is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with TeamSpeak3 Webviewer. If not, see http://www.gnu.org/licenses/.
-*/
+ *  This file is part of devMX TeamSpeak3 Webviewer.
+ *  Copyright (C) 2011 - 2012 Max Rath and Maximilian Narr
+ *
+ *  devMX TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  TeamSpeak3 Webviewer is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with devMX TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
+ */
 session_name("tswv");
 session_start();
 
@@ -39,7 +41,7 @@ require_once '../core/utils/utils.func.php';
 $utils = new tsvUtils("../");
 
 // Outputs the header
-echo(file_get_contents("html/header.php"));
+require_once ("html/header.php");
 
 
 // START NON OUTPUT FUCTIONS \\
@@ -48,6 +50,7 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == "logout")
 {
     session_destroy();
     require_once 'html/select_language.php';
+    require_once 'html/footer.php';
     exit;
 }
 
@@ -63,14 +66,14 @@ if (isset($_SESSION['lang']) && $_SESSION['lang'] != "")
 {
     $lang = $_SESSION['lang'];
 
-    T_setlocale(LC_MESSAGES, $lang);
+    _setlocale(LC_MESSAGES, $lang);
 
-    $domain = "ms-tsv-install";
+    $domain = "teamspeak3-webviewer";
 
-    T_bindtextdomain($domain, PROJECTPATH);
+    _bindtextdomain($domain, PROJECTPATH);
 
-    T_textdomain($domain);
-    T_bind_textdomain_codeset($domain, "UTF-8");
+    _textdomain($domain);
+    _bind_textdomain_codeset($domain, "UTF-8");
 }
 
 // Sets Language
@@ -78,14 +81,14 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == "setlang" && isset($_GE
 {
     $lang = $_GET['lang'];
 
-    T_setlocale(LC_MESSAGES, $lang);
+    _setlocale(LC_MESSAGES, $lang);
 
-    $domain = "ms-tsv-install";
+    $domain = "teamspeak3-webviewer";
 
-    T_bindtextdomain($domain, PROJECTPATH);
+    _bindtextdomain($domain, PROJECTPATH);
 
-    T_textdomain($domain);
-    T_bind_textdomain_codeset($domain, "UTF-8");
+    _textdomain($domain);
+    _bind_textdomain_codeset($domain, "UTF-8");
 
     $_SESSION['lang'] = $_GET['lang'];
 }
@@ -100,6 +103,7 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'setpw' && isset($_POST
     {
         echo(throwAlert(__('The password could not be saved. Please make "pw.xml" in the install directory writable.'), 21));
         require_once 'html/set_password.php';
+        require_once 'html/footer.php';
         exit;
     }
 
@@ -128,6 +132,7 @@ if (isset($_SESSION['validated']) && $_SESSION['validated'] == true && isset($_R
     echo(flushCache($_REQUEST['config']));
 
     require_once 'html/select_config.php';
+    require_once 'html/footer.php';
     exit;
 }
 
@@ -139,6 +144,7 @@ if (isset($_SESSION['validated']) && $_SESSION['validated'] == true && isset($_R
     $data = createConfigHtml();
 
     require_once 'html/select_config.php';
+    require_once 'html/footer.php';
     exit;
 }
 
@@ -167,6 +173,7 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'validate' && isset($_P
 if (!isset($_SESSION['lang']))
 {
     require_once 'html/select_language.php';
+    require_once 'html/footer.php';
 
     exit;
 }
@@ -175,6 +182,7 @@ if (!isset($_SESSION['lang']))
 if (!passwordSetted())
 {
     require_once 'html/set_password.php';
+    require_once 'html/footer.php';
     exit;
 }
 
@@ -182,6 +190,7 @@ if (!passwordSetted())
 if (passwordSetted() && !isset($_SESSION['validated']) || $_SESSION['validated'] != true)
 {
     require_once 'html/enter_pw.php';
+    require_once 'html/footer.php';
     exit;
 }
 
@@ -194,6 +203,7 @@ if (!isset($_SESSION['config']) || $_SESSION['config'] == "")
     $data['err_warn'] = checkFunctions();
 
     require_once 'html/select_config.php';
+    require_once 'html/footer.php';
     exit;
 }
 
@@ -204,7 +214,7 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
 
     $xml = simplexml_load_string($_SESSION['config_xml']);
 
-    $necessary_vars = array("serveradress", "queryport", "serverport", "login_needed", "style", "arrows", "caching", "language");
+    $necessary_vars = array("serveradress", "queryport", "serverport", "login_needed", "style", "arrows", "caching", "language", "display-filter");
     $vars_unavailable = false;
 
     // START VAR CHECKING \\
@@ -236,7 +246,7 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
     $xml->login_needed = $_POST['login_needed'];
     $xml->username = $_POST['username'];
     $xml->password = $_POST['password'];
-    
+
     // Modules
     if (empty($_POST['module']) || $_POST['module'][0] == "")
     {
@@ -263,6 +273,12 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
     $xml->cachetime_channelgrouplist = $_POST['standard_caching'];
 
     $xml->language = $_POST['language'];
+    $xml->usage_stats = $_POST['usage-statistics'];
+
+    $xml->filter = $_POST['display-filter'];
+    $xml->show_icons = $_POST['show_icons'];
+    
+    $xml->show_country_icons = $_POST['show_country_icons'];
 
 
     // Not all necessary values were entered.
@@ -272,6 +288,7 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
         $data = createEditHtml();
 
         require_once 'html/config.php';
+        require_once 'html/footer.php';
         exit;
     }
 
@@ -284,11 +301,11 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
     // create querycache directory
     if (!is_dir($querycachePath))
     {
-        $result = mkdir($querycachePath, 0775, true);
+        $result = mkdir($querycachePath, 0776, true);
 
         if ($result == 0)
         {
-            echo(throwAlert(__("The directory for the query data-cache could not be created. Please make it writable manually."), 22));
+            echo(throwAlert(__("The directory for the query data-cache could not be created. Please create it and make it writable manually."), 22));
             echo(throwInfo(__("Query cache directory: " . str_replace("../", "", $querycachePath))));
         }
     }
@@ -296,11 +313,11 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
     // create imagecache directory
     if (!is_dir($imagecachePath))
     {
-        $result = mkdir($imagecachePath, 0775, true);
+        $result = mkdir($imagecachePath, 0776, true);
 
         if ($result == 0)
         {
-            echo(throwAlert(__("The directory for the query image-cache could not be created. Please make it writable manually."), 23));
+            echo(throwAlert(__("The directory for the query image-cache could not be created. Please create it and make it writable manually."), 23));
             echo(throwInfo(__("Image cache directory: " . str_replace("../", "", $imagecachePath))));
         }
     }
@@ -317,11 +334,10 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
     echo(throwWarning(__('Configfile successfully saved.')));
 
     require_once 'html/config.php';
+    require_once 'html/footer.php';
 
     echo('<script type="text/javascript">
-            $(document).ready(function(){
-                setTimeout(redirect(), 3000);
-            });
+            var ret = true;
           </script>');
 
     exit;
@@ -333,6 +349,7 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
     $data = createEditHtml();
 
     require_once 'html/config.php';
+    require_once 'html/footer.php';
     exit;
 }
 ?>

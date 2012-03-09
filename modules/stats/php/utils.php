@@ -1,9 +1,10 @@
 <?php
 
 /**
- *  This file is part of TeamSpeak3 Webviewer.
+ *  This file is part of devMX TeamSpeak3 Webviewer.
+ *  Copyright (C) 2011 - 2012 Max Rath and Maximilian Narr
  *
- *  TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
+ *  devMX TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
@@ -14,7 +15,7 @@
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with devMX TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 /**
@@ -22,14 +23,23 @@
  * @param type $configfile
  * @return type true if needed, else false
  */
-function needNewEntry($configfile)
+function needNewEntry($configfile, $customDir = null)
 {
-    $fileDir = cacheDir . "stats/$configfile.xml";
+    if ($customDir != null)
+    {
+        $baseDir = $customDir;
+    }
+    else
+    {
+        $baseDir = cacheDir;
+    }
+
+    $fileDir = $baseDir . "stats/$configfile.xml";
     if (!file_exists($fileDir))
     {
-        if (!is_dir(cacheDir . "stats"))
+        if (!is_dir($baseDir . "stats"))
         {
-            mkdir(cacheDir . "stats", 0775);
+            mkdir($baseDir . "stats", 0775);
         }
 
         file_put_contents($fileDir, file_get_contents(s_root . "modules/stats/cache/template.xml"));
@@ -50,9 +60,18 @@ function needNewEntry($configfile)
  * @param type $clients_online
  * @param type $configfile 
  */
-function addEntry($clients_online, $configfile)
+function addEntry($clients_online, $configfile, $customDir = null)
 {
-    $fileDir = cacheDir . "stats/$configfile.xml";
+    if ($customDir != null)
+    {
+        $baseDir = $customDir;
+    }
+    else
+    {
+        $baseDir = cacheDir;
+    }
+
+    $fileDir = $baseDir . "stats/$configfile.xml";
 
     $xml = simplexml_load_file($fileDir);
 
@@ -80,8 +99,7 @@ function createJS($name, $xml, $locale)
 
     $values = array();
 
-    if (!$locale == NULL)
-        setlocale(LC_TIME, $locale);
+    if (!$locale == NULL) setlocale(LC_TIME, $locale);
 
     foreach ($xml->entry as $entry)
     {
@@ -144,7 +162,7 @@ function createPlotOptions($config)
     if ($config['use_tab']) $tab = "true";
     else $tab = "false";
 
-    $js .= '    var plotoptions = {
+    $js .= 'plotoptions = {
         "title": "' . __('User history') . '", 
         "x_formatString":"' . $config['x_formatString'] . '", 
         "y_formatString": "' . $config['y_formatString'] . '", 

@@ -1,20 +1,21 @@
 <?php
 /**
-* This file is part of TeamSpeak3 Webviewer.
-*
-* TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* TeamSpeak3 Webviewer is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with TeamSpeak3 Webviewer. If not, see http://www.gnu.org/licenses/.
-*/
+ *  This file is part of devMX TeamSpeak3 Webviewer.
+ *  Copyright (C) 2011 - 2012 Max Rath and Maximilian Narr
+ *
+ *  devMX TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  TeamSpeak3 Webviewer is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with devMX TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
+ */
 class channelHiding extends ms_Module
 {
     protected $jsModule;
@@ -90,21 +91,21 @@ class channelHiding extends ms_Module
             {
                 $ops = rtrim($ops, ",");
             $ops .= "};\r\n";
-                $this->jsModule->loadJS($ops . "$(document).ready(function() {
+                $this->jsModule->loadJS($ops . "jQuery(document).on('ready', function() {
 
-										$('.channel').each( function() {
+										jQuery('.channel').each( function() {
 
-											if(channelHiding_ops[$(this).attr('id')] == true) {
+											if(channelHiding_ops[jQuery(this).attr('id')] == true) {
 
-												var ms_chan_con = $(this).children('.chan_content');
+												var ms_chan_con = jQuery(this).children('.chan_content');
 												ms_chan_con.siblings().fadeOut(0);
                                                                                                 ms_chan_con.children('.arrow').switchClass('arrow-normal', 'arrow-hidden', 500);
 												ms_chan_con.attr('is_hidden','true');
 											}
 										});
-										$('.spacer').each( function() {
-											if(channelHiding_ops[$(this).attr('id')] == true) {
-												var ms_chan_con = $(this).children('.spacer_con');
+										jQuery('.spacer').each( function() {
+											if(channelHiding_ops[jQuery(this).attr('id')] == true) {
+												var ms_chan_con = jQuery(this).children('.spacer_con');
 												ms_chan_con.siblings().fadeOut(0);
                                                                                                 ms_chan_con.children('.arrow').switchClass('arrow-normal', 'arrow-hidden', 500);
 												ms_chan_con.attr('is_hidden','true');
@@ -112,35 +113,35 @@ class channelHiding extends ms_Module
 										});});", 'text');
             }
             
-            $this->jsModule->loadJS("$(document).ready(function() { 
-											$('.chan_content').click(function() {
-											var ms_id = $(this).parent().attr('id');
-											if($(this).attr('is_hidden') == 'true') {
-												$(this).siblings().fadeIn(" . $this->config['fadeIn_time'] . ");			
-                                                                                                $(this).children('.arrow').switchClass('arrow-hidden', 'arrow-normal', 500);
-												$(this).attr('is_hidden','false');
-												$.get('" . s_http . "dataManager.php',{action: 'delete', field: 'channelHiding', id: ms_id ".$append_config."});
+            $this->jsModule->loadJS("jQuery(document).on('ready', function() { 
+											jQuery('.chan_content').click(function() {
+											var ms_id = jQuery(this).parent().attr('id');
+											if(jQuery(this).attr('is_hidden') == 'true') {
+												jQuery(this).siblings().fadeIn(" . $this->config['fadeIn_time'] . ");			
+                                                                                                jQuery(this).children('.arrow').switchClass('arrow-hidden', 'arrow-normal', 500);
+												jQuery(this).attr('is_hidden','false');
+												jQuery.get('" . s_http . "dataManager.php',{action: 'delete', field: 'channelHiding', id: ms_id ".$append_config."});
 											}
 											else{
-												$(this).siblings().fadeOut(" . $this->config['fadeOut_time'] . ");
-                                                                                                $(this).children('.arrow').switchClass('arrow-normal', 'arrow-hidden', 500);
-												$(this).attr('is_hidden','true');
-												$.get('" . s_http . "dataManager.php',{action: 'save', field: 'channelHiding', id: ms_id, data: 'true' ".$append_config."});
+												jQuery(this).siblings().fadeOut(" . $this->config['fadeOut_time'] . ");
+                                                                                                jQuery(this).children('.arrow').switchClass('arrow-normal', 'arrow-hidden', 500);
+												jQuery(this).attr('is_hidden','true');
+												jQuery.get('" . s_http . "dataManager.php',{action: 'save', field: 'channelHiding', id: ms_id, data: 'true' ".$append_config."});
 											}
 										});
-										$('.spacer_con').click(function() {
-											var ms_id = $(this).parent().attr('id');
-											if($(this).attr('is_hidden') == 'true') {
-												$(this).siblings().fadeIn(" . $this->config['fadeIn_time'] . ");											
-                                                                                                $(this).children('.arrow').switchClass('arrow-hidden', 'arrow-normal', 500);
-												$(this).attr('is_hidden','false');
-												$.get('" . s_http . "dataManager.php',{action: 'delete', field: 'channelHiding', id: ms_id ".$append_config."});
+										jQuery('.spacer_con').click(function() {
+											var ms_id = jQuery(this).parent().attr('id');
+											if(jQuery(this).attr('is_hidden') == 'true') {
+												jQuery(this).siblings().fadeIn(" . $this->config['fadeIn_time'] . ");											
+                                                                                                jQuery(this).children('.arrow').switchClass('arrow-hidden', 'arrow-normal', 500);
+												jQuery(this).attr('is_hidden','false');
+												jQuery.get('" . s_http . "dataManager.php',{action: 'delete', field: 'channelHiding', id: ms_id ".$append_config."});
 											}
 											else{
-												$(this).siblings().fadeOut(" . $this->config['fadeOut_time'] . ");
-                                                                                                $(this).children('.arrow').switchClass('arrow-normal', 'arrow-hidden', 500);
-												$(this).attr('is_hidden','true');
-												$.get('" . s_http . "dataManager.php',{action: 'save', field: 'channelHiding', id: ms_id, data: 'true' ".$append_config."});
+												jQuery(this).siblings().fadeOut(" . $this->config['fadeOut_time'] . ");
+                                                                                                jQuery(this).children('.arrow').switchClass('arrow-normal', 'arrow-hidden', 500);
+												jQuery(this).attr('is_hidden','true');
+												jQuery.get('" . s_http . "dataManager.php',{action: 'save', field: 'channelHiding', id: ms_id, data: 'true' ".$append_config."});
 											}
 										});
 });", 'text');

@@ -1,9 +1,10 @@
 <?php
 
 /**
- *  This file is part of TeamSpeak3 Webviewer.
+ *  This file is part of devMX TeamSpeak3 Webviewer.
+ *  Copyright (C) 2011 - 2012 Max Rath and Maximilian Narr
  *
- *  TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
+ *  devMX TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
@@ -14,7 +15,7 @@
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with devMX TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 class stats extends ms_Module
@@ -43,7 +44,7 @@ class stats extends ms_Module
     function onInfoLoaded()
     {     
 
-        setL10n($this->config['language'], "ms-tsv-stats");
+        setL10n($this->config['language'], "teamspeak3-webviewer");
         $configfile = '';
 
         if (!isset($_GET['config']) || $_GET['config'] == "")
@@ -74,16 +75,16 @@ class stats extends ms_Module
         $this->styleModule->loadStyle(s_http . 'libraries/jqplot/jquery.jqplot.min.css');
         $this->jsModule->loadJS(s_http . 'libraries/jqplot/plugins/jqplot.dateAxisRenderer.min.js');
         $this->jsModule->loadJS(createJS("line1", $xml, $this->config['locale']), 'text');
-        $this->jsModule->loadJS('$.jqplot.config.enablePlugins = true;', "text");
+        //$this->jsModule->loadJS('jQuery.jqplot.config.enablePlugins = true;', "text");
         $this->jsModule->loadJs(createPlotOptions($this->config), "text");
         $this->jsModule->loadJS(s_http . 'modules/stats/js/script.js');
 
         // Height and Width
-        if ($this->config['height'] == NULL) $this->config['height'] = "400";
+        if ($this->config['height'] == NULL) $this->config['height'] = "400px";
 
-        if ($this->config['width'] == NULL) $this->config['width'] = "600";
+        if ($this->config['width'] == NULL) $this->config['width'] = "600px";
 
-        $this->html = '<div class="jqplot" id="stats" style="height:' . $this->config['height'] . 'px;width:' . $this->config['width'] . 'px; "></div>';
+        $this->html = '<div class="jqplot" id="stats" style="height:' . $this->config['height'] . ';width:' . $this->config['width'] . '; "></div>';
 
         // If chart should be shown in Tab
         if ($this->config['use_tab'] == true)

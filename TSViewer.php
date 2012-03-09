@@ -1,9 +1,10 @@
 <?php
 
 /**
- *  This file is part of TeamSpeak3 Webviewer.
+ *  This file is part of devMX TeamSpeak3 Webviewer.
+ *  Copyright (C) 2011 - 2012 Max Rath and Maximilian Narr
  *
- *  TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
+ *  devMX TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
@@ -14,7 +15,7 @@
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with devMX TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
  */
 /**
  * Events thrown by the viewer:
@@ -32,7 +33,7 @@ session_name('ms_ts3Viewer');
 session_start();
 
 // Defines Current Version
-define('version', "1.0");
+define('version', "1.3.2");
 
 // **************************************************************** \\
 // STARTING EDITABLE CONTENT                                        \\
@@ -63,9 +64,9 @@ if (!isset($serveradress) || $serveradress == "")
     }
     else
     {
-        $url = $_SERVER['SERVER_NAME']. ":" . $_SERVER['SERVER_PORT'] . $_SERVER['PHP_SELF'];
+        $url = $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . $_SERVER['PHP_SELF'];
     }
-    
+
     if (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === '' || $_SERVER['HTTPS'] === "off")
     {
         $url = "http://" . $url;
@@ -74,8 +75,12 @@ if (!isset($serveradress) || $serveradress == "")
     {
         $url = "https://" . $url;
     }
+
+    // Replace file names
     $url = str_replace("index.php", "", $url);
     $url = str_replace("TSViewer.php", "", $url);
+    $url = str_replace("ajax.php", "", $url);
+
     define("s_http", $url);
 }
 else
@@ -83,7 +88,10 @@ else
     define("s_http", $serveradress);
 }
 
-//Debug flag causes printing more detailed information in ms_ModuleManager and TSQuery.class.php
+// Enable Ajax-mode
+$ajaxEnabled = false;
+
+// Debug flag causes printing more detailed information in ms_ModuleManager and TSQuery.class.php
 $debug = true;
 if ($debug) error_reporting(E_ALL);
 else
@@ -99,6 +107,14 @@ require_once s_root . 'core/config.inc';
 unregister_globals('_POST', '_GET', '_COOKIE', '_REQUEST', '_SERVER', '_ENV', '_FILES', '_SESSION');
 
 $config_name = isset($_GET['config']) ? $_GET['config'] : 'config';
+
+// Check if ajax Mode should be used
+if (isset($ajaxConfig) && $ajaxConfig != "")
+{
+    $config_name = $ajaxConfig;
+    $ajaxEnabled = true;
+}
+
 str_replace('/', '', $config_name);
 str_replace('.', '', $config_name);
 $paths[] = s_root . "config/" . $config_name . ".xml";
@@ -167,9 +183,6 @@ else
 }
 
 // Checks if the language as been submitted over the URL
-
-
-
 if (isset($_GET['lang']))
 {
     $lang = str_replace(".", "", $_GET['lang']);
@@ -195,7 +208,18 @@ else
 
 
 $config['image_type'] = '.' . $config['image_type'];
-$config['client_name'] = "Maxesstuff TS3 Webviewer";
+$config['client_name'] = "devMX TS3 Webviewer " . version;
+
+
+// Write ajax mode settings to config
+if ($ajaxEnabled)
+{
+    $config['ajaxEnabled'] = true;
+}
+else
+{
+    $config['ajaxEnabled'] = false;
+}
 
 
 // get all needed classes
@@ -225,6 +249,13 @@ catch (Exception $ex)
 
 $mManager = new ms_ModuleManager($config, $config_name, $debug);
 $mManager->loadModule($config['modules']);
+
+// Load usageStatistics if set in the configfile
+if ($config['usage_stats'])
+{
+    $mManager->loadModule("usageStatistics");
+}
+
 $mManager->triggerEvent('Startup');
 
 
@@ -262,7 +293,7 @@ try
     $channellist = $query->channellist("-voice -flags -icon -limits");
     ts3_check($channellist, 'channellist');
 
-    $clientlist = $query->clientlist("-away -voice -groups -info -times");
+    $clientlist = $query->clientlist("-away -voice -groups -info -times -icon -country");
     ts3_check($clientlist, 'clientlist');
 
     $servergroups = $query->servergrouplist();
@@ -319,15 +350,42 @@ $output .= render_server($serverinfo['return']);
 $output .= $mManager->triggerEvent("serverRendered");
 
 // render the channels
-$output .= render_channellist($channellist_obj, $clientlist['return'], $servergroups['return'], $channelgroups['return']);
+switch ($config["filter"])
+{
+    case "clientsonly":
+        $output .= render_channellist($channellist_obj, $clientlist['return'], $servergroups['return'], $channelgroups['return'], true, false);
+        break;
+
+    case "channelclientsonly":
+        $output .= render_channellist($channellist_obj, $clientlist['return'], $servergroups['return'], $channelgroups['return'], false, true);
+        break;
+
+    case "standard":
+        $output .= render_channellist($channellist_obj, $clientlist['return'], $servergroups['return'], $channelgroups['return'], false, false);
+        break;
+
+    default:
+        $output .= render_channellist($channellist_obj, $clientlist['return'], $servergroups['return'], $channelgroups['return'], false, false);
+        break;
+}
 
 
 
 $output .= $mManager->getFooters();
 $output .= "</div>";
-$output .= $mManager->triggerEvent('Shutdown');
+$output .= $mManager->triggerEvent('HtmlShutdown');
 
-echo $output;
+// Check if ajax mode is enabled
+if (isset($ajax) && $ajax)
+{
+    $ajaxScriptOutput = $mManager->loadModule("js")->ajaxJS;
+    $ajaxHtmlOutput = $output;
+}
+// Normal mode
+else
+{
+    echo $output;
+}
 
 $duration = microtime(true) - $start;
 
@@ -348,6 +406,10 @@ function render_server($serverinfo)
  */
 function getServerIcon($serverinfo, $config)
 {
+    global $config;
+
+    if (!$config['show_icons']) return '';
+
     if ($config['use_serverimages'] && isset($serverinfo['virtualserver_icon_id']) && $serverinfo['virtualserver_icon_id'] != 0)
     {
         return '<span class="group-image img_r" style="background-image: url(\'' . $config['serverimages'] . $serverinfo['virtualserver_icon_id'] . '\');">&nbsp;</span>';
@@ -365,17 +427,45 @@ function render_client($clientinfo, $servergrouplist, $channelgrouplist)
     if ($clientinfo['client_type'] == 1) return '';
 
     $rendered = '<div class="client" id="' . $config['prefix'] . 'client_' . htmlspecialchars($clientinfo['clid'], ENT_QUOTES) . '"><p class="client-content">';
-    
+    $iconHtml = '';
+
+    // Get servercroup icons
     $serverGroupIcons = get_servergroup_icons($clientinfo, $servergrouplist);
-    foreach($serverGroupIcons as $iconID) {
-        if($iconID == 0)
-            continue;
-        $rendered .= '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $iconID . '\') no-repeat transparent;">&nbsp;</span>';
+    foreach ($serverGroupIcons as $iconID)
+    {
+        if ($iconID == 0 || !$config['show_icons']) continue;
+        $iconHtml = '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $iconID . '\') no-repeat transparent;">&nbsp;</span>' . $iconHtml;
     }
-    $channelGroupIcon = get_channelgroup_image($clientinfo,$channelgrouplist);
-    if($channelGroupIcon != 0) {
-        $rendered .= '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $channelGroupIcon . '\') no-repeat transparent;">&nbsp;</span>';
+
+    // Get channelgroup icons
+    $channelGroupIcon = get_channelgroup_image($clientinfo, $channelgrouplist);
+    if ($channelGroupIcon != 0)
+    {
+        if ($config['show_icons'])
+        {
+            $iconHtml .= '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $channelGroupIcon . '\') no-repeat transparent;">&nbsp;</span>';
+        }
     }
+
+    // Get clienticon
+    $clientIcon = $clientinfo['client_icon_id'];
+    if ($clientIcon !== 0)
+    {
+        if ($config['show_icons'])
+        {
+            $iconHtml = '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $clientIcon . '\') no-repeat transparent;">&nbsp;</span>' . $iconHtml;
+        }
+    }
+
+    // Country icon
+    $country = $clientinfo['client_country'];
+    if ($country != "" && $country != null && $config['show_country_icons'])
+    {
+        $iconHtml = '<span class="img_r group-image" style="background: url(\'' . s_http . "modules/infoDialog/flags/" . strtolower($country) . ".png" . '\') center center no-repeat;">&nbsp;</span> ' . $iconHtml;
+    }
+
+    $rendered .= $iconHtml;
+
     $rendered .= '<span class="clientimage ' . get_client_image($clientinfo) . '">&nbsp;</span>' . escape_name($clientinfo['client_nickname']);
     $rendered .= "\r\n</p></div>";
     return $rendered;
@@ -414,21 +504,34 @@ function render_channel_start($channel, $clientlist)
         // If channel has a channel icon
         if ($channel['channel_icon_id'] != 0 && $config['use_serverimages'] == true)
         {
-            $output .= '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $channel['channel_icon_id'] . '\') no-repeat transparent;">&nbsp;</span>';
+            if ($config['show_icons'])
+            {
+                $output .= '<span class="img_r group-image" style="background: url(\'' . $config['serverimages'] . $channel['channel_icon_id'] . '\') no-repeat transparent;">&nbsp;</span>';
+            }
         }
 
-        $output .= getIsDefaultIcon($channel, $config);
+
+        if ($config['show_icons'])
+        {
+            $output .= getIsDefaultIcon($channel, $config);
+        }
 
         // If channel is moderated
         if ($channel['channel_needed_talk_power'] > 0)
         {
-            $output .= '<span class="channel-perm-image moderated img_r">&nbsp;</span>';
+            if ($config['show_icons'])
+            {
+                $output .= '<span class="channel-perm-image moderated img_r">&nbsp;</span>';
+            }
         }
 
         // If channel has password
         if ($channel['channel_flag_password'] == '1')
         {
-            $output .= '<span class="channel-perm-image password img_r">&nbsp;</span>';
+            if ($config['show_icons'])
+            {
+                $output .= '<span class="channel-perm-image password img_r">&nbsp;</span>';
+            }
         }
 
         // If arrow needs to be displayed
@@ -472,7 +575,7 @@ function render_channel_start($channel, $clientlist)
             }
             if (($channel->has_childs() || $channel->has_clients($clientlist)) && $config['show_arrows'])
             {
-                $output .= '<img alt="" class="img_l arrow" src="' . $config['imagepath'] . 'arrow_normal' . $config['image_type'] . '"/>';
+                $output .= '<span class="img_l arrow arrow-normal">&nbsp;</span>';
             }
             $output .= '&nbsp;';
 
@@ -490,15 +593,18 @@ function render_channel_start($channel, $clientlist)
                     $output .= '<p class="center spacer_con">';
                     break;
                 case 'l':
-                case '*':
                     $output .= '<p class="left spacer_con">';
+                    break;
+                case '*':
+                    $output .= '<p class="left overflow spacer_con">';
+                    break;
             }
             if (($channel->has_childs() || $channel->has_clients($clientlist)) && $config['show_arrows'])
             {
-                $output .= '<img alt="" class="img_l arrow" src="' . $config['imagepath'] . 'arrow_normal' . $config['image_type'] . '"/>';
+                $output .= '<span class="img_l arrow arrow-normal">&nbsp;</span>';
             }
 
-            $output .= ( $channel['channel_name']['spacer_alignment'] == '*' ? str_repeat(escape_name($channel['channel_name']['spacer_name']), 200) : escape_name($channel['channel_name']['spacer_name'])) . "</p>\r\n";
+            $output .= ( $channel['channel_name']['spacer_alignment'] == '*' ? str_repeat(escape_name($channel['channel_name']['spacer_name']), 600) : escape_name($channel['channel_name']['spacer_name'])) . "</p>\r\n";
         }
     }
 
@@ -519,8 +625,18 @@ function getIsDefaultIcon($channel, $config)
     }
 }
 
-// Renders the Channels
-function render_channellist($channellist, $clientlist, $servergroups, $channelgroups)
+/*
+ * Renders the Channellist
+ * @param mixed $channellist
+ * @param mixed $clientlist
+ * @param mixed $servergroups
+ * @param mixed $channelgroups
+ * @param bool $renderClientsOnly If only clients should be shown in the viewer
+ * @param bool $renderChanelsWithClientsOnly If only channels should be shown with clients inside
+ * @return string output
+ */
+
+function render_channellist($channellist, $clientlist, $servergroups, $channelgroups, $renderClientsOnly = false, $renderChannelsWithClientsOnly = false)
 {
     static $is_rendered;
 
@@ -535,7 +651,24 @@ function render_channellist($channellist, $clientlist, $servergroups, $channelgr
         if (@in_array($channel['cid'], $is_rendered)) continue;
 
         $is_rendered[] = $channel['cid'];
-        $output .= render_channel_start($channel, $clientlist);
+
+        // If only clients should be rendered
+        if (!$renderClientsOnly)
+        {
+            // Check if only channels with clients should be rendered
+            if (!$renderChannelsWithClientsOnly)
+            {
+                $output .= render_channel_start($channel, $clientlist);
+            }
+            else
+            {
+                if (!$channel->isEmpty() && parse_spacer($channel) === false)
+                {
+                    $output .= render_channel_start($channel, $clientlist);
+                }
+            }
+        }
+
         foreach ($clientlist as $client)
         {
             if ($client['cid'] == $channel['cid'])
@@ -553,10 +686,18 @@ function render_channellist($channellist, $clientlist, $servergroups, $channelgr
 
         if ($channel->has_childs())
         {
-            $output .= render_channellist($channel->get_childs(), $clientlist, $servergroups, $channelgroups);
+
+            // If only clients should be rendered
+            if (!$renderClientsOnly && !$renderChannelsWithClientsOnly)
+            {
+                $output .= render_channellist($channel->get_childs(), $clientlist, $servergroups, $channelgroups);
+            }
         }
 
-        $output .= "</div>\r\n";
+        if (!$renderClientsOnly)
+        {
+            $output .= "</div>\r\n";
+        }
     }
 
     return $output;

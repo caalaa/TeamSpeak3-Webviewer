@@ -1,9 +1,10 @@
 <?php
 
 /**
- *  This file is part of TeamSpeak3 Webviewer.
+ *  This file is part of devMX TeamSpeak3 Webviewer.
+ *  Copyright (C) 2011 - 2012 Max Rath and Maximilian Narr
  *
- *  TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
+ *  devMX TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
@@ -14,7 +15,7 @@
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with devMX TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 /**
@@ -59,7 +60,7 @@ function getModules()
 
     while ($module = readdir($dir))
     {
-        if ($module != '..' && $module != '.' && !moduleIsAbstract($module))
+        if ($module != '..' && $module != '.' && file_exists("../modules/$module/$module.xml") && !moduleIsAbstract($module))
         {
             if (file_exists("../modules/$module/$module.php") && file_exists("../modules/$module/$module.xml"))
             {
@@ -135,9 +136,11 @@ function getStyles()
  */
 function flushCache($config)
 {
+    $config .= '.xml';
+
     if (!file_exists("../config/" . $config))
     {
-        return throwAlert($lang->not_exist);
+        return throwAlert(__('The configfile does not exist'));
     }
     else
     {
@@ -145,7 +148,7 @@ function flushCache($config)
 
         if ((string) $config->host == "" || (string) $config->host == NULL || (string) $config->queryport == "" || (string) $config->queryport == NULL || (string) $config->vserverport == "" || (string) $config->vserverport == NULL)
         {
-            return throwAlert(__e('Not all necessary information is given in the configfile to flush the cache.'));
+            return throwAlert(__('Not all necessary information is given in the configfile to flush the cache.'));
         }
         else
         {
@@ -184,14 +187,15 @@ function flushCache($config)
  */
 function deleteConfigfile($file)
 {
+    $file .= '.xml';
     if (!file_exists("../config/" . $file))
     {
-        return throwAlert(__('The configfile you wanted to delete does not exist'));
+        return throwAlert(__('The configfile you wanted to delete does not exist.'));
     }
     else
     {
         unlink("../config/" . $file);
-        return throwWarning(__('The configfile has been successfully deleted'));
+        return throwWarning(__('The configfile has been successfully deleted.'));
     }
 }
 
@@ -208,7 +212,7 @@ function checkFunctions()
         if (!function_exists($value))
         {
             // Create Warnings
-            $html .= throwAlert(__('The necessary function') . ' ' . $value . ' ' . __('is not available on your webspace. Please contact your service provider.'), 25);
+            $html .= throwAlert(sprintf(__('The required function %s is not available on your webspace. Please contact your service provider.'), $value), 25);
         }
     }
 
@@ -231,29 +235,11 @@ function checkPermissions($directories)
         if (is_writable($dir))
         {
             $results[$dir] = true;
-            continue;
         }
         else
         {
-            setChmodRecursive($dir, 0775);
-
-            if (is_writable($dir))
-            {
-                $results[$dir] = true;
-                continue;
-            }
-            else
-            {
-                setChmodRecursive($dir, 0777);
-
-                if (is_writable($dir))
-                {
-                    $results[$dir] = true;
-                    continue;
-                }
-            }
+            $results[$dir] = false;
         }
-        $results[$dir] = false;
     }
     return $results;
 }
@@ -263,6 +249,7 @@ function checkPermissions($directories)
  * @since 0.9
  * @param type $directory
  * @param type $chmod 
+ * @deprecated since 1.3.1, deleted all chmod-modifications
  */
 function setChmodRecursive($path, $chmod)
 {
@@ -293,8 +280,7 @@ function setChmodRecursive($path, $chmod)
  */
 function isNullOrEmtpy($var)
 {
-    if(!isset($var) || empty ($var) || $var == null || $var = "")
-        return true;
+    if (!isset($var) || empty($var) || $var == null || $var = "") return true;
     return falsE;
 }
 

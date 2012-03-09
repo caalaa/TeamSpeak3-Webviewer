@@ -8,6 +8,63 @@
 ~ Minor Change
 * Fix
 
+v1.4
++ Issue #69: Added option to hide all icons on the right side
++ Issue #68: Added option to display country icons
+~ Issue #72: Added div element at ajax code output in welcome screen
+~ Issue #73: Moved country flag into title bar in the infoDialog
+
+v1.3.2
+~ Issue #57: Clienticons (set via permission system) are now displayed, too
+* Issue #56: Updated all styles that they don't apply styles at global elements like <body> or <p>
+* Issue #55: transfered all hardcoded module-css styles into the css file of the modules
+* Issue #48: Spam of warning messages in apache log (thanks to Samifighter)
+* Issue #61: Server- and Channelgrouicons are now displayed in the right order
+* Issue #59: All client states like talking and channelcommander are displayed correctly now
+* Issue #60: Fixed bug that some script and style files were included twice
+* Issue #58: Fixed display issue with custom spacers like [*spacer1]♥. The chars were not repeated properly.
+* Issue #65: Fixed bug in internet explorer where only cryptical chars where shown in the infoDialog
+* Issue #66: Fixed bug of failing language selection on gettext enabled webserver
+* Issue #67: Using of options in the function json_encode raised required php version to 5.3
+* Issue #62: Fixed bug in channelhiding where channels faded out and in again immediatly
+
+v1.3.1
+~ Issue #54: Viewer uses no jQuery and not $ for jQuery to prevent conflicts with other libs
+* Issue #52: deleted chmod.sh and added secure-permissions.sh and setup-permissions.sh ( Thanks to brrrt (forum.teamspeak.com))
+* Issue #53: Bugs in modules htmlframe and autorefresh, which caused a notice
+
+v1.3
++ new iconpackage (devMX Shield-Icons)
+! Issue #49: The viewer can be included via ajax too (for more informatio see docs)
+* Issue #47: Fixed div-code failure (thanks to outlaws-clan.eu)
+* Updated jQuery to 1.7.1 and jQueryUI to 1.8.16
+* Issue #50: Missing " in 'get code to include' (Thanks to Marco (konzil-gilde.de))
+* Issue #51: js_Login didn't show the link to ts if user-choosed username was enabled (Thanks to Marco (konzil-gilde.de))
+
+v1.2
+! Issue #46: Added some options for filtering the viewer, for example show only clients or only channels with clients inside
+~ Issue #45: Added a dialog which shows the code to include the viewer into a webpage
+* Issue #43: TS Query Groups and wrong server groups were displayed as a users group in the infoDialog module
+* Issue #44: The client version in the infoDialog was shown as an unix timestamp. The build has been removed now.
+
+v1.1
++ Issue #25: added a cron file to update the statistics
+~ Issue #33: added button to disable or enable all modules in the installscript
+~ Issue #30: redesigned loginButton and js_login
+~ Issue #17: redesigned welcome screen and installscript
+~ Issue #31: Added opt-in usage statistics. They can be enabled in the installation script
+* Issue #32: Flushing cache in installscript did not work
+* Issue #34: If the password is preset in the configfile the js_login and loginButton module are crashing
+* Issue #20: added custom jQueryUI Theme which will be uses as default
+* Issue #37: arrows are shown wrong if channel is a spacer
+* Issue #39: The l10n didn't work properly or at all if the php gettext module was enabled (Thanks to xiloid (http://forum.teamspeak.com))
+* Issue #38: A whitescreen in the installscrip occured when the php DOM extension was not enabled (Thanks to xiloid (http://forum.teamspeak.com))
+* Issue #36: If a login to the query is required the icon download didn't login itself
+* Issue #41: The infoDialog shows now the name of the server- and channelgroups near to the icon
+* Issue #35: added a bash script to automatically set chmod
+* Issue #40: closing html and body tag was missing
+* Issue #42: added links to the modules documentation in the installscript
+
 v 1.0
 ! There are two module configfiles now:
     - one global one for all viewer-configfiles

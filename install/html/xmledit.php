@@ -1,8 +1,9 @@
 <?php
 /**
- *  This file is part of TeamSpeak3 Webviewer.
+ *  This file is part of devMX TeamSpeak3 Webviewer.
+ *  Copyright (C) 2011 - 2012 Max Rath and Maximilian Narr
  *
- *  TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
+ *  devMX TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
@@ -13,8 +14,8 @@
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
- */
+ *  along with devMX TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
+ */ 
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -23,21 +24,21 @@
     <head>
         <title>TeamSpeak3 Webviewer - Installation</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+        
         <!-- Jquery -->
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 
         <!-- Jquery UI -->
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"></script>
-        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/redmond/jquery-ui.css" type="text/css" />
+
+        <link rel="stylesheet" href="../../libraries/fluent/css/fluent.css" type="text/css" />
         <link rel="stylesheet" href="../../libraries/codemirror/lib/codemirror.css" type="text/css">
-        <script src="../../libraries/codemirror/lib/codemirror.js" type="text/javascript"></script>
-        <script src="../../libraries/codemirror/mode/xml/xml.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../../libraries/codemirror/mode/xml/xml.css" type="text/css">
+        <link rel="stylesheet" href="../../libraries/codemirror/theme/default.css" type="text/css">
 
         <!-- Style -->
         <link rel="stylesheet" href="../css/xmledit.css" type="text/css">
-        
+
         <script type="text/javascript">
             $(document).ready(function(){
                 $("input:submit").button();
@@ -52,6 +53,8 @@
             <div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em; margin-bottom: 10px;"> 
                 <p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
                     <?php __e('You can edit the global and the local configfile of the module here. If you have finished just press the button. The local configfile overrides all configparameters set in the global one. Set \'none\' in the local config, if you want to use the parameter of the global config') ?></p>
+                <p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+                    <a href="http://devmx.de/en/software/teamspeak3-webviewer/dokumentation/modules/<?php echo(strtolower($module)) ?>" target="_blank"><?php __e('Learn more about this module') ?></a></p>
             </div>
 
             <div id="tabs">
@@ -73,16 +76,19 @@
                 </div>
             </div>
 
-            <script type="text/javascript">  
-                
+        </div>
+        <script src="../../libraries/codemirror/lib/codemirror.js" type="text/javascript"></script>
+        <script src="../../libraries/codemirror/mode/xml/xml.js" type="text/javascript"></script>
+        <script type="text/javascript">              
+            $(document).ready(function(){                        
                 var globalEditor = CodeMirror.fromTextArea(document.getElementById("global-config"), {mode: {name: "xml", alignCDATA: true},   lineNumbers: true });
                 var localEditor = CodeMirror.fromTextArea(document.getElementById("local-config"), {mode: {name: "xml", alignCDATA: true},   lineNumbers: true });
                 
                 $( "#tabs" ).bind( "tabsshow", function(event, ui) {
                     globalEditor.refresh();
                     localEditor.refresh();
-                });             
-            </script>
-        </div>
+                });   
+            });        
+        </script>
     </body>
 </html>

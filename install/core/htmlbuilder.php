@@ -1,9 +1,10 @@
 <?php
 
 /**
- *  This file is part of TeamSpeak3 Webviewer.
+ *  This file is part of devMX TeamSpeak3 Webviewer.
+ *  Copyright (C) 2011 - 2012 Max Rath and Maximilian Narr
  *
- *  TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
+ *  devMX TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
@@ -14,13 +15,13 @@
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with devMX TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 /**
  * Returns the $data array for select_config.php
- * @todo include directly in file
  * @return string 
+ * @deprecated directly in html file
  */
 function createConfigHtml()
 {
@@ -39,7 +40,12 @@ function createConfigHtml()
 
     foreach ($files as $file)
     {
-        $html['selector'] .= '<p><fieldset><button style="width:200px;" onclick="javascript: setconfig(\'' . $file . '\')">' . $file . ' (' . __('edit') . ')</button><span onclick="javascript: showViewer(\'' . $file . '\');"style="padding:4px; margin-left:15px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . __('Show Viewer') . '</span><span onclick="javascript: flushCache(\'' . $file . '.xml\');"style="padding:4px; margin-left:10px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . __('Flush cache') . '</span><span onclick="javascript: deleteConfig(\'' . $file . '.xml\');"style="padding:4px; margin-left:10px; cursor: pointer;" class="ui-state-highlight ui-corner-all">' . __('delete configfile') . '</span></fieldset></p>';
+        $html['selector'] .= '<fieldset class="config">';
+        $html['selector'] .= '<a href="index.php?action=set_config&configname=' . $file . '"><span class="ui-corner-all ui-state-default">' . $file . ' (' . __('edit') . ')</span></a>';
+        $html['selector'] .= '<a href="../index.php?config=' . $file . '" target="_blank"><span class="ui-corner-all ui-state-highlight">' . __('show') . '</span></a>';
+        $html['selector'] .= '<a href="index.php?action=fc&config=' . $file . '"><span class="ui-corner-all ui-state-highlight">' . __('flush cache') . '</span></a>';
+        $html['selector'] .= '<a href="index.php?action=delete&config=' . $file . '"><span class="ui-corner-all ui-state-highlight">' . __('delete file') . '</span></a>';
+        $html['selector'] .= '</fieldset>';
     }
     return $html;
 }
@@ -57,69 +63,45 @@ function createEditHtml()
 
     $configfile = simplexml_load_string($_SESSION['config_xml']);
 
-    $html['serveradress_value'] = $configfile->host;
-    $html['queryport_value'] = $configfile->queryport;
-    $html['serverport_value'] = $configfile->vserverport;
+    $html['config'] = $configfile;
+    $html['serveradress_value'] = (string) $configfile->host;
+    $html['queryport_value'] = (string) $configfile->queryport;
+    $html['serverport_value'] = (string) $configfile->vserverport;
+    $html['display-filter'] = (string) $configfile->filter;
 
-
-    // Login
-    if ($configfile->login_needed == "true" || $configfile->login_needed == '')
-    {
-        $html['login_html'] = '<input id="login-needed-true" type="radio" name="login_needed" value="true" checked="checked"> ' . __('Yes') . '<br>
-            <input id="login-needed-false" type="radio" name="login_needed" value="false"> ' . __('No');
-    }
-    else
-    {
-        $html['login_html'] = '<input id="login-needed-true" type="radio" name="login_needed" value="true"> ' . __('Yes') . '<br>
-            <input id="login-needed-false" type="radio" name="login_needed" value="false" checked="checked"> ' . __('No');
-    }
+    $html['login_needed'] = (string) $configfile->login_needed;
 
     $html['username_value'] = (string) $configfile->username;
     $html['password_value'] = (string) $configfile->password;
 
+    $html['show-images'] = (string) $configfile->show_icons;
+    
+    $html['show_hierarchy_icons'] = (string) $configfile->show_hierarchy_icons;
+
     // Modules
     $modules = getModules();
 
-    $html['module_html'] = '';
-
-    $mod_sort_enabled = '<ul id="sort1" class="sortable">';
-    $mod_sort_disabled = '<ul id="sort2" class="sortable">';
     natcasesort($modules);
 
     $enabled_modules = explode(",", $configfile->modules);
     unset($enabled_modules[array_search("htmlframe", $enabled_modules)]);
     unset($enabled_modules[array_search("style", $enabled_modules)]);
 
-    // Enabled Modules
+    $html['enabledModules'] = $enabled_modules;
+
+    // Unset enabled modules
     foreach ($enabled_modules as $module)
     {
         unset($modules[array_search($module, $modules)]);
-        $mod_sort_enabled .= '<li id="' . $module . '" class="ui-state-highlight"><a href="core/xmledit.php?module=' . $module . '" class="color" >' . $module . '</a></li>';
     }
 
-    // Disabled Modules
-    foreach ($modules as $module)
-    {
-        $mod_sort_disabled .= '<li id="' . $module . '" class="ui-state-default"><a href="core/xmledit.php?module=' . $module . '" class="color">' . $module . '</a></li>';
-    }
 
-    $mod_sort_enabled .= '</ul>';
-    $mod_sort_disabled .= '</ul>';
+    // Set disabled modules
+    $html['disabledModules'] = $modules;
 
-    $html['mod_sort_enabled'] = $mod_sort_enabled;
-    $html['mod_sort_disabled'] = $mod_sort_disabled;
 
     // Servericons
-    if ($configfile->use_serverimages == "true" || (string) $configfile->use_serverimages == '')
-    {
-        $html['servericons_radio'] = '<input id="servericons-true" type="radio" name="servericons" value="true" checked="checked"><span> ' . __('Enabled') . '</span><br>
-            <input id="servericons-false" type="radio" name="servericons" value="false"><span> ' . __('Disabled') . '</span>';
-    }
-    else
-    {
-        $html['servericons_radio'] = '<input id="servericons-true" type="radio" name="servericons" value="true"><span> ' . __('Enabled') . '<br>
-            <input id="servericons-false" type="radio" name="servericons" value="false"  checked="checked"><span> ' . __('Disabled') . '</span>';
-    }
+    $html['downloadIcons'] = $configfile->use_serverimages;
 
     // Imagepack
     $imagepacks = getImagePacks();
@@ -148,13 +130,13 @@ function createEditHtml()
     // Arrows
     if ($configfile->show_arrows == "true" || $configfile->show_arrows == '')
     {
-        $html['arrow_html'] = '<input type="radio" name="arrows" value="true" checked="checked"><span> ' . __('Enabled') . '<br>
-            <input type="radio" name="arrows" value="false"  ><span> ' . __('Disabled') . '</span>';
+        $html['arrow_html'] = '<input type="radio" name="arrows" value="true" checked="checked"><span> ' . __('Enabled') . '</span><br>
+            <input type="radio" name="arrows" value="false"  ><span> ' . __('Disabled') . '<span>';
     }
     else
     {
-        $html['arrow_html'] = '<input type="radio" name="arrows" value="true" > ' . __('Enabled') . '<br>
-            <input type="radio" name="arrows" value="false" checked="checked"> ' . __('Disabled') . '</span>';
+        $html['arrow_html'] = '<input type="radio" name="arrows" value="true" ><span> ' . __('Enabled') . '<br></span>
+            <input type="radio" name="arrows" value="false" checked="checked"><span> ' . __('Disabled') . '</span>';
     }
 
     // Caching
@@ -175,9 +157,9 @@ function createEditHtml()
     // Language
     $html['language_html'] = "";
     $languages = $utils->getLanguages();
-    $selected_lang = (string)$_SESSION['lang'];
-    
-    if(isset($configfile->language) && (string)$configfile->language != "")
+    $selected_lang = (string) $_SESSION['lang'];
+
+    if (isset($configfile->language) && (string) $configfile->language != "")
     {
         $selected_lang = (string) $configfile->language;
     }

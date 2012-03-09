@@ -1,7 +1,8 @@
 /**
- *  This file is part of TeamSpeak3 Webviewer.
+ *  This file is part of devMX TeamSpeak3 Webviewer.
+ *  Copyright (C) 2011 - 2012 Max Rath and Maximilian Narr
  *
- *  TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
+ *  devMX TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
@@ -12,38 +13,38 @@
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
- */
+ *  along with devMX TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
+ */ 
+
+var modules = new Array();
 
 $(document).ready(function(){
     
-    var modules = new Array();
+    // Check for return 
+    if(typeof ret != 'undefined' && ret != undefined && ret != null && ret == true)
+    {
+        loc = "?action=return";
+        window.location.href = loc;
+    }
+    
+    // Tabs
+    $('#tabs').tabs({
+        fx: {
+            height: "toggle", 
+            duration: "slow"
+        },
+        show: function(event, ui) {
+            $.smoothScroll({
+                scrollTarget: '#last',
+                speed: 1200
+            });
+        }
+    });
     
     // jQueryUI
     $("button, input:submit, input:button, .button").button();  
-    
-    // jQTransfom
-    $('form.jqform').jqTransform();
-    
-    // Colorbox
-    $('.color').colorbox({
-        innerWidth:"1025px",
-        height:"650px", 
-        iframe:true,
-        scrolling: false,
-        fastIframe: false
-    });
-    
-    // Tooltips
-    $('td[title], a[title], span[title], p[title]').qtip({
-        style:{
-            classes: 'ui-state-highlight ui-corner-all tooltip'
-        },
-        position:{
-            my: 'left-top', 
-            at: 'bottom-center'
-        }
-    });
+    $("input:text, input:password").TextBox();
+    $("fieldset").FieldSet();
     
     // ********************************************************************** \\
     // Modules Start
@@ -62,12 +63,7 @@ $(document).ready(function(){
 
      
     $('#sort1').bind("sortstop sortremove sortreceive", function(event,ui){
-        modules = null;
-        modules = new Array();
-            
-        modules = $('#sort1').sortable('toArray');
-            
-        document.getElementById("modules_hidden").value = modules;
+        updateModules();
     });    
     // ********************************************************************** \\
     // Modules End
@@ -75,7 +71,7 @@ $(document).ready(function(){
     
     
     // Display Warnings, Errors, etc.
-    $(".warning, .info, .alert").delay(500).fadeIn(500);
+    $(".warning, .info, .alert").delay(500).fadeIn(500).delay(4000).fadeOut(2000);
     
     // ********************************************************************** \\
     // Hiding of several fields Start
@@ -123,9 +119,9 @@ $(document).ready(function(){
         }
     });
     
-    // ********************************************************************** \\
-    // Hiding of several fields Stop
-    // ********************************************************************** \\
+// ********************************************************************** \\
+// Hiding of several fields Stop
+// ********************************************************************** \\
 });
 
 // Sets the requested language
@@ -135,31 +131,42 @@ function setLang(language)
     window.location.href = lang;
 }
 
-// Sets the requested configfile to edit
-function setconfig(file)
+// Enables all modules
+function enableAllModules()
 {
-    var href = "index.php?action=set_config&configname=" + file;
-    window.location.href = href;
+    $("#sort1").append($("#sort2>li"));
+    updateModules();
 }
 
-// Shows the viewer of the requested configfile
-function showViewer(config)
+// Disable all modules
+function disableAllModules()
 {
-    var href="../index.php?config=" + config;
-    window.location.href = href;
+    $("#sort2").append($("#sort1>li"));
+    updateModules();
+
 }
 
-// Flushs the cache of the requested configfile
-function flushCache(config)
-{
-    var href="?action=fc&config="+config;
-    window.location.href = href;
+// Updates the hidden modules field
+function updateModules()
+{       
+    modules = null;
+    modules = new Array();         
+    modules = $('#sort1').sortable('toArray');          
+    document.getElementById("modules_hidden").value = modules;
 }
 
-// Deletes the requested configfile
-function deleteConfig(config)
+// Opens the module configuration in a jQueryUI Dialog
+function openModuleConfig(module)
 {
-    var href="?action=delete&config="+config
-    window.location.href = href;
+    var dialogOptions = {
+        minWidth: 1100, 
+        minHeight: 700, 
+        title: "devMX Webviewer", 
+        hide: 'fade', 
+        show: 'fade',
+        modal: true
+    }
+    
+    $("#module-config").dialog(dialogOptions).attr("src", 'core/xmledit.php?module=' + module);
 }
 

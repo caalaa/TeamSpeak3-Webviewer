@@ -1,13 +1,133 @@
+/**
+ *  This file is part of devMX TeamSpeak3 Webviewer.
+ *  Copyright (C) 2011 - 2012 Max Rath and Maximilian Narr
+ *
+ *  devMX TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  TeamSpeak3 Webviewer is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with devMX TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+*
+{
+    font-family: sans-serif;
+}
+
+html
+{
+    height: 100%;
+}
+
+body
+{
+    margin: 0;
+    background: #ffffff;
+    background: -moz-linear-gradient(top, #ffffff 0%, #e5e5e5 100%) fixed;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e5e5e5)) fixed;
+    background: -webkit-linear-gradient(top, #ffffff 0%,#e5e5e5 100%) fixed;
+    background: -o-linear-gradient(top, #ffffff 0%,#e5e5e5 100%) fixed;
+    background: -ms-linear-gradient(top, #ffffff 0%,#e5e5e5 100%) fixed;
+    background: linear-gradient(top, #ffffff 0%,#e5e5e5 100%) fixed;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+div.devmx-name
+{
+    font-size: 30px;
+    padding: 15px;
+    max-width: 600px;
+    width: auto;
+    color: white;
+    background: rgba( 30, 30, 30, 0.9 );
+    -webkit-box-shadow: 0 0 30px rgba( 255, 255, 255, 0.1 );
+    -moz-box-shadow: 0 0 30px rgba( 255, 255, 255, 0.1 );
+    box-shadow: 0 0 30px rgba( 255, 255, 255, 0.1 );
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    font-family: sans-serif;
+    margin: auto;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+div.devmx-name span
+{
+    font-size: 15px;
+    text-shadow: 0 1px 3px rgba( 0, 0, 0, 0.4 );
+}
+
+fieldset.config
+{
+    margin-bottom: 6px;
+}
+
 p, span,a, tr, td, button, input, .tooltip
 {
     font-size: 14px;
 }
 
-div#language, div#selection, div#password
+div.center
+{
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.warning, div.alert
+{
+    width: 800px !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div#language, div#config-selection, div#password, div#config
 {
     margin-left: auto;
     margin-right: auto;
-    margin-top: 100px;
+
+    padding: 20px;
+
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+
+    border: 1px #E0E0E0 solid;
+
+
+    background: -moz-linear-gradient(top, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.5) 1%, rgba(242,242,242,1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.5)), color-stop(1%,rgba(255,255,255,0.5)), color-stop(100%,rgba(242,242,242,1)));
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0.5) 0%,rgba(255,255,255,0.5) 1%,rgba(242,242,242,1) 100%);
+    background: -o-linear-gradient(top, rgba(255,255,255,0.5) 0%,rgba(255,255,255,0.5) 1%,rgba(242,242,242,1) 100%);
+    background: -ms-linear-gradient(top, rgba(255,255,255,0.5) 0%,rgba(255,255,255,0.5) 1%,rgba(242,242,242,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80ffffff', endColorstr='#f2f2f2',GradientType=0 );
+    background: linear-gradient(top, rgba(255,255,255,0.5) 0%,rgba(255,255,255,0.5) 1%,rgba(242,242,242,1) 100%);
+
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 0 5px #888;
+    box-shadow: 0 0 5px #888;
+}
+
+div#config-selection, div#password
+{
+    margin-top: 35px;
+}
+
+div#config
+{
+    width: 1000px;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 0 5px #888;
+    box-shadow: 0 0 5px #888;
+    margin-top: 35px;
 }
 
 div#language, div#password
@@ -15,7 +135,7 @@ div#language, div#password
     width: 600px;
 }
 
-div#selection
+div#config-selection
 {
     width: 800px;
 }
@@ -38,17 +158,56 @@ div#alert, div#warning, div#info
     font-size: 14px;
 }
 
-div#config
+div.config-select
 {
-    margin-top: 100px;
+    background-color: #e6e4e4;
+    border-radius: 5px;
+    margin: auto;
+    width: 100%;
 }
 
-.sortable
+a.select-button
+{
+    text-decoration: none;
+}
+
+span.select-button
+{
+    padding: 5px;
+    width: 250px;
+    margin-left: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+span.config-button
+{
+    background: #a4a4a4;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    cursor: pointer;
+}
+
+.config
+{
+    padding: 0.7em;
+}
+
+.config a span
+{
+    padding: 5px;
+    margin-right: 5px;
+}
+
+ul.sortable
 {
     background-color: #eee;
     padding: 15px;
     width: 200px;
-    height: 400px;
+    height: 350px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
 }
 
 li
@@ -57,8 +216,99 @@ li
     padding: 5px;
 }
 
-tr
+table.config
 {
-    margin-bottom: 15px !important;
-    padding: 3px;
+    padding: 60px;
+    background-color: #e6e4e4;
+    border-radius: 5px;
+    margin: auto;
+    width: 900px;
+}
+
+table.config td
+{
+    padding: 8px;
+}
+
+
+table.config-select
+{
+    padding: 10px; 
+}
+
+table.config-select td
+{
+    padding: 10px;
+}
+
+table.style tr td:nth-child(2),
+table.language tr td:nth-child(2)
+{
+    width: 150px;
+}
+
+table.config td.option-descr,
+table.config td.option-descr span
+{
+    font-size: 12px;
+    color: #555;
+    padding-left: 40px;
+}
+
+li.module-active, 
+li.module-inactive
+{
+    padding: 5px;
+    margin: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px#888;
+    box-shadow: 0 0 5px #888;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+li.module-inactive
+{
+    background: #8FC400;
+    background: -moz-linear-gradient(top, #8FC400 0%, #8FC400 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#8FC400), color-stop(100%,#8FC400));
+    background: -webkit-linear-gradient(top, #8FC400 0%,#8FC400 100%);
+    background: -o-linear-gradient(top, #8FC400 0%,#8FC400 100%);
+    background: -ms-linear-gradient(top, #8FC400 0%,#8FC400 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8fc400', endColorstr='#8fc400',GradientType=0 );
+    background: linear-gradient(top, #8FC400 0%,#8FC400 100%);
+}
+
+li.module-active
+{
+    background: #B6E026;
+    background: -moz-linear-gradient(top, #B6E026 0%, #ABDC28 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#B6E026), color-stop(100%,#ABDC28));
+    background: -webkit-linear-gradient(top, #B6E026 0%,#ABDC28 100%);
+    background: -o-linear-gradient(top, #B6E026 0%,#ABDC28 100%);
+    background: -ms-linear-gradient(top, #B6E026 0%,#ABDC28 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b6e026', endColorstr='#abdc28',GradientType=0 );
+    background: linear-gradient(top, #B6E026 0%,#ABDC28 100%);
+}
+
+iframe#module-config
+{
+    border: 0;
+    overflow: hidden;
+    width: 1050px !important;
+    height: 700px !important;
+}
+
+span#last
+{
+    margin-top: 10px;
+}
+
+span.topnav a
+{
+    height: 30px;
 }

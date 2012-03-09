@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <!-- Information -->
+    <info>
+        <author>Maximilian Narr</author>
+        <homepage>http://devmx.de</homepage>
+        
+        <!-- Don't change anything here -->
+        <!-- Ändern Sie hier nichts! -->
+        <abstract>true</abstract>    
+    </info>
+</config>
