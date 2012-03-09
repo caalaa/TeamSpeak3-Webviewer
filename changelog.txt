@@ -13,6 +13,8 @@ v1.4
 + Issue #68: Added option to display country icons
 ~ Issue #72: Added div element at ajax code output in welcome screen
 ~ Issue #73: Moved country flag into title bar in the infoDialog
+~ Issue #76: Added effect to infoDialog
+* Issue #75: Fixed wrong position on infoDialog
 
 v1.3.2
 ~ Issue #57: Clienticons (set via permission system) are now displayed, too

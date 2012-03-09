@@ -22,6 +22,7 @@ class infoDialog extends ms_Module
 
     protected $jsModule;
     protected $styleModule;
+    protected $infoDialogOptions = array();
 
     function init()
     {
@@ -48,10 +49,11 @@ class infoDialog extends ms_Module
 				autoOpen: false,
 				title: ms_title,
                                 resizeable: false,
-				position: [ms_pos.x+20,ms_pos.y+20],";
+				position: [pos.x+20,pos.y+20],
+                                show: {effect: 'fadeIn', duration: 200},
+                                hide: {effect: 'fadeOut', duration: 200},";
 
         // Reading sizes from config files, else use standard values
-
         $width = 400;
         $height = 230;
 
@@ -95,7 +97,7 @@ class infoDialog extends ms_Module
                                                                         ms_id = jQuery(this).attr('id');
 						
                                                                         ms_title = '" . __('loading...') . "';
-                                                                        ms_pos = ms_getPosition(ms_client);
+                                                                        pos = getDialogPosition(this);
                                                                         ms_dialogs[ms_id] = jQuery('#dialog').html('<img  style=\" margin-left: 50%; margin-right:50%; margin-top: 25px;\" src=\"" . s_http . "modules/infoDialog/img/ajax-loader.gif\" alt=\"\"><\/img>').dialog(" . $dialog_conf . ");
                                                                                 
                                                                         ms_dialogs[ms_id].dialog('open');

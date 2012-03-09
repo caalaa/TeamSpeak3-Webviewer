@@ -42,12 +42,13 @@ class htmlframe extends ms_Module
                     <!-- End Meta Information -->
                     ' . $this->mManager->triggerEvent("Head") . '</head>
                     <body>
+                    <div class="devmx-webviewer-top"></div>
                     <div class="devmx-webviewer">' . $this->mManager->triggerEvent("Body");
             return $html;
         }
         else
         {
-            return '<div class="devmx-webviewer">' . $this->mManager->triggerEvent("Head") . $this->mManager->triggerEvent("Body");
+            return '<div class="devmx-webviewer-top"></div><div class="devmx-webviewer">' . $this->mManager->triggerEvent("Head") . $this->mManager->triggerEvent("Body");
         }
     }
 

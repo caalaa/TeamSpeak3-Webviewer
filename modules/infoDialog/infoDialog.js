@@ -15,30 +15,17 @@
  *  You should have received a copy of the GNU General Public License
  *  along with devMX TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
  */
-function ms_getPosition(obj)
+
+// Returns the current position on the viewport of an object
+function getDialogPosition(obj)
 {
     var pos = {
-        x:0, 
-        y:0
+        x: 0,
+        y: 0
     };
-
-    do {
-        pos.x += obj.offsetLeft;
-        pos.y += obj.offsetTop;
-    }
-    while (obj = obj.offsetParent);
+    
+    pos.x = jQuery(obj).offset().left - jQuery("body").scrollLeft();
+    pos.y = jQuery(obj).offset().top - jQuery("body").scrollTop();
+    
     return pos;
 }
-
-
-function pausecomp(millis)
-{
-    var date = new Date();
-    var curDate = null;
-
-    do {
-        curDate = new Date();
-    }
-    while(curDate-date < millis);
-} 
-

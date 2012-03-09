@@ -33,6 +33,10 @@ class js extends ms_Module
         $this->js_sent = false;
         $this->ajaxJS = array();
         $this->ajaxEnabled = $this->config['ajaxEnabled'];
+        
+        // Add s_http and s_root for javascript
+        $this->loadJSVar("s_http", s_http);
+        $this->loadJSVar("s_root", s_root);
     }
 
     /**
