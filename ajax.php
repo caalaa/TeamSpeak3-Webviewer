@@ -28,7 +28,7 @@ if (isset($_GET['s']) && $_GET['s'] == "true" && isset($_GET['config']) && isset
     $id = str_replace("#", "", $_GET['id']);
     
     $config = $_GET['config'];
-    $data = <<<'EOF'
+    $data = <<<"EOF"
 var scriptdata = '
 <script type="text/javascript" src="%s/ajax.php?config=%s&json=false"><\/script>
 <script type="text/javascript">
@@ -90,7 +90,7 @@ else if (isset($_GET['config']) && isset($_GET['json']))
     {
         header('Content-type: application/json');
 
-        echo($_GET['callback'] . '(' . json_encode(array("html" => $ajaxHtmlOutput, "script" => $ajaxScriptOutput), JSON_HEX_QUOT) . ')');
+        echo($_GET['callback'] . '(' . json_encode(array("html" => $ajaxHtmlOutput, "script" => $ajaxScriptOutput)) . ')');
     }
 }
 ?>
