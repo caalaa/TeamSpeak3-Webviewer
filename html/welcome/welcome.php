@@ -58,8 +58,8 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
                     <a class="nav" href="http://devmx.de/en/software/teamspeak3-webviewer/ubersetzen" target="_blank"><span class="nav-element orange"><?php __e('Help us translating the webviewer')?></span></a>
                     <span onclick="javascript: openFacebookDialog();" class="nav nav-element orange"><?php __e('Become fan at facebook'); ?></span>
                     <a class="nav" href="<?php echo(s_http . 'install/index.php' . $newlang) ?>"><span class="nav-element orange"><?php __e('Installation and Configuration') ?></span></a>
-                    <a class="nav" target="_blank" href="http://en.devmx.de/emailsupport"><span class="nav-element orange"><?php __e('Support') ?></span></a>
-                    <a class="nav" target="_blank" href="http://en.devmx.de/software/teamspeak3-webviewer/dokumentation"><span class="nav-element orange"><?php __e('Documentation') ?></span></a>
+                    <a class="nav" target="_blank" href="http://support.devmx.de"><span class="nav-element orange"><?php __e('Support') ?></span></a>
+                    <a class="nav" target="_blank" href="http://devmx.de/en/software/teamspeak3-webviewer/dokumentation"><span class="nav-element orange"><?php __e('Documentation') ?></span></a>
                     <a class="nav" href="ts3server://devmx.de"><span class="nav-element orange"><?php __e('TeamSpeak') ?></span></a>
                 </div>
                 <div id="logo"><img style="margin-left: -175px;" src="<?php echo s_http; ?>html/welcome/logo.png" alt="" /></div>
