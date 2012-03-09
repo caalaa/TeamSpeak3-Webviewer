@@ -27,6 +27,10 @@
     <!-- Wenn true, schließt sich der Dialog wenn die Maus von Client geht, sonst muss er automatisch geschlossen werden -->
     <close_by_mouseout>true</close_by_mouseout>
     
+    <!-- This sets the delay in miliseconds which you have to hover over the client before the dialog gets shown -->
+    <!-- Legt fest, wie lange ein Benutzer mit der Maus über einem Client sein muss, bis der InfoDialog angezeigt wird-->
+    <hover_delay>none</hover_delay>
+    
     <!-- width of the dialog in pixels, if none standard will be used -->
     <!-- Breite des Dialoges in Pixeln, wenn Sie none setzen, wird der Standardwert verwendet -->
     <width>none</width>

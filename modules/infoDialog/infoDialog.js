@@ -22,66 +22,72 @@ jQuery(document).on('ready', function() {
         
     jQuery('.devmx-webviewer').append('<div id=\"dialog\" style=\"overflow:hidden;\"><\/div>');
 
-    jQuery('.client').hover(function() {
-        var ms_title;
-        var ms_id;
-        ms_client = this;
-        ms_id = jQuery(this).attr('id');
+    var hiConfig = {
+        sensitivity: 1,
+        interval: tswv.infoDialog.hoverDelay,
+        over: function() {
+            var ms_title;
+            var ms_id;
+            ms_client = this;
+            ms_id = jQuery(this).attr('id');
 						
-        ms_title = tswv.infoDialog.l10n.load;
-        pos = getDialogPosition(this);
+            ms_title = tswv.infoDialog.l10n.load;
+            pos = getDialogPosition(this);
         
-        // Configuration
-        var dialogConfig =  {
-            autoOpen: false,
-            title: ms_title,
-            resizeable: false,
-            show: {
-                effect: 'fadeIn', 
-                duration: 200
-            },
-            hide: {
-                effect: 'fadeOut', 
-                duration: 200
-            },
-            height: tswv.infoDialog.height,
-            width: tswv.infoDialog.width,
-            position: [pos.x+20,pos.y+20]
-        }
+            // Configuration
+            var dialogConfig =  {
+                autoOpen: false,
+                title: ms_title,
+                resizeable: false,
+                show: {
+                    effect: 'fadeIn', 
+                    duration: 200
+                },
+                hide: {
+                    effect: 'fadeOut', 
+                    duration: 200
+                },
+                height: tswv.infoDialog.height,
+                width: tswv.infoDialog.width,
+                position: [pos.x+20,pos.y+20]
+            }
         
-        ms_dialogs[ms_id] = jQuery('#dialog').html('<img  style=\" margin-left: 50%; margin-right:50%; margin-top: 25px;\" src=\"" . s_http . "modules/infoDialog/img/ajax-loader.gif\" alt=\"\"><\/img>').dialog(dialogConfig);
+            ms_dialogs[ms_id] = jQuery('#dialog').html('<img  style=\" margin-left: 50%; margin-right:50%; margin-top: 25px;\" src=\"" . s_http . "modules/infoDialog/img/ajax-loader.gif\" alt=\"\"><\/img>').dialog(dialogConfig);
                                                                                 
-        ms_dialogs[ms_id].dialog('open');
+            ms_dialogs[ms_id].dialog('open');
 
-        jQuery.ajax({
-            url: tswv.s_http + 'modules/infoDialog/getHTML.php?type=client&id=' + ms_id + '&title=true&config=' + tswv.infoDialog.configfile,
-            crossDomain: true,
-            dataType: 'jsonp',
-            success: function(data) 
-            {
-                ms_title = data.country + data.name;
-            }
+            jQuery.ajax({
+                url: tswv.s_http + 'modules/infoDialog/getHTML.php?type=client&id=' + ms_id + '&title=true&config=' + tswv.infoDialog.configfile,
+                crossDomain: true,
+                dataType: 'jsonp',
+                success: function(data) 
+                {
+                    ms_title = data.country + data.name;
+                }
 
-        });  
+            });  
                                                                         
-        jQuery.ajax({
-            url: tswv.s_http + 'modules/infoDialog/getHTML.php?type=client&id=' + ms_id + '&config=' + tswv.infoDialog.configfile,
-            crossDomain: true,
-            dataType: 'jsonp',
-            success: function(data) 
-            {
-                ms_dialogs[ms_id].dialog('option', 'title', ms_title);
-                jQuery('#dialog').html(data.html);
-            }
+            jQuery.ajax({
+                url: tswv.s_http + 'modules/infoDialog/getHTML.php?type=client&id=' + ms_id + '&config=' + tswv.infoDialog.configfile,
+                crossDomain: true,
+                dataType: 'jsonp',
+                success: function(data) 
+                {
+                    ms_dialogs[ms_id].dialog('option', 'title', ms_title);
+                    jQuery('#dialog').html(data.html);
+                }
 
-        });					
-    },
-    function(){
-        if(tswv.infoDialog.closeOnMouseOut)
-        {
-            ms_dialogs[jQuery(this).attr('id')].dialog('close');
+            });					
+        },
+        out: function(){
+            if(tswv.infoDialog.closeOnMouseOut)
+            {
+                ms_dialogs[jQuery(this).attr('id')].dialog('close');
+            }
         }
-    });								
+    }
+    
+    jQuery(".client").hoverIntent(hiConfig);
 });
 
 // Returns the current position on the viewport of an object

@@ -33,6 +33,7 @@ class infoDialog extends ms_Module
 
     function onStartup()
     {
+        $this->jsModule->loadJS(s_http . 'modules/infoDialog/js/jquery.hoverIntent.min.js');
         $this->jsModule->loadJS(s_http . 'modules/infoDialog/infoDialog.js');
         $this->styleModule->loadStyle(s_http . 'modules/infoDialog/infoDialog.css', 'file');
     }
@@ -76,6 +77,16 @@ class infoDialog extends ms_Module
         // Load closeByMouseout
         $this->infoDialogOptions['closeOnMouseOut'] = $this->config['close_by_mouseout'];
 
+        // Load hoverDelay
+        if (isset($this->config['hoverDelay']))
+        {
+            $this->infoDialogOptions['hoverDelay'] = $this->config['hover_delay'];
+        }
+        else
+        {
+            $this->infoDialogOptions['hoverDelay'] = 200;
+        }
+        
         $this->jsModule->loadJSVar("infoDialog", $this->infoDialogOptions);
     }
 
