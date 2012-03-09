@@ -87,6 +87,7 @@ jQuery(document).on('ready', function() {
         }
     }
     
+    jQuery(".client").css("cursor", "pointer");
     jQuery(".client").hoverIntent(hiConfig);
 });
 
