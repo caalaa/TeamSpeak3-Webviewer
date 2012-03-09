@@ -26,7 +26,6 @@ class infoDialog extends ms_Module
 
     function init()
     {
-        $this->config['usefor'] = explode(',', $this->config['usefor']);
         $this->mManager->loadModule('jQueryUI');
         $this->jsModule = $this->mManager->loadModule('js');
         $this->styleModule = $this->mManager->loadModule('style');
@@ -34,100 +33,55 @@ class infoDialog extends ms_Module
 
     function onStartup()
     {
-        $this->jsModule->loadJS(s_http . 'modules/infoDialog/utils.js');
+        $this->jsModule->loadJS(s_http . 'modules/infoDialog/infoDialog.js');
         $this->styleModule->loadStyle(s_http . 'modules/infoDialog/infoDialog.css', 'file');
     }
 
     function onInfoLoaded()
     {
-
+        $this->l10n();
 
         $_SESSION['infoDialog']['info']['clientlist'] = $this->info['clientlist'];
         $_SESSION['infoDialog']['info']['servergroups'] = $this->info['servergroups'];
         $_SESSION['infoDialog']['info']['channelgroups'] = $this->info['channelgroups'];
-        $dialog_conf = "{
-				autoOpen: false,
-				title: ms_title,
-                                resizeable: false,
-				position: [pos.x+20,pos.y+20],
-                                show: {effect: 'fadeIn', duration: 200},
-                                hide: {effect: 'fadeOut', duration: 200},";
 
         // Reading sizes from config files, else use standard values
         $width = 400;
         $height = 230;
 
+        
+        // Load height
         if (isset($this->config['height']))
         {
-            $dialog_conf .= "height: " . $this->config['height'] . ",";
-            $height = $this->config['height'];
+            $this->infoDialogOptions['height'] = $this->config['height'];
         }
-        else $dialog_conf.= "height: $height,";
+        else
+        {
+            $this->infoDialogOptions['height'] = $height;
+        }
 
-
+        // Load width;
         if (isset($this->config['width']))
         {
-            $dialog_conf .= "width: " . $this->config['width'];
-            $width = $this->config['width'];
+            $this->infoDialogOptions['width'] = $this->config['width'];
         }
-        else $dialog_conf .= "width: $width,";
-
-
-        $dialog_conf = rtrim($dialog_conf, ",");
-        $dialog_conf .= "}";
-
-        // Make more config-files possible
-        $configfile = '';
-
-        if (isset($_GET['config'])) $configfile = $_GET['config'];
-
-
-        if (in_array('clients', $this->config['usefor']))
+        else
         {
-            $this->jsModule->loadJS("jQuery(document).on('ready', function() {
-								var ms_dialogs = new Array();
-                                                                
-                                                                jQuery('.devmx-webviewer').append('<div id=\"dialog\" style=\"overflow:hidden;\"><\/div>');
-
-								jQuery('.client').hover(function() {
-									var ms_akt_html;
-									var ms_title;
-                                                                        var ms_id;
-									ms_client = this;
-                                                                        ms_id = jQuery(this).attr('id');
-						
-                                                                        ms_title = '" . __('loading...') . "';
-                                                                        pos = getDialogPosition(this);
-                                                                        ms_dialogs[ms_id] = jQuery('#dialog').html('<img  style=\" margin-left: 50%; margin-right:50%; margin-top: 25px;\" src=\"" . s_http . "modules/infoDialog/img/ajax-loader.gif\" alt=\"\"><\/img>').dialog(" . $dialog_conf . ");
-                                                                                
-                                                                        ms_dialogs[ms_id].dialog('open');
-
-                                                                        jQuery.ajax({
-                                                                            url: '" . s_http . "modules/infoDialog/getHTML.php?type=client&id=' + ms_id + '&title=true&config=" . $configfile . "',
-                                                                            crossDomain: true,
-                                                                            dataType: 'jsonp',
-                                                                            success: function(data) 
-                                                                                {
-                                                                                    ms_title = data.country + data.name;
-                                                                                }
-
-                                                                        });  
-                                                                        
-                                                                        jQuery.ajax({
-                                                                            url: '" . s_http . "modules/infoDialog/getHTML.php?type=client&id=' + ms_id + '&config=" . $configfile . "',
-                                                                            crossDomain: true,
-                                                                            dataType: 'jsonp',
-                                                                            success: function(data) 
-                                                                                {
-                                                                                    ms_dialogs[ms_id].dialog('option', 'title', ms_title);
-                                                                                    jQuery('#dialog').html(data.html);
-                                                                                }
-
-                                                                        });					
-								}, " . ($this->config['close_by_mouseout'] ? "function() { ms_dialogs[jQuery(this).attr('id')].dialog('close');}" : "function(){}") . ");
-										
-							});", 'text');
+            $this->infoDialogOptions['width'] = $width;
         }
+
+        // Load configfile
+        $this->infoDialogOptions['configfile'] = $_GET['config'];
+        
+        // Load closeByMouseout
+        $this->infoDialogOptions['closeOnMouseOut'] = $this->config['close_by_mouseout'];
+
+        $this->jsModule->loadJSVar("infoDialog", $this->infoDialogOptions);
+    }
+
+    protected function l10n()
+    {
+        $this->infoDialogOptions['l10n']['load'] = __('loading...');
     }
 
 }

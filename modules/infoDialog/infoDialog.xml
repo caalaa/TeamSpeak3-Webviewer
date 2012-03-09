@@ -10,10 +10,6 @@
         <abstract>false</abstract>
     </info>
     
-    <!-- Will be supported in later version -->
-    <!-- Wird in späteren Versionen implementiert -->
-    <usefor>clients</usefor>
-    
     <!-- Enter here the values you want have shown in the info-dialog. Order them as you want to have them shown -->
     <!-- Geben Sie hier die Werte ein, die Sie im Infodialog anzeigen lassen möchten. Ordnen Sie sie nach der gewünschten Reihenfolge
         Values/ Werte:

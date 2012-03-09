@@ -33,7 +33,7 @@ class js extends ms_Module
         $this->js_sent = false;
         $this->ajaxJS = array();
         $this->ajaxEnabled = $this->config['ajaxEnabled'];
-        
+
         // Add s_http and s_root for javascript
         $this->loadJSVar("s_http", s_http);
         $this->loadJSVar("s_root", s_root);
@@ -118,7 +118,7 @@ class js extends ms_Module
      */
     private function prepareJSVars()
     {
-        $this->loadJS("var tswv = " . json_encode($this->jsOptions) . ";", 'text');
+        $this->loadJS("tswv = " . json_encode($this->jsOptions) . ";", 'text');
     }
 
     public function onHtmlStartup()
