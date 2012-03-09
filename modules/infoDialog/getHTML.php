@@ -86,7 +86,7 @@ foreach ($viewer_conf as $key => $value)
 }
 
 
-$viewer_conf['client_name'] = "Maxesstuff TS3 Webviewer";
+$viewer_conf['client_name'] = $_SESSION['client_name'];
 
 $config = parseConfigFile(s_root . 'modules/infoDialog/infoDialog.xml', true);
 if (isset($_GET['config']))

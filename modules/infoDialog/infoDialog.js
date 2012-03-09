@@ -20,7 +20,7 @@
 jQuery(document).on('ready', function() {
     var ms_dialogs = new Array();
         
-    jQuery('.devmx-webviewer').append('<div id=\"dialog\" style=\"overflow:hidden;\"><\/div>');
+    jQuery('.devmx-webviewer').append('<div id="dialog" style="overflow:hidden;"></div>');
 
     var hiConfig = {
         sensitivity: 1,
@@ -52,7 +52,7 @@ jQuery(document).on('ready', function() {
                 position: [pos.x+20,pos.y+20]
             }
         
-            ms_dialogs[ms_id] = jQuery('#dialog').html('<img  style=\" margin-left: 50%; margin-right:50%; margin-top: 25px;\" src=\"" . s_http . "modules/infoDialog/img/ajax-loader.gif\" alt=\"\"><\/img>').dialog(dialogConfig);
+            ms_dialogs[ms_id] = jQuery('#dialog').html('<img  style=" margin-left: 50%; margin-right:50%; margin-top: 25px;" src="' + tswv.s_http + 'modules/infoDialog/img/ajax-loader.gif" alt=""></img>').dialog(dialogConfig);
                                                                                 
             ms_dialogs[ms_id].dialog('open');
 
