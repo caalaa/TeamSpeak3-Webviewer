@@ -59,7 +59,9 @@
                             <input id="login-needed-true" type="radio" name="login_needed" value="true" <?php if ($data['login_needed'] != "false"): ?>checked="checked"<?php endif; ?>> <?php __e('Yes') ?><br>
                             <input id="login-needed-false" type="radio" name="login_needed" value="false" <?php if ($data['login_needed'] == "false"): ?>checked="checked"<?php endif; ?>><?php __e('No') ?>
                         </td>
-                        <td class="option-descr"><?php __e('If a login is required that the viewer can get the needed information (Default: yes).') ?></td>
+                        <td class="option-descr"><p><?php __e('If a login is required that the viewer can get the needed information (Default: yes).') ?></p>
+                        <p><?php __e('Click <a href="http://devmx.de/en/teamspeak3-webviewer-berechtigungen-richtig-setzen" target="_blank">here</a> to see a tutorial about how to set the permissions for the guest account correctly. Set this option to no if you want to use the guest account.')?>
+                        </p></td>
                     </tr>
                     <tr id="config-username">
                         <td><?php __e('Username') ?></td>

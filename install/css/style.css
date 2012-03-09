@@ -248,11 +248,18 @@ table.language tr td:nth-child(2)
 }
 
 table.config td.option-descr,
-table.config td.option-descr span
+table.config td.option-descr span,
+table.config td.option-descr p
 {
     font-size: 12px;
     color: #555;
     padding-left: 40px;
+}
+
+table.config td.option-descr * a
+{
+    font-size: 12px;
+    color: #555;
 }
 
 li.module-active, 
