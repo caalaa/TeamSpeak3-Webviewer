@@ -1,5 +1,3 @@
-<?php
-
 /**
  *  This file is part of devMX TeamSpeak3 Webviewer.
  *  Copyright (C) 2011 - 2012 Max Rath and Maximilian Narr
@@ -17,6 +15,8 @@
  *  You should have received a copy of the GNU General Public License
  *  along with devMX TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
  */
-require_once s_root . 'core/config/xml.func.php';
-require_once s_root. 'core/config/configComparer.php';
-?>
+jQuery(document).on("ready", function() {
+    jQuery("#userBar").progressbar({
+        value: tswv.userBar.perCent
+    });
+});

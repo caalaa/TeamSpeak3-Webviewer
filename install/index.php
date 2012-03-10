@@ -210,10 +210,18 @@ if (!isset($_SESSION['config']) || $_SESSION['config'] == "")
 // If password is setted and has been entered and Configfile and Language is setted and Configfile should be written
 if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['config']) && isset($_SESSION['lang']) && isset($_REQUEST['action']) && $_REQUEST['action'] == "submit")
 {
+    require_once '../core/config/configComparer.php';
+    
     str_replace(".xml", "", $_SESSION['config_xml']);
 
     $xml = simplexml_load_string($_SESSION['config_xml']);
 
+    // Check for configuration update
+    $template = simplexml_load_file("../config/template.xml");
+    
+    $configComparer = new configComparer($xml, $template);
+    $xml = $configComparer->updateOldFile();
+    
     $necessary_vars = array("serveradress", "queryport", "serverport", "login_needed", "style", "arrows", "caching", "language", "display-filter");
     $vars_unavailable = false;
 
