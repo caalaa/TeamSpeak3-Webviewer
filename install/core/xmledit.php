@@ -38,7 +38,7 @@ require_once 'utils.php';
 if (isset($_GET['lang']) && $_GET['lang'] != "") $_SESSION['lang'] = $_GET['lang'];
 
 $lang = $_SESSION['lang'];
-setL10n($lang, "ms-tsv-install", realpath("../../l10n"));
+setL10n($lang, "teamspeak3-webviewer", realpath("../../l10n"));
 
 $module = $_GET['module'];
 
