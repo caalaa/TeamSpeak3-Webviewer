@@ -196,6 +196,11 @@
                         <td class="option-descr"><?php __e('Language of the viewer') ?></td>
                     </tr>
                     <tr>
+                        <td><?php __e('Date/ Time format') ?></td>
+                        <td><input type="text" name="date-format" value="<?php echo((string)$data['date_format'])?>" /></td>
+                        <td class="option-descr"><?php __e('Format of <a href="http://php.net/manual/en/function.date.php" target="_blank">PHPs date() function</a>')?></td>
+                    </tr>
+                    <tr>
                         <td><?php __e('Provide usage statistics') ?></td>
                         <td>
                             <input type="radio" name="usage-statistics" value="true" <?php if ($data['config']->usage_stats == "true"): ?>checked="checked" <?php endif; ?>> <?php __e('Yes') ?><br>

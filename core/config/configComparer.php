@@ -54,7 +54,6 @@ class configComparer
             {
                 $newNode = $this->oldConfig->addChild($node->getName(), $node);
                 $this->log .= sprintf("Added node %s \r\n", $node->getName());
-                echo("asd");
                 foreach ($node->attributes() as $key => $value)
                 {
                     $newNode->addAttribute($key, $value);

@@ -287,7 +287,7 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
     $xml->show_icons = $_POST['show_icons'];
     
     $xml->show_country_icons = $_POST['show_country_icons'];
-
+    $xml->date_format = $_POST['date-format'];
 
     // Not all necessary values were entered.
     if ($vars_unavailable)

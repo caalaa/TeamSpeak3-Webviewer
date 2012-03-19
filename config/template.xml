@@ -123,6 +123,10 @@
     <cachetime_servergrouplist></cachetime_servergrouplist>
     <cachetime_channelgrouplist></cachetime_channelgrouplist>
 
+    <!-- Format of the date() function -->
+    <!-- See http://php.net/manual/de/function.date.php -->
+    <date_format>d. F Y - H:i</date_format>
+
     <!-- Enabled Modules (seperate with comma) -->
     <modules></modules>
     
