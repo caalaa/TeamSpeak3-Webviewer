@@ -20,6 +20,9 @@
         -servergroup
         -channelgroup
         -description
+        -lastConnected
+        -firstConnected
+        -avatar
     -->
     <show_html_for_client>nickname,country,version,connections,servergroup,channelgroup,description</show_html_for_client>
     

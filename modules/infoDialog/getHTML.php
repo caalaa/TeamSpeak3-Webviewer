@@ -198,6 +198,12 @@ if ($_GET['type'] == 'client')
                     $out .= '</td></tr>';
                 }
                 break;
+            case 'firstConnected':
+                break;
+            case 'lastConnected':
+                break;
+            case 'avatar':
+                break;
         }
     }
     $query->quit();
