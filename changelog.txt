@@ -16,6 +16,7 @@ v1.4
 ~ Issue #76: Added effect to infoDialog
 ~ Issue #77: Added a hover delay for the infoDialog
 ~ Issue #71: Fixed PHP 5.2 compatibility with ajax features
+~ Issue #80: Added a option for the formatting of dates and times
 * Issue #75: Fixed wrong position on infoDialog
 * Issue #79: L10n was not working in the module config-dialog
 
