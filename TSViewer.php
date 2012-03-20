@@ -222,6 +222,7 @@ else
     $config['ajaxEnabled'] = false;
 }
 
+$_SESSION['viewerConfig'] = $config;
 
 // get all needed classes
 require_once s_root . 'core/teamspeak.inc';

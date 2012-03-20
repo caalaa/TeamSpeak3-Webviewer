@@ -24,7 +24,7 @@
         -firstConnected
         -avatar
     -->
-    <show_html_for_client>nickname,country,version,connections,servergroup,channelgroup,description</show_html_for_client>
+    <show_html_for_client>nickname,description,version,connections,firstConnected,lastConnected,servergroups,channelgroup</show_html_for_client>
     
     <!-- If true the dialog will close if the mouse is out of the dialog, else you have to close them manually -->
     <!-- Wenn true, schließt sich der Dialog wenn die Maus von Client geht, sonst muss er automatisch geschlossen werden -->

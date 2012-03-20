@@ -125,7 +125,7 @@
 
     <!-- Format of the date() function -->
     <!-- See http://php.net/manual/de/function.date.php -->
-    <date_format>d. F Y - H:i</date_format>
+    <date_format>d.m.Y - H:i</date_format>
 
     <!-- Enabled Modules (seperate with comma) -->
     <modules></modules>

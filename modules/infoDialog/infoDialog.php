@@ -48,7 +48,7 @@ class infoDialog extends ms_Module
 
         // Reading sizes from config files, else use standard values
         $width = 400;
-        $height = 230;
+        $height = "auto";
 
         
         // Load height

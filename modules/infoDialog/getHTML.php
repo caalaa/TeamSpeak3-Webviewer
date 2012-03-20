@@ -114,6 +114,7 @@ if ($_GET['type'] == 'client' && isset($_GET['title']))
 if ($_GET['type'] == 'client')
 {
     $config['show_html_for_client'] = explode(",", $config['show_html_for_client']);
+    $viewerConfig = $_SESSION['viewerConfig'];
 
     $out = '<table style="margin:0" width="100%" height="100%" class="devmx-infodialog">';
 
@@ -152,7 +153,7 @@ if ($_GET['type'] == 'client')
                 $out .= '<td class="label">' . __('Version') . ':</td>';
                 $out .= '<td>' . preg_replace("/\[(.*)\]/", "", $user['client_version']) . '</td></tr>';
                 break;
-            case 'servergroup':
+            case 'servergroups':
                 $out .= '<tr>';
                 $out .= '<td class="label">' . __('Servergroup(s)') . ':</td>';
                 $out .= '<td><ul style="list-style-type: none; margin:0; padding:0;">';
@@ -199,8 +200,16 @@ if ($_GET['type'] == 'client')
                 }
                 break;
             case 'firstConnected':
+                $out .= '<tr>';
+                $out .= '<td class="label">' . __('First connected') . ':</td>';
+                $out .= '<td>' . date($viewerConfig['date_format'], $clientinfo['return']['client_created']) . '</td>';
+                $out .= '</tr>';
                 break;
             case 'lastConnected':
+                $out .= '<tr>';
+                $out .= '<td class="label">' . __('Last connected') . ':</td>';
+                $out .= '<td>' . date($viewerConfig['date_format'], $clientinfo['return']['client_lastconnected']) . '</td>';
+                $out .= '</tr>';
                 break;
             case 'avatar':
                 break;
