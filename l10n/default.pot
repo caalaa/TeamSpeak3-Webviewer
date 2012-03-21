@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TeamSpeak3 Webviewer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-11 10:56+0100\n"
-"PO-Revision-Date: 2012-03-11 10:56+0100\n"
+"POT-Creation-Date: 2012-03-21 17:03+0100\n"
+"PO-Revision-Date: 2012-03-21 17:03+0100\n"
 "Last-Translator: Maximilian Narr <maxesstuff@live.de>\n"
 "Language-Team: devMX <maxe@devmx.de>\n"
 "MIME-Version: 1.0\n"
@@ -229,39 +229,39 @@ msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/core/htmlbuilder.php:133
-#: Webviewer/install/core/htmlbuilder.php:138
+#: Webviewer/install/core/htmlbuilder.php:134
+#: Webviewer/install/core/htmlbuilder.php:139
 #: Webviewer/install/html/config.php:120
 msgid "Enabled"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/core/htmlbuilder.php:134
-#: Webviewer/install/core/htmlbuilder.php:139
+#: Webviewer/install/core/htmlbuilder.php:135
+#: Webviewer/install/core/htmlbuilder.php:140
 #: Webviewer/install/html/config.php:121
 msgid "Disabled"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/core/htmlbuilder.php:145
-#: Webviewer/install/core/htmlbuilder.php:150
+#: Webviewer/install/core/htmlbuilder.php:146
+#: Webviewer/install/core/htmlbuilder.php:151
 #: Webviewer/install/html/config.php:59
 #: Webviewer/install/html/config.php:154
 #: Webviewer/install/html/config.php:162
-#: Webviewer/install/html/config.php:201
+#: Webviewer/install/html/config.php:206
 msgid "Yes"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/core/htmlbuilder.php:146
-#: Webviewer/install/core/htmlbuilder.php:151
+#: Webviewer/install/core/htmlbuilder.php:147
+#: Webviewer/install/core/htmlbuilder.php:152
 #: Webviewer/install/html/config.php:60
 #: Webviewer/install/html/config.php:155
 #: Webviewer/install/html/config.php:163
-#: Webviewer/install/html/config.php:202
+#: Webviewer/install/html/config.php:207
 msgid "No"
 msgstr ""
 
@@ -631,18 +631,30 @@ msgstr ""
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
 #: Webviewer/install/html/config.php:199
-msgid "Provide usage statistics"
+msgid "Date/ Time format"
+msgstr ""
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/html/config.php:201
+msgid "Format of <a href=\"http://php.net/manual/en/function.date.php\" target=\"_blank\">PHPs date() function</a>"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
 #: Webviewer/install/html/config.php:204
+msgid "Provide usage statistics"
+msgstr ""
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/install/html/config.php:209
 msgid "If enabled the url to your webviewer will be submitted to devMX"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/config.php:212
+#: Webviewer/install/html/config.php:217
 msgid "Save configfile"
 msgstr ""
 
@@ -805,49 +817,61 @@ msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/modules/infoDialog/getHTML.php:141
+#: Webviewer/modules/infoDialog/getHTML.php:142
 msgid "Nickname"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/modules/infoDialog/getHTML.php:146
+#: Webviewer/modules/infoDialog/getHTML.php:147
 msgid "Country"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/modules/infoDialog/getHTML.php:152
+#: Webviewer/modules/infoDialog/getHTML.php:153
 msgid "Version"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/modules/infoDialog/getHTML.php:157
+#: Webviewer/modules/infoDialog/getHTML.php:158
 msgid "Servergroup(s)"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/modules/infoDialog/getHTML.php:173
+#: Webviewer/modules/infoDialog/getHTML.php:174
 msgid "Channelgroup(s)"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/modules/infoDialog/getHTML.php:188
+#: Webviewer/modules/infoDialog/getHTML.php:189
 msgid "Connections"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/modules/infoDialog/getHTML.php:196
+#: Webviewer/modules/infoDialog/getHTML.php:197
 msgid "Description"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/modules/infoDialog/getHTML.php:471
+#: Webviewer/modules/infoDialog/getHTML.php:204
+msgid "First connected"
+msgstr ""
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/modules/infoDialog/getHTML.php:210
+msgid "Last connected"
+msgstr ""
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/modules/infoDialog/getHTML.php:486
 msgid "none"
 msgstr ""
 
