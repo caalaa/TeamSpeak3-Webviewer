@@ -24,10 +24,9 @@
  * @param type $xml
  * @return type 
  */
-function parseConfigFile($file, $xml=false)
+function parseConfigFile($file, $xml = true)
 {
-    if (!$xml) return parseConfigFileText($file);
-    else return parseConfigFileXML($file);
+    return parseConfigFileXML($file);
 }
 
 /**
@@ -62,4 +61,5 @@ function parseConfigFileXML($file)
     }
     return $config;
 }
+
 ?>

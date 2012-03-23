@@ -43,6 +43,12 @@ define('msBASEDIR', dirname(__FILE__) . "/");
 define('s_root', dirname(__FILE__) . "/");
 define('l10nDir', msBASEDIR . "l10n");
 
+// Debug flag causes printing more detailed information in ms_ModuleManager and TSQuery.class.php
+define('debug', true);
+
+// Define Standardname of the Webviewer
+define('clientNickname', 'devMX TeamSpeak3 Webviewer');
+
 // Enter here the HTTP-Path of your viewer (with ending slash)
 // Geben Sie hier den HTTP-Pfad zum Viewer ein (mit Schrägstrich am Ende)
 // Example/ Beispiel: $serveradress = "http://yourdomain.com/software/viewer/ts3viewer/";
@@ -55,7 +61,6 @@ $serveradress = "";
 // **************************************************************** \\
 // If s_http is not defined or empty, $_SERVER['HTTP_REFERER'] will be used (not 100% secure)
 // http://php.net/manual/de/reserved.variables.server.php
-
 if (!isset($serveradress) || $serveradress == "")
 {
     if ((int) $_SERVER['SERVER_PORT'] == 80 || (int) $_SERVER['SERVER_PORT'] == 443)
@@ -91,15 +96,19 @@ else
 // Enable Ajax-mode
 $ajaxEnabled = false;
 
-// Debug flag causes printing more detailed information in ms_ModuleManager and TSQuery.class.php
-$debug = true;
-if ($debug) error_reporting(E_ALL);
+
+// Check if debugging mode should be enabled
+if (debug)
+{
+    error_reporting(E_ALL);
+}
 else
 {
     error_reporting(E_ERROR);
 }
 
 $start = microtime(true);
+
 
 require_once s_root . "core/utils.inc";
 require_once s_root . 'core/config.inc';
@@ -117,26 +126,21 @@ if (isset($ajaxConfig) && $ajaxConfig != "")
 
 str_replace('/', '', $config_name);
 str_replace('.', '', $config_name);
-$paths[] = s_root . "config/" . $config_name . ".xml";
+$configPath = s_root . "config/" . $config_name . ".xml";
 
 
 $config_available = false;
-foreach ($paths as $path)
+
+// Checks if configfile exists and loads it if it exists
+if (file_exists($configPath))
 {
-    if (file_exists($path))
+    if (substr($configPath, -4) == ".xml")
     {
-        if (substr($path, -4) == ".xml")
-        {
-            $config = parseConfigFile($path, true);
-        }
-        else
-        {
-            $config = parseConfigFile($path, false);
-        }
-        $config_available = true;
-        break;
+        $config = parseConfigFile($configPath, true);
     }
+    $config_available = true;
 }
+
 
 // WELCOME SCREEN START \\
 // If no configfile is available
@@ -147,7 +151,7 @@ if ($config_available == false)
     exit;
 }
 // WELCOME SCREEN END \\
-// 
+
 //postparsing of configfile 
 foreach ($config as $key => $value)
 {
@@ -208,7 +212,7 @@ else
 
 
 $config['image_type'] = '.' . $config['image_type'];
-$config['client_name'] = "devMX TS3 Webviewer " . version;
+$config['client_name'] = sprintf("%s %s", clientNickname, version);
 $_SESSION['client_name'] = $config['client_name'];
 
 
@@ -224,7 +228,7 @@ else
 
 $_SESSION['viewerConfig'] = $config;
 
-// get all needed classes
+// Include all required classes
 require_once s_root . 'core/teamspeak.inc';
 require_once s_root . 'core/module.inc';
 require_once s_root . 'core/tsv.inc';
@@ -249,7 +253,7 @@ catch (Exception $ex)
     exit;
 }
 
-$mManager = new ms_ModuleManager($config, $config_name, $debug);
+$mManager = new ms_ModuleManager($config, $config_name, debug);
 $mManager->loadModule($config['modules']);
 
 // Load usageStatistics if set in the configfile
