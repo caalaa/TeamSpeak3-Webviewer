@@ -17,42 +17,41 @@
  *  You should have received a copy of the GNU General Public License
  *  along with devMX TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 class stats extends ms_Module
 {
 
     public $infos;
     private $html;
-    
     protected $jsModule;
     protected $styleModule;
     protected $tabModule;
-    
-    public function init() {
-        
+
+    public function init()
+    {
+
         require_once s_root . 'modules/stats/php/utils.php';
-        
+
         $this->jsModule = $this->mManager->loadModule('js');
         $this->styleModule = $this->mManager->loadModule('style');
-        if($this->config['use_tab']) {
+        if ($this->config['use_tab'])
+        {
             $this->tabModule = $this->mManager->loadModule('infoTab');
         }
         // Load jQuery
         $this->mManager->loadModule("jQueryUI");
     }
-    
+
     function onInfoLoaded()
-    {     
+    {
 
         setL10n($this->config['language'], "teamspeak3-webviewer");
         $configfile = '';
 
-        if (!isset($_GET['config']) || $_GET['config'] == "")
-                $configfile = "config";
+        if (!isset($_GET['config']) || $_GET['config'] == "") $configfile = "config";
         else $configfile = $_GET['config'];
 
 
-        
+
         $this->infos = $this->info;
 
         if (needNewEntry($configfile))
@@ -60,17 +59,17 @@ class stats extends ms_Module
             addEntry($this->getClients(), $configfile);
         }
 
-        $xml = simplexml_load_file(cacheDir."stats/$configfile.xml");
-        
+        $xml = simplexml_load_file(cacheDir . "stats_$configfile.xml");
+
         // set min on y axes
         $this->config['min'] = (getMinClients($xml) - 1);
-        
 
-        
+
+
 
         // Load jqplot 
         // IE workaround
-        $this->jsModule->loadJS(s_http . 'libraries/jqplot/excanvas.min.js','file', 'lt IE 9');
+        $this->jsModule->loadJS(s_http . 'libraries/jqplot/excanvas.min.js', 'file', 'lt IE 9');
         $this->jsModule->loadJS(s_http . 'libraries/jqplot/jquery.jqplot.min.js');
         $this->styleModule->loadStyle(s_http . 'libraries/jqplot/jquery.jqplot.min.css');
         $this->jsModule->loadJS(s_http . 'libraries/jqplot/plugins/jqplot.dateAxisRenderer.min.js');
@@ -87,9 +86,7 @@ class stats extends ms_Module
         $this->html = '<div class="jqplot" id="stats" style="height:' . $this->config['height'] . ';width:' . $this->config['width'] . '; "></div>';
 
         // If chart should be shown in Tab
-        if ($this->config['use_tab'] == true)
-                $this->tabModule->addTab(__('Statistics'),
-                    $this->html);
+        if ($this->config['use_tab'] == true) $this->tabModule->addTab(__('Statistics'), $this->html);
     }
 
     public function getFooter()
