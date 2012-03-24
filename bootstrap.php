@@ -20,7 +20,7 @@
 session_name('ms_ts3Viewer');
 session_start();
 // Defines Current Version
-define('version', "1.3.2");
+define('version', "1.4");
 
 // **************************************************************** \\
 // STARTING EDITABLE CONTENT                                        \\
@@ -40,8 +40,6 @@ define('clientNickname', 'devMX TeamSpeak3 Webviewer' . version);
 // Enter here the HTTP-Path of your viewer (with ending slash)
 // Geben Sie hier den HTTP-Pfad zum Viewer ein (mit Schrägstrich am Ende)
 // Example/ Beispiel: $serveradress = "http://yourdomain.com/software/viewer/ts3viewer/";
-// It it strongly recommended to set the path, else the viewer may nor work properly
-// Wir empfehlen dringend, diesesn Pfad zu setzen, da der Viewer sonst eventuell nicht funktionieren wird
 $serveradress = "";
 
 // **************************************************************** \\
@@ -73,6 +71,8 @@ if (!isset($serveradress) || $serveradress == "")
     $url = str_replace("index.php", "", $url);
     $url = str_replace("TSViewer.php", "", $url);
     $url = str_replace("ajax.php", "", $url);
+    $url = str_replace("bootstrap.php", "", $url);
+    $url = str_replace("getServerIcon.php", "", $url);
 
     define("s_http", $url);
 }

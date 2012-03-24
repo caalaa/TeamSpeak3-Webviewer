@@ -35,7 +35,6 @@ $config_name = isset($_GET['config']) ? $_GET['config'] : '';
 str_replace('/', '', $config_name);
 str_replace('.', '', $config_name);
 $paths[] = s_root . "config/" . $config_name . ".xml";
-$paths[] = s_root . 'config/config.xml';
 
 
 foreach ($paths as $path)
@@ -91,11 +90,11 @@ $viewer_conf['client_name'] = $_SESSION['client_name'];
 $config = parseConfigFile(s_root . 'modules/infoDialog/infoDialog.xml', true);
 if (isset($_GET['config']))
 {
-    $config['serverimages'] = s_http . "?config=" . $_GET['config'] . "&amp;id=";
+    $config['serverimages'] = s_http . "getServerIcon.php?config=" . $_GET['config'] . "&amp;id=";
 }
 else
 {
-    $config['serverimages'] = s_http . "?id=";
+    $config['serverimages'] = s_http . "getServerIcon.php?id=";
 }
 
 $info = $_SESSION['infoDialog']['info'];
@@ -103,7 +102,7 @@ $info = $_SESSION['infoDialog']['info'];
 
 if ($_GET['type'] == 'client' && isset($_GET['title']))
 {
-    $matches = Array();
+    $matches = Array();  
     preg_match("/^.*?([0-9]*)$/", $_GET['id'], $matches);
     $user = getUserByID($info['clientlist'], $matches[1]);
     header("Content-type: application/json");
