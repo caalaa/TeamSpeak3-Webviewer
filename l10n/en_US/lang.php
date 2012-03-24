@@ -17,7 +17,5 @@
  *  along with TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
  */
 $l10_lang = array();
-$l10_lang['version'] = '1.4';
-$l10_lang['lang'] = __('English');
-$l10_lang['authors'] = array("Maximilian Narr" => "http://devmx.de");
+$l10_lang['lang'] = 'English';
 ?>
