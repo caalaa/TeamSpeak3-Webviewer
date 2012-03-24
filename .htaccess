@@ -3,3 +3,17 @@
     Order deny,allow
     deny from all
 </FilesMatch>
+
+# Add caching
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/gif A31536000
+    ExpiresByType image/x-icon A31536000
+    ExpiresByType image/jpeg A31536000
+    ExpiresByType image/png A31536000
+</IfModule>
+
+# Set Headers
+<IfModule mod_headers.c>
+    Header set X-Powered-By "devMX TeamSpeak3 Webviewer"
+</IfModule>
