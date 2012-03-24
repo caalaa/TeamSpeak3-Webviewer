@@ -25,6 +25,7 @@
     <head>
         <title>TeamSpeak3 Webviewer - Installation</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="robots" content="noindex,follow">
         <link rel="icon" href="img/tools.png" type="image/png">
 
         <!-- Jquery -->
