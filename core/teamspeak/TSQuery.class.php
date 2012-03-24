@@ -25,11 +25,6 @@ class TSQuery
     protected $sock_error_string;
     protected $loggedin = false;
     protected $actual_vserver;
-    protected $caching;
-    protected $last_cached;
-    public $cachetime;
-    protected $standard_cachetime;
-    protected $cachepath;
     private $ip;
     private $query_port;
     private $timeout;
@@ -46,9 +41,6 @@ class TSQuery
      */
     function __construct($host, $port)
     {
-
-        //open Connection and check for errors
-        $this->cachepath = s_root . "cache/" . $host . $port . "/";
         $this->ip = gethostbyname($host);
         $this->query_port = $port;
         $this->timeout = 5;
@@ -76,20 +68,6 @@ class TSQuery
         $this->ftid = 0;
         $this->cmds = array();
     }
-
-    /**
-     * Sets the caching 
-     * @param bool $caching If caching should be used
-     * @param int $standard_cachetime stadard cachetime
-     * @param int $cachetime cachtime 
-     */
-    function set_caching($caching, $standard_cachetime = NULL, $cachetime = NULL)
-    {
-        $this->caching = $caching;
-        if ($standard_cachetime != NULL) $this->standard_cachetime = $standard_cachetime;
-        if (is_array($cachetime)) $this->cachetime = $cachetime;
-    }
-
     /**
       Wrapper for the Querycommand use with port=$port i had to choose another name
       so the function is called use_vserver
@@ -162,9 +140,9 @@ class TSQuery
      * @param bool $caching If command should be cached
      * @return boolean|array returns parsed response as an array, if command failes, false
      */
-    public function serverinfo($caching = true)
+    public function serverinfo()
     {
-        $ret = $this->send_cmd("serverinfo", $caching);
+        $ret = $this->send_cmd("serverinfo");
         if ($ret == false) return false;
 
         $ret['return'] = $this->ts3_to_hash($ret['return']);
@@ -211,11 +189,11 @@ class TSQuery
      * @param bool $caching If command should be cached
      * @return boolean|array Returns parsed response, on failure false
      */
-    public function channellist($options = "", $caching = true)
+    public function channellist($options = "")
     {
         if ($this->are_options($options))
         {
-            $ret = $this->send_cmd("channellist " . $options, $caching);
+            $ret = $this->send_cmd("channellist " . $options);
             if ($ret == false) return false;
             if ($ret['error']['id'] == 0)
             {
@@ -233,11 +211,11 @@ class TSQuery
      * @param bool $caching If command should be cached
      * @return boolean|array Returns parsed command, on failure false
      */
-    public function clientlist($options = "", $caching = true)
+    public function clientlist($options = "")
     {
         if ($this->are_options($options))
         {
-            $ret = $this->send_cmd("clientlist " . $options, $caching);
+            $ret = $this->send_cmd("clientlist " . $options);
             if ($ret == false) return false;
             if ($ret['error']['id'] == 0)
             {
@@ -253,9 +231,9 @@ class TSQuery
      * @param bool $caching If command should be cached
      * @return array Returns parsed command
      */
-    public function servergrouplist($caching = true)
+    public function servergrouplist()
     {
-        $ret = $this->send_cmd("servergrouplist", $caching);
+        $ret = $this->send_cmd("servergrouplist");
         $ret['return'] = $this->ts3_to_hash(explode("|", $ret['return']));
         return $ret;
     }
@@ -265,9 +243,9 @@ class TSQuery
      * @param bool $caching If command should be cached
      * @return array Returns parsed command 
      */
-    public function channelgrouplist($caching = true)
+    public function channelgrouplist()
     {
-        $ret = $this->send_cmd("channelgrouplist", $caching);
+        $ret = $this->send_cmd("channelgrouplist");
         $ret['return'] = $this->ts3_to_hash(explode("|", $ret['return']));
         return $ret;
     }
@@ -278,10 +256,10 @@ class TSQuery
      * @param bool $caching If command should be cached
      * @return array parsed response
      */
-    public function clientinfo($clid, $caching = TRUE)
+    public function clientinfo($clid)
     {
 
-        $ret = $this->send_cmd("clientinfo clid=" . $clid, $caching);
+        $ret = $this->send_cmd("clientinfo clid=" . $clid);
         $ret['return'] = $this->ts3_to_hash($ret['return']);
         return $ret;
     }
@@ -391,20 +369,10 @@ class TSQuery
      * @param bool $caching If the command should be cached
      * @return mixed response
      */
-    public function send_cmd($cmd, $caching = false)
+    public function send_cmd($cmd)
     {
 
         if (preg_match("/[\r\n]/", $cmd)) return false;
-
-        if ($caching == true && file_exists($this->cachepath . "query/" . $cmd) && !$this->cache_expired($cmd) && $this->caching == true)
-        {
-            return $this->parse_ts3_response(file_get_contents($this->cachepath . "query/" . $cmd));
-        }
-        if ($this->caching == TRUE && $caching == FALSE && !$this->cmd_sent)
-        {
-            $this->cmds[] = $cmd;
-            return $this->parse_ts3_response("error id=0 msg=ok");
-        }
         if (is_array($this->cmds))
         {
             foreach ($this->cmds as $key => $command)
@@ -421,34 +389,8 @@ class TSQuery
         {
             return false;
         }
-        if ($caching == true && $this->caching == true)
-        {
-            file_put_contents($this->cachepath . "query/time/$cmd", time());
-            file_put_contents($this->cachepath . "query/$cmd", $response);
-        }
-
         $response = $this->parse_ts3_response($response);
         return $response;
-    }
-
-    /**
-     * Checks if the cache is expires
-     * @param string $cmd command
-     * @return boolean true if expired, else false
-     */
-    protected function cache_expired($cmd)
-    {
-        if (!file_exists($this->cachepath . "query/time/$cmd")) return true;
-        if (!empty($this->last_cached[$cmd]))
-        {
-            if (time() - $this->last_cached[$cmd] < ( isset($this->cachetime[$cmd]) ? $this->cachetime[$cmd] : $this->standard_cachetime )) return false;
-        }
-        else
-        {
-            $this->last_cached[$cmd] = file_get_contents($this->cachepath . "query/time/$cmd");
-            if (time() - $this->last_cached[$cmd] < ( isset($this->cachetime[$cmd]) ? $this->cachetime[$cmd] : $this->standard_cachetime )) return false;
-        }
-        return true;
     }
 
     /**
