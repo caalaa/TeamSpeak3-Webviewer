@@ -63,7 +63,7 @@ class ms_Module
             onAfterLegend   after the legend has been outputted
      */
 
-    public function onEvent($e)
+    public function onEvent($e, $data=array())
     {
         $e = ucfirst($e);
         $modname = "on$e";

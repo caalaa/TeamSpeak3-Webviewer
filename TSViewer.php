@@ -182,6 +182,7 @@ else
 }
 
 $config['cache_dir'] = CACHE_DIR;
+$config['config_name'] = $config_name;
 
 // Checks if the language as been submitted over the URL
 if (isset($_GET['lang']))
@@ -369,6 +370,7 @@ switch ($config["filter"])
 $output .= $mManager->getFooters();
 $output .= "</div>";
 $output .= $mManager->triggerEvent('HtmlShutdown');
+$mManager->triggerEvent('Shutdown', array($output));
 
 // Check if ajax mode is enabled
 if (isset($ajax) && $ajax)

@@ -218,12 +218,12 @@ class ms_ModuleManager
      * @param type $e
      * @return type 
      */
-    public function triggerEvent($e)
+    public function triggerEvent($e, $data=array())
     {
         $out = '';
         foreach ($this->loadedModules as $mod)
         {
-            $out .= $mod->onEvent($e);
+            $out .= $mod->onEvent($e, $data);
         }
         return $out;
     }

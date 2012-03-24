@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <!-- Information -->
+    <info>
+        <author>drak3</author>
+        <homepage>http://devmx.de</homepage>
+        
+        <!-- Don't change anything here -->
+        <!-- Ändern Sie hier nichts! -->
+        <abstract>false</abstract>
+    </info>
+
+    <!-- minimal time in seconds between two connections to the server -->
+    <!-- <standard_cachetime></standard_cachetime> -->
+    <!-- Whether caching should be enabled (true or false) -->
+    <!-- <enable_caching></enable_caching> -->
+    
+    <cache_implementation>FileCache</cache_implementation>
+</config>
+
