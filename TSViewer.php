@@ -127,7 +127,7 @@ if (isset($ajaxConfig) && $ajaxConfig != "")
 
 str_replace('/', '', $config_name);
 str_replace('.', '', $config_name);
-define('CACHE_DIR', BASE_CACHE_DIR.$config_name);
+define('CACHE_DIR', BASE_CACHE_DIR.'/'.$config_name);
 $configPath = s_root . "config/" . $config_name . ".xml";
 
 $config_available = false;
@@ -258,10 +258,6 @@ if ($config['usage_stats'])
     $mManager->loadModule("usageStatistics");
 }
 
-$mManager->triggerEvent('Startup');
-
-
-
 // Flush caches | Caching
 if (isset($_GET['flush_cache']) && isset($config['enable_cache_flushing']) && $config['enable_cache_flushing'] === true)
 {
@@ -271,6 +267,12 @@ elseif (isset($_GET['fc']) && isset($config['enable_cache_flushing']) && $config
 {
     $mManager->triggerEvent('CacheFlush');
 }
+
+$mManager->triggerEvent('Startup');
+
+
+
+
 
 try
 {
