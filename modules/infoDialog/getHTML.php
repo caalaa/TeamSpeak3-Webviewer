@@ -91,11 +91,11 @@ $viewer_conf['client_name'] = $_SESSION['client_name'];
 $config = parseConfigFile(s_root . 'modules/infoDialog/infoDialog.xml', true);
 if (isset($_GET['config']))
 {
-    $config['serverimages'] = s_http . "getServerIcon.php?config=" . $_GET['config'] . "&amp;id=";
+    $config['serverimages'] = s_http . "?config=" . $_GET['config'] . "&amp;id=";
 }
 else
 {
-    $config['serverimages'] = s_http . "getServerIcon.php?id=";
+    $config['serverimages'] = s_http . "?id=";
 }
 
 $info = $_SESSION['infoDialog']['info'];
@@ -123,7 +123,6 @@ if ($_GET['type'] == 'client')
     $user = getUserByID($info['clientlist'], $matches[1]);
     if ($user == NULL) die();
     $query = new TSQuery($viewer_conf['host'], $viewer_conf['queryport']);
-    $query->set_caching((int) $viewer_conf['enable_caching'], (int) $viewer_conf['standard_cachetime'], $viewer_conf['cachetime']);
     if ($viewer_conf['login_needed'])
     {
         ts3_check($query->login($viewer_conf['username'], $viewer_conf['password']), 'login');

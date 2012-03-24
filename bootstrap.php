@@ -1,7 +1,6 @@
 <?php
 session_name('ms_ts3Viewer');
 session_start();
-
 // Defines Current Version
 define('version', "1.3.2");
 
