@@ -1,4 +1,5 @@
 <?php
+
 /**
  *  This file is part of devMX TeamSpeak3 Webviewer.
  *  Copyright (C) 2011 - 2012 Max Rath and Maximilian Narr
@@ -18,56 +19,63 @@
  */
 class fullCache extends ms_Module
 {
+
     /**
      * @var CachingInterface
      */
     protected $cache;
-    
     protected $cacheKey;
-    
-    public function init() {
+
+    public function init()
+    {
         $this->cache = $this->getCache();
         $this->cacheKey = $this->config['config_name'];
     }
-    
-    public function onStartup() {
-        echo "checking cache".PHP_EOL;
-        if($this->cache->isCached($this->cacheKey)) {
-            echo "output cached".PHP_EOL;
+
+    public function onStartup()
+    {
+        if ($this->cache->isCached($this->cacheKey))
+        {
             echo $this->cache->getCache($this->cacheKey);
             die();
         }
     }
-    
-    public function onCacheFlush() {
-        echo "flushing cache".PHP_EOL;
+
+    public function onCacheFlush()
+    {
         $this->cache->flush($this->cacheKey);
     }
-    
-    public function onShutdown($output) {
-        echo "storing cache".PHP_EOL;
+
+    public function onShutdown($output)
+    {
         $this->cache->cache($this->cacheKey, $output);
     }
-    
-   public function onEvent($e, $data=array()) {
-        if($e !== 'Shutdown') {
-            return parent::onEvent($e , $data);
+
+    public function onEvent($e, $data = array())
+    {
+        if ($e !== 'Shutdown')
+        {
+            return parent::onEvent($e, $data);
         }
-        else {
+        else
+        {
             $this->onShutDown($data[0]);
         }
     }
-    
-    protected function getCache() {
-        if($this->config['enable_caching']) {
-            require_once('Caching/FileCache.php');
+
+    protected function getCache()
+    {
+        if ($this->config['enable_caching'])
+        {
+            require_once(s_root . 'modules/fullCache/Caching/FileCache.php');
             return new FileCache($this->config['cache_dir'], (int) $this->config['standard_cachetime']);
         }
-        else {
+        else
+        {
             return new NullCache();
         }
     }
-}
 
+}
 
 ?>

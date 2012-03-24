@@ -42,13 +42,13 @@ define('version', "1.3.2");
 define('msBASEDIR', dirname(__FILE__) . "/");
 define('s_root', dirname(__FILE__) . "/");
 define('l10nDir', msBASEDIR . "l10n");
-define('BASE_CACHE_DIR', msBASEDIR.'cache');
+define('CACHE_DIR', msBASEDIR . 'cache');
 
 // Debug flag causes printing more detailed information in ms_ModuleManager and TSQuery.class.php
 define('debug', true);
 
 // Define Standardname of the Webviewer
-define('clientNickname', 'devMX TeamSpeak3 Webviewer');
+define('clientNickname', 'devMX TeamSpeak3 Webviewer' . version);
 
 // Enter here the HTTP-Path of your viewer (with ending slash)
 // Geben Sie hier den HTTP-Pfad zum Viewer ein (mit Schrägstrich am Ende)
@@ -127,7 +127,6 @@ if (isset($ajaxConfig) && $ajaxConfig != "")
 
 str_replace('/', '', $config_name);
 str_replace('.', '', $config_name);
-define('CACHE_DIR', BASE_CACHE_DIR.'/'.$config_name);
 $configPath = s_root . "config/" . $config_name . ".xml";
 
 $config_available = false;
@@ -152,7 +151,6 @@ if ($config_available == false)
     exit;
 }
 // WELCOME SCREEN END \\
-
 //postparsing of configfile 
 foreach ($config as $key => $value)
 {
