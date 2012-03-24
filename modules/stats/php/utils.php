@@ -31,7 +31,7 @@ function needNewEntry($configfile, $customDir = null)
     }
     else
     {
-        $baseDir = cacheDir;
+        $baseDir = CACHE_DIR . "/";
     }
 
     $fileDir = $baseDir . "stats_$configfile.xml";
@@ -63,10 +63,10 @@ function addEntry($clients_online, $configfile, $customDir = null)
     }
     else
     {
-        $baseDir = cacheDir;
+        $baseDir = CACHE_DIR;
     }
 
-    $fileDir = $baseDir . "stats_$configfile.xml";
+    $fileDir = $baseDir . "/" . "stats_$configfile.xml";
 
     $xml = simplexml_load_file($fileDir);
 

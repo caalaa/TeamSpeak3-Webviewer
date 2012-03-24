@@ -59,13 +59,10 @@ class stats extends ms_Module
             addEntry($this->getClients(), $configfile);
         }
 
-        $xml = simplexml_load_file(cacheDir . "stats_$configfile.xml");
+        $xml = simplexml_load_file(CACHE_DIR . "/" . "stats_$configfile.xml");
 
         // set min on y axes
         $this->config['min'] = (getMinClients($xml) - 1);
-
-
-
 
         // Load jqplot 
         // IE workaround
