@@ -116,12 +116,6 @@
     <enable_cache_flushing>true</enable_cache_flushing>
     <!-- minimal time in seconds between two connections to the server -->
     <standard_cachetime></standard_cachetime>
-    <!-- Cachtime for several commands (default: 60) -->
-    <cachetime_channellist_voice_flags_icon_limits></cachetime_channellist_voice_flags_icon_limits>
-    <cachetime_serverinfo></cachetime_serverinfo>
-    <cachetime_clientlist_away_voice_groups_info_times></cachetime_clientlist_away_voice_groups_info_times>
-    <cachetime_servergrouplist></cachetime_servergrouplist>
-    <cachetime_channelgrouplist></cachetime_channelgrouplist>
 
     <!-- Format of the date() function -->
     <!-- See http://php.net/manual/de/function.date.php -->

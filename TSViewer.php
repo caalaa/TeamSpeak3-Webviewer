@@ -42,6 +42,7 @@ define('version', "1.3.2");
 define('msBASEDIR', dirname(__FILE__) . "/");
 define('s_root', dirname(__FILE__) . "/");
 define('l10nDir', msBASEDIR . "l10n");
+define('BASE_CACHE_DIR', msBASEDIR.'cache');
 
 // Debug flag causes printing more detailed information in ms_ModuleManager and TSQuery.class.php
 define('debug', true);
@@ -126,8 +127,8 @@ if (isset($ajaxConfig) && $ajaxConfig != "")
 
 str_replace('/', '', $config_name);
 str_replace('.', '', $config_name);
+define('CACHE_DIR', BASE_CACHE_DIR.'/'.$config_name);
 $configPath = s_root . "config/" . $config_name . ".xml";
-
 
 $config_available = false;
 
@@ -155,12 +156,6 @@ if ($config_available == false)
 //postparsing of configfile 
 foreach ($config as $key => $value)
 {
-    if (preg_match("/^cachetime_/", $key))
-    {
-        $temp = explode('_', $key, 2);
-        $temp[1] = str_replace('_', ' -', $temp[1]);
-        $config['cachetime'][$temp[1]] = $value;
-    }
     if (preg_match("/^servergrp_images_/", $key))
     {
         $temp = explode('_', $key);
@@ -185,6 +180,9 @@ else
 {
     $config['need_clientinfo'] = false;
 }
+
+$config['cache_dir'] = CACHE_DIR;
+$config['config_name'] = $config_name;
 
 // Checks if the language as been submitted over the URL
 if (isset($_GET['lang']))
@@ -236,8 +234,6 @@ require_once s_root . 'core/i18n.inc';
 require_once s_root . 'core/utils.inc';
 require_once s_root . "libraries/php-gettext/gettext.inc";
 
-// define cachepath
-define("cacheDir", s_root . 'cache/' . $config['host'] . $config['queryport'] . '/' . $config['vserverport'] . '/');
 
 $output = '';
 
@@ -262,25 +258,21 @@ if ($config['usage_stats'])
     $mManager->loadModule("usageStatistics");
 }
 
-$mManager->triggerEvent('Startup');
-
-
-
 // Flush caches | Caching
 if (isset($_GET['flush_cache']) && isset($config['enable_cache_flushing']) && $config['enable_cache_flushing'] === true)
 {
-    $query->set_caching(true, 0);
     $mManager->triggerEvent('CacheFlush');
 }
 elseif (isset($_GET['fc']) && isset($config['enable_cache_flushing']) && $config['enable_cache_flushing'] === true)
 {
-    $query->set_caching(true, 0);
     $mManager->triggerEvent('CacheFlush');
 }
-else
-{
-    $query->set_caching($config['enable_caching'], $config['standard_cachetime'], $config['cachetime']);
-}
+
+$mManager->triggerEvent('Startup');
+
+
+
+
 
 try
 {
@@ -380,6 +372,7 @@ switch ($config["filter"])
 $output .= $mManager->getFooters();
 $output .= "</div>";
 $output .= $mManager->triggerEvent('HtmlShutdown');
+$mManager->triggerEvent('Shutdown', array($output));
 
 // Check if ajax mode is enabled
 if (isset($ajax) && $ajax)
