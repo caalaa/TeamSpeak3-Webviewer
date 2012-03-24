@@ -302,35 +302,6 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
 
     saveXmlFile("../config/" . $_SESSION['config'] . ".xml", $xml);
 
-
-    $querycachePath = "../cache/" . $_POST['serveradress'] . $_POST['queryport'] . "/" . $_POST['serverport'] . "/query/time/";
-    $imagecachePath = "../cache/" . $_POST['serveradress'] . $_POST['queryport'] . "/" . $_POST['serverport'] . "/server/images";
-
-    // create querycache directory
-    if (!is_dir($querycachePath))
-    {
-        $result = mkdir($querycachePath, 0776, true);
-
-        if ($result == 0)
-        {
-            echo(throwAlert(__("The directory for the query data-cache could not be created. Please create it and make it writable manually."), 22));
-            echo(throwInfo(__("Query cache directory: " . str_replace("../", "", $querycachePath))));
-        }
-    }
-
-    // create imagecache directory
-    if (!is_dir($imagecachePath))
-    {
-        $result = mkdir($imagecachePath, 0776, true);
-
-        if ($result == 0)
-        {
-            echo(throwAlert(__("The directory for the query image-cache could not be created. Please create it and make it writable manually."), 23));
-            echo(throwInfo(__("Image cache directory: " . str_replace("../", "", $imagecachePath))));
-        }
-    }
-
-
     if (!file_exists("../config/" . $_SESSION['config'] . ".xml"))
     {
         echo (throwAlert(__('The configfile is not writable. Please check if the required permissions are given to write the file.'), 24));

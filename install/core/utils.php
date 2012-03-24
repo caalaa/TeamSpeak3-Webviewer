@@ -152,29 +152,9 @@ function flushCache($config)
         }
         else
         {
-            $path = "../cache/" . (string) $config->host . (string) $config->queryport . "/" . (string) $config->vserverport . "/";
+            $path = "../cache/";
 
-
-            // query
-            $dir = opendir($path . "query");
-            while ($file = readdir($dir))
-            {
-                if ($file != ".." && $file != "." && $file != "time") unlink($path . "query/" . $file);
-            }
-
-            // query/time
-            $dir = opendir($path . "query/time");
-            while ($file = readdir($dir))
-            {
-                if ($file != ".." && $file != ".") unlink($path . "query/time/" . $file);
-            }
-
-            // server/images
-            $dir = opendir($path . "server/images");
-            while ($file = readdir($dir))
-            {
-                if ($file != ".." && $file != "." && $file != "time") unlink($path . "server/images/" . $file);
-            }
+            if (file_exists($path . $config)) unlink($path . $config);
             return throwWarning(__('Cache flushed.'));
         }
     }
@@ -242,35 +222,6 @@ function checkPermissions($directories)
         }
     }
     return $results;
-}
-
-/**
- * sets chmod recursive to the directory
- * @since 0.9
- * @param type $directory
- * @param type $chmod 
- * @deprecated since 1.3.1, deleted all chmod-modifications
- */
-function setChmodRecursive($path, $chmod)
-{
-    if (is_file($path))
-    {
-        chmod($path, $chmod);
-    }
-    elseif (is_dir($path))
-    {
-        $foldersAndFiles = scandir($path);
-
-        $entries = array_slice($foldersAndFiles, 2);
-
-        foreach ($entries as $entry)
-        {
-            if (substr($path, -1) !== "/") setChmodRecursive($path . "/" . $entry, $chmod);
-            else setChmodRecursive($path . $entry, $chmod);
-        }
-
-        chmod($path, $chmod);
-    }
 }
 
 /**
