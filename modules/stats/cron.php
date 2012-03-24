@@ -22,7 +22,6 @@
 // ************************************************************ \\
 // If you want to upate only one configfile (Comment out inappropriate)
 //$configFiles = "devmx";
-
 // If you want to update several configfiles (Comment out inappropriate)
 $configFiles = array("devmx", "9988");
 // ************************************************************ \\
@@ -62,7 +61,7 @@ function updateStatsFile($configfile)
     $configfile = str_replace(".xml", "", $configfile);
     $xml = simplexml_load_file(s_root . "config/$configfile.xml");
 
-    $customDir = s_root . 'cache/' . $xml->host . $xml->queryport . '/' . $xml->vserverport . '/';
+    $customDir = s_root . 'cache/';
 
     try
     {
@@ -91,20 +90,20 @@ function updateStatsFile($configfile)
             }
 
             $serverinfo = $query->serverinfo();
-            
+
             if (isset($serverinfo['error']['msg']) && trim($serverinfo['error']['msg']) != "ok")
             {
                 $query->quit();
                 throw new Exception("Failed to retrieve serverinfo: " . $serverinfo['error']['msg']);
             }
-            
+
             $serverinfo = $serverinfo['return'];
 
             $query->quit();
 
             if (isset($serverinfo['virtualserver_clientsonline']) && isset($serverinfo['virtualserver_queryclientsonline']))
             {
-                $clients  = (int) $serverinfo['virtualserver_clientsonline'] - (int) $serverinfo['virtualserver_queryclientsonline'];
+                $clients = (int) $serverinfo['virtualserver_clientsonline'] - (int) $serverinfo['virtualserver_queryclientsonline'];
                 addEntry($clients, $configfile, $customDir);
             }
         }
