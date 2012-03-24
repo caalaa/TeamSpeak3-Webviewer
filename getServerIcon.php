@@ -17,84 +17,32 @@
  *  You should have received a copy of the GNU General Public License
  *  along with devMX TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
  */
-session_name("ms_ts3Viewer");
-session_start();
-
-define('s_root', $_SESSION['s_root']);
-
+require_once('bootstrap.php');
+error_reporting(-1);
 
 $_GET['id'] = intval($_GET['id']);
 if ($_GET['id'] < 0) $_GET['id'] = 4294967296 + $_GET['id'];
 
-include s_root . "core/config.inc";
 
-$config_name = isset($_GET['config']) ? $_GET['config'] : '';
-str_replace('/', '', $config_name);
-str_replace('.', '', $config_name);
-$paths[] = s_root . "config/" . $config_name . ".xml";
-$paths[] = s_root . 'config/config.xml';
-foreach ($paths as $path)
-{
-    if (file_exists($path))
-    {
-        if (substr($path, -4) == ".xml")
-        {
-            $config = parseConfigFile($path, true);
-        }
-        else
-        {
-            $config = parseConfigFile($path, false);
-        }
-        break;
-    }
-}
-
-
-$cachefile = s_root . "cache/" . $config['host'] . $config['queryport'] . "/" . $config['vserverport'] . "/server/images/" . $_GET['id'];
+$cachefile = CACHE_DIR .'/'. $_GET['id'];
 $config['imagepack'] = !isset($config['imagepack']) || trim($config['imagepack']) == '' ? 'standard' : $config['imagepack'];
 $standardIconsPath = s_root . "images/" . $config['imagepack'] . "/";
-
 $isStandardIcon = false;
 
 if (in_array($_GET['id'], array("100", "200", "300", "500", "600")))
 {
     $isStandardIcon = true;
+    $standardIconPath = $standardIconsPath . "group_" . (string) $_GET['id'] . $config['image_type'];
 }
 
 // Check if standard group icon exists
-if ((!file_exists($standardIconsPath . "group_" . (string) $_GET['id'] . "." . $config['image_type']) && $isStandardIcon) || (int) $_GET['id'] == 0)
+if (($isStandardIcon && !file_exists($standardIconPath)) || (int) $_GET['id'] == 0)
 {
     exit;
+} elseif($isStandardIcon) {
+    $img = file_get_contents($standardIconPath);
 }
 
-// Check if standard group icons are used switch ((int) $_GET['id'])
-switch ((int) $_GET['id'])
-{
-    // Channeladmin
-    case 100:
-        $img = file_get_contents($standardIconsPath . "group_100." . $config['image_type']);
-        break;
-
-    // Operator
-    case 200:
-        $img = file_get_contents($standardIconsPath . "group_200." . $config['image_type']);
-        break;
-
-    // Superadmin
-    case 300:
-        $img = file_get_contents($standardIconsPath . "group_300." . $config['image_type']);
-        break;
-
-    // Superadmin Query
-    case 500:
-        $img = file_get_contents($standardIconsPath . "group_500." . $config['image_type']);
-        break;
-
-    // Voice
-    case 600:
-        $img = file_get_contents($standardIconsPath . "group_600." . $config['image_type']);
-        break;
-}
 
 
 // If standardicon is used
@@ -120,8 +68,6 @@ else
     // If icon needs to be downloaded
     else
     {
-        include s_root . "core/teamspeak/TSQuery.class.php";
-
         $query = new TSQuery($config['host'], $config['queryport']);
 
         if ($config['login_needed'])
@@ -137,7 +83,6 @@ else
         fwrite($file, $img);
         fclose($file);
     }
-
     header("Content-Type: image/png");
     echo $img;
 }
