@@ -37,6 +37,12 @@ class fullCache extends ms_Module
         if ($this->cache->isCached($this->cacheKey))
         {
             echo $this->cache->getCache($this->cacheKey);
+            
+            if($this->cache instanceof FileCache)
+            {
+                echo PHP_EOL. '<!-- Cached by devMX TeamSpeak3 Webviewer // File Cache -->';
+            }
+            
             die();
         }
     }

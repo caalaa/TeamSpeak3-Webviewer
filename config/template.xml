@@ -114,7 +114,7 @@
     <enable_caching></enable_caching>
     <!-- Enable flushing caches by appending fc as a get parameter -->
     <enable_cache_flushing>true</enable_cache_flushing>
-    <!-- minimal time in seconds between two connections to the server -->
+    <!-- Minimal time in seconds between two connections to the server -->
     <standard_cachetime></standard_cachetime>
 
     <!-- Format of the date() function -->

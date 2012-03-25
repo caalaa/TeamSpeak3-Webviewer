@@ -87,6 +87,7 @@ function createEditHtml()
     $enabled_modules = explode(",", $configfile->modules);
     unset($enabled_modules[array_search("htmlframe", $enabled_modules)]);
     unset($enabled_modules[array_search("style", $enabled_modules)]);
+    unset($enabled_modules[array_search("fullCache", $enabled_modules)]);
 
     $html['enabledModules'] = $enabled_modules;
 

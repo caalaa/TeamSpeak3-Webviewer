@@ -211,17 +211,17 @@ if (!isset($_SESSION['config']) || $_SESSION['config'] == "")
 if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['config']) && isset($_SESSION['lang']) && isset($_REQUEST['action']) && $_REQUEST['action'] == "submit")
 {
     require_once '../core/config/configComparer.php';
-    
+
     str_replace(".xml", "", $_SESSION['config_xml']);
 
     $xml = simplexml_load_string($_SESSION['config_xml']);
 
     // Check for configuration update
     $template = simplexml_load_file("../config/template.xml");
-    
+
     $configComparer = new configComparer($xml, $template);
     $xml = $configComparer->updateOldFile();
-    
+
     $necessary_vars = array("serveradress", "queryport", "serverport", "login_needed", "style", "arrows", "caching", "language", "display-filter");
     $vars_unavailable = false;
 
@@ -273,19 +273,18 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
     $xml->style = $_POST['style'];
     $xml->show_arrows = $_POST['arrows'];
     $xml->enable_caching = $_POST['caching'];
+
+    // Add caching-module to loaded modules
+    if ($_POST['caching'] == "true") $xml->modules = (string) $xml->modules . ",fullCache";
+
     $xml->standard_cachetime = $_POST['standard_caching'];
-    $xml->cachetime_channellist_voice_flags_icon_limits = $_POST['standard_caching'];
-    $xml->cachetime_serverinfo = $_POST['standard_caching'];
-    $xml->cachetime_clientlist_away_voice_groups_info_times = $_POST['standard_caching'];
-    $xml->cachetime_servergrouplist = $_POST['standard_caching'];
-    $xml->cachetime_channelgrouplist = $_POST['standard_caching'];
 
     $xml->language = $_POST['language'];
     $xml->usage_stats = $_POST['usage-statistics'];
 
     $xml->filter = $_POST['display-filter'];
     $xml->show_icons = $_POST['show_icons'];
-    
+
     $xml->show_country_icons = $_POST['show_country_icons'];
     $xml->date_format = $_POST['date-format'];
 
