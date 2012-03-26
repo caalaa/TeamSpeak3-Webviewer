@@ -37,13 +37,16 @@ class fullCache extends ms_Module
         if ($this->cache->isCached($this->cacheKey))
         {
             echo $this->cache->getCache($this->cacheKey);
-            
-            if($this->cache instanceof FileCache)
+
+            if ($this->cache instanceof FileCache)
             {
-                echo PHP_EOL. '<!-- Cached by devMX TeamSpeak3 Webviewer // File Cache -->';
+                echo PHP_EOL . '<!-- Cached by devMX TeamSpeak3 Webviewer // File Cache -->';
             }
-            
-            die();
+            else if ($this->cache instanceof ApcCache)
+            {
+                echo PHP_EOL . '<!-- Cached by devMX TeamSpeak3 Webviewer // APC-Cache -->';
+            }
+            exit;
         }
     }
 
@@ -73,8 +76,17 @@ class fullCache extends ms_Module
     {
         if ($this->config['enable_caching'])
         {
-            require_once(s_root . 'modules/fullCache/Caching/FileCache.php');
-            return new FileCache($this->config['cache_dir'], (int) $this->config['standard_cachetime']);
+            switch ((string) $this->config['cache_implementation'])
+            {
+                case 'file':
+                    require_once(s_root . 'modules/fullCache/Caching/FileCache.php');
+                    return new FileCache($this->config['cache_dir'], (int) $this->config['standard_cachetime']);
+                    break;
+                case 'apc':
+                    require_once(s_root . 'modules/fullCache/Caching/ApcCache.php');
+                    return new ApcCache((int) $this->config['standard_cachetime']);
+                    break;
+            }
         }
         else
         {

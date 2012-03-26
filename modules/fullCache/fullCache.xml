@@ -10,11 +10,10 @@
         <abstract>true</abstract>
     </info>
 
-    <!-- minimal time in seconds between two connections to the server -->
-    <!-- <standard_cachetime></standard_cachetime> -->
-    <!-- Whether caching should be enabled (true or false) -->
-    <!-- <enable_caching></enable_caching> -->
-    
-    <cache_implementation>FileCache</cache_implementation>
+    <!-- Caching method to use -->
+    <!-- Available methods: -->
+    <!-- apc - APC-Cache -->
+    <!-- file - File-Cache -->
+    <cache_implementation>file</cache_implementation>
 </config>
 

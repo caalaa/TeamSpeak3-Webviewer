@@ -11,6 +11,8 @@
 v1.4
 + Issue #69: Added option to hide all icons on the right side
 + Issue #68: Added option to display country icons
++ Issue #83: Added support for APC-Cache
+! Issue #74: Removed old caching and added a new method which caches the whole HTML-Output
 ~ Issue #72: Added div element at ajax code output in welcome screen
 ~ Issue #73: Moved country flag into title bar in the infoDialog
 ~ Issue #76: Added effect to infoDialog, sorted and added new options

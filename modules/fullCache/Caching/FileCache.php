@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with devMX TS3 Webviewer Lite. If not, see <http://www.gnu.org/licenses/>.
  */
-require_once('CachingInterface.php');
+require_once(s_root . 'modules/fullCache/Caching/CachingInterface.php');
 
 /**
  * Class for simple FileCaching
