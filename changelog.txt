@@ -13,12 +13,14 @@ v1.4
 + Issue #68: Added option to display country icons
 + Issue #83: Added support for APC-Cache
 ! Issue #74: Removed old caching and added a new method which caches the whole HTML-Output
+    + Issue #83: Added APC-Cache
 ~ Issue #72: Added div element at ajax code output in welcome screen
 ~ Issue #73: Moved country flag into title bar in the infoDialog
 ~ Issue #76: Added effect to infoDialog, sorted and added new options
 ~ Issue #77: Added a hover delay for the infoDialog
 ~ Issue #71: Fixed PHP 5.2 compatibility with ajax features
 ~ Issue #80: Added a option for the formatting of dates and times
+~ Issue #82: Added browser caching for images, css and js
 * Issue #75: Fixed wrong position on infoDialog
 * Issue #79: L10n was not working in the module config-dialog
 
