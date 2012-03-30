@@ -86,7 +86,7 @@ class style extends ms_Module
             return implode("", $this->styles);
         }
     }
-
+ 
     /**
      * Appends a version string to a url
      * @param string $text
