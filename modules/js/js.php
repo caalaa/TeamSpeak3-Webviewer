@@ -62,7 +62,7 @@ class js extends ms_Module
                         }
                         else
                         {
-                            $script = "<script src=\"" . $text . "\" type=\"text/javascript\"></script>\r\n";
+                            $script = "<script src=\"" . $this->appendVersionString($text) . "\" type=\"text/javascript\"></script>\r\n";
                         }
                     }
                     else
@@ -73,7 +73,7 @@ class js extends ms_Module
                         }
                         else
                         {
-                            $script = "<!--[if " . $cc . "]>" . '<script type="text/javascript" src="' . $text . '"></script><![endif]-->';
+                            $script = "<!--[if " . $cc . "]>" . '<script type="text/javascript" src="' . $this->appendVersionString($text) . '"></script><![endif]-->';
                         }
                     }
                     break;
@@ -139,6 +139,18 @@ class js extends ms_Module
             $this->js_sent = true;
             return implode("", $this->scripts);
         }
+    }
+
+    /**
+     * Appends a version string to a url
+     * @param string $text
+     * @return string
+     * @since 1.4
+     * @author Maximilian Narr
+     */
+    private function appendVersionString($text)
+    {
+        return $text . sprintf("?v=%s", version);
     }
 
 }
