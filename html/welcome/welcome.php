@@ -55,7 +55,7 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
         <div id="wrapper" style="margin-top: 20px; padding: 0 .7em;"> 
             <div id="content">
                 <div id="navigation">
-                    <a class="nav" href="http://devmx.de/en/software/teamspeak3-webviewer/ubersetzen" target="_blank"><span class="nav-element orange"><?php __e('Help us translating the webviewer')?></span></a>
+                    <a class="nav" href="http://devmx.de/en/software/teamspeak3-webviewer/ubersetzen" target="_blank"><span class="nav-element orange"><?php __e('Help us translating the webviewer') ?></span></a>
                     <span onclick="javascript: openFacebookDialog();" class="nav nav-element orange"><?php __e('Become fan at facebook'); ?></span>
                     <a class="nav" href="<?php echo(s_http . 'install/index.php' . htmlspecialchars($newlang)) ?>"><span class="nav-element orange"><?php __e('Installation and Configuration') ?></span></a>
                     <a class="nav" target="_blank" href="http://support.devmx.de"><span class="nav-element orange"><?php __e('Support') ?></span></a>
@@ -79,12 +79,12 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
                         <?php endforeach; ?>
                     </ul>   
                 <?php endif; ?>
-                    <?php
-                    $languages = $utils->getLanguages();
-                    foreach ($languages as $langCode => $langOptions) :
-                        ?>              
-                        <span class="orange lang" style="float:left; margin-right: 10px;"><a href="?lang=<?php echo($langCode); ?>"><?php echo($langOptions['lang']) ?></a></span>
-                    <?php endforeach; ?>
+                <?php
+                $languages = $utils->getLanguages();
+                foreach ($languages as $langCode => $langOptions) :
+                    ?>              
+                    <span class="orange lang" style="float:left; margin-right: 10px;"><a href="?lang=<?php echo($langCode); ?>"><?php echo($langOptions['lang']) ?></a></span>
+                <?php endforeach; ?>
                 <p id="version"><?php __e('Version:'); ?> <?php echo (string) version; ?></p>
 
                 <?php
@@ -117,6 +117,16 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
                             <tr>
                                 <td><?php __e('Width') ?>:</td>
                                 <td><input class="ui-widget ui-corner-all ui-widget-content ui-textbox" type="text" value="100%" id="code-width" /></td>
+                            </tr>
+                            <tr>
+                                <td><?php __e('Language') ?>:</td>
+                                <td>
+                                    <select id="code-language">
+                                        <?php foreach ($languages as $key => $value) : ?>
+                                            <option value="<?php echo ($key) ?>"><?php echo ($value['lang']) ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </td>
                             </tr>
                         </table>
                         <textarea class="ui-textbox ui-corner-all ui-widget-content ui-widget" id="code-area"></textarea>

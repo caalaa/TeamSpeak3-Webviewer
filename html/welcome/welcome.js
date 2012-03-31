@@ -19,12 +19,12 @@
 var config;
 
 $(document).ready(function(){
-    $("input#code-width,input#code-height").change(function(){
-        $("#code-area").html(getIframeLink($("#code-height").val(), $("#code-width").val()));
+    $("input#code-width,input#code-height,select#code-language").change(function(){
+        $("#code-area").html(getIframeLink($("#code-height").val(), $("#code-width").val(), $("#code-language").val()));
     });
     
     $("input#ajax-id").change(function(){
-       $("#ajax-area").html(getAjaxLink($("#ajax-id").val())); 
+        $("#ajax-area").html(getAjaxLink($("#ajax-id").val())); 
     });
 });
 
@@ -48,7 +48,7 @@ function openFacebookDialog()
 function openLinkDialog(conf)
 {
     config = conf;
-    $("#code-area").html(getIframeLink("100%", "100%"));
+    $("#code-area").html(getIframeLink("100%", "100%", $("#code-language").val()));
     $("#ajax-area").html(getAjaxLink("viewer"));
     $('#include-tabs').tabs();
     $("#code").dialog(defaultOptions, {
@@ -58,9 +58,9 @@ function openLinkDialog(conf)
 }
 
 // returns the code to include the viewer via an iframe
-function getIframeLink(height, width)
+function getIframeLink(height, width, lang)
 {
-    return '&lt;iframe src="' + s_http + 'index.php?config=' + config + '" height="' + height + '" width="' + width + '" frameborder="0" scrolling="0" allowTransparency="true"&gt;&lt;/iframe&gt;' 
+    return '&lt;iframe src="' + s_http + 'index.php?config=' + config + '&lang=' + lang + '" height="' + height + '" width="' + width + '" frameborder="0" scrolling="0" allowTransparency="true"&gt;&lt;/iframe&gt;' 
 }
 
 // returns the code to include the viewer via ajax
