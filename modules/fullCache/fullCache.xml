@@ -9,11 +9,5 @@
         <!-- Ändern Sie hier nichts! -->
         <abstract>true</abstract>
     </info>
-
-    <!-- Caching method to use -->
-    <!-- Available methods: -->
-    <!-- apc - APC-Cache -->
-    <!-- file - File-Cache -->
-    <cache_implementation>file</cache_implementation>
 </config>
 

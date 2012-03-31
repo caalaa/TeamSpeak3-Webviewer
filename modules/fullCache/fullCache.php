@@ -76,7 +76,7 @@ class fullCache extends ms_Module
     {
         if ($this->config['enable_caching'])
         {
-            switch ((string) $this->config['cache_implementation'])
+            switch ((string) $this->config['cache_method'])
             {
                 case 'file':
                     require_once(s_root . 'modules/fullCache/Caching/FileCache.php');
