@@ -275,6 +275,7 @@ if (passwordSetted() && $_SESSION['validated'] == true && isset($_SESSION['confi
     if ($_POST['caching'] == "true") $xml->modules = (string) $xml->modules . ",fullCache";
 
     $xml->standard_cachetime = $_POST['standard_caching'];
+    $xml->cache_method = $_POST['caching-method'];
 
     $xml->language = $_POST['language'];
     $xml->usage_stats = $_POST['usage-statistics'];

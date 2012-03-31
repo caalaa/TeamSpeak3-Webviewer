@@ -63,7 +63,7 @@ function createEditHtml()
 
     $configfile = simplexml_load_string($_SESSION['config_xml']);
     $template = simplexml_load_file("../config/template.xml");
-            
+
     $html['config'] = $configfile;
     $html['serveradress_value'] = (string) $configfile->host;
     $html['queryport_value'] = (string) $configfile->queryport;
@@ -76,8 +76,10 @@ function createEditHtml()
     $html['password_value'] = (string) $configfile->password;
 
     $html['show-images'] = (string) $configfile->show_icons;
-    
+
     $html['show_hierarchy_icons'] = (string) $configfile->show_hierarchy_icons;
+
+    $html['caching-method'] = (string) $configfile->cache_method;
 
     // Modules
     $modules = getModules();
@@ -171,21 +173,21 @@ function createEditHtml()
         if ($langCode == $selected_lang) $html['language_html'] .= '<input type="radio" name="language" checked="checked" value="' . $langCode . '">' . $langOptions['lang'] . ' <br>';
         else $html['language_html'] .= '<input type="radio" name="language"  value="' . $langCode . '">' . $langOptions['lang'] . ' <br>';
     }
-    
+
     // Date format
-    if(isset($configfile->date_format) && $configfile->date_format != null && $configfile->date_format != "")
+    if (isset($configfile->date_format) && $configfile->date_format != null && $configfile->date_format != "")
     {
-        $html['date_format'] = (string)$configfile->date_format;
+        $html['date_format'] = (string) $configfile->date_format;
     }
     else
     {
-        $html['date_format'] = (string)$template->date_format;
+        $html['date_format'] = (string) $template->date_format;
     }
-    
+
     // Country icons
-    $html['show_country_icons'] = (string)$configfile->show_country_icons;
-    
-    
+    $html['show_country_icons'] = (string) $configfile->show_country_icons;
+
+
     return $html;
 }
 
