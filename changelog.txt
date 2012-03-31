@@ -21,6 +21,7 @@ v1.4
 ~ Issue #71: Fixed PHP 5.2 compatibility with ajax features
 ~ Issue #80: Added a option for the formatting of dates and times
 ~ Issue #82: Added browser caching for images, css and js
+~ Issue #81: Added a option to select the language in the code creation dialog
 * Issue #75: Fixed wrong position on infoDialog
 * Issue #79: L10n was not working in the module config-dialog
 
