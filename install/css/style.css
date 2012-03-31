@@ -148,8 +148,18 @@ div#permission-check
 div#permission-warning
 {
     padding: 3px;
-    margin-top: 5px;
+    margin-top: 15px;
     margin-bottom: 5px;
+}
+
+div#permission-warning span
+{
+    font-size: 12px;
+}
+
+div#permission-check table
+{
+    text-align: left;
 }
 
 div#alert, div#warning, div#info

@@ -199,9 +199,6 @@ if (!isset($_SESSION['config']) || $_SESSION['config'] == "")
 {
     $data = createConfigHtml();
 
-    // Check Functions
-    $data['err_warn'] = checkFunctions();
-
     require_once 'html/select_config.php';
     require_once 'html/footer.php';
     exit;

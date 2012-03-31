@@ -181,22 +181,22 @@ function deleteConfigfile($file)
 
 /**
  * Returns warnings if some necessary functions are not available
- * @return warning
+ * @param array Array of functions
+ * @return array key = functionname value = true if function is available, else false
  */
-function checkFunctions()
+function checkFunctions($functions)
 {
-    $html = '';
-    $functions = Array("fsockopen");
-    foreach ($functions as $value)
+    $results = array();
+    
+    foreach($functions as $function)
     {
-        if (!function_exists($value))
-        {
-            // Create Warnings
-            $html .= throwAlert(sprintf(__('The required function %s is not available on your webspace. Please contact your service provider.'), $value), 25);
-        }
+        if(function_exists($function))
+            $results[$function] = true;
+        else
+            $results[$function] = false;
     }
-
-    return $html;
+    
+    return $results;
 }
 
 /**
