@@ -34,19 +34,25 @@ class fullCache extends ms_Module
 
     public function onStartup()
     {
+        global $output;
+        global $ajax;
+        global $ajaxScriptOutput;
+        
         if ($this->cache->isCached($this->cacheKey))
         {
-            echo $this->cache->getCache($this->cacheKey);
+            $output = $this->cache->getCache($this->cacheKey);
 
             if ($this->cache instanceof FileCache)
             {
-                echo PHP_EOL . '<!-- Cached by devMX TeamSpeak3 Webviewer // File Cache -->';
+                $output .= PHP_EOL . '<!-- Cached by devMX TeamSpeak3 Webviewer // File Cache -->';
             }
             else if ($this->cache instanceof ApcCache)
             {
-                echo PHP_EOL . '<!-- Cached by devMX TeamSpeak3 Webviewer // APC-Cache -->';
+                $output .= PHP_EOL . '<!-- Cached by devMX TeamSpeak3 Webviewer // APC-Cache -->';
             }
-            exit;
+        }
+        if($ajax) {
+            $ajaxScriptOutput = $this->cache->getCache('ajax_js');
         }
     }
 
@@ -57,6 +63,7 @@ class fullCache extends ms_Module
 
     public function onShutdown($output)
     {
+        $this->cache->cache('ajax_js', $this->mManager->loadModule('js')->ajaxJS);
         $this->cache->cache($this->cacheKey, $output);
     }
 

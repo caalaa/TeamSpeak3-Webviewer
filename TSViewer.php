@@ -64,7 +64,17 @@ elseif (isset($_GET['fc']) && isset($config['enable_cache_flushing']) && $config
 
 $mManager->triggerEvent('Startup');
 
-
+if($output !== '') {
+    if (isset($ajax) && $ajax)
+    {
+        $ajaxScriptOutput = $mManager->loadModule("js")->ajaxJS;
+        $ajaxHtmlOutput = $output;
+    }
+    else {
+        echo $output;
+    }
+    return;
+}
 
 
 
