@@ -52,7 +52,7 @@ class fullCache extends ms_Module
             }
         }
         if($ajax) {
-            $ajaxScriptOutput = $this->cache->getCache('ajax_js');
+            $ajaxScriptOutput = unserialize($this->cache->getCache('ajax_js'));
         }
     }
 
@@ -63,7 +63,7 @@ class fullCache extends ms_Module
 
     public function onShutdown($output)
     {
-        $this->cache->cache('ajax_js', $this->mManager->loadModule('js')->ajaxJS);
+        $this->cache->cache('ajax_js', serialize($this->mManager->loadModule('js')->ajaxJS));
         $this->cache->cache($this->cacheKey, $output);
     }
 
