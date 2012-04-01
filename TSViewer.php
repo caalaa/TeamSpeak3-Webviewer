@@ -67,7 +67,6 @@ $mManager->triggerEvent('Startup');
 if($output !== '') {
     if (isset($ajax) && $ajax)
     {
-        $ajaxScriptOutput = $mManager->loadModule("js")->ajaxJS;
         $ajaxHtmlOutput = $output;
     }
     else {
