@@ -35,7 +35,6 @@ class fullCache extends ms_Module
     public function onStartup()
     {
         global $output;
-        global $ajax;
         global $ajaxScriptOutput;
         
         if ($this->cache->isCached($this->cacheKey))
@@ -50,11 +49,8 @@ class fullCache extends ms_Module
             {
                 $output .= PHP_EOL . '<!-- Cached by devMX TeamSpeak3 Webviewer // APC-Cache -->';
             }
-            if($ajax) {
-                $ajaxScriptOutput = unserialize($this->cache->getCache('ajax_js'));
-            }
+            $ajaxScriptOutput = unserialize($this->cache->getCache('ajax_js'));
         }
-        
     }
 
     public function onCacheFlush()

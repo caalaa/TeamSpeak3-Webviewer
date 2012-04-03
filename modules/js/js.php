@@ -32,7 +32,6 @@ class js extends ms_Module
     {
         $this->js_sent = false;
         $this->ajaxJS = array();
-        $this->ajaxEnabled = $this->config['ajaxEnabled'];
 
         // Add s_http and s_root for javascript
         $this->loadJSVar("s_http", s_http);
@@ -56,42 +55,24 @@ class js extends ms_Module
                 case 'file':
                     if ($cc == NULL)
                     {
-                        if ($this->ajaxEnabled)
-                        {
                             $this->ajaxJS["src"][] = $text;
-                        }
-                        else
-                        {
                             $script = "<script src=\"" . $this->appendVersionString($text) . "\" type=\"text/javascript\"></script>\r\n";
-                        }
                     }
                     else
                     {
-                        if ($this->ajaxEnabled)
-                        {
-                            $this->ajaxJS["src"][] = $text;
-                        }
-                        else
-                        {
-                            $script = "<!--[if " . $cc . "]>" . '<script type="text/javascript" src="' . $this->appendVersionString($text) . '"></script><![endif]-->';
-                        }
+                        $this->ajaxJS["src"][] = $text;
+                       $script = "<!--[if " . $cc . "]>" . '<script type="text/javascript" src="' . $this->appendVersionString($text) . '"></script><![endif]-->';
                     }
                     break;
                 default:
-                    if ($this->ajaxEnabled)
-                    {
                         $this->ajaxJS["txt"][] = "/* <![CDATA[ */
 				$text
 				/* ]]> */";
-                    }
-                    else
-                    {
                         $script = "<script type=\"text/javascript\">
 				/* <![CDATA[ */
 				$text
 				/* ]]> */
 				</script>";
-                    }
                     break;
             }
 

@@ -62,8 +62,8 @@ elseif (isset($_GET['fc']) && isset($config['enable_cache_flushing']) && $config
     $mManager->triggerEvent('CacheFlush');
 }
 
+$ajaxScriptOutput = array();
 $mManager->triggerEvent('Startup');
-
 if($output !== '') {
     if (isset($ajax) && $ajax)
     {
