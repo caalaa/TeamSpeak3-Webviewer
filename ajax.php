@@ -90,7 +90,7 @@ else if (isset($_GET['config']) && isset($_GET['json']))
     {
         header('Content-type: application/json');
 
-        echo($_GET['callback'] . '(' . json_encode(array("html" => $ajaxHtmlOutput, "script" => $ajaxScriptOutput)) . ')');
+        echo($_GET['callback'] . '(' . json_encode(array("html" => preg_replace('#<script.*?>.*?</script>#', '' ,$ajaxHtmlOutput), "script" => $ajaxScriptOutput)) . ')');
     }
 }
 ?>
