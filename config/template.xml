@@ -115,7 +115,7 @@
     <!-- Enable flushing caches by appending fc as a get parameter -->
     <enable_cache_flushing>true</enable_cache_flushing>
     <!-- Minimal time in seconds between two connections to the server -->
-    <standard_cachetime></standard_cachetime>
+    <standard_cachetime>180</standard_cachetime>
     <!-- The method which should be uses for caching -->
     <cache_method>file</cache_method>
 
