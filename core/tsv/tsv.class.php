@@ -53,8 +53,7 @@ class tsvUtils
         $handler = opendir($path);
         while ($file = readdir($handler))
         {
-            if ($file != "." && $file != ".." && $file != "default.pot" && $file != "howto.txt" && preg_match("/([a-z]){2}(([_-]{1})([A-Z]{2}))?
-                /", $file) >= 1)
+            if ($file != "." && $file != ".." && $file != "default.pot" && $file != "howto.txt" && preg_match("/([a-z]){2}(([_-]{1})([A-Z]{2}))?/", $file) >= 1)
             {
                 require $path . "/" . $file . "/" . "lang.php";
 
