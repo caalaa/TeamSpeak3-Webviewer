@@ -33,7 +33,7 @@ class tsvUtils
      * @since 0.9
      * @param type $customPath set a custom root path of the viewer, if null is set, current one will be used
      */
-    function __construct($customPath=NULL)
+    function __construct($customPath = NULL)
     {
         if ($customPath == NULL) $this->customPath = realpath("./");
         else $this->customPath = realpath($customPath);
@@ -53,7 +53,8 @@ class tsvUtils
         $handler = opendir($path);
         while ($file = readdir($handler))
         {
-            if ($file != "." && $file != ".." && preg_match("/([a-z]){2}(_){1}([A-Z]){2}/", $file) >= 1 )
+            if ($file != "." && $file != ".." && $file != "default.pot" && $file != "howto.txt" && preg_match("/([a-z]){2}(([_-]{1})([A-Z]{2}))?
+                /", $file) >= 1)
             {
                 require $path . "/" . $file . "/" . "lang.php";
 
@@ -75,8 +76,8 @@ class tsvUtils
         if (function_exists("ini_get") && (bool) ini_get("allow_url_fopen"))
         {
             $xml = simplexml_load_string(file_get_contents($this->versionPath));
-            
-            if(version_compare(version, (string)$xml->version, "<"))
+
+            if (version_compare(version, (string) $xml->version, "<"))
             {
                 return $xml;
             }
