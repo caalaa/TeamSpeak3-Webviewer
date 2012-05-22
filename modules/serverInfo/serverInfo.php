@@ -58,11 +58,14 @@ class serverInfo extends ms_Module
         if ($serverinfo['virtualserver_welcomemessage'] == '') $welcomemsg = __('no welcomemessage');
         else $welcomemsg = $bbparser->Parse($serverinfo['virtualserver_welcomemessage']);
 
+        $serverVersion = explode("[", $serverinfo['virtualserver_version']);
+        $serverVersion[2] = "(" . date($this->config['date_format'], str_replace("Build: ", "", $serverVersion[1])) . ")";
+
         $this->html.='<!--- START Serverinfo -->
             <div class="serverinfo"><table>
             <tr>
             <td><h5>' . __('Welcomemessage') . '</h5><p class="welcomemsg">' . $welcomemsg . '</p><h5>' . __('Channels') . '</h5><p><span class="channelimage normal-channel">&nbsp;</span>' . $serverinfo['virtualserver_channelsonline'] . '</p></td>
-            <td><h5>' . __('Version') . '</h5><p>' . $serverinfo['virtualserver_version'] . '</p><h5>' . __('Server OS') . '</h5><p>' . $serverinfo['virtualserver_platform'] . '</p></td>
+            <td><h5>' . __('Version') . '</h5><p>' . $serverVersion[0] . $serverVersion[2] . ' </p><h5>' . __('Server OS') . '</h5><p>' . $serverinfo['virtualserver_platform'] . '</p></td>
             <td><h5>' . __('Connectiondetails') . '</h5><h6>' . __('total sent') . '</h6><p>' . $this->get_value($serverinfo['connection_bytes_sent_total'], $value_format) . '</p><h6>' . __('total received') . '</h6><p>' . $this->get_value($serverinfo['connection_bytes_received_total'], $value_format) . '</td>
             </tr>
             </table>
