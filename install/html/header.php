@@ -24,6 +24,7 @@
 <html>
     <head>
         <title>TeamSpeak3 Webviewer - Installation</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=9" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="robots" content="noindex,follow">
         <link rel="icon" href="img/tools.png" type="image/png">
@@ -33,15 +34,16 @@
 
         <!-- Jquery UI -->
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"></script>
-        <link rel="stylesheet" href="../libraries/fluent/css/fluent.css" type="text/css" />
+        <link rel="stylesheet" href="../libraries/fluent/css/fluent.css" type="text/css" >
         <script type="text/javascript" src="../libraries/fluent/js/fluent.js"></script>
 
         <!-- Smooth scroll -->
         <script src="../libraries/jquery-smooth-scroll/jquery.smooth-scroll.min.js" type="text/javascript"></script>
 
         <!-- Own Scripts -->
-        <link rel="stylesheet" href="css/style.css" type="text/css" />
+        <link rel="stylesheet" href="css/style.css" type="text/css" >
+        <link rel="stylesheet" href="../libraries/css/tswv.css">
         <script type="text/javascript" src="js/script.js"></script>
     </head>
-    <body>
+    <body class="tswv-body">
         <div class="devmx-name"><span>dev</span><span style="color: red;">MX</span> TeamSpeak3 Webviewer</div>

@@ -16,30 +16,6 @@
  *  along with devMX TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-*
-{
-    font-family: sans-serif;
-}
-
-html
-{
-    height: 100%;
-}
-
-body
-{
-    margin: 0;
-    background: #ffffff;
-    background: -moz-linear-gradient(top, #ffffff 0%, #e5e5e5 100%) fixed;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e5e5e5)) fixed;
-    background: -webkit-linear-gradient(top, #ffffff 0%,#e5e5e5 100%) fixed;
-    background: -o-linear-gradient(top, #ffffff 0%,#e5e5e5 100%) fixed;
-    background: -ms-linear-gradient(top, #ffffff 0%,#e5e5e5 100%) fixed;
-    background: linear-gradient(top, #ffffff 0%,#e5e5e5 100%) fixed;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
 div.devmx-name
 {
     font-size: 30px;
@@ -53,7 +29,6 @@ div.devmx-name
     box-shadow: 0 0 30px rgba( 255, 255, 255, 0.1 );
     -webkit-border-radius: 8px;
     border-radius: 8px;
-    font-family: sans-serif;
     margin: auto;
     text-align: center;
     margin-top: 20px;
@@ -90,56 +65,6 @@ div.warning, div.alert
     margin-right: auto;
 }
 
-div#language, div#config-selection, div#password, div#config
-{
-    margin-left: auto;
-    margin-right: auto;
-
-    padding: 20px;
-
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-
-    border: 1px #E0E0E0 solid;
-
-
-    background: -moz-linear-gradient(top, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.5) 1%, rgba(242,242,242,1) 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.5)), color-stop(1%,rgba(255,255,255,0.5)), color-stop(100%,rgba(242,242,242,1)));
-    background: -webkit-linear-gradient(top, rgba(255,255,255,0.5) 0%,rgba(255,255,255,0.5) 1%,rgba(242,242,242,1) 100%);
-    background: -o-linear-gradient(top, rgba(255,255,255,0.5) 0%,rgba(255,255,255,0.5) 1%,rgba(242,242,242,1) 100%);
-    background: -ms-linear-gradient(top, rgba(255,255,255,0.5) 0%,rgba(255,255,255,0.5) 1%,rgba(242,242,242,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80ffffff', endColorstr='#f2f2f2',GradientType=0 );
-    background: linear-gradient(top, rgba(255,255,255,0.5) 0%,rgba(255,255,255,0.5) 1%,rgba(242,242,242,1) 100%);
-
-    -moz-box-shadow: 0 0 5px #888;
-    -webkit-box-shadow: 0 0 0 5px #888;
-    box-shadow: 0 0 5px #888;
-}
-
-div#config-selection, div#password
-{
-    margin-top: 35px;
-}
-
-div#config
-{
-    width: 1000px;
-    -moz-box-shadow: 0 0 5px #888;
-    -webkit-box-shadow: 0 0 0 5px #888;
-    box-shadow: 0 0 5px #888;
-    margin-top: 35px;
-}
-
-div#language, div#password
-{
-    width: 600px;
-}
-
-div#config-selection
-{
-    width: 800px;
-}
-
 div#permission-check
 {
     padding: 5px;
@@ -166,14 +91,6 @@ div#alert, div#warning, div#info
 {
     width: 100%;
     font-size: 14px;
-}
-
-div.config-select
-{
-    background-color: #e6e4e4;
-    border-radius: 5px;
-    margin: auto;
-    width: 100%;
 }
 
 a.select-button
@@ -229,7 +146,6 @@ li
 table.config
 {
     padding: 60px;
-    background-color: #e6e4e4;
     border-radius: 5px;
     margin: auto;
     width: 900px;
@@ -257,13 +173,17 @@ table.language tr td:nth-child(2)
     width: 150px;
 }
 
+table.config td.option-descr
+{
+    padding-left: 40px;
+}
+
 table.config td.option-descr,
 table.config td.option-descr span,
 table.config td.option-descr p
 {
     font-size: 12px;
     color: #555;
-    padding-left: 40px;
 }
 
 table.config td.option-descr * a
@@ -281,9 +201,9 @@ li.module-inactive
     -webkit-border-radius: 5px;
     -khtml-border-radius: 5px;
     border-radius: 5px;
-    -moz-box-shadow: 0 0 5px #888;
-    -webkit-box-shadow: 0 0 5px#888;
-    box-shadow: 0 0 5px #888;
+    -moz-box-shadow: 0 0 1px #888;
+    -webkit-box-shadow: 0 0 1px #888;
+    box-shadow: 0 0 1px #888;
     cursor: pointer;
     text-decoration: underline;
 }

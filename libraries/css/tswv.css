@@ -1,0 +1,165 @@
+/**
+ *  This file is part of TeamSpeak3 Webviewer.
+ *
+ *  TeamSpeak3 Webviewer is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  TeamSpeak3 Webviewer is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+@font-face 
+{
+    /* Ubuntu Font is released under the Ubuntu Font License, see licenes/Ubuntu Font License.txt for full text */
+    font-family: 'Ubuntu';
+    src: url(Ubuntu-Regular.ttf);
+}
+
+*
+{
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.tswv-body
+{
+    background-color: #f1f1f1;
+}
+
+.tswv-container
+{
+    margin: 100px auto 100px auto;
+    padding: 30px;
+
+    background-color: #ffffff;
+
+    -moz-box-shadow: 0 0 10px #888;
+    -webkit-box-shadow: 0 0 0 10px #888;
+    box-shadow: 0 0 10px #888;
+
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -khtml-border-radius: 15px;
+    border-radius: 15px;
+}
+
+.tswv-container-60per
+{
+    width: 60%;
+    max-width: 1000px;
+}
+
+.tswv-container-550px
+{
+    width: 550px;
+}
+
+.tswv-container-450px
+{
+    width: 450px;
+}
+
+.tswv-inner-container
+{
+    padding: 10px;
+
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+
+    background-color: #F6F6F6;
+
+    -moz-box-shadow: 0 0 3px #888;
+    -webkit-box-shadow: 0 0 3px #888;
+    box-shadow: 0 0 3px #888;
+}
+
+.tswv-button-orange
+{
+    background: #ffd65e; 
+    background: -moz-linear-gradient(top, #ffd65e 0%, #febf04 100%); 
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffd65e), color-stop(100%,#febf04));
+    background: -webkit-linear-gradient(top, #ffd65e 0%,#febf04 100%); 
+    background: -o-linear-gradient(top, #ffd65e 0%,#febf04 100%); 
+    background: -ms-linear-gradient(top, #ffd65e 0%,#febf04 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffd65e', endColorstr='#febf04',GradientType=0 );
+    background: linear-gradient(top, #ffd65e 0%,#febf04 100%);
+
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+
+    -moz-box-shadow: 0 0 1px #888;
+    -webkit-box-shadow: 0 0 1px #888;
+    box-shadow: 0 0 1px #888;
+
+    transition: all .3s;
+    -moz-transition: all .3s;
+    -webkit-transition: all .3s;
+    -o-transition: all .3s; 
+}
+
+.tswv-button-red
+{
+    background: #ff3019;
+    background: -moz-linear-gradient(top, #ff3019 0%, #cf0404 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff3019), color-stop(100%,#cf0404));
+    background: -webkit-linear-gradient(top, #ff3019 0%,#cf0404 100%);
+    background: -o-linear-gradient(top, #ff3019 0%,#cf0404 100%);
+    background: -ms-linear-gradient(top, #ff3019 0%,#cf0404 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3019', endColorstr='#cf0404',GradientType=0 );
+    background: linear-gradient(top, #ff3019 0%,#cf0404 100%);
+
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+
+    -moz-box-shadow: 0 0 1px #888;
+    -webkit-box-shadow: 0 0 1px #888;
+    box-shadow: 0 0 1px #888;
+
+    transition: all .3s;
+    -moz-transition: all .3s;
+    -webkit-transition: all .3s;
+    -o-transition: all .3s; 
+}
+
+.tswv-button-orange:hover, .tswv-button-red:hover
+{
+    -moz-box-shadow: 0 0 10px #888;
+    -webkit-box-shadow: 0 0 10px #888;
+    box-shadow: 0 0 10px #888;
+}
+
+.tswv-link-gray
+{
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -khtml-border-radius: 4px;
+    border-radius: 4px;
+    background-color: #efefef;
+    padding: 4px;
+
+    transition: background-color .2s;
+    -moz-transition: background-color .2s;
+    -webkit-transition: background-color .2s;
+    -o-transition: background-color .2s; 
+
+    text-decoration: none;
+    color: black;
+}
+
+.tswv-link-gray:hover
+{
+    background-color: #e0e0e0;
+
+    text-decoration: none;
+}

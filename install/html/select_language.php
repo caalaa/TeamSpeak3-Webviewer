@@ -16,18 +16,18 @@
  *  along with devMX TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
  */ ?>
 <div class="center" style="margin-top: 80px; margin-bottom: 20px;"><img src="../html/welcome/webviewer-logo.png" alt="" /></div>
-<div id="language">
+<div class="tswv-container tswv-container-550px">
     <div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em; margin-bottom: 10px;"> 
         <p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
             Please select your language / Bitte wählen Sie Ihre Sprache</p>
     </div>
-    <fieldset>
+    <div class="tswv-inner-container">
         <?php
         $languages = $utils->getLanguages();
 
         foreach ($languages as $langCode => $langOptions) :
             ?>
-            <button onclick="javascript: setLang('<?php echo($langCode); ?>');"><?php echo($langOptions['lang']); ?></button>
+            <a href="index.php?action=setlang&lang=<?php echo $langCode?>" class="tswv-link-gray"><?php echo $langOptions['lang'] ?></a>
         <?php endforeach; ?>  
-    </fieldset>
+    </div>
 </div>

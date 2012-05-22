@@ -19,12 +19,12 @@
 ?>
 
 <!-- Navigation -->
-<span style="position: absolute; right: 10px; top: 10px;" class="topnav" >
+<span style="position: fixed; right: 10px; top: 10px;" class="topnav" >
     <a href="index.php?action=return" alt="" class="button"><?php __e('Back to configfiles') ?></a>
     <a href="index.php?action=logout" alt="" class="button"><?php __e('Logout') ?></a>
     <a href="http://devmx.de/en/software/teamspeak3-webviewer/dokumentation" title="<?php __e('I need help!') ?>" target="_blank" alt="" class="button"><span class="ui-icon ui-icon-info">&nbsp;</span></a>
 </span>
-<div id="config">
+<div class="tswv-container tswv-container-60per">
     <form action="index.php?action=submit" method="post" >
         <div id="tabs">
             <ul>
@@ -143,9 +143,9 @@
                             <input type="radio" name="display-filter" value="clientsonly" <?php if ($data['display-filter'] == "clientsonly"): ?> checked="checked"<?php endif; ?>> <?php __e('Clientsonly') ?><br>
                             <input type="radio" name="display-filter" value="channelclientsonly" <?php if ($data['display-filter'] == "channelclientsonly"): ?> checked="checked" <?php endif; ?>> <?php __e('Channelclientsonly') ?></td>
                         <td class="option-descr">
-                            <span><?php __e('standard: shows the viewer like in the TeamSpeak3 Client') ?></span><br>
-                            <span><?php __e('clientsonly: shows only clients') ?></span><br>
-                            <span><?php __e('channelclientsonly: shows only channels with clients inside') ?></span>
+                            <?php __e('standard: shows the viewer like in the TeamSpeak3 Client') ?><br>
+                            <?php __e('clientsonly: shows only clients') ?><br>
+                            <?php __e('channelclientsonly: shows only channels with clients inside') ?>
                         </td>
                     </tr>
                     <tr id="show-image-config">

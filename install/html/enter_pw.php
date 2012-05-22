@@ -17,7 +17,7 @@
  *  along with devMX TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
  */ 
 ?>
-<div id="password">
+<div class="tswv-container tswv-container-550px">
     <!-- Permission Check -->
     <?php require_once 'html/permission-check.php'; ?>
     

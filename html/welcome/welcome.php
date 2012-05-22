@@ -49,33 +49,33 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.js"></script>
         <link href="<?php echo(s_http) ?>libraries/fluent/css/fluent.css" rel="stylesheet" type="text/css">
         <link href="<?php echo(s_http) ?>html/welcome/style.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo(s_http) ?>libraries/css/tswv.css" rel="stylesheet" type="text/css">
     </head>
-    <body>
-
-        <div id="wrapper" style="margin-top: 20px; padding: 0 .7em;"> 
+    <body class="tswv-body">
+        <div id="wrapper" class="tswv-container tswv-container-60per"> 
             <div id="content">
                 <div id="navigation">
-                    <a class="nav" href="http://devmx.de/en/software/teamspeak3-webviewer/ubersetzen" target="_blank"><span class="nav-element orange"><?php __e('Help us translating the webviewer') ?></span></a>
-                    <span onclick="javascript: openFacebookDialog();" class="nav nav-element orange"><?php __e('Become fan at facebook'); ?></span>
-                    <a class="nav" href="<?php echo(s_http . 'install/index.php' . htmlspecialchars($newlang)) ?>"><span class="nav-element orange"><?php __e('Installation and Configuration') ?></span></a>
-                    <a class="nav" target="_blank" href="http://support.devmx.de"><span class="nav-element orange"><?php __e('Support') ?></span></a>
-                    <a class="nav" target="_blank" href="http://devmx.de/en/software/teamspeak3-webviewer/dokumentation"><span class="nav-element orange"><?php __e('Documentation') ?></span></a>
-                    <a class="nav" href="ts3server://devmx.de"><span class="nav-element orange"><?php __e('TeamSpeak') ?></span></a>
+                    <span class="nav-element tswv-button-orange"><a class="nav" href="http://devmx.de/en/software/teamspeak3-webviewer/ubersetzen" target="_blank"><?php __e('Help us translating the webviewer') ?></a></span>
+                    <span onclick="javascript: openFacebookDialog();" class="nav nav-element tswv-button-orange"><?php __e('Become fan at facebook'); ?></span>
+                    <span class="nav-element tswv-button-orange"><a class="nav" href="<?php echo(s_http . 'install/index.php' . htmlspecialchars($newlang)) ?>"><?php __e('Installation and Configuration') ?></a></span>
+                    <span class="nav-element tswv-button-orange"><a class="nav" target="_blank" href="http://support.devmx.de"><?php __e('Support') ?></span></a>
+                    <span class="nav-element tswv-button-orange"><a class="nav" target="_blank" href="http://devmx.de/en/software/teamspeak3-webviewer/dokumentation"><?php __e('Documentation') ?></a></span>
+                    <span class="nav-element tswv-button-orange"><a class="nav" href="ts3server://devmx.de"><?php __e('TeamSpeak') ?></a></span>
                 </div>
                 <div id="logo"><img style="margin-left: -175px;" src="<?php echo s_http; ?>html/welcome/logo.png" alt="" /></div>
                 <div><p class="header"><?php __e('Welcome to the devMX TeamSpeak3 Webviewer') ?></p></div>
                 <br>
-                <p><?php __e('You can see a list of your config files below. If you want to add more, run the'); ?> <a href="<?php echo(s_http . 'install/index.php' . $newlang) ?>" class="link-gray"><?php __e('Installscript') ?></a></p>
+                <p><?php __e('You can see a list of your config files below. If you want to add more, run the'); ?> <a href="<?php echo(s_http . 'install/index.php' . $newlang) ?>" class="tswv-link-gray"><?php __e('Installscript') ?></a></p>
                 <p><?php __e('The following configfiles are available:') ?></p>
                 <?php if (count(getConfigFiles(s_root . 'config')) == 0) : ?>
                     <p class="red no-config"><?php __e('You did not create any configurationfiles yet.') ?></p>
                 <?php else : ?>
-                    <ul class="green" id="configs" style="list-style-image:url('<?php echo(s_http . 'html/welcome/tools.png'); ?>');">
+                    <ul id="configs" class="tswv-inner-container tswv-container-450px" style="list-style-image:url('<?php echo(s_http . 'html/welcome/tools.png'); ?>');">
                         <?php
                         $configfiles = getConfigFiles(s_root . 'config');
                         foreach ($configfiles as $file) :
                             ?>
-                            <li><a href="<?php echo(s_http . 'TSViewer.php?config=' . $file) ?>"><?php echo($file) ?></a> <span class="get-code" title="<?php __e('Get code to include this configfile') ?>" onclick="javascript: openLinkDialog('<?php echo($file) ?>');"><?php __e('Get code to include') ?></span></li>
+                            <li><a href="<?php echo(s_http . 'TSViewer.php?config=' . $file) ?>" class="tswv-link-gray"><?php echo($file) ?></a> <span class="get-code tswv-link-gray" title="<?php __e('Get code to include this configfile') ?>" onclick="javascript: openLinkDialog('<?php echo($file) ?>');"><?php __e('Get code to include') ?></span></li>
                         <?php endforeach; ?>
                     </ul>   
                 <?php endif; ?>
@@ -83,7 +83,7 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
                 $languages = $utils->getLanguages();
                 foreach ($languages as $langCode => $langOptions) :
                     ?>              
-                    <span class="orange lang" style="float:left; margin-right: 10px;"><a href="?lang=<?php echo($langCode); ?>"><?php echo($langOptions['lang']) ?></a></span>
+                    <span class="tswv-button-orange lang" style="float:left; margin-right: 10px;"><a href="?lang=<?php echo($langCode); ?>"><?php echo($langOptions['lang']) ?></a></span>
                 <?php endforeach; ?>
                 <p id="version"><?php __e('Version:'); ?> <?php echo (string) version; ?></p>
 

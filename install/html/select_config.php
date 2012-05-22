@@ -17,12 +17,12 @@
  */ ?>
 
 <!-- Navigation -->
-<span style="position: absolute; right: 10px; top: 10px;" class="topnav" >
+<span style="position: fixed; right: 10px; top: 10px;" class="topnav" >
     <a href="index.php?action=logout" alt="" class="button"><?php __e('Logout') ?></a>
     <a href="http://devmx.de/en/software/teamspeak3-webviewer/dokumentation" title="<?php __e('I need help!') ?>" target="_blank" alt="" class="button"><span class="ui-icon ui-icon-info">&nbsp;</span></a>
 </span>
 
-<div id="config-selection">
+<div class="tswv-container tswv-container-60per">
     <script type="text/javascript">
         $('#selector').button();
     </script>
@@ -31,27 +31,27 @@
         <p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
             <?php __e('Please select one of those existing configfiles...') ?></p>
     </div> 
-    <div id="selector">
-        <?php $files = getConfigFiles("../config"); ?>
-        <?php if (count($files) == 0) : ?>
-            <p><?php __e('No configfiles created yet. Please create one') ?></p>
-        <?php else: ?>
-            <div class="config-select">
+
+    <?php $files = getConfigFiles("../config"); ?>
+    <?php if (count($files) == 0) : ?>
+        <p><?php __e('No configfiles created yet. Please create one') ?></p>
+    <?php else: ?>
+        <div class="tswv-inner-container">
             <table class="config-select" cellspacing="0" >
                 <?php foreach ($files as $file) : ?>
                     <tr>
-                        <td><?php echo($file)?></td>
-                        <td><a href="index.php?action=set_config&configname=<?php echo($file) ?>" class="select-button"><span class="select-button config-button"><?php __e ('Edit') ?></span></a></td>
-                        <td><a href="../index.php?config=<?php echo($file) ?>" target="_blank" class="select-button"><span class="select-button config-button"><?php __e('Show') ?></span></a></td>
-                        <td><a href="index.php?action=fc&config=<?php echo($file) ?>"class="select-button"><span class="select-button config-button"><?php __e('Flush cache') ?></span></a></td>
-                        <td><a href="index.php?action=delete&config=<?php echo($file) ?>" class="select-button"><span class="select-button config-button"><?php __e('Delete configfile') ?></span></a></td>
+                        <td><?php echo($file) ?></td>
+                        <td><a href="index.php?action=set_config&configname=<?php echo($file) ?>" class="tswv-link-gray"><?php __e('Edit') ?></a></td>
+                        <td><a href="../index.php?config=<?php echo($file) ?>" target="_blank" class="tswv-link-gray"><?php __e('Show') ?></a></td>
+                        <td><a href="index.php?action=fc&config=<?php echo($file) ?>"class="tswv-link-gray"><?php __e('Flush cache') ?></a></td>
+                        <td><a href="index.php?action=delete&config=<?php echo($file) ?>" class="tswv-link-gray"><?php __e('Delete configfile') ?></a></td>
                     </tr>
 
                 <?php endforeach; ?>
             </table>
-            </div>
-        <?php endif; ?>
-    </div>
+        </div>
+    <?php endif; ?>
+
     <div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em; margin-bottom: 10px;"> 
         <p><?php __e('... or create a new configfile') ?></p>
     </div>

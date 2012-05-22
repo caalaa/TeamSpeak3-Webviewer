@@ -44,7 +44,6 @@ $(document).ready(function(){
     // jQueryUI
     $("button, input:submit, input:button, .button").button();  
     $("input:text, input:password").TextBox();
-    $("fieldset").FieldSet();
     
     // ********************************************************************** \\
     // Modules Start
@@ -134,14 +133,16 @@ function setLang(language)
 // Enables all modules
 function enableAllModules()
 {
-    $("#sort1").append($("#sort2>li"));
+    var modules = $("#sort2>li");
+    $("#sort1").append(modules);
     updateModules();
 }
 
 // Disable all modules
 function disableAllModules()
 {
-    $("#sort2").append($("#sort1>li"));
+    var modules = $("#sort1>li")
+    $("#sort2").append(modules);
     updateModules();
 
 }
