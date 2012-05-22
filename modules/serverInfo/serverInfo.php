@@ -59,7 +59,7 @@ class serverInfo extends ms_Module
         else $welcomemsg = $bbparser->Parse($serverinfo['virtualserver_welcomemessage']);
 
         $serverVersion = explode("[", $serverinfo['virtualserver_version']);
-        $serverVersion[2] = "(" . date($this->config['date_format'], str_replace("Build: ", "", $serverVersion[1])) . ")";
+        $serverVersion[2] = "(" . date($this->config['date_format'], (int)str_replace("Build: ", "", $serverVersion[1])) . ")";
 
         $this->html.='<!--- START Serverinfo -->
             <div class="serverinfo"><table>
