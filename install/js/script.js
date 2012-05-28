@@ -43,8 +43,8 @@ $(document).ready(function(){
     
     // jQueryUI
     $("button, input:submit, input:button, .button").button();  
-    $("input:text, input:password").TextBox();
-    
+    $("input:text, input:password").addClass("ui-state-hover ui-corner-all").css("padding", "5px");
+
     // ********************************************************************** \\
     // Modules Start
     // ********************************************************************** \\

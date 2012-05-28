@@ -26,15 +26,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         
         <!-- Jquery -->
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
         <!-- Jquery UI -->
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.19/jquery-ui.min.js"></script>
 
-        <link rel="stylesheet" href="../../libraries/fluent/css/fluent.css" type="text/css" />
+        <link rel="stylesheet" href="../../libraries/grayified/grayified-jquery-ui-1.0.css" type="text/css" />
         <link rel="stylesheet" href="../../libraries/codemirror/lib/codemirror.css" type="text/css">
         <link rel="stylesheet" href="../../libraries/codemirror/mode/xml/xml.css" type="text/css">
         <link rel="stylesheet" href="../../libraries/codemirror/theme/default.css" type="text/css">
+        <link rel="stylesheet" href="../../libraries/css/tswv.css" type="text/css">
 
         <!-- Style -->
         <link rel="stylesheet" href="../css/xmledit.css" type="text/css">
