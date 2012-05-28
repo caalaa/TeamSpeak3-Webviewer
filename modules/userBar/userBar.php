@@ -54,7 +54,7 @@ class userBar extends ms_Module
     public function getHeader()
     {
         setL10n($this->config['language'], "teamspeak3-webviewer");
-        return('<div class="devmx-webviewer-userBar"><p>' . sprintf("%s of %s are currently online.", $this->clients_online, $this->max_clients) . '</p>
+        return('<div class="devmx-webviewer-userBar"><p>' . sprintf(__("%s of %s are currently online."), $this->clients_online, $this->max_clients) . '</p>
                 <div id="userBar"></div></div>');
     }
 
