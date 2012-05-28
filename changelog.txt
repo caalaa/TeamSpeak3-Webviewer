@@ -14,6 +14,11 @@ Translations:
 + Portuguese (Brazil) (by Flavio)
 + French (by blablabla)
 
+v1.4.1
+~ Updated design of installscript, welcome screen and added new jQueryUI theme
+* Issue #89: Fixed welcomescreen scoll bug if too much configfiles were created
+* Issue #88: Added date formatting to the serverInfo module.
+
 v1.4
 + Issue #69: Added option to hide all icons on the right side
 + Issue #68: Added option to display country icons
