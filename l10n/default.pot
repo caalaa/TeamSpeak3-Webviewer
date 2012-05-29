@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TeamSpeak3 Webviewer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-01 16:40+0100\n"
-"PO-Revision-Date: 2012-04-01 16:41+0100\n"
+"POT-Creation-Date: 2012-05-28 20:31+0100\n"
+"PO-Revision-Date: 2012-05-28 22:58+0100\n"
 "Last-Translator: Maximilian Narr <maxesstuff@live.de>\n"
 "Language-Team: devMX <maxe@devmx.de>\n"
 "MIME-Version: 1.0\n"
@@ -783,32 +783,32 @@ msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/xmledit.php:55
+#: Webviewer/install/html/xmledit.php:56
 msgid "You can edit the global and the local configfile of the module here. If you have finished just press the button. The local configfile overrides all configparameters set in the global one. Set 'none' in the local config, if you want to use the parameter of the global config"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/xmledit.php:57
+#: Webviewer/install/html/xmledit.php:58
 msgid "Learn more about this module"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/xmledit.php:62
+#: Webviewer/install/html/xmledit.php:63
 msgid "Global config"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/xmledit.php:63
+#: Webviewer/install/html/xmledit.php:64
 msgid "Local config"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/xmledit.php:68
-#: Webviewer/install/html/xmledit.php:74
+#: Webviewer/install/html/xmledit.php:69
+#: Webviewer/install/html/xmledit.php:75
 msgid "save configfile"
 msgstr ""
 
@@ -827,18 +827,21 @@ msgstr ""
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
 #: Webviewer/modules/infoDialog/getHTML.php:151
+#: Webviewer/modules/serverInfo/serverInfo.php:68
 msgid "Version"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
 #: Webviewer/modules/infoDialog/getHTML.php:156
+#: Webviewer/modules/legend/legend.php:67
 msgid "Servergroup(s)"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
 #: Webviewer/modules/infoDialog/getHTML.php:172
+#: Webviewer/modules/legend/legend.php:83
 msgid "Channelgroup(s)"
 msgstr ""
 
@@ -919,43 +922,43 @@ msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/modules/serverInfo/serverInfo.php:64
+#: Webviewer/modules/serverInfo/serverInfo.php:67
 msgid "Welcomemessage"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/modules/serverInfo/serverInfo.php:64
+#: Webviewer/modules/serverInfo/serverInfo.php:67
 msgid "Channels"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/modules/serverInfo/serverInfo.php:65
+#: Webviewer/modules/serverInfo/serverInfo.php:68
 msgid "Server OS"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/modules/serverInfo/serverInfo.php:66
+#: Webviewer/modules/serverInfo/serverInfo.php:69
 msgid "Connectiondetails"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/modules/serverInfo/serverInfo.php:66
+#: Webviewer/modules/serverInfo/serverInfo.php:69
 msgid "total sent"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/modules/serverInfo/serverInfo.php:66
+#: Webviewer/modules/serverInfo/serverInfo.php:69
 msgid "total received"
 msgstr ""
 
 #: B:\Eigene
 #: Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/modules/serverInfo/serverInfo.php:77
+#: Webviewer/modules/serverInfo/serverInfo.php:80
 msgid "Serverinformation"
 msgstr ""
 
@@ -969,5 +972,12 @@ msgstr ""
 #: Dokumente\NetBeansProjects\TeamSpeak3
 #: Webviewer/modules/stats/php/utils.php:161
 msgid "User history"
+msgstr ""
+
+#: B:\Eigene
+#: Dokumente\NetBeansProjects\TeamSpeak3
+#: Webviewer/modules/userBar/userBar.php:57
+#, php-format
+msgid "%s of %s are currently online."
 msgstr ""
 
