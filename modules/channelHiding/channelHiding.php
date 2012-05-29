@@ -92,7 +92,7 @@ class channelHiding extends ms_Module
                 $ops = rtrim($ops, ",");
             $ops .= "};\r\n";
                 $this->jsModule->loadJS($ops . "jQuery(document).on('ready', function() {
-
+                                                                                jQuery('div.channel_arr > p.chan_content').css('cursor', 'pointer');
 										jQuery('.channel').each( function() {
 
 											if(channelHiding_ops[jQuery(this).attr('id')] == true) {
@@ -103,6 +103,7 @@ class channelHiding extends ms_Module
 												ms_chan_con.attr('is_hidden','true');
 											}
 										});
+                                                                                jQuery('div.spacer_arr > p.spacer_con').css('cursor', 'pointer');
 										jQuery('.spacer').each( function() {
 											if(channelHiding_ops[jQuery(this).attr('id')] == true) {
 												var ms_chan_con = jQuery(this).children('.spacer_con');
