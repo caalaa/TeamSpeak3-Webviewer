@@ -249,3 +249,9 @@ span.topnav a
 {
     height: 30px;
 }
+
+/* Flag on language selection */
+img.flag
+{
+    margin-right: 4px;
+}

@@ -27,7 +27,7 @@
 
         foreach ($languages as $langCode => $langOptions) :
             ?>
-            <a href="index.php?action=setlang&lang=<?php echo $langCode?>" class="tswv-link-gray"><?php echo $langOptions['lang'] ?></a>
-        <?php endforeach; ?>  
+            <span><a href="index.php?action=setlang&lang=<?php echo $langCode ?>" class="tswv-link-gray"><img class="flag" src="../modules/infoDialog/flags/<?php echo ($langOptions['icon'] . '.png') ?>" alt="" /><?php echo $langOptions['lang'] ?></a></span>
+            <?php endforeach; ?>  
     </div>
 </div>

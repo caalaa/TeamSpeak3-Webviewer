@@ -173,3 +173,9 @@ ul
     font-size: 18px;
     list-style-position: inside;
 }
+
+/* Language flag on language selection */
+img.flag
+{
+    margin-right: 4px;
+}

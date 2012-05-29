@@ -18,4 +18,5 @@
  */
 $l10_lang = array();
 $l10_lang['lang'] = 'Deutsch';
+$l10_lang['icon'] = 'de';
 ?>

@@ -83,7 +83,7 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
                 $languages = $utils->getLanguages();
                 foreach ($languages as $langCode => $langOptions) :
                     ?>              
-                    <span class="tswv-button-orange lang" style="float:left; margin-right: 10px;"><a href="?lang=<?php echo($langCode); ?>"><?php echo($langOptions['lang']) ?></a></span>
+                    <span class="tswv-button-orange lang" style="float:left; margin-right: 10px;"><a href="?lang=<?php echo($langCode); ?>"><img class="flag" src="modules/infoDialog/flags/<?php echo ($langOptions['icon'] . '.png') ?>" alt="" /><?php echo($langOptions['lang']) ?></a></span>
                 <?php endforeach; ?>
                 <p id="version"><?php __e('Version:'); ?> <?php echo (string) version; ?></p>
 
