@@ -333,18 +333,24 @@ function render_channellist($channellist, $clientlist, $servergroups, $channelgr
 
         if ($channel->has_childs())
         {
-
+    		if($renderChannelsWithClientsOnly){
+				$output .= render_channellist($channel->get_childs(), $clientlist, $servergroups, $channelgroups, false, true);
+			}
             // If only clients should be rendered
             if (!$renderClientsOnly && !$renderChannelsWithClientsOnly)
             {
-                $output .= render_channellist($channel->get_childs(), $clientlist, $servergroups, $channelgroups);
+            	$output .= render_channellist($channel->get_childs(), $clientlist, $servergroups, $channelgroups);
             }
         }
 
-        if (!$renderClientsOnly)
+        if (!$renderClientsOnly && !$renderChannelsWithClientsOnly)
         {
             $output .= "</div>\r\n";
         }
+		if (!$channel->isEmpty() && parse_spacer($channel) === false && $renderChannelsWithClientsOnly)
+		{
+			$output .= "</div>\r\n";
+		}
     }
 
     return $output;
