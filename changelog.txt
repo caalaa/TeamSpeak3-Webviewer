@@ -15,11 +15,12 @@ Translations:
 + French (by blablabla)
 
 v1.4.1
-~ Isseu #93: Added flags to language selections
+~ Issue #93: Added flags to language selections
 ~ Issue #90: Set cursor to pointer on collapsable channels and spacers, if channelHiding module is enabled
 ~ Updated design of installscript, welcome screen and added new jQueryUI theme
 * Issue #89: Fixed welcomescreen scoll bug if too much configfiles were created
 * Issue #88: Added date formatting to the serverInfo module.
+* Issue #95: Fixed html bug if "Channelclientsonly" was enabled (Thanks to Tazzernator via Github.com)
 
 v1.4
 + Issue #69: Added option to hide all icons on the right side
