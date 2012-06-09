@@ -35,7 +35,7 @@ define('CACHE_DIR', msBASEDIR . 'cache');
 define('debug', true);
 
 // Define Standardname of the Webviewer
-define('clientNickname', 'devMX TeamSpeak3 Webviewer' . version);
+define('clientNickname', 'devMX TeamSpeak3 Webviewer ' . version);
 
 // Enter here the HTTP-Path of your viewer (with ending slash)
 // Geben Sie hier den HTTP-Pfad zum Viewer ein (mit Schrägstrich am Ende)
@@ -103,7 +103,7 @@ require_once s_root . 'core/config.inc';
 
 unregister_globals('_POST', '_GET', '_COOKIE', '_REQUEST', '_SERVER', '_ENV', '_FILES', '_SESSION');
 
-$config_name = isset($_GET['config']) ? $_GET['config'] : 'config';
+$config_name = isset($_GET['config']) ? $_GET['config'] : '';
 
 // Check if ajax Mode should be used
 if (isset($ajaxConfig) && $ajaxConfig != "")
