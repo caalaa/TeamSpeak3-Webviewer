@@ -53,13 +53,15 @@ class tsvUtils
         $handler = opendir($path);
         while ($file = readdir($handler))
         {
-            if ($file != "." && $file != ".." && $file != "default.pot" && $file != "howto.txt" && preg_match("/([a-z]){2}(([_-]{1})([A-Z]{2}))?/", $file) >= 1)
+            if ($file != "default.pot" && $file != "howto.txt" && $file != "make.sh" && preg_match("/(([a-z]{2})([-_]{1})?([A-Z]{2})?)/", $file) >= 1)
             {
                 require $path . "/" . $file . "/" . "lang.php";
 
                 $languages[$file] = $l10_lang;
             }
         }
+        
+        $languages["en_US"] = array("lang" => "English", "icon" => "us");
         uasort($languages, array($this, "languagesort"));
 
         return $languages;

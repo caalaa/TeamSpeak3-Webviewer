@@ -1,4 +1,5 @@
 <?php
+
 /**
  *  This file is part of devMX TeamSpeak3 Webviewer.
  *  Copyright (C) 2011 - 2012 Max Rath and Maximilian Narr
@@ -35,8 +36,9 @@ function __e($string)
  * @param type $domain
  * @param type $newPath 
  */
-function setL10n($locale, $domain, $newPath=NULL)
+function setL10n($locale, $domain, $newPath = NULL)
 {
+    $domain = $domain . "-" . strtolower($locale);
     _setlocale(LC_MESSAGES, $locale);
 
     if ($newPath == NULL) _bindtextdomain($domain, l10nDir);

@@ -17,6 +17,6 @@
  *  along with TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
  */
 $l10_lang = array();
-$l10_lang['lang'] = 'English';
-$l10_lang['icon'] = 'us';
+$l10_lang['lang'] = 'Espagnol';
+$l10_lang['icon'] = 'es';
 ?>

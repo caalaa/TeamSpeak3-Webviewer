@@ -58,7 +58,7 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
                     <span class="nav-element tswv-button-orange"><a class="nav" href="http://devmx.de/en/software/teamspeak3-webviewer/ubersetzen" target="_blank"><?php __e('Help us translating the webviewer') ?></a></span>
                     <span onclick="javascript: openFacebookDialog();" class="nav nav-element tswv-button-orange"><?php __e('Become fan at facebook'); ?></span>
                     <span class="nav-element tswv-button-orange"><a class="nav" href="<?php echo(s_http . 'install/index.php' . htmlspecialchars($newlang)) ?>"><?php __e('Installation and Configuration') ?></a></span>
-                    <span class="nav-element tswv-button-orange"><a class="nav" target="_blank" href="http://support.devmx.de"><?php __e('Support') ?></span></a>
+                    <span class="nav-element tswv-button-orange"><a class="nav" target="_blank" href="http://forum.devmx.de"><?php __e('Support') ?></span></a>
                     <span class="nav-element tswv-button-orange"><a class="nav" target="_blank" href="http://devmx.de/en/software/teamspeak3-webviewer/dokumentation"><?php __e('Documentation') ?></a></span>
                     <span class="nav-element tswv-button-orange"><a class="nav" href="ts3server://devmx.de"><?php __e('TeamSpeak') ?></a></span>
                 </div>
