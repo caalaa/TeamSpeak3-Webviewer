@@ -1,0 +1,3 @@
+[submodule "doc/_theme"]
+	path = doc/_theme
+	url = git@github.com:maxee/devMX-Sphinx-Theme.git
