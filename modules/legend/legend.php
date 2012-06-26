@@ -67,7 +67,7 @@ class legend extends ms_Module
         $output .= '<h5>' . __('Servergroup(s)') . '</h5>';
         foreach ($this->info['servergroups'] as $sgroup)
         {
-            if ($sgroup['type'] == 1)
+            if (isset($sgroup['type']) && $sgroup['type'] == 1)
             {
                 $output .= '<div class="rechtegruppe">';
 
