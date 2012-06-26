@@ -3,20 +3,16 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to TeamSpeak3 Webviewer's documentation!
+Index
 ================================================
+Read the :doc:`Getting Started <getting-started>` guide for a introduction to the Webviewer
 
-Contents:
-
-.. toctree::
-   :maxdepth: 2
-
-
-
-Indices and tables
+Table of Contents:
 ==================
+.. toctree::
+    :maxdepth: 2
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
+    getting-started
+    configuration
+    modules
+    troubleshooting
