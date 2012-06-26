@@ -47,7 +47,7 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
         <link rel="icon" href="<?php echo s_http; ?>html/welcome/tools.png" type="image/png">
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.js"></script>
-        <link href="<?php echo(s_http) ?>libraries/fluent/css/fluent.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo(s_http) ?>libraries/grayified/grayified-jquery-ui-1.0.css" rel="stylesheet" type="text/css">
         <link href="<?php echo(s_http) ?>html/welcome/style.css" rel="stylesheet" type="text/css">
         <link href="<?php echo(s_http) ?>libraries/css/tswv.css" rel="stylesheet" type="text/css">
     </head>
