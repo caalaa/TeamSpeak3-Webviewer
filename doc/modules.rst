@@ -154,7 +154,7 @@ use_tab
         true
 
 loginButton
-----------
+-----------
 
 .. image:: img/login-button.png
     :height: 150px

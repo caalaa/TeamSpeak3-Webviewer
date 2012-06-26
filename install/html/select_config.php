@@ -19,7 +19,7 @@
 <!-- Navigation -->
 <span style="position: fixed; right: 10px; top: 10px;" class="topnav" >
     <a href="index.php?action=logout" alt="" class="button"><?php __e('Logout') ?></a>
-    <a href="http://devmx.de/en/software/teamspeak3-webviewer/dokumentation" title="<?php __e('I need help!') ?>" target="_blank" alt="" class="button"><span class="ui-icon ui-icon-info">&nbsp;</span></a>
+    <a href="http://docs.devmx.de/teamspeak3-webviewer/" title="<?php __e('I need help!') ?>" target="_blank" alt="" class="button"><span class="ui-icon ui-icon-info">&nbsp;</span></a>
 </span>
 
 <div class="tswv-container tswv-container-60per">

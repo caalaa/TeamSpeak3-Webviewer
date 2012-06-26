@@ -59,7 +59,7 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
                     <span onclick="javascript: openFacebookDialog();" class="nav nav-element tswv-button-orange"><?php __e('Become fan at facebook'); ?></span>
                     <span class="nav-element tswv-button-orange"><a class="nav" href="<?php echo(s_http . 'install/index.php' . htmlspecialchars($newlang)) ?>"><?php __e('Installation and Configuration') ?></a></span>
                     <span class="nav-element tswv-button-orange"><a class="nav" target="_blank" href="http://forum.devmx.de"><?php __e('Support') ?></span></a>
-                    <span class="nav-element tswv-button-orange"><a class="nav" target="_blank" href="http://devmx.de/en/software/teamspeak3-webviewer/dokumentation"><?php __e('Documentation') ?></a></span>
+                    <span class="nav-element tswv-button-orange"><a class="nav" target="_blank" href="http://docs.devmx.de/teamspeak3-webviewer/"><?php __e('Documentation') ?></a></span>
                     <span class="nav-element tswv-button-orange"><a class="nav" href="ts3server://devmx.de"><?php __e('TeamSpeak') ?></a></span>
                 </div>
                 <div id="logo"><img style="margin-left: -175px;" src="<?php echo s_http; ?>html/welcome/logo.png" alt="" /></div>
