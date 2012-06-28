@@ -62,7 +62,7 @@ elseif (isset($_GET['fc']) && isset($config['enable_cache_flushing']) && $config
     $mManager->triggerEvent('CacheFlush');
 }
 
-$ajaxScriptOutput = array();
+$ajaxScriptOutput = array('src'=>array(), 'txt'=>array());
 $mManager->triggerEvent('Startup');
 if($output !== '') {
     if (isset($ajax) && $ajax)
