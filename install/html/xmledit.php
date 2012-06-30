@@ -33,6 +33,14 @@
 
         <!-- Style -->
         <link rel="stylesheet" href="../css/xmledit.css" type="text/css">
+        
+        <style type="text/css">
+            pre, pre > span, pre * span, .CodeMirror
+            {
+                font-family: monospace !important;
+                cursor: text;
+            }
+        </style>
     </head>
     <body>
         <?php echo($msERRWAR); ?>
@@ -50,7 +58,7 @@
                 </ul>
                 <div id="local">
                     <form method="POST" action="xmledit.php?action=submit&type=local&module=<?php echo($module) ?>">
-                        <textarea id="local-config" name="xml"><?php echo($localConfig) ?></textarea>
+                        <textarea style="font-family: sans-serif !important;" id="local-config" name="xml"><?php echo($localConfig) ?></textarea>
                         <p><input type="submit" value="<?php __e('save configfile') ?>"/></p>
                     </form>
                 </div>

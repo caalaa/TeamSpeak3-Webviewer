@@ -18,6 +18,7 @@ v1.4.2
 - Issue #94: Removed outdated shell scripts
 - Issue #97: Removed global configuration from installscript (Deprecated)
 * Issue #101: Fixed l10n in installscript
+* Issue #100: Fixed scollbars in loginButton and jsLogin
 
 v1.4.1
 - Issue #91: Support of default configfile. Configfiles called 'default.xml' won't be loaded automatically if present.
