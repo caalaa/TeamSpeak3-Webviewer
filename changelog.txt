@@ -16,7 +16,7 @@ Translations:
 
 v1.4.2
 - Issue #94: Removed outdated shell scripts
-* Issue #98: Fixed PHP 5.2 compatibility issue in ajax.php
+* Issue #101: Fixed l10n in installscript
 
 v1.4.1
 - Issue #91: Support of default configfile. Configfiles called 'default.xml' won't be loaded automatically if present.
