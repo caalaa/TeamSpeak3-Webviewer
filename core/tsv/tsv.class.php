@@ -60,8 +60,7 @@ class tsvUtils
                 $languages[$file] = $l10_lang;
             }
         }
-        
-        $languages["en_US"] = array("lang" => "English", "icon" => "us");
+
         uasort($languages, array($this, "languagesort"));
 
         return $languages;
