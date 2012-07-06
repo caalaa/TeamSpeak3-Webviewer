@@ -65,31 +65,14 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == "return" && isset($_SES
 if (isset($_SESSION['lang']) && $_SESSION['lang'] != "")
 {
     $lang = $_SESSION['lang'];
-
-    _setlocale(LC_MESSAGES, $lang);
-
-    $domain = "teamspeak3-webviewer";
-
-    _bindtextdomain($domain, PROJECTPATH);
-
-    _textdomain($domain);
-    _bind_textdomain_codeset($domain, "UTF-8");
+    setL10n($lang, "teamspeak3-webviewer", PROJECTPATH);
 }
 
 // Sets Language
 if (isset($_REQUEST['action']) && $_REQUEST['action'] == "setlang" && isset($_GET['lang']))
 {
     $lang = $_GET['lang'];
-
-    _setlocale(LC_MESSAGES, $lang);
-
-    $domain = "teamspeak3-webviewer";
-
-    _bindtextdomain($domain, PROJECTPATH);
-
-    _textdomain($domain);
-    _bind_textdomain_codeset($domain, "UTF-8");
-
+    setL10n($lang, "teamspeak3-webviewer", PROJECTPATH);
     $_SESSION['lang'] = $_GET['lang'];
 }
 

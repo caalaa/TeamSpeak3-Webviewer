@@ -17,16 +17,20 @@
  *  You should have received a copy of the GNU General Public License
  *  along with devMX TeamSpeak3 Webviewer.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 /**
  * Echos given string
  * @since 0.9
  * @param type $string
  * @return type 
  */
-function __e($string)
+if (!function_exists('__e'))
 {
-    echo __($string);
+
+    function __e($string)
+    {
+        echo __($string);
+    }
+
 }
 
 /**

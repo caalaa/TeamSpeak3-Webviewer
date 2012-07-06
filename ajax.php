@@ -20,15 +20,15 @@
 if (isset($_GET['s']) && $_GET['s'] == "true" && isset($_GET['config']) && isset($_GET['id']) && $_GET['id'] != "")
 {
     header('Content-type: text/javascript');
-    
+
     $url = "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['PHP_SELF'];
     $url = str_replace("/ajax.php", "", $url);
     $url = str_replace("//", "\/\/", $url);
-    
+
     $id = str_replace("#", "", $_GET['id']);
-    
+
     $config = $_GET['config'];
-    $data = <<<"EOF"
+    $data = <<<EOF
 var scriptdata = '
 <script type="text/javascript" src="%s/ajax.php?config=%s&json=false"><\/script>
 <script type="text/javascript">
@@ -78,11 +78,18 @@ else if (isset($_GET['config']) && isset($_GET['json']))
 
         header('Content-type: text/javascript');
 
-        foreach ($ajaxScriptOutput['src'] as $s)
+        if (isset($ajaxScriptOutput) && isset($ajaxScriptOutput['src']) && count($ajaxScriptOutput['src']))
         {
-            $createScript .= "document.write('<script type=\"text/javascript\" src=\"" . $s . "\"><\/script>');\r\n";
+            foreach ($ajaxScriptOutput['src'] as $s)
+            {
+                $createScript .= "document.write('<script type=\"text/javascript\" src=\"" . $s . "\"><\/script>');\r\n";
+            }
         }
-        
+        else
+        {
+            $createScript .= "document.write('<script type=\"text/javascript\" src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js\"><\/script>');\r\n";
+        }
+
         echo($createScript);
     }
     // If json should be sent
@@ -90,7 +97,7 @@ else if (isset($_GET['config']) && isset($_GET['json']))
     {
         header('Content-type: application/json');
 
-        echo($_GET['callback'] . '(' . json_encode(array("html" => preg_replace('/<script\b[^>]*>(.*?)<\/script>/is', '' ,$ajaxHtmlOutput), "script" => $ajaxScriptOutput)) . ')');
+        echo($_GET['callback'] . '(' . json_encode(array("html" => preg_replace('/<script\b[^>]*>(.*?)<\/script>/is', '', $ajaxHtmlOutput), "script" => $ajaxScriptOutput)) . ')');
     }
 }
 ?>

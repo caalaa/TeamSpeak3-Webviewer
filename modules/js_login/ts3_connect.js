@@ -94,7 +94,7 @@ function ts3_connect(host,port,server_pass_needed, serverpass, prompt_username, 
     
         if(jQuery("#jsPassUser").length == 0)
         {
-            jQuery(".devmx-webviewer").append('<div id="jsPassUser" class="ui-widget"><p>' + server_pass_i18n + '</p><p><input class="ui-widget ui-corner-all ui-widget-content" style="padding: 5px;" type="text" id="jsPassVal1" /></p><br><p>' + nickname_i18n + '</p><p><input type="text" id="jsUserVal1" class="ui-widget ui-corner-all ui-widget-content" style="padding: 5px;" /></p></div>');
+            jQuery(".devmx-webviewer").append('<div id="jsPassUser" class="ui-widget" style="overflow: hidden !important;"><p>' + server_pass_i18n + '</p><p><input class="ui-widget ui-corner-all ui-widget-content" style="padding: 5px;" type="text" id="jsPassVal1" /></p><br><p>' + nickname_i18n + '</p><p><input type="text" id="jsUserVal1" class="ui-widget ui-corner-all ui-widget-content" style="padding: 5px;" /></p></div>');
         }
         
         jQuery("#jsPassUser").dialog(dialogOptions, dialogOptionsUserPass);
@@ -104,7 +104,7 @@ function ts3_connect(host,port,server_pass_needed, serverpass, prompt_username, 
     {   
         if(jQuery("#jsUser").length == 0)
         {
-            jQuery(".devmx-webviewer").append('<div id="jsUser" class="ui-widget"><p>' + nickname_i18n + '</p><p><input class="ui-widget ui-corner-all ui-widget-content" style="padding: 5px;" type="text" id="jsUserVal2" /></p></div>');
+            jQuery(".devmx-webviewer").append('<div id="jsUser" class="ui-widget" style="overflow: hidden !important;"><p>' + nickname_i18n + '</p><p><input class="ui-widget ui-corner-all ui-widget-content" style="padding: 5px;" type="text" id="jsUserVal2" /></p></div>');
         }
         
         jQuery("#jsUser").dialog(dialogOptions, dialogOptionsUser);
@@ -114,7 +114,7 @@ function ts3_connect(host,port,server_pass_needed, serverpass, prompt_username, 
     {
         if(jQuery("#jsPass").length == 0)
         {
-            jQuery(".devmx-webviewer").append('<div id="jsPass" class="ui-widget"><p>' + server_pass_i18n + '</p><p><input class="ui-widget ui-corner-all ui-widget-content" style="padding: 5px;" type="text" id="jsPassVal3" /></p></div>');    
+            jQuery(".devmx-webviewer").append('<div id="jsPass" class="ui-widget" style="overflow: hidden !important;"><p>' + server_pass_i18n + '</p><p><input class="ui-widget ui-corner-all ui-widget-content" style="padding: 5px;" type="text" id="jsPassVal3" /></p></div>');    
         }
         
         jQuery("#jsPass").dialog(dialogOptions, dialogOptionsPass);

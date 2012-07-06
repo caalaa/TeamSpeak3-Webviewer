@@ -14,6 +14,13 @@ Translations:
 + Portuguese (Brazil) (by Flavio)
 + French (by blablabla)
 
+v1.4.2
+- Issue #94: Removed outdated shell scripts
+- Issue #97: Removed global configuration from installscript (Deprecated)
+* Issue #101: Fixed l10n in installscript
+* Issue #100: Fixed scollbars in loginButton and jsLogin
+* Issue #98: Fixed heredoc implementation in ajax.php
+
 v1.4.1
 - Issue #91: Support of default configfile. Configfiles called 'default.xml' won't be loaded automatically if present.
 ~ Issue #93: Added flags to language selections

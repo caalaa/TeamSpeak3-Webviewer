@@ -47,7 +47,7 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
         <link rel="icon" href="<?php echo s_http; ?>html/welcome/tools.png" type="image/png">
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.js"></script>
-        <link href="<?php echo(s_http) ?>libraries/fluent/css/fluent.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo(s_http) ?>libraries/grayified/grayified-jquery-ui-1.0.css" rel="stylesheet" type="text/css">
         <link href="<?php echo(s_http) ?>html/welcome/style.css" rel="stylesheet" type="text/css">
         <link href="<?php echo(s_http) ?>libraries/css/tswv.css" rel="stylesheet" type="text/css">
     </head>
@@ -91,11 +91,11 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
                 $versionInfo = $utils->versionCompare();
                 if ($versionInfo !== false) :
                     ?>
-                    <p id="version-hint"><a class="red" target="_blank" href="<?php echo($versionInfo->url); ?>"><?php echo sprintf(__('Version %s of the TeamSpeak3 Webviewer has been released. Click here to update.'), (string) $versionInfo->version) ?></a></p>
+                    <p id="version-hint"><a class="tswv-button-red" target="_blank" href="<?php echo($versionInfo->url); ?>"><?php echo sprintf(__('Version %s of the TeamSpeak3 Webviewer has been released. Click here to update.'), (string) $versionInfo->version) ?></a></p>
                 <?php endif; ?>
             </div>
         </div>
-        <div id="hint" class="ui-state-highlight ui-corner-tl">
+        <div id="hint" class="tswv-button-orange">
             <a href="http://devmx.de" target="_blank"><?php __e('devMX TeamSpeak3 Webviewer') ?></a>
         </div>
 
