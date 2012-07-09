@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TeamSpeak3 Webviewer\n"
 "Report-Msgid-Bugs-To: http://github.com/devmx/teamspeak3-webviewer/issues\n"
-"POT-Creation-Date: 2012-05-28 20:31+0100\n"
-"PO-Revision-Date: 2012-06-19 16:27+0000\n"
+"POT-Creation-Date: 2012-07-06 19:06+0100\n"
+"PO-Revision-Date: 2012-07-07 08:45+0000\n"
 "Last-Translator: Maximilian <maxe.nr@live.de>\n"
 "Language-Team: devMX <maxe@devmx.de>\n"
 "MIME-Version: 1.0\n"
@@ -141,31 +141,31 @@ msgid "Id"
 msgstr "Id"
 
 #: B\Eigene Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/index.php:104
+#: Webviewer/install/index.php:87
 msgid ""
 "The password could not be saved. Please make \"pw.xml\" in the install "
 "directory writable."
 msgstr "La contraseña no ha sido guardada. Por favor haz el \"pw.xml\" del directorio de instalación escribible."
 
 #: B\Eigene Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/index.php:167
+#: Webviewer/install/index.php:150
 msgid "The password you provided was not correct. Please try again."
 msgstr "La contraseña proporcionada no es correcta. Por favor vuelve a intentarlo."
 
 #: B\Eigene Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/index.php:233 Webviewer/install/index.php:243
+#: Webviewer/install/index.php:216 Webviewer/install/index.php:226
 msgid "is not set. Please check if you filled out all blanks."
 msgstr "no está establecido. Por favor revisa los campos en blanco."
 
 #: B\Eigene Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/index.php:304
+#: Webviewer/install/index.php:287
 msgid ""
 "The configfile is not writable. Please check if the required permissions are"
 " given to write the file."
 msgstr "El fichero de configuración no es escribible. Por favor revisa los permisos necesarios para escribir en el fichero."
 
 #: B\Eigene Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/index.php:310
+#: Webviewer/install/index.php:293
 msgid "Configfile successfully saved."
 msgstr "El fichero de configuración ha sido guardado correctamente."
 
@@ -704,31 +704,24 @@ msgid "Set password"
 msgstr "Establecer contraseña"
 
 #: B\Eigene Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/xmledit.php:56
+#: Webviewer/install/html/xmledit.php:50
 msgid ""
-"You can edit the global and the local configfile of the module here. If you "
-"have finished just press the button. The local configfile overrides all "
-"configparameters set in the global one. Set 'none' in the local config, if "
-"you want to use the parameter of the global config"
-msgstr "Puedes editar el fichero de configuración global y local del módulo aquí. Cuando termines pulsa el botón. El fichero de configuración local anula todas las configuraciones establecidas en el global. Establece 'none' en la configuración local, si deseas utilizar los parámetros de la configuración global"
+"You can edit the configfile of the module here. If you have finished just "
+"press the button. The values you set here will override the default ones."
+msgstr ""
 
 #: B\Eigene Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/xmledit.php:58
+#: Webviewer/install/html/xmledit.php:52
 msgid "Learn more about this module"
 msgstr "Más información acerca de este módulo"
 
 #: B\Eigene Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/xmledit.php:63
-msgid "Global config"
-msgstr "Configuración global"
-
-#: B\Eigene Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/xmledit.php:64
+#: Webviewer/install/html/xmledit.php:57
 msgid "Local config"
 msgstr "Configuración local"
 
 #: B\Eigene Dokumente\NetBeansProjects\TeamSpeak3
-#: Webviewer/install/html/xmledit.php:69 Webviewer/install/html/xmledit.php:75
+#: Webviewer/install/html/xmledit.php:62
 msgid "save configfile"
 msgstr "guardar fichero de configuración"
 
