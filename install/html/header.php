@@ -35,9 +35,7 @@
         <!-- Jquery UI -->
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"></script>
         <link rel="stylesheet" href="../libraries/grayified/grayified-jquery-ui-1.0.css">
-        <!--<link rel="stylesheet" href="../libraries/fluent/css/fluent.css" type="text/css" >-->
-        <!--<script type="text/javascript" src="../libraries/fluent/js/fluent.js"></script>-->
-
+        
         <!-- Smooth scroll -->
         <script src="../libraries/jquery-smooth-scroll/jquery.smooth-scroll.min.js" type="text/javascript"></script>
 
