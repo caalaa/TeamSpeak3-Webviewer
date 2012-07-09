@@ -21,13 +21,13 @@
         <p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
             Please select your language / Bitte wählen Sie Ihre Sprache</p>
     </div>
-    <div class="tswv-inner-container">
+    <div class="tswv-inner-container" style="line-height: 30px; display: inline-block;">
         <?php
         $languages = $utils->getLanguages();
 
         foreach ($languages as $langCode => $langOptions) :
             ?>
-            <span><a href="index.php?action=setlang&lang=<?php echo $langCode ?>" class="tswv-link-gray"><img class="flag" src="../modules/infoDialog/flags/<?php echo ($langOptions['icon'] . '.png') ?>" alt="" /><?php echo $langOptions['lang'] ?></a></span>
+            <span style="float: left;" class="language"><a href="index.php?action=setlang&lang=<?php echo $langCode ?>" class="tswv-link-gray"><img class="flag" src="../modules/infoDialog/flags/<?php echo ($langOptions['icon'] . '.png') ?>" alt="" /><?php echo $langOptions['lang'] ?></a></span>
             <?php endforeach; ?>  
     </div>
 </div>

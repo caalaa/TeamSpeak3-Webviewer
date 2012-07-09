@@ -255,3 +255,9 @@ img.flag
 {
     margin-right: 4px;
 }
+
+/* Language link on language selection */
+span.language
+{
+    margin-right: 4px;
+}
