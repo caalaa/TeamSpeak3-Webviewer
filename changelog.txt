@@ -12,6 +12,7 @@ Translations:
 + German (by devMX)
 + Englisch (by devMX)
 + Portuguese (Brazil) (by Flavio)
++ Portuguese (Portugal)
 + French (by blablabla)
 
 v1.4.2
