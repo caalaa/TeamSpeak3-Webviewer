@@ -12,6 +12,7 @@ Translations:
 + German (by devMX)
 + Englisch (by devMX)
 + Portuguese (Brazil) (by Flavio)
++ Portuguese (Portugal)
 + French (by blablabla)
 
 v1.4.2
@@ -20,6 +21,7 @@ v1.4.2
 * Issue #101: Fixed l10n in installscript
 * Issue #100: Fixed scollbars in loginButton and jsLogin
 * Issue #98: Fixed heredoc implementation in ajax.php
+* Issue #103: Fixed notice in ajax implenetation if no module was enabled.
 
 v1.4.1
 - Issue #91: Support of default configfile. Configfiles called 'default.xml' won't be loaded automatically if present.
