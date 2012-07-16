@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: TeamSpeak3 Webviewer\n"
 "Report-Msgid-Bugs-To: http://github.com/devmx/teamspeak3-webviewer/issues\n"
 "POT-Creation-Date: 2012-07-06 19:06+0100\n"
-"PO-Revision-Date: 2012-07-09 15:51+0000\n"
+"PO-Revision-Date: 2012-07-16 07:36+0000\n"
 "Last-Translator: Maximilian <maxe.nr@live.de>\n"
 "Language-Team: devMX <maxe@devmx.de>\n"
 "MIME-Version: 1.0\n"
@@ -263,7 +263,7 @@ msgstr "Die Konfigurationsdatei wurde erfolgreich gespeichert!"
 msgid ""
 "The changes have been added to the queue. They will be saved if you save the"
 " configfile of the viewer for the next time."
-msgstr "Tie Änderungen wurden übernommen. Sie werden gespeichert, sobald Sie die Konfigurationsdatei des Webviewers das nächste Mal speichern."
+msgstr "Die Änderungen wurden übernommen. Sie werden gespeichert, sobald Sie die Konfigurationsdatei des Webviewers das nächste Mal speichern."
 
 #: B\Eigene Dokumente\NetBeansProjects\TeamSpeak3
 #: Webviewer/install/html/config.php:23
@@ -387,7 +387,7 @@ msgstr "Passwort des Query-Benutzers"
 msgid ""
 "Click on a module to edit the modules configfile. Drag and sort the modules "
 "in the order you want them displayed"
-msgstr "Klicken Sie auf den Namen eines Modules, um dessen Konfigurationsdate zu bearbeiten. Schieben und Sortieren Sie die Module in der Reihenfolge, in der sie im Webviewer ausgegeben werden sollen."
+msgstr "Klicken Sie auf den Namen eines Modules, um dessen Konfigurationsdatei zu bearbeiten. Schieben und Sortieren Sie die Module in der Reihenfolge, in der sie im Webviewer ausgegeben werden sollen."
 
 #: B\Eigene Dokumente\NetBeansProjects\TeamSpeak3
 #: Webviewer/install/html/config.php:89
@@ -719,7 +719,7 @@ msgstr "Mehr über dieses Modul erfahren"
 #: B\Eigene Dokumente\NetBeansProjects\TeamSpeak3
 #: Webviewer/install/html/xmledit.php:57
 msgid "Local config"
-msgstr "Lokale Konfigurations"
+msgstr "Lokale Konfiguration"
 
 #: B\Eigene Dokumente\NetBeansProjects\TeamSpeak3
 #: Webviewer/install/html/xmledit.php:62
