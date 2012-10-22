@@ -442,6 +442,9 @@ function parse_spacer($channel)
     $ret = Array();
     //---,...,-.-,___,-..
     if ($channel['pid'] != 0) return false;
+    
+    if(is_array($channel['channel_name'])) return false;
+
     $spacer2 = preg_match("#.*\[([rcl*]?)spacer(.*?)\](.*)#", $channel['channel_name'], $spacer);
     if ($spacer2 == 0)
     {

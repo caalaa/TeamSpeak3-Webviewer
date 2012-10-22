@@ -15,6 +15,9 @@ Translations:
 + Portuguese (Portugal)
 + French (by blablabla)
 
+v1.4.3 (xx.xx.2012)
+* Issue #104: Fixed error in spacer parsing which caused silly warning
+
 v1.4.2
 - Issue #94: Removed outdated shell scripts
 - Issue #97: Removed global configuration from installscript (Deprecated)
