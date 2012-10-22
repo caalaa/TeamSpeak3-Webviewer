@@ -68,7 +68,7 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
                 <p><?php __e('You can see a list of your config files below. If you want to add more, run the'); ?> <a href="<?php echo(s_http . 'install/index.php' . $newlang) ?>" class="tswv-link-gray"><?php __e('Installscript') ?></a></p>
                 <p><?php __e('The following configfiles are available:') ?></p>
                 <?php if (count(getConfigFiles(s_root . 'config')) == 0) : ?>
-                    <p class="red no-config"><?php __e('You did not create any configurationfiles yet.') ?></p>
+                    <p class="no-config"><?php __e('You did not create any configurationfiles yet.') ?></p>
                 <?php else : ?>
                     <ul id="configs" class="tswv-inner-container tswv-container-450px" style="list-style-image:url('<?php echo(s_http . 'html/welcome/tools.png'); ?>');">
                         <?php

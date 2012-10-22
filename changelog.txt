@@ -17,12 +17,13 @@ Translations:
 
 v1.4.3 (xx.xx.2012)
 * Issue #104: Fixed error in spacer parsing which caused silly warning
+* Issue #106: Changed color of hint if no configuration has been created
 
 v1.4.2
 - Issue #94: Removed outdated shell scripts
 - Issue #97: Removed global configuration from installscript (Deprecated)
 * Issue #101: Fixed l10n in installscript
-* Issue #100: Fixed scollbars in loginButton and jsLogin
+* Issue #100: Fixed scrollbars in loginButton and jsLogin
 * Issue #98: Fixed heredoc implementation in ajax.php
 * Issue #103: Fixed notice in ajax implenetation if no module was enabled.
 
