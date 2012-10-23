@@ -9,13 +9,20 @@
 * Fix
 
 Translations:
-+ German (by devMX)
-+ Englisch (by devMX)
-+ Portuguese (Brazil) (by Flavio)
-+ Portuguese (Portugal)
++ Czech (by SIFLER)
++ Dutch (by punisher)
++ English (by devMX)
++ Espagnol
 + French (by blablabla)
++ German (by devMX)
++ Indonesian (by elmakong)
++ Polish (by Firenz)
++ Portuguese (Brazil) (by Flavio)
++ Portuguese (Portugal) (by barricas)
++ Russian (by 72AG_...)
 
-v1.4.3 (xx.xx.2012)
+
+v1.4.3 (23.10.2012)
 * Issue #104: Fixed error in spacer parsing which caused silly warning
 * Issue #106: Changed color of hint if no configuration has been created
 * Issue #105: Fixed rendering of channels with only digits in the channelname

@@ -77,11 +77,6 @@ a.nav
     color: white;
 }
 
-.lang
-{
-    padding: 6px;
-}
-
 div#hint
 {
     position: fixed;
@@ -161,10 +156,12 @@ p, span, a
     color: #000000;
 }
 
-span .lang
+span.lang
 {
     margin-left: 12px;
     font-size: 14px;
+    margin: 3px;
+    padding: 6px;
 }
 
 ul
@@ -177,4 +174,9 @@ ul
 img.flag
 {
     margin-right: 4px;
+}
+
+.tswv-languages
+{
+    display: inline-block;
 }
