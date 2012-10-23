@@ -26,6 +26,7 @@ v1.4.3 (23.10.2012)
 * Issue #104: Fixed error in spacer parsing which caused silly warning
 * Issue #106: Changed color of hint if no configuration has been created
 * Issue #105: Fixed rendering of channels with only digits in the channelname
+~ Issue #107: Aligned spacers more to the left - to be like in the TS3 Client
 
 v1.4.2
 - Issue #94: Removed outdated shell scripts
