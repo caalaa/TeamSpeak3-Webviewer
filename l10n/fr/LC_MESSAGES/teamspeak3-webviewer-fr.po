@@ -1,18 +1,20 @@
 # 
 # Translators:
+#   <geobou@hotmail.com>, 2012.
+#   <qx9650@hotmail.fr>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: TeamSpeak3 Webviewer\n"
 "Report-Msgid-Bugs-To: http://github.com/devmx/teamspeak3-webviewer/issues\n"
-"POT-Creation-Date: 2012-07-06 19:06+0100\n"
-"PO-Revision-Date: 2012-07-07 08:45+0000\n"
-"Last-Translator: Maximilian <maxe.nr@live.de>\n"
+"POT-Creation-Date: 2012-07-16 11:12+0100\n"
+"PO-Revision-Date: 2012-07-27 18:04+0000\n"
+"Last-Translator: geobou <geobou@hotmail.com>\n"
 "Language-Team: devMX <maxe@devmx.de>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-Country: UNITED STATES\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e;__e\n"
@@ -708,7 +710,7 @@ msgstr "Définir le mot de passe:"
 msgid ""
 "You can edit the configfile of the module here. If you have finished just "
 "press the button. The values you set here will override the default ones."
-msgstr ""
+msgstr "Vous pouvez modifier le fichier de configuration du module ici. Si vous avez terminé les modifications, veuillez appuyez simplement sur le bouton. Les valeurs que vous définissez ici écraseront celle par défaut."
 
 #: B\Eigene Dokumente\NetBeansProjects\TeamSpeak3
 #: Webviewer/install/html/xmledit.php:52
@@ -865,4 +867,4 @@ msgstr "Historique de l'utilisateur"
 #: Webviewer/modules/userBar/userBar.php:57
 #, php-format
 msgid "%s of %s are currently online."
-msgstr "%s sur %s sont actuellement en ligne."
+msgstr "%s de %s sont actuellement en ligne."
