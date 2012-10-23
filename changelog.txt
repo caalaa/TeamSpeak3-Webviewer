@@ -18,6 +18,7 @@ Translations:
 v1.4.3 (xx.xx.2012)
 * Issue #104: Fixed error in spacer parsing which caused silly warning
 * Issue #106: Changed color of hint if no configuration has been created
+* Issue #105: Fixed rendering of channels with only digits in the channelname
 
 v1.4.2
 - Issue #94: Removed outdated shell scripts

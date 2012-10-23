@@ -283,6 +283,7 @@ function getIsDefaultIcon($channel, $config)
  * @param bool $renderChanelsWithClientsOnly If only channels should be shown with clients inside
  * @return string output
  */
+
 function render_channellist($channellist, $clientlist, $servergroups, $channelgroups, $renderClientsOnly = false, $renderChannelsWithClientsOnly = false)
 {
     static $is_rendered;
@@ -333,13 +334,14 @@ function render_channellist($channellist, $clientlist, $servergroups, $channelgr
 
         if ($channel->has_childs())
         {
-    		if($renderChannelsWithClientsOnly){
-				$output .= render_channellist($channel->get_childs(), $clientlist, $servergroups, $channelgroups, false, true);
-			}
+            if ($renderChannelsWithClientsOnly)
+            {
+                $output .= render_channellist($channel->get_childs(), $clientlist, $servergroups, $channelgroups, false, true);
+            }
             // If only clients should be rendered
             if (!$renderClientsOnly && !$renderChannelsWithClientsOnly)
             {
-            	$output .= render_channellist($channel->get_childs(), $clientlist, $servergroups, $channelgroups);
+                $output .= render_channellist($channel->get_childs(), $clientlist, $servergroups, $channelgroups);
             }
         }
 
@@ -347,10 +349,10 @@ function render_channellist($channellist, $clientlist, $servergroups, $channelgr
         {
             $output .= "</div>\r\n";
         }
-		if (!$channel->isEmpty() && parse_spacer($channel) === false && $renderChannelsWithClientsOnly)
-		{
-			$output .= "</div>\r\n";
-		}
+        if (!$channel->isEmpty() && parse_spacer($channel) === false && $renderChannelsWithClientsOnly)
+        {
+            $output .= "</div>\r\n";
+        }
     }
 
     return $output;
@@ -442,8 +444,8 @@ function parse_spacer($channel)
     $ret = Array();
     //---,...,-.-,___,-..
     if ($channel['pid'] != 0) return false;
-    
-    if(is_array($channel['channel_name'])) return false;
+
+    if (is_array($channel['channel_name'])) return false;
 
     $spacer2 = preg_match("#.*\[([rcl*]?)spacer(.*?)\](.*)#", $channel['channel_name'], $spacer);
     if ($spacer2 == 0)
@@ -494,6 +496,9 @@ function escape_name($name)
  */
 function utf8tohtml($utf8, $encodeTags = true)
 {
+    // Convert digits to strings
+    $utf8 = (string)$utf8;
+    
     $result = '';
     for ($i = 0; $i < strlen($utf8); $i++)
     {
@@ -559,7 +564,6 @@ function get_client_image($client)
     if ($client['client_flag_talking']) return "talking-client";
     return "normal-client";
 }
-
 
 /**
  * Returns the ID of a servergroups icon
