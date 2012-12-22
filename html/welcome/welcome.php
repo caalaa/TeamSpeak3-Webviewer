@@ -87,14 +87,7 @@ if (isset($_GET['lang']) && $_GET['lang'] != "")
                     <span class="tswv-button-orange lang" style="float:left; margin-right: 10px;"><a href="?lang=<?php echo($langCode); ?>"><img class="flag" src="modules/infoDialog/flags/<?php echo ($langOptions['icon'] . '.png') ?>" alt="" /><?php echo($langOptions['lang']) ?></a></span>
                 <?php endforeach; ?>
                 </div>
-                <p id="version"><?php __e('Version:'); ?> <?php echo (string) version; ?></p>
-
-                <?php
-                $versionInfo = $utils->versionCompare();
-                if ($versionInfo !== false) :
-                    ?>
-                    <p id="version-hint"><a class="tswv-button-red" target="_blank" href="<?php echo($versionInfo->url); ?>"><?php echo sprintf(__('Version %s of the TeamSpeak3 Webviewer has been released. Click here to update.'), (string) $versionInfo->version) ?></a></p>
-                <?php endif; ?>
+                <p id="version"><?php __e('Version:'); ?> <?php echo (string) version; ?></p>              
             </div>
         </div>
         <div id="hint" class="tswv-button-orange">

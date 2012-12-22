@@ -21,6 +21,9 @@ Translations:
 + Portuguese (Portugal) (by barricas)
 + Russian (by 72AG_...)
 
+v1.4.4 (22.12.2012)
+! Last version of the TeamSpeak3 Webviewer. Development has been stopped.
+- Issue #108: Remove check for updates.
 
 v1.4.3 (23.10.2012)
 * Issue #104: Fixed error in spacer parsing which caused silly warning
